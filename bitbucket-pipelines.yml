@@ -6,6 +6,8 @@ pipelines:
         script:
           - yarn
           - yarn build
+        artifacts:
+          - dist/**
     - step:
         name: Publish
         deployment: production
