@@ -12,6 +12,7 @@ pipelines:
         script:
           - yarn global add standard-version
           - yarn release
+          - git push --follow-tags origin trunk
           - pipe: atlassian/npm-publish:0.2.0
             variables:
               NPM_TOKEN: $NPM_TOKEN
