@@ -65,6 +65,12 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "standard-version": {
+    "scripts": {
+      "postbump": "git add package.json",
+      "precommit": "echo \"[skip ci]\""
+    }
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
