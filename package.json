@@ -68,7 +68,7 @@
   "standard-version": {
     "scripts": {
       "postbump": "git add package.json",
-      "postcommit": "[skip ci]",
+      "postcommit": "echo \"[skip ci]\"",
       "skip": {
           "tag": true
       }
