@@ -59,12 +59,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rollup -c",
+    "release": "standard-version",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "prepare": "yarn build",
-    "release": "standard-version"
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
