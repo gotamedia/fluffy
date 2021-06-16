@@ -1,6 +1,6 @@
 {
   "name": "@gotamedia/fluffy",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -64,6 +64,15 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "git add package.json",
+      "postcommit": "[skip ci]",
+      "skip": {
+          "tag": true
+      }
+    }
   },
   "eslintConfig": {
     "extends": [
