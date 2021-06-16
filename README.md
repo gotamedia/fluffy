@@ -1,6 +1,6 @@
 # Fluffy 🦄
 
-Install dependencies
+Install
 ```
     yarn
 ```
