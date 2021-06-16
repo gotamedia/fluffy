@@ -4,12 +4,13 @@ pipelines:
     - step:
         name: Build and Test
         script:
-          - npm install
+          - yarn global add standard-version
+          - yarn
     - step:
         name: Publish
         deployment: production
         script:
-          - npm run release
+          - yarn release
           - pipe: atlassian/npm-publish:0.2.0
             variables:
               NPM_TOKEN: $NPM_TOKEN
