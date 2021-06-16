@@ -67,8 +67,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "git add package.json",
-      "precommit": "echo \"[skip ci]\""
+      "postbump": "git add package.json"
     }
   },
   "eslintConfig": {
