@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.7.3 (2021-06-16)
+
+
+### Bug Fixes
+
+* removed fluffy dependency ([b34b3f6](http://bitbucket.org/gotamedia/fluffy/commit/b34b3f6d9385634572facb74936824451e2bb1b5))
+
 ### [0.7.2](https://bitbucket.org/gotamedia/fluffy/compare/v0.7.1...v0.7.2) (2021-06-14)
 
 
