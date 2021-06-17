@@ -7,6 +7,8 @@ import { Heading, Text} from './typography'
 import { Input, PasswordInput, Button, PinInput, Select, Switch } from './forms'
 import { useNotification } from './feedback'
 import { Flex, Box, Center } from './layout'
+import { lighten, darken } from './utils'
+
 import {
     Drawer,
     DrawerFooter,
@@ -59,7 +61,10 @@ export {
     Button,
     PinInput,
     Select,
-    Switch
+    Switch,
+    // utils
+    lighten,
+    darken
 }
 
 export const ThemeProvider = ({theme = {}, children}) => {
