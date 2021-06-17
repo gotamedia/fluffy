@@ -35,9 +35,22 @@ const components = {
             }
         }
     },
+    Card: {
+        baseStyle: {
+            boxShadow: "2xl",
+            borderRadius: "lg",
+            flexDirection: "column",
+            p: 8
+        }
+    },
     Text: {
         baseStyle: {
-            mb: 3
+            mb: 10,
+            textAlign: 'left',
+            fontSize: 'lg',
+            fontWeight: 'normal',
+            lineHeight: 'normal',
+            letterSpacing: 'normal'
         }
     },
     Input: {

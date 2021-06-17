@@ -6,7 +6,7 @@ import { useColorMode, useColorModeValue, useDisclosure } from './hooks'
 import { Heading, Text} from './typography'
 import { Input, PasswordInput, Button, PinInput, Select, Switch } from './forms'
 import { useNotification } from './feedback'
-import { Flex, Box, Center } from './layout'
+import { Flex, Box, Center, Card, CardTitle } from './layout'
 import { lighten, darken } from './utils'
 
 import {
@@ -40,6 +40,8 @@ export {
     Text,
     // layout
     Box,
+    Card,
+    CardTitle,
     Center,
     Flex,
     // overlay
