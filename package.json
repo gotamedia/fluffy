@@ -1,6 +1,6 @@
 {
   "name": "@gotamedia/fluffy",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -68,7 +68,6 @@
   "standard-version": {
     "scripts": {
       "postbump": "git add package.json",
-      "precommit": "echo \"[skip ci]\"",
       "skip": {
           "tag": true
       }
