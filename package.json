@@ -1,5 +1,6 @@
 {
   "name": "@gotamedia/fluffy",
+  "description": "Fluffy UI",
   "version": "0.7.12",
   "private": false,
   "main": "dist/cjs/index.js",
