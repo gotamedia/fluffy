@@ -1,14 +1,15 @@
 image: node:10.16.0
 pipelines:
-  default:
-    - step:
+  branches:
+    trunk:
+      - step:
         name: Build and Test
         script:
           - yarn
           - yarn build
         artifacts:
           - dist/**
-    - step:
+      - step:
         name: Publish
         deployment: production
         script:
