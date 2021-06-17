@@ -15,8 +15,6 @@ return (
 )
 }
 
-
-
 export const CardTitle = ({ children, ...headingProps }) => (
     <Heading as={"h3"} {...headingProps}>{children}</Heading>
 )
