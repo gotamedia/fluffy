@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.14](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.13...v0.7.14) (2021-06-17)
+
+
+### Features
+
+* added lighten and darken color utility functions ([135dfe5](http://bitbucket.org/gotamedia/fluffy/commit/135dfe5c3944fbaf1b42c8b0f7ea1ac8b54ee9be))
+
 ### [0.7.13](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.12...v0.7.13) (2021-06-17)
 
 ### [0.7.12](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.11...v0.7.12) (2021-06-17)
