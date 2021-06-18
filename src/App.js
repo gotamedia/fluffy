@@ -3,7 +3,7 @@ import { useNotification } from './lib/feedback'
 import { useColorMode } from './lib/hooks'
 import { Heading, Text } from './lib/typography'
 import { Input, PasswordInput, PinInput, PinInputField, Button, Select, Option, Switch } from './lib/forms'
-import { Flex } from './lib/layout'
+import { Flex, Card, CardTitle } from './lib/layout'
 import { Image } from './lib/media'
 import {
     Drawer,
@@ -43,6 +43,13 @@ const App = () => {
                     <MenuItem>menu item 3</MenuItem>
                 </MenuList>
             </Menu>
+
+            <Heading mt={6} mb={4}>Cards</Heading>
+            <Card>
+                <CardTitle> 
+                    Cardtitle
+                </CardTitle>
+            </Card>
 
             <Heading mt={6} mb={4}>Drawers</Heading>
             <Flex flexFlow="wrap">

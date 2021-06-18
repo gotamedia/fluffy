@@ -54,6 +54,7 @@ const fonts = {
     body: tiemposText.serif.regular,
     button: sanomatText.sans.regular,
     drawerTitle: sanomatText.sans.bold,
+    cardTitle: sanomatText.sans.bold,
     input: 'Arial'
 }
 
