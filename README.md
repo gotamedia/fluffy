@@ -116,6 +116,9 @@ This project uses a [trunk based development](https://cloud.google.com/architect
 ### Conventional commits
 This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
 
+## Deploy
+Add deploy guide here
+
 ### Storybook
 ```
 npm run storybook
