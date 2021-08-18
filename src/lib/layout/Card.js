@@ -1,3 +1,4 @@
+import React from 'react'
 import { Flex as F, useStyleConfig } from '@chakra-ui/react'
 import propTypes from '@styled-system/prop-types'
 import { Heading } from '../typography'
@@ -5,11 +6,11 @@ import { Heading } from '../typography'
 const Card = ({ variant, children, ...cardProps }) => {
 const styles = useStyleConfig("Card", { variant })
 
-return (    
+return (
     <F
-        __css={styles} 
-        {...cardProps} 
-    > 
+        __css={styles}
+        {...cardProps}
+    >
         {children}
     </F>
 )

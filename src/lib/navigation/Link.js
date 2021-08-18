@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link as L } from '@chakra-ui/react'
 import propTypes from '@styled-system/prop-types'
 
