@@ -1,3 +1,4 @@
+import React from 'react'
 import { Box as B } from '@chakra-ui/react'
 import propTypes from '@styled-system/prop-types'
 
