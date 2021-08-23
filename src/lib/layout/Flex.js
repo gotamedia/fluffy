@@ -1,3 +1,4 @@
+import React from 'react'
 import { Flex as F } from '@chakra-ui/react'
 import propTypes from '@styled-system/prop-types'
 
