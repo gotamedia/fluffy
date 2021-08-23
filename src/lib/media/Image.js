@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Image as ImgClient, Img as ImgServer } from '@chakra-ui/react'
 import propTypes from '@styled-system/prop-types'
 

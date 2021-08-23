@@ -4,6 +4,7 @@ import { defaultTheme } from './theme'
 
 import { useColorMode, useColorModeValue, useDisclosure } from './hooks'
 import { Heading, Text} from './typography'
+import { Image } from './media'
 import { Input, PasswordInput, Button, PinInput, Select, Switch } from './forms'
 import { useNotification } from './feedback'
 import { Flex, Box, Center, Card, CardTitle } from './layout'
@@ -38,6 +39,8 @@ export {
     // typography
     Heading,
     Text,
+    // media
+    Image,
     // layout
     Box,
     Card,
