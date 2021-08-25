@@ -9,11 +9,9 @@ import { Input, PasswordInput, Button, PinInput, Select, Switch } from './forms'
 import { useNotification } from './feedback'
 import { Flex, Box, Center, Card, CardTitle } from './layout'
 import { lighten, darken } from './utils'
-import { Author, AuthorMeta } from './display'
+//import { Author, AuthorMeta } from './display'
 
 import {
-    Drawer,
-    DrawerFooter,
     Menu,
     MenuButton,
     MenuList,
@@ -49,12 +47,6 @@ export {
     CardTitle,
     Center,
     Flex,
-    // display
-    Author,
-    AuthorMeta,
-    // overlay
-    Drawer,
-    DrawerFooter,
     Menu,
     MenuButton,
     MenuList,

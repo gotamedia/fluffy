@@ -1,4 +1,4 @@
-import Drawer, { DrawerHeader, DrawerBody, DrawerFooter } from './Drawer'
+//import Drawer, { DrawerHeader, DrawerBody, DrawerFooter } from './Drawer'
 import {
     Menu,
     MenuButton,
@@ -13,11 +13,6 @@ import {
 } from './Menu'
 
 export {
-    // Drawer
-    Drawer,
-    DrawerHeader,
-    DrawerBody,
-    DrawerFooter,
     // Menu
     Menu,
     MenuButton,
