@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.24](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.23...v0.7.24) (2021-08-31)
+
+
+### Features
+
+* added Quote component ([03584f7](http://bitbucket.org/gotamedia/fluffy/commit/03584f7513b72fe352894fd5ee8d1d6cccc702ec))
+
 ### [0.7.23](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.22...v0.7.23) (2021-08-25)
 
 ### [0.7.22](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.21...v0.7.22) (2021-08-23)
