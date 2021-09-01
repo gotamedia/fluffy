@@ -6,11 +6,11 @@ const EmailLink = ({
     email,
     label,
     ...rest
-}) => (
-    <Link {...rest} href={`mailto:${email}`}>
+}) => email ? (
+    <Link title="Email länk" {...rest} href={`mailto:${email}`}>
         {label}
     </Link>
-)
+) : null
 
 export default EmailLink
 

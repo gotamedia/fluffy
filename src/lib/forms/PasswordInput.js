@@ -14,13 +14,15 @@ const PasswordInput = ({
     return (
       <InputGroup size="md">
         <Input
-          pr="4.5rem"
-          type={display ? "text" : "password"}
-          placeholder={placeholder}
-          onChange={onChange}
+            name="password"
+            role="password"
+            pr="4.5rem"
+            type={display ? "text" : "password"}
+            placeholder={placeholder}
+            onChange={onChange}
         />
         <InputRightElement width="4.5rem">
-          <Button h="1.75rem" size="sm" onClick={handleClick}>
+          <Button h="1.75rem" size="sm" onClick={handleClick} pressed={`${display}`}>
             { display ? hide : show }
           </Button>
         </InputRightElement>

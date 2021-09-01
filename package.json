@@ -1,6 +1,12 @@
 {
   "name": "@gotamedia/fluffy",
   "description": "Fluffy UI",
+  "jest": {
+    "collectCoverageFrom": [
+      "src/lib/*/**",
+      "!src/lib/*/**/index.js"
+    ]
+  },
   "version": "0.7.24",
   "private": false,
   "main": "dist/cjs/index.js",
@@ -38,6 +44,7 @@
     "@rollup/plugin-node-resolve": "13.0.0",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "11.1.0",
+    "@testing-library/react-hooks": "7.0.2",
     "@testing-library/user-event": "12.1.10",
     "babel-loader": "8.1.0",
     "react": "^17.0.2",

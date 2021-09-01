@@ -1,4 +1,4 @@
-//import Drawer, { DrawerHeader, DrawerBody, DrawerFooter } from './Drawer'
+import Drawer, { DrawerHeader, DrawerBody, DrawerFooter } from './Drawer'
 import {
     Menu,
     MenuButton,
@@ -23,5 +23,7 @@ export {
     MenuOptionGroup,
     MenuIcon,
     MenuCommand,
-    MenuDivider
+    MenuDivider,
+    // drawer
+    Drawer, DrawerHeader, DrawerBody, DrawerFooter
 }

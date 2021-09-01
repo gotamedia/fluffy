@@ -1,17 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import Card, { CardTitle } from './Card'
+import { render } from '@testing-library/react'
 
-it('Card renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<Card>Card</Card>, div)
+describe('<Card />', () => {
+    it('renders without crashing', () => {
+        render(<Card>Card</Card>)
+    })
 })
 
-it('Card with CardTitle renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render((
-        <Card>
+describe('<CardTitle />', () => {
+    it('renders without crashing', () => {
+        render((
             <CardTitle>cardTitle</CardTitle>
-        </Card>
-    ), div)
+        ))
+    })
 })

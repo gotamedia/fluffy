@@ -14,7 +14,7 @@ import {
 } from './lib/overlay'
 import { useDisclosure } from './lib/hooks'
 import { RadioGroup, Radio } from '@chakra-ui/react'
-// import { Author, AuthorMeta, Quote, QuoteText, QuoteByline } from './lib/display'
+import { Quote, QuoteText, QuoteByline } from './lib/display'
 
 const App = () => {
     const notification = useNotification()
@@ -35,18 +35,10 @@ const App = () => {
 
     return (
         <Flex p={8} flexDirection="column">
-            {/* <Quote maxWidth="200px">
+            <Quote maxWidth="200px">
                 <QuoteText>Quote</QuoteText>
                 <QuoteByline>by a person</QuoteByline>
             </Quote>
-            <Heading mt={6} mb={4}>Authors</Heading>
-            <Author
-                imageUrl="https://a1cf74336522e87f135f-2f21ace9a6cf0052456644b80fa06d4f.ssl.cf2.rackcdn.com/images/characters_opt/p-despicable-me-gru.jpg"
-                imageSize={"50"}
-                name="Felonius Gru"
-                email="johan.sunden@gotamedia.se"
-                emailLabel="Contact me!"
-            /> */}
 
             <Heading mt={6} mb={4}>Menus</Heading>
             <Menu>

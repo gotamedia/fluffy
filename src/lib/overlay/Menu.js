@@ -11,10 +11,6 @@ import {
     MenuDivider
   } from '@chakra-ui/react'
 
-  const Test = "hej"
-
-  export default Test
-
   export {
     Menu,
     MenuButton,

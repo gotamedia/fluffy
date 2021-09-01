@@ -1,18 +1,25 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
 import Button, { ButtonGroup } from './Button'
+import { render, screen, fireEvent } from '@testing-library/react'
 
-it('Button renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render(<Button>button</Button>, div)
+describe('<Button />', () => {
+    it('renders without crashing', () => {
+        render(<Button>button</Button>)
+    })
+
+    it('can be clicked', () => {
+        const mockCallBack = jest.fn()
+
+        render(<Button onClick={mockCallBack}>button</Button>)
+        const button = screen.getByText('button')
+        fireEvent.click(button)
+        expect(mockCallBack.mock.calls.length).toEqual(1)
+    })
 })
 
-it('ButtonGroup renders without crashing', () => {
-    const div = document.createElement('div')
-    ReactDOM.render((
-        <ButtonGroup>
-            <Button>button 1</Button>
-            <Button>button 2</Button>
-        </ButtonGroup>
-    ), div)
+describe('<ButtonGroup', () => {
+    it('renders without crashing', () => {
+        render((
+            <ButtonGroup />
+        ))
+    })
 })
