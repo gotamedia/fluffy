@@ -1,8 +1,8 @@
 import Link from './Link'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 describe('<Link />', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render(<Link />)
     })
 })

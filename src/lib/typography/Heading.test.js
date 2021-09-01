@@ -1,8 +1,15 @@
+import '@testing-library/jest-dom/extend-expect'
 import Heading from './Heading'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 describe('<Heading />', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render(<Heading />)
+    })
+
+    it('should render given heading', () => {
+        const heading = 'heading'
+        render(<Heading>{heading}</Heading>)
+        expect(screen.getByText(heading)).toBeInTheDocument()
     })
 })

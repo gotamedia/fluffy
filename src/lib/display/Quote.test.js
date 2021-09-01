@@ -2,7 +2,7 @@ import { Quote, QuoteText, QuoteByline } from './Quote'
 import { render } from '@testing-library/react'
 
 describe('<Quote />', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render(<Quote>quote</Quote>)
     })
 

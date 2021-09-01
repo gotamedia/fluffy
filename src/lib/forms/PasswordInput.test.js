@@ -3,7 +3,7 @@ import PasswordInput from './PasswordInput'
 import { render, screen, fireEvent } from '@testing-library/react'
 
 describe('<PasswordInput />', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render(<PasswordInput />)
     })
 

@@ -2,7 +2,7 @@ import Button, { ButtonGroup } from './Button'
 import { render, screen, fireEvent } from '@testing-library/react'
 
 describe('<Button />', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render(<Button>button</Button>)
     })
 
@@ -17,7 +17,7 @@ describe('<Button />', () => {
 })
 
 describe('<ButtonGroup', () => {
-    it('renders without crashing', () => {
+    it('should not crash', () => {
         render((
             <ButtonGroup />
         ))
