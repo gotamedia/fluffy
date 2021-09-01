@@ -10,8 +10,8 @@ describe('<PasswordInput />', () => {
     it('can update input value', () => {
         const value = 'Passw0rd!'
 
-        render(<PasswordInput />)
-        const input = screen.getByRole('password')
+        render(<PasswordInput placeholder="password" />)
+        const input = screen.getByPlaceholderText('password')
 
         expect(input).toHaveValue('')
 

@@ -1,5 +1,7 @@
+import React from 'react'
+
 import {
-    Input,
+    Input as I,
     InputGroup,
     InputLeftElement,
     InputRightElement
@@ -10,5 +12,12 @@ export {
     InputLeftElement,
     InputRightElement
 }
+
+const Input = ({label, ...rest}) => (
+    <label>
+        {label}
+        <I {...rest} />
+    </label>
+)
 
 export default Input

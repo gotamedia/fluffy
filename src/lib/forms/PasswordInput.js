@@ -15,7 +15,6 @@ const PasswordInput = ({
       <InputGroup size="md">
         <Input
             name="password"
-            role="password"
             pr="4.5rem"
             type={display ? "text" : "password"}
             placeholder={placeholder}
