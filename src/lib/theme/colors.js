@@ -3,6 +3,14 @@ const colors = {
         light: 'black',
         dark: 'white'
     },
+    text: {
+        light: 'black',
+        dark: 'white'
+    },
+    input: {
+        light: 'black',
+        dark: 'white'
+    },
     green: {
       50: '#e5fbe7',
       100: '#c3ebc7',

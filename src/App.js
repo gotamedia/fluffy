@@ -137,7 +137,7 @@ const App = () => {
             <Heading mt={12} mb={4}>Forms</Heading>
 
             <Heading as="h3" mt={10} mb={3}>Password input</Heading>
-            <PasswordInput placeholder="Ange ditt lÃ¶senord" />
+            <PasswordInput placeholder="Ange ditt lösenord" />
 
             <Heading as="h3" mt={10} mb={3}>Pin input</Heading>
             <Flex width={200} justifyContent="space-between">

@@ -7,7 +7,8 @@ const Text = props => <T {...props} />
 export default Text
 
 Text.defaultProps = {
-
+    mb: 3,
+    lineHeight: "wide"
 }
 
 Text.propTypes = {
