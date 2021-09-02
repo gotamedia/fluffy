@@ -1,5 +1,5 @@
 // import JSON from './JSON'
-// import Author, { AuthorMeta } from './Author'
+import Author from './Author'
 
 import {
     Quote,
@@ -8,6 +8,7 @@ import {
 } from './Quote'
 
 export {
+    Author,
     Quote,
     QuoteText,
     QuoteByline

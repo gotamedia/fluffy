@@ -9,7 +9,7 @@ import { Input, PasswordInput, Button, PinInput, Select, Switch } from './forms'
 import { useNotification } from './feedback'
 import { Flex, Box, Center, Card, CardTitle } from './layout'
 import { lighten, darken } from './utils'
-// import { Author, AuthorMeta } from './display'
+import { Author } from './display'
 import { Quote, QuoteText, QuoteByline } from './display'
 
 import {
@@ -70,6 +70,7 @@ export {
     lighten,
     darken,
     //display
+    Author,
     Quote, QuoteText, QuoteByline
 }
 

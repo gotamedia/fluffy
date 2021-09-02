@@ -100,7 +100,7 @@ const imageSizes = (widths, breakpoints) => {
         }, "")}, ${defaultValue}`
 }
 
-const useImage = (url, props) => {
+const useImengine = (url, props) => {
     const theme = useTheme()
 
     return {
@@ -110,4 +110,4 @@ const useImage = (url, props) => {
     }
 }
 
-export default useImage
+export default useImengine

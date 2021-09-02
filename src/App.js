@@ -14,7 +14,7 @@ import {
 } from './lib/overlay'
 import { useDisclosure } from './lib/hooks'
 import { RadioGroup, Radio } from '@chakra-ui/react'
-import { Quote, QuoteText, QuoteByline } from './lib/display'
+import { Author, Quote, QuoteText, QuoteByline } from './lib/display'
 
 const App = () => {
     const notification = useNotification()
@@ -35,6 +35,13 @@ const App = () => {
 
     return (
         <Flex p={8} flexDirection="column">
+            <Flex mb={10}>
+                <Author
+                    name="Jessica Boseman"
+                    imageUrl="https://thumbs2.imgbox.com/16/d4/v4jMtTSo_t.png"
+                />
+            </Flex>
+
             <Quote maxWidth="200px">
                 <QuoteText>Quote</QuoteText>
                 <QuoteByline>by a person</QuoteByline>
