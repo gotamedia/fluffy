@@ -1,11 +1,11 @@
 const components = {
     Button: {
         baseStyle: {
-            borderRadius: 'sm',
+            borderRadius: 'md',
             fontFamily: 'button'
         },
         defaultProps: {
-            colorScheme: 'green',
+            colorScheme: 'blue',
             size: 'lg'
         }
     },
@@ -37,7 +37,7 @@ const components = {
     },
     Card: {
         baseStyle: {
-            boxShadow: "2xl",
+            boxShadow: "md",
             borderRadius: "lg",
             flexDirection: "column",
             p: 8
