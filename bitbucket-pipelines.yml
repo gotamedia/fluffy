@@ -5,16 +5,15 @@ pipelines:
       - step:
           name: Build and Test
           script:
-            - yarn
-            - yarn build
+            - npm i
+            - npm run build
           artifacts:
             - dist/**
       - step:
           name: Publish
           deployment: production
           script:
-            - yarn global add standard-version
-            - yarn release
+            - npx standard-version
             - git push --follow-tags origin trunk
             - pipe: atlassian/npm-publish:0.2.0
               variables:
