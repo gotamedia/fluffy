@@ -7,7 +7,7 @@
       "!src/lib/*/**/index.js"
     ]
   },
-  "version": "0.7.24",
+  "version": "0.7.25",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
