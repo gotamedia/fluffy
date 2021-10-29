@@ -1,4 +1,4 @@
-image: node:lts-alpine
+image: atlassian/default-image:3
 pipelines:
   branches:
     trunk:
