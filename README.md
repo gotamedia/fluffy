@@ -119,10 +119,5 @@ This project works with [conventional commits](https://www.conventionalcommits.o
 ## Deploy
 Add deploy guide here
 
-### Storybook
-```
-npm run storybook
-```
-
 #### Troubleshoot/Command not found
 Fluffy uses Husky for running git hooks in development. Before a commit is made Fluffy will run all tests and only allow the commit if successful. If prompted with a `command not found` error in for example sourcetree follow the solution in the Husky documentation ***[https://typicode.github.io/husky/#/?id=command-not-found](https://typicode.github.io/husky/#/?id=command-not-found)***
