@@ -36,12 +36,7 @@ const Quote = ({
     children,
     ...rest
 }) => (
-    <Box
-        px={5}
-        borderLeft="4px solid rgb(0, 92, 169)"
-        borderRight="4px solid rgb(0, 92, 169)"
-        {...rest}
-    >
+    <Box {...rest}>
         {children}
     </Box>
 )
