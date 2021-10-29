@@ -7,6 +7,9 @@ import { Flex, Card, CardTitle } from './lib/layout'
 import { Image } from './lib/media'
 import {
     Drawer,
+    DrawerHeader,
+    DrawerBody,
+    DrawerFooter,
     Menu,
     MenuButton,
     MenuList,
@@ -87,7 +90,13 @@ const App = () => {
             </Flex>
 
             <Drawer title="test" isOpen={isOpen} onClose={onClose} size={size} position={position}>
-                drawer
+                <DrawerHeader>Drawer header text</DrawerHeader>
+
+                <DrawerBody>
+                    Content for a <strong>{position}</strong> positioned drawer size <strong>{size}</strong>
+                </DrawerBody>
+
+                <DrawerFooter>Drawer footer text</DrawerFooter>
             </Drawer>
 
             <Heading mt={6} mb={4}>Typography</Heading>
@@ -114,7 +123,7 @@ const App = () => {
 
             <Heading mt={10} mb={4}>Notifications</Heading>
 
-            <Text mb={6}>Displays a notification on screen for the user. Try it out yourself below ðŸŽ‰</Text>
+            <Text mb={6}>Displays a notification on screen for the user. Try it out yourself below</Text>
 
             <Heading as="h3" mt={5} mb={3}>Title</Heading>
             <Input value={notificationTitle} onChange={event => setNotificationTitle(event.target.value)} />
@@ -144,7 +153,9 @@ const App = () => {
             <Heading mt={12} mb={4}>Forms</Heading>
 
             <Heading as="h3" mt={10} mb={3}>Password input</Heading>
-            <PasswordInput placeholder="Ange ditt lösenord" />
+            <Flex maxWidth="500">
+                <PasswordInput placeholder="Ange ditt lösenord" />
+            </Flex>
 
             <Heading as="h3" mt={10} mb={3}>Pin input</Heading>
             <Flex width={200} justifyContent="space-between">
