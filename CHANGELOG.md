@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.25](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.24...v0.7.25) (2021-10-29)
+
+
+### Features
+
+* added Author component ([fe894de](http://bitbucket.org/gotamedia/fluffy/commit/fe894defeac4f13ac377e60fc70a301722cef706))
+
 ### [0.7.24](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.23...v0.7.24) (2021-08-31)
 
 
