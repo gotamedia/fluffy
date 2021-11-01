@@ -1,173 +1,51 @@
-import React, { useState } from 'react'
-import { useNotification } from './lib/feedback'
-import { useColorMode } from './lib/hooks'
+import React, { lazy, Suspense } from 'react'
+import examples from './examples.json'
 import { Heading, Text } from './lib/typography'
-import { Input, PasswordInput, PinInput, PinInputField, Button, Select, Option, Switch } from './lib/forms'
-import { Flex, Card, CardTitle } from './lib/layout'
-import { Image } from './lib/media'
-import {
-    Drawer,
-    DrawerHeader,
-    DrawerBody,
-    DrawerFooter,
-    Menu,
-    MenuButton,
-    MenuList,
-    MenuItem
-} from './lib/overlay'
-import { useDisclosure } from './lib/hooks'
-import { RadioGroup, Radio } from '@chakra-ui/react'
-import { Author, Quote, QuoteText, QuoteByline } from './lib/display'
+import { Flex } from './lib/layout'
+import { Tabs, TabList, TabPanels, TabPanel, Tab } from './lib/overlay'
+import { Link } from './lib/navigation'
+
+const importExampleComponent = filepath => lazy(() => import(`${filepath}`))
 
 const App = () => {
-    const notification = useNotification()
-    const { isOpen, onOpen, onClose } = useDisclosure()
-    const [size, setSize] = useState("xs")
-    const [position, setPosition] = useState("right")
-    const [notificationTitle, setNotificationTitle] = useState("")
-    const [notificationDescription, setNotificationDescription] = useState("")
-    const [notificationPosition, setNotificationPosition] = useState("top")
-    const { toggleColorMode } = useColorMode()
-
-    const handleClick = (newSize) => {
-        setSize(newSize)
-        onOpen()
-    }
-
-    const sizes = ["xs", "sm", "md", "lg", "xl", "full"]
+    const Loading = ({children}) => <div>loading {children}</div>
 
     return (
         <Flex p={8} flexDirection="column">
-            <Flex mb={10}>
-                <Author
-                    name="Jessica Boseman"
-                    imageUrl="https://thumbs2.imgbox.com/16/d4/v4jMtTSo_t.png"
-                />
-            </Flex>
+            <Tabs variant="soft-rounded" colorScheme="blue">
+                <TabList>
+                    {Object.keys(examples).map(categoryKey => <Tab>{categoryKey}</Tab>)}
+                </TabList>
 
-            <Quote maxWidth="200px">
-                <QuoteText>Quote</QuoteText>
-                <QuoteByline>by a person</QuoteByline>
-            </Quote>
+                <TabPanels>
+                    {Object.keys(examples).map(categoryKey => (
+                        <TabPanel key={categoryKey}>
+                            {Object.keys(examples[categoryKey]).map(exampleKey => {
+                                const Component = importExampleComponent(examples[categoryKey][exampleKey])
+                                const repositoryUrl = `https://bitbucket.org/gotamedia/fluffy/src/trunk/src/lib/${categoryKey}/${exampleKey}.js`
 
-            <Heading mt={6} mb={4}>Menus</Heading>
-            <Menu>
-                <MenuButton as={Button} w="120px">Tap me</MenuButton>
-                <MenuList>
-                    <MenuItem>menu item 1</MenuItem>
-                    <MenuItem>menu item 2</MenuItem>
-                    <MenuItem>menu item 3</MenuItem>
-                </MenuList>
-            </Menu>
+                                return (
+                                    <Flex key={exampleKey} flexDirection="column" mb="10">
+                                        <Heading as="h3">{exampleKey}</Heading>
+                                        <Link href={repositoryUrl} mb={5} target="_blank">
+                                            <Text fontSize="sm">component at Bitbucket</Text>
+                                        </Link>
 
-            <Heading mt={6} mb={4}>Cards</Heading>
-            <Card>
-                <CardTitle>
-                    Cardtitle
-                </CardTitle>
-            </Card>
+                                        <Suspense fallback={<Loading>{exampleKey}</Loading>}>
+                                            <Component />
+                                        </Suspense>
 
-            <Heading mt={6} mb={4}>Drawers</Heading>
-            <Flex flexFlow="wrap">
-                {sizes.map((size) => (
-                    <Button
-                    onClick={() => handleClick(size)}
-                    key={size}
-                    m={2}
-                    >{`Open ${size} Drawer`}</Button>
-                ))}
-            </Flex>
-
-            <Flex flexFlow="wrap">
-                <RadioGroup defaultValue={position} onChange={setPosition}>
-                    <Flex flexDirection="column">
-                        <Radio value="top">Top</Radio>
-                        <Radio value="right">Right</Radio>
-                        <Radio value="bottom">Bottom</Radio>
-                        <Radio value="left">Left</Radio>
-                    </Flex>
-                </RadioGroup>
-            </Flex>
-
-            <Drawer title="test" isOpen={isOpen} onClose={onClose} size={size} position={position}>
-                <DrawerHeader>Drawer header text</DrawerHeader>
-
-                <DrawerBody>
-                    Content for a <strong>{position}</strong> positioned drawer size <strong>{size}</strong>
-                </DrawerBody>
-
-                <DrawerFooter>Drawer footer text</DrawerFooter>
-            </Drawer>
-
-            <Heading mt={6} mb={4}>Typography</Heading>
-            <Heading as="h1">h1: Heading</Heading>
-            <Heading as="h2">h2: Heading</Heading>
-            <Heading as="h3">h3: Heading</Heading>
-            <Heading as="h4">h4: Heading</Heading>
-            <Heading as="h5">h5: Heading</Heading>
-            <Heading as="h6">h6: Heading</Heading>
-
-            <Heading mt={6} mb={4}>Images</Heading>
-            <Image
-                borderRadius="full"
-                boxSize="100"
-                src="https://media1.tenor.com/images/e32f7f2d63c9381e092daa4612cd6ab2/tenor.gif"
-            />
-
-            <Text mt={6}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-            <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-
-            <Heading mt={10} mb={4}>Color mode</Heading>
-            <Switch onChange={event => toggleColorMode(event.target.value ? 'light' : 'dark')} />
-
-            <Heading mt={10} mb={4}>Notifications</Heading>
-
-            <Text mb={6}>Displays a notification on screen for the user. Try it out yourself below</Text>
-
-            <Heading as="h3" mt={5} mb={3}>Title</Heading>
-            <Input value={notificationTitle} onChange={event => setNotificationTitle(event.target.value)} />
-
-            <Heading as="h3" mt={10} mb={3}>Description</Heading>
-            <Input value={notificationDescription} onChange={event => setNotificationDescription(event.target.value)} />
-
-            <Heading as="h3" mt={10} mb={3}>Screen position</Heading>
-            <Select mb={4} onChange={event => setNotificationPosition(event.target.value)} value={notificationPosition}>
-                <Option value="top">top</Option>
-                <Option value="top-right">top right</Option>
-                <Option value="top-left">top left</Option>
-                <Option value="bottom">bottom</Option>
-                <Option value="bottom-right">bottom right</Option>
-                <Option value="bottom-left">bottom left</Option>
-            </Select>
-
-            <Button onClick={() => notification({
-                title: notificationTitle,
-                description: notificationDescription,
-                position: notificationPosition,
-                duration: null
-            })}>
-                trigger notification
-            </Button>
-
-            <Heading mt={12} mb={4}>Forms</Heading>
-
-            <Heading as="h3" mt={10} mb={3}>Password input</Heading>
-            <Flex maxWidth="500">
-                <PasswordInput placeholder="Ange ditt lösenord" />
-            </Flex>
-
-            <Heading as="h3" mt={10} mb={3}>Pin input</Heading>
-            <Flex width={200} justifyContent="space-between">
-                <PinInput>
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
-                    <PinInputField />
-                </PinInput>
-            </Flex>
+                                    </Flex>
+                                )
+                            })}
+                        </TabPanel>
+                    ))}
+                </TabPanels>
+            </Tabs>
         </Flex>
     )
 }
 
 export default App
+
+

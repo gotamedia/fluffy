@@ -22,7 +22,8 @@ import {
     MenuOptionGroup,
     MenuIcon,
     MenuCommand,
-    MenuDivider
+    MenuDivider,
+    Tabs, TabList, TabPanels, Tab, TabPanel
 } from './overlay'
 
 export {
@@ -59,6 +60,7 @@ export {
     MenuIcon,
     MenuCommand,
     MenuDivider,
+    Tabs, TabList, TabPanels, Tab, TabPanel,
     // forms
     Input,
     PasswordInput,
