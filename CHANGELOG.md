@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.28](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.27...v0.7.28) (2021-11-01)
+
+
+### Features
+
+* auto generated example docs for developers ([61a2361](http://bitbucket.org/gotamedia/fluffy/commit/61a2361e60c5428d86fedaf73ca830aa002481ff))
+
+
+### Bug Fixes
+
+* merge remote-tracking branch 'origin/trunk' into trunk ([d7993af](http://bitbucket.org/gotamedia/fluffy/commit/d7993af6ae70244acbf60d8256ba7add7342a360))
+
 ### [0.7.27](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.26...v0.7.27) (2021-10-29)
 
 
