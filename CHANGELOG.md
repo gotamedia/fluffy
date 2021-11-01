@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.27](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.26...v0.7.27) (2021-10-29)
+
+
+### Features
+
+* **demo:** added Drawer components  ([5362e5e](http://bitbucket.org/gotamedia/fluffy/commit/5362e5e4b9eb5faf575cccacd367809be3301b7d))
+* use only-allow package to ensure only npm is used ([11c4ee4](http://bitbucket.org/gotamedia/fluffy/commit/11c4ee44fee1f2c709f12d9794145b569ee41e5b))
+
+
+### Bug Fixes
+
+* **style:** removed border styles for quote component ([8e7a65d](http://bitbucket.org/gotamedia/fluffy/commit/8e7a65dcd31f38d1e3f111c9c6c371b21d24f3aa))
+
 ### [0.7.26](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.25...v0.7.26) (2021-10-29)
 
 ### [0.7.25](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.24...v0.7.25) (2021-10-29)
