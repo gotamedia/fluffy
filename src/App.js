@@ -1,7 +1,9 @@
 import React, { lazy, Suspense, useState } from 'react'
+import pkgJson from '../package.json'
 import examples from './examples.json'
-import { Heading } from './lib/typography'
+import { Heading, Text } from './lib/typography'
 import { Button } from './lib/forms'
+import { Image } from './lib/media'
 import { Flex } from './lib/layout'
 import { Tabs, TabList, TabPanels, TabPanel, Tab } from './lib/overlay'
 import Highlight, { defaultProps } from 'prism-react-renderer'
@@ -54,6 +56,16 @@ const TabContent = ({ exampleKey, categoryKey }) => {
 const App = () => (
     <Flex p={8} flexDirection="column">
         <Tabs variant="soft-rounded" colorScheme="blue">
+            <Flex mb="6">
+                <Image
+                    borderRadius="full"
+                    boxSize="50"
+                    mr="4"
+                    src="/logo192.png"
+                />
+                <Text fontWeight="bold" my="auto" mr="5">Fluffy v.{pkgJson.version}</Text>
+            </Flex>
+
             <TabList>
                 {Object.keys(examples).map(categoryKey => <Tab>{categoryKey}</Tab>)}
             </TabList>
