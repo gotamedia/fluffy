@@ -3,7 +3,7 @@ import Card, { CardTitle } from './Card'
 const Example = () => {
     console.log("card example")
     return (
-        <Card>
+        <Card bg="white">
             <CardTitle>
                 Cardtitle
             </CardTitle>

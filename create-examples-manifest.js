@@ -1,5 +1,5 @@
 const glob = require('glob')
-const { writeFile } = require('fs')
+const { writeFile, readFileSync } = require('fs')
 
 let examples = {}
 
@@ -10,12 +10,16 @@ glob("**/*.example.js", (er, files) => {
         const categoryName = parts[1]
         const componentName = parts[2]
         const category = examples[categoryName] || {}
+        const jsxString = readFileSync(file, 'utf-8')
 
         examples = {
             ...examples,
             [categoryName]: {
                 ...category,
-                [componentName.replace('.example.js', '')]: `./${parts.join('/')}`
+                [componentName.replace('.example.js', '')]: {
+                    path: `./${parts.join('/')}`,
+                    jsxString
+                }
             }
         }
     })

@@ -1,51 +1,74 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import examples from './examples.json'
-import { Heading, Text } from './lib/typography'
+import { Heading } from './lib/typography'
+import { Button } from './lib/forms'
 import { Flex } from './lib/layout'
 import { Tabs, TabList, TabPanels, TabPanel, Tab } from './lib/overlay'
-import { Link } from './lib/navigation'
+import Highlight, { defaultProps } from 'prism-react-renderer'
 
 const importExampleComponent = filepath => lazy(() => import(`${filepath}`))
 
-const App = () => {
-    const Loading = ({children}) => <div>loading {children}</div>
-
+const Code = ({ code, language = "jsx" }) => {
     return (
-        <Flex p={8} flexDirection="column">
-            <Tabs variant="soft-rounded" colorScheme="blue">
-                <TabList>
-                    {Object.keys(examples).map(categoryKey => <Tab>{categoryKey}</Tab>)}
-                </TabList>
-
-                <TabPanels>
-                    {Object.keys(examples).map(categoryKey => (
-                        <TabPanel key={categoryKey}>
-                            {Object.keys(examples[categoryKey]).map(exampleKey => {
-                                const Component = importExampleComponent(examples[categoryKey][exampleKey])
-                                const repositoryUrl = `https://bitbucket.org/gotamedia/fluffy/src/trunk/src/lib/${categoryKey}/${exampleKey}.js`
-
-                                return (
-                                    <Flex key={exampleKey} flexDirection="column" mb="10">
-                                        <Heading as="h3">{exampleKey}</Heading>
-                                        <Link href={repositoryUrl} mb={5} target="_blank">
-                                            <Text fontSize="sm">component at Bitbucket</Text>
-                                        </Link>
-
-                                        <Suspense fallback={<Loading>{exampleKey}</Loading>}>
-                                            <Component />
-                                        </Suspense>
-
-                                    </Flex>
-                                )
-                            })}
-                        </TabPanel>
-                    ))}
-                </TabPanels>
-            </Tabs>
+        <Flex mt="4" width="100%" flex="1">
+            <Highlight {...defaultProps} code={code} language={language}>
+                {({ className, style, tokens, getLineProps, getTokenProps }) => (
+                    <pre className={className} style={{...style, padding: 10, width: "100%"}}>
+                        {tokens.map((line, i) => (
+                            <div {...getLineProps({ line, key: i })}>
+                                {line.map((token, key) => (
+                                    <span {...getTokenProps({ token, key })} />
+                                ))}
+                            </div>
+                        ))}
+                    </pre>
+                )}
+            </Highlight>
         </Flex>
     )
 }
 
+const TabContent = ({ exampleKey, categoryKey }) => {
+    const [displayCodeExample, setDisplayCodeExample] = useState(false)
+    const Loading = ({children}) => <div>loading {children}</div>
+    const Example = importExampleComponent(examples[categoryKey][exampleKey].path)
+
+    return (
+        <Flex key={exampleKey} flexDirection="column" mb="5" p="4" bg="gray.50">
+            <Heading as="h3" mb="4">{exampleKey}</Heading>
+
+            <Suspense fallback={<Loading>{exampleKey}</Loading>}>
+                <Example />
+
+                <Flex mt="5" flexDirection="column" width="100%">
+                    <Button size="sm" width="120px" onClick={() => setDisplayCodeExample(!displayCodeExample)}>view example</Button>
+
+                    {displayCodeExample && <Code code={examples[categoryKey][exampleKey].jsxString} />}
+                </Flex>
+            </Suspense>
+
+        </Flex>
+    )
+}
+
+const App = () => (
+    <Flex p={8} flexDirection="column">
+        <Tabs variant="soft-rounded" colorScheme="blue">
+            <TabList>
+                {Object.keys(examples).map(categoryKey => <Tab>{categoryKey}</Tab>)}
+            </TabList>
+
+            <TabPanels>
+                {Object.keys(examples).map(categoryKey => (
+                    <TabPanel key={categoryKey}>
+                        {Object.keys(examples[categoryKey]).map(exampleKey => (
+                            <TabContent exampleKey={exampleKey} categoryKey={categoryKey} />
+                        ))}
+                    </TabPanel>
+                ))}
+            </TabPanels>
+        </Tabs>
+    </Flex>
+)
+
 export default App
-
-
