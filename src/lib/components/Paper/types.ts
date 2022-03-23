@@ -9,15 +9,15 @@ import {
     Text
 } from './style'
 
-export type PapperProps = {
+export type PaperProps = {
     className?: string,
     image?: ImgHTMLAttributes<HTMLImageElement>,
     buttons?: ReactNode
 }
 
-export type PapperComponent = FC<PapperProps>
+export type PaperComponent = FC<PaperProps>
 
-export type ComponentType = PapperComponent & {
+export type ComponentType = PaperComponent & {
     Headline: typeof Headline,
     Text: typeof Text
 }

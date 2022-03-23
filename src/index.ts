@@ -1,6 +1,6 @@
 import Alert from '@components/Alert'
 import Icon from '@components/Icon'
-import Papper from '@components/Papper'
+import Paper from '@components/Paper'
 
 import { getTheme } from '@utils/theme'
 import ThemeContext from '@root/contexts/ThemeContext'
@@ -8,7 +8,7 @@ import ThemeContext from '@root/contexts/ThemeContext'
 export {
     Alert,
     Icon,
-    Papper,
+    Paper,
 
     ThemeContext,
 

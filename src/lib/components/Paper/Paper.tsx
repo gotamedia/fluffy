@@ -1,7 +1,7 @@
 import * as Styled from './style'
 import * as Types from './types'
 
-const Papper: Types.PapperComponent = (props) => {
+const Paper: Types.PaperComponent = (props) => {
     const {
         className,
         image,
@@ -42,4 +42,4 @@ const Papper: Types.PapperComponent = (props) => {
     )
 }
 
-export default Papper
+export default Paper

@@ -1,33 +1,33 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Papper from './index'
+import Paper from './index'
 import * as Types from './types'
 
 export default {
-    title: 'Components/Papper',
-    component: Papper,
+    title: 'Components/Paper',
+    component: Paper,
     argTypes: {
     },
-} as Meta<typeof Papper>
+} as Meta<typeof Paper>
 
-const Template: Story<Types.PapperProps & {
+const Template: Story<Types.PaperProps & {
     headline: string,
     text: string
 }> = ({headline, text, ...props}) => {
     return (
-        <Papper
+        <Paper
             image={props.image}
             buttons={props.buttons}
         >
-            <Papper.Headline>
+            <Paper.Headline>
                 {headline}
-            </Papper.Headline>
+            </Paper.Headline>
 
-            <Papper.Text>
+            <Paper.Text>
                 {text}
-            </Papper.Text>
-        </Papper>
+            </Paper.Text>
+        </Paper>
     )
 }
 

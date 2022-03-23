@@ -1,12 +1,12 @@
-import Papper from './index'
+import Paper from './index'
 import { render } from '@testing-library/react'
 
 import WithThemeProvider from '@utils/tests/WithThemeProvider'
 
-describe('<Papper />', () => {
+describe('<Paper />', () => {
     it('should not crash', () => {
         render(
-            WithThemeProvider(<Papper />)
+            WithThemeProvider(<Paper />)
         )
     })
 })
