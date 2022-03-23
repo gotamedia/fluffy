@@ -1,0 +1,23 @@
+<!-- Storybook override -->
+<script>
+    const handleOnResize = () => {
+        if (window.innerWidth <= 735) {
+            document.body.classList.remove('m')
+            document.body.classList.remove('l')
+
+            document.body.classList.add('s')
+        } else if (window.innerWidth <= 1259) {
+            document.body.classList.remove('s')
+            document.body.classList.remove('l')
+
+            document.body.classList.add('m')
+        } else {
+            document.body.classList.remove('s')
+            document.body.classList.remove('m')
+
+            document.body.classList.add('l')
+        }
+    }
+
+    window.addEventListener('resize', handleOnResize)
+</script>

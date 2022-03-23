@@ -6,6 +6,7 @@ pipelines:
           name: Build and Test
           script:
             - npm i
+            - npm test
             - npm run build
           artifacts:
             - dist/**

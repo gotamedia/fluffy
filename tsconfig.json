@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "esModuleInterop": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "jsx": "react-jsx",
+        "module": "esnext",
+        "declaration": true,
+        "declarationDir": "types",
+        "sourceMap": true,
+        "target": "es5",
+        "outDir": "dist",
+        "moduleResolution": "node",
+        "emitDeclarationOnly": false,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "paths": { 
+            "@root/*": ["lib/*"],
+            "@components/*": ["lib/components/*"],
+            "@hooks/*": ["lib/hooks/*"],
+            "@utils/*": ["lib/utils/*"]
+        },
+        "plugins": [
+            {
+                "transform": "@zerollup/ts-transform-paths"
+            }
+        ]
+    },
+    "exclude": [
+        "dist",
+        "node_modules",
+        "src/**/*.stories.tsx"
+    ]
+}

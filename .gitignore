@@ -19,10 +19,5 @@ storybook-static
 .env.production.local
 .npmrc
 
-yarn.lock
-
-examples.json
-
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+.vscode
