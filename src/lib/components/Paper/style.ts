@@ -21,10 +21,6 @@ const InnerWrapper = styled.div`
     ${({ theme }) => theme.helpers.isNotLargeDevice(css`
         padding: 16px;
         flex-direction: column;
-
-        ${ImageWrapper} {
-            display: none;
-        }
     `)};
 `
 
@@ -37,6 +33,10 @@ const ImageWrapper = styled.div`
         width: 95px;
         height: 112px;
     }
+
+    ${({ theme }) => theme.helpers.isNotLargeDevice(css`
+        display: none;
+    `)};
 `
 
 const Image = styled.img`
@@ -76,8 +76,6 @@ const Text = styled.p`
     color: ${({ theme }) => theme.colors.grey[0]};
 `
 
-/* align-items: center;
-justify-content: space-evenly; */
 const ButtonsWrapper = styled.div`
     display: flex;
     margin: auto 0 auto 40px;
