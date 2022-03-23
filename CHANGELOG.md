@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.32](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.31...v0.7.32) (2022-03-23)
+
+
+### Bug Fixes
+
+* typo in component name "Paper" ([32ae676](http://bitbucket.org/gotamedia/fluffy/commit/32ae676602e81be44f571d04a2821bf1ce8b245c))
+
 ### [0.7.31](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.29...v0.7.31) (2022-03-23)
 
 
