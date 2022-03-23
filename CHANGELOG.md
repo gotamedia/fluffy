@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.31](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.29...v0.7.31) (2022-03-23)
+
+
+### Bug Fixes
+
+* Added react-script to handle unit tests ([a91eedf](http://bitbucket.org/gotamedia/fluffy/commit/a91eedfb1ed26e1c3cd536207a7321c3cf66b4a6))
+
 ### [0.7.30](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.29...v0.7.30) (2021-11-02)
 
 ### [0.7.29](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.28...v0.7.29) (2021-11-02)
