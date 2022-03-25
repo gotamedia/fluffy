@@ -61,7 +61,7 @@ const Content = styled.div`
     box-sizing: border-box;
 
     ${({ theme }) => theme.helpers.isSmallDevice(`
-        padding: 8px 10px;
+        padding: 8px 16px;
     `)};
 `
 
@@ -81,8 +81,8 @@ const Icon = styled(IconComponent)`
         margin: 0 8px auto 0;
 
         svg {
-            width: 17px;
-            height: 17px;
+            width: 20px;
+            height: 20px;
         }
     `)};
 `
