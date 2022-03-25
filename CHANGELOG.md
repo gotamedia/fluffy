@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.34](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.33...v0.7.34) (2022-03-25)
+
+
+### Features
+
+* moved icons to the root dir ([e1eb852](http://bitbucket.org/gotamedia/fluffy/commit/e1eb8521ebd905d308adad118766e22d3ce9c574))
+
 ### [0.7.33](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.32...v0.7.33) (2022-03-24)
 
 ### [0.7.32](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.31...v0.7.32) (2022-03-23)
