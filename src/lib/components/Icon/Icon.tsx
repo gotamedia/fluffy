@@ -4,7 +4,7 @@ import {
     useState
 } from 'react'
 
-import * as Icons from '../icons'
+import * as Icons from '@root/icons'
 
 import * as Styled from './style'
 import * as Types from './types'
@@ -34,7 +34,7 @@ const Icon: FC<Types.IconProps> = (props) => {
                     setIconCompoennt(() => iconComonent)
                 }
             } catch(error) {
-                console.warn('Icon not found, could not find icon with name: ', name)
+                console.warn('Icon not found, could not find icon with name: ', icon)
             }
         }
     }, [icon])
