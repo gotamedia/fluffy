@@ -25,7 +25,6 @@ pipelines:
       Storybook:
         - step:
             name: Build
-            deployment: production
             script:
               - npm i
               - npm run build-storybook
