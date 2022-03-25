@@ -34,8 +34,6 @@ pipelines:
             name: Deploy
             deployment: production
             script:
-              - npm i
-              - npm run build-storybook
               - pipe: atlassian/aws-s3-deploy:0.3.8
                 variables:
                   AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
