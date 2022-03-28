@@ -5,38 +5,38 @@ image:
 pipelines:
   default:
     - step: &test
-      name: build and test
-      artifacts:
-        - dist/**
-        - storybook-static/**
-      script:
-        - npm i
-        - npm test
-        - npm run build
-        - npm run build-storybook
+        name: build and test
+        artifacts:
+          - dist/**
+          - storybook-static/**
+        script:
+          - npm i
+          - npm test
+          - npm run build
+          - npm run build-storybook
 
   tags:
     "*":
       - step: *test
       - step: &publish
-        name: publish
-        script:
-          - npm i -g standard-version
-          - npm run release
-          - pipe: atlassian/npm-publish:0.2.0
-            variables:
-              NPM_TOKEN: $NPM_TOKEN
+          name: publish
+          script:
+            - npm i -g standard-version
+            - npm run release
+            - pipe: atlassian/npm-publish:0.2.0
+              variables:
+                NPM_TOKEN: $NPM_TOKEN
       - step: &deploy
-        name: deploy
-        deployment: production
-        script:
-          - >
-            aws cloudformation deploy
-                --template-file "aws/template.yml"
-                --stack-name "${BITBUCKET_REPO_SLUG,,}"
-                --capabilities CAPABILITY_IAM
-                --parameter-overrides
-                  CertificateARN "${CERTIFICATE_ARN}"
-                  DomainName "${DOMAIN_NAME}"
+          name: deploy
+          deployment: production
+          script:
+            - >
+              aws cloudformation deploy
+                  --template-file "aws/template.yml"
+                  --stack-name "${BITBUCKET_REPO_SLUG,,}"
+                  --capabilities CAPABILITY_IAM
+                  --parameter-overrides
+                    CertificateARN "${CERTIFICATE_ARN}"
+                    DomainName "${DOMAIN_NAME}"
 #- aws s3 sync
 #- aws cloudfront create invalidation
