@@ -27,7 +27,7 @@ pipelines:
           caches:
             - node
           script:
-            - npm i -g standard-version
+            - npm i standard-version
             - echo "BEFORE"
             - cat package.json
             - npm run release
