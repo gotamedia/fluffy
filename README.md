@@ -48,7 +48,8 @@ render((
 ), document.getElementById('root'))
 ```
 
-## Develop in fluffy
+## Develop in Fluffy
+
 Fluffy uses Storybook to present it's components, each component should have a *.stories.tsx in it's root dir in order to show it in Storybook
 ```TSX
 import React from 'react'
@@ -88,6 +89,35 @@ npm run storybook
 
 It will open a new tab in your browser with all the component stories on the left sidebar
 
+## Develop with Fluffy
+
+In order to develop with Fluffy with your project locally, make sure to have `yalc` installed globally on your machine by running:
+```
+npm install -g yalc
+```
+### Publish locally
+To use Fluffy in your project locally make sure to build Fluffy by running:
+```
+npm run build
+```
+Then run the following command while standing on fluffy dir:
+```
+yalc publish
+```
+This will make sure to publish Fluffy into a local registery on your machine so you can install it as a package in your projects
+
+### Install locally
+In your project run the following command:
+```
+yalc add @gotamedia/fluffy
+```
+After you are done with running Fluffy locally in your project, make sure to clean up and remove the link from your project's dependencies
+```
+yalc remove @gotamedia/fluffy
+```
+This will make sure to remove the link from your project's dependencies and revert to the old value if there was any
+
+[Read more about yalc](https://www.npmjs.com/package/yalc)
 ## License
 
 MIT
