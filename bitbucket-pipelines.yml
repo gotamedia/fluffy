@@ -9,23 +9,33 @@ pipelines:
         artifacts:
           - dist/**
           - storybook-static/**
+        caches:
+          - node
         script:
           - npm i
           - npm test
           - npm run build
           - npm run build-storybook
 
-  tags:
-    "*":
+  # tags:
+  #   "*":
+  branches:
+    feature/*:
       - step: *test
       - step: &publish
           name: publish
+          caches:
+            - node
           script:
             - npm i -g standard-version
+            - echo "BEFORE"
+            - cat package.json
             - npm run release
+            - echo "AFTER"
+            - cat package.json
             - pipe: atlassian/npm-publish:0.2.0
               variables:
-                NPM_TOKEN: $NPM_TOKEN
+                NPM_TOKEN: ${NPM_TOKEN}
       - step: &deploy
           name: deploy
           deployment: production
