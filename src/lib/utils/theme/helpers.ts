@@ -3,6 +3,11 @@ import {
     ThemeHelpers
 } from './types'
 
+// TODO: fix all returned values for all helper methods to be wrapped with css```
+// from styled-components in order to be able to access theme/style other components
+// inside style prop
+// Currently having issue retruning css`` with Storybook app
+
 const isSmallDevice: StyledUtil = (style) => `
     body.s & {
         ${style};
