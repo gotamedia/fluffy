@@ -1,44 +1,41 @@
-image: atlassian/default-image:3
+image:
+  name: gotamedia/aws-cli:latest
+  run-as-user: 1000
 
 pipelines:
-  branches:
-    trunk:
-      - step:
-          name: Build and Test
-          script:
-            - npm i
-            - npm test
-            - npm run build
-          artifacts:
-            - dist/**
-      - step:
-          name: Publish
-          deployment: production
-          script:
-            - npm i -g standard-version
-            - npm run release
-            - git push --follow-tags origin trunk
-            - pipe: atlassian/npm-publish:0.2.0
-              variables:
-                NPM_TOKEN: $NPM_TOKEN
-  custom:
-      Storybook:
-        - step:
-            name: Build
-            script:
-              - npm i
-              - npm run build-storybook
-            artifacts:
-              - storybook-static/**
-        - step:
-            name: Deploy
-            deployment: production
-            script:
-              - pipe: atlassian/aws-s3-deploy:0.3.8
-                variables:
-                  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
-                  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
-                  AWS_DEFAULT_REGION: $AWS_REGION
-                  S3_BUCKET: $AWS_BUCKET_NAME
-                  LOCAL_PATH: 'storybook-static'
-                  ACL: 'public-read'
+  default:
+    - step: &test
+      name: build and test
+      artifacts:
+        - dist/**
+        - storybook-static/**
+      script:
+        - npm i
+        - npm test
+        - npm run build
+        - npm run build-storybook
+
+  tags:
+    "*":
+      - step: *test
+      - step: &publish
+        name: publish
+        script:
+          - npm i -g standard-version
+          - npm run release
+          - pipe: atlassian/npm-publish:0.2.0
+            variables:
+              NPM_TOKEN: $NPM_TOKEN
+      - step: &deploy
+        name: deploy
+        deployment: production
+        script:
+          - >- aws cloudformation deploy \
+                   --template-file "aws/template.yml" \
+                   --stack-name "" \
+                   --capabilities CAPABILITY_IAM \
+                   --parameter-overrides \
+                     CertificateARN "${CERTIFICATE_ARN}" \
+                     DomainName "${DOMAIN_NAME}"
+          #- aws s3 sync
+          #- aws cloudfront create invalidation
