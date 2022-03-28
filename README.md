@@ -2,7 +2,7 @@
 
 > It's so fluffy!
 
-Fluffy is a opinionated but highly customizable UI library used by Gota Media AB. It's built with Chakra UI as a base library in combination with other third party and in house built packages.
+Fluffy is a opinionated but highly customizable UI library used by Gota Media AB.
 
 ## Install
 
@@ -13,93 +13,80 @@ npm i @gotamedia/fluffy
 ## Peer dependencies
 Fluffy requires that you install following depdencies in your own project
 ```
-npm i @emotion/react @emotion/styled react styled-system
+npm i react styled-components
 ```
 
 ## Usage
-```JSX
-import { Flex, Heading, Text } from '@gotamedia/fluffy'
+```TSX
+import { Icon, Icons } from '@gotamedia/fluffy'
 
 const MyComponent = () => (
-    <Flex>
-        <Heading>it's so Fluffy! 🦄</Heading>
-    </Flex>
+    <div>
+        <Icon icon={Icons.Info}/>
+    </div>
 )
 ```
 
-**Import Fluffy's ThemeProvider to enable style for all Fluffy components.**
-```JSX
+**Import Fluffy's Theme to enable style for all Fluffy components.**
+```TSX
 import { render } from 'react-dom'
-import { ThemeProvider } from '@gotamedia/fluffy'
+import { ThemeProvider } from 'styled-components'
+import { Paper, getTheme } from '@gotamedia/fluffy'
 
 const App = () => (
-    <Flex>
-        <Heading>It's so themeable! 👩‍🎤</Heading>
-    </Flex>
+    <div>
+        <Paper>
+            {`It's so themeable! 👩‍🎤`}
+        </Paper>
+    </div>
 )
 
 render((
-    <ThemeProvider>
+    <ThemeProvider theme={getTheme()}>
         <App />
     </ThemeProvider>
 ), document.getElementById('root'))
 ```
 
-**Fluffy is style opinionated and comes with a default theme. You can extend this theme and pass your own to the ThemeProvider.**
-```JSX
-import { render } from 'react-dom'
-import { ThemeProvider, extendTheme, Flex, Heading } from '@gotamedia/fluffy'
+## Develop in fluffy
+Fluffy uses Storybook to present it's components, each component should have a *.stories.tsx in it's root dir in order to show it in Storybook
+```TSX
+import React from 'react'
+import { Story, Meta } from '@storybook/react'
 
-const App = () => (
-    <Flex>
-        <Heading>It's so themeable! 👩‍🎤</Heading>
-    </Flex>
-)
+import MyComponent from './index'
+import * as Types from './types'
 
-const theme = extendTheme({
-    newProp: 'adding a new prop to the default theme'
-})
+export default {
+    title: 'Components/MyComponent',
+    component: MyComponent,
+    argTypes: {
+    },
+} as Meta<typeof MyComponent>
 
-render((
-    <ThemeProvider theme={theme}>
-        <App />
-    </ThemeProvider>
-), document.getElementById('root'))
+const Template: Story<Types.MyComponentProps & {
+    text: string
+}> = (props) => {
+
+    return (
+        <MyComponent>
+            {props.text}
+        </MyComponent>
+    )
+}
+
+export const Basic = Template.bind({})
+Basic.args = {
+    text: 'My fluffy component'
+}
 ```
 
-`Warning: Some components will fail to load style and read from the theme if rendered on the same level because it tries to access the theme to early.`
-
-## Don't do this ❌
-```JSX
-import { render } from 'react-dom'
-import { ThemeProvider, Flex, Heading } from '@gotamedia/fluffy'
-
-render((
-    <ThemeProvider>
-        <Flex>
-            <Heading>Theme is not available for all components</Heading>
-        </Flex>
-    </ThemeProvider>
-), document.getElementById('root'))
+To see your component run:
+```bash
+npm run storybook
 ```
 
-## Do this ✅
-```JSX
-import { render } from 'react-dom'
-import { ThemeProvider } from '@gotamedia/fluffy'
-
-const App = () => (
-    <Flex>
-        <Heading>Theme is available for all components</Heading>
-    </Flex>
-)
-
-render((
-    <ThemeProvider>
-        <App />
-    </ThemeProvider>
-), document.getElementById('root'))
-```
+It will open a new tab in your browser with all the component stories on the left sidebar
 
 ## License
 
