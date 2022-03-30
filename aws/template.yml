@@ -50,6 +50,7 @@ Resources:
         HttpVersion: http2
         PriceClass: PriceClass_100
         Comment: !Join ['', ['Distribution created by stack ', !Ref 'AWS::StackName', ' in ', !Ref 'AWS::Region']]
+        DefaultRootObject: index.html
         Origins:
           - DomainName: !GetAtt 'S3Bucket.RegionalDomainName'
             Id: !Ref 'AWS::StackName'
@@ -67,52 +68,12 @@ Resources:
           MaxTTL: 31536000
           TargetOriginId: !Ref 'AWS::StackName'
           ViewerProtocolPolicy: 'redirect-to-https'
-          LambdaFunctionAssociations:
-          - EventType: origin-request # viewer-request
-            LambdaFunctionARN: !Ref RedirectLambdaVersion
         Aliases:
           - !Ref DomainName
         ViewerCertificate:
           AcmCertificateArn: !Ref CertificateARN
           MinimumProtocolVersion: TLSv1.2_2021
           SslSupportMethod: sni-only
-
-  RedirectLambda:
-    Type: AWS::Lambda::Function
-    Properties:
-      Role: !GetAtt RedirectLambdaRole.Arn
-      Runtime: nodejs14.x
-      Handler: index.handler
-      Code:
-        ZipFile: |
-          exports.handler = (event, context, callback) => {
-              const response = {
-                  status: '200',
-                  statusDescription: 'OK',
-                  body: "Lambda@Edge is awesome!",
-              };
-              callback(null, response);
-          };
-  RedirectLambdaVersion:
-    Type: AWS::Lambda::Version
-    Properties:
-      FunctionName: !Ref RedirectLambda
-
-  RedirectLambdaRole:
-    Type: AWS::IAM::Role
-    Properties:
-      Path: '/'
-      AssumeRolePolicyDocument:
-        Version: '2012-10-17'
-        Statement:
-        - Effect: Allow
-          Principal:
-            Service:
-            - lambda.amazonaws.com
-            - edgelambda.amazonaws.com
-          Action: sts:AssumeRole
-      ManagedPolicyArns:
-      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
 Outputs:
   S3BucketName:
