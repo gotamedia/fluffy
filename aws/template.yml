@@ -81,7 +81,7 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Role: !GetAtt RedirectLambdaRole.Arn
-      Runtime: nodejs6.10
+      Runtime: nodejs14.x
       Handler: index.handler
       Code:
         ZipFile: |
