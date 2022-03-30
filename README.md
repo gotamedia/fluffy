@@ -95,7 +95,9 @@ In order to develop with Fluffy with your project locally, make sure to have `ya
 ```
 npm install -g yalc
 ```
+
 ### Publish locally
+
 To use Fluffy in your project locally make sure to build Fluffy by running:
 ```
 npm run build
@@ -107,6 +109,7 @@ yalc publish
 This will make sure to publish Fluffy into a local registery on your machine so you can install it as a package in your projects
 
 ### Install locally
+
 In your project run the following command:
 ```
 yalc add @gotamedia/fluffy
@@ -118,6 +121,7 @@ yalc remove @gotamedia/fluffy
 This will make sure to remove the link from your project's dependencies and revert to the old value if there was any
 
 [Read more about yalc](https://www.npmjs.com/package/yalc)
+
 ## License
 
 MIT

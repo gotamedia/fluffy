@@ -1,9 +1,12 @@
 image: atlassian/default-image:3
+
 pipelines:
   branches:
     trunk:
       - step:
           name: Build and Test
+          caches:
+            - node
           script:
             - npm i
             - npm test
@@ -19,4 +22,58 @@ pipelines:
             - git push --follow-tags origin trunk
             - pipe: atlassian/npm-publish:0.2.0
               variables:
-                NPM_TOKEN: $NPM_TOKEN
+                NPM_TOKEN: ${NPM_TOKEN}
+  custom:
+      Storybook:
+        - step:
+            name: Build
+            caches:
+              - node
+            script:
+              - npm i
+              - npm run build-storybook
+            artifacts:
+              - storybook-static/**
+        - step:
+            name: Deploy
+            deployment: production
+            image:
+              name: gotamedia/aws-cli:latest
+              run-as-user: 1000
+            script:
+              - export AWS_ACCESS_KEY_ID=${PROD_AWS_ACCESS_KEY_ID}
+              - export AWS_SECRET_ACCESS_KEY=${PROD_AWS_SECRET_ACCESS_KEY}
+              - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+              - >
+                aws cloudformation deploy \
+                    --template-file "aws/template.yml" \
+                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                    --capabilities CAPABILITY_IAM \
+                    --no-fail-on-empty-changeset \
+                    --parameter-overrides \
+                      CertificateARN="${CERTIFICATE_ARN}" \
+                      DomainName="${DOMAIN_NAME}" \
+                    --tags \
+                      AppId=${APP_ID} \
+                      AppName=${BITBUCKET_REPO_SLUG} \
+                      CostBearer=${COST_BEARER} \
+                      CostCenter=${COST_CENTER} \
+                      Environment=prod \
+                      Owner=${OWNER} \
+                      Role=${ROLE} \
+                      SLA=${SLA}
+              - >
+                S3_BUCKET=$(aws cloudformation describe-stacks \
+                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                    --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" \
+                    --output text)
+              - aws s3 sync ./storybook-static s3://${S3_BUCKET} --delete --no-progress
+              - >
+                DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
+                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                    --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" \
+                    --output text)
+              - >
+                aws cloudfront create-invalidation \
+                    --distribution-id ${DISTRIBUTION_ID} \
+                    --paths "/*"
