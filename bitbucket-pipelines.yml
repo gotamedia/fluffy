@@ -52,7 +52,16 @@ pipelines:
                     --no-fail-on-empty-changeset \
                     --parameter-overrides \
                       CertificateARN="${CERTIFICATE_ARN}" \
-                      DomainName="${DOMAIN_NAME}"
+                      DomainName="${DOMAIN_NAME}" \
+                    --tags \
+                      AppId=${APP_ID} \
+                      AppName=${BITBUCKET_REPO_SLUG} \
+                      CostBearer=${COST_BEARER} \
+                      CostCenter=${COST_CENTER} \
+                      Environment=prod \
+                      Owner=${OWNER} \
+                      Role=${ROLE} \
+                      SLA=${SLA}
               - >
                 S3_BUCKET=$(aws cloudformation describe-stacks \
                     --stack-name "${BITBUCKET_REPO_SLUG,,}" \
