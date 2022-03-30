@@ -85,20 +85,19 @@ Resources:
       Handler: index.handler
       Code:
         ZipFile: |
-          function handler(event) {
-              var request = event.request;
-              var uri = request.uri;
+          exports.handler = (event, context, callback) => {
+            const { request } = event.Records[0].cf;
+            const uri = request.uri;
 
-              if (uri.endsWith('/')) {
-                  request.uri += 'index.html';
-              }
-              else if (!uri.includes('.')) {
-                  request.uri += '/index.html';
-              }
+            if (uri.endsWith('/')) {
+                request.uri += 'index.html';
+            }
+            else if (!uri.includes('.')) {
+                request.uri += '/index.html';
+            }
 
-              return request;
-          }
-
+            callback(null, request);
+          };
   RedirectLambdaVersion:
     Type: AWS::Lambda::Version
     Properties:
