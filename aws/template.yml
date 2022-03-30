@@ -79,3 +79,7 @@ Outputs:
     Value: !Ref S3Bucket
     Export:
       Name: !Sub '${AWS::StackName}-S3BucketName'
+  DistributionId:
+    Value: !Ref CloudFrontDistribution
+    Export:
+      Name: !Sub '${AWS::StackName}-DistributionId'
