@@ -68,7 +68,7 @@ Resources:
           TargetOriginId: !Ref 'AWS::StackName'
           ViewerProtocolPolicy: 'redirect-to-https'
           LambdaFunctionAssociations:
-          - EventType: viewer-request
+          - EventType: origin-request # viewer-request
             LambdaFunctionARN: !Ref RedirectLambdaVersion
         Aliases:
           - !Ref DomainName
@@ -86,17 +86,12 @@ Resources:
       Code:
         ZipFile: |
           exports.handler = (event, context, callback) => {
-            const { request } = event.Records[0].cf;
-            const uri = request.uri;
-
-            if (uri.endsWith('/')) {
-                request.uri += 'index.html';
-            }
-            else if (!uri.includes('.')) {
-                request.uri += '/index.html';
-            }
-
-            callback(null, request);
+              const response = {
+                  status: '200',
+                  statusDescription: 'OK',
+                  body: "Lambda@Edge is awesome!",
+              };
+              callback(null, response);
           };
   RedirectLambdaVersion:
     Type: AWS::Lambda::Version
@@ -106,6 +101,7 @@ Resources:
   RedirectLambdaRole:
     Type: AWS::IAM::Role
     Properties:
+      Path: '/'
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
