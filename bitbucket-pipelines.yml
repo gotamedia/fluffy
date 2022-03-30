@@ -47,7 +47,7 @@ pipelines:
                     --stack-name "${BITBUCKET_REPO_SLUG,,}" \
                     --capabilities CAPABILITY_IAM \
                     --parameter-overrides \
-                      CertificateARN "${CERTIFICATE_ARN}" \
-                      DomainName "${DOMAIN_NAME}"
+                      CertificateARN="${CERTIFICATE_ARN}" \
+                      DomainName="${DOMAIN_NAME}"
 #- aws s3 sync
 #- aws cloudfront create invalidation
