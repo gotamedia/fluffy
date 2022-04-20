@@ -17,7 +17,7 @@ npm i react styled-components
 ```
 
 ## Usage
-```TSX
+```tsx
 import { Icon, Icons } from '@gotamedia/fluffy'
 
 const MyComponent = () => (
@@ -28,7 +28,7 @@ const MyComponent = () => (
 ```
 
 **Import Fluffy's Theme to enable style for all Fluffy components.**
-```TSX
+```tsx
 import { render } from 'react-dom'
 import { ThemeProvider } from 'styled-components'
 import { Paper, getTheme } from '@gotamedia/fluffy'
@@ -51,7 +51,7 @@ render((
 ## Develop in Fluffy
 
 Fluffy uses Storybook to present it's components, each component should have a *.stories.tsx in it's root dir in order to show it in Storybook
-```TSX
+```tsx
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
