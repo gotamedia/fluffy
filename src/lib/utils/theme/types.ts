@@ -1,4 +1,4 @@
-import { CSSProperties } from "styled-components"
+import { CSSProperties, FlattenSimpleInterpolation } from "styled-components"
 
 export type Theme = {
     space?: [number, number, number, number, number, number, number, number, number, number, number, number, number],
@@ -115,7 +115,7 @@ export type Theme = {
     helpers: ThemeHelpers
 }
 
-export type StyledUtil = (style: string) => string
+export type StyledUtil = (style: string | FlattenSimpleInterpolation) => FlattenSimpleInterpolation
 
 export type ThemeHelpers = {
     isSmallDevice: StyledUtil,

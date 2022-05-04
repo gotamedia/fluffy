@@ -1,56 +1,53 @@
+import { css } from 'styled-components'
+
 import {
     StyledUtil,
     ThemeHelpers
 } from './types'
 
-// TODO: fix all returned values for all helper methods to be wrapped with css```
-// from styled-components in order to be able to access theme/style other components
-// inside style prop
-// Currently having issue retruning css`` with Storybook app
-
-const isSmallDevice: StyledUtil = (style) => `
+const isSmallDevice: StyledUtil = (style) => css`
     body.s & {
         ${style};
     }
 `
 
-const isMediumDevice: StyledUtil = (style) => `
+const isMediumDevice: StyledUtil = (style) => css`
     body.m & {
         ${style};
     }
 `
 
-const isLargeDevice: StyledUtil = (style) => `
+const isLargeDevice: StyledUtil = (style) => css`
     body.l & {
         ${style};
     }
 `
 
-const isNotSmallDevice: StyledUtil = (style) => `
+const isNotSmallDevice: StyledUtil = (style) => css`
     body:not(.s) & {
         ${style};
     }
 `
 
-const isNotMediumDevice: StyledUtil = (style) => `
+const isNotMediumDevice: StyledUtil = (style) => css`
     body:not(.m) & {
         ${style};
     }
 `
 
-const isNotLargeDevice: StyledUtil = (style) => `
+const isNotLargeDevice: StyledUtil = (style) => css`
     body:not(.l) & {
         ${style};
     }
 `
 
-const isRtlNested: StyledUtil = (style) => `
+const isRtlNested: StyledUtil = (style) => css`
     .rtl & {
         ${style};
     }
 `
 
-const rtlNested: StyledUtil = () => isRtlNested(`
+const rtlNested: StyledUtil = () => isRtlNested(css`
     direction: rtl;
 `)
 
