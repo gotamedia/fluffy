@@ -1,5 +1,4 @@
 import {
-    FC,
     useEffect,
     useState
 } from 'react'
@@ -8,6 +7,7 @@ import * as Icons from '@root/icons'
 
 import * as Styled from './style'
 import * as Types from './types'
+import type { FC } from 'react'
 
 const Icon: FC<Types.IconProps> = (props) => {
     const {
@@ -55,7 +55,7 @@ const Icon: FC<Types.IconProps> = (props) => {
     return (
         <Styled.Span
             style={style}
-            className={className}
+            className={`fluffy-icon ${className ? className : ''}`}
             aria-label={ariaLabel}
             onClick={onClick}
         >
