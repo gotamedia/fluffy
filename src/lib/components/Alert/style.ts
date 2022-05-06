@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
 
-import IconComponent from '@components/Icon'
+import IconComponent, { Icons } from '@components/Icon'
 
-import { Icons } from '@components/Icon'
+import themeHelpers from '@utils/theme/helpers'
+
 import { AlertProps } from './types'
 
 const variant = css<{$variant: AlertProps['variant']}>`
@@ -60,7 +61,7 @@ const Content = styled.div`
     margin: 0px auto;
     box-sizing: border-box;
 
-    ${({ theme }) => theme.helpers.isSmallDevice(css`
+    ${() => themeHelpers.isSmallDevice(css`
         padding: 8px 16px;
     `)};
 `
@@ -75,7 +76,7 @@ const Icon = styled(IconComponent)`
         height: 24px;
     }
 
-    ${({ theme }) => theme.helpers.isSmallDevice(css`
+    ${() => themeHelpers.isSmallDevice(css`
         width: 17px;
         height: 17px;
         margin: 0 8px auto 0;
@@ -139,7 +140,7 @@ const CloseIcon = styled(IconComponent).attrs(() => {
         height: 24px;
     }
 
-    ${({ theme }) => theme.helpers.isSmallDevice(css`
+    ${() => themeHelpers.isSmallDevice(css`
         width: 20px;
         height: 20px;
         margin: 0 8px auto 0;

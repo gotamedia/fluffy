@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import themeHelpers from '@utils/theme/helpers'
+
 const Wrapper = styled.div`
     width: 100%;
     max-width: 1490px;
@@ -18,7 +20,7 @@ const InnerWrapper = styled.div`
     padding: 20px 100px;
     flex-direction: row;
 
-    ${({ theme }) => theme.helpers.isNotLargeDevice(css`
+    ${() => themeHelpers.isNotLargeDevice(css`
         padding: 16px;
         flex-direction: column;
     `)};
@@ -34,7 +36,7 @@ const ImageWrapper = styled.div`
         height: 112px;
     }
 
-    ${({ theme }) => theme.helpers.isNotLargeDevice(css`
+    ${() => themeHelpers.isNotLargeDevice(css`
         display: none;
     `)};
 `
@@ -88,7 +90,7 @@ const ButtonsWrapper = styled.div`
         }
     }
 
-    ${({ theme }) => theme.helpers.isNotLargeDevice(css`
+    ${() => themeHelpers.isNotLargeDevice(css`
         width: 100%;
         margin-left: 0;
         margin-top: 10px;

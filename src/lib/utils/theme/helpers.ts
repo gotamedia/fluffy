@@ -1,53 +1,53 @@
 import { css } from 'styled-components'
 
 import {
-    StyledUtil,
+    HelperFunction,
     ThemeHelpers
 } from './types'
 
-const isSmallDevice: StyledUtil = (style) => css`
+const isSmallDevice: HelperFunction = (style) => css`
     body.s & {
         ${style};
     }
 `
 
-const isMediumDevice: StyledUtil = (style) => css`
+const isMediumDevice: HelperFunction = (style) => css`
     body.m & {
         ${style};
     }
 `
 
-const isLargeDevice: StyledUtil = (style) => css`
+const isLargeDevice: HelperFunction = (style) => css`
     body.l & {
         ${style};
     }
 `
 
-const isNotSmallDevice: StyledUtil = (style) => css`
+const isNotSmallDevice: HelperFunction = (style) => css`
     body:not(.s) & {
         ${style};
     }
 `
 
-const isNotMediumDevice: StyledUtil = (style) => css`
+const isNotMediumDevice: HelperFunction = (style) => css`
     body:not(.m) & {
         ${style};
     }
 `
 
-const isNotLargeDevice: StyledUtil = (style) => css`
+const isNotLargeDevice: HelperFunction = (style) => css`
     body:not(.l) & {
         ${style};
     }
 `
 
-const isRtlNested: StyledUtil = (style) => css`
+const isRtlNested: HelperFunction = (style) => css`
     .rtl & {
         ${style};
     }
 `
 
-const rtlNested: StyledUtil = () => isRtlNested(css`
+const rtlNested: HelperFunction = () => isRtlNested(css`
     direction: rtl;
 `)
 

@@ -3,7 +3,11 @@ import Icon from '@components/Icon'
 import Paper from '@components/Paper'
 import Button from '@components/Button'
 
-import { getTheme } from '@utils/theme'
+import {
+    theme,
+    getTheme,
+} from '@utils/theme'
+import themeHelpers from '@utils/theme/helpers'
 import ThemeContext from '@root/contexts/ThemeContext'
 
 export * from '@components/Alert'
@@ -19,5 +23,7 @@ export {
 
     ThemeContext,
 
-    getTheme
+    theme,
+    getTheme,
+    themeHelpers
 }

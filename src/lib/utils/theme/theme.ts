@@ -1,8 +1,10 @@
-import { Theme } from "./types"
 import themeHelpers from './helpers'
 
-//TODO: Fix fonts!
-export const getTheme = (): Theme => ({
+import type { DefaultTheme } from 'styled-components'
+
+//TODO: Fix a better theme since this one were copied from NXT!
+
+const theme: DefaultTheme = {
     //      0  1  2  3   4   5   6   7   8   9  10  11  12
     space: [0, 2, 4, 8, 12, 16, 20, 22, 24, 32, 40, 48, 64],
     //           0   1   2   3   4   5   6   7   8   9  10  11  12, 13,  14
@@ -47,12 +49,6 @@ export const getTheme = (): Theme => ({
                 background: "#EBF2F8",
                 border: "#D1E2F0"
             }
-        },
-        citygate: {
-            lokus: { blue: "#007B88" },
-            family: { red: "#ff5046" },
-            guided: { green: "#5ac183" },
-            memorial: { purple: "#87486f" }
         }
     },
     fonts: {
@@ -70,35 +66,7 @@ export const getTheme = (): Theme => ({
             // "Helvetica, Arial, sans-serif", // 10
             // "HelveticaNeue", // 11
             // "HelveticaNeue-Bold" // 12
-        ],
-        editorial: {
-            headline: {
-                // default: { "font-family": newspaperTheme.fonts.generic[6], "font-weight": "bold" },
-                // opinion: { "font-family": newspaperTheme.fonts.generic[8], "font-weight": "initial" }
-            },
-            author: {
-                default: { },
-                // opinion: { "font-family": newspaperTheme.fonts.generic[8] }
-            },
-            vignette: {
-                // default: { "font-family": newspaperTheme.fonts.generic[4] },
-                // opinion: { "font-family": newspaperTheme.fonts.generic[4] }
-            },
-            leadin: {
-                default: { },
-                opinion: { }
-            },
-            dateline: {
-                default: { },
-                opinion: { }
-            },
-            text: {
-                // default: { "font-family": newspaperTheme.fonts.generic[0] },
-                // opinion: { "font-family": newspaperTheme.fonts.generic[0] }
-            },
-            // packageVignette: { "font-family": newspaperTheme.fonts.generic[1] },
-            // chronicles: { "font-family": newspaperTheme.fonts.generic[9] }
-        }
+        ]
     },
     borders: {
         teaser: {
@@ -121,4 +89,11 @@ export const getTheme = (): Theme => ({
         "0px 2px 4px rgba(0, 0, 0, 0.5)" // 4
     ],
     helpers: themeHelpers
-})
+}
+
+const getTheme = (): DefaultTheme => theme
+
+export {
+    theme,
+    getTheme
+}
