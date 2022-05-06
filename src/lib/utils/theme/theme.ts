@@ -87,8 +87,7 @@ const theme: DefaultTheme = {
         "-2px 1px 2px rgba(0, 0, 0, 0.08)", // 2
         "0px 2px 15px rgba(0, 0, 0, 0.2)", // 3
         "0px 2px 4px rgba(0, 0, 0, 0.5)" // 4
-    ],
-    helpers: themeHelpers
+    ]
 }
 
 const getTheme = (): DefaultTheme => theme
