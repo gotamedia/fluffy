@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.38](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.37...v0.7.38) (2022-05-06)
+
+
+### Features
+
+* added basic Input component ([5e64041](http://bitbucket.org/gotamedia/fluffy/commit/5e6404151150cfa4561f8d96d223d7b5551e4703))
+
+
+### Bug Fixes
+
+* better types for Button ([5b098a4](http://bitbucket.org/gotamedia/fluffy/commit/5b098a4e7d1eeb9b7e130c124c0f9c246dce94c4))
+* naming typo for Button tests ([0aed7d6](http://bitbucket.org/gotamedia/fluffy/commit/0aed7d6f9ea9dd5edfd1ef4facd39802b7760040))
+* removed unused forgotten property from theme object ([7d00061](http://bitbucket.org/gotamedia/fluffy/commit/7d0006152f5c7548e4cd395cace2905636964e97))
+
 ### [0.7.37](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.36...v0.7.37) (2022-05-05)
 
 
