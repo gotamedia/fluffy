@@ -1,5 +1,3 @@
-import themeHelpers from './helpers'
-
 import type { DefaultTheme } from 'styled-components'
 
 //TODO: Fix a better theme since this one were copied from NXT!
