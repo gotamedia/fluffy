@@ -1,5 +1,6 @@
 import { css } from 'styled-components'
 
+// TODO: fix more variants and utilise theme for colors
 const primary = css`
     color: white;
     background-color: #507748;

@@ -7,7 +7,7 @@ import Icon, { Icons } from '../Icon'
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
 
-const Basic: Story<Types.ButtonComponent & {
+const Basic: Story<Types.ButtonProps & {
     text: string
 }> = ({text, ...props}) => {
     return (
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
     }
 `
 
-const WithIcon: Story<Types.ButtonComponent & {
+const WithIcon: Story<Types.ButtonProps & {
     text: string
 }> = ({text, ...props}) => {
     return (
@@ -63,6 +63,7 @@ export default {
     args: {
         variant: 'primary',
         text: 'Click me!',
+        size: 'normal',
         disabled: false
     }
 } as Meta<typeof Button>

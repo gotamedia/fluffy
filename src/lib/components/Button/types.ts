@@ -1,9 +1,8 @@
 import type {
-    DetailedHTMLProps,
     ButtonHTMLAttributes,
     ForwardRefExoticComponent,
     RefAttributes,
-    ReactNode,
+    ReactNode
 } from 'react'
 
 export type ButtonVariants = {
@@ -21,7 +20,9 @@ export type ButtonSizes = {
     Huge: 'huge'
 }
 
-export type ButtonProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> & {
+type NativeButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>
+
+export interface ButtonProps extends NativeButtonProps {
     children?: ReactNode,
     size?: ButtonSizes[keyof ButtonSizes],
     variant?: ButtonVariants[keyof ButtonVariants]
