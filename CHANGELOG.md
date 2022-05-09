@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.40](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.39...v0.7.40) (2022-05-09)
+
+
+### Features
+
+* added base Checkbox component ([e7426b7](http://bitbucket.org/gotamedia/fluffy/commit/e7426b7665eeb0f84f61cddb7f3ee3ba0e566fec))
+* added UploadButton component ([bfbd921](http://bitbucket.org/gotamedia/fluffy/commit/bfbd92119afc8e8819567fed689b6724370145e1))
+
 ### [0.7.39](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.38...v0.7.39) (2022-05-09)
 
 
