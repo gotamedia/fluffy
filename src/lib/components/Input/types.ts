@@ -4,25 +4,31 @@ import type {
     RefAttributes
 } from 'react'
 
-export type InputVariants = {
-    Primary: 'primary',
-    Secondary: 'secondary',
-    Outline: 'outline'
+export const InputVariants = {
+    Primary: 'primary' as const,
+    Secondary: 'secondary' as const,
+    Outline: 'outline' as const
 }
 
-export type InputSizes = {
-    Tiny: 'tiny',
-    Small: 'small',
-    Normal: 'normal',
-    Big: 'big',
-    Huge: 'huge'
+export type InputVariantsType = typeof InputVariants
+export type InputVariantType = InputVariantsType[keyof InputVariantsType]
+
+export const InputSizes = {
+    Tiny: 'tiny' as const,
+    Small: 'small' as const,
+    Normal: 'normal' as const,
+    Big: 'big' as const,
+    Huge: 'huge' as const
 }
+
+export type InputSizesType = typeof InputSizes
+export type InputSizeType = InputSizesType[keyof InputSizesType]
 
 type NativeInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 export interface InputProps extends NativeInputProps {
-    size?: InputSizes[keyof InputSizes],
-    variant?: InputVariants[keyof InputVariants]
+    size?: InputSizeType,
+    variant?: InputVariantType
 }
 
 export type InputRef = HTMLInputElement

@@ -12,7 +12,6 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
 
     return (
         <Styled.Input
-            onChange={DOMProps.onChange}
             ref={ref}
             $size={size}
             $variant={variant}

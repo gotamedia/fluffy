@@ -6,12 +6,10 @@ import * as variants from './variants'
 import type { InputProps } from './types'
 
 const baseInputStyle = css`
-    cursor: pointer;
     display: inline-flex;
     appearance: none;
     align-items: center;
     justify-content: center;
-    user-select: none;
     position: relative;
     white-space: nowrap;
     outline: transparent solid 2px;

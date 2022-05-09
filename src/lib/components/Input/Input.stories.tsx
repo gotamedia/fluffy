@@ -35,7 +35,7 @@ export default {
     argTypes: {},
     args: {
         variant: 'primary',
-        value: 'Click me!',
+        value: 'Type something cool!',
         size: 'normal',
         disabled: false
     }
