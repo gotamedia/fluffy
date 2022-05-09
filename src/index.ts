@@ -1,29 +1,26 @@
-import Alert from '@components/Alert'
-import Icon from '@components/Icon'
-import Paper from '@components/Paper'
-import Button from '@components/Button'
-
-import {
+export {
     theme,
     getTheme,
 } from '@utils/theme'
-import themeHelpers from '@utils/theme/helpers'
-import ThemeContext from '@root/contexts/ThemeContext'
+
+export { default as themeHelpers} from '@utils/theme/helpers'
+
+export { default as ThemeContext } from '@root/contexts/ThemeContext'
 
 export * from '@components/Alert'
+export { default as Alert } from '@components/Alert'
+
 export * from '@components/Icon'
+export { default as Icon } from '@components/Icon'
+
 export * from '@components/Paper'
+export { default as Paper } from '@components/Paper'
+
 export * from '@components/Button'
+export { default as Button } from '@components/Button'
 
-export {
-    Alert,
-    Icon,
-    Paper,
-    Button,
+export * from '@components/Input'
+export { default as Input } from '@components/Input'
 
-    ThemeContext,
-
-    theme,
-    getTheme,
-    themeHelpers
-}
+export * from '@components/InputGroup'
+export { default as InputGroup } from '@components/InputGroup'
