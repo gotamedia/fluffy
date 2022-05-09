@@ -1,7 +1,12 @@
-import { Children, forwardRef } from 'react'
+import {
+    forwardRef,
+    Children,
+    cloneElement
+} from 'react'
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { ReactElement } from 'react'
 
 const Button: Types.ButtonComponent = forwardRef((props, ref) => {
     const {
@@ -26,8 +31,16 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
                         </Styled.ButtonTexts>
                     )
                 } else {
+                    const childElement = child as ReactElement<Types.ButtonProps>
+
+                    const childProps = {
+                        size: size,
+                        variant: variant,
+                        ...childElement.props
+                    } as Types.ButtonProps
+
                     return (
-                        child
+                        cloneElement(childElement, childProps)
                     )
                 }
             })}

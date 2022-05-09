@@ -35,8 +35,9 @@ export default {
     argTypes: {},
     args: {
         variant: 'primary',
-        value: 'Type something cool!',
+        value: '',
         size: 'normal',
-        disabled: false
+        disabled: false,
+        placeholder: 'Type something cool!'
     }
 } as Meta<typeof Input>

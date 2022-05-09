@@ -9,15 +9,16 @@ const Wrapper = styled.div<{ $size?: InputGroupProps['size'], $variant?: InputGr
 
     .input-group_icon {
         z-index: 1;
+        pointer-events: none;
         position: absolute;
         top: 50%;
         transform: translate(-0, -50%);
 
-        &:first-of-type {
+        &:first-child {
             left: 0;
         }
 
-        &:last-of-type {
+        &:last-child {
             right: 0;
         }
     }

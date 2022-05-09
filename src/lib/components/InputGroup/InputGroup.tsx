@@ -16,8 +16,8 @@ import type { ReactElement } from 'react'
 
 const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
-        size,
-        variant,
+        size = 'normal',
+        variant = 'primary',
         children,
         ...filteredProps
     } = props
@@ -57,6 +57,7 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
                     const childProps = {
                         size: size,
                         variant: variant,
+                        ...childElement.props,
                         className: childElement.props.className || ''
                     } as InputProps
 
