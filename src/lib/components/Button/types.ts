@@ -5,27 +5,33 @@ import type {
     ReactNode
 } from 'react'
 
-export type ButtonVariants = {
-    Primary: 'primary',
-    Secondary: 'secondary',
-    Outline: 'outline',
-    Text: 'text'
+export const ButtonVariants = {
+    Primary: 'primary' as const,
+    Secondary: 'secondary' as const,
+    Outline: 'outline' as const,
+    Text: 'text' as const
 }
 
-export type ButtonSizes = {
-    Tiny: 'tiny',
-    Small: 'small',
-    Normal: 'normal',
-    Big: 'big',
-    Huge: 'huge'
+export type ButtonVariantsType = typeof ButtonVariants
+export type ButtonVariantType = ButtonVariantsType[keyof ButtonVariantsType]
+
+export const ButtonSizes = {
+    Tiny: 'tiny' as const,
+    Small: 'small' as const,
+    Normal: 'normal' as const,
+    Big: 'big' as const,
+    Huge: 'huge' as const
 }
+
+export type ButtonSizesType = typeof ButtonSizes
+export type ButtonSizeType = ButtonSizesType[keyof ButtonSizesType]
 
 type NativeButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>
 
 export interface ButtonProps extends NativeButtonProps {
     children?: ReactNode,
-    size?: ButtonSizes[keyof ButtonSizes],
-    variant?: ButtonVariants[keyof ButtonVariants]
+    size?: ButtonSizeType,
+    variant?: ButtonVariantType
 }
 
 export type ButtonRef = HTMLButtonElement
