@@ -24,3 +24,6 @@ export { default as Input } from '@components/Input'
 
 export * from '@components/InputGroup'
 export { default as InputGroup } from '@components/InputGroup'
+
+export * from '@components/Textarea'
+export { default as Textarea } from '@components/Textarea'

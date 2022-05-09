@@ -1,3 +1,4 @@
+import React from 'react'
 import { themes } from '@storybook/theming'
 
 import { ThemeProvider } from 'styled-components'
@@ -5,6 +6,8 @@ import { addDecorator } from '@storybook/react'
 import { withThemes } from '@react-theming/storybook-addon'
 
 import { getTheme } from '../src/lib/utils/theme'
+
+import { GlobalStyle } from './style'
 
 export const parameters = {
     actions: {
@@ -35,5 +38,14 @@ export const parameters = {
 }
 
 const theme = getTheme()
+
+export const decorators = [
+    (Story) => (
+        <div>
+            <GlobalStyle />
+            <Story />
+        </div>
+    )
+]
 
 addDecorator(withThemes(ThemeProvider, [theme]))
