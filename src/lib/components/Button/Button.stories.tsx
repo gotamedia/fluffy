@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Button from './index'
+import Button from './'
 import Icon, { Icons } from '../Icon'
 
 import type * as Types from './types'

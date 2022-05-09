@@ -11,7 +11,7 @@ const small = css`
 `
 
 const normal = css`
-    height: 30px;
+    height: 28px;
     width: auto;
 `
 
