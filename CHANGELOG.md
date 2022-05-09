@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.39](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.38...v0.7.39) (2022-05-09)
+
+
+### Features
+
+* added basic InputGroup component ([c156569](http://bitbucket.org/gotamedia/fluffy/commit/c156569d52e47cb0519652e9ccfd70021d6db573))
+
+
+### Bug Fixes
+
+* better typings for Button ([4387e01](http://bitbucket.org/gotamedia/fluffy/commit/4387e013f6ff00ebe473fe899bfa37d3235d4a38))
+* better typings for Icon ([ababbc0](http://bitbucket.org/gotamedia/fluffy/commit/ababbc033b001a7f08b6c933ca65d858bcf52680))
+* better typings for Input ([d73f9f9](http://bitbucket.org/gotamedia/fluffy/commit/d73f9f9d6d976c6a90678cd59fe4a6b0b8f14248))
+* removed unused import ([d9a803b](http://bitbucket.org/gotamedia/fluffy/commit/d9a803b0595cce6bc6aff174a81f78678f25eaa3))
+
 ### [0.7.38](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.37...v0.7.38) (2022-05-06)
 
 
