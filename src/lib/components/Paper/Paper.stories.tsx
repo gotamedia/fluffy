@@ -2,6 +2,8 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import Paper from './index'
+import Button from '../Button'
+
 import * as Types from './types'
 
 export default {
@@ -48,13 +50,13 @@ Basic.args = {
     ),
     buttons: (
         <>
-            <button>
+            <Button>
                 {'Button 1'}
-            </button>
+            </Button>
 
-            <button>
+            <Button>
                 {'Button 2'}
-            </button>
+            </Button>
         </>
     )
 }
