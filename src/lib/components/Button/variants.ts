@@ -2,23 +2,24 @@ import { css } from 'styled-components'
 
 // TODO: fix more variants and utilise theme for colors
 const primary = css`
-    color: white;
-    background-color: #507748;
+    color: black;
+    background-color: #dedede;
 
     &:hover {
         &:not(:disabled) {
-            background-color: #43643c;
+            color: white;
+            background-color: #6a6a6a;
         }
     }
 `
 
 const secondary = css`
-    color: #43643c;
+    color: black;
     background-color: transparent;
 
     &:hover {
         &:not(:disabled) {
-            background-color: rgb(80 119 72 / 29%);
+            background-color: rgb(106 106 106 / 30%);
         }
     }
 `
@@ -30,7 +31,7 @@ const outline = css`
 
 const text = css`
     padding: 0;
-    color: #43643c;
+    color: black;
     background-color: transparent;
 
     &:hover {
