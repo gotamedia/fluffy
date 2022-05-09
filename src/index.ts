@@ -30,3 +30,6 @@ export { default as Textarea } from '@components/Textarea'
 
 export * from '@components/UploadButton'
 export { default as UploadButton } from '@components/UploadButton'
+
+export * from '@components/Checkbox'
+export { default as Checkbox } from '@components/Checkbox'

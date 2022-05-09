@@ -9,7 +9,6 @@ import type { UploadButtonProps } from './types'
 const Wrapper = styled.div`
     display: flex;
     position: relative;
-    overflow: hidden;
 `
 
 // TODO: Fix colors / theme

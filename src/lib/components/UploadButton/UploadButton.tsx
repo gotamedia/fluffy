@@ -40,10 +40,11 @@ const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
     }, [onChange, onFilesChange])
 
     return (
-        <Styled.Wrapper className={className}>
+        <Styled.Wrapper className={className} >
             <Styled.InnerWrapper
                 $size={size}
                 $variant={variant}
+                tabIndex={0}
             >
                 {
                     withIcon ? (

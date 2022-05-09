@@ -5,6 +5,7 @@ import {
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { ChangeEventHandler } from 'react'
 
 const Input: Types.InputComponent = forwardRef((props, ref) => {
     const {
@@ -15,7 +16,7 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
-    const handleOnChange = useCallback((event) => {
+    const handleOnChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         if (typeof onChange === 'function') {
             onChange(event)
         }
