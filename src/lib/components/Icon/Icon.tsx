@@ -12,14 +12,14 @@ import type { FC } from 'react'
 const Icon: FC<Types.IconProps> = (props) => {
     const {
         icon,
+        width,
+        height,
+        size,
         className,
         style,
         ariaLabel,
         onClick,
         color,
-        width,
-        height,
-        size,
         ...filteredProps
     } = props
 
@@ -39,13 +39,11 @@ const Icon: FC<Types.IconProps> = (props) => {
         }
     }, [icon])
 
-    const iconSize: Types.IconSizes = size ? size : (height || Types.IconSizes.Default) as Types.IconSizes
-
     const iconContent = IconCompoennt ? (
         <IconCompoennt
             fill={color}
             width={width}
-            height={iconSize}
+            height={height}
             {...filteredProps}
         />
     ) : (
@@ -55,6 +53,7 @@ const Icon: FC<Types.IconProps> = (props) => {
     return (
         <Styled.Span
             style={style}
+            $size={size}
             className={`fluffy-icon ${className ? className : ''}`}
             aria-label={ariaLabel}
             onClick={onClick}

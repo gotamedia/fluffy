@@ -1,7 +1,15 @@
 import styled from 'styled-components'
 
-const Span = styled.span`
+import * as sizes from './sizes'
+
+import type { IconProps } from './types'
+
+const Span = styled.span<{ $size?: IconProps['size']}>`
     display: inline-flex;
+
+    svg {
+        ${({ $size }) => sizes[$size || 'normal']};
+    }
 `
 
 export {
