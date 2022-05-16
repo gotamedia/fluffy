@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.41](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.40...v0.7.41) (2022-05-16)
+
+
+### Features
+
+* added onValueChange callback to Textarea component ([a773ffa](http://bitbucket.org/gotamedia/fluffy/commit/a773ffa5338ebda9418fbc2f4f2b91461a8f031b))
+
+
+### Bug Fixes
+
+* check for children when mapping for Button and InputGroup components ([c40f516](http://bitbucket.org/gotamedia/fluffy/commit/c40f51682e70c300716680af9fcd316f9c23f346))
+
 ### [0.7.40](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.39...v0.7.40) (2022-05-09)
 
 
