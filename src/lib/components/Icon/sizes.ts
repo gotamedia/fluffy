@@ -1,12 +1,12 @@
 import { css } from 'styled-components'
 
 const tiny = css`
-    height: 22px;
+    height: 18px;
     width: auto;
 `
 
 const small = css`
-    height: 25px;
+    height: 20px;
     width: auto;
 `
 
