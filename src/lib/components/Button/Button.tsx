@@ -15,7 +15,7 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
         children,
         ...DOMProps
     } = props
-
+    
     return (
         <Styled.Button
             ref={ref}
@@ -24,23 +24,29 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
             {...DOMProps}
         >
             {Children.map(children, (child) => {
-                if (typeof child === 'string') {
-                    return (
-                        <Styled.ButtonTexts>
-                            {child}
-                        </Styled.ButtonTexts>
-                    )
+                if (child) {
+                    if (typeof child === 'string') {
+                        return (
+                            <Styled.ButtonTexts>
+                                {child}
+                            </Styled.ButtonTexts>
+                        )
+                    } else {
+                        const childElement = child as ReactElement<Types.ButtonProps>
+    
+                        const childProps = {
+                            size: size,
+                            variant: variant,
+                            ...childElement.props
+                        } as Types.ButtonProps
+
+                        return (
+                            cloneElement(childElement, childProps)
+                        )
+                    }
                 } else {
-                    const childElement = child as ReactElement<Types.ButtonProps>
-
-                    const childProps = {
-                        size: size,
-                        variant: variant,
-                        ...childElement.props
-                    } as Types.ButtonProps
-
                     return (
-                        cloneElement(childElement, childProps)
+                        null
                     )
                 }
             })}

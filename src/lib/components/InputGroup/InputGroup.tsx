@@ -31,7 +31,7 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         Children.forEach(children, (child, idx) => {
             const childElement = child as ReactElement<InputProps, any>
 
-            if (childElement.type !== Input) {
+            if (childElement && childElement.type !== Input) {
                 const type = childElement.type === Icon ? 'icon' : 'unknown'
 
                 if (idx === 0) {
@@ -53,15 +53,15 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
             {
                 Children.map(children, child => {
                     const childElement = child as ReactElement<InputProps>
-                    
-                    const childProps = {
-                        size: size,
-                        variant: variant,
-                        ...childElement.props,
-                        className: childElement.props.className || ''
-                    } as InputProps
 
                     if (childElement) {
+                        const childProps = {
+                            size: size,
+                            variant: variant,
+                            ...childElement.props,
+                            className: childElement.props.className || ''
+                        } as InputProps
+    
                         if (childElement.type === Icon) {
                             childProps.className = `${childProps.className} input-group_icon`
                         }
