@@ -72,4 +72,6 @@ const Alert: Types.AlertComponent = forwardRef((props, ref) => {
     )
 })
 
+Alert.displayName = 'Alert'
+
 export default Alert

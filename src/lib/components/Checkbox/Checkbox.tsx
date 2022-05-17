@@ -51,4 +51,6 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     )
 })
 
+Checkbox.displayName = 'Checkbox'
+
 export default Checkbox

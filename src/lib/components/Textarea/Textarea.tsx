@@ -37,4 +37,6 @@ const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
     )
 })
 
+Textarea.displayName = 'Textarea'
+
 export default Textarea

@@ -80,4 +80,6 @@ const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
     )
 })
 
+UploadButton.displayName = 'UploadButton'
+
 export default UploadButton

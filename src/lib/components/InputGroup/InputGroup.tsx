@@ -94,4 +94,6 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     )
 })
 
+InputGroup.displayName = 'InputGroup'
+
 export default InputGroup
