@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.42](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.41...v0.7.42) (2022-05-17)
+
+
+### Features
+
+* added Maps component ([41def9d](http://bitbucket.org/gotamedia/fluffy/commit/41def9d6cea01b88669b037e25a7a476c1ef47bc))
+
+
+### Bug Fixes
+
+* added displayName to some components ([37237f3](http://bitbucket.org/gotamedia/fluffy/commit/37237f374f987d8be80788a2afd496f805cb892f))
+* used the correct type for icon prop in Alert ([2dbe197](http://bitbucket.org/gotamedia/fluffy/commit/2dbe197cefe20912df66d03e5c3498a76e227b6f))
+
 ### [0.7.41](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.40...v0.7.41) (2022-05-16)
 
 
