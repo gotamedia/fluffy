@@ -33,3 +33,6 @@ export { default as UploadButton } from '@components/UploadButton'
 
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
+
+export * from '@root/components/Maps'
+export { default as Maps } from '@root/components/Maps'

@@ -98,5 +98,7 @@
       "last 1 safari version"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "pigeon-maps": "^0.21.0"
+  }
 }
