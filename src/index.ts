@@ -36,3 +36,6 @@ export { default as Checkbox } from '@components/Checkbox'
 
 export * from '@root/components/Maps'
 export { default as Maps } from '@root/components/Maps'
+
+export * from '@root/components/ButtonGroup'
+export { default as ButtonGroup } from '@root/components/ButtonGroup'

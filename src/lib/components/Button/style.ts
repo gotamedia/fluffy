@@ -57,6 +57,11 @@ const Button = styled.button<{ $size?: ButtonProps['size'], $variant?: ButtonPro
         &:last-of-type {
             margin-left: 10px;
         }
+
+        &:only-child {
+            margin-right: 0;
+            margin-left: 0;
+        }
     }
 `
 

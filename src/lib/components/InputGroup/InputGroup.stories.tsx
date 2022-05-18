@@ -33,7 +33,7 @@ BasicStory.storyName = 'Basic'
 const Wrapper = styled.div`
     display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     > div {
         margin-bottom: 15px;

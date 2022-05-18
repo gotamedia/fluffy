@@ -14,6 +14,7 @@ import type * as Types from './types'
 import type { InputProps } from '../Input/types'
 import type { ReactElement } from 'react'
 
+//TODO: Support text elements to be rendered inside input like the icons
 const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
