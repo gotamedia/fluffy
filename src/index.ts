@@ -34,8 +34,8 @@ export { default as UploadButton } from '@components/UploadButton'
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
 
-export * from '@root/components/Maps'
-export { default as Maps } from '@root/components/Maps'
+export * from '@components/Maps'
+export { default as Maps } from '@components/Maps'
 
-export * from '@root/components/ButtonGroup'
-export { default as ButtonGroup } from '@root/components/ButtonGroup'
+export * from '@components/ButtonGroup'
+export { default as ButtonGroup } from '@components/ButtonGroup'

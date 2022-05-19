@@ -18,7 +18,9 @@
     ],
     "rules": {
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "warn",
+        "react-hooks/exhaustive-deps": ["warn", {
+            "additionalHooks": "(useDeepCompareEffect|useDeepCompareCallback)"
+        }],
         "no-unused-vars": "off",
         "@typescript-eslint/no-unused-vars": "warn"
     }
