@@ -7,6 +7,13 @@ export { default as themeHelpers} from '@utils/theme/helpers'
 
 export { default as ThemeContext } from '@root/contexts/ThemeContext'
 
+export { default as useDeepCompareCallback } from '@hooks/useDeepCompareCallback'
+export { default as useDeepCompareEffect } from '@hooks/useDeepCompareEffect'
+export { default as useDeepCompareMemoize } from '@hooks/useDeepCompareMemoize'
+export { default as useLazyRef } from '@hooks/useLazyRef'
+export { default as useLifeCycle } from '@hooks/useLifeCycle'
+export { default as useTheme } from '@hooks/useTheme'
+
 export * from '@components/Alert'
 export { default as Alert } from '@components/Alert'
 
