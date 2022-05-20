@@ -2,7 +2,7 @@ const isClient = typeof document === 'undefined' ? false : true
 
 const isServer = !isClient
 
-export {
+export default {
     isClient,
     isServer
 }

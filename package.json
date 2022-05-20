@@ -3,18 +3,18 @@
   "description": "Fluffy UI",
   "version": "0.7.42",
   "private": false,
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist/*",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "rollup -w -c",
-    "local": "rollup -c && yalc push",
+    "local": "npm run build && yalc push",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build": "rollup -c",
+    "finalize": "mkdir dist; cp -r _temp_dist_/src/* _temp_dist_/; rm -rf _temp_dist_/src; cp -r _temp_dist_/ dist/",
+    "build": "rollup -c && npm run finalize",
     "release": "standard-version",
     "test": "react-scripts test --watchAll=false"
   },

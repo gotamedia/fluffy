@@ -94,3 +94,5 @@ export {
     theme,
     getTheme
 }
+
+export default theme

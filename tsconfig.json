@@ -7,10 +7,8 @@
         "jsx": "react-jsx",
         "module": "esnext",
         "declaration": true,
-        "declarationDir": "types",
         "sourceMap": true,
         "target": "es5",
-        "outDir": "dist",
         "moduleResolution": "node",
         "emitDeclarationOnly": false,
         "allowSyntheticDefaultImports": true,
@@ -19,11 +17,12 @@
             "es2015",
             "dom"
         ],
-        "paths": { 
-            "@root/*": ["lib/*"],
-            "@components/*": ["lib/components/*"],
-            "@hooks/*": ["lib/hooks/*"],
-            "@utils/*": ["lib/utils/*"]
+        "paths": {
+            "@root/*": ["./*"],
+            "@components/*": ["./components/*"],
+            "@contexts/*": ["./contexts/*"],
+            "@hooks/*": ["./hooks/*"],
+            "@utils/*": ["./utils/*"]
         },
         "plugins": [
             {
@@ -33,7 +32,9 @@
     },
     "exclude": [
         "dist",
+        "src/icons",
         "node_modules",
+        "src/**/*.test.tsx",
         "src/**/*.stories.tsx"
     ]
 }
