@@ -18,6 +18,7 @@ storybook-static
 .env.test.local
 .env.production.local
 .npmrc
+.idea
 
 npm-debug.log*
 .vscode
