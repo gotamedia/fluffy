@@ -10,6 +10,35 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         { i18n, formData: (value || defaultValue || {}) }
     )
 
+    useEffect(() => {
+        // check to not overwrite the defaultValue if value is not given
+        if (typeof value === "object") {
+            // controlled way
+            dispatch({ type: Types.FormContext.ReducerActionTypes.SetFormData, payload: value })
+        }
+    }, [value])
+
+    const addValidationMessages = useCallback((fieldName: string, validationMessages: Types.Validation.Message[]) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages,
+            payload: { fieldName, validationMessages }
+        })
+    }, [])
+
+    const clearValidationMessages = useCallback((fieldName: string) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages,
+            payload: { fieldName }
+        })
+    }, [])
+
+    const initializeField = useCallback((fieldName: string, defaultValue: Types.FormDataValue) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.InitializeFormDataField,
+            payload: { fieldName, defaultValue }
+        })
+    }, [])
+
     const getButtonLabel = useCallback((buttonType: Types.ButtonTypes) => {
         return state?.i18n?.buttons?.[buttonType]
     }, [state?.i18n?.buttons])
@@ -18,12 +47,12 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         return state?.i18n?.fields?.[fieldName]
     }, [state?.i18n?.fields])
 
-    const getFieldValue = useCallback((fieldName: string) => {
-        return state?.formData?.[fieldName]?.value
-    }, [state?.formData])
-
     const getFieldValidationMessages = useCallback((fieldName: string) => {
         return state?.formData?.[fieldName]?.validationMessages || []
+    }, [state?.formData])
+
+    const getFieldValue = useCallback((fieldName: string) => {
+        return state?.formData?.[fieldName]?.value
     }, [state?.formData])
 
     const getFormData = useCallback(() => {
@@ -45,38 +74,25 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         }
     }, [onChange, value])
 
-    const clearValidationMessages = useCallback((fieldName: string) => {
+    const terminateField = useCallback((fieldName: string) => {
         dispatch({
-            type: Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages,
+            type: Types.FormContext.ReducerActionTypes.TerminateFormDataField,
             payload: { fieldName }
         })
     }, [])
 
-    const addValidationMessages = useCallback((fieldName: string, validationMessages: Types.Validation.Message[]) => {
-        dispatch({
-            type: Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages,
-            payload: { fieldName, validationMessages }
-        })
-    }, [])
-
-    useEffect(() => {
-        // check to not overwrite the defaultValue if value is not given
-        if (typeof value === "object") {
-            // controlled way
-            dispatch({ type: Types.FormContext.ReducerActionTypes.SetFormData, payload: value })
-        }
-    }, [value])
-
     return {
         ...state,
+        addValidationMessages,
+        clearValidationMessages,
+        initializeField,
         getButtonLabel,
         getFieldLabel,
-        getFieldValue,
         getFieldValidationMessages,
+        getFieldValue,
         getFormData,
         setFieldValue,
-        clearValidationMessages,
-        addValidationMessages
+        terminateField
     }
 }
 

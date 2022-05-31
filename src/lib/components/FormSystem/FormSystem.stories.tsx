@@ -14,6 +14,7 @@ export default {
 
 const Template: Story<FSTypes.Form> = (props) => {
     const [state, setState] = useState({})
+    const [name, setName] = useState("firstname")
 
     return (
         <FS.Form
@@ -27,29 +28,34 @@ const Template: Story<FSTypes.Form> = (props) => {
                     name: "lastname",
                     value: "Bomnüter"
                 },
-                street: {
+                streeeeeeet: {
                     name: "street",
                     value: "Trollbackevägen"
                 }
             }}
             // value={state}
             onChange={(fieldName: string, value: FormDataValue) => {
-                console.log("onChange callback!")
-                setState({
-                    ...state,
-                    [fieldName]: value + "a",
-                    firstname: value
-                })
+                if (fieldName === "street") {
+                    setName((currentName) => currentName === "firstname" ? "firstnameeeee" : "firstname")
+                }
+                // console.log("onChange callback!")
+                // setState({
+                //     ...state,
+                //     [fieldName]: value + "a",
+                //     firstname: value
+                // })
             }}
         >
             <FS.Group>
                 <FS.Field>
-                    <FS.Input.Text name={"firstname"}>
+                    <FS.Input.Text name={name}>
                         <FS.Validation.Email />
                     </FS.Input.Text>
                 </FS.Field>
                 <FS.Field>
-                    <FS.Input.Text name={"lastname"} />
+                    <FS.Input.Text name={"lastname"}>
+                        <FS.Validation.Email />
+                    </FS.Input.Text>
                 </FS.Field>
             </FS.Group>
             <FS.Field>

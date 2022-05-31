@@ -6,12 +6,21 @@ const Text: Types.TextComponent = (props) => {
     const { name, children } = props
 
     const {
-        setFieldValue,
-        clearValidationMessages,
         addValidationMessages,
-        getFieldValue
+        clearValidationMessages,
+        getFieldValue,
+        setFieldValue
     } = useContext(Contexts.FormContext)
     const fieldContext = useContext(Contexts.FieldContext)
+    const { initialize, terminate } = fieldContext
+
+    useEffect(() => {
+        initialize(name, "")
+
+        return () => {
+            terminate(name)
+        }
+    }, [initialize, name, terminate])
 
     useEffect(() => {
         if (name !== fieldContext?.name) {

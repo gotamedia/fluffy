@@ -46,15 +46,17 @@ namespace FormContext {
     }
 
     export interface Value {
+        addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
+        clearValidationMessages: (fieldName: string) => void
         i18n: I18n
+        initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
-        getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
+        getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFormData: () => FormData
         setFieldValue: (fieldName: string, value: FormDataValue) => void
-        clearValidationMessages: (fieldName: string) => void
-        addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
+        terminateField: (fieldName: string) => void
     }
 
     export interface ReducerState {
@@ -63,10 +65,12 @@ namespace FormContext {
     }
 
     export enum ReducerActionTypes {
-        SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
-        ClearFormDataFieldValidationMessages = "CLEAR_FORM_DATA_FIELD_VALIDATION_MESSAGES",
         AddFormDataFieldValidationMessages = "ADD_FORM_DATA_FIELD_VALIDATION_MESSAGES",
-        SetFormData = "SET_FORM_DATA"
+        ClearFormDataFieldValidationMessages = "CLEAR_FORM_DATA_FIELD_VALIDATION_MESSAGES",
+        InitializeFormDataField = "INITIALIZE_FORM_DATA_FIELD",
+        SetFormData = "SET_FORM_DATA",
+        SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
+        TerminateFormDataField = "TERMINATE_FORM_DATA_FIELD"
     }
 
     export type ReducerAction = Action<ReducerActionTypes>
@@ -76,14 +80,16 @@ namespace FormContext {
 
 namespace FieldContext {
     export interface Value {
-        name?: string
-        label?: string
-        isRequired?: boolean
-        setName: (name: string) => void
-        setIsRequired: (isRequired: boolean) => void
-        validate: Validation.Function
         addValidation: (name: string, validationFunction: Validation.Function) => void
+        initialize: (fieldName: string, defaultValue: FormDataValue) => void
+        isRequired?: boolean
+        label?: string
+        name?: string
         removeValidation: (name: string) => void
+        setIsRequired: (isRequired: boolean) => void
+        setName: (name: string) => void
+        terminate: (fieldName: string) => void
+        validate: Validation.Function
     }
 
     export interface ReducerState {
@@ -129,6 +135,7 @@ export {
     Group,
     Input,
     FormData,
+    FormDataField,
     FormDataValue,
     ButtonTypes,
     FormContext,
