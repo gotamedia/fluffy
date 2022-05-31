@@ -6,8 +6,11 @@ const FormContext = React.createContext<Types.FormContext.Value>({
     getButtonLabel: () => "",
     getFieldLabel: () => "",
     getFieldValue: () => "",
+    getFieldValidationMessages: () => [],
     getFormData: () => ({ }),
-    updateFormData: () => { }
+    setFieldValue: () => { },
+    clearValidationMessages: () => { },
+    addValidationMessages: () => { }
 })
 
 export default FormContext

@@ -1,0 +1,7 @@
+{
+  "validation": {
+    "email": {
+      "text": "\"${value}\" is no valid email address!"
+    }
+  }
+}

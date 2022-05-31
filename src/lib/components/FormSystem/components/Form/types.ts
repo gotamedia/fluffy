@@ -1,11 +1,10 @@
 import React, { PropsWithChildren } from "react"
-import { FormDataValue } from "../../types"
 import * as Types from "../../types"
 
 export type FormProps = PropsWithChildren<{
     defaultValue?: Types.FormData
     i18n: Types.FormContext.I18n
-    onChange?: (fieldName: string, value: FormDataValue) => void
+    onChange?: (fieldName: string, value: Types.FormDataValue) => void
     onSubmit?: (formData: Types.FormData) => void
     value?: Types.FormData
 }>

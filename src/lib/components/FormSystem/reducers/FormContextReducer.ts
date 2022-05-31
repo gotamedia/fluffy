@@ -2,12 +2,40 @@ import * as Types from "../types"
 
 const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
     switch (action?.type) {
-        case Types.FormContext.ReducerActionTypes.UpdateFormData:
+        case Types.FormContext.ReducerActionTypes.SetFormDataFieldValue:
             return {
                 ...state,
                 formData: {
                     ...state?.formData,
-                    [action?.payload?.fieldName]: action?.payload?.value
+                    [action?.payload?.fieldName]: {
+                        ...state?.formData[action?.payload?.fieldName],
+                        value: action?.payload?.value
+                    }
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages:
+            return {
+                ...state,
+                formData: {
+                    ...state?.formData,
+                    [action?.payload?.fieldName]: {
+                        ...state?.formData[action?.payload?.fieldName],
+                        validationMessages: []
+                    }
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages:
+            return {
+                ...state,
+                formData: {
+                    ...state?.formData,
+                    [action?.payload?.fieldName]: {
+                        ...state?.formData[action?.payload?.fieldName],
+                        validationMessages: [
+                            ...(state?.formData[action?.payload?.fieldName]?.validationMessages || []),
+                            ...(action?.payload?.validationMessages || [])
+                        ]
+                    }
                 }
             }
         case Types.FormContext.ReducerActionTypes.SetFormData:

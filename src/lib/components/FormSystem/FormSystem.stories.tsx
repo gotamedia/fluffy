@@ -18,7 +18,20 @@ const Template: Story<FSTypes.Form> = (props) => {
     return (
         <FS.Form
             i18n={props.i18n}
-            defaultValue={{ firstname: "Lars", lastname: "Bomnüter", streeet: "Trollbackevägen" }}
+            defaultValue={{
+                firstname: {
+                    name: "firstname",
+                    value: "Lars"
+                },
+                lastname: {
+                    name: "lastname",
+                    value: "Bomnüter"
+                },
+                street: {
+                    name: "street",
+                    value: "Trollbackevägen"
+                }
+            }}
             // value={state}
             onChange={(fieldName: string, value: FormDataValue) => {
                 console.log("onChange callback!")
@@ -31,7 +44,9 @@ const Template: Story<FSTypes.Form> = (props) => {
         >
             <FS.Group>
                 <FS.Field>
-                    <FS.Input.Text name={"firstname"} />
+                    <FS.Input.Text name={"firstname"}>
+                        <FS.Validation.Email />
+                    </FS.Input.Text>
                 </FS.Field>
                 <FS.Field>
                     <FS.Input.Text name={"lastname"} />
@@ -41,7 +56,6 @@ const Template: Story<FSTypes.Form> = (props) => {
                 <FS.Input.Text name={"street"} />
             </FS.Field>
             <FS.Button />
-            {/*<input type={"text"} name={"test"} value={"asd"} />*/}
         </FS.Form>
     )
 }

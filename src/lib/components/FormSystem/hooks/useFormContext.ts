@@ -19,17 +19,24 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [state?.i18n?.fields])
 
     const getFieldValue = useCallback((fieldName: string) => {
-        return state?.formData?.[fieldName]
+        return state?.formData?.[fieldName]?.value
+    }, [state?.formData])
+
+    const getFieldValidationMessages = useCallback((fieldName: string) => {
+        return state?.formData?.[fieldName]?.validationMessages || []
     }, [state?.formData])
 
     const getFormData = useCallback(() => {
         return state?.formData
     }, [state?.formData])
 
-    const updateFormData = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
+    const setFieldValue = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
         if (!value) {
             // uncontrolled way
-            dispatch({ type: Types.FormContext.ReducerActionTypes.UpdateFormData, payload: { fieldName, value: fieldValue } })
+            dispatch({
+                type: Types.FormContext.ReducerActionTypes.SetFormDataFieldValue,
+                payload: { fieldName, value: fieldValue }
+            })
         }
 
         // onChange is triggered in both ways
@@ -37,6 +44,20 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             onChange(fieldName, fieldValue)
         }
     }, [onChange, value])
+
+    const clearValidationMessages = useCallback((fieldName: string) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages,
+            payload: { fieldName }
+        })
+    }, [])
+
+    const addValidationMessages = useCallback((fieldName: string, validationMessages: Types.Validation.Message[]) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages,
+            payload: { fieldName, validationMessages }
+        })
+    }, [])
 
     useEffect(() => {
         // check to not overwrite the defaultValue if value is not given
@@ -51,8 +72,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         getButtonLabel,
         getFieldLabel,
         getFieldValue,
+        getFieldValidationMessages,
         getFormData,
-        updateFormData
+        setFieldValue,
+        clearValidationMessages,
+        addValidationMessages
     }
 }
 

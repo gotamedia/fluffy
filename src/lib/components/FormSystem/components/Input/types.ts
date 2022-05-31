@@ -1,5 +1,5 @@
-import { InputProps as Input } from "./Input/types"
+import { TextProps as Text } from "./Text/types"
 
 export {
-    Input
+    Text
 }

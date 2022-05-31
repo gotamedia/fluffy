@@ -15,11 +15,12 @@
         "emitDeclarationOnly": false,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
         "lib": [
             "es2015",
             "dom"
         ],
-        "paths": { 
+        "paths": {
             "@root/*": ["lib/*"],
             "@components/*": ["lib/components/*"],
             "@hooks/*": ["lib/hooks/*"],
