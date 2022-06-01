@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.44](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.43...v0.7.44) (2022-06-01)
+
+
+### Features
+
+* added Card component ([09122e0](http://bitbucket.org/gotamedia/fluffy/commit/09122e0de213e68deec9c139746b85b238aba382))
+* added CardParagraph component ([a2a6f8a](http://bitbucket.org/gotamedia/fluffy/commit/a2a6f8a0f82364c681ffbd8c9379a48267c9d578))
+* added Skeleton component ([45f3e55](http://bitbucket.org/gotamedia/fluffy/commit/45f3e5573c3274a98ffcafba6c5fdadf23931919))
+
+
+### Bug Fixes
+
+* exported Skeleton/Card components ([1c85644](http://bitbucket.org/gotamedia/fluffy/commit/1c85644519acf8dfb79b4ab985c8dbba2baf0142))
+* exported ThemeContext along with ThemeProvider ([9d51bfe](http://bitbucket.org/gotamedia/fluffy/commit/9d51bfe2e91bd112844f1164a5a3a33c75ce5d46))
+
 ### [0.7.43](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.42...v0.7.43) (2022-05-20)
 
 
