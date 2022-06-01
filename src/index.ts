@@ -46,3 +46,9 @@ export { default as Maps } from '@components/Maps'
 
 export * from '@components/ButtonGroup'
 export { default as ButtonGroup } from '@components/ButtonGroup'
+
+export * from '@components/Skeleton'
+export { default as Skeleton } from '@components/Skeleton'
+
+export * from '@components/Card'
+export { default as Card } from '@components/Card'
