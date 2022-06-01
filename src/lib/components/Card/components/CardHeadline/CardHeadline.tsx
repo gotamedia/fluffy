@@ -23,7 +23,7 @@ const CardHeadline: Types.CardHeadlineComponent = (props) => {
                 loading ? (
                     <Skeleton
                         variant={variant as SkeletonVariantType}
-                        rows={3}
+                        rows={2}
                         rowHeight={37}
                     />
                 ) : (
