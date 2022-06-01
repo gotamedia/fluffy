@@ -2,7 +2,8 @@ import CardImage from './components/CardImage'
 import CardBody from './components/CardBody'
 import CardTitle from './components/CardTitle'
 import CardHeadline from './components/CardHeadline'
-import IconsWrapper from './components/CardIconsWrapper'
+import CardParagraph from './components/CardParagraph'
+import CardIconsWrapper from './components/CardIconsWrapper'
 
 import type {
     FC,
@@ -41,5 +42,6 @@ export type ComponentType = CardComponent & {
     Body: typeof CardBody,
     Title: typeof CardTitle,
     Headline: typeof CardHeadline,
-    IconsWrapper: typeof IconsWrapper
+    Paragraph: typeof CardParagraph,
+    IconsWrapper: typeof CardIconsWrapper
 }

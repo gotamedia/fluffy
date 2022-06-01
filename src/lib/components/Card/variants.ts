@@ -1,6 +1,7 @@
 import { css } from 'styled-components'
 
 import { Headline } from './components/CardHeadline/style'
+import { Paragraph } from './components/CardParagraph/style'
 import { Wrapper } from './components/CardIconsWrapper/style'
 
 const light = css`
@@ -8,6 +9,10 @@ const light = css`
     background-color: white;
 
     ${Headline} {
+        color: black;
+    }
+    
+    ${Paragraph} {
         color: black;
     }
 
@@ -23,6 +28,10 @@ const dark = css`
     background-color: #1e2a3b;
 
     ${Headline} {
+        color: white;
+    }
+
+    ${Paragraph} {
         color: white;
     }
 

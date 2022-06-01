@@ -11,7 +11,8 @@ const Basic: Story<Types.CardProps> = (props) => {
         <Card {...props}>
             <Card.Body>
                 <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
             </Card.Body>
         </Card>
     )
@@ -25,7 +26,8 @@ const WithIcons: Story<Types.CardProps> = (props) => {
         <Card {...props}>
             <Card.Body>
                 <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
 
                 <Card.IconsWrapper>
                     <Icon icon={Icons.Facebook} />
@@ -52,7 +54,8 @@ const WithImage: Story<Types.CardProps> = (props) => {
 
             <Card.Body>
                 <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
             </Card.Body>
         </Card>
     )
@@ -71,7 +74,8 @@ const Full: Story<Types.CardProps> = (props) => {
             
             <Card.Body>
                 <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
 
                 <Card.IconsWrapper>
                     <Icon icon={Icons.Facebook} />

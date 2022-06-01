@@ -5,6 +5,7 @@ import CardBody from './components/CardBody'
 import CardTitle from './components/CardTitle'
 import CardHeadline from './components/CardHeadline'
 import CardIconsWrapper from './components/CardIconsWrapper'
+import CardParagraph from './components/CardParagraph'
 
 import { ComponentType } from './types'
 
@@ -23,6 +24,9 @@ Card.Title.displayName = 'Card.Title'
 
 Card.Headline = CardHeadline
 Card.Headline.displayName = 'Card.Headline'
+
+Card.Paragraph = CardParagraph
+Card.Paragraph.displayName = 'Card.Paragraph'
 
 Card.IconsWrapper = CardIconsWrapper
 Card.IconsWrapper.displayName = 'Card.IconsWrapper'
