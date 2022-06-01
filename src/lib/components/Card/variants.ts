@@ -1,0 +1,39 @@
+import { css } from 'styled-components'
+
+import { Headline } from './components/CardHeadline/style'
+import { Wrapper } from './components/CardIconsWrapper/style'
+
+const light = css`
+    color: black;
+    background-color: white;
+
+    ${Headline} {
+        color: black;
+    }
+
+    ${Wrapper} {
+        .fluffy-icon {
+            fill: black;
+        }
+    }
+`
+
+const dark = css`
+    color: black;
+    background-color: #1e2a3b;
+
+    ${Headline} {
+        color: white;
+    }
+
+    ${Wrapper} {
+        .fluffy-icon {
+            fill: white;
+        }
+    }
+`
+
+export {
+    light,
+    dark
+}
