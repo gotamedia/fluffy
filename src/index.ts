@@ -5,7 +5,10 @@ export {
 
 export { default as themeHelpers} from '@utils/theme/helpers'
 
-export { default as ThemeContext } from '@root/contexts/ThemeContext'
+export {
+    ThemeContext,
+    ThemeProvider
+} from '@root/contexts/ThemeContext'
 
 export { default as useDeepCompareCallback } from '@hooks/useDeepCompareCallback'
 export { default as useDeepCompareEffect } from '@hooks/useDeepCompareEffect'
