@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
+import { FormData, Validation } from "../types"
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, i18n, onChange, value } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
-        { i18n, formData: (value || defaultValue || {}) }
+        { i18n, formData: (value || defaultValue || {}), validations: { field: [], form: [] } }
     )
 
     useEffect(() => {
@@ -18,17 +19,46 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         }
     }, [value])
 
+    const addFieldValidation = useCallback((
+        validationName: string,
+        fieldName: string,
+        validationFunction: Validation.Field.Function
+    ) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.AddFieldValidation,
+            payload: { validationName, fieldName, validationFunction }
+        })
+    }, [])
+
+    const addFormValidation = useCallback((
+        validationName: string,
+        involvedFieldNames: string[],
+        validationFunction: Validation.Form.Function
+    ) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.AddFormValidation,
+            payload: { validationName, involvedFieldNames, validationFunction }
+        })
+    }, [])
+
     const addValidationMessages = useCallback((fieldName: string, validationMessages: Types.Validation.Message[]) => {
         dispatch({
-            type: Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages,
+            type: Types.FormContext.ReducerActionTypes.AddValidationMessages,
             payload: { fieldName, validationMessages }
         })
     }, [])
 
     const clearValidationMessages = useCallback((fieldName: string) => {
         dispatch({
-            type: Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages,
+            type: Types.FormContext.ReducerActionTypes.ClearValidationMessages,
             payload: { fieldName }
+        })
+    }, [])
+
+    const clearAllValidationMessages = useCallback(() => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.ClearAllValidationMessages,
+            payload: { }
         })
     }, [])
 
@@ -59,6 +89,14 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         return state?.formData
     }, [state?.formData])
 
+    const removeFieldValidation = useCallback((validationName: string) => {
+        dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFieldValidation, payload: { validationName } })
+    }, [])
+
+    const removeFormValidation = useCallback((validationName: string) => {
+        dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFormValidation, payload: { validationName } })
+    }, [])
+
     const setFieldValue = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
         if (!value) {
             // uncontrolled way
@@ -81,9 +119,84 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         })
     }, [])
 
+    const validateField = useCallback((fieldName: string, formData: Types.FormData) => {
+        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.Message[]>((
+            validationResult,
+            validation
+        ) => [
+            ...validationResult,
+            ...(
+                validation.fieldName === fieldName
+                    ? validation.validationFunction(formData[fieldName]?.value, fieldName)
+                    : []
+            )
+        ], [])
+
+        const formValidationMessages = state.validations.form.reduce<Types.Validation.Message[]>((
+            validationResult,
+            validation
+        ) => [
+            ...validationResult,
+            ...(
+                validation.involvedFieldNames.includes(fieldName)
+                    ? validation.validationFunction(formData)
+                    : []
+            )
+        ], [])
+
+        const validationMessages = [
+            ...fieldValidationMessages,
+            ...formValidationMessages
+        ]
+
+        validationMessages.forEach((validationMessage) => {
+            addValidationMessages(
+                validationMessage.fieldName,
+                [validationMessage]
+            )
+        })
+
+        return validationMessages
+    }, [addValidationMessages, state.validations])
+
+    const validateForm = useCallback((formData: FormData) => {
+        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.Message[]>((
+            validationResult,
+            validation
+        ) => [
+            ...validationResult,
+            ...validation.validationFunction(formData?.[validation?.fieldName]?.value, validation?.fieldName)
+        ], [])
+
+        const formValidationMessages = state.validations.form.reduce<Types.Validation.Message[]>((
+            validationResult,
+            validation
+        ) => [
+            ...validationResult,
+            ...validation.validationFunction(formData)
+        ], [])
+
+        const validationMessages = [
+            ...fieldValidationMessages,
+            ...formValidationMessages
+        ]
+
+        validationMessages.forEach((validationMessage) => {
+            addValidationMessages(
+                validationMessage.fieldName,
+                [validationMessage]
+            )
+        })
+
+        return validationMessages
+    }, [addValidationMessages, state.validations.field, state.validations.form])
+
     return {
         ...state,
+        addFieldValidation,
+        addFormValidation,
         addValidationMessages,
+        clearAllValidationMessages,
         clearValidationMessages,
         initializeField,
         getButtonLabel,
@@ -91,8 +204,12 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         getFieldValidationMessages,
         getFieldValue,
         getFormData,
+        removeFieldValidation,
+        removeFormValidation,
         setFieldValue,
-        terminateField
+        terminateField,
+        validateField,
+        validateForm
     }
 }
 

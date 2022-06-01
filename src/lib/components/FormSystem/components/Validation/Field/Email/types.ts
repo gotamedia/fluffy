@@ -1,6 +1,6 @@
 import { EmailI18n } from "./i18nTypes"
 import React from "react"
-import * as Types from "../../../types"
+import * as Types from "../../../../types"
 
 export type EmailProps = {
     type?: Types.Validation.Types

@@ -13,12 +13,12 @@ const Field: Types.FieldComponent = (props) => {
     return (
         <div>
             <Contexts.FieldContext.Provider value={fieldContextValue}>
-                <label htmlFor={fieldContextValue?.name}>
+                <label htmlFor={fieldContextValue?.fieldName}>
                     {fieldContextValue.label}
                 </label>
                 {children}
                 <div>
-                    {formContext.getFieldValidationMessages(String(fieldContextValue?.name)).map(
+                    {formContext.getFieldValidationMessages(String(fieldContextValue?.fieldName)).map(
                         (validationMessage: FSTypes.Validation.Message) => (
                             <p key={JSON.stringify(validationMessage)}>
                                 {validationMessage.text}

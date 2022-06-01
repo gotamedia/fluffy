@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect } from "react"
-import * as Types from "./types"
-import * as Styled from "./style"
-import * as Hooks from "../../hooks"
 import * as Contexts from "../../contexts"
+import * as Hooks from "../../hooks"
+import * as FSTypes from "../../types"
+import * as Styled from "./style"
+import * as Types from "./types"
 
 const Form: Types.FormComponent = (props) => {
     const { children, defaultValue, i18n, onChange, onSubmit, value } = props
@@ -11,10 +12,17 @@ const Form: Types.FormComponent = (props) => {
 
     const onSubmitLocal = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        console.log("submit", formContextValue.getFormData()) // TODO delete
+
+        formContextValue.clearAllValidationMessages()
+        const validationMessages = formContextValue.validateForm(formContextValue.getFormData())
+        const isValid = validationMessages.reduce(
+            (isValidSoFar, validationMessage) =>
+                isValidSoFar && validationMessage.type !== FSTypes.Validation.Types.Error,
+            true
+        )
 
         if (onSubmit) {
-            onSubmit(formContextValue.getFormData())
+            onSubmit(formContextValue.getFormData(), isValid, validationMessages)
         }
     }, [formContextValue, onSubmit])
 

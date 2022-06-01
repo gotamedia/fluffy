@@ -1,9 +1,9 @@
-import { useState } from 'react'
-import { Story, Meta } from '@storybook/react'
+import { Meta, Story } from '@storybook/react'
+import { useCallback } from "react"
 
 import FS from './index'
-import { FormDataValue } from "./types"
-import * as FSTypes from './types'
+import { FormData } from "./types"
+import * as FSTypes from "./types"
 
 export default {
     title: 'Components/FormSystem',
@@ -13,8 +13,20 @@ export default {
 } as Meta<typeof FS.Form>
 
 const Template: Story<FSTypes.Form> = (props) => {
-    const [state, setState] = useState({})
-    const [name, setName] = useState("firstname")
+    // const [state, setState] = useState({})
+
+    const customValidationExample1 = useCallback((formData: FormData) => {
+        if (formData.street.value === formData.lastname.value) {
+            return [{
+                fieldName: "firstname",
+                involvedFieldNames: ["lastname", "street"],
+                type: FSTypes.Validation.Types.Warning,
+                text: "Lastname and street should not be the same!"
+            }]
+        }
+
+        return []
+    }, [])
 
     return (
         <FS.Form
@@ -26,35 +38,46 @@ const Template: Story<FSTypes.Form> = (props) => {
                 },
                 lastname: {
                     name: "lastname",
-                    value: "Bomnüter"
+                    value: "a"
                 },
-                streeeeeeet: {
-                    name: "street",
-                    value: "Trollbackevägen"
+                nonExistingField: {
+                    name: "nonExistingField",
+                    value: ""
                 }
             }}
             // value={state}
-            onChange={(fieldName: string, value: FormDataValue) => {
-                if (fieldName === "street") {
-                    setName((currentName) => currentName === "firstname" ? "firstnameeeee" : "firstname")
-                }
-                // console.log("onChange callback!")
-                // setState({
-                //     ...state,
-                //     [fieldName]: value + "a",
-                //     firstname: value
-                // })
+            // onChange={(fieldName: string, value: FormDataValue) => {
+            //     if (fieldName === "street") {
+            //         setName((currentName) => currentName === "firstname" ? "firstnameeeee" : "firstname")
+            //     }
+            //     // console.log("onChange callback!")
+            //     // setState({
+            //     //     ...state,
+            //     //     [fieldName]: value + "a",
+            //     //     firstname: value
+            //     // })
+            // }}
+            onSubmit={(formData, isValid, validationMessages) => {
+                console.log("submit", { formData, isValid, validationMessages })
             }}
         >
+            <FS.Validation.Form.Custom
+                involvedFieldNames={["firstname", "lastname", "street"]}
+                validationFunction={customValidationExample1}
+            />
+            <FS.Validation.Form.SameValue
+                fieldAName={"firstname"}
+                fieldBName={"lastname"}
+            />
             <FS.Group>
                 <FS.Field>
-                    <FS.Input.Text name={name}>
-                        <FS.Validation.Email />
+                    <FS.Input.Text name={"firstname"}>
+                        <FS.Validation.Field.Email />
                     </FS.Input.Text>
                 </FS.Field>
                 <FS.Field>
                     <FS.Input.Text name={"lastname"}>
-                        <FS.Validation.Email />
+                        <FS.Validation.Field.Email />
                     </FS.Input.Text>
                 </FS.Field>
             </FS.Group>

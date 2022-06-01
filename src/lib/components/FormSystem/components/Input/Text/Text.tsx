@@ -6,13 +6,17 @@ const Text: Types.TextComponent = (props) => {
     const { name, children } = props
 
     const {
-        addValidationMessages,
         clearValidationMessages,
         getFieldValue,
         setFieldValue
     } = useContext(Contexts.FormContext)
-    const fieldContext = useContext(Contexts.FieldContext)
-    const { initialize, terminate } = fieldContext
+    const {
+        fieldName,
+        initialize,
+        setFieldName,
+        terminate,
+        validate
+    } = useContext(Contexts.FieldContext)
 
     useEffect(() => {
         initialize(name, "")
@@ -23,10 +27,10 @@ const Text: Types.TextComponent = (props) => {
     }, [initialize, name, terminate])
 
     useEffect(() => {
-        if (name !== fieldContext?.name) {
-            fieldContext.setName(name)
+        if (name !== fieldName) {
+            setFieldName(name)
         }
-    }, [name, fieldContext])
+    }, [fieldName, name, setFieldName])
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.value)
@@ -34,9 +38,9 @@ const Text: Types.TextComponent = (props) => {
     }, [setFieldValue, name, clearValidationMessages])
 
     const onBlur = useCallback(() => {
-        const validationMessages = fieldContext.validate(String(getFieldValue(name) || ""), name)
-        addValidationMessages(name, validationMessages)
-    }, [addValidationMessages, fieldContext, getFieldValue, name])
+        clearValidationMessages(name)
+        validate()
+    }, [clearValidationMessages, name, validate])
 
     return (
         <>

@@ -5,71 +5,76 @@ import * as Types from "../types"
 import { FormDataValue } from "../types"
 
 const useFieldContext = (): Types.FieldContext.Value => {
-    const { initializeField, terminateField, getFieldLabel } = useContext(Contexts.FormContext)
+    const {
+        addFieldValidation,
+        getFieldLabel,
+        getFormData,
+        initializeField,
+        removeFieldValidation,
+        terminateField,
+        validateField
+    } = useContext(Contexts.FormContext)
 
     const [state, dispatch] = React.useReducer<Types.FieldContext.Reducer>(
         Reducers.FieldContextReducer,
-        { validations: [] }
+        { }
     )
 
     useEffect(() => {
         dispatch({
             type: Types.FieldContext.ReducerActionTypes.SetLabel,
-            payload: getFieldLabel(state?.name as string)
+            payload: getFieldLabel(state?.fieldName as string)
         })
-    }, [getFieldLabel, state?.name])
+    }, [getFieldLabel, state?.fieldName])
 
-    const addValidation = useCallback((name: string, validation: Types.Validation.Function) => {
-        dispatch({ type: Types.FieldContext.ReducerActionTypes.AddValidation, payload: { name, validation } })
-    }, [])
+    const addValidation = useCallback((validationName: string, validationFunction: Types.Validation.Field.Function) => {
+        addFieldValidation(validationName, String(state?.fieldName), validationFunction)
+    }, [addFieldValidation, state?.fieldName])
 
     const initialize = useCallback((fieldName: string, defaultValue: FormDataValue) => {
         initializeField(fieldName, defaultValue)
     }, [initializeField])
 
-    const removeValidation = useCallback((name: string) => {
-        dispatch({ type: Types.FieldContext.ReducerActionTypes.RemoveValidation, payload: { name } })
-    }, [])
+    const removeValidation = useCallback((validationName: string) => {
+        removeFieldValidation(validationName)
+    }, [removeFieldValidation])
 
     const setIsRequired = useCallback((isRequired: boolean) => {
         dispatch({ type: Types.FieldContext.ReducerActionTypes.SetIsRequired, payload: isRequired })
     }, [])
 
-    const setName = useCallback((name: string) => {
-        dispatch({ type: Types.FieldContext.ReducerActionTypes.SetName, payload: name })
+    const setFieldName = useCallback((fieldName: string) => {
+        dispatch({ type: Types.FieldContext.ReducerActionTypes.SetFieldName, payload: fieldName })
     }, [])
 
     const terminate = useCallback((fieldName: string) => {
         terminateField(fieldName)
     }, [terminateField])
 
-    const validate = useCallback((value: FormDataValue, name: string) => {
-        return state.validations.reduce<Types.Validation.Message[]>((validationResult, validation) => [
-            ...validationResult,
-            ...validation.validation(value, name)
-        ], [])
-    }, [state])
+    const validate = useCallback(() => {
+        validateField(String(state?.fieldName), getFormData())
+    }, [getFormData, state?.fieldName, validateField])
 
     return useMemo(() => ({
         addValidation,
         initialize,
         isRequired: state.isRequired,
         label: state.label,
-        name: state.name,
+        fieldName: state.fieldName,
         removeValidation,
         setIsRequired,
-        setName,
+        setFieldName,
         terminate,
         validate
     }), [
         addValidation,
         initialize,
         removeValidation,
+        setFieldName,
         setIsRequired,
-        setName,
+        state.fieldName,
         state.isRequired,
         state.label,
-        state.name,
         terminate,
         validate
     ])

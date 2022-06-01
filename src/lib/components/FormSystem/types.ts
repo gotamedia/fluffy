@@ -1,4 +1,5 @@
-import { EmailI18n } from "./components/Validation/Email/i18nTypes"
+import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
+import { SameValueI18n } from "./components/Validation/Form/SameValue/i18nTypes"
 import React from "react"
 import { SubmitButtonProps as Button } from "./components/Button/types"
 import { FieldProps as Field } from "./components/Field/types"
@@ -13,7 +14,7 @@ interface Action<T> {
 
 type ButtonTypes = "submit" | "cancel" | "delete"
 
-type FormDataValue = string | boolean
+type FormDataValue = string | boolean | undefined
 
 interface FormDataField {
     name: string
@@ -34,7 +35,12 @@ namespace FormContext {
             [key in ButtonTypes]?: string
         },
         validations?: {
-            email?: EmailI18n
+            field?: {
+                email?: EmailI18n
+            }
+            form?: {
+                sameValue?: SameValueI18n
+            }
         }
     }
 
@@ -46,7 +52,18 @@ namespace FormContext {
     }
 
     export interface Value {
+        addFieldValidation: (
+            validationName: string,
+            fieldName: string,
+            validationFunction: Validation.Field.Function
+        ) => void
+        addFormValidation: (
+            validationName: string,
+            involvedFieldNames: string[],
+            validationFunction: Validation.Form.Function
+        ) => void
         addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
+        clearAllValidationMessages: () => void
         clearValidationMessages: (fieldName: string) => void
         i18n: I18n
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
@@ -55,19 +72,32 @@ namespace FormContext {
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
         getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFormData: () => FormData
+        removeFieldValidation: (validationName: string) => void
+        removeFormValidation: (validationName: string) => void
         setFieldValue: (fieldName: string, value: FormDataValue) => void
         terminateField: (fieldName: string) => void
+        validateField: (fieldName: string, formData: FormData) => Validation.Message[]
+        validateForm: (formData: FormData) => Validation.Message[]
     }
 
     export interface ReducerState {
         i18n: I18n
         formData: FormData
+        validations: {
+            field: Validation.Field.StoredValidation[]
+            form: Validation.Form.StoredValidation[]
+        }
     }
 
     export enum ReducerActionTypes {
-        AddFormDataFieldValidationMessages = "ADD_FORM_DATA_FIELD_VALIDATION_MESSAGES",
-        ClearFormDataFieldValidationMessages = "CLEAR_FORM_DATA_FIELD_VALIDATION_MESSAGES",
+        AddFieldValidation = "ADD_FIELD_VALIDATION",
+        AddFormValidation = "ADD_FORM_VALIDATION",
+        AddValidationMessages = "ADD_VALIDATION_MESSAGES",
+        ClearAllValidationMessages = "CLEAR_ALL_VALIDATION_MESSAGES",
+        ClearValidationMessages = "CLEAR_VALIDATION_MESSAGES",
         InitializeFormDataField = "INITIALIZE_FORM_DATA_FIELD",
+        RemoveFieldValidation = "REMOVE_FIELD_VALIDATION",
+        RemoveFormValidation = "REMOVE_FORM_VALIDATION",
         SetFormData = "SET_FORM_DATA",
         SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
         TerminateFormDataField = "TERMINATE_FORM_DATA_FIELD"
@@ -80,31 +110,28 @@ namespace FormContext {
 
 namespace FieldContext {
     export interface Value {
-        addValidation: (name: string, validationFunction: Validation.Function) => void
+        addValidation: (validationName: string, validationFunction: Validation.Field.Function) => void
         initialize: (fieldName: string, defaultValue: FormDataValue) => void
         isRequired?: boolean
         label?: string
-        name?: string
-        removeValidation: (name: string) => void
+        fieldName?: string
+        removeValidation: (validationName: string) => void
         setIsRequired: (isRequired: boolean) => void
-        setName: (name: string) => void
+        setFieldName: (fieldName: string) => void
         terminate: (fieldName: string) => void
-        validate: Validation.Function
+        validate: () => void
     }
 
     export interface ReducerState {
-        name?: string
+        fieldName?: string
         label?: string
         isRequired?: boolean
-        validations: Validation.StoredValidation[]
     }
 
     export enum ReducerActionTypes {
-        SetName = "SET_NAME",
+        SetFieldName = "SET_FIELD_NAME",
         SetLabel = "SET_LABEL",
-        SetIsRequired = "SET_IS_REQUIRED",
-        AddValidation = "ADD_VALIDATION",
-        RemoveValidation = "REMOVE_VALIDATION"
+        SetIsRequired = "SET_IS_REQUIRED"
     }
 
     export type ReducerAction = Action<ReducerActionTypes>
@@ -119,13 +146,31 @@ namespace Validation {
     }
 
     export interface Message {
+        fieldName: string,
+        involvedFieldNames?: string[],
         type: Types,
         text?: string
     }
 
-    export type Function = (value: FormDataValue, name: string) => Message[]
+    export namespace Field {
+        export type Function = (value: FormDataValue, fieldName: string) => Message[]
 
-    export type StoredValidation = { name: string, validation: Function }
+        export interface StoredValidation {
+            validationName: string,
+            fieldName: string,
+            validationFunction: Function
+        }
+    }
+
+    export namespace Form {
+        export type Function = (formData: FormData) => Message[]
+
+        export interface StoredValidation {
+            validationName: string,
+            involvedFieldNames: string[],
+            validationFunction: Function
+        }
+    }
 }
 
 export {

@@ -2,7 +2,22 @@ import * as Types from "../types"
 
 const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
     switch (action?.type) {
-        case Types.FormContext.ReducerActionTypes.AddFormDataFieldValidationMessages:
+        case Types.FormContext.ReducerActionTypes.AddFieldValidation:
+            return {
+                ...state,
+                validations: {
+                    ...state?.validations,
+                    field: [
+                        ...(state?.validations?.field || []),
+                        {
+                            validationName: action?.payload?.validationName,
+                            fieldName: action?.payload?.fieldName,
+                            validationFunction: action?.payload?.validationFunction
+                        }
+                    ]
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.AddValidationMessages:
             return {
                 ...state,
                 formData: {
@@ -16,16 +31,62 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     }
                 }
             }
-        case Types.FormContext.ReducerActionTypes.ClearFormDataFieldValidationMessages:
+        case Types.FormContext.ReducerActionTypes.AddFormValidation:
+            return {
+                ...state,
+                validations: {
+                    ...state?.validations,
+                    form: [
+                        ...(state?.validations?.form || []),
+                        {
+                            validationName: action?.payload?.validationName,
+                            involvedFieldNames: action?.payload?.involvedFieldNames,
+                            validationFunction: action?.payload?.validationFunction
+                        }
+                    ]
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.ClearValidationMessages:
             return {
                 ...state,
                 formData: {
-                    ...state?.formData,
+                    // remove all validationMessages of other fields that have the current field as an involved field
+                    ...Object.keys(state?.formData).reduce<Types.FormData>((formData, fieldName) => ({
+                        ...formData,
+                        [fieldName]: {
+                            ...formData[fieldName],
+                            validationMessages: [
+                                ...(formData[fieldName]?.validationMessages || [])
+                                    .reduce<Types.Validation.Message[]>((validationMessages, validationMessage) => {
+                                        return [
+                                            ...validationMessages,
+                                            ...(
+                                                (validationMessage.involvedFieldNames || []).includes(fieldName)
+                                                    ? []
+                                                    : [validationMessage]
+                                            )
+                                        ]
+                                    }, [])
+                            ]
+                        }
+                    }), state?.formData),
+                    // remove all validationMessages of the given field itself
                     [action?.payload?.fieldName]: {
                         ...state?.formData[action?.payload?.fieldName],
                         validationMessages: []
                     }
                 }
+            }
+        case Types.FormContext.ReducerActionTypes.ClearAllValidationMessages:
+            return {
+                ...state,
+                formData: Object.keys(state?.formData).reduce<Types.FormData>((formData, fieldName) => ({
+                    ...formData,
+                    [fieldName]: {
+                        ...state?.formData[fieldName],
+                        validationMessages: []
+                    }
+                }), {})
             }
         case Types.FormContext.ReducerActionTypes.InitializeFormDataField:
             return {
@@ -38,6 +99,26 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                         validationMessages: state?.formData[action?.payload?.fieldName]?.validationMessages || [],
                         value: state?.formData[action?.payload?.fieldName]?.value || action?.payload?.defaultValue
                     }
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.RemoveFieldValidation:
+            return {
+                ...state,
+                validations: {
+                    ...state?.validations,
+                    field: (state?.validations?.field || [])?.filter(
+                        (validation) => validation.validationName !== action?.payload?.validationName
+                    )
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.RemoveFormValidation:
+            return {
+                ...state,
+                validations: {
+                    ...state?.validations,
+                    form: (state?.validations?.form || [])?.filter(
+                        (validation) => validation.validationName !== action?.payload?.validationName
+                    )
                 }
             }
         case Types.FormContext.ReducerActionTypes.SetFormData:

@@ -6,7 +6,7 @@ const FieldContext = React.createContext<Types.FieldContext.Value>({
     initialize: () => { },
     removeValidation: () => { },
     setIsRequired: () => { },
-    setName: () => { },
+    setFieldName: () => { },
     terminate: () => { },
     validate: () => []
 })

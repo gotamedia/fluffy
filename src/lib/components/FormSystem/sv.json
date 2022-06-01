@@ -1,7 +1,15 @@
 {
   "validation": {
-    "email": {
-      "text": "\"${value}\" is no valid email address!"
+    "field": {
+      "email": {
+        "text": "\"${value}\" is no valid email address!"
+      }
+    },
+    "form": {
+      "sameValue": {
+        "textA": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value",
+        "textB": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value"
+      }
     }
   }
 }
