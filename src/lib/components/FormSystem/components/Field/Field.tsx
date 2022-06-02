@@ -1,34 +1,23 @@
-import { useContext } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
+import Label from "./Label"
+import * as Styled from "./style"
 import * as Types from "./types"
-import * as FSTypes from "../..//types"
+import ValidationMessages from "./ValidationMessages"
 
 const Field: Types.FieldComponent = (props) => {
     const { children } = props
 
     const fieldContextValue = Hooks.useFieldContext()
-    const formContext = useContext(Contexts.FormContext)
 
     return (
-        <div>
+        <Styled.Wrapper>
             <Contexts.FieldContext.Provider value={fieldContextValue}>
-                <label htmlFor={fieldContextValue?.fieldName}>
-                    {fieldContextValue.label}
-                </label>
+                <Label />
                 {children}
-                <div>
-                    {formContext.getFieldValidationMessages(String(fieldContextValue?.fieldName)).map(
-                        (validationMessage: FSTypes.Validation.Message) => (
-                            <p key={JSON.stringify(validationMessage)}>
-                                {validationMessage.text}
-                            </p>
-                        )
-                    )}
-                </div>
-
+                <ValidationMessages />
             </Contexts.FieldContext.Provider>
-        </div>
+        </Styled.Wrapper>
     )
 }
 

@@ -68,6 +68,7 @@ const Template: Story<FSTypes.Form> = (props) => {
             <FS.Validation.Form.SameValue
                 fieldAName={"firstname"}
                 fieldBName={"lastname"}
+                type={FSTypes.Validation.Types.Warning}
             />
             <FS.Group>
                 <FS.Field>

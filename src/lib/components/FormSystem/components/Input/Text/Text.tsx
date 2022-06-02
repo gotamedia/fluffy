@@ -1,6 +1,7 @@
 import React, { useCallback, useContext, useEffect } from "react"
 import * as Types from "./types"
 import * as Contexts from "../../../contexts"
+import Input from "@components/Input"
 
 const Text: Types.TextComponent = (props) => {
     const { name, children } = props
@@ -44,7 +45,7 @@ const Text: Types.TextComponent = (props) => {
 
     return (
         <>
-            <input
+            <Input
                 name={name}
                 id={name}
                 value={String(getFieldValue(name) || "")}
