@@ -38,7 +38,7 @@ const Text: Types.TextComponent = (props) => {
     }, [setFieldValue, name, clearValidationMessages])
 
     const onBlur = useCallback(() => {
-        clearValidationMessages(name)
+        clearValidationMessages(name, "all")
         validate()
     }, [clearValidationMessages, name, validate])
 

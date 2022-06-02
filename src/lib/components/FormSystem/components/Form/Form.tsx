@@ -13,7 +13,7 @@ const Form: Types.FormComponent = (props) => {
     const onSubmitLocal = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        formContextValue.clearAllValidationMessages()
+        formContextValue.clearAllValidationMessages("all")
         const validationMessages = formContextValue.validateForm(formContextValue.getFormData())
         const isValid = validationMessages.reduce(
             (isValidSoFar, validationMessage) =>

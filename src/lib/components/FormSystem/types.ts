@@ -63,8 +63,8 @@ namespace FormContext {
             validationFunction: Validation.Form.Function
         ) => void
         addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
-        clearAllValidationMessages: () => void
-        clearValidationMessages: (fieldName: string) => void
+        clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
+        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
         i18n: I18n
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
