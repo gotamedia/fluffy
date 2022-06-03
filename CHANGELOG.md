@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.45](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.44...v0.7.45) (2022-06-03)
+
+
+### Features
+
+* Added useScroll hook ([b6d0cc5](http://bitbucket.org/gotamedia/fluffy/commit/b6d0cc57a7c61a92357bd3cf3b10d5fc720a3759))
+
 ### [0.7.44](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.43...v0.7.44) (2022-06-01)
 
 
