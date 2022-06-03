@@ -1,4 +1,5 @@
+import type { DependencyList } from 'react'
+
 export type UseDeepCompairCallback = <
-    Type extends (...args: unknown[]) => unknown,
-    DepsType = unknown
->(callback: Type, dependencies: ReadonlyArray<DepsType>) => void
+    Type extends (...args: any[]) => any
+>(callback: Type, deps: DependencyList) => Type
