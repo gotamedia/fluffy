@@ -51,6 +51,7 @@ const Text: Types.TextComponent = (props) => {
                 value={String(getFieldValue(name) || "")}
                 onChange={onChange}
                 onBlur={onBlur}
+                style={{ minWidth: 0 }}
             />
             {children}
         </>

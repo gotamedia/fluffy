@@ -70,12 +70,19 @@ const Template: Story<FSTypes.Form> = (props) => {
                 fieldBName={"lastname"}
                 type={FSTypes.Validation.Types.Warning}
             />
-            <FS.Group>
-                <FS.Field>
-                    <FS.Input.Text name={"firstname"}>
-                        <FS.Validation.Field.Email />
-                    </FS.Input.Text>
-                </FS.Field>
+            <FS.Group  inline>
+                <FS.Group inline $direction={"vertical"} width={"300px"}>
+                    <FS.Field>
+                        <FS.Input.Text name={"firstname"}>
+                            <FS.Validation.Field.Email />
+                        </FS.Input.Text>
+                    </FS.Field>
+                    <FS.Field>
+                        <FS.Input.Text name={"secondname"}>
+                            <FS.Validation.Field.Email />
+                        </FS.Input.Text>
+                    </FS.Field>
+                </FS.Group>
                 <FS.Field>
                     <FS.Input.Text name={"lastname"}>
                         <FS.Validation.Field.Email />
@@ -95,6 +102,7 @@ Basic.args = {
     i18n: {
         fields: {
             firstname: "Firstname",
+            secondname: "Secondname",
             lastname: "Lastname",
             street: "Street"
         },

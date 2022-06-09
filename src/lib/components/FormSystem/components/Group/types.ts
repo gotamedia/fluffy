@@ -2,6 +2,8 @@ import React, { PropsWithChildren } from "react"
 
 export type StyledGroupProps = {
     $direction?: "horizontal" | "vertical"
+    inline?: boolean
+    width?: string
 }
 
 interface GroupPropsWithoutChildren extends StyledGroupProps { }

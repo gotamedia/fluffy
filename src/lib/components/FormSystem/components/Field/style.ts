@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import { StyledFieldProps } from "./types"
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<StyledFieldProps>`
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    ${(props) => !props.width ? "" : `width: ${props.width}`}
 `
 
 export {

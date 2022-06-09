@@ -6,12 +6,12 @@ import * as Types from "./types"
 import ValidationMessages from "./ValidationMessages"
 
 const Field: Types.FieldComponent = (props) => {
-    const { children } = props
+    const { children, width } = props
 
     const fieldContextValue = Hooks.useFieldContext()
 
     return (
-        <Styled.Wrapper>
+        <Styled.Wrapper width={width}>
             <Contexts.FieldContext.Provider value={fieldContextValue}>
                 <Label />
                 {children}

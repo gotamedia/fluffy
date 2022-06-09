@@ -1,8 +1,8 @@
+import Group from "@components/FormSystem/components/Group/Group"
 import React, { useCallback, useEffect } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import * as FSTypes from "../../types"
-import * as Styled from "./style"
 import * as Types from "./types"
 
 const Form: Types.FormComponent = (props) => {
@@ -36,11 +36,13 @@ const Form: Types.FormComponent = (props) => {
     }, [defaultValue, onChange, value])
 
     return (
-        <Styled.Form onSubmit={onSubmitLocal}>
-            <Contexts.FormContext.Provider value={formContextValue}>
-                {children}
-            </Contexts.FormContext.Provider>
-        </Styled.Form>
+        <form onSubmit={onSubmitLocal}>
+            <Group $direction={"vertical"}>
+                <Contexts.FormContext.Provider value={formContextValue}>
+                    {children}
+                </Contexts.FormContext.Provider>
+            </Group>
+        </form>
     )
 }
 
