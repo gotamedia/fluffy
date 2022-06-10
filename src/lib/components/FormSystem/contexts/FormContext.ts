@@ -12,6 +12,7 @@ const FormContext = React.createContext<Types.FormContext.Value>({
     getButtonLabel: () => "",
     getFieldLabel: () => "",
     getFieldValidationMessages: () => [],
+    getHighestValidationMessageType: () => undefined,
     getFieldValue: () => "",
     getFormData: () => ({ }),
     removeFieldValidation: () => { },

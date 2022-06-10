@@ -13,8 +13,6 @@ export default {
 } as Meta<typeof FS.Form>
 
 const Template: Story<FSTypes.Form> = (props) => {
-    // const [state, setState] = useState({})
-
     const customValidationExample1 = useCallback((formData: FormData) => {
         if (formData.street.value === formData.lastname.value) {
             return [{
@@ -38,25 +36,17 @@ const Template: Story<FSTypes.Form> = (props) => {
                 },
                 lastname: {
                     name: "lastname",
-                    value: "a"
+                    value: "Last"
                 },
-                nonExistingField: {
-                    name: "nonExistingField",
-                    value: ""
+                secondname: {
+                    name: "secondname",
+                    value: "Sec"
+                },
+                street: {
+                    name: "street",
+                    value: "str"
                 }
             }}
-            // value={state}
-            // onChange={(fieldName: string, value: FormDataValue) => {
-            //     if (fieldName === "street") {
-            //         setName((currentName) => currentName === "firstname" ? "firstnameeeee" : "firstname")
-            //     }
-            //     // console.log("onChange callback!")
-            //     // setState({
-            //     //     ...state,
-            //     //     [fieldName]: value + "a",
-            //     //     firstname: value
-            //     // })
-            // }}
             onSubmit={(formData, isValid, validationMessages) => {
                 console.log("submit", { formData, isValid, validationMessages })
             }}
@@ -78,8 +68,8 @@ const Template: Story<FSTypes.Form> = (props) => {
                         </FS.Input.Text>
                     </FS.Field>
                     <FS.Field>
-                        <FS.Input.Text name={"secondname"}>
-                            <FS.Validation.Field.Email />
+                        <FS.Input.Text name={"secondname"} disabled>
+                            <FS.Validation.Field.Email type={FSTypes.Validation.Types.Warning} />
                         </FS.Input.Text>
                     </FS.Field>
                 </FS.Group>
@@ -90,7 +80,65 @@ const Template: Story<FSTypes.Form> = (props) => {
                 </FS.Field>
             </FS.Group>
             <FS.Field>
-                <FS.Input.Text name={"street"} />
+                <FS.Input.Text name={"street"}>
+                    <FS.Validation.Field.Email type={FSTypes.Validation.Types.Warning} />
+                </FS.Input.Text>
+            </FS.Field>
+
+            <div>Fields by state</div>
+
+            <FS.Field>
+                <FS.Input.Text name={"default"} />
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"disabled"} disabled />
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"readOnly"} readOnly />
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"error"}>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"warning"}>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"success"}>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"hint"}>
+                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"multiple1"}>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
+                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"multiple2"} disabled>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
+                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
+                </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Text name={"multiple3"} readOnly>
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
+                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
+                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
+                </FS.Input.Text>
             </FS.Field>
             <FS.Button />
         </FS.Form>
@@ -104,7 +152,17 @@ Basic.args = {
             firstname: "Firstname",
             secondname: "Secondname",
             lastname: "Lastname",
-            street: "Street"
+            street: "Street",
+            default: "Default",
+            disabled: "Disabled",
+            readOnly: "ReadOnly",
+            error: "Error",
+            warning: "Warning",
+            success: "Success",
+            hint: "Hint",
+            multiple1: "Multiple (Error/Warning/Success/Hint)",
+            multiple2: "Multiple (Disabled/Error/Warning/Success/Hint)",
+            multiple3: "Multiple (ReadOnly/Error/Warning/Success/Hint)"
         },
         buttons: {
             submit: "Send"

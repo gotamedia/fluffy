@@ -42,7 +42,10 @@ interface Colors {
 
 interface Alert {
     error: Error,
-    info: Error
+    warning: Error,
+    success: Error,
+    info: Error,
+    hint: Error
 }
 
 interface Error {

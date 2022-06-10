@@ -1,7 +1,13 @@
 import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
-import { FormData, Validation } from "../types"
+
+const ValidationStateOrder: Types.Validation.Types[] = [
+    Types.Validation.Types.Error,
+    Types.Validation.Types.Warning,
+    Types.Validation.Types.Success,
+    Types.Validation.Types.Hint
+]
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, i18n, onChange, value } = props
@@ -22,7 +28,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const addFieldValidation = useCallback((
         validationName: string,
         fieldName: string,
-        validationFunction: Validation.Field.Function
+        validationFunction: Types.Validation.Field.Function
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFieldValidation,
@@ -33,7 +39,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const addFormValidation = useCallback((
         validationName: string,
         involvedFieldNames: string[],
-        validationFunction: Validation.Form.Function
+        validationFunction: Types.Validation.Form.Function
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFormValidation,
@@ -84,6 +90,20 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
 
     const getFieldValidationMessages = useCallback((fieldName: string) => {
         return state?.formData?.[fieldName]?.validationMessages || []
+    }, [state?.formData])
+
+    const getHighestValidationMessageType = useCallback((fieldName: string) => {
+        return (state?.formData?.[fieldName]?.validationMessages || [])
+            .reduce<Types.Validation.Types | undefined>((highest, current: Types.Validation.Message) => {
+                if (!highest) {
+                    return current?.type
+                }
+
+                return highest &&
+                    ValidationStateOrder.indexOf(highest as Types.Validation.Types) <= ValidationStateOrder.indexOf(current?.type)
+                        ? highest
+                        : current?.type
+            }, undefined)
     }, [state?.formData])
 
     const getFieldValue = useCallback((fieldName: string) => {
@@ -164,7 +184,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         return validationMessages
     }, [addValidationMessages, state.validations])
 
-    const validateForm = useCallback((formData: FormData) => {
+    const validateForm = useCallback((formData: Types.FormData) => {
         const fieldValidationMessages = state.validations.field.reduce<Types.Validation.Message[]>((
             validationResult,
             validation
@@ -207,6 +227,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         getButtonLabel,
         getFieldLabel,
         getFieldValidationMessages,
+        getHighestValidationMessageType,
         getFieldValue,
         getFormData,
         removeFieldValidation,

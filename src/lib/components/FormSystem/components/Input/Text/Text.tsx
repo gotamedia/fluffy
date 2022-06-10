@@ -1,15 +1,19 @@
+import useTheme from "@hooks/useTheme"
 import React, { useCallback, useContext, useEffect } from "react"
 import * as Types from "./types"
+import * as Styled from "./style"
 import * as Contexts from "../../../contexts"
-import Input from "@components/Input"
 
 const Text: Types.TextComponent = (props) => {
-    const { name, children } = props
+    const { children, disabled, name, readOnly } = props
+
+    const theme = useTheme()
 
     const {
         clearValidationMessages,
         getFieldValue,
-        setFieldValue
+        setFieldValue,
+        getHighestValidationMessageType
     } = useContext(Contexts.FormContext)
     const {
         fieldName,
@@ -45,13 +49,16 @@ const Text: Types.TextComponent = (props) => {
 
     return (
         <>
-            <Input
-                name={name}
+            <Styled.Text
+                $theme={theme}
+                disabled={disabled}
                 id={name}
+                name={name}
+                readOnly={readOnly}
+                validationType={getHighestValidationMessageType(name)}
                 value={String(getFieldValue(name) || "")}
                 onChange={onChange}
                 onBlur={onBlur}
-                style={{ minWidth: 0 }}
             />
             {children}
         </>

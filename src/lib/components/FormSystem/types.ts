@@ -1,4 +1,5 @@
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
+import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
 import { SameValueI18n } from "./components/Validation/Form/SameValue/i18nTypes"
 import React from "react"
 import { SubmitButtonProps as Button } from "./components/Button/types"
@@ -37,6 +38,7 @@ namespace FormContext {
         validations?: {
             field?: {
                 email?: EmailI18n
+                required?: RequiredI18n
             }
             form?: {
                 sameValue?: SameValueI18n
@@ -70,6 +72,7 @@ namespace FormContext {
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
+        getHighestValidationMessageType: (fieldName: string) => Validation.Types | undefined
         getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFormData: () => FormData
         removeFieldValidation: (validationName: string) => void
@@ -141,8 +144,10 @@ namespace FieldContext {
 
 namespace Validation {
     export enum Types {
-        Error = "Error",
-        Warning = "Warning"
+        Error = "error",
+        Warning = "warning",
+        Success = "success",
+        Hint = "hint"
     }
 
     export interface Message {

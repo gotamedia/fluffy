@@ -3,17 +3,24 @@ import { StyledValidationMessageProps } from "../types"
 import * as Types from "../../../../types"
 
 const typeVariants = css<StyledValidationMessageProps>`
-    ${({ $type }) => {
-        // TODO theme colors
+    ${({ $type, $theme }) => {
         switch($type) {
-            case Types.Validation.Types.Warning:
-                return css`
-                    color: #ffaa00;
-                `
-            default:
             case Types.Validation.Types.Error:
                 return css`
-                    color: #df0000;
+                    color: ${$theme.colors.alert.error.text};
+                `
+            case Types.Validation.Types.Warning:
+                return css`
+                    color: ${$theme.colors.alert.warning.text};
+                `
+            case Types.Validation.Types.Success:
+                return css`
+                    color: ${$theme.colors.alert.success.text};
+                `
+            default:
+            case Types.Validation.Types.Hint:
+                return css`
+                    color: ${$theme.colors.alert.hint.text};
                 `
         }
     }}

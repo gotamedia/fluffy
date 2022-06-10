@@ -3,6 +3,9 @@
     "field": {
       "email": {
         "text": "\"${value}\" is no valid email address!"
+      },
+      "required": {
+        "text": "\"${label}\" is required!"
       }
     },
     "form": {
