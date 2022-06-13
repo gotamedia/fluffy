@@ -50,7 +50,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
 
     const clearValidationMessages = useCallback((
         fieldName: string,
-        types: Types.Validation.Types[] | "all" = [Types.Validation.Types.Error]
+        types: Types.Validation.Types[] | "all" = [
+            Types.Validation.Types.Error,
+            Types.Validation.Types.Warning,
+            Types.Validation.Types.Success
+        ]
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.ClearValidationMessages,
@@ -59,7 +63,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [])
 
     const clearAllValidationMessages = useCallback((
-        types: Types.Validation.Types[] | "all" = [Types.Validation.Types.Error]
+        types: Types.Validation.Types[] | "all" = [
+            Types.Validation.Types.Error,
+            Types.Validation.Types.Warning,
+            Types.Validation.Types.Success
+        ]
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.ClearAllValidationMessages,
