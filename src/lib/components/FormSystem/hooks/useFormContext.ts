@@ -1,13 +1,7 @@
+import * as FSTypes from "@components/FormSystem/types"
 import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
-
-const ValidationStateOrder: Types.Validation.Types[] = [
-    Types.Validation.Types.Error,
-    Types.Validation.Types.Warning,
-    Types.Validation.Types.Success,
-    Types.Validation.Types.Hint
-]
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, i18n, onChange, value } = props
@@ -93,6 +87,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [state?.formData])
 
     const getHighestValidationMessageType = useCallback((fieldName: string) => {
+        const validationStateOrder: Types.Validation.Types[] = Object.values(FSTypes.Validation.Types)
+
         return (state?.formData?.[fieldName]?.validationMessages || [])
             .reduce<Types.Validation.Types | undefined>((highest, current: Types.Validation.Message) => {
                 if (!highest) {
@@ -100,7 +96,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 }
 
                 return highest &&
-                    ValidationStateOrder.indexOf(highest as Types.Validation.Types) <= ValidationStateOrder.indexOf(current?.type)
+                    validationStateOrder.indexOf(highest as Types.Validation.Types) <= validationStateOrder.indexOf(current?.type)
                         ? highest
                         : current?.type
             }, undefined)

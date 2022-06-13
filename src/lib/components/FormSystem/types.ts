@@ -67,6 +67,7 @@ namespace FormContext {
         addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
         clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
         clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
+        formData: FormData
         i18n: I18n
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
@@ -143,6 +144,9 @@ namespace FieldContext {
 }
 
 namespace Validation {
+    /**
+     * Those types are in a priority order from important to unimportant
+     */
     export enum Types {
         Error = "error",
         Warning = "warning",
@@ -155,6 +159,10 @@ namespace Validation {
         involvedFieldNames?: string[],
         type: Types,
         text?: string
+    }
+
+    export interface Groups {
+        [key: string]: Validation.Message[]
     }
 
     export namespace Field {
