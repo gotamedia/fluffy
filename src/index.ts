@@ -43,6 +43,9 @@ export { default as useTheme } from '@hooks/useTheme'
 export * from '@hooks/useScroll'
 export { default as useScroll } from '@hooks/useScroll'
 
+export * from '@hooks/useMounted'
+export { default as useMounted } from '@hooks/useMounted'
+
 // <==== Hooks
 
 
@@ -86,5 +89,8 @@ export { default as Skeleton } from '@components/Skeleton'
 
 export * from '@components/Card'
 export { default as Card } from '@components/Card'
+
+export * from '@components/Portal'
+export { default as Portal } from '@components/Portal'
 
 // <==== Components
