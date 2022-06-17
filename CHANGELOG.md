@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.46](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.45...v0.7.46) (2022-06-14)
+
+
+### Features
+
+* Added Portal component ([905420b](http://bitbucket.org/gotamedia/fluffy/commit/905420b94433b99e2c45bf3e75e759068b1a9acc))
+* Added useMounted hook ([2dc3e86](http://bitbucket.org/gotamedia/fluffy/commit/2dc3e86890211c3122f6de9aeefa74214808487b))
+
 ### [0.7.45](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.44...v0.7.45) (2022-06-03)
 
 
