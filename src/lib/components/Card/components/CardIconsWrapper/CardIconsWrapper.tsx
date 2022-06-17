@@ -9,12 +9,16 @@ const CardIconsWrapper: Types.CardIconsWrapperComponent = (props) => {
         ...DOMProps
     } = props
 
-    const { vertical } = useCard()
+    const {
+        vertical,
+        compact
+    } = useCard()
 
     return (
         <Styled.Wrapper
             {...DOMProps}
             $vertical={vertical}
+            $compact={compact}
         >
             {children}
         </Styled.Wrapper>

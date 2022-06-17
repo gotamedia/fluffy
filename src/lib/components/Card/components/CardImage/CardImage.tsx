@@ -16,7 +16,8 @@ const CardImage: Types.CardImageComponent = (props) => {
     const {
         loading,
         variant,
-        vertical
+        vertical,
+        compact
     } = useCard()
 
     return (
@@ -24,6 +25,7 @@ const CardImage: Types.CardImageComponent = (props) => {
             style={style}
             className={className}
             $vertical={vertical}
+            $compact={compact}
         >
             {
                 loading ? (

@@ -14,11 +14,15 @@ const CardHeadline: Types.CardHeadlineComponent = (props) => {
 
     const {
         loading,
-        variant
+        variant,
+        compact
     } = useCard()
 
     return (
-        <Styled.Headline {...DOMProps}>
+        <Styled.Headline
+            {...DOMProps}
+            $compact={compact}
+        >
             {
                 loading ? (
                     <Skeleton

@@ -4,7 +4,8 @@ const defaultValue = {
     size: 'normal',
     variant: 'light',
     loading: false,
-    vertical: false
+    vertical: false,
+    compact: false
 }
 
 const CardContext = createContext(defaultValue)

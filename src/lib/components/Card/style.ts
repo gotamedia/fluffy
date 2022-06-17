@@ -10,7 +10,12 @@ const verticalStyle = css`
     flex-direction: column;
 `
 
-const Wrapper = styled.div<{ $size: CardProps['size'], $variant: CardProps['variant'], $vertical: CardProps['vertical']}>`
+const Wrapper = styled.div<{
+    $size: CardProps['size'],
+    $variant: CardProps['variant'],
+    $vertical: CardProps['vertical'],
+    $compact: CardProps['compact']
+}>`
     padding: 6px;
     border-radius: 16px;
     display: flex;
@@ -21,6 +26,10 @@ const Wrapper = styled.div<{ $size: CardProps['size'], $variant: CardProps['vari
 
     ${themeHelpers.isSmallDevice(verticalStyle)};
     ${({ $vertical }) => $vertical && verticalStyle};
+
+    ${({ $compact }) => $compact && css`
+        padding: 0;
+    `};
 
     ${({ $size }) => sizes[$size || 'normal']};
     ${({ $variant }) => variants[$variant || 'light']};

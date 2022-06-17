@@ -33,7 +33,8 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     size?: CardSizeType,
     variant?: CardVariantType,
     loading?: boolean,
-    vertical?: boolean
+    vertical?: boolean,
+    compact?: boolean
 }
 
 export type CardComponent = FC<CardProps>

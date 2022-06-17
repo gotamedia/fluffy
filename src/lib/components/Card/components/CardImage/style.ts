@@ -10,7 +10,7 @@ const verticalStyle = css`
     }
 `
 
-const Wrapper = styled.div<{ $vertical: CardProps['vertical'] }>`
+const Wrapper = styled.div<{ $vertical: CardProps['vertical'], $compact: CardProps['compact'] }>`
     width: 200px;
     height: auto;
     margin: 10px;
@@ -23,6 +23,10 @@ const Wrapper = styled.div<{ $vertical: CardProps['vertical'] }>`
     ${themeHelpers.isMediumDevice(css`
         width: 200px;
     `)};
+
+    ${({ $compact }) => $compact && css`
+        margin: 5px;
+    `};
 
     ${themeHelpers.isSmallDevice(verticalStyle)};
     ${({ $vertical }) => $vertical && verticalStyle};
