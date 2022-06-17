@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.47](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.46...v0.7.47) (2022-06-17)
+
+
+### Features
+
+* **style:** Added compact prop to Card component to render in compact view ([05308f1](http://bitbucket.org/gotamedia/fluffy/commit/05308f16729e0a718dacf03db40ea52b62dd1adc))
+* **style:** Added vertical prop to Card component to force rendering in a compact vertical card ([52a8c59](http://bitbucket.org/gotamedia/fluffy/commit/52a8c59fe1d4899193ea56515695668150c2a14e))
+
 ### [0.7.46](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.45...v0.7.46) (2022-06-14)
 
 
