@@ -1,7 +1,16 @@
 import styled, { css } from 'styled-components'
 import themeHelpers from '@utils/theme/helpers'
 
-const Wrapper = styled.div`
+import type { CardProps } from '@components/Card/types'
+
+const verticalStyle = css`
+    &&& {
+        width: auto;
+        height: 150px;
+    }
+`
+
+const Wrapper = styled.div<{ $vertical: CardProps['vertical'] }>`
     width: 200px;
     height: auto;
     margin: 10px;
@@ -13,12 +22,10 @@ const Wrapper = styled.div`
 
     ${themeHelpers.isMediumDevice(css`
         width: 200px;
-    `)}
+    `)};
 
-    ${themeHelpers.isSmallDevice(css`
-        width: auto;
-        height: 150px;
-    `)}
+    ${themeHelpers.isSmallDevice(verticalStyle)};
+    ${({ $vertical }) => $vertical && verticalStyle};
 `
 
 const Image = styled.img`

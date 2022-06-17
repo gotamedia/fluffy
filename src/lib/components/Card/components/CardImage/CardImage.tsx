@@ -15,13 +15,15 @@ const CardImage: Types.CardImageComponent = (props) => {
 
     const {
         loading,
-        variant
+        variant,
+        vertical
     } = useCard()
 
     return (
         <Styled.Wrapper
             style={style}
             className={className}
+            $vertical={vertical}
         >
             {
                 loading ? (

@@ -6,7 +6,11 @@ import * as variants from './variants'
 
 import type { CardProps } from './types'
 
-const Wrapper = styled.div<{ $size: CardProps['size'], $variant: CardProps['variant']}>`
+const verticalStyle = css`
+    flex-direction: column;
+`
+
+const Wrapper = styled.div<{ $size: CardProps['size'], $variant: CardProps['variant'], $vertical: CardProps['vertical']}>`
     padding: 6px;
     border-radius: 16px;
     display: flex;
@@ -15,9 +19,8 @@ const Wrapper = styled.div<{ $size: CardProps['size'], $variant: CardProps['vari
     background: ${({ theme }) => theme.colors.white};
     box-shadow: ${({ theme }) => theme.boxShadows[3]};
 
-    ${themeHelpers.isSmallDevice(css`
-        flex-direction: column;
-    `)}
+    ${themeHelpers.isSmallDevice(verticalStyle)};
+    ${({ $vertical }) => $vertical && verticalStyle};
 
     ${({ $size }) => sizes[$size || 'normal']};
     ${({ $variant }) => variants[$variant || 'light']};

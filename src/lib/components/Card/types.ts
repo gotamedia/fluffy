@@ -32,7 +32,8 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     size?: CardSizeType,
     variant?: CardVariantType,
-    loading?: boolean
+    loading?: boolean,
+    vertical?: boolean
 }
 
 export type CardComponent = FC<CardProps>

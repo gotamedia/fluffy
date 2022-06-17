@@ -3,7 +3,8 @@ import { createContext, useContext } from 'react'
 const defaultValue = {
     size: 'normal',
     variant: 'light',
-    loading: false
+    loading: false,
+    vertical: false
 }
 
 const CardContext = createContext(defaultValue)

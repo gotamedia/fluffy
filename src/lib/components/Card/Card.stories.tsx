@@ -106,6 +106,7 @@ export default {
     args: {
         size: 'normal',
         variant: 'light',
-        loading: false
+        loading: false,
+        vertical: false
     }
 } as Meta<typeof Card>

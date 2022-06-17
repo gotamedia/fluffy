@@ -8,6 +8,7 @@ const Card: Types.CardComponent = (props) => {
         size = 'normal',
         variant = 'light',
         loading = false,
+        vertical = false,
         children,
         ...DOMProps
     } = props
@@ -15,7 +16,8 @@ const Card: Types.CardComponent = (props) => {
     const context = {
         size: size,
         variant: variant,
-        loading: loading
+        loading: loading,
+        vertical: vertical
     }
 
     return (
@@ -24,6 +26,7 @@ const Card: Types.CardComponent = (props) => {
                 {...DOMProps}
                 $size={size}
                 $variant={variant}
+                $vertical={vertical}
             >
                 {children}
             </Styled.Wrapper>
