@@ -3,13 +3,6 @@ import themeHelpers from '@utils/theme/helpers'
 
 import type { CardProps } from '@components/Card/types'
 
-const verticalStyle = css`
-    &&& {
-        width: auto;
-        height: 150px;
-    }
-`
-
 const Wrapper = styled.div<{ $vertical: CardProps['vertical'], $compact: CardProps['compact'] }>`
     width: 200px;
     height: auto;
@@ -28,8 +21,17 @@ const Wrapper = styled.div<{ $vertical: CardProps['vertical'], $compact: CardPro
         margin: 5px;
     `};
 
-    ${themeHelpers.isSmallDevice(verticalStyle)};
-    ${({ $vertical }) => $vertical && verticalStyle};
+    ${themeHelpers.isSmallDevice(css`
+        width: auto;
+        height: 150px;
+    `)};
+
+    ${({ $vertical }) => $vertical && css`
+        &&& {
+            width: auto;
+            height: 150px;
+        }
+    `};
 `
 
 const Image = styled.img`
