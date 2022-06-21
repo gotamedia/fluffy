@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.48](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.47...v0.7.48) (2022-06-21)
+
+
+### Bug Fixes
+
+* **style:** Fixed Card's Image style for small views ([c62c3e0](http://bitbucket.org/gotamedia/fluffy/commit/c62c3e0f72dbff9fe2a232a9cb59812e76bc0a1f))
+
 ### [0.7.47](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.46...v0.7.47) (2022-06-17)
 
 
