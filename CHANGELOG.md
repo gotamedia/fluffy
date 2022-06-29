@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.49](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.48...v0.7.49) (2022-06-29)
+
 ### [0.7.48](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.47...v0.7.48) (2022-06-21)
 
 
