@@ -2,6 +2,66 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.7.49](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.48...v0.7.49) (2022-06-29)
+
+### [0.7.48](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.47...v0.7.48) (2022-06-21)
+
+
+### Bug Fixes
+
+* **style:** Fixed Card's Image style for small views ([c62c3e0](http://bitbucket.org/gotamedia/fluffy/commit/c62c3e0f72dbff9fe2a232a9cb59812e76bc0a1f))
+
+### [0.7.47](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.46...v0.7.47) (2022-06-17)
+
+
+### Features
+
+* **style:** Added compact prop to Card component to render in compact view ([05308f1](http://bitbucket.org/gotamedia/fluffy/commit/05308f16729e0a718dacf03db40ea52b62dd1adc))
+* **style:** Added vertical prop to Card component to force rendering in a compact vertical card ([52a8c59](http://bitbucket.org/gotamedia/fluffy/commit/52a8c59fe1d4899193ea56515695668150c2a14e))
+
+### [0.7.46](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.45...v0.7.46) (2022-06-14)
+
+
+### Features
+
+* Added Portal component ([905420b](http://bitbucket.org/gotamedia/fluffy/commit/905420b94433b99e2c45bf3e75e759068b1a9acc))
+* Added useMounted hook ([2dc3e86](http://bitbucket.org/gotamedia/fluffy/commit/2dc3e86890211c3122f6de9aeefa74214808487b))
+
+### [0.7.45](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.44...v0.7.45) (2022-06-03)
+
+
+### Features
+
+* Added useScroll hook ([b6d0cc5](http://bitbucket.org/gotamedia/fluffy/commit/b6d0cc57a7c61a92357bd3cf3b10d5fc720a3759))
+
+### [0.7.44](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.43...v0.7.44) (2022-06-01)
+
+
+### Features
+
+* added Card component ([09122e0](http://bitbucket.org/gotamedia/fluffy/commit/09122e0de213e68deec9c139746b85b238aba382))
+* added CardParagraph component ([a2a6f8a](http://bitbucket.org/gotamedia/fluffy/commit/a2a6f8a0f82364c681ffbd8c9379a48267c9d578))
+* added Skeleton component ([45f3e55](http://bitbucket.org/gotamedia/fluffy/commit/45f3e5573c3274a98ffcafba6c5fdadf23931919))
+
+
+### Bug Fixes
+
+* exported Skeleton/Card components ([1c85644](http://bitbucket.org/gotamedia/fluffy/commit/1c85644519acf8dfb79b4ab985c8dbba2baf0142))
+* exported ThemeContext along with ThemeProvider ([9d51bfe](http://bitbucket.org/gotamedia/fluffy/commit/9d51bfe2e91bd112844f1164a5a3a33c75ce5d46))
+
+### [0.7.43](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.42...v0.7.43) (2022-05-20)
+
+
+### Features
+
+* added ButtonGroup component ([33597b4](http://bitbucket.org/gotamedia/fluffy/commit/33597b496ad3fa60aa5537739e25bbc42199ea0c))
+* added useful hooks/utils ([c6f8308](http://bitbucket.org/gotamedia/fluffy/commit/c6f830838de84da0fe63b5952be8666752b5ec9a))
+
+
+### Bug Fixes
+
+* exported hooks ([3a3b168](http://bitbucket.org/gotamedia/fluffy/commit/3a3b168930859f4b7d00515084b0a77f4d292616))
+
 ### [0.7.42](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.41...v0.7.42) (2022-05-17)
 
 

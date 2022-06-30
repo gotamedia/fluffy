@@ -29,6 +29,7 @@ interface Fonts {
 }
 
 interface Colors {
+    brand: string,
     grey: string[],
     border: string,
     white: string,

@@ -1,3 +1,6 @@
-import type { EffectCallback } from 'react'
+import type {
+    EffectCallback,
+    DependencyList
+} from 'react'
 
-export type UseDeepCompareEffect = <Type = unknown>(callback: EffectCallback, dependencies: ReadonlyArray<Type>) => void
+export type UseDeepCompareEffect = (callback: EffectCallback, dependencies: DependencyList) => void
