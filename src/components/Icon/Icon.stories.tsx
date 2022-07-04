@@ -1,16 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Icon, { Icons } from './'
+import Icon, {
+    Icons,
+    IconSizes
+} from './'
+
 import * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
-
-export default {
-    title: 'Components/Icon',
-    component: Icon,
-    argTypes: {
-    },
-} as Meta<typeof Icon>
 
 const Basic: Story<Types.IconProps> = (props) => {
     return (
@@ -61,3 +58,13 @@ export {
     BasicStory,
     AllIcons
 }
+
+export default {
+    title: 'Components/Icon',
+    component: Icon,
+    argTypes: {},
+    args: {
+        icon: Icons.Bank,
+        size: IconSizes.Normal
+    }
+} as Meta<typeof Icon>

@@ -1,7 +1,4 @@
-import {
-    useEffect,
-    useState
-} from 'react'
+import { useMemo } from 'react'
 
 import * as Icons from '@root/icons'
 
@@ -23,19 +20,16 @@ const Icon: FC<Types.IconProps> = (props) => {
         ...filteredProps
     } = props
 
-    const [IconCompoennt, setIconCompoennt] = useState<Types.IconComponent>()
-
-    useEffect(() => {
+    const IconCompoennt = useMemo<Types.IconComponent | null>(() => {
         if (icon) {            
             try {
-                const iconComonent = Icons[icon] as Types.IconComponent
-
-                if (iconComonent) {
-                    setIconCompoennt(() => iconComonent)
-                }
+                return Icons[icon] as Types.IconComponent
             } catch(error) {
                 console.warn('Icon not found, could not find icon with name: ', icon)
+                return null
             }
+        } else {
+            return null
         }
     }, [icon])
 
