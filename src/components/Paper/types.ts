@@ -12,7 +12,8 @@ import {
 export type PaperProps = {
     className?: string,
     image?: ImgHTMLAttributes<HTMLImageElement>,
-    buttons?: ReactNode
+    buttons?: ReactNode,
+    children?: ReactNode
 }
 
 export type PaperComponent = FC<PaperProps>
