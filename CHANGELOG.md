@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.49...v0.8.0) (2022-07-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed Rollup and added a custom build script to compile Fluffy and each module individually to reduce bundle size of the app who utilising Fluffy
+
+### Bug Fixes
+
+* Better Icon rendering to allow server-side to render the requested icon ([54c15c9](http://bitbucket.org/gotamedia/fluffy/commit/54c15c9ceb45c330a5df9bdbdb761b413dfc23fd))
+* **type:** Updated Paper children type ([8619cf2](http://bitbucket.org/gotamedia/fluffy/commit/8619cf227de79f73e05d496293e3185604dde68c))
+
+
+### ci
+
+* Removed Rollup and added a custom build script to compile Fluffy and each module individually to reduce bundle size of the app who utilising Fluffy ([269f903](http://bitbucket.org/gotamedia/fluffy/commit/269f903ae82a5b203487f51e4eb828e7e0353b79))
+
 ### [0.7.49](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.48...v0.7.49) (2022-06-29)
 
 ### [0.7.48](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.47...v0.7.48) (2022-06-21)
