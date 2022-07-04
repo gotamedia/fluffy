@@ -1,22 +1,13 @@
 // Utils ====>
 
-export {
-    theme,
-    getTheme,
-} from '@utils/theme'
-
-export * from '@components/Button'
-export { default as Button } from '@components/Button'
+export * from '@utils/theme'
 
 // <==== Utils
 
 
 // Contexts ====>
 
-export {
-    ThemeContext,
-    ThemeProvider
-} from '@root/contexts/ThemeContext'
+export * from '@root/contexts/ThemeContext'
 
 // <==== Contexts
 
@@ -52,6 +43,9 @@ export { default as useMounted } from '@hooks/useMounted'
 
 // Components ====>
 
+export * from '@components/Button'
+export { default as Button } from '@components/Button'
+
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
 
@@ -75,12 +69,6 @@ export { default as Textarea } from '@components/Textarea'
 
 export * from '@components/UploadButton'
 export { default as UploadButton } from '@components/UploadButton'
-
-export * from '@contexts/ThemeContext'
-export { default as ThemeContext } from '@contexts/ThemeContext'
-
-export * from '@hooks/useDeepCompareCallback'
-export { default as useDeepCompareCallback } from '@hooks/useDeepCompareCallback'
 
 export * from '@components/ButtonGroup'
 export { default as ButtonGroup } from '@components/ButtonGroup'

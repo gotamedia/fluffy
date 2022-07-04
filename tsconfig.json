@@ -6,6 +6,7 @@
         "skipLibCheck": true,
         "jsx": "react-jsx",
         "module": "esnext",
+        "outDir": "dist",
         "declaration": true,
         "sourceMap": true,
         "target": "es5",
@@ -41,6 +42,7 @@
     "exclude": [
         "dist",
         "src/icons",
+        "src/utils/tests",
         "node_modules",
         "src/**/*.test.tsx",
         "src/**/*.stories.tsx"
