@@ -8,7 +8,7 @@
         "module": "esnext",
         "outDir": "dist",
         "declaration": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "target": "es5",
         "moduleResolution": "node",
         "emitDeclarationOnly": false,
