@@ -28,16 +28,22 @@ const useFieldContext = (): Types.FieldContext.Value => {
     }, [getFieldLabel, state?.fieldName])
 
     const addValidation = useCallback((validationName: string, validationFunction: Types.Validation.Field.Function) => {
-        addFieldValidation(validationName, String(state?.fieldName), validationFunction)
+        if (state?.fieldName) {
+            addFieldValidation(`${state?.fieldName}_${validationName}`, String(state?.fieldName), validationFunction)
+        }
     }, [addFieldValidation, state?.fieldName])
 
     const initialize = useCallback((fieldName: string, defaultValue: FormDataValue) => {
-        initializeField(fieldName, defaultValue)
+        if (fieldName) {
+            initializeField(fieldName, defaultValue)
+        }
     }, [initializeField])
 
     const removeValidation = useCallback((validationName: string) => {
-        removeFieldValidation(validationName)
-    }, [removeFieldValidation])
+        if (state?.fieldName) {
+            removeFieldValidation(String(state.fieldName), `${state?.fieldName}_${validationName}`)
+        }
+    }, [removeFieldValidation, state.fieldName])
 
     const setIsRequired = useCallback((isRequired: boolean) => {
         dispatch({ type: Types.FieldContext.ReducerActionTypes.SetIsRequired, payload: isRequired })

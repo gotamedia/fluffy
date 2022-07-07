@@ -118,8 +118,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         return state?.formData
     }, [state?.formData])
 
-    const removeFieldValidation = useCallback((validationName: string) => {
-        dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFieldValidation, payload: { validationName } })
+    const removeFieldValidation = useCallback((fieldName: string, validationName: string) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.RemoveFieldValidation,
+            payload: { fieldName, validationName }
+        })
     }, [])
 
     const removeFormValidation = useCallback((validationName: string) => {

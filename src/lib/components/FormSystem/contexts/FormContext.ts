@@ -7,6 +7,7 @@ const FormContext = React.createContext<Types.FormContext.Value>({
     addValidationMessages: () => { },
     clearAllValidationMessages: () => { },
     clearValidationMessages: () => { },
+    formData: {},
     i18n: {},
     initializeField: () => { },
     getButtonLabel: () => "",
@@ -20,7 +21,8 @@ const FormContext = React.createContext<Types.FormContext.Value>({
     setFieldValue: () => { },
     terminateField: () => { },
     validateField: () => [],
-    validateForm: () => []
+    validateForm: () => [],
+    validations: { field: [], form: [] }
 })
 
 export default FormContext

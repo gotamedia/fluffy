@@ -53,7 +53,7 @@ namespace FormContext {
         value?: FormData
     }
 
-    export interface Value {
+    export interface Value extends ReducerState {
         addFieldValidation: (
             validationName: string,
             fieldName: string,
@@ -67,8 +67,6 @@ namespace FormContext {
         addValidationMessages: (fieldName: string, validationMessages: Validation.Message[]) => void
         clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
         clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
-        formData: FormData
-        i18n: I18n
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
@@ -76,7 +74,7 @@ namespace FormContext {
         getHighestValidationMessageType: (fieldName: string) => Validation.Types | undefined
         getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFormData: () => FormData
-        removeFieldValidation: (validationName: string) => void
+        removeFieldValidation: (fieldName: string, validationName: string) => void
         removeFormValidation: (validationName: string) => void
         setFieldValue: (fieldName: string, value: FormDataValue) => void
         terminateField: (fieldName: string) => void

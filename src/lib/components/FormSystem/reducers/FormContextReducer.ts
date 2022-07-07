@@ -124,7 +124,10 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                 validations: {
                     ...state?.validations,
                     field: (state?.validations?.field || [])?.filter(
-                        (validation) => validation.validationName !== action?.payload?.validationName
+                        (validation) => (
+                            validation.fieldName !== action?.payload?.fieldName ||
+                            validation.validationName !== action?.payload?.validationName
+                        )
                     )
                 }
             }

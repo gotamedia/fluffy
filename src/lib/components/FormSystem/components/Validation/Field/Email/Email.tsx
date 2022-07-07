@@ -1,7 +1,8 @@
 import * as Contexts from "@components/FormSystem/contexts"
 import { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
-import { useCallback, useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
+import { v4 as uuidv4 } from "uuid"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
 import defaultI18n from "../../../../sv.json"
@@ -14,6 +15,8 @@ const Email: Types.EmailComponent = (props) => {
         type = FSTypes.Validation.Types.Error,
         i18n
     } = props
+
+    const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
     const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
@@ -36,12 +39,12 @@ const Email: Types.EmailComponent = (props) => {
     }, [formI18n?.validations?.field?.email?.text, i18n?.text, label, type])
 
     useEffect(() => {
-        addValidation(validationName, validation)
+        addValidation(`${validationName}_${uuid}`, validation)
 
         return () => {
-            removeValidation(validationName)
+            removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, validation])
+    }, [addValidation, removeValidation, uuid, validation])
 
     return null
 }

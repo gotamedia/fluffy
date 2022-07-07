@@ -12,8 +12,8 @@ const Text: Types.TextComponent = (props) => {
     const {
         clearValidationMessages,
         getFieldValue,
-        setFieldValue,
-        getHighestValidationMessageType
+        getHighestValidationMessageType,
+        setFieldValue
     } = useContext(Contexts.FormContext)
     const {
         fieldName,
@@ -23,13 +23,16 @@ const Text: Types.TextComponent = (props) => {
         validate
     } = useContext(Contexts.FieldContext)
 
+    // separate initialize and terminate to avoid unwanted additional executions
     useEffect(() => {
         initialize(name, "")
+    }, [initialize, name])
 
+    useEffect(() => {
         return () => {
             terminate(name)
         }
-    }, [initialize, name, terminate])
+    }, [terminate, name])
 
     useEffect(() => {
         if (name !== fieldName) {

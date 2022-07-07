@@ -11,10 +11,10 @@ const Custom: Types.CustomComponent = (props) => {
     const { addValidation, removeValidation } = useContext(Contexts.FieldContext)
 
     useEffect(() => {
-        addValidation("custom_field_" + uuid, validationFunction)
+        addValidation(`custom_field_${uuid}`, validationFunction)
 
         return () => {
-            removeValidation("custom_field_" + uuid)
+            removeValidation(`custom_field_${uuid}`)
         }
     }, [addValidation, removeValidation, uuid, validationFunction])
 

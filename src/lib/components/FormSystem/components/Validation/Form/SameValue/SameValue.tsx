@@ -1,6 +1,7 @@
 import defaultI18n from "@components/FormSystem/sv.json"
 import sprintf from "@utils/sprintf"
-import { useCallback, useContext, useEffect } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
+import { v4 as uuidv4 } from "uuid"
 import * as Contexts from "../../../../contexts"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
@@ -14,6 +15,8 @@ const SameValue: Types.SameValueComponent = (props) => {
         type = FSTypes.Validation.Types.Error,
         i18n
     } = props
+
+    const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n, getFieldLabel } = useContext(Contexts.FormContext)
     const { addFormValidation, removeFormValidation } = useContext(Contexts.FormContext)
@@ -77,12 +80,12 @@ const SameValue: Types.SameValueComponent = (props) => {
     ])
 
     useEffect(() => {
-        addFormValidation(validationName, [fieldAName, fieldBName], validation)
+        addFormValidation(`${validationName}_${uuid}`, [fieldAName, fieldBName], validation)
 
         return () => {
-            removeFormValidation(validationName)
+            removeFormValidation(`${validationName}_${uuid}`)
         }
-    }, [addFormValidation, fieldAName, fieldBName, removeFormValidation, validation])
+    }, [addFormValidation, fieldAName, fieldBName, removeFormValidation, uuid, validation])
 
     return null
 }
