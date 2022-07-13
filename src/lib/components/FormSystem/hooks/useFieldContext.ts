@@ -1,5 +1,5 @@
 import * as Contexts from "@components/FormSystem/contexts"
-import React, { useCallback, useContext, useEffect, useMemo } from "react"
+import React, { useCallback, useContext, useMemo } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
 import { FormDataValue } from "../types"
@@ -20,16 +20,9 @@ const useFieldContext = (): Types.FieldContext.Value => {
         { }
     )
 
-    useEffect(() => {
-        dispatch({
-            type: Types.FieldContext.ReducerActionTypes.SetLabel,
-            payload: getFieldLabel(state?.fieldName as string)
-        })
-    }, [getFieldLabel, state?.fieldName])
-
-    const addValidation = useCallback((validationName: string, validationFunction: Types.Validation.Field.Function) => {
+    const addValidation = useCallback((validationId: string, validationFunction: Types.Validation.Field.Function) => {
         if (state?.fieldName) {
-            addFieldValidation(`${state?.fieldName}_${validationName}`, String(state?.fieldName), validationFunction)
+            addFieldValidation(`${state?.fieldName}_${validationId}`, String(state?.fieldName), validationFunction)
         }
     }, [addFieldValidation, state?.fieldName])
 
@@ -39,9 +32,9 @@ const useFieldContext = (): Types.FieldContext.Value => {
         }
     }, [initializeField])
 
-    const removeValidation = useCallback((validationName: string) => {
+    const removeValidation = useCallback((validationId: string) => {
         if (state?.fieldName) {
-            removeFieldValidation(String(state.fieldName), `${state?.fieldName}_${validationName}`)
+            removeFieldValidation(String(state.fieldName), `${state?.fieldName}_${validationId}`)
         }
     }, [removeFieldValidation, state.fieldName])
 
@@ -50,8 +43,14 @@ const useFieldContext = (): Types.FieldContext.Value => {
     }, [])
 
     const setFieldName = useCallback((fieldName: string) => {
-        dispatch({ type: Types.FieldContext.ReducerActionTypes.SetFieldName, payload: fieldName })
-    }, [])
+        dispatch({
+            type: Types.FieldContext.ReducerActionTypes.SetFieldName,
+            payload: {
+                fieldName,
+                label: getFieldLabel(fieldName)
+            }
+        })
+    }, [getFieldLabel])
 
     const terminate = useCallback((fieldName: string) => {
         terminateField(fieldName)
@@ -65,7 +64,7 @@ const useFieldContext = (): Types.FieldContext.Value => {
         addValidation,
         initialize,
         isRequired: state.isRequired,
-        label: state.label,
+        label: state.label ? state.label : "",
         fieldName: state.fieldName,
         removeValidation,
         setIsRequired,

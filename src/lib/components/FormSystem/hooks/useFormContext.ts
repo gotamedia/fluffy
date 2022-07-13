@@ -2,6 +2,7 @@ import * as FSTypes from "@components/FormSystem/types"
 import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
+import usePrevious from "@hooks/usePrevious"
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, i18n, onChange, value } = props
@@ -10,6 +11,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         Reducers.FormContextReducer,
         { i18n, formData: (value || defaultValue || {}), validations: { field: [], form: [] } }
     )
+    const previousState = usePrevious(state.validations)
 
     useEffect(() => {
         // check to not overwrite the defaultValue if value is not given
@@ -20,28 +22,31 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [value])
 
     const addFieldValidation = useCallback((
-        validationName: string,
+        validationId: string,
         fieldName: string,
         validationFunction: Types.Validation.Field.Function
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFieldValidation,
-            payload: { validationName, fieldName, validationFunction }
+            payload: { validationId, fieldName, validationFunction }
         })
     }, [])
 
     const addFormValidation = useCallback((
-        validationName: string,
+        validationId: string,
         involvedFieldNames: string[],
         validationFunction: Types.Validation.Form.Function
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFormValidation,
-            payload: { validationName, involvedFieldNames, validationFunction }
+            payload: { validationId, involvedFieldNames, validationFunction }
         })
     }, [])
 
-    const addValidationMessages = useCallback((fieldName: string, validationMessages: Types.Validation.Message[]) => {
+    const addValidationMessages = useCallback((
+        fieldName: string,
+        validationMessages: Types.Validation.MessageWithId[]
+    ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddValidationMessages,
             payload: { fieldName, validationMessages }
@@ -118,15 +123,15 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         return state?.formData
     }, [state?.formData])
 
-    const removeFieldValidation = useCallback((fieldName: string, validationName: string) => {
+    const removeFieldValidation = useCallback((fieldName: string, validationId: string) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.RemoveFieldValidation,
-            payload: { fieldName, validationName }
+            payload: { fieldName, validationId }
         })
     }, [])
 
-    const removeFormValidation = useCallback((validationName: string) => {
-        dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFormValidation, payload: { validationName } })
+    const removeFormValidation = useCallback((validationId: string) => {
+        dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFormValidation, payload: { validationId } })
     }, [])
 
     const setFieldValue = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
@@ -152,26 +157,30 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [])
 
     const validateField = useCallback((fieldName: string, formData: Types.FormData) => {
-        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.Message[]>((
+        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
             validation
         ) => [
             ...validationResult,
             ...(
                 validation.fieldName === fieldName
-                    ? validation.validationFunction(formData[fieldName]?.value, fieldName)
+                    ? validation
+                        .validationFunction(formData[fieldName]?.value, fieldName)
+                        .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
                     : []
             )
         ], [])
 
-        const formValidationMessages = state.validations.form.reduce<Types.Validation.Message[]>((
+        const formValidationMessages = state.validations.form.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
             validation
         ) => [
             ...validationResult,
             ...(
                 validation.involvedFieldNames.includes(fieldName)
-                    ? validation.validationFunction(formData)
+                    ? validation
+                        .validationFunction(formData)
+                        .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
                     : []
             )
         ], [])
@@ -192,20 +201,24 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [addValidationMessages, state.validations])
 
     const validateForm = useCallback((formData: Types.FormData) => {
-        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.Message[]>((
+        const fieldValidationMessages = state.validations.field.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
             validation
         ) => [
             ...validationResult,
-            ...validation.validationFunction(formData?.[validation?.fieldName]?.value, validation?.fieldName)
+            ...validation
+                .validationFunction(formData?.[validation?.fieldName]?.value, validation?.fieldName)
+                .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
         ], [])
 
-        const formValidationMessages = state.validations.form.reduce<Types.Validation.Message[]>((
+        const formValidationMessages = state.validations.form.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
             validation
         ) => [
             ...validationResult,
-            ...validation.validationFunction(formData)
+            ...validation
+                .validationFunction(formData)
+                .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
         ], [])
 
         const validationMessages = [
@@ -222,6 +235,53 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
 
         return validationMessages
     }, [addValidationMessages, state.validations.field, state.validations.form])
+
+    useEffect(() => {
+        const existingFieldValidationIds = previousState.field.map((message) => message.validationId)
+        const existingFormValidationIds = previousState.form.map((message) => message.validationId)
+
+        const newFieldValidations = state.validations.field
+            .filter((message) => !existingFieldValidationIds.includes(message.validationId))
+        const newFormValidations = state.validations.form
+            .filter((message) => !existingFormValidationIds.includes(message.validationId))
+
+        if (newFieldValidations.length > 0 || newFormValidations.length > 0) {
+            const fieldValidationMessages = newFieldValidations
+                .reduce<Types.Validation.MessageWithId[]>(
+                    (validationResult, validation) => [
+                        ...validationResult,
+                        ...validation
+                            .validationFunction(state?.formData[validation.fieldName]?.value, validation.fieldName)
+                            .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
+                    ],
+                    []
+                )
+
+            const formValidationMessages = state.validations.form.reduce<Types.Validation.MessageWithId[]>((
+                validationResult,
+                validation
+            ) => [
+                ...validationResult,
+                ...(
+                    validation
+                        .validationFunction(state?.formData)
+                        .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
+                )
+            ], [])
+
+            const validationMessages = [
+                ...fieldValidationMessages,
+                ...formValidationMessages
+            ].filter((validationMessage) => [FSTypes.Validation.Types.Hint].includes(validationMessage.type))
+
+            validationMessages.forEach((validationMessage) => {
+                addValidationMessages(
+                    validationMessage.fieldName,
+                    [validationMessage]
+                )
+            })
+        }
+    }, [addValidationMessages, previousState, state?.formData, state.validations])
 
     return {
         ...state,
