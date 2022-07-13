@@ -82,6 +82,11 @@ namespace FormContext {
         validateForm: (formData: FormData) => Validation.Message[]
     }
 
+    export enum Types {
+        Create = "create",
+        Update = "update"
+    }
+
     export interface ReducerState {
         i18n: I18n
         formData: FormData
@@ -89,6 +94,7 @@ namespace FormContext {
             field: Validation.Field.StoredValidation[]
             form: Validation.Form.StoredValidation[]
         }
+        type: Types
     }
 
     export enum ReducerActionTypes {

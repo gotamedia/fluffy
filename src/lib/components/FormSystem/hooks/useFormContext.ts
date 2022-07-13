@@ -4,12 +4,47 @@ import * as Reducers from "../reducers"
 import * as Types from "../types"
 import usePrevious from "@hooks/usePrevious"
 
+const getFormDataState = (
+    value: FSTypes.FormData | undefined,
+    defaultValue: FSTypes.FormData | undefined
+) => {
+    if (
+        (
+            value === undefined &&
+            defaultValue === undefined
+        ) || (
+            typeof value === "object" &&
+            Object
+                .values(value)
+                .filter(Boolean)
+                .filter((field) => field.value && field.value !== "")
+                .length === 0
+        ) || (
+            typeof defaultValue === "object" &&
+            Object
+                .values(defaultValue)
+                .filter(Boolean)
+                .filter((field) => field.value && field.value !== "")
+                .length === 0
+        )
+    ) {
+        return FSTypes.FormContext.Types.Create
+    }
+
+    return FSTypes.FormContext.Types.Update
+}
+
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, i18n, onChange, value } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
-        { i18n, formData: (value || defaultValue || {}), validations: { field: [], form: [] } }
+        {
+            i18n,
+            formData: (value || defaultValue || {}),
+            validations: { field: [], form: [] },
+            type: getFormDataState(value, defaultValue)
+        }
     )
     const previousState = usePrevious(state.validations)
 
@@ -272,7 +307,10 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             const validationMessages = [
                 ...fieldValidationMessages,
                 ...formValidationMessages
-            ].filter((validationMessage) => [FSTypes.Validation.Types.Hint].includes(validationMessage.type))
+            ].filter((validationMessage) => (
+                state?.type === FSTypes.FormContext.Types.Update ||
+                [FSTypes.Validation.Types.Hint].includes(validationMessage.type)
+            ))
 
             validationMessages.forEach((validationMessage) => {
                 addValidationMessages(
@@ -281,7 +319,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 )
             })
         }
-    }, [addValidationMessages, previousState, state?.formData, state.validations])
+    }, [addValidationMessages, previousState, state?.formData, state?.type, state.validations])
 
     return {
         ...state,
