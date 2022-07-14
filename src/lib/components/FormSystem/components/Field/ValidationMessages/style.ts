@@ -5,6 +5,11 @@ import * as Variants from "./variants"
 const ValidationMessage = styled.div<StyledValidationMessageProps>`
     font-size: 12px;
     ${Variants.type};
+    
+    a,
+    a:visited {
+        ${Variants.type};
+    }
 `
 
 const Wrapper = styled.div`

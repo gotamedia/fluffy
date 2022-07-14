@@ -1,7 +1,8 @@
 import * as Contexts from "@components/FormSystem/contexts"
 import { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
-import { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
@@ -12,8 +13,9 @@ const regExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const Email: Types.EmailComponent = (props) => {
     const {
-        type = FSTypes.Validation.Types.Error,
-        i18n
+        children,
+        i18n,
+        type = FSTypes.Validation.Types.Error
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -30,13 +32,19 @@ const Email: Types.EmailComponent = (props) => {
             {
                 fieldName,
                 type,
-                text: sprintf(
-                    i18n?.text || formI18n?.validations?.field?.email?.text || defaultI18n.validation.field.email.text,
-                    { value: String(value), fieldName, label: String(label) }
-                )
+                text: children !== undefined
+                    ? renderToString(<>{children}</>)
+                    : sprintf(
+                        (
+                            i18n?.text ||
+                            formI18n?.validations?.field?.email?.text ||
+                            defaultI18n.validation.field.email.text
+                        ),
+                        { value: String(value), fieldName, label: String(label) }
+                    )
             }
         ]
-    }, [formI18n?.validations?.field?.email?.text, i18n?.text, label, type])
+    }, [children, formI18n?.validations?.field?.email?.text, i18n?.text, label, type])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation)

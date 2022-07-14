@@ -1,6 +1,7 @@
 import defaultI18n from "@components/FormSystem/sv.json"
 import sprintf from "@utils/sprintf"
-import { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import * as Contexts from "../../../../contexts"
 import * as FSTypes from "../../../../types"
@@ -10,10 +11,11 @@ const validationName = "sameValue"
 
 const SameValue: Types.SameValueComponent = (props) => {
     const {
+        children,
         fieldAName,
         fieldBName,
-        type = FSTypes.Validation.Types.Error,
-        i18n
+        i18n,
+        type = FSTypes.Validation.Types.Error
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -28,21 +30,23 @@ const SameValue: Types.SameValueComponent = (props) => {
                     fieldName: fieldAName,
                     type,
                     involvedFieldNames: [fieldAName, fieldBName],
-                    text: sprintf(
-                        (
-                            i18n?.textA ||
-                            formI18n?.validations?.form?.sameValue?.textA ||
-                            defaultI18n.validation.form.sameValue.textA
-                        ),
-                        {
-                            fieldALabel: String(getFieldLabel(fieldAName)),
-                            fieldBLabel: String(getFieldLabel(fieldBName)),
-                            fieldAName,
-                            fieldBName,
-                            fieldAValue: String(formData[fieldAName]?.value),
-                            fieldBValue: String(formData[fieldBName]?.value)
-                        }
-                    )
+                    text: children !== undefined
+                        ? renderToString(<>{children}</>)
+                        : sprintf(
+                            (
+                                i18n?.textA ||
+                                formI18n?.validations?.form?.sameValue?.textA ||
+                                defaultI18n.validation.form.sameValue.textA
+                            ),
+                            {
+                                fieldALabel: String(getFieldLabel(fieldAName)),
+                                fieldBLabel: String(getFieldLabel(fieldBName)),
+                                fieldAName,
+                                fieldBName,
+                                fieldAValue: String(formData[fieldAName]?.value),
+                                fieldBValue: String(formData[fieldBName]?.value)
+                            }
+                        )
                 },
                 {
                     fieldName: fieldBName,
@@ -69,6 +73,7 @@ const SameValue: Types.SameValueComponent = (props) => {
 
         return []
     }, [
+        children,
         fieldAName,
         fieldBName,
         formI18n?.validations?.form?.sameValue?.textA,

@@ -13,14 +13,18 @@ const ValidationMessagesGroup: Types.GroupComponent = (props) => {
                     return (messageA?.text || "") > (messageB?.text || "") ? -1 : 1
                 })
                 .map(
-                    (validationMessage: FSTypes.Validation.Message) =>
-                        <Styled.ValidationMessage
-                            key={JSON.stringify(validationMessage)}
-                            $type={validationMessage.type}
-                            $theme={theme}
-                        >
-                            {validationMessage.text}
-                        </Styled.ValidationMessage>
+                    (validationMessage: FSTypes.Validation.Message) => {
+                        console.log(validationMessage)
+                        return (
+                            <Styled.ValidationMessage
+                                key={JSON.stringify(validationMessage)}
+                                $type={validationMessage.type}
+                                $theme={theme}
+                                dangerouslySetInnerHTML={{ __html: validationMessage.text || "" }}
+                            />
+                        )
+                    }
+
                 )
             }
         </>

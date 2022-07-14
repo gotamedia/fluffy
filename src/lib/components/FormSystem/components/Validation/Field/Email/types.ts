@@ -1,11 +1,11 @@
 import { EmailI18n } from "./i18nTypes"
-import React from "react"
+import React, { PropsWithChildren } from "react"
 import * as Types from "../../../../types"
 
-export type EmailProps = {
+export type EmailProps = PropsWithChildren<{
     type?: Types.Validation.Types
     i18n?: EmailI18n
-}
+}>
 
 export type EmailComponent = React.FC<EmailProps>
 
