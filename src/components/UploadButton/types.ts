@@ -5,32 +5,25 @@ import type {
     ReactNode
 } from 'react'
 
-export const UploadButtonVariants = {
-    Primary: 'primary' as const,
-    Secondary: 'secondary' as const,
-    Outline: 'outline' as const,
-    Text: 'text' as const
-}
+import {
+    ButtonVariants,
+    ButtonSizes
+} from '../Button/types'
 
-export type UploadButtonVariantsType = typeof UploadButtonVariants
-export type UploadButtonVariantType = UploadButtonVariantsType[keyof UploadButtonVariantsType]
+import type {
+    ButtonVariantType,
+    ButtonSizeType
+} from '../Button/types'
 
-export const UploadButtonSizes = {
-    Tiny: 'tiny' as const,
-    Small: 'small' as const,
-    Normal: 'normal' as const,
-    Big: 'big' as const,
-    Huge: 'huge' as const
-}
+export const UploadButtonVariants = ButtonVariants
 
-export type UploadButtonSizesType = typeof UploadButtonSizes
-export type UploadButtonSizeType = UploadButtonSizesType[keyof UploadButtonSizesType]
+export const UploadButtonSizes = ButtonSizes
 
 type NativeUploadButtonProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 export interface UploadButtonProps extends NativeUploadButtonProps {
-    size?: UploadButtonSizeType,
-    variant?: UploadButtonVariantType,
+    size?: ButtonSizeType,
+    variant?: ButtonVariantType,
     children?: ReactNode,
     withIcon?: boolean,
     withFileName?: boolean,

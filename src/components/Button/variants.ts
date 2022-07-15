@@ -15,7 +15,6 @@ const sharedStyle = {
     `
 }
 
-// TODO: fix more variants and utilise theme for colors
 const primary = css`
     color: white;
     background-color: ${({ theme }) => theme.colors.brand};

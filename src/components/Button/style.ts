@@ -5,8 +5,7 @@ import * as variants from './variants'
 
 import type { ButtonProps } from './types'
 
-// TODO: Fix colors / theme
-const baseButtonStyle = css`
+export const baseButtonStyle = css`
     display: inline-flex;
     appearance: none;
     align-items: center;
