@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.1...v0.8.2) (2022-07-15)
+
+
+### Features
+
+* Added IconButton component ([012682d](http://bitbucket.org/gotamedia/fluffy/commit/012682d54debd67e02362170e83bc0f6f2081c2b))
+
+
+### Bug Fixes
+
+* Alert variant typo ([a8b97a8](http://bitbucket.org/gotamedia/fluffy/commit/a8b97a897ef0fb20eb14ea15e6c086bcbb446773))
+* Fixed Alert variant type ([f01d842](http://bitbucket.org/gotamedia/fluffy/commit/f01d8428c9063d7182e1e5a9399d95da6e6a5bd6))
+
 ### [0.8.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.0...v0.8.1) (2022-07-04)
 
 ## [0.8.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.49...v0.8.0) (2022-07-04)
