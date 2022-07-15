@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Alert from './index'
+import Alert, { AlertVariants } from './index'
 import { Icons } from '../Icon'
 import * as Types from './types'
 
@@ -37,7 +37,7 @@ const Template: Story<Types.AlertProps & {
 export const Basic = Template.bind({})
 Basic.args = {
     icon: Icons.Info,
-    variant: 'success' as const,
+    variant: AlertVariants.Sucess,
     headline: 'Ta del av våra användarvillkor',
     text: (
         'Med dataskyddsförordningen GDPR (General Data Protection Regulation) har vi uppdaterat våra användarvillkor' +

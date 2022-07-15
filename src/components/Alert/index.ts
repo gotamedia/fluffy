@@ -1,3 +1,5 @@
+export * from './types'
+
 import AlertComponent from './Alert'
 
 import {

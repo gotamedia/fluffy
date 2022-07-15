@@ -12,11 +12,14 @@ import {
     Text
 } from './style'
 
-export type AlertVariants = {
-    Sucess: 'sucess',
-    Warning: 'warning',
-    // Error: 'error'
+export const AlertVariants = {
+    Sucess: 'sucess' as const,
+    Warning: 'warning' as const,
+    // Error: 'error' as const
 }
+
+export type AlertVariantsType = typeof AlertVariants
+export type AlertVariantType = AlertVariantsType[keyof AlertVariantsType]
 
 export type AlertRef = {
     display: (display: boolean) => void
@@ -28,7 +31,7 @@ export type AlertProps = {
     icon?: IconType,
     cloasable?: boolean,
     onClose?: () => void,
-    variant?: AlertVariants[keyof AlertVariants],
+    variant?: AlertVariantsType,
     children?: ReactNode
 }
 
