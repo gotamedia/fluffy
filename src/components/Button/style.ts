@@ -14,8 +14,7 @@ const baseButtonStyle = css`
     user-select: none;
     position: relative;
     white-space: nowrap;
-    outline: transparent solid 2px;
-    outline-offset: 2px;
+    outline: none;
     width: auto;
     line-height: 1.2;
     border-radius: 2px;
