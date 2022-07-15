@@ -107,6 +107,7 @@ export default {
         size: 'normal',
         variant: 'light',
         loading: false,
-        vertical: false
+        vertical: false,
+        compact: false
     }
 } as Meta<typeof Card>
