@@ -4,11 +4,12 @@ import * as Contexts from "../../../contexts"
 import * as Styled from "./style"
 
 const Label: Types.LabelComponent = () => {
-    const { fieldName, label } = useContext(Contexts.FieldContext)
+    const { fieldName, isRequired, label } = useContext(Contexts.FieldContext)
 
     return (
         <Styled.Label htmlFor={fieldName}>
             {label}
+            {isRequired ? (<sup style={{ color: "red" }}>*</sup>) : null}
         </Styled.Label>
     )
 }

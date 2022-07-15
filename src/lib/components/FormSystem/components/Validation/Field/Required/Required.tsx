@@ -20,7 +20,7 @@ const Required: Types.RequiredComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const { addValidation, label, removeValidation, setIsRequired } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (String(value).length > 0) {
@@ -47,11 +47,12 @@ const Required: Types.RequiredComponent = (props) => {
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation)
+        setIsRequired(true)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, setIsRequired, uuid, validation])
 
     return null
 }
