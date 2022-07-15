@@ -20,6 +20,9 @@ npm i react styled-components
 ```tsx
 import { Icon, Icons } from '@gotamedia/fluffy'
 
+// OR use direct import if you care about your APP's bundle size 😉
+// import Icon, { Icons } from '@gotamedia/fluffy/Icon'
+
 const MyComponent = () => (
     <div>
         <Icon icon={Icons.Info}/>
@@ -32,6 +35,10 @@ const MyComponent = () => (
 import { render } from 'react-dom'
 import { ThemeProvider } from 'styled-components'
 import { Paper, getTheme } from '@gotamedia/fluffy'
+
+// OR use direct import if you care about your APP's bundle size 😉
+// import Paper from '@gotamedia/fluffy/Paper'
+// import { getTheme } from '@gotamedia/fluffy/theme'
 
 const App = () => (
     <div>
@@ -77,6 +84,7 @@ const Template: Story<Types.MyComponentProps & {
 }
 
 export const Basic = Template.bind({})
+
 Basic.args = {
     text: 'My fluffy component'
 }
@@ -102,7 +110,8 @@ To use Fluffy in your project locally make sure to build Fluffy by running:
 ```
 npm run build
 ```
-Then run the following command while standing on fluffy dir:
+
+Then run the following command while standing on Fluffy root dir:
 ```
 yalc publish
 ```
@@ -113,11 +122,14 @@ This will make sure to publish Fluffy into a local registery on your machine so 
 In your project run the following command:
 ```
 yalc add @gotamedia/fluffy
+npm install
 ```
+
 After you are done with running Fluffy locally in your project, make sure to clean up and remove the link from your project's dependencies
 ```
 yalc remove @gotamedia/fluffy
 ```
+
 This will make sure to remove the link from your project's dependencies and revert to the old value if there was any
 
 [Read more about yalc](https://www.npmjs.com/package/yalc)
