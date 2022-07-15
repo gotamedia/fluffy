@@ -13,7 +13,7 @@ import {
 } from './style'
 
 export const AlertVariants = {
-    Sucess: 'sucess' as const,
+    Success: 'success' as const,
     Warning: 'warning' as const,
     // Error: 'error' as const
 }
@@ -31,7 +31,7 @@ export type AlertProps = {
     icon?: IconType,
     cloasable?: boolean,
     onClose?: () => void,
-    variant?: AlertVariantsType,
+    variant?: AlertVariantType,
     children?: ReactNode
 }
 

@@ -4,19 +4,19 @@ import IconComponent, { Icons } from '@components/Icon'
 
 import themeHelpers from '@utils/theme/helpers'
 
-import { AlertProps } from './types'
+import * as Types from './types'
 
-const variant = css<{$variant: AlertProps['variant']}>`
+const variant = css<{$variant?: Types.AlertProps['variant']}>`
     ${({ $variant }) => {
         switch($variant) {
-            case 'warning':
+            case Types.AlertVariants.Warning:
                 return css`
                     background: #ffeeb3; //FIXME: use theme intead.
                     border-bottom: 4px solid #a17500;  //FIXME: use theme intead.
                 `
 
             default:
-            case 'sucess':
+            case Types.AlertVariants.Success:
                 return css`
                     background: #003200; //FIXME: use theme intead.
 
@@ -44,7 +44,7 @@ const variant = css<{$variant: AlertProps['variant']}>`
     }}
 `
 
-const Wrapper = styled.div<{$variant: AlertProps['variant']}>`
+const Wrapper = styled.div<{$variant?: Types.AlertProps['variant']}>`
     ${variant}
 `
 

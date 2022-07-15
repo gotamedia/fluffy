@@ -40,7 +40,7 @@ const Alert: Types.AlertComponent = forwardRef((props, ref) => {
     return (
         display ? (
             <Styled.Wrapper
-                $variant={variant as Types.AlertProps['variant']}
+                $variant={variant}
                 className={className}
             >
                 <Styled.Content>

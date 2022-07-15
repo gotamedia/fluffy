@@ -37,7 +37,7 @@ const Template: Story<Types.AlertProps & {
 export const Basic = Template.bind({})
 Basic.args = {
     icon: Icons.Info,
-    variant: AlertVariants.Sucess,
+    variant: AlertVariants.Success,
     headline: 'Ta del av våra användarvillkor',
     text: (
         'Med dataskyddsförordningen GDPR (General Data Protection Regulation) har vi uppdaterat våra användarvillkor' +
