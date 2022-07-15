@@ -66,6 +66,10 @@ const Basic: Story<Types.ButtonGroupProps & {
                 <Button>
                     {text}
                 </Button>
+                
+                <Button>
+                    {text}
+                </Button>
 
                 <Button>
                     <Icon

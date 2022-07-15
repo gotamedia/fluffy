@@ -10,7 +10,7 @@ const theme: DefaultTheme = {
     //              0       1       2       3       4       5       6       7       8       9      10      11      12       13       14
     lineHeights: ["16px", "18px", "20px", "24px", "28px", "32px", "38px", "42px", "48px", "52px", "56px", "64px", "80px", "102px", "146px"],
     colors: {
-        brand: '#5865f2',
+        brand: '#005ca9',
         grey: [
             "#2e2a25", // 0
             "#55565a", // 1

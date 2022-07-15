@@ -96,6 +96,7 @@
     ]
   },
   "dependencies": {
-    "pigeon-maps": "^0.21.0"
+    "pigeon-maps": "^0.21.0",
+    "polished": "^4.2.2"
   }
 }

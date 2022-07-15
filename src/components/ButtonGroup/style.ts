@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { ButtonGroupVariants } from './types'
+
 import type { ButtonGroupProps } from './types'
 
 const Wrapper = styled.div<{ $variant?: ButtonGroupProps['variant'] }>`
@@ -12,36 +14,64 @@ const Wrapper = styled.div<{ $variant?: ButtonGroupProps['variant'] }>`
                 border-bottom-right-radius: 0;
             }
 
+            &:not(:first-child):not(:last-child) {
+                border-radius: 0;
+                border-left: 1px solid currentcolor;
+            }
+
             &:last-child {
                 border-top-left-radius: 0;
                 border-bottom-left-radius: 0;
-                border-left: 1px solid gray;
-            }
-
-            &:not(:first-child):not(:last-child) {
-                border-radius: 0;
-                border-left: 1px solid gray;
+                border-left: 1px solid currentcolor;
             }
         }
 
         ${({ $variant }) => {
             switch($variant) {
-                case 'text':
+                case ButtonGroupVariants.Secondary:
                     return css`
-                        button {
-                            &:not(:only-child) {
-                                &:first-child {
-                                    padding-right: 10px;
-                                }
+                        &:not(:first-child):not(:last-child) {
+                            &:focus {
+                                border-left-color: transparent;
+                            }
+                        }
 
-                                &:not(:first-child):not(:last-child) {
-                                    padding-left: 10px;
+                        &:last-child {
+                            &:focus {
+                                border-left-color: transparent;
+                            }
+                        }
+                    `
+
+                case ButtonGroupVariants.Text:
+                    return css`
+                        &:not(:only-child) {
+                            &:first-child {
+                                padding-right: 8px;
+                            }
+
+                            &:not(:first-child) {
+                                &:focus {
+                                    border-left-color: transparent;
                                 }
+                            }
+
+                            &:not(:first-child):not(:last-child) {
+                                padding-left: 8px;
+                                padding-right: 8px;
+                            }
+
+                            &:last-child {
+                                padding-left: 8px;
                             }
                         }
                     `
             }
         }}
+
+        &:focus {
+            z-index: 1;
+        }
     }
 `
 
