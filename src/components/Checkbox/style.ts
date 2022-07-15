@@ -24,7 +24,7 @@ const baseCheckboxStyle = css`
         transform: scale(0);
         transform-origin: bottom left;
         transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em #007dd3;
+        box-shadow: inset 1em 1em ${({ theme }) => theme.colors.brand};
     }
 
     &:checked::before {
