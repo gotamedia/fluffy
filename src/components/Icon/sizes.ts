@@ -16,12 +16,12 @@ const normal = css`
 `
 
 const big = css`
-    height: 42px;
+    height: 35px;
     width: auto;
 `
 
 const huge = css`
-    height: 50px;
+    height: 42px;
     width: auto;
 `
 
