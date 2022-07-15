@@ -19,8 +19,4 @@ function SvgBank(props: React.SVGProps<SVGSVGElement>) {
     );
 }
 
-SvgBank.defaultProps = {
-    fill: "black"
-}
-
 export default SvgBank;
