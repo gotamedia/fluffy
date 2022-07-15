@@ -2,7 +2,7 @@ import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import Paper from './index'
-import Button from '../Button'
+import Button, { ButtonVariants } from '../Button'
 
 import * as Types from './types'
 
@@ -50,12 +50,12 @@ Basic.args = {
     ),
     buttons: (
         <>
-            <Button>
-                {'Button 1'}
+            <Button variant={ButtonVariants.Outline}>
+                {'Mer information'}
             </Button>
 
             <Button>
-                {'Button 2'}
+                {'Jag förstår'}
             </Button>
         </>
     )
