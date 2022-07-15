@@ -46,6 +46,9 @@ export { default as useMounted } from '@hooks/useMounted'
 export * from '@components/Button'
 export { default as Button } from '@components/Button'
 
+export * from '@components/IconButton'
+export { default as IconButton } from '@components/IconButton'
+
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
 
