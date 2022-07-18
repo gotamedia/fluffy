@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.9.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.2...v0.9.0) (2022-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Supported Button/IconButton in InputGroup
+
+### Features
+
+* Supported Button/IconButton in InputGroup ([1c35f34](http://bitbucket.org/gotamedia/fluffy/commit/1c35f34aa3ee2429339201b2411141b39f11d2e9))
+
+
+### Bug Fixes
+
+* **style:** Updated Button/IconButton/Input/InputGroup sizes/variants ([ae0c55f](http://bitbucket.org/gotamedia/fluffy/commit/ae0c55f7c09a91c1fa18b8c8c2bd608f18ccf330))
+* **style:** Updated Input style ([20c09fa](http://bitbucket.org/gotamedia/fluffy/commit/20c09fab46df7ec2e97d6c1e672b3fe4dbb3ea7e))
+* **style:** Updated InputGroup sizes ([2941f7b](http://bitbucket.org/gotamedia/fluffy/commit/2941f7b4ba0dd5cc374c06414a74757866b78825))
+* **style:** Updated Textarea variants to match Input ([cb6e15b](http://bitbucket.org/gotamedia/fluffy/commit/cb6e15b1d0c6c963d3452cf3f5b68b258da48344))
+* Updated imports for sizes/variants ([ae58fd2](http://bitbucket.org/gotamedia/fluffy/commit/ae58fd248d75d808c27b25e8aa3a73d49ed0f18c))
+
 ### [0.8.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.1...v0.8.2) (2022-07-15)
 
 
