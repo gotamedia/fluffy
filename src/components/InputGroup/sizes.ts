@@ -1,102 +1,89 @@
 import { css } from 'styled-components'
 
-const tiny = css`
-    .input-group_icon {
+type StyledSizeProps = {
+    $elements: {
+        left: string,
+        right: string
+    }
+}
+
+const tiny = css<StyledSizeProps>`
+    .input-group__icon {
         margin: auto 6px;
     }
 
     input {
-        &.with-left {
-            &-icon {
-                padding-left: 35px;
-            }
-        }
-    
-        &.with-right {
-            &-icon {
-                padding-right: 35px;
-            }
-        }
+        ${({ $elements }) => $elements.left === 'icon' && css`
+            padding-left: 30px;
+        `}
+
+        ${({ $elements }) => $elements.right === 'icon' && css`
+            padding-right: 30px;
+        `}
     }
 `
 
-const small = css`
-    .input-group_icon {
+const small = css<StyledSizeProps>`
+    .input-group__icon {
         margin: auto 8px;
     }
 
     input {
-        &.with-left {
-            &-icon {
-                padding-left: 46px;
-            }
-        }
-    
-        &.with-right {
-            &-icon {
-                padding-right: 46px;
-            }
-        }
+        ${({ $elements }) => $elements.left === 'icon' && css`
+            padding-left: 35px;
+        `}
+
+        ${({ $elements }) => $elements.right === 'icon' && css`
+            padding-right: 35px;
+        `}
     }
 `
 
-const normal = css`
-    .input-group_icon {
+const normal = css<StyledSizeProps>`
+    .input-group__icon {
         margin: auto 10px;
     }
 
     input {
-        &.with-left {
-            &-icon {
-                padding-left: 60px;
-            }
-        }
-    
-        &.with-right {
-            &-icon {
-                padding-right: 60px;
-            }
-        }
+        ${({ $elements }) => $elements.left === 'icon' && css`
+            padding-left: 50px;
+        `}
+
+        ${({ $elements }) => $elements.right === 'icon' && css`
+            padding-right: 50px;
+        `}
     }
 `
 
-const big = css`
-    .input-group_icon {
+const big = css<StyledSizeProps>`
+    .input-group__icon {
         margin: auto 12px;
     }
 
     input {
-        &.with-left {
-            &-icon {
-                padding-left: 70px;
-            }
-        }
-    
-        &.with-right {
-            &-icon {
-                padding-right: 70px;
-            }
-        }
+        ${({ $elements }) => $elements.left === 'icon' && css`
+            padding-left: 60px;
+        `}
+
+        ${({ $elements }) => $elements.right === 'icon' && css`
+            padding-right: 60px;
+        `}
     }
 `
 
-const huge = css`
-    .input-group_icon {
+const huge = css<StyledSizeProps>`
+    .input-group__icon {
         margin: auto 12px;
     }
 
     input {
-        &.with-left {
-            &-icon {
-                padding-left: 74px;
-            }
-        }
-    
-        &.with-right {
-            &-icon {
-                padding-right: 74px;
-            }
-        }
+        ${({ $elements }) => $elements.left === 'icon' && css`
+            padding-left: 65px;
+        `}
+
+        ${({ $elements }) => $elements.right === 'icon' && css`
+            padding-right: 65px;
+        `}
     }
 `
 
