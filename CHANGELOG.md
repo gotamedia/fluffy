@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.0...v0.9.1) (2022-07-18)
+
+
+### Features
+
+* Added label to Input/Textarea ([c816715](http://bitbucket.org/gotamedia/fluffy/commit/c816715f99cb639680f3d3153a6e27c99456fb47))
+
+
+### Bug Fixes
+
+* **story:** Updated Card's story names ([7054965](http://bitbucket.org/gotamedia/fluffy/commit/7054965dad1dc0dff49719716dd71fc6dfb1a786))
+* **story:** Updated icon list story ([b0aa7ea](http://bitbucket.org/gotamedia/fluffy/commit/b0aa7eaf5b323c2b97af85b4853dbd6a83672ad7))
+* **style:** Updated checkmark-circle check color ([ef1a19c](http://bitbucket.org/gotamedia/fluffy/commit/ef1a19c57deb8627c31596661f9270f0e936d0d5))
+
 ## [0.9.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.2...v0.9.0) (2022-07-18)
 
 
