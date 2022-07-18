@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 const tiny = css`
-    height: 18px;
+    height: 16px;
     width: auto;
 `
 
