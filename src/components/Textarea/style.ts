@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import * as sizes from './sizes'
-import * as variants from './variants'
+import sizes from './sizes'
+import variants from './variants'
 
 import type { TextareaProps } from './types'
 

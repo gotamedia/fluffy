@@ -50,10 +50,12 @@ const huge = css`
     }
 `
 
-export {
+const sizes = {
     tiny,
     small,
     normal,
     big,
     huge
 }
+
+export default sizes

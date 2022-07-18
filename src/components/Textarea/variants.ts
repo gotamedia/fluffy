@@ -32,8 +32,10 @@ const outline = css`
     }
 `
 
-export {
+const variants = {
     primary,
     secondary,
     outline
 }
+
+export default variants

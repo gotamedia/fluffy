@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 import themeHelpers from '@utils/theme/helpers'
 
-import * as sizes from './sizes'
-import * as variants from './variants'
+import sizes from './sizes'
+import variants from './variants'
 
 import type { CardProps } from './types'
 

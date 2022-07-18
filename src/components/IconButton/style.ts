@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
-import * as sizes from './sizes'
-import * as variants from './variants'
-import * as shapes from './shapes'
+import sizes from './sizes'
+import variants from './variants'
+import shapes from './shapes'
 
 import type { IconButtonProps } from './types'
 

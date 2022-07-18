@@ -71,8 +71,10 @@ const big = css`
     }
 `
 
-export {
+const sizes = {
     small,
     normal,
     big
 }
+
+export default sizes

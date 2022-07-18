@@ -12,7 +12,9 @@ const circle = css`
     border-radius: 50%;
 `
 
-export {
+const shapes = {
     square,
     circle
 }
+
+export default shapes

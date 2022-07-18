@@ -25,10 +25,12 @@ const huge = css`
     width: auto;
 `
 
-export {
+const sizes = {
     tiny,
     small,
     normal,
     big,
     huge
 }
+
+export default sizes

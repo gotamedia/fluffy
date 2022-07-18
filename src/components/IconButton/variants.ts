@@ -14,8 +14,10 @@ const outline = css`
    ${buttonVariants.outline};
 `
 
-export {
+const variants = {
     primary,
     secondary,
     outline
 }
+
+export default variants

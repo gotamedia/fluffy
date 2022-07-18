@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import * as sizes from './sizes'
+import sizes from './sizes'
 
 import type { CheckboxProps } from './types'
 

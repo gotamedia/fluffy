@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 import Icon, { Icons } from '../Icon'
 
-import * as sizes from '../Button/sizes'
-import * as variants from '../Button/variants'
+import sizes from '../Button/sizes'
+import variants from '../Button/variants'
 import { baseButtonStyle } from '../Button/style'
 
 import type { UploadButtonProps } from './types'

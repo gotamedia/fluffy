@@ -42,7 +42,9 @@ const dark = css`
     }
 `
 
-export {
+const variants = {
     light,
     dark
 }
+
+export default variants
