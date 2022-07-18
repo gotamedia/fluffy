@@ -14,11 +14,11 @@ const tiny = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 30px;
+            padding-left: 26px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 30px;
+            padding-right: 26px;
         `}
     }
 `
@@ -30,11 +30,11 @@ const small = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 35px;
+            padding-left: 34px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 35px;
+            padding-right: 34px;
         `}
     }
 `
@@ -46,11 +46,11 @@ const normal = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 50px;
+            padding-left: 46px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 50px;
+            padding-right: 46px;
         `}
     }
 `
@@ -62,11 +62,11 @@ const big = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 60px;
+            padding-left: 58px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 60px;
+            padding-right: 58px;
         `}
     }
 `
@@ -78,11 +78,11 @@ const huge = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 65px;
+            padding-left: 62px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 65px;
+            padding-right: 62px;
         `}
     }
 `
