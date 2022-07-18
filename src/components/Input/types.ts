@@ -29,7 +29,8 @@ type NativeInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 export interface InputProps extends NativeInputProps {
     size?: InputSizeType,
     variant?: InputVariantType,
-    onValueChange?: (value: string) => void
+    onValueChange?: (value: string) => void,
+    label?: string
 }
 
 export type InputRef = HTMLInputElement

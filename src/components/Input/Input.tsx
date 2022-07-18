@@ -13,6 +13,7 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
         variant = 'primary',
         onChange,
         onValueChange,
+        label,
         ...DOMProps
     } = props
 
@@ -27,13 +28,25 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
     }, [onChange, onValueChange])
 
     return (
-        <Styled.Input
-            ref={ref}
-            $size={size}
-            $variant={variant}
-            onChange={handleOnChange}
-            {...DOMProps}
-        />
+        <>
+            {
+                typeof label === 'string' && label.length ? (
+                    <Styled.Label>
+                        {label}
+                    </Styled.Label>
+                ) : (
+                    null
+                )
+            }
+
+            <Styled.Input
+                ref={ref}
+                $size={size}
+                $variant={variant}
+                onChange={handleOnChange}
+                {...DOMProps}
+            />
+        </>
     )
 })
 

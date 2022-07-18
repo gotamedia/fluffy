@@ -29,7 +29,8 @@ type NativeTextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'si
 export interface TextareaProps extends NativeTextareaProps {
     size?: TextareaSizeType,
     variant?: TextareaVariantType,
-    onValueChange?: (value: string) => void
+    onValueChange?: (value: string) => void,
+    label?: string
 }
 
 export type TextareaRef = HTMLTextAreaElement

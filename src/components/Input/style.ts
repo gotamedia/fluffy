@@ -28,6 +28,12 @@ const Input = styled.input<{ $size?: InputProps['size'], $variant?: InputProps['
     ${({ $variant }) => variants[$variant || 'primary']};
 `
 
+const Label = styled.p`
+    margin: 0 0 5px 0;
+    color: ${({ theme }) => theme.colors.brand};
+`
+
 export {
-    Input
+    Input,
+    Label
 }

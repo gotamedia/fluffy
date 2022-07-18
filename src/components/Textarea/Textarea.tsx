@@ -13,6 +13,7 @@ const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
         variant = 'primary',
         onChange,
         onValueChange,
+        label,
         ...DOMProps
     } = props
 
@@ -27,13 +28,25 @@ const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
     }, [onChange, onValueChange])
 
     return (
-        <Styled.Textarea
-            ref={ref}
-            $size={size}
-            $variant={variant}
-            onChange={handleOnChange}
-            {...DOMProps}
-        />
+        <>
+            {
+                typeof label === 'string' && label.length ? (
+                    <Styled.Label>
+                        {label}
+                    </Styled.Label>
+                ) : (
+                    null
+                )
+            }
+
+            <Styled.Textarea
+                ref={ref}
+                $size={size}
+                $variant={variant}
+                onChange={handleOnChange}
+                {...DOMProps}
+            />
+        </>
     )
 })
 
