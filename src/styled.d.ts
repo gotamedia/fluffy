@@ -45,6 +45,7 @@ interface Alert {
     warning: Error,
     success: Error,
     info: Error,
+    loading: Error
     hint: Error
 }
 

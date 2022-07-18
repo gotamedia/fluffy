@@ -57,6 +57,11 @@ const theme: DefaultTheme = {
                 background: "#EBF2F8",
                 border: "#D1E2F0"
             },
+            loading: {
+                text: "#565656",
+                background: "#f1f1f1",
+                border: "#c5c5c5"
+            },
             hint: {
                 text: "#565656",
                 background: "#f1f1f1",

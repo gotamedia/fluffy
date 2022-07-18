@@ -17,6 +17,10 @@ const typeVariants = css<StyledValidationMessageProps>`
                 return css`
                     color: ${$theme.colors.alert.success.text};
                 `
+            case Types.Validation.Types.Loading:
+                return css`
+                    color: ${$theme.colors.alert.loading.text};
+                `
             default:
             case Types.Validation.Types.Hint:
                 return css`

@@ -154,6 +154,17 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     )
                 }
             }
+        case Types.FormContext.ReducerActionTypes.ResetFieldRequiresValidation:
+            return {
+                ...state,
+                formData: {
+                    ...state.formData,
+                    [action?.payload?.fieldName]: {
+                        ...state?.formData[action?.payload?.fieldName],
+                        requiresValidation: false
+                    }
+                }
+            }
         case Types.FormContext.ReducerActionTypes.SetFormData:
             return {
                 ...state,
@@ -166,7 +177,8 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     ...state?.formData,
                     [action?.payload?.fieldName]: {
                         ...state?.formData[action?.payload?.fieldName],
-                        value: action?.payload?.value
+                        value: action?.payload?.value,
+                        requiresValidation: action?.payload?.isManualChange
                     }
                 }
             }

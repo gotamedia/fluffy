@@ -93,7 +93,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         types: Types.Validation.Types[] | "all" = [
             Types.Validation.Types.Error,
             Types.Validation.Types.Warning,
-            Types.Validation.Types.Success
+            Types.Validation.Types.Success,
+            Types.Validation.Types.Loading
         ]
     ) => {
         dispatch({
@@ -106,7 +107,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         types: Types.Validation.Types[] | "all" = [
             Types.Validation.Types.Error,
             Types.Validation.Types.Warning,
-            Types.Validation.Types.Success
+            Types.Validation.Types.Success,
+            Types.Validation.Types.Loading
         ]
     ) => {
         dispatch({
@@ -169,20 +171,32 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         dispatch({ type: Types.FormContext.ReducerActionTypes.RemoveFormValidation, payload: { validationId } })
     }, [])
 
-    const setFieldValue = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
+    const setFieldValue = useCallback((
+        fieldName: string,
+        fieldValue: Types.FormDataValue,
+        isManualChange: boolean = false
+    ) => {
         if (!value) {
             // uncontrolled way
             dispatch({
                 type: Types.FormContext.ReducerActionTypes.SetFormDataFieldValue,
-                payload: { fieldName, value: fieldValue }
+                payload: { fieldName, value: fieldValue, isManualChange }
             })
         }
 
         // onChange is triggered in both ways
         if (onChange) {
-            onChange(fieldName, fieldValue)
+            onChange(
+                fieldName,
+                fieldValue,
+                isManualChange,
+                state.formData,
+                (fieldName: string, fieldValue: Types.FormDataValue) => {
+                    setFieldValue(fieldName, fieldValue, true)
+                }
+            )
         }
-    }, [onChange, value])
+    }, [onChange, state.formData, value])
 
     const terminateField = useCallback((fieldName: string) => {
         dispatch({
@@ -192,6 +206,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [])
 
     const validateField = useCallback((fieldName: string, formData: Types.FormData) => {
+        dispatch({ type: Types.FormContext.ReducerActionTypes.ResetFieldRequiresValidation, payload: { fieldName } })
+
         const fieldValidationMessages = state.validations.field.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
             validation
@@ -309,7 +325,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 ...formValidationMessages
             ].filter((validationMessage) => (
                 state?.type === FSTypes.FormContext.Types.Update ||
-                [FSTypes.Validation.Types.Hint].includes(validationMessage.type)
+                [FSTypes.Validation.Types.Hint, FSTypes.Validation.Types.Loading].includes(validationMessage.type)
             ))
 
             validationMessages.forEach((validationMessage) => {
@@ -320,6 +336,16 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             })
         }
     }, [addValidationMessages, previousState, state?.formData, state?.type, state.validations])
+
+    useEffect(() => {
+        // validate fields that were not changed by the form system but by a manual setFieldValue call from the outside
+        Object.values(state.formData).forEach((field) => {
+            if (field.requiresValidation) {
+                clearValidationMessages(field.name, "all")
+                validateField(field.name, state.formData)
+            }
+        })
+    }, [clearValidationMessages, state.formData, validateField])
 
     return {
         ...state,

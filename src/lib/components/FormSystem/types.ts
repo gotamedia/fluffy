@@ -20,7 +20,8 @@ type FormDataValue = string | boolean | undefined
 interface FormDataField {
     name: string
     value: FormDataValue
-    validationMessages?: Validation.MessageWithId[]
+    validationMessages?: Validation.MessageWithId[],
+    requiresValidation?: boolean
 }
 
 interface FormData {
@@ -49,7 +50,13 @@ namespace FormContext {
     export interface HookProps {
         i18n: I18n
         defaultValue?: FormData
-        onChange?: (fieldName: string, value: FormDataValue) => void
+        onChange?: (
+            fieldName: string,
+            value: FormDataValue,
+            isManualChange: boolean,
+            formData: FormData,
+            setFieldValue: (fieldName: string, value: FormDataValue) => void
+        ) => void
         value?: FormData
     }
 
@@ -106,6 +113,7 @@ namespace FormContext {
         InitializeFormDataField = "INITIALIZE_FORM_DATA_FIELD",
         RemoveFieldValidation = "REMOVE_FIELD_VALIDATION",
         RemoveFormValidation = "REMOVE_FORM_VALIDATION",
+        ResetFieldRequiresValidation = "RESET_FIELD_REQUIRES_VALIDATION",
         SetFormData = "SET_FORM_DATA",
         SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
         TerminateFormDataField = "TERMINATE_FORM_DATA_FIELD"
@@ -154,6 +162,7 @@ namespace Validation {
         Error = "error",
         Warning = "warning",
         Success = "success",
+        Loading = "loading",
         Hint = "hint"
     }
 
