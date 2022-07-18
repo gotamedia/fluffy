@@ -35,10 +35,12 @@ const huge = css`
     padding: 0px 20px;
 `
 
-export {
+const sizes = {
     tiny,
     small,
     normal,
     big,
     huge
 }
+
+export default sizes

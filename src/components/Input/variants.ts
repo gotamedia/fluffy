@@ -1,74 +1,57 @@
 import { css } from 'styled-components'
 
+import { tint } from 'polished'
+
 const sharedStyle = {
-    disabled: css`
-        color: #8A8A8D;
-        border-color: #DADAD8;
-        background-color: #F5F5F5;
+    hover: css`
+        &:hover {
+            background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
+        }
     `,
     focus: css`
-        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+        &:focus {
+            box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+        }
+    `,
+    disabled: css`
+        &:disabled {
+            color: #8A8A8D;
+            border-color: #DADAD8;
+            background-color: #F5F5F5;
+        }
     `
 }
 
-// TODO: fix more variants and utilise theme for colors
 const primary = css`
-    border: 1px solid #bbbbbb;
-    background: rgb(112 112 112 / 10%);
+    background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
+    border: 1px solid ${({ theme }) => theme.colors.brand};
     
-    &:hover {
-        &:not(:disabled) {
-            background: rgb(112 112 112 / 20%);
-        }
-    }
-
-     &:focus {
-        ${sharedStyle.focus}
-    }
-
-    &:disabled {
-        ${sharedStyle.disabled}
-    }
+    ${sharedStyle.hover};
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 `
 
 const secondary = css`
-    background: rgb(112 112 112 / 10%);
+    background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
 
-    &:hover {
-        &:not(:disabled) {
-            background: rgb(112 112 112 / 20%);
-        }
-    }
-
-     &:focus {
-        ${sharedStyle.focus}
-    }
-
-    &:disabled {
-        ${sharedStyle.disabled}
-    }
+    ${sharedStyle.hover};
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 `
 
 const outline = css`
-    border: 1px solid #bbbbbb;
+    background-color: white;
+    border: 1px solid ${({ theme }) => theme.colors.brand};
 
-    &:hover {
-        &:not(:disabled) {
-            background: rgb(112 112 112 / 20%);
-        }
-    }
-
-     &:focus {
-        ${sharedStyle.focus}
-    }
-
-    &:disabled {
-        ${sharedStyle.disabled}
-    }
+    ${sharedStyle.hover};
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 `
 
-export {
+const variants = {
     primary,
     secondary,
     outline
 }
+
+export default variants

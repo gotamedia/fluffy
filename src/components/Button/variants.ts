@@ -7,11 +7,15 @@ import {
 
 const sharedStyle = {
     disabled: css`
-        color: #8A8A8D;
-        background-color: #DADAD8;
+        &:disabled {
+            color: #8A8A8D;
+            background-color: #DADAD8;
+        }
     `,
     focus: css`
-        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+        &:focus {
+            box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+        }
     `
 }
 
@@ -33,22 +37,17 @@ const primary = css`
         }
     }
 
-    &:focus {
-        ${sharedStyle.focus}
-    }
-
-    &:disabled {
-        ${sharedStyle.disabled}
-    }
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 `
 
 const secondary = css`
     color: ${({ theme }) => theme.colors.brand};
-    background-color: white;
+    background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
 
     &:hover {
         &:not(:disabled) {
-            background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
+            background-color: ${({ theme }) => tint(0.88, theme.colors.brand)};
         }
     }
 
@@ -58,22 +57,20 @@ const secondary = css`
         }
     }
 
-    &:focus {
-        ${sharedStyle.focus}
-    }
-
-    &:disabled {
-        ${sharedStyle.disabled}
-    }
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 `
 
 const outline = css`
     ${secondary};
+
+    background-color: white;
     
     border: 1px solid currentcolor;
 
+    ${sharedStyle.disabled};
+
     &:disabled {
-        ${sharedStyle.disabled}
         background-color: transparent;
     }
 `
@@ -89,19 +86,23 @@ const text = css`
         }
     }
 
-    &:focus {
-        ${sharedStyle.focus}
-    }
+    ${sharedStyle.focus};
+    ${sharedStyle.disabled};
 
     &:disabled {
-        ${sharedStyle.disabled}
         background-color: transparent;
     }
 `
 
-export {
+const variants = {
     primary,
     secondary,
     outline,
     text
 }
+
+export {
+    sharedStyle
+}
+
+export default variants

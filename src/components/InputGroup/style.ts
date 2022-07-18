@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 
-import * as sizes from './sizes'
+import variants from './variants'
+import sizes from './sizes'
 import type { InputGroupProps } from './types'
 
 const foucsStyle = css`
@@ -21,6 +22,8 @@ type WrapperProps = {
 const Wrapper = styled.div<WrapperProps>`
     display: inline-flex;
     position: relative;
+
+    ${({ $variant }) => variants[$variant || 'primary']};
 
     .input-group {
         &__icon {

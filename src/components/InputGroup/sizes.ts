@@ -87,10 +87,12 @@ const huge = css<StyledSizeProps>`
     }
 `
 
-export {
+const sizes = {
     tiny,
     small,
     normal,
     big,
     huge
 }
+
+export default sizes
