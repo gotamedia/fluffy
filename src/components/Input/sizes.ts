@@ -11,28 +11,28 @@ const small = css`
     height: 32px;
     min-width: 300px;
     font-size: 15px;
-    padding: 0px 12px;
+    padding: 0px 8px;
 `
 
 const normal = css`
     height: 40px;
     min-width: 300px;
     font-size: 16px;
-    padding: 0px 16px;
+    padding: 0px 10px;
 `
 
 const big = css`
     height: 48px;
     min-width: 300px;
     font-size: 18px;
-    padding: 0px 18px;
+    padding: 0px 16px;
 `
 
 const huge = css`
     height: 50px;
     min-width: 300px;
-    font-size: 20px;
-    padding: 0px 20px;
+    font-size: 22px;
+    padding: 0px 18px;
 `
 
 export {
