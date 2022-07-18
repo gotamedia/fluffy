@@ -42,7 +42,7 @@ const WithIcons: Story<Types.CardProps> = (props) => {
 }
 
 const WithIconsStory = WithIcons.bind({})
-WithIconsStory.storyName = 'WithIcons'
+WithIconsStory.storyName = 'With icons'
 
 const WithImage: Story<Types.CardProps> = (props) => {
     return (
@@ -62,7 +62,7 @@ const WithImage: Story<Types.CardProps> = (props) => {
 }
 
 const WithImageStory = WithImage.bind({})
-WithImageStory.storyName = 'WithImage'
+WithImageStory.storyName = 'With image'
 
 const Full: Story<Types.CardProps> = (props) => {
     return (
