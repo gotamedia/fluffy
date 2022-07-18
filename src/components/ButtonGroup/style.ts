@@ -42,30 +42,6 @@ const Wrapper = styled.div<{ $variant?: ButtonGroupProps['variant'] }>`
                             }
                         }
                     `
-
-                case ButtonGroupVariants.Text:
-                    return css`
-                        &:not(:only-child) {
-                            &:first-child {
-                                padding-right: 8px;
-                            }
-
-                            &:not(:first-child) {
-                                &:focus {
-                                    border-left-color: transparent;
-                                }
-                            }
-
-                            &:not(:first-child):not(:last-child) {
-                                padding-left: 8px;
-                                padding-right: 8px;
-                            }
-
-                            &:last-child {
-                                padding-left: 8px;
-                            }
-                        }
-                    `
             }
         }}
 

@@ -4,9 +4,12 @@ import {
     cloneElement
 } from 'react'
 
+import IconButton, { IconButtonShapes } from '../IconButton'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ButtonProps } from '../Button/types'
+import type { IconButtonProps } from '../IconButton'
 import type { ReactElement } from 'react'
 
 const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
@@ -33,6 +36,10 @@ const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
                         variant: variant,
                         disabled: disabled,
                         ...childElement.props
+                    }
+
+                    if (childElement.type === IconButton) {
+                        (childProps as IconButtonProps).shape = IconButtonShapes.Square
                     }
 
                     return (

@@ -8,8 +8,7 @@ import type {
 export const ButtonGroupVariants = {
     Primary: 'primary' as const,
     Secondary: 'secondary' as const,
-    Outline: 'outline' as const,
-    Text: 'text' as const
+    Outline: 'outline' as const
 }
 
 export type ButtonGroupVariantsType = typeof ButtonGroupVariants

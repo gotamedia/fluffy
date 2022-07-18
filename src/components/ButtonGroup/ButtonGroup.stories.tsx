@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import ButtonGroup from '.'
 
 import Button from '../Button'
+import IconButton from '../IconButton'
 import Icon, { Icons } from '../Icon'
 
 import type * as Types from './types'
@@ -63,6 +64,8 @@ const Basic: Story<Types.ButtonGroupProps & {
                     {text}
                 </Button>
 
+                <IconButton icon={Icons.Menu} />
+
                 <Button>
                     {text}
                 </Button>
@@ -71,11 +74,7 @@ const Basic: Story<Types.ButtonGroupProps & {
                     {text}
                 </Button>
 
-                <Button>
-                    <Icon
-                        icon={Icons.ArrowDown}
-                    />
-                </Button>
+                <IconButton icon={Icons.ArrowDown} />
             </ButtonGroup>
         </Wrapper>
     )
