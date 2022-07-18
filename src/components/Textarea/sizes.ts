@@ -31,7 +31,7 @@ const big = css`
 const huge = css`
     height: 120px;
     min-width: 350px;
-    font-size: 20px;
+    font-size: 22px;
     padding: 20px;
 `
 
