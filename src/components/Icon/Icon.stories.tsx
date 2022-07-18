@@ -26,12 +26,30 @@ Basic.args = {
 const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
 
     span {
         padding: 25px;
-        margin: auto;
-        min-width: 150px;
     }
+`
+
+const IconWrapper = styled.div`
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+    svg {
+        margin: auto;
+    }
+`
+
+const IconName = styled.p`
+    margin: auto;
+    padding: 15px 40px;
+    border-top: 1px solid #e7e7e7;
 `
 
 const AllIcons: Story<Types.IconProps> = () => {
@@ -40,10 +58,13 @@ const AllIcons: Story<Types.IconProps> = () => {
             {
                 Object.values(Icons).map((name, idx) => {
                     return (
-                        <Icon
-                            key={`${name}-${idx}`}
-                            icon={name}
-                        />
+                        <IconWrapper key={`${name}-${idx}`}>
+                            <Icon icon={name} />
+
+                            <IconName>
+                                {name}
+                            </IconName>
+                        </IconWrapper>
                     )
                 })
             }
