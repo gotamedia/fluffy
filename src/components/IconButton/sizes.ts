@@ -1,32 +1,32 @@
 import { css } from 'styled-components'
 
 const tiny = css`
+    height: 24px;
+    min-width: 24px;
+    padding: 0px;
+`
+
+const small = css`
     height: 32px;
     min-width: 32px;
     padding: 0px;
 `
 
-const small = css`
+const normal = css`
     height: 40px;
     min-width: 40px;
     padding: 0px;
 `
 
-const normal = css`
-    height: 44px;
-    min-width: 44px;
-    padding: 0px;
-`
-
 const big = css`
-    height: 58px;
-    min-width: 58px;
+    height: 48px;
+    min-width: 48px;
     padding: 0px;
 `
 
 const huge = css`
-    height: 68px;
-    min-width: 68px;
+    height: 50px;
+    min-width: 50px;
     padding: 0px;
 `
 
