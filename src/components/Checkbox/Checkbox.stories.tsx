@@ -7,16 +7,16 @@ import type { Story, Meta } from '@storybook/react'
 import type { ChangeEventHandler } from 'react'
 
 const Basic: Story<Types.CheckboxProps> = (props) => {
-    const [CheckboxValue, setInutValue] = useState(props.value)
+    const [checked, setChecked] = useState(props.checked)
 
     const handlOnChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-        setInutValue(event.target.value)
+        setChecked(event.target.checked)
     }
 
     return (
         <Checkbox
             {...props}
-            value={CheckboxValue}
+            checked={checked}
             onChange={handlOnChange}
         />
     )
@@ -34,6 +34,7 @@ export default {
     component: Checkbox,
     argTypes: {},
     args: {
+        checked: true,
         size: 'normal',
         disabled: false,
         label: 'Check me!'

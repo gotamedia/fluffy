@@ -39,6 +39,10 @@ const baseCheckboxStyle = css`
     &:disabled {
         color: #959495;
         cursor: not-allowed;
+
+        &:before {
+            opacity: 0.5;
+        }
     }
 `
 
