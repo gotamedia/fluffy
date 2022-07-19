@@ -12,7 +12,12 @@ export type FormProps = PropsWithChildren<{
         formData: FormData,
         setFieldValue: (fieldName: string, value: FormDataValue) => void
     ) => void
-    onSubmit?: (formData: Types.FormData, isValid: boolean, validationMessages: Types.Validation.Message[]) => void
+    onSubmit?: (
+        formData: Types.FormData,
+        isValid: boolean,
+        validationMessages: Types.Validation.Message[],
+        endSubmissionState: () => void
+    ) => void
     value?: Types.FormData
 }>
 

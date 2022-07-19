@@ -8,7 +8,7 @@ import * as Types from "./types"
 const validationName = "loading"
 
 const Loading: Types.LoadingComponent = (props) => {
-    const { condition, text } = props
+    const { condition, i18n } = props
 
     const [uuid] = useState(uuidv4())
 
@@ -23,10 +23,10 @@ const Loading: Types.LoadingComponent = (props) => {
             {
                 fieldName,
                 type: FSTypes.Validation.Types.Loading,
-                text
+                text: i18n.text
             }
         ]
-    }, [condition, text])
+    }, [condition, i18n.text])
 
     useEffect(() => {
         if (condition) {

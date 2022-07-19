@@ -182,6 +182,11 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     }
                 }
             }
+        case Types.FormContext.ReducerActionTypes.SetIsSubmitting:
+            return {
+                ...state,
+                isSubmitting: action?.payload?.isSubmitting === true
+            }
         case Types.FormContext.ReducerActionTypes.TerminateFormDataField:
             return {
                 ...state,

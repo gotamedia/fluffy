@@ -75,6 +75,7 @@ namespace FormContext {
         clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
         clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
+        isSubmitting: boolean
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
@@ -84,6 +85,7 @@ namespace FormContext {
         removeFieldValidation: (fieldName: string, validationId: string) => void
         removeFormValidation: (validationId: string) => void
         setFieldValue: (fieldName: string, value: FormDataValue) => void
+        setIsSubmitting: (isSubmitting: boolean) => void
         terminateField: (fieldName: string) => void
         validateField: (fieldName: string, formData: FormData) => Validation.Message[]
         validateForm: (formData: FormData) => Validation.Message[]
@@ -95,13 +97,14 @@ namespace FormContext {
     }
 
     export interface ReducerState {
-        i18n: I18n
         formData: FormData
+        i18n: I18n
+        isSubmitting: boolean
+        type: Types,
         validations: {
             field: Validation.Field.StoredValidation[]
             form: Validation.Form.StoredValidation[]
         }
-        type: Types
     }
 
     export enum ReducerActionTypes {
@@ -116,6 +119,7 @@ namespace FormContext {
         ResetFieldRequiresValidation = "RESET_FIELD_REQUIRES_VALIDATION",
         SetFormData = "SET_FORM_DATA",
         SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
+        SetIsSubmitting = "SET_IS_SUBMITTING",
         TerminateFormDataField = "TERMINATE_FORM_DATA_FIELD"
     }
 

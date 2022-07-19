@@ -40,8 +40,9 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
         {
-            i18n,
             formData: (value || defaultValue || {}),
+            i18n,
+            isSubmitting: false,
             validations: { field: [], form: [] },
             type: getFormDataState(value, defaultValue)
         }
@@ -197,6 +198,13 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             )
         }
     }, [onChange, state.formData, value])
+
+    const setIsSubmitting = useCallback((isSubmitting: boolean) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.SetIsSubmitting,
+            payload: { isSubmitting }
+        })
+    }, [])
 
     const terminateField = useCallback((fieldName: string) => {
         dispatch({
@@ -364,6 +372,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         removeFieldValidation,
         removeFormValidation,
         setFieldValue,
+        setIsSubmitting,
         terminateField,
         validateField,
         validateForm

@@ -13,6 +13,7 @@ const Text: Types.TextComponent = (props) => {
         clearValidationMessages,
         getFieldValue,
         getHighestValidationMessageType,
+        isSubmitting,
         setFieldValue
     } = useContext(Contexts.FormContext)
     const {
@@ -54,7 +55,7 @@ const Text: Types.TextComponent = (props) => {
         <>
             <Styled.Text
                 $theme={theme}
-                disabled={disabled}
+                disabled={isSubmitting || disabled}
                 id={name}
                 name={name}
                 readOnly={readOnly}
