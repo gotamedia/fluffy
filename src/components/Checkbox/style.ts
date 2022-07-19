@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { tint } from 'polished'
+
 import sizes from './sizes'
 
 import type { CheckboxProps } from './types'
@@ -12,8 +14,7 @@ const baseCheckboxStyle = css`
     appearance: none;
     margin: 0;
     font: inherit;
-    color: currentColor;
-    border: 2px solid currentColor;
+    border: 2px solid ${({ theme }) => theme.colors.brand};
     border-radius: 4px;
     display: flex;
 
@@ -31,9 +32,20 @@ const baseCheckboxStyle = css`
         transform: scale(1);
     }
 
+    &:hover {
+        &:not(:disabled) {
+            background-color: ${({ theme }) => tint(0.90, theme.colors.brand)};
+        }
+    }
+
+    &:active {
+        &:not(:disabled) {
+            background-color: ${({ theme }) => tint(0.82, theme.colors.brand)};
+        }
+    }
+
     &:focus {
-        outline: 2px solid currentColor;
-        outline-offset: 1px;
+        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
     }
 
     &:disabled {

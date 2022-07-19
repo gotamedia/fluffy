@@ -34,8 +34,8 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
                 $size={size}
                 disabled={disabled}
                 onChange={handleOnChange}
-                type={'checkbox'}
                 {...DOMProps}
+                type={'checkbox'}
             />
 
             {
