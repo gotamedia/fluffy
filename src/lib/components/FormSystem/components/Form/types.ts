@@ -4,6 +4,7 @@ import * as Types from "../../types"
 
 export type FormProps = PropsWithChildren<{
     defaultValue?: Types.FormData
+    disabled?: boolean
     i18n: Types.FormContext.I18n
     onChange?: (
         fieldName: string,

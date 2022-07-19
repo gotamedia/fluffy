@@ -5,14 +5,14 @@ import React, { useContext } from "react"
 import * as Types from "./types"
 
 const SubmitButton: Types.SubmitButtonComponent = () => {
-    const formContext = useContext(Contexts.FormContext)
+    const { disabled: formDisabled, getButtonLabel, isSubmitting } = useContext(Contexts.FormContext)
 
     return (
-        <Button type={"submit"} disabled={formContext.isSubmitting}>
-            {formContext.isSubmitting && (
+        <Button type={"submit"} disabled={formDisabled || isSubmitting}>
+            {isSubmitting && (
                 <Icon icon={Icons.Spinner} />
             )}
-            {formContext.getButtonLabel("submit")}
+            {getButtonLabel("submit")}
         </Button>
     )
 }

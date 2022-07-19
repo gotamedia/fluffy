@@ -35,7 +35,7 @@ const getFormDataState = (
 }
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
-    const { defaultValue, i18n, onChange, value } = props
+    const { defaultValue, disabled, i18n, onChange, value } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
@@ -362,6 +362,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         addValidationMessages,
         clearAllValidationMessages,
         clearValidationMessages,
+        disabled: Boolean(disabled),
         initializeField,
         getButtonLabel,
         getFieldLabel,

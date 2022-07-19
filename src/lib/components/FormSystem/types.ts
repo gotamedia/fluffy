@@ -50,6 +50,7 @@ namespace FormContext {
     export interface HookProps {
         i18n: I18n
         defaultValue?: FormData
+        disabled?: boolean
         onChange?: (
             fieldName: string,
             value: FormDataValue,
@@ -74,6 +75,7 @@ namespace FormContext {
         addValidationMessages: (fieldName: string, validationMessages: Validation.MessageWithId[]) => void
         clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
         clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
+        disabled: boolean
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         isSubmitting: boolean
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined

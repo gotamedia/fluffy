@@ -11,6 +11,7 @@ const Text: Types.TextComponent = (props) => {
 
     const {
         clearValidationMessages,
+        disabled: formDisabled,
         getFieldValue,
         getHighestValidationMessageType,
         isSubmitting,
@@ -55,7 +56,7 @@ const Text: Types.TextComponent = (props) => {
         <>
             <Styled.Text
                 $theme={theme}
-                disabled={isSubmitting || disabled}
+                disabled={formDisabled || isSubmitting || disabled}
                 id={name}
                 name={name}
                 readOnly={readOnly}

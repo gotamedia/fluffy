@@ -26,122 +26,167 @@ const Template: Story<FSTypes.Form> = (props) => {
         return []
     }, [])
 
+    const onRetry = useCallback(async (event) => {
+        event.preventDefault()
+        setFormState((currentFormState) => ({ ...currentFormState, submitStatus: "progress" }))
+        await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
+        setFormState((currentFormState) => ({ ...currentFormState, submitStatus: "success" }))
+    }, [])
+
+    const onRestart = useCallback(() => {
+        setFormState({
+            ssnResolvingStatus: "idle",
+            zipcodeResolvingStatus: "idle",
+            submitStatus: "idle"
+        })
+    }, [])
+
     return (
-        <FS.Form
-            i18n={props.i18n}
-            defaultValue={{
-                firstname: {
-                    name: "firstname",
-                    value: "Lars"
-                },
-                lastname: {
-                    name: "lastname",
-                    value: "Last"
-                },
-                secondname: {
-                    name: "secondname",
-                    value: "Sec"
-                },
-                street: {
-                    name: "street",
-                    value: "str"
-                }
-            }}
-            onSubmit={(formData, isValid, validationMessages) => {
-                console.log("submit", { formData, isValid, validationMessages })
-            }}
-        >
-            <FS.Validation.Form.Custom
-                involvedFieldNames={["firstname", "lastname", "street"]}
-                validationFunction={customValidationExample1}
-            />
-            <FS.Validation.Form.SameValue
-                fieldAName={"firstname"}
-                fieldBName={"lastname"}
-                type={FSTypes.Validation.Types.Warning}
-            />
-            <FS.Group  inline>
-                <FS.Group inline $direction={"vertical"} width={"300px"}>
+        <>
+            {formState.submitStatus === "success" && (
+                <>
+                    <p>{"Account successfully created"}</p>
+                    <Button onClick={onRestart}>{"Restart"}</Button>
+                </>
+            )}
+            {formState.submitStatus !== "success" && (
+                <FS.Form
+                    i18n={props.i18n}
+                    onSubmit={onSubmit}
+                    onChange={onChange}
+                    disabled={["failed", "progress"].includes(formState.submitStatus)}
+                >
                     <FS.Field>
-                        <FS.Input.Text name={"firstname"}>
+                        <FS.Input.Text name={"email"}>
+                            <FS.Validation.Field.Required />
                             <FS.Validation.Field.Email />
                         </FS.Input.Text>
                     </FS.Field>
                     <FS.Field>
-                        <FS.Input.Text name={"secondname"} disabled>
-                            <FS.Validation.Field.Email type={FSTypes.Validation.Types.Warning} />
+                        <FS.Input.Text name={"password"}>
+                            <FS.Validation.Field.Required />
                         </FS.Input.Text>
                     </FS.Field>
-                </FS.Group>
-                <FS.Field>
-                    <FS.Input.Text name={"lastname"}>
-                        <FS.Validation.Field.Email />
-                    </FS.Input.Text>
-                </FS.Field>
-            </FS.Group>
-            <FS.Field>
-                <FS.Input.Text name={"street"}>
-                    <FS.Validation.Field.Email type={FSTypes.Validation.Types.Warning} />
-                </FS.Input.Text>
-            </FS.Field>
+                    <FS.Field>
+                        <FS.Input.Text name={"ssn"}>
+                            <FS.Validation.Field.Required />
+                            <FS.Validation.Field.Loading
+                                condition={["progress", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                i18n={{ text: "Hämtar adress från folkbokföringen..." }}
+                            />
+                            {["failed"].includes(formState.ssnResolvingStatus) && (
+                                <FS.Validation.Field.Hint
+                                    i18n={{ text: "Kunde inte hämta adress. Vänligen fyll i nedan." }}
+                                />
+                            )}
+                        </FS.Input.Text>
+                    </FS.Field>
+                    {["succeeded", "manual", "manual_progress"].includes(formState.ssnResolvingStatus) && (
+                        <span>
+                        <strong>{"Adressuppgifter "}</strong>
+                            {formState.ssnResolvingStatus === "succeeded" && (<Change setFormState={setFormState} />)}
+                            {formState.ssnResolvingStatus === "manual" && (<Reset setFormState={setFormState} />)}
+                    </span>
+                    )}
+                    {["failed", "succeeded", "manual", "manual_progress"].includes(formState.ssnResolvingStatus) && (
+                        <>
+                            <FS.Field>
+                                <FS.Input.Text
+                                    name={"firstName"}
+                                    disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                >
+                                    <FS.Validation.Field.Required />
+                                </FS.Input.Text>
+                            </FS.Field>
+                            <FS.Field>
+                                <FS.Input.Text
+                                    name={"lastName"}
+                                    disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                >
+                                    <FS.Validation.Field.Required />
+                                </FS.Input.Text>
+                            </FS.Field>
+                            <FS.Group>
+                                <FS.Field>
+                                    <FS.Input.Text
+                                        name={"street"}
+                                        disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                    >
+                                        <FS.Validation.Field.Required />
+                                    </FS.Input.Text>
+                                </FS.Field>
+                                <FS.Field>
+                                    <FS.Input.Text
+                                        name={"streetNumber"}
+                                        disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                    />
+                                </FS.Field>
+                            </FS.Group>
+                            <FS.Group>
+                                <FS.Field>
+                                    <FS.Input.Text
+                                        name={"staircase"}
+                                        disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                    />
+                                </FS.Field>
+                                <FS.Field>
+                                    <FS.Input.Text
+                                        name={"apartmentNumber"}
+                                        disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                    />
+                                </FS.Field>
+                            </FS.Group>
+                            <FS.Group>
+                                <FS.Field>
+                                    <FS.Input.Text
+                                        name={"zipCode"}
+                                        disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
+                                    >
+                                        <FS.Validation.Field.Required />
+                                        <FS.Validation.Field.Loading
+                                            condition={
+                                                ["progress", "manual_progress"].includes(formState.zipcodeResolvingStatus)
+                                            }
+                                            i18n={{ text: "Hämtar postort..." }}
+                                        />
+                                        {["failed"].includes(formState.zipcodeResolvingStatus) && (
+                                            <FS.Validation.Field.Hint
+                                                i18n={{ text: "Kunde inte hitta postnummer. Kontrollera postnummer och försök igen." }}
+                                            />
+                                        )}
+                                    </FS.Input.Text>
+                                </FS.Field>
+                                <FS.Field>
+                                    <FS.Input.Text name={"city"} disabled>
+                                        <FS.Validation.Field.Required />
+                                    </FS.Input.Text>
+                                </FS.Field>
+                            </FS.Group>
+                        </>
+                    )}
+                    <FS.Field>
+                        <FS.Input.Text name={"mobileNumber"}>
+                            <FS.Validation.Field.Required />
+                        </FS.Input.Text>
+                    </FS.Field>
 
-            <div>Fields by state</div>
+                    {["failed", "progress"].includes(formState.submitStatus) && (
+                        <Message
+                            type={MessageTypes.Error}
+                            text={"Ditt konto skapades, men ett tekniskt problem uppstod. Försök igen om en liten stund."}
+                            action={{
+                                text: "Försök igen",
+                                onClick: onRetry,
+                                loading: formState.submitStatus === "progress",
+                                disabled: formState.submitStatus === "progress"
+                            }}
+                        />
+                    )}
 
-            <FS.Field>
-                <FS.Input.Text name={"default"} />
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"disabled"} disabled />
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"readOnly"} readOnly />
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"error"}>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"warning"}>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"success"}>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"hint"}>
-                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"multiple1"}>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
-                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"multiple2"} disabled>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
-                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Field>
-                <FS.Input.Text name={"multiple3"} readOnly>
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Warning} />
-                    <FS.Validation.Field.Hint i18n={{ text: "This is a hint." }} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Error} />
-                    <FS.Validation.Field.Required type={FSTypes.Validation.Types.Success} />
-                </FS.Input.Text>
-            </FS.Field>
-            <FS.Button />
-        </FS.Form>
+                    <FS.Button />
+                </FS.Form>
+            )}
+        </>
     )
 }
 
