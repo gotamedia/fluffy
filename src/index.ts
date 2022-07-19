@@ -88,4 +88,7 @@ export { default as Portal } from '@components/Portal'
 export * from '@components/Radio'
 export { default as Radio } from '@components/Radio'
 
+export * from '@components/SwitchButton'
+export { default as SwitchButton } from '@components/SwitchButton'
+
 // <==== Components
