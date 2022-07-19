@@ -1,9 +1,71 @@
 import { Meta, Story } from '@storybook/react'
-import { useCallback } from "react"
+import React, { useCallback, useContext, useState } from "react"
+import Button from "../Button"
+import Message from "../Message/Message"
+import { MessageTypes } from "../Message/types"
+import * as Contexts from "./contexts"
 
 import FS from './index'
-import { FormData } from "./types"
-import * as FSTypes from "./types"
+import * as Types from "./types"
+
+interface ChangeProps {
+    setFormState: (currentFormState: any) => any
+}
+
+const Change: React.FC<ChangeProps> = (props) => {
+    const { setFieldValue } = useContext(Contexts.FormContext)
+
+    return (
+        <a
+            href={"#"}
+            onClick={(event) => {
+                event.preventDefault()
+                props.setFormState((currentFormState: any) => ({
+                    ...currentFormState,
+                    ssnResolvingStatus: "manual"
+                }))
+                setFieldValue("firstName", "")
+                setFieldValue("lastName", "")
+                setFieldValue("street", "")
+                setFieldValue("streetNumber", "")
+                setFieldValue("staircase", "")
+                setFieldValue("apartmentNumber", "")
+                setFieldValue("zipCode", "")
+                setFieldValue("city", "")
+            }}
+        >{"Ändra adress"}</a>
+    )
+}
+
+interface ResetProps {
+    setFormState: (currentFormState: any) => any
+}
+
+const Reset: React.FC<ResetProps> = (props) => {
+    const { setFieldValue } = useContext(Contexts.FormContext)
+
+    return (
+        <a
+            href={"#"}
+            onClick={async (event) => {
+                event.preventDefault()
+
+                props.setFormState((currentFormState: any) => ({ ...currentFormState, ssnResolvingStatus: "manual_progress" }))
+                await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
+                // setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "failed" }))
+                props.setFormState((currentFormState: any) => ({ ...currentFormState, ssnResolvingStatus: "succeeded" }))
+                setFieldValue("firstName", "Johan")
+                setFieldValue("lastName", "Johanson")
+                setFieldValue("street", "Norra vägen")
+                setFieldValue("streetNumber", "17")
+                setFieldValue("staircase", "A")
+                setFieldValue("apartmentNumber", "1234")
+                setFieldValue("zipCode", "39352")
+                setFieldValue("city", "Kalmar")
+            }}
+        >{"Hämta från folkbokföringen"}</a>
+    )
+}
 
 export default {
     title: 'Components/FormSystem',
@@ -12,18 +74,62 @@ export default {
     },
 } as Meta<typeof FS.Form>
 
-const Template: Story<FSTypes.Form> = (props) => {
-    const customValidationExample1 = useCallback((formData: FormData) => {
-        if (formData.street.value === formData.lastname.value) {
-            return [{
-                fieldName: "firstname",
-                involvedFieldNames: ["lastname", "street"],
-                type: FSTypes.Validation.Types.Warning,
-                text: "Lastname and street should not be the same!"
-            }]
+const AccountCreationTemplate: Story<Types.Form> = (props) => {
+    const [formState, setFormState] = useState({
+        ssnResolvingStatus: "idle",
+        zipcodeResolvingStatus: "idle",
+        submitStatus: "idle"
+    })
+
+    const onCancel = useCallback(async (formData, endCancellationState) => {
+        await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
+        endCancellationState()
+    }, [])
+
+    const onChange = useCallback(async (fieldName, value, isManualChange, formData, setFieldValue) => {
+        if (isManualChange) {
+            return
         }
 
-        return []
+        if (fieldName === "ssn") {
+            if (new RegExp(/\d{8}-\d{4}/).test(String(value))) {
+                setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "progress" }))
+                await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
+
+                if (value === "12345678-1234") {
+                    setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "succeeded" }))
+                    setFieldValue("firstName", "Johan")
+                    setFieldValue("lastName", "Johanson")
+                    setFieldValue("street", "Norra vägen")
+                    setFieldValue("streetNumber", "17")
+                    setFieldValue("staircase", "A")
+                    setFieldValue("apartmentNumber", "1234")
+                    setFieldValue("zipCode", "39352")
+                    setFieldValue("city", "Kalmar")
+                } else {
+                    setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "failed" }))
+                }
+            } else {
+                setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "idle" }))
+            }
+        }
+
+        if (fieldName === "zipCode") {
+            if ((value as string).length === 5) {
+                setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "progress" }))
+                await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
+
+                if (value === "12345") {
+                    setFieldValue("city", "Kalmar")
+                    setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "idle" }))
+                } else {
+                    setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "failed" }))
+                }
+            } else {
+                setFieldValue("city", "")
+                setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "idle" }))
+            }
+        }
     }, [])
 
     const onRetry = useCallback(async (event) => {
@@ -41,6 +147,17 @@ const Template: Story<FSTypes.Form> = (props) => {
         })
     }, [])
 
+    const onSubmit = useCallback(async (formData, isValid, validationMessages, endSubmissionState) => {
+        console.log("submit", { formData, isValid, validationMessages })
+
+        if (isValid) {
+            await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
+            setFormState((currentFormState) => ({ ...currentFormState, submitStatus: "failed" }))
+        }
+
+        endSubmissionState()
+    }, [])
+
     return (
         <>
             {formState.submitStatus === "success" && (
@@ -51,10 +168,11 @@ const Template: Story<FSTypes.Form> = (props) => {
             )}
             {formState.submitStatus !== "success" && (
                 <FS.Form
-                    i18n={props.i18n}
-                    onSubmit={onSubmit}
-                    onChange={onChange}
                     disabled={["failed", "progress"].includes(formState.submitStatus)}
+                    i18n={props.i18n}
+                    onCancel={onCancel}
+                    onChange={onChange}
+                    onSubmit={onSubmit}
                 >
                     <FS.Field>
                         <FS.Input.Text name={"email"}>
@@ -183,7 +301,8 @@ const Template: Story<FSTypes.Form> = (props) => {
                         />
                     )}
 
-                    <FS.Button />
+                    <FS.Button.Cancel />
+                    <FS.Button.Submit />
                 </FS.Form>
             )}
         </>
@@ -194,23 +313,22 @@ export const AccountCreation = AccountCreationTemplate.bind({})
 AccountCreation.args = {
     i18n: {
         fields: {
-            firstname: "Firstname",
-            secondname: "Secondname",
-            lastname: "Lastname",
-            street: "Street",
-            default: "Default",
-            disabled: "Disabled",
-            readOnly: "ReadOnly",
-            error: "Error",
-            warning: "Warning",
-            success: "Success",
-            hint: "Hint",
-            multiple1: "Multiple (Error/Warning/Success/Hint)",
-            multiple2: "Multiple (Disabled/Error/Warning/Success/Hint)",
-            multiple3: "Multiple (ReadOnly/Error/Warning/Success/Hint)"
+            email: "E-postadress",
+            password: "Lösenord",
+            ssn: "Personnummer (ÅÅÅÅMMDD-XXXX)",
+            firstName: "Förnamn",
+            lastName: "Efternamn",
+            street: "Gatuadress",
+            streetNumber: "Gatunummer",
+            staircase: "Uppgång",
+            apartmentNumber: "Lägenhetsnr",
+            zipCode: "Postnummer",
+            city: "Postort",
+            mobileNumber: "Mobilnummer"
         },
         buttons: {
-            submit: "Send"
+            cancel: "Tillbaka",
+            submit: "Vidare till betalning"
         }
     }
 }
