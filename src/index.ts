@@ -85,4 +85,7 @@ export { default as Card } from '@components/Card'
 export * from '@components/Portal'
 export { default as Portal } from '@components/Portal'
 
+export * from '@components/Radio'
+export { default as Radio } from '@components/Radio'
+
 // <==== Components
