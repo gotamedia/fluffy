@@ -4,6 +4,7 @@ import { themes } from '@storybook/theming'
 import { ThemeProvider } from 'styled-components'
 import { addDecorator } from '@storybook/react'
 import { withThemes } from '@react-theming/storybook-addon'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 import { getTheme } from '../src/utils/theme'
 
@@ -34,6 +35,9 @@ export const parameters = {
     },
     docs: {
         theme: themes.dark
+    },
+    viewport: {
+        viewports: INITIAL_VIEWPORTS
     }
 }
 
