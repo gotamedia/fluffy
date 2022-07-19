@@ -145,8 +145,8 @@ const Template: Story<FSTypes.Form> = (props) => {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const AccountCreation = AccountCreationTemplate.bind({})
+AccountCreation.args = {
     i18n: {
         fields: {
             firstname: "Firstname",
