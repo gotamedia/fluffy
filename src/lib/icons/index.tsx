@@ -101,6 +101,7 @@ export { default as Shrink } from "./shrink";
 export { default as SmalandspostenSquare } from "./smp-square";
 export { default as SmartPhone } from "./smart-phone";
 export { default as Smalandsposten } from "./smp";
+export { default as Spinner } from "./spinner";
 export { default as SydostranSquare } from "./ssd-square";
 export { default as Sydostran } from "./ssd";
 export { default as Swish } from "./swish";

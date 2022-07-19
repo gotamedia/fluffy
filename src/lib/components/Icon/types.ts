@@ -99,6 +99,7 @@ export const Icons = {
     SmartPhone: 'SmartPhone' as const,
     Smalandsposten: 'Smalandsposten' as const,
     SmalandspostenSquare: 'SmalandspostenSquare' as const,
+    Spinner: 'Spinner' as const,
     Swish: 'Swish' as const,
     Sydostran: 'Sydostran' as const,
     SydostranSquare: 'SydostranSquare' as const,
