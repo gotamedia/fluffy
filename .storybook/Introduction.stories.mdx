@@ -1,0 +1,94 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Introduction'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+# Welcome to Gota Media Fluffy UI library 🦄
+Fluffy is a opinionated but highly customizable UI library used by Gota Media AB.
+
+## Installation
+Install with NPM
+
+<Source
+    language={'bash'}
+    code={`
+        npm install @gotamedia/fluffy
+    `}
+/>
+
+### Peer dependencies
+Fluffy requires that you install following depdencies in your own project
+
+<Source
+    language={'bash'}
+    code={`
+        npm install react styled-components
+    `}
+/>
+
+## Usage
+Naming import from root
+
+<Source
+    language={'tsx'}
+    code={`
+import { Icon, Icons } from '@gotamedia/fluffy'
+\nconst MyComponent = () => (
+    <div>
+        <Icon icon={Icons.Info}/>
+    </div>
+)
+    `}
+/>
+
+Direct import
+
+<Source
+    language={'tsx'}
+    code={`
+import Icon, { Icons } from '@gotamedia/fluffy/Icon'
+\nconst MyComponent = () => (
+    <div>
+        <Icon icon={Icons.Info}/>
+    </div>
+)
+    `}
+/>
+
+## Theming
+Import Fluffy's Theme to enable style for all Fluffy components.
+
+<Source
+    language={'tsx'}
+    code={`
+import { render } from 'react-dom'
+import { ThemeProvider } from 'styled-components'
+import { Button, getTheme } from '@gotamedia/fluffy'
+\nconst App = () => (
+    <div>
+        <Button>
+            {'It is so themeable! 👩‍🎤'}
+        </Button>
+    </div>
+)
+\nconst theme = merge(
+    getTheme(),
+    {
+        colors: {
+            brand: '#E62267'
+        }
+    }
+)
+\nrender((
+    <ThemeProvider theme={theme}>
+        <App />
+    </ThemeProvider>
+), document.getElementById('root'))
+    `}
+/>

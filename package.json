@@ -13,7 +13,7 @@
     "build": "./build.sh",
     "local": "npm run build && yalc push",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "build-storybook": "./storybook.sh && build-storybook",
     "babel": "babel temp_dist --source-root temp_dist --out-dir dist --extensions .js --copy-files --quiet",
     "types": "ttsc --project ./temp_root/tsconfig.json",
     "release": "standard-version",

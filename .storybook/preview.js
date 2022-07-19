@@ -11,6 +11,9 @@ import { getTheme } from '../src/utils/theme'
 import { GlobalStyle } from './style'
 
 export const parameters = {
+    options: {
+        showToolbar: true
+    },
     actions: {
         argTypesRegex: "^on[A-Z].*"
     },

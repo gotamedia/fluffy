@@ -10,6 +10,7 @@ coverage
 dist
 _temp_dist_
 storybook-static
+.storybook/CHANGELOG.stories.mdx
 
 # misc
 .DS_Store
