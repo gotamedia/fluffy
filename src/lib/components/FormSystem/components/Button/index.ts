@@ -1,6 +1,15 @@
-import SubmitFormComponent from "./Submit"
+import CancelButtonComponent from "./Cancel"
+import DeleteButtonComponent from "./Delete"
+import SubmitButtonComponent from "./Submit"
 import { ComponentType } from "./types"
 
-const SubmitButton = SubmitFormComponent as ComponentType
+const Button = SubmitButtonComponent as ComponentType
 
-export default SubmitButton
+Button.Cancel = CancelButtonComponent as ComponentType
+Button.Cancel.displayName = "Button.Cancel"
+Button.Delete = DeleteButtonComponent as ComponentType
+Button.Delete.displayName = "Button.Delete"
+Button.Submit = SubmitButtonComponent as ComponentType
+Button.Submit.displayName = "Button.Submit"
+
+export default Button

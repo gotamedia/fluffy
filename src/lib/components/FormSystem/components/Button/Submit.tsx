@@ -4,11 +4,11 @@ import Icon, { Icons } from "@components/Icon"
 import React, { useContext } from "react"
 import * as Types from "./types"
 
-const SubmitButton: Types.SubmitButtonComponent = () => {
-    const { disabled: formDisabled, getButtonLabel, isSubmitting } = useContext(Contexts.FormContext)
+const SubmitButton: Types.ButtonComponent = () => {
+    const { disabled: formDisabled, getButtonLabel, isActing, isSubmitting } = useContext(Contexts.FormContext)
 
     return (
-        <Button type={"submit"} disabled={formDisabled || isSubmitting}>
+        <Button type={"submit"} disabled={formDisabled || isActing}>
             {isSubmitting && (
                 <Icon icon={Icons.Spinner} />
             )}

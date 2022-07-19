@@ -1,9 +1,11 @@
 import React, { PropsWithChildren } from "react"
 
-export type SubmitButtonProps = PropsWithChildren<{
+export type ButtonProps = PropsWithChildren<{}>
 
-}>
+export type ButtonComponent = React.FC<ButtonProps>
 
-export type SubmitButtonComponent = React.FC<SubmitButtonProps>
-
-export type ComponentType = SubmitButtonComponent
+export type ComponentType = ButtonComponent & {
+    Cancel: ButtonComponent,
+    Delete: ButtonComponent,
+    Submit: ButtonComponent
+}

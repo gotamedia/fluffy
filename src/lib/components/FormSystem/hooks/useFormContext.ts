@@ -35,16 +35,20 @@ const getFormDataState = (
 }
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
-    const { defaultValue, disabled, i18n, onChange, value } = props
+    const { defaultValue, disabled, i18n, onCancel, onChange, onDelete, value } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
         {
             formData: (value || defaultValue || {}),
             i18n,
+            isCanceling: false,
+            isDeleting: false,
             isSubmitting: false,
-            validations: { field: [], form: [] },
-            type: getFormDataState(value, defaultValue)
+            onCancel,
+            onDelete,
+            type: getFormDataState(value, defaultValue),
+            validations: { field: [], form: [] }
         }
     )
     const previousState = usePrevious(state.validations)
@@ -198,6 +202,20 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             )
         }
     }, [onChange, state.formData, value])
+
+    const setIsCanceling = useCallback((isCanceling: boolean) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.SetIsCanceling,
+            payload: { isCanceling }
+        })
+    }, [])
+
+    const setIsDeleting = useCallback((isDeleting: boolean) => {
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.SetIsDeleting,
+            payload: { isDeleting }
+        })
+    }, [])
 
     const setIsSubmitting = useCallback((isSubmitting: boolean) => {
         dispatch({
@@ -364,6 +382,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         clearValidationMessages,
         disabled: Boolean(disabled),
         initializeField,
+        isActing: state.isCanceling || state.isDeleting || state.isSubmitting,
         getButtonLabel,
         getFieldLabel,
         getFieldValidationMessages,
@@ -373,6 +392,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         removeFieldValidation,
         removeFormValidation,
         setFieldValue,
+        setIsCanceling,
+        setIsDeleting,
         setIsSubmitting,
         terminateField,
         validateField,

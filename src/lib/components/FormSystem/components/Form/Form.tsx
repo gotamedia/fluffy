@@ -6,9 +6,27 @@ import * as FSTypes from "../../types"
 import * as Types from "./types"
 
 const Form: Types.FormComponent = (props) => {
-    const { children, defaultValue, disabled, i18n, onChange, onSubmit, value } = props
+    const {
+        children,
+        defaultValue,
+        disabled,
+        i18n,
+        onCancel,
+        onChange,
+        onDelete,
+        onSubmit,
+        value
+    } = props
 
-    const formContextValue = Hooks.useFormContext({ defaultValue, disabled, i18n, onChange, value })
+    const formContextValue = Hooks.useFormContext({
+        defaultValue,
+        disabled,
+        i18n,
+        onCancel,
+        onChange,
+        onDelete,
+        value
+    })
 
     const onSubmitLocal = useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()

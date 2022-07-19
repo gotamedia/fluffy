@@ -2,7 +2,7 @@ import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
 import { SameValueI18n } from "./components/Validation/Form/SameValue/i18nTypes"
 import React from "react"
-import { SubmitButtonProps as Button } from "./components/Button/types"
+import { ButtonProps as Button } from "./components/Button/types"
 import { FieldProps as Field } from "./components/Field/types"
 import { FormProps as Form } from "./components/Form/types"
 import { GroupProps as Group } from "./components/Group/types"
@@ -29,6 +29,33 @@ interface FormData {
 }
 
 namespace FormContext {
+    export namespace Events {
+        export type onCancel = (
+            formData: FormData,
+            endCancellationState: () => void
+        ) => void
+
+        export type onChange = (
+            fieldName: string,
+            value: FormDataValue,
+            isManualChange: boolean,
+            formData: FormData,
+            setFieldValue: (fieldName: string, value: FormDataValue) => void
+        ) => void
+
+        export type onDelete = (
+            formData: FormData,
+            endDeletionState: () => void
+        ) => void
+
+        export type onSubmit = (
+            formData: FormData,
+            isValid: boolean,
+            validationMessages: Validation.Message[],
+            endSubmissionState: () => void
+        ) => void
+    }
+
     export interface I18n {
         fields?: {
             [key: string]: string
@@ -51,13 +78,9 @@ namespace FormContext {
         i18n: I18n
         defaultValue?: FormData
         disabled?: boolean
-        onChange?: (
-            fieldName: string,
-            value: FormDataValue,
-            isManualChange: boolean,
-            formData: FormData,
-            setFieldValue: (fieldName: string, value: FormDataValue) => void
-        ) => void
+        onCancel?: Events.onCancel
+        onChange?: Events.onChange
+        onDelete?: Events.onDelete
         value?: FormData
     }
 
@@ -77,7 +100,7 @@ namespace FormContext {
         clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
         disabled: boolean
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
-        isSubmitting: boolean
+        isActing: boolean
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
@@ -87,6 +110,8 @@ namespace FormContext {
         removeFieldValidation: (fieldName: string, validationId: string) => void
         removeFormValidation: (validationId: string) => void
         setFieldValue: (fieldName: string, value: FormDataValue) => void
+        setIsCanceling: (isCanceling: boolean) => void
+        setIsDeleting: (isDeleting: boolean) => void
         setIsSubmitting: (isSubmitting: boolean) => void
         terminateField: (fieldName: string) => void
         validateField: (fieldName: string, formData: FormData) => Validation.Message[]
@@ -101,8 +126,12 @@ namespace FormContext {
     export interface ReducerState {
         formData: FormData
         i18n: I18n
+        isCanceling: boolean
+        isDeleting: boolean
         isSubmitting: boolean
-        type: Types,
+        onCancel?: Events.onCancel
+        onDelete?: Events.onDelete
+        type: Types
         validations: {
             field: Validation.Field.StoredValidation[]
             form: Validation.Form.StoredValidation[]
@@ -121,6 +150,8 @@ namespace FormContext {
         ResetFieldRequiresValidation = "RESET_FIELD_REQUIRES_VALIDATION",
         SetFormData = "SET_FORM_DATA",
         SetFormDataFieldValue = "SET_FORM_DATA_FIELD_VALUE",
+        SetIsCanceling = "SET_IS_CANCELING",
+        SetIsDeleting = "SET_IS_DELETING",
         SetIsSubmitting = "SET_IS_SUBMITTING",
         TerminateFormDataField = "TERMINATE_FORM_DATA_FIELD"
     }

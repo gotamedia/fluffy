@@ -182,6 +182,16 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     }
                 }
             }
+        case Types.FormContext.ReducerActionTypes.SetIsCanceling:
+            return {
+                ...state,
+                isCanceling: action?.payload?.isCanceling === true
+            }
+        case Types.FormContext.ReducerActionTypes.SetIsDeleting:
+            return {
+                ...state,
+                isDeleting: action?.payload?.isDeleting === true
+            }
         case Types.FormContext.ReducerActionTypes.SetIsSubmitting:
             return {
                 ...state,
