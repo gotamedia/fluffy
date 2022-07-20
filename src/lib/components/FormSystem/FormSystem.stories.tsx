@@ -126,7 +126,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                     setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "failed" }))
                 }
             } else {
-                setFieldValue("city", "")
+                setFieldValue("city", "", false)
                 setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "idle" }))
             }
         }
@@ -177,6 +177,11 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                     <FS.Field>
                         <FS.Input.Text name={"email"}>
                             <FS.Validation.Field.Required />
+                            <FS.Validation.Field.Required />
+                            <FS.Validation.Field.Required type={Types.Validation.Types.Warning} />
+                            <FS.Validation.Field.Required type={Types.Validation.Types.Hint} />
+                            <FS.Validation.Field.Required type={Types.Validation.Types.Success} />
+                            <FS.Validation.Field.Required type={Types.Validation.Types.Loading} />
                             <FS.Validation.Field.Email />
                         </FS.Input.Text>
                     </FS.Field>

@@ -196,8 +196,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 fieldValue,
                 isManualChange,
                 state.formData,
-                (fieldName: string, fieldValue: Types.FormDataValue) => {
-                    setFieldValue(fieldName, fieldValue, true)
+                (fieldName: string, fieldValue: Types.FormDataValue, validate: boolean = true) => {
+                    setFieldValue(fieldName, fieldValue, validate)
                 }
             )
         }
