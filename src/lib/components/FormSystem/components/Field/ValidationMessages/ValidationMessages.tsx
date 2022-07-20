@@ -24,6 +24,7 @@ const ValidationMessages: Types.ValidationMessagesComponent = () => {
 
         setGroups(
             Object.values(FSTypes.Validation.Types)
+                .reverse()
                 .reduce<FSTypes.Validation.Message[][]>((orderedGroupedMessages, type: FSTypes.Validation.Types) => {
                     return [
                         ...orderedGroupedMessages,
