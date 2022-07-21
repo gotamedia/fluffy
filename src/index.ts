@@ -92,4 +92,7 @@ export { default as Radio } from '@components/Radio'
 export * from '@components/SwitchButton'
 export { default as SwitchButton } from '@components/SwitchButton'
 
+export * from '@components/DatePicker'
+export { default as DatePicker } from '@components/DatePicker'
+
 // <==== Components
