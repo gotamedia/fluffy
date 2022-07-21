@@ -332,3 +332,54 @@ AccountCreation.args = {
         }
     }
 }
+
+const InputTextTemplate: Story<Types.Form> = (props) => {
+    return (
+        <FS.Form
+            disabled={props.disabled}
+            i18n={props.i18n}
+            onCancel={props.onCancel}
+            onChange={props.onChange}
+            onDelete={props.onDelete}
+            onSubmit={props.onSubmit}
+        >
+            <FS.Field>
+                <FS.Input.Text name={"name"} />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputText = InputTextTemplate.bind({})
+InputText.args = {
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    onCancel: (...props) => {
+        console.log("onCancel", props)
+        props[1]()
+    },
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onDelete: (...props) => {
+        console.log("onDelete", props)
+        props[1]()
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }
+}
