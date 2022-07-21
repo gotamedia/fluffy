@@ -1,6 +1,7 @@
 // Utils ====>
 
 export * from '@utils/theme'
+export { default as DateUtility } from '@utils/date'
 
 // <==== Utils
 
