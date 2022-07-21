@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.10.0...v0.11.0) (2022-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added TimePicker component
+* Added DatePicker component
+* Added DateUtility
+
+### Features
+
+* Added "date-fns" and "react-datepicker" ([55f1997](http://bitbucket.org/gotamedia/fluffy/commit/55f1997d6a5aca6237f2fe9b1f94e4f682438421))
+* Added DatePicker component ([857d95c](http://bitbucket.org/gotamedia/fluffy/commit/857d95c54280503ddda9c7b2da64365c7c413564))
+* Added DateUtility ([25b8502](http://bitbucket.org/gotamedia/fluffy/commit/25b85025d4f9a6c0775e959878d08cfb70d38306))
+* Added TimePicker component ([93210b3](http://bitbucket.org/gotamedia/fluffy/commit/93210b3e232bd097c701bd77db4f0e1617e730e3))
+
+
+### Bug Fixes
+
+* Minor fixes: stories, types and typo ([ff66166](http://bitbucket.org/gotamedia/fluffy/commit/ff6616601bb243691bab1471395fe8c211ce55b3))
+
 ## [0.10.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.1...v0.10.0) (2022-07-19)
 
 
