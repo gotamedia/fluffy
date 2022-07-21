@@ -1,3 +1,4 @@
+import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
 import { SameValueI18n } from "./components/Validation/Form/SameValue/i18nTypes"
@@ -18,14 +19,36 @@ type ButtonTypes = "submit" | "cancel" | "delete"
 type FormDataValue = string | boolean | undefined
 
 interface FormDataField {
-    name: string
-    value: FormDataValue
+    name: string,
+    value: FormDataValue,
     validationMessages?: Validation.MessageWithId[],
     requiresValidation?: boolean
 }
 
 interface FormData {
     [key: string]: FormDataField
+}
+
+namespace InputLogic {
+    export interface HookProps {
+        disabled?: boolean,
+        name: string
+    }
+
+    export interface Value {
+        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void,
+        disabled: boolean,
+        getFieldValue: (fieldName: string) => FormDataValue | undefined,
+        onBlur: () => void,
+        setFieldValue: (
+            fieldName: string,
+            value: FormDataValue,
+            requiresValidation?: boolean,
+            isManualChange?: boolean
+        ) => void
+        theme: DefaultTheme,
+        validationType: Validation.Types | undefined
+    }
 }
 
 namespace FormContext {
@@ -254,6 +277,7 @@ export {
     Form,
     Group,
     Input,
+    InputLogic,
     FormData,
     FormDataField,
     FormDataValue,

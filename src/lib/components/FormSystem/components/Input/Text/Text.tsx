@@ -1,66 +1,35 @@
-import useTheme from "@hooks/useTheme"
-import React, { useCallback, useContext, useEffect } from "react"
-import * as Types from "./types"
+import { useInputLogin } from "@components/FormSystem/hooks"
+import React, { useCallback } from "react"
 import * as Styled from "./style"
-import * as Contexts from "../../../contexts"
+import * as Types from "./types"
 
 const Text: Types.TextComponent = (props) => {
     const { children, disabled, name, readOnly } = props
 
-    const theme = useTheme()
-
     const {
         clearValidationMessages,
-        disabled: formDisabled,
+        disabled: disabledCombined,
         getFieldValue,
-        getHighestValidationMessageType,
-        isActing,
-        setFieldValue
-    } = useContext(Contexts.FormContext)
-    const {
-        fieldName,
-        initialize,
-        setFieldName,
-        terminate,
-        validate
-    } = useContext(Contexts.FieldContext)
-
-    // separate initialize and terminate to avoid unwanted additional executions
-    useEffect(() => {
-        initialize(name, "")
-    }, [initialize, name])
-
-    useEffect(() => {
-        return () => {
-            terminate(name)
-        }
-    }, [terminate, name])
-
-    useEffect(() => {
-        if (name !== fieldName) {
-            setFieldName(name)
-        }
-    }, [fieldName, name, setFieldName])
+        onBlur,
+        setFieldValue,
+        theme,
+        validationType
+    } = useInputLogin({ disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.value)
         clearValidationMessages(name)
     }, [setFieldValue, name, clearValidationMessages])
 
-    const onBlur = useCallback(() => {
-        clearValidationMessages(name, "all")
-        validate()
-    }, [clearValidationMessages, name, validate])
-
     return (
         <>
             <Styled.Text
                 $theme={theme}
-                disabled={formDisabled || isActing || disabled}
+                disabled={disabledCombined}
                 id={name}
                 name={name}
                 readOnly={readOnly}
-                validationType={getHighestValidationMessageType(name)}
+                validationType={validationType}
                 value={String(getFieldValue(name) || "")}
                 onChange={onChange}
                 onBlur={onBlur}
