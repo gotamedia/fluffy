@@ -54,7 +54,7 @@ export default {
     argTypes: {},
     args: {
         locale: 'sv',
-        dateFormat: 'P',
+        dateFormat: 'p',
         disabled: false,
         timeIntervals: 15,
         placeholderText: 'Select your date',
