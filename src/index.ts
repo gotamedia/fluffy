@@ -95,4 +95,7 @@ export { default as SwitchButton } from '@components/SwitchButton'
 export * from '@components/DatePicker'
 export { default as DatePicker } from '@components/DatePicker'
 
+export * from '@components/TimePicker'
+export { default as TimePicker } from '@components/TimePicker'
+
 // <==== Components
