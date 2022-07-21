@@ -19,6 +19,35 @@ import type { ReactElement } from 'react'
 
 const CLASSNAME_PREFIX = 'input-group'
 
+type StyledComponentType = { target: ReactElement['type'] }
+
+const _getChildType = (child: ReactElement) => {
+    let type = ''
+
+    if (
+        child.type === Input ||
+        (child.type as unknown as StyledComponentType)?.target === Input
+    ) {
+        type = 'input'
+    } else if (
+        child.type === Icon ||
+        (child.type as unknown as StyledComponentType)?.target === Icon
+    ) {
+        type = 'icon'
+    } else if (
+        child.type === Button ||
+        (child.type as unknown as StyledComponentType)?.target === Button ||
+        child.type === IconButton ||
+        (child.type as unknown as StyledComponentType)?.target === IconButton
+    ) {
+        type = 'element'
+    } else {
+        type = 'unknown'
+    }
+
+    return type
+}
+
 //TODO: Support text elements to be rendered inside input like the icons
 const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
@@ -33,33 +62,17 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         right: ''
     })
 
-    const getChildType = useCallback((child: ReactElement) => {
-        let type = ''
-
-        if (child.type === Input) {
-            type = 'input'
-        } else if (child.type === Icon) {
-            type = 'icon'
-        } else if (child.type === Button || child.type === IconButton) {
-            type = 'element'
-        } else {
-            type = 'unknown'
-        }
-
-        return type
-    }, [])
-
     useEffect(() => {
         Children.forEach(children, (child, idx) => {
             const childElement = child as ReactElement<InputProps, any>
 
             if (idx === 0) {
-                elements.current.left = childElement && childElement.type !== Input ? getChildType(childElement) : ''
+                elements.current.left = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
             } else if (idx === (Children.count(children) - 1)) {
-                elements.current.right = childElement && childElement.type !== Input ? getChildType(childElement) : ''
+                elements.current.right = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
             }
         })
-    }, [children, getChildType])
+    }, [children])
 
     const getChildPosition = useCallback((index: number) => {
         let position = ''
@@ -77,11 +90,11 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
 
 
     const getChildClassName = useCallback((child: ReactElement, index: number) => {
-        const type = getChildType(child)
+        const type = _getChildType(child)
         const position = getChildPosition(index)
         
         return `${CLASSNAME_PREFIX}__${type} ${CLASSNAME_PREFIX}--${position}`
-    }, [getChildType, getChildPosition])
+    }, [getChildPosition])
 
     return (
         <Styled.Wrapper

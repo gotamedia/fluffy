@@ -55,4 +55,35 @@ export const decorators = [
     )
 ]
 
-addDecorator(withThemes(ThemeProvider, [theme]))
+const fluffyThemes = [
+    {
+        name: 'Blue',
+        ...theme
+    },
+    {
+        name: 'Green',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#41AD49'
+        }
+    },
+    {
+        name: 'Orange',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#EF7D00'
+        }
+    },
+    {
+        name: 'Red',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#D00019'
+        }
+    }
+]
+
+addDecorator(withThemes(ThemeProvider, fluffyThemes))

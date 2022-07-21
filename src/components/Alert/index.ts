@@ -8,9 +8,9 @@ import {
     Text
 } from './style'
 
-import { CompoenntType } from './types'
+import { ComponentType } from './types'
 
-const Alert = AlertComponent as CompoenntType
+const Alert = AlertComponent as ComponentType
 
 Alert.Content = Content
 Alert.Content.displayName = 'Alert.Content'

@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 
 import {
-    ThemeContext as TC,
-    ThemeProvider as TP
+    ThemeContext as ThemeContextSC,
+    ThemeProvider as ThemeProviderSC
 } from 'styled-components'
 
 import merge from 'lodash/merge'
@@ -14,7 +14,7 @@ import type {
     ReactNode,
 } from 'react'
 
-const ThemeContext = TC
+const ThemeContext = ThemeContextSC
 
 const ThemeProvider: FC<{ children: ReactNode, theme?: Record<string, unknown> }> = ({ children, theme }) => {
     const themeValue = useMemo(() => {
@@ -22,9 +22,9 @@ const ThemeProvider: FC<{ children: ReactNode, theme?: Record<string, unknown> }
     }, [theme])
 
     return (
-        <TP theme={themeValue}>
+        <ThemeProviderSC theme={themeValue}>
             {children}
-        </TP>
+        </ThemeProviderSC>
     )
 }
 

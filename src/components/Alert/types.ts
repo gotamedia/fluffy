@@ -37,7 +37,7 @@ export type AlertProps = {
 
 export type AlertComponent = ForwardRefExoticComponent<AlertProps & RefAttributes<AlertRef>>
 
-export type CompoenntType = AlertComponent & {
+export type ComponentType = AlertComponent & {
     Content: typeof Content,
     Headline: typeof Headline,
     Text: typeof Text
