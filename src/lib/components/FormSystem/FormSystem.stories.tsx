@@ -24,14 +24,14 @@ const Change: React.FC<ChangeProps> = (props) => {
                     ...currentFormState,
                     ssnResolvingStatus: "manual"
                 }))
-                setFieldValue("firstName", "")
-                setFieldValue("lastName", "")
-                setFieldValue("street", "")
-                setFieldValue("streetNumber", "")
-                setFieldValue("staircase", "")
-                setFieldValue("apartmentNumber", "")
-                setFieldValue("zipCode", "")
-                setFieldValue("city", "")
+                setFieldValue("firstName", "", false, true)
+                setFieldValue("lastName", "", false, true)
+                setFieldValue("street", "", false, true)
+                setFieldValue("streetNumber", "", false, true)
+                setFieldValue("staircase", "", false, true)
+                setFieldValue("apartmentNumber", "", false, true)
+                setFieldValue("zipCode", "", false, true)
+                setFieldValue("city", "", false, true)
             }}
         >{"Ändra adress"}</a>
     )
@@ -54,14 +54,14 @@ const Reset: React.FC<ResetProps> = (props) => {
                 await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
                 // setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "failed" }))
                 props.setFormState((currentFormState: any) => ({ ...currentFormState, ssnResolvingStatus: "succeeded" }))
-                setFieldValue("firstName", "Johan")
-                setFieldValue("lastName", "Johanson")
-                setFieldValue("street", "Norra vägen")
-                setFieldValue("streetNumber", "17")
-                setFieldValue("staircase", "A")
-                setFieldValue("apartmentNumber", "1234")
-                setFieldValue("zipCode", "39352")
-                setFieldValue("city", "Kalmar")
+                setFieldValue("firstName", "Johan", true, true)
+                setFieldValue("lastName", "Johanson", true, true)
+                setFieldValue("street", "Norra vägen", true, true)
+                setFieldValue("streetNumber", "17", true, true)
+                setFieldValue("staircase", "A", true, true)
+                setFieldValue("apartmentNumber", "1234", true, true)
+                setFieldValue("zipCode", "39352", true, true)
+                setFieldValue("city", "Kalmar", true, true)
             }}
         >{"Hämta från folkbokföringen"}</a>
     )
@@ -98,14 +98,14 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
 
                 if (value === "12345678-1234") {
                     setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "succeeded" }))
-                    setFieldValue("firstName", "Johan")
-                    setFieldValue("lastName", "Johanson")
-                    setFieldValue("street", "Norra vägen")
-                    setFieldValue("streetNumber", "17")
-                    setFieldValue("staircase", "A")
-                    setFieldValue("apartmentNumber", "1234")
-                    setFieldValue("zipCode", "39352")
-                    setFieldValue("city", "Kalmar")
+                    setFieldValue("firstName", "Johan", true)
+                    setFieldValue("lastName", "Johanson", true)
+                    setFieldValue("street", "Norra vägen", true)
+                    setFieldValue("streetNumber", "17", true)
+                    setFieldValue("staircase", "A", true)
+                    setFieldValue("apartmentNumber", "1234", true)
+                    setFieldValue("zipCode", "39352", true)
+                    setFieldValue("city", "Kalmar", true)
                 } else {
                     setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "failed" }))
                 }
@@ -120,7 +120,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
 
                 if (value === "12345") {
-                    setFieldValue("city", "Kalmar")
+                    setFieldValue("city", "Kalmar", true)
                     setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "idle" }))
                 } else {
                     setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "failed" }))
@@ -177,11 +177,6 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                     <FS.Field>
                         <FS.Input.Text name={"email"}>
                             <FS.Validation.Field.Required />
-                            <FS.Validation.Field.Required />
-                            <FS.Validation.Field.Required type={Types.Validation.Types.Warning} />
-                            <FS.Validation.Field.Required type={Types.Validation.Types.Hint} />
-                            <FS.Validation.Field.Required type={Types.Validation.Types.Success} />
-                            <FS.Validation.Field.Required type={Types.Validation.Types.Loading} />
                             <FS.Validation.Field.Email />
                         </FS.Input.Text>
                     </FS.Field>

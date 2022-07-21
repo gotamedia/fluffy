@@ -178,7 +178,7 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                     [action?.payload?.fieldName]: {
                         ...state?.formData[action?.payload?.fieldName],
                         value: action?.payload?.value,
-                        requiresValidation: action?.payload?.isManualChange
+                        requiresValidation: action?.payload?.requiresValidation
                     }
                 }
             }

@@ -40,7 +40,11 @@ namespace FormContext {
             value: FormDataValue,
             isManualChange: boolean,
             formData: FormData,
-            setFieldValue: (fieldName: string, value: FormDataValue) => void
+            setFieldValue: (
+                fieldName: string,
+                value: FormDataValue,
+                requiresValidation: boolean
+            ) => void
         ) => void
 
         export type onDelete = (
@@ -109,7 +113,12 @@ namespace FormContext {
         getFormData: () => FormData
         removeFieldValidation: (fieldName: string, validationId: string) => void
         removeFormValidation: (validationId: string) => void
-        setFieldValue: (fieldName: string, value: FormDataValue) => void
+        setFieldValue: (
+            fieldName: string,
+            value: FormDataValue,
+            requiresValidation?: boolean,
+            isManualChange?: boolean
+        ) => void
         setIsCanceling: (isCanceling: boolean) => void
         setIsDeleting: (isDeleting: boolean) => void
         setIsSubmitting: (isSubmitting: boolean) => void

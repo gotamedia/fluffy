@@ -179,13 +179,14 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const setFieldValue = useCallback((
         fieldName: string,
         fieldValue: Types.FormDataValue,
+        requiresValidation: boolean = false,
         isManualChange: boolean = false
     ) => {
         if (!value) {
             // uncontrolled way
             dispatch({
                 type: Types.FormContext.ReducerActionTypes.SetFormDataFieldValue,
-                payload: { fieldName, value: fieldValue, isManualChange }
+                payload: { fieldName, value: fieldValue, requiresValidation, isManualChange }
             })
         }
 
@@ -196,8 +197,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 fieldValue,
                 isManualChange,
                 state.formData,
-                (fieldName: string, fieldValue: Types.FormDataValue, validate: boolean = true) => {
-                    setFieldValue(fieldName, fieldValue, validate)
+                (fieldName: string, fieldValue: Types.FormDataValue, requiresValidation: boolean = true) => {
+                    setFieldValue(fieldName, fieldValue, requiresValidation, true)
                 }
             )
         }
