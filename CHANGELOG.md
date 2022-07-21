@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.10.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.1...v0.10.0) (2022-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added SwitchButton component
+* Added Radio component
+
+### Features
+
+* Added Radio component ([23648b8](http://bitbucket.org/gotamedia/fluffy/commit/23648b8f24677a436cfa5c0379c4dd503ef29233))
+* Added SwitchButton component ([604f35e](http://bitbucket.org/gotamedia/fluffy/commit/604f35e9edb77b2dfe6f64c5529b262ef8ac33d6))
+
+
+### Bug Fixes
+
+* **style:** Updated Checkbox disabled style ([bdb2f6c](http://bitbucket.org/gotamedia/fluffy/commit/bdb2f6cf407ee98a2eceaa4dd30286a1955656f2))
+* **style:** Updated Checkbox hove/active style ([559f84e](http://bitbucket.org/gotamedia/fluffy/commit/559f84e84d3eb3db6c043d57c5f497bf7221dc53))
+* Updated Checkbox checked prop and disabled style ([3314b67](http://bitbucket.org/gotamedia/fluffy/commit/3314b6797f74c0c97c5cdc1d7e4eeeaee26dd544))
+
 ### [0.9.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.0...v0.9.1) (2022-07-18)
 
 
