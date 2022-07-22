@@ -140,7 +140,7 @@ export {
 }
 
 export default {
-    title: 'Components/DatePicker',
+    title: 'Developments/Components/DatePicker',
     component: DatePicker,
     argTypes: {},
     args: {

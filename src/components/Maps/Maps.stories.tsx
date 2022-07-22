@@ -34,7 +34,7 @@ export {
 }
 
 export default {
-    title: 'Components/Maps',
+    title: 'Developments/Components/Maps',
     component: Maps.Map,
     argTypes: {},
     args: {}

@@ -30,7 +30,7 @@ export {
 }
 
 export default {
-    title: 'Components/Checkbox',
+    title: 'Developments/Components/Checkbox',
     component: Checkbox,
     argTypes: {},
     args: {

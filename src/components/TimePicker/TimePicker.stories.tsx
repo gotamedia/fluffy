@@ -54,7 +54,7 @@ export {
 }
 
 export default {
-    title: 'Components/TimePicker',
+    title: 'Developments/Components/TimePicker',
     component: TimePicker,
     argTypes: {},
     args: {

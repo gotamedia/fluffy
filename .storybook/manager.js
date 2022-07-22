@@ -13,20 +13,5 @@ const stableComponents = [
 ]
 
 addons.setConfig({
-    theme: gotaMediaTheme,
-    sidebar: {
-        renderLabel: ({ name, type }) => {
-            const storyName = type === 'component' ? (
-                stableComponents.includes(name) ? (
-                    `${name} - STABLE`
-                ) : (
-                    name
-                )
-            ) : (
-                name
-            )
-            
-            return storyName
-        },
-    }
+    theme: gotaMediaTheme
 })
