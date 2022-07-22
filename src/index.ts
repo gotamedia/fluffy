@@ -98,4 +98,7 @@ export { default as DatePicker } from '@components/DatePicker'
 export * from '@components/TimePicker'
 export { default as TimePicker } from '@components/TimePicker'
 
+export * from '@components/Pagination'
+export { default as Pagination } from '@components/Pagination'
+
 // <==== Components
