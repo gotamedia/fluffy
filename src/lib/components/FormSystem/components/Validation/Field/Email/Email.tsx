@@ -24,7 +24,7 @@ const Email: Types.EmailComponent = (props) => {
     const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
-        if (String(value).length === 0 || regExp.test(String(value))) {
+        if (typeof value !== "string" || String(value).length === 0 || regExp.test(String(value))) {
             return []
         }
 
