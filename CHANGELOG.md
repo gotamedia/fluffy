@@ -2,6 +2,160 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.11.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.10.0...v0.11.0) (2022-07-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added TimePicker component
+* Added DatePicker component
+* Added DateUtility
+
+### Features
+
+* Added "date-fns" and "react-datepicker" ([55f1997](http://bitbucket.org/gotamedia/fluffy/commit/55f1997d6a5aca6237f2fe9b1f94e4f682438421))
+* Added DatePicker component ([857d95c](http://bitbucket.org/gotamedia/fluffy/commit/857d95c54280503ddda9c7b2da64365c7c413564))
+* Added DateUtility ([25b8502](http://bitbucket.org/gotamedia/fluffy/commit/25b85025d4f9a6c0775e959878d08cfb70d38306))
+* Added TimePicker component ([93210b3](http://bitbucket.org/gotamedia/fluffy/commit/93210b3e232bd097c701bd77db4f0e1617e730e3))
+
+
+### Bug Fixes
+
+* Minor fixes: stories, types and typo ([ff66166](http://bitbucket.org/gotamedia/fluffy/commit/ff6616601bb243691bab1471395fe8c211ce55b3))
+
+## [0.10.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.1...v0.10.0) (2022-07-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added SwitchButton component
+* Added Radio component
+
+### Features
+
+* Added Radio component ([23648b8](http://bitbucket.org/gotamedia/fluffy/commit/23648b8f24677a436cfa5c0379c4dd503ef29233))
+* Added SwitchButton component ([604f35e](http://bitbucket.org/gotamedia/fluffy/commit/604f35e9edb77b2dfe6f64c5529b262ef8ac33d6))
+
+
+### Bug Fixes
+
+* **style:** Updated Checkbox disabled style ([bdb2f6c](http://bitbucket.org/gotamedia/fluffy/commit/bdb2f6cf407ee98a2eceaa4dd30286a1955656f2))
+* **style:** Updated Checkbox hove/active style ([559f84e](http://bitbucket.org/gotamedia/fluffy/commit/559f84e84d3eb3db6c043d57c5f497bf7221dc53))
+* Updated Checkbox checked prop and disabled style ([3314b67](http://bitbucket.org/gotamedia/fluffy/commit/3314b6797f74c0c97c5cdc1d7e4eeeaee26dd544))
+
+### [0.9.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.9.0...v0.9.1) (2022-07-18)
+
+
+### Features
+
+* Added label to Input/Textarea ([c816715](http://bitbucket.org/gotamedia/fluffy/commit/c816715f99cb639680f3d3153a6e27c99456fb47))
+
+
+### Bug Fixes
+
+* **story:** Updated Card's story names ([7054965](http://bitbucket.org/gotamedia/fluffy/commit/7054965dad1dc0dff49719716dd71fc6dfb1a786))
+* **story:** Updated icon list story ([b0aa7ea](http://bitbucket.org/gotamedia/fluffy/commit/b0aa7eaf5b323c2b97af85b4853dbd6a83672ad7))
+* **style:** Updated checkmark-circle check color ([ef1a19c](http://bitbucket.org/gotamedia/fluffy/commit/ef1a19c57deb8627c31596661f9270f0e936d0d5))
+
+## [0.9.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.2...v0.9.0) (2022-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Supported Button/IconButton in InputGroup
+
+### Features
+
+* Supported Button/IconButton in InputGroup ([1c35f34](http://bitbucket.org/gotamedia/fluffy/commit/1c35f34aa3ee2429339201b2411141b39f11d2e9))
+
+
+### Bug Fixes
+
+* **style:** Updated Button/IconButton/Input/InputGroup sizes/variants ([ae0c55f](http://bitbucket.org/gotamedia/fluffy/commit/ae0c55f7c09a91c1fa18b8c8c2bd608f18ccf330))
+* **style:** Updated Input style ([20c09fa](http://bitbucket.org/gotamedia/fluffy/commit/20c09fab46df7ec2e97d6c1e672b3fe4dbb3ea7e))
+* **style:** Updated InputGroup sizes ([2941f7b](http://bitbucket.org/gotamedia/fluffy/commit/2941f7b4ba0dd5cc374c06414a74757866b78825))
+* **style:** Updated Textarea variants to match Input ([cb6e15b](http://bitbucket.org/gotamedia/fluffy/commit/cb6e15b1d0c6c963d3452cf3f5b68b258da48344))
+* Updated imports for sizes/variants ([ae58fd2](http://bitbucket.org/gotamedia/fluffy/commit/ae58fd248d75d808c27b25e8aa3a73d49ed0f18c))
+
+### [0.8.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.1...v0.8.2) (2022-07-15)
+
+
+### Features
+
+* Added IconButton component ([012682d](http://bitbucket.org/gotamedia/fluffy/commit/012682d54debd67e02362170e83bc0f6f2081c2b))
+
+
+### Bug Fixes
+
+* Alert variant typo ([a8b97a8](http://bitbucket.org/gotamedia/fluffy/commit/a8b97a897ef0fb20eb14ea15e6c086bcbb446773))
+* Fixed Alert variant type ([f01d842](http://bitbucket.org/gotamedia/fluffy/commit/f01d8428c9063d7182e1e5a9399d95da6e6a5bd6))
+
+### [0.8.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.8.0...v0.8.1) (2022-07-04)
+
+## [0.8.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.49...v0.8.0) (2022-07-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed Rollup and added a custom build script to compile Fluffy and each module individually to reduce bundle size of the app who utilising Fluffy
+
+### Bug Fixes
+
+* Better Icon rendering to allow server-side to render the requested icon ([54c15c9](http://bitbucket.org/gotamedia/fluffy/commit/54c15c9ceb45c330a5df9bdbdb761b413dfc23fd))
+* **type:** Updated Paper children type ([8619cf2](http://bitbucket.org/gotamedia/fluffy/commit/8619cf227de79f73e05d496293e3185604dde68c))
+
+
+### ci
+
+* Removed Rollup and added a custom build script to compile Fluffy and each module individually to reduce bundle size of the app who utilising Fluffy ([269f903](http://bitbucket.org/gotamedia/fluffy/commit/269f903ae82a5b203487f51e4eb828e7e0353b79))
+
+### [0.7.49](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.48...v0.7.49) (2022-06-29)
+
+### [0.7.48](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.47...v0.7.48) (2022-06-21)
+
+
+### Bug Fixes
+
+* **style:** Fixed Card's Image style for small views ([c62c3e0](http://bitbucket.org/gotamedia/fluffy/commit/c62c3e0f72dbff9fe2a232a9cb59812e76bc0a1f))
+
+### [0.7.47](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.46...v0.7.47) (2022-06-17)
+
+
+### Features
+
+* **style:** Added compact prop to Card component to render in compact view ([05308f1](http://bitbucket.org/gotamedia/fluffy/commit/05308f16729e0a718dacf03db40ea52b62dd1adc))
+* **style:** Added vertical prop to Card component to force rendering in a compact vertical card ([52a8c59](http://bitbucket.org/gotamedia/fluffy/commit/52a8c59fe1d4899193ea56515695668150c2a14e))
+
+### [0.7.46](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.45...v0.7.46) (2022-06-14)
+
+
+### Features
+
+* Added Portal component ([905420b](http://bitbucket.org/gotamedia/fluffy/commit/905420b94433b99e2c45bf3e75e759068b1a9acc))
+* Added useMounted hook ([2dc3e86](http://bitbucket.org/gotamedia/fluffy/commit/2dc3e86890211c3122f6de9aeefa74214808487b))
+
+### [0.7.45](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.44...v0.7.45) (2022-06-03)
+
+
+### Features
+
+* Added useScroll hook ([b6d0cc5](http://bitbucket.org/gotamedia/fluffy/commit/b6d0cc57a7c61a92357bd3cf3b10d5fc720a3759))
+
+### [0.7.44](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.43...v0.7.44) (2022-06-01)
+
+
+### Features
+
+* added Card component ([09122e0](http://bitbucket.org/gotamedia/fluffy/commit/09122e0de213e68deec9c139746b85b238aba382))
+* added CardParagraph component ([a2a6f8a](http://bitbucket.org/gotamedia/fluffy/commit/a2a6f8a0f82364c681ffbd8c9379a48267c9d578))
+* added Skeleton component ([45f3e55](http://bitbucket.org/gotamedia/fluffy/commit/45f3e5573c3274a98ffcafba6c5fdadf23931919))
+
+
+### Bug Fixes
+
+* exported Skeleton/Card components ([1c85644](http://bitbucket.org/gotamedia/fluffy/commit/1c85644519acf8dfb79b4ab985c8dbba2baf0142))
+* exported ThemeContext along with ThemeProvider ([9d51bfe](http://bitbucket.org/gotamedia/fluffy/commit/9d51bfe2e91bd112844f1164a5a3a33c75ce5d46))
+
 ### [0.7.43](http://bitbucket.org/gotamedia/fluffy/compare/v0.7.42...v0.7.43) (2022-05-20)
 
 

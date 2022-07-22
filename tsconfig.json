@@ -6,11 +6,10 @@
         "skipLibCheck": true,
         "jsx": "react-jsx",
         "module": "esnext",
-        "declaration": true,
-        "declarationDir": "types",
-        "sourceMap": true,
-        "target": "es5",
         "outDir": "dist",
+        "declaration": true,
+        "sourceMap": false,
+        "target": "es5",
         "moduleResolution": "node",
         "emitDeclarationOnly": false,
         "allowSyntheticDefaultImports": true,
@@ -21,20 +20,32 @@
             "dom"
         ],
         "paths": {
-            "@root/*": ["lib/*"],
-            "@components/*": ["lib/components/*"],
-            "@hooks/*": ["lib/hooks/*"],
-            "@utils/*": ["lib/utils/*"]
+            "@root/*": ["./*"],
+            "@components/*": ["./components/*"],
+            "@contexts/*": ["./contexts/*"],
+            "@hooks/*": ["./hooks/*"],
+            "@utils/*": ["./utils/*"]
         },
         "plugins": [
             {
                 "transform": "@zerollup/ts-transform-paths"
+            },
+            {
+                "transform": "typescript-plugin-styled-components",
+                "type": "config",
+                "ssr": true,
+                "displayName": true,
+                "namespace": "fluffy",
+                "componentIdPrefix": "fluffy-"
             }
         ]
     },
     "exclude": [
         "dist",
+        "src/icons",
+        "src/utils/tests",
         "node_modules",
+        "src/**/*.test.tsx",
         "src/**/*.stories.tsx"
     ]
 }

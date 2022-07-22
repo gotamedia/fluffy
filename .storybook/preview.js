@@ -4,12 +4,16 @@ import { themes } from '@storybook/theming'
 import { ThemeProvider } from 'styled-components'
 import { addDecorator } from '@storybook/react'
 import { withThemes } from '@react-theming/storybook-addon'
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
-import { getTheme } from '../src/lib/utils/theme'
+import { getTheme } from '../src/utils/theme'
 
 import { GlobalStyle } from './style'
 
 export const parameters = {
+    options: {
+        showToolbar: true
+    },
     actions: {
         argTypesRegex: "^on[A-Z].*"
     },
@@ -34,6 +38,9 @@ export const parameters = {
     },
     docs: {
         theme: themes.dark
+    },
+    viewport: {
+        viewports: INITIAL_VIEWPORTS
     }
 }
 
@@ -48,4 +55,35 @@ export const decorators = [
     )
 ]
 
-addDecorator(withThemes(ThemeProvider, [theme]))
+const fluffyThemes = [
+    {
+        name: 'Blue',
+        ...theme
+    },
+    {
+        name: 'Green',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#41AD49'
+        }
+    },
+    {
+        name: 'Orange',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#EF7D00'
+        }
+    },
+    {
+        name: 'Red',
+        ...theme,
+        colors: {
+            ...theme.colors,
+            brand: '#D00019'
+        }
+    }
+]
+
+addDecorator(withThemes(ThemeProvider, fluffyThemes))

@@ -7,6 +7,8 @@ module.exports = {
         builder: 'webpack5',
     },
     stories: [
+        './Introduction.stories.mdx',
+        './CHANGELOG.stories.mdx',
         '../src/**/**/*.stories.mdx',
         '../src/**/**/*.stories.@(js|jsx|ts|tsx)'
     ],
@@ -23,10 +25,11 @@ module.exports = {
                 ...config.resolve,
                 alias: {
                     ...config.resolve.alias,
-                    "@root": path.resolve(ROOT_DIR, 'src/lib/'),
-                    "@components": path.resolve(ROOT_DIR, 'src/lib/components/'),
-                    "@hooks": path.resolve(ROOT_DIR, 'src/lib/hooks/'),
-                    "@utils": path.resolve(ROOT_DIR, 'src/lib/utils/')
+                    "@root": path.resolve(ROOT_DIR, 'src/'),
+                    "@components": path.resolve(ROOT_DIR, 'src/components/'),
+                    "@contexts": path.resolve(ROOT_DIR, 'src/contexts/'),
+                    "@hooks": path.resolve(ROOT_DIR, 'src/hooks/'),
+                    "@utils": path.resolve(ROOT_DIR, 'src/utils/')
                 }
             }
         }

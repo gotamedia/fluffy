@@ -8,7 +8,9 @@ coverage
 
 # production
 dist
+_temp_dist_
 storybook-static
+.storybook/CHANGELOG.stories.mdx
 
 # misc
 .DS_Store
@@ -22,3 +24,5 @@ storybook-static
 
 npm-debug.log*
 .vscode
+
+.history

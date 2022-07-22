@@ -1,93 +1,90 @@
 {
   "name": "@gotamedia/fluffy",
   "description": "Fluffy UI",
-  "version": "0.7.43",
+  "version": "0.11.0",
   "private": false,
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
   "files": [
     "dist/*",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
-    "dev": "rollup -w -c",
-    "local": "rollup -c && yalc push",
+    "build": "./build.sh",
+    "local": "npm run build && yalc push",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "build": "rollup -c",
+    "build-storybook": "./storybook.sh && build-storybook",
+    "babel": "babel temp_dist --source-root temp_dist --out-dir dist --extensions .js --copy-files --quiet",
+    "types": "ttsc --project ./temp_root/tsconfig.json",
     "release": "standard-version",
     "test": "react-scripts test --watchAll=false"
   },
   "license": "MIT",
   "jest": {
     "moduleNameMapper": {
-      "^@root(.*)$": "<rootDir>/src/lib$1",
-      "^@components(.*)$": "<rootDir>/src/lib/components$1",
-      "^@hooks(.*)$": "<rootDir>/src/lib/hooks$1",
-      "^@utils(.*)$": "<rootDir>/src/lib/utils$1"
+      "^@root(.*)$": "<rootDir>/src$1",
+      "^@components(.*)$": "<rootDir>/src/components$1",
+      "^@contexts(.*)$": "<rootDir>/src/contexts$1",
+      "^@hooks(.*)$": "<rootDir>/src/hooks$1",
+      "^@utils(.*)$": "<rootDir>/src/utils$1"
     },
     "collectCoverageFrom": [
-      "src/lib/*/**",
-      "!src/lib/*/**/index.js"
+      "src/*/**",
+      "!src/*/**/index.js"
     ]
   },
   "browser": {
     "@components": false
-  },
-  "overrides": {
-    "webpack": "5.70.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
     "styled-components": "^5.0.0"
   },
   "devDependencies": {
-    "@react-theming/storybook-addon": "^1.1.5",
-    "@rollup/plugin-commonjs": "^21.0.2",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-typescript": "^8.3.1",
-    "@storybook/addon-a11y": "^6.4.19",
-    "@storybook/addon-actions": "^6.4.19",
-    "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-interactions": "^6.4.19",
-    "@storybook/addon-links": "^6.4.19",
-    "@storybook/addons": "^6.4.19",
-    "@storybook/builder-webpack5": "^6.4.19",
-    "@storybook/manager-webpack5": "^6.4.19",
-    "@storybook/react": "^6.4.19",
-    "@storybook/testing-library": "^0.0.9",
-    "@storybook/theming": "^6.4.19",
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.4",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.1",
+    "@babel/cli": "^7.18.6",
+    "@babel/core": "^7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/preset-react": "^7.18.6",
+    "@react-theming/storybook-addon": "^1.1.6",
+    "@storybook/addon-a11y": "^6.5.9",
+    "@storybook/addon-actions": "^6.5.9",
+    "@storybook/addon-essentials": "^6.5.9",
+    "@storybook/addon-interactions": "^6.5.9",
+    "@storybook/addon-links": "^6.5.9",
+    "@storybook/addons": "^6.5.9",
+    "@storybook/builder-webpack5": "^6.5.9",
+    "@storybook/manager-webpack5": "^6.5.9",
+    "@storybook/react": "^6.5.9",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/theming": "^6.5.9",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^12.1.5",
+    "@testing-library/user-event": "^14.2.1",
+    "@types/date-fns": "^2.6.0",
+    "@types/jest": "^28.1.4",
     "@types/lodash": "^4.14.182",
-    "@types/node": "17.0.21",
-    "@types/react": "^17.0.40",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
+    "@types/react-datepicker": "^4.4.2",
     "@types/styled-components": "^5.1.25",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/parser": "^5.15.0",
+    "@typescript-eslint/parser": "^5.30.0",
     "@zerollup/ts-transform-paths": "^1.7.18",
-    "eslint": "^8.11.0",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.3.0",
-    "eslint-plugin-storybook": "^0.5.7",
+    "eslint": "^8.18.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "^0.5.13",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "rollup": "^2.70.1",
-    "rollup-plugin-dts": "^4.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-typescript2": "^0.31.2",
-    "rollup-plugin-visualizer": "^5.6.0",
-    "storybook": "6.4.19",
+    "react-scripts": "^5.0.1",
+    "storybook": "^6.5.9",
     "styled-components": "^5.3.5",
-    "tslib": "^2.3.1",
+    "tslib": "^2.4.0",
     "ttypescript": "^1.5.13",
-    "typescript": "^4.6.2",
-    "webpack": "5.70.0"
+    "typescript": "^4.7.4",
+    "typescript-plugin-styled-components": "^2.0.0",
+    "webpack": "^5.73.0"
   },
   "browserslist": {
     "production": [
@@ -102,7 +99,10 @@
     ]
   },
   "dependencies": {
+    "date-fns": "^2.28.0",
     "pigeon-maps": "^0.21.0",
+    "polished": "^4.2.2",
+    "react-datepicker": "^4.8.0",
     "uuid": "^8.3.2"
   }
 }
