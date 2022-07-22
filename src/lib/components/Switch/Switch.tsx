@@ -37,9 +37,11 @@ const Switch: Types.SwitchComponent = forwardRef((props, ref) => {
                 />
                 <Styled.Slider $size={size} $invalid={invalid} />
             </Styled.Switch>
-            <Styled.Text>
-                {label}
-            </Styled.Text>
+            {label && (
+                <Styled.Text>
+                    {label}
+                </Styled.Text>
+            )}
         </Styled.Wrapper>
     )
 })

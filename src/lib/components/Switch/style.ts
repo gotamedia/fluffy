@@ -5,6 +5,7 @@ import * as Variants from "./variants"
 
 const Wrapper = styled.label`
     display: flex;
+    width: fit-content;
     align-items: center;
     cursor: pointer;
     gap: 8px;
