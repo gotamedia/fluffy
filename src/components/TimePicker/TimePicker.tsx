@@ -12,6 +12,8 @@ const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
         dateFormat = 'p',
         inputProps,
         calendarClassName,
+        onClear,
+        isClearable = false,
         ...filteredProps
     } = props
 
@@ -21,9 +23,13 @@ const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
             timeIntervals={timeIntervals}
             timeCaption={timeCaption}
             dateFormat={dateFormat}
+            isClearable={isClearable}
+            onClear={onClear}
             customInput={(
                 <TimePickerInput
                     {...inputProps}
+                    isClearable={isClearable}
+                    onClear={onClear}
                 />
             )}
             {...filteredProps}

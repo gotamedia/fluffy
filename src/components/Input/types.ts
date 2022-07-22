@@ -35,4 +35,4 @@ export interface InputProps extends NativeInputProps {
 
 export type InputRef = HTMLInputElement
 
-export type InputComponent = ForwardRefExoticComponent<InputProps & RefAttributes<InputRef>>
+export type InputComponent<P = {}> = ForwardRefExoticComponent<P & InputProps & RefAttributes<InputRef>>

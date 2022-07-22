@@ -13,6 +13,10 @@ import type { Story, Meta } from '@storybook/react'
 const Basic: Story<Types.DatePickerProps> = (props) => {
     const [value, setValue] = useState<Date | null | undefined>(new Date())
 
+    const handleOnClear = useCallback(() => {
+        setValue(null)
+    }, [])
+
     const handlOnChange = useCallback((date: Date) => {
         setValue(date)
     }, [])
@@ -26,6 +30,7 @@ const Basic: Story<Types.DatePickerProps> = (props) => {
             <DatePicker
                 {...props}
                 selected={value}
+                onClear={handleOnClear}
                 onChange={handlOnChange}
             />
         </>
@@ -142,6 +147,7 @@ export default {
         locale: 'sv',
         dateFormat: 'PPP',
         disabled: false,
+        isClearable: false,
         placeholderText: 'Select your date',
         inputProps: {
             variant: 'outline'

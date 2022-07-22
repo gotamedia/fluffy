@@ -1,17 +1,33 @@
 import { forwardRef } from 'react'
 
 import * as Styled from './style'
-import type { InputComponent } from '@components/Input'
+import type * as Types from './types'
 
-const DatePickerInput: InputComponent = forwardRef((props, ref) => {
+const DatePickerInput: Types.TimePickerInputComponent = forwardRef((props, ref) => {
+    const {
+        isClearable = false,
+        onClear,
+        value,
+        onClick,
+        ...filteredProps
+    } = props
+
     return (
         <Styled.InputGroup>
             <Styled.Input
                 ref={ref}
-                {...props}
+                onClick={onClick}
+                value={value}
+                {...filteredProps}
             />
 
-            <Styled.Icon />
+            {
+                isClearable && value ? (
+                    <Styled.ClearIcon onClick={onClear} />
+                ) : (
+                    <Styled.ClockIcon onClick={onClick} />
+                )
+            }
         </Styled.InputGroup>
     )
 })
