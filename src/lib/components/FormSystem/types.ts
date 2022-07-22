@@ -31,6 +31,7 @@ interface FormData {
 
 namespace InputLogic {
     export interface HookProps {
+        defaultValue: FormDataValue,
         disabled?: boolean,
         name: string
     }
@@ -47,7 +48,8 @@ namespace InputLogic {
             isManualChange?: boolean
         ) => void
         theme: DefaultTheme,
-        validationType: Validation.Types | undefined
+        validationType: Validation.Types | undefined,
+        value: FormDataValue | undefined
     }
 }
 

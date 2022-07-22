@@ -14,7 +14,7 @@ const Text: Types.TextComponent = (props) => {
         setFieldValue,
         theme,
         validationType
-    } = useInputLogin({ disabled, name })
+    } = useInputLogin({ defaultValue: "", disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.value)

@@ -287,6 +287,11 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                             <FS.Validation.Field.Required />
                         </FS.Input.Text>
                     </FS.Field>
+                    <FS.Field>
+                        <FS.Input.Switch name={"tos"}>
+                            <FS.Validation.Field.Required />
+                        </FS.Input.Switch>
+                    </FS.Field>
 
                     {["failed", "progress"].includes(formState.submitStatus) && (
                         <Message
@@ -324,7 +329,8 @@ AccountCreation.args = {
             apartmentNumber: "Lägenhetsnr",
             zipCode: "Postnummer",
             city: "Postort",
-            mobileNumber: "Mobilnummer"
+            mobileNumber: "Mobilnummer",
+            tos: "Jag har tagit del av och godkänner <a href=\"https://kundcenter.gotamedia.se/villkor/\" target=\"_blank\">användarvillkoren</a>"
         },
         buttons: {
             cancel: "Tillbaka",

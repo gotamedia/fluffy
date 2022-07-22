@@ -23,7 +23,10 @@ const Required: Types.RequiredComponent = (props) => {
     const { addValidation, label, removeValidation, setIsRequired } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
-        if (String(value).length > 0) {
+        if (
+            (typeof value === "string" && value.length > 0) ||
+            (typeof value === "boolean" && value)
+        ) {
             return []
         }
 

@@ -5,6 +5,7 @@ import * as Types from "../types"
 
 const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Value => {
     const {
+        defaultValue,
         disabled,
         name
     } = props
@@ -36,8 +37,8 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
 
     // separate initialize and terminate to avoid unwanted additional executions
     useEffect(() => {
-        initialize(name, "")
-    }, [initialize, name])
+        initialize(name, defaultValue)
+    }, [defaultValue, initialize, name])
 
     useEffect(() => {
         return () => {
@@ -57,7 +58,8 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         onBlur,
         setFieldValue,
         theme,
-        validationType: getHighestValidationMessageType(name)
+        validationType: getHighestValidationMessageType(name),
+        value: getFieldValue(name)
     }
 }
 

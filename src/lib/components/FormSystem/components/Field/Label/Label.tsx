@@ -8,7 +8,7 @@ const Label: Types.LabelComponent = () => {
 
     return (
         <Styled.Label htmlFor={fieldName}>
-            {label}
+            <span dangerouslySetInnerHTML={{ __html: label }}/>
             {isRequired ? (<sup style={{ color: "red" }}>*</sup>) : null}
         </Styled.Label>
     )
