@@ -33,7 +33,6 @@ const Switch: Types.SwitchComponent = (props) => {
     return (
         <>
             <SwitchButton
-                label={"Banana"}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
