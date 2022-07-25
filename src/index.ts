@@ -8,7 +8,7 @@ export { default as DateUtility } from '@utils/date'
 
 // Contexts ====>
 
-export * from '@root/contexts/ThemeContext'
+export * from '@contexts/ThemeContext'
 
 // <==== Contexts
 
@@ -100,5 +100,8 @@ export { default as TimePicker } from '@components/TimePicker'
 
 export * from '@components/Pagination'
 export { default as Pagination } from '@components/Pagination'
+
+export * from '@components/LazyLoad'
+export { default as LazyLoad } from '@components/LazyLoad'
 
 // <==== Components
