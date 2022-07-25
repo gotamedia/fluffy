@@ -104,4 +104,7 @@ export { default as Pagination } from '@components/Pagination'
 export * from '@components/LazyLoad'
 export { default as LazyLoad } from '@components/LazyLoad'
 
+export * from '@components/Image'
+export { default as Image } from '@components/Image'
+
 // <==== Components
