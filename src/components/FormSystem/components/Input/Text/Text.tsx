@@ -1,6 +1,6 @@
 import { useInputLogin } from "@components/FormSystem/hooks"
+import Input from "@components/Input"
 import React, { useCallback } from "react"
-import * as Styled from "./style"
 import * as Types from "./types"
 
 const Text: Types.TextComponent = (props) => {
@@ -12,8 +12,6 @@ const Text: Types.TextComponent = (props) => {
         getFieldValue,
         onBlur,
         setFieldValue,
-        theme,
-        validationType
     } = useInputLogin({ defaultValue: "", disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,13 +21,11 @@ const Text: Types.TextComponent = (props) => {
 
     return (
         <>
-            <Styled.Text
-                $theme={theme}
+            <Input
                 disabled={disabledCombined}
                 id={name}
                 name={name}
                 readOnly={readOnly}
-                validationType={validationType}
                 value={String(getFieldValue(name) || "")}
                 onChange={onChange}
                 onBlur={onBlur}

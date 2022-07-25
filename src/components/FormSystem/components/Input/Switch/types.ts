@@ -1,10 +1,10 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
-export interface SwitchProps {
+export type SwitchProps = PropsWithChildren<{
     disabled?: boolean
     readOnly?: boolean
     name: string
-}
+}>
 
 export type SwitchComponent = React.FC<SwitchProps>
 

@@ -1,10 +1,9 @@
+import SwitchButton from "@components/SwitchButton"
 import React, { useCallback, useEffect } from "react"
 
 import { useInputLogin } from "@components/FormSystem/hooks"
 import { FormDataValue } from "@components/FormSystem/types"
-import BasicSwitch from "@components/Switch"
 import usePrevious from "@hooks/usePrevious"
-import * as FSTypes from "../../../types"
 import * as Types from "./types"
 
 const Switch: Types.SwitchComponent = (props) => {
@@ -16,7 +15,6 @@ const Switch: Types.SwitchComponent = (props) => {
         getFieldValue,
         onBlur,
         setFieldValue,
-        validationType,
         value
     } = useInputLogin({ defaultValue: false, disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
@@ -34,7 +32,7 @@ const Switch: Types.SwitchComponent = (props) => {
 
     return (
         <>
-            <BasicSwitch
+            <SwitchButton
                 label={"Banana"}
                 disabled={disabledCombined}
                 id={name}
@@ -42,7 +40,6 @@ const Switch: Types.SwitchComponent = (props) => {
                 readOnly={readOnly}
                 checked={Boolean(getFieldValue(name))}
                 onChange={onChange}
-                invalid={validationType === FSTypes.Validation.Types.Error}
             />
             {children}
         </>

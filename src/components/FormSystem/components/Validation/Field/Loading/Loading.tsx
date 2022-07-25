@@ -26,7 +26,7 @@ const Loading: Types.LoadingComponent = (props) => {
                 text: i18n.text
             }
         ]
-    }, [condition, i18n.text])
+    }, [condition, i18n])
 
     useEffect(() => {
         if (condition) {

@@ -81,12 +81,18 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         submitStatus: "idle"
     })
 
-    const onCancel = useCallback(async (formData, endCancellationState) => {
+    const onCancel: Types.FormContext.Events.onCancel = useCallback(async (formData, endCancellationState) => {
         await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
         endCancellationState()
     }, [])
 
-    const onChange = useCallback(async (fieldName, value, isManualChange, formData, setFieldValue) => {
+    const onChange: Types.FormContext.Events.onChange = useCallback(async (
+        fieldName,
+        value,
+        isManualChange,
+        formData,
+        setFieldValue
+    ) => {
         if (isManualChange) {
             return
         }
@@ -132,7 +138,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         }
     }, [])
 
-    const onRetry = useCallback(async (event) => {
+    const onRetry: (event: React.MouseEvent<HTMLButtonElement>) => void = useCallback(async (event) => {
         event.preventDefault()
         setFormState((currentFormState) => ({ ...currentFormState, submitStatus: "progress" }))
         await new Promise(resolve => setTimeout(resolve, 3000)) // aka request
@@ -147,7 +153,12 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         })
     }, [])
 
-    const onSubmit = useCallback(async (formData, isValid, validationMessages, endSubmissionState) => {
+    const onSubmit: Types.FormContext.Events.onSubmit = useCallback(async (
+        formData,
+        isValid,
+        validationMessages,
+        endSubmissionState
+    ) => {
         console.log("submit", { formData, isValid, validationMessages })
 
         if (isValid) {

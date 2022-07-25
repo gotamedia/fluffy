@@ -1,7 +1,7 @@
 import Icon, { Icons } from "@components/Icon"
 import useTheme from "@hooks/useTheme"
 import React from "react"
-import { Button } from "../../../index"
+import { Button } from "../../index"
 import * as Styled from './style'
 import * as Types from './types'
 
