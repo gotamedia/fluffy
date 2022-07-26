@@ -418,9 +418,7 @@ const InputDatePickerTemplate: Story<Types.Form> = (props) => {
                 <FS.Input.DatePicker
                     selectsRange
                     name={"name"}
-                    // dateFormat={"yyyy-MM-dd"}
-                    dateFormat="yyyy, QQQ"
-                    showQuarterYearPicker
+                    dateFormat={"yyyy-MM-dd"}
                 />
             </FS.Field>
 
