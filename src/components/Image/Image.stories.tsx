@@ -17,7 +17,7 @@ BasicStory.args = {
     src: 'https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg'
 }
 
-const WithLazyLoad: Story<Types.ImageProps> = (props) => {
+const WithThumbnailLazyLoad: Story<Types.ImageProps> = (props) => {
     return (
         <div style={{
             width: '100%',
@@ -36,16 +36,44 @@ const WithLazyLoad: Story<Types.ImageProps> = (props) => {
     )
 }
 
-const WithLazyLoadStory = WithLazyLoad.bind({})
-WithLazyLoadStory.storyName = 'With lazy load'
-WithLazyLoadStory.args = {
+const WithThumbnailLazyLoadStory = WithThumbnailLazyLoad.bind({})
+WithThumbnailLazyLoadStory.storyName = 'With thumbnail lazy load'
+WithThumbnailLazyLoadStory.args = {
     lazyLoading: true,
     loadingEffect: 'blur'
 }
 
+const WithPlaceholderLazyLoad: Story<Types.ImageProps> = (props) => {
+    return (
+        <div style={{
+            width: '100%',
+            height: '500vh',
+            display: 'flex',
+            flexDirection: 'column'
+        }}>
+            <h1>
+                {'Scroll to the bottom to see your image loads!'}
+            </h1>
+
+            <div style={{margin: 'auto auto 0 0'}}>
+                <Image {...props} />
+            </div>
+        </div>
+    )
+}
+
+const WithPlaceholderLazyLoadStory = WithPlaceholderLazyLoad.bind({})
+WithPlaceholderLazyLoadStory.storyName = 'With placeholder lazy load'
+WithPlaceholderLazyLoadStory.args = {
+    lazyLoading: true,
+    loadingEffect: 'blur',
+    thumbnailSrc: ''
+}
+
 export {
     BasicStory,
-    WithLazyLoadStory
+    WithThumbnailLazyLoadStory,
+    WithPlaceholderLazyLoadStory
 }
 
 export default {

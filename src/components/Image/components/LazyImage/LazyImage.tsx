@@ -7,9 +7,6 @@ import {
 
 import { useInView } from 'react-intersection-observer'
 
-//@ts-ignore
-import placeholderImage from './placeholder.png'
-
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ReactEventHandler } from 'react'
@@ -65,14 +62,22 @@ const LazyImage: Types.LazyImageComponent = forwardRef((props, ref) => {
                                 thumbnail && isValidElement(thumbnail) ? (
                                     thumbnail
                                 ) : (
-                                    <Styled.Thumbnail
-                                        {...filteredProps}
-                                        $isLoaded={isLoaded}
-                                        $loadingEffect={loadingEffect}
-                                        $transitionDuration={transitionDuration}
-                                        ref={ref}
-                                        src={thumbnailSrc || placeholderImage}
-                                    />
+                                    thumbnailSrc ? (
+                                        <Styled.Thumbnail
+                                            {...filteredProps}
+                                            $isLoaded={isLoaded}
+                                            $loadingEffect={loadingEffect}
+                                            $transitionDuration={transitionDuration}
+                                            ref={ref}
+                                            src={thumbnailSrc}
+                                        />
+                                    ) : (
+                                        <Styled.Placeholder
+                                            $isLoaded={isLoaded}
+                                            $loadingEffect={loadingEffect}
+                                            $transitionDuration={transitionDuration}
+                                        />
+                                    )
                                 )
                             ) : (
                                 null

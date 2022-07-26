@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { tint } from 'polished'
+
 import { ImageLoadingEffects } from './types'
 
 import * as Types from './types'
@@ -31,7 +33,7 @@ const Image = styled.img<
     `}
 `
 
-const Thumbnail = styled.img<
+const placeholderStyle = css<
 {
     $isLoaded: boolean,
     $loadingEffect: Types.LazyImageProps['loadingEffect'],
@@ -54,8 +56,19 @@ const Thumbnail = styled.img<
     `}
 `
 
+const Thumbnail = styled.img`
+    ${placeholderStyle};
+`
+
+const Placeholder = styled.div`
+    ${placeholderStyle};
+
+    background-color: ${({ theme }) => tint(0.5, theme.colors.brand)};
+`
+
 export {
     Wrapper,
     Image,
-    Thumbnail
+    Thumbnail,
+    Placeholder
 }
