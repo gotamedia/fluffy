@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.13.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.12.0...v0.13.0) (2022-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Exposed 'polished' and 'react-intersection-observer'
+* Added Image component
+* Added LazyLoad component
+
+### Features
+
+* Added Image component ([67f9ec0](http://bitbucket.org/gotamedia/fluffy/commit/67f9ec0bcb4cf80b85e56f25efc5118c1ab63c97))
+* Added LazyLoad component ([dc7c18c](http://bitbucket.org/gotamedia/fluffy/commit/dc7c18c2c71885fc81b9bad5f8da75a580e22f1f))
+* Exposed 'polished' and 'react-intersection-observer' ([171a023](http://bitbucket.org/gotamedia/fluffy/commit/171a02341fe0243d570d8dd70d413d75ba7c19dd))
+
+
+### Bug Fixes
+
+* Fixed LazyImage's placeholder ([163dc20](http://bitbucket.org/gotamedia/fluffy/commit/163dc20202bfde945a1ec9ee39905dfa3b938a08))
+* **test:** Fixed LazyLoad crashing tests and updated all imports for test files ([df7cc9c](http://bitbucket.org/gotamedia/fluffy/commit/df7cc9cd90689eb8603f06827f5a61e4ffe573b8))
+* **type:** Updated onClear prop as optional for TimePicker ([29aca83](http://bitbucket.org/gotamedia/fluffy/commit/29aca8339d64fa04618ca71faa038e44a485ca78))
+
 ## [0.12.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.11.0...v0.12.0) (2022-07-22)
 
 
