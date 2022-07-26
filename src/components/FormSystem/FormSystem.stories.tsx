@@ -303,6 +303,9 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                             <FS.Validation.Field.Required />
                         </FS.Input.Switch>
                     </FS.Field>
+                    <FS.Field>
+                        <FS.Input.DatePicker name={"test"} />
+                    </FS.Field>
 
                     {["failed", "progress"].includes(formState.submitStatus) && (
                         <Message
@@ -373,6 +376,63 @@ const InputCheckboxTemplate: Story<Types.Form> = (props) => {
 
 export const InputCheckbox = InputCheckboxTemplate.bind({})
 InputCheckbox.args = {
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    onCancel: (...props) => {
+        console.log("onCancel", props)
+        props[1]()
+    },
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onDelete: (...props) => {
+        console.log("onDelete", props)
+        props[1]()
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }
+}
+
+const InputDatePickerTemplate: Story<Types.Form> = (props) => {
+    return (
+        <FS.Form
+            disabled={props.disabled}
+            i18n={props.i18n}
+            onCancel={props.onCancel}
+            onChange={props.onChange}
+            onDelete={props.onDelete}
+            onSubmit={props.onSubmit}
+        >
+            <FS.Field>
+                <FS.Input.DatePicker
+                    selectsRange
+                    name={"name"}
+                    // dateFormat={"yyyy-MM-dd"}
+                    dateFormat="yyyy, QQQ"
+                    showQuarterYearPicker
+                />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputDatePicker = InputDatePickerTemplate.bind({})
+InputDatePicker.args = {
     disabled: false,
     i18n: {
         fields: {
