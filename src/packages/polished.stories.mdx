@@ -1,0 +1,41 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+import * as Polished from './polished'
+
+<Meta
+    title={'Packages/Polished'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+Polished is a lightweight toolset for writing styles in JavaScript
+
+For more info please refer to [Polished official DOCs](https://polished.js.org/docs/)
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { Polished } from '@gotamedia/fluffy'
+\nconst darkVariant = Polished.darken(0.2, '#f7f9fc')
+\nconsole.log(darkVariant)    // '#adc1e0'
+`}
+/>
+
+## Content
+
+<Source
+    language={'tsx'}
+    code={`${(() => {
+        const content = {}
+        Object.entries(Polished).forEach((item) => {
+            content[item[0]] = typeof item[1]
+        })
+        return JSON.stringify(content, null, 4)
+    })()}`}
+/>
