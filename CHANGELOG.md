@@ -2,26 +2,6 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.12.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.11.0...v0.12.0) (2022-07-22)
-
-
-### ⚠ BREAKING CHANGES
-
-* Added basic Pagination component
-
-### Features
-
-* Added basic Pagination component ([be244dc](http://bitbucket.org/gotamedia/fluffy/commit/be244dcd35b8169bde14264a4aec42d93844d790))
-* Added clear buttons for DatePicker/TimePicker ([550a5ef](http://bitbucket.org/gotamedia/fluffy/commit/550a5ef48837f22d78be88f914af2626dbc0b1fe))
-
-
-### Bug Fixes
-
-* Added number type check for Button children ([00e8a39](http://bitbucket.org/gotamedia/fluffy/commit/00e8a39b4fea417ac23637288f43958c9356bfa1))
-* Allow clicks on rendered Icons with InputGroup ([cedc0db](http://bitbucket.org/gotamedia/fluffy/commit/cedc0dba1ca2dea0a929728ff9f0aa0130f9d5c1))
-* **story:** Separated stable components from the ones that currently under development ([e2d0b2f](http://bitbucket.org/gotamedia/fluffy/commit/e2d0b2f0f20a70dab966467edcf9bd70aed31fee))
-* **story:** Updated TimePicker format token arg ([504b64e](http://bitbucket.org/gotamedia/fluffy/commit/504b64e70b67df9c475a2024af05bb44831a33e8))
-
 ## [0.11.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.10.0...v0.11.0) (2022-07-21)
 
 
