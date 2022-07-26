@@ -1,0 +1,47 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+import * as RIO from './react-intersection-observer'
+
+<Meta
+    title={'Packages/ReactIntersectionObserver'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+React implementation of the Intersection Observer API to tell you when an element enters or leaves the viewport. Contains both a Hooks, render props and plain children implementation.
+
+For more info please refer to [react-intersection-observer official DOCs](https://www.npmjs.com/package/react-intersection-observer)
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { ReactIntersectionObserver } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const { ref, inView } = ReactIntersectionObserver.useInView()\n
+    return (
+        <div ref={ref}>
+            <h2>{'Header inside viewport: '}{inView}</h2>
+        </div>
+    )
+}
+`}
+/>
+
+## Content
+
+<Source
+    language={'tsx'}
+    code={`${(() => {
+        const content = {}
+        Object.entries(RIO).forEach((item) => {
+            content[item[0]] = typeof item[1]
+        })
+        return JSON.stringify(content, null, 4)
+    })()}`}
+/>
