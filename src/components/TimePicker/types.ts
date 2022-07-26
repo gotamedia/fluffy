@@ -9,7 +9,7 @@ import type { InputProps } from '../Input'
 
 export interface TimePickerProps extends ReactDatePickerProps {
     inputProps?: InputProps,
-    onClear: () => void
+    onClear?: () => void
 }
 
 export type TimePickerRef = ReactDatePicker
