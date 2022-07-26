@@ -1,7 +1,7 @@
 import SwitchButton from "@components/SwitchButton"
 import React, { useCallback, useEffect } from "react"
 
-import { useInputLogin } from "@components/FormSystem/hooks"
+import { useInputLogic } from "@components/FormSystem/hooks"
 import { FormDataValue } from "@components/FormSystem/types"
 import usePrevious from "@hooks/usePrevious"
 import * as Types from "./types"
@@ -16,7 +16,7 @@ const Switch: Types.SwitchComponent = (props) => {
         onBlur,
         setFieldValue,
         value
-    } = useInputLogin({ defaultValue: false, disabled, name })
+    } = useInputLogic({ defaultValue: false, disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {

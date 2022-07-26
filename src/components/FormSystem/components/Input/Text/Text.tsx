@@ -1,4 +1,4 @@
-import { useInputLogin } from "@components/FormSystem/hooks"
+import { useInputLogic } from "@components/FormSystem/hooks"
 import Input from "@components/Input"
 import React, { useCallback } from "react"
 import * as Types from "./types"
@@ -12,7 +12,7 @@ const Text: Types.TextComponent = (props) => {
         getFieldValue,
         onBlur,
         setFieldValue,
-    } = useInputLogin({ defaultValue: "", disabled, name })
+    } = useInputLogic({ defaultValue: "", disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.value)
