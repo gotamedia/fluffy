@@ -1,0 +1,28 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useDeepCompareCallback'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useDeepCompareCallback is React's useCallback hook except it uses deep comparison on the dependencies array instead of reference equality
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useDeepCompareCallback } from '@gotamedia/fluffy'
+\nconst Component = ({ objectProp, arrayProp }) => {
+    // This function shold NOT get a new instance if the two props contents stays the same even if they got a new references
+    const handler = useDeepCompareCallback(() => {
+        {...}
+    }, [objectProp, arrayProp])
+}
+`}
+/>

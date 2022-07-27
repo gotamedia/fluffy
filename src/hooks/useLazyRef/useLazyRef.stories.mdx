@@ -1,0 +1,30 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useLazyRef'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useLazyRef is a helper hook that replaces useRef which allows you create a ref object with initial value with a callback that being called and initiated once.
+
+useRef does accept an initial value but it will never be used or re-assigned and it will be created on each time the Component re-renders
+This will reserve a place in memory and it will wait to be garbage collected.
+
+useLazyRef stands out from useRef when your initial value is an new Instance or some sort of a new Class that has some logics in it's constructor.
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useLazyRef } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const mapRef = useLazyRef(() => new Map())
+}
+`}
+/>
