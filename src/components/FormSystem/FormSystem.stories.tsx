@@ -3,6 +3,7 @@ import React, { useCallback, useContext, useState } from "react"
 import Button from "../Button"
 import Message from "../Message/Message"
 import { MessageTypes } from "../Message/types"
+import { RadioGroupProps } from "./components/Input/RadioGroup/types"
 import * as Contexts from "./contexts"
 
 import FS from './index'
@@ -303,9 +304,6 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                             <FS.Validation.Field.Required />
                         </FS.Input.Switch>
                     </FS.Field>
-                    <FS.Field>
-                        <FS.Input.DatePicker name={"test"} />
-                    </FS.Field>
 
                     {["failed", "progress"].includes(formState.submitStatus) && (
                         <Message
@@ -352,6 +350,10 @@ AccountCreation.args = {
         }
     }
 }
+
+/**
+ * Checkbox
+ */
 
 const InputCheckboxTemplate: Story<Types.Form> = (props) => {
     return (
@@ -403,6 +405,10 @@ InputCheckbox.args = {
         props[3]()
     }
 }
+
+/**
+ * Date Picker
+ */
 
 const InputDatePickerTemplate: Story<Types.Form> = (props) => {
     return (
@@ -459,6 +465,85 @@ InputDatePicker.args = {
     }
 }
 
+/**
+ * Radio Group
+ */
+
+const InputRadioGroupTemplate: Story<Types.Form & RadioGroupProps> = (props) => {
+    const {
+        defaultValue,
+        disabled,
+        i18n,
+        onChange,
+        onCancel,
+        onDelete,
+        onSubmit,
+        value,
+        ...radioGroupProps
+    } = props
+
+    return (
+        <FS.Form
+            defaultValue={defaultValue}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onCancel={onCancel}
+            onDelete={onDelete}
+            onSubmit={onSubmit}
+            value={value}
+        >
+            <FS.Field>
+                <FS.Input.RadioGroup {...radioGroupProps} />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputRadioGroup = InputRadioGroupTemplate.bind({})
+InputRadioGroup.args = {
+    allowDeselect: false,
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    name: "name",
+    onCancel: (...props) => {
+        console.log("onCancel", props)
+        props[1]()
+    },
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onDelete: (...props) => {
+        console.log("onDelete", props)
+        props[1]()
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    },
+    options: [
+        { label: "Option 1", value: "1" },
+        { label: "Option 2", value: "2" }
+    ]
+}
+
+/**
+ * Switch
+ */
+
 const InputSwitchTemplate: Story<Types.Form> = (props) => {
     return (
         <FS.Form
@@ -509,6 +594,10 @@ InputSwitch.args = {
         props[3]()
     }
 }
+
+/**
+ * Text
+ */
 
 const InputTextTemplate: Story<Types.Form> = (props) => {
     return (
