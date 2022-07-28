@@ -19,14 +19,20 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
     } = useInputLogic({ defaultValue: "", disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
 
-    const onChange: React.MouseEventHandler<HTMLInputElement> = useCallback((event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    const onChange = useCallback((
+        optionOnChange?: React.MouseEventHandler<HTMLInputElement>
+    ) => (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
         const value = String((getFieldValue(name))) === (event.target as HTMLInputElement).value && allowDeselect
             ? ""
             : (event.target as HTMLInputElement).value
 
         setFieldValue(name, value)
         clearValidationMessages(name)
-    }, [getFieldValue, name, allowDeselect, setFieldValue, clearValidationMessages])
+
+        if (optionOnChange) {
+            optionOnChange(event)
+        }
+    }, [allowDeselect, clearValidationMessages, getFieldValue, name, setFieldValue])
 
     useEffect(() => {
         if (previousValue !== value) {
@@ -40,11 +46,11 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
                 {options.map((option) => (
                     <Radio
                         key={option.value}
-                        checked={String((getFieldValue(name))) === option.value}
-                        disabled={disabledCombined}
-                        onClick={onChange}
-                        readOnly={readOnly}
+                        checked={String(value) === option.value}
                         {...option}
+                        onClick={onChange(option.onClick)}
+                        readOnly={option.readOnly || readOnly}
+                        disabled={option.disabled || disabledCombined}
                     />
                 ))}
             </Styles.Wrapper>

@@ -5,7 +5,7 @@ export type DatePickerProps = PropsWithChildren<{
     disabled?: boolean
     readOnly?: boolean
     name: string
-} & Omit<PlainDatePickerProps, "onChange">>
+} & Omit<PlainDatePickerProps, "onChange"> & Partial<Pick<PlainDatePickerProps, "onChange">>>
 
 export type DatePickerComponent = React.FC<DatePickerProps>
 

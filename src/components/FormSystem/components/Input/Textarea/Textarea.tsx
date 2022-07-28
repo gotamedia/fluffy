@@ -5,44 +5,43 @@ import PlainTextarea from "@components/Textarea"
 import * as Types from "./types"
 
 const Textarea: Types.TextareaComponent = (props) => {
-    const { children, disabled, name, onBlur, onChange, readOnly, ...textareaProps } = props
+    const { children, disabled, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props
 
     const {
         clearValidationMessages,
         disabled: disabledCombined,
-        onBlur: onBlurLogic,
+        onBlur: inputLogicOnBlur,
         setFieldValue,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
 
-    const onBlurHandler = useCallback((event: React.FocusEvent<HTMLTextAreaElement>) => {
-        onBlurLogic()
+    const onBlur = useCallback((event: React.FocusEvent<HTMLTextAreaElement>) => {
+        inputLogicOnBlur()
 
-        if (onBlur) {
-            onBlur(event)
+        if (propsOnBlur) {
+            propsOnBlur(event)
         }
-    }, [onBlur, onBlurLogic])
+    }, [propsOnBlur, inputLogicOnBlur])
 
-    const onChangeHandler = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const onChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setFieldValue(name, event?.target?.value)
         clearValidationMessages(name)
 
-        if (onChange) {
-            onChange(event)
+        if (propsOnChange) {
+            propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, onChange])
+    }, [setFieldValue, name, clearValidationMessages, propsOnChange])
 
     return (
         <>
             <PlainTextarea
-                {...textareaProps}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
-                readOnly={readOnly}
                 value={String(value)}
-                onChange={onChangeHandler}
-                onBlur={onBlurHandler}
+                onChange={onChange}
+                onBlur={onBlur}
+                {...textareaProps}
             />
             {children}
         </>

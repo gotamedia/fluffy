@@ -7,12 +7,11 @@ import usePrevious from "@hooks/usePrevious"
 import * as Types from "./types"
 
 const Switch: Types.SwitchComponent = (props) => {
-    const { children, disabled, name, readOnly } = props
+    const { children, disabled, name, onChange: propsOnChange, ...plainSwitchProps } = props
 
     const {
         clearValidationMessages,
         disabled: disabledCombined,
-        getFieldValue,
         onBlur,
         setFieldValue,
         value
@@ -22,7 +21,11 @@ const Switch: Types.SwitchComponent = (props) => {
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.checked)
         clearValidationMessages(name)
-    }, [setFieldValue, name, clearValidationMessages])
+
+        if (propsOnChange) {
+            propsOnChange(event)
+        }
+    }, [setFieldValue, name, clearValidationMessages, propsOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {
@@ -36,9 +39,9 @@ const Switch: Types.SwitchComponent = (props) => {
                 disabled={disabledCombined}
                 id={name}
                 name={name}
-                readOnly={readOnly}
-                checked={Boolean(getFieldValue(name))}
+                checked={Boolean(value)}
                 onChange={onChange}
+                {...plainSwitchProps}
             />
             {children}
         </>

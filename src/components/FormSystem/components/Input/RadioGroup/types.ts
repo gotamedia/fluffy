@@ -1,7 +1,13 @@
 import { RadioProps } from "@components/Radio"
 import React, { PropsWithChildren } from "react"
 
-export interface RadioGroupOption extends Omit<RadioProps, "checked" | "label" | "onClick" | "value"> {
+export type onChange = (
+    optionOnChange: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
+) => (
+    event: React.MouseEvent<HTMLInputElement, MouseEvent>
+) => void
+
+export interface RadioGroupOption extends RadioProps {
     label: string
     value: string
 }

@@ -7,12 +7,11 @@ import usePrevious from "@hooks/usePrevious"
 import * as Types from "./types"
 
 const Checkbox: Types.CheckboxComponent = (props) => {
-    const { children, disabled, name, readOnly } = props
+    const { children, disabled, name, onChange: propsOnChange, ...plainCheckboxProps } = props
 
     const {
         clearValidationMessages,
         disabled: disabledCombined,
-        getFieldValue,
         onBlur,
         setFieldValue,
         value
@@ -22,7 +21,11 @@ const Checkbox: Types.CheckboxComponent = (props) => {
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.checked)
         clearValidationMessages(name)
-    }, [setFieldValue, name, clearValidationMessages])
+
+        if (propsOnChange) {
+            propsOnChange(event)
+        }
+    }, [setFieldValue, name, clearValidationMessages, propsOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {
@@ -36,8 +39,8 @@ const Checkbox: Types.CheckboxComponent = (props) => {
                 disabled={disabledCombined}
                 id={name}
                 name={name}
-                readOnly={readOnly}
-                checked={Boolean(getFieldValue(name))}
+                checked={Boolean(value)}
+                {...plainCheckboxProps}
                 onChange={onChange}
             />
             {children}
