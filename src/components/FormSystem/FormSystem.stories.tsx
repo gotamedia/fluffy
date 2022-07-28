@@ -649,3 +649,58 @@ InputText.args = {
         props[3]()
     }
 }
+
+/**
+ * Textarea
+ */
+
+const InputTextareaTemplate: Story<Types.Form> = (props) => {
+    return (
+        <FS.Form
+            disabled={props.disabled}
+            i18n={props.i18n}
+            onCancel={props.onCancel}
+            onChange={props.onChange}
+            onDelete={props.onDelete}
+            onSubmit={props.onSubmit}
+        >
+            <FS.Field>
+                <FS.Input.Textarea name={"name"} />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputTextarea = InputTextareaTemplate.bind({})
+InputTextarea.args = {
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    onCancel: (...props) => {
+        console.log("onCancel", props)
+        props[1]()
+    },
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onDelete: (...props) => {
+        console.log("onDelete", props)
+        props[1]()
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }
+}
