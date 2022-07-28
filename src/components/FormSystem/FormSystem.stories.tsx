@@ -3,7 +3,12 @@ import React, { useCallback, useContext, useState } from "react"
 import Button from "../Button"
 import Message from "../Message/Message"
 import { MessageTypes } from "../Message/types"
+import { CheckboxProps } from "./components/Input/Checkbox/types"
+import { DatePickerProps } from "./components/Input/DatePicker/types"
 import { RadioGroupProps } from "./components/Input/RadioGroup/types"
+import { SwitchProps } from "./components/Input/Switch/types"
+import { TextProps } from "./components/Input/Text/types"
+import { TextareaProps } from "./components/Input/Textarea/types"
 import * as Contexts from "./contexts"
 
 import FS from './index'
@@ -352,25 +357,37 @@ AccountCreation.args = {
 }
 
 /**
+ * Input stories
+ */
+type InputStoryFormProps = Pick<Types.Form, "disabled" | "i18n" | "onChange" | "onSubmit">
+
+/**
  * Checkbox
  */
 
-const InputCheckboxTemplate: Story<Types.Form> = (props) => {
+const InputCheckboxTemplate: Story<
+    InputStoryFormProps &
+    Omit<CheckboxProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
     return (
         <FS.Form
-            disabled={props.disabled}
-            i18n={props.i18n}
-            onCancel={props.onCancel}
-            onChange={props.onChange}
-            onDelete={props.onDelete}
-            onSubmit={props.onSubmit}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
         >
             <FS.Field>
-                <FS.Input.Checkbox name={"name"} />
+                <FS.Input.Checkbox {...inputProps} />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )
@@ -378,7 +395,6 @@ const InputCheckboxTemplate: Story<Types.Form> = (props) => {
 
 export const InputCheckbox = InputCheckboxTemplate.bind({})
 InputCheckbox.args = {
-    disabled: false,
     i18n: {
         fields: {
             name: "Label",
@@ -389,16 +405,9 @@ InputCheckbox.args = {
             submit: "Spara"
         }
     },
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
+    name: "name",
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
@@ -410,26 +419,50 @@ InputCheckbox.args = {
  * Date Picker
  */
 
-const InputDatePickerTemplate: Story<Types.Form> = (props) => {
+const InputDatePickerTemplate: Story<
+    InputStoryFormProps &
+    Omit<DatePickerProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
     return (
         <FS.Form
-            disabled={props.disabled}
-            i18n={props.i18n}
-            onCancel={props.onCancel}
-            onChange={props.onChange}
-            onDelete={props.onDelete}
-            onSubmit={props.onSubmit}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
         >
             <FS.Field>
                 <FS.Input.DatePicker
+                    {...inputProps}
+                    name={"name1"}
+                    dateFormat={"yyyy-MM-dd"}
+                />
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.DatePicker
+                    {...inputProps}
+                    name={"name2"}
+                    dateFormat={"yyyy-MM-dd HH:mm"}
+                    showTimeInput
+                    shouldCloseOnSelect={false}
+                />
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.DatePicker
+                    {...inputProps}
                     selectsRange
-                    name={"name"}
+                    name={"name3"}
                     dateFormat={"yyyy-MM-dd"}
                 />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )
@@ -440,7 +473,9 @@ InputDatePicker.args = {
     disabled: false,
     i18n: {
         fields: {
-            name: "Label",
+            name1: "Date",
+            name2: "Date with time",
+            name3: "Range",
         },
         buttons: {
             cancel: "Tillbaka",
@@ -448,16 +483,8 @@ InputDatePicker.args = {
             submit: "Spara"
         }
     },
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
@@ -469,36 +496,29 @@ InputDatePicker.args = {
  * Radio Group
  */
 
-const InputRadioGroupTemplate: Story<Types.Form & RadioGroupProps> = (props) => {
+const InputRadioGroupTemplate: Story<
+    InputStoryFormProps &
+    Omit<RadioGroupProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
     const {
-        defaultValue,
         disabled,
         i18n,
         onChange,
-        onCancel,
-        onDelete,
         onSubmit,
-        value,
-        ...radioGroupProps
+        ...inputProps
     } = props
 
     return (
         <FS.Form
-            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
             onChange={onChange}
-            onCancel={onCancel}
-            onDelete={onDelete}
             onSubmit={onSubmit}
-            value={value}
         >
             <FS.Field>
-                <FS.Input.RadioGroup {...radioGroupProps} />
+                <FS.Input.RadioGroup {...inputProps} />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )
@@ -519,16 +539,8 @@ InputRadioGroup.args = {
         }
     },
     name: "name",
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
@@ -544,18 +556,27 @@ InputRadioGroup.args = {
  * Switch
  */
 
-const InputSwitchTemplate: Story<Types.Form> = (props) => {
+const InputSwitchTemplate: Story<
+    InputStoryFormProps &
+    Omit<SwitchProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
     return (
         <FS.Form
-            disabled={props.disabled}
-            i18n={props.i18n}
-            onCancel={props.onCancel}
-            onChange={props.onChange}
-            onDelete={props.onDelete}
-            onSubmit={props.onSubmit}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
         >
             <FS.Field>
-                <FS.Input.Switch name={"name"} />
+                <FS.Input.Switch {...inputProps} />
             </FS.Field>
 
             <FS.Button.Cancel />
@@ -578,16 +599,9 @@ InputSwitch.args = {
             submit: "Spara"
         }
     },
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
+    name: "name",
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
@@ -599,18 +613,27 @@ InputSwitch.args = {
  * Text
  */
 
-const InputTextTemplate: Story<Types.Form> = (props) => {
+const InputTextTemplate: Story<
+    InputStoryFormProps &
+    Omit<TextProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
     return (
         <FS.Form
-            disabled={props.disabled}
-            i18n={props.i18n}
-            onCancel={props.onCancel}
-            onChange={props.onChange}
-            onDelete={props.onDelete}
-            onSubmit={props.onSubmit}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
         >
             <FS.Field>
-                <FS.Input.Text name={"name"} />
+                <FS.Input.Text {...inputProps} />
             </FS.Field>
 
             <FS.Button.Cancel />
@@ -633,16 +656,9 @@ InputText.args = {
             submit: "Spara"
         }
     },
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
+    name: "name",
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
@@ -654,18 +670,27 @@ InputText.args = {
  * Textarea
  */
 
-const InputTextareaTemplate: Story<Types.Form> = (props) => {
+const InputTextareaTemplate: Story<
+    InputStoryFormProps &
+    Omit<TextareaProps, "onChange" | "onSubmit" | "disabled">
+> = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
     return (
         <FS.Form
-            disabled={props.disabled}
-            i18n={props.i18n}
-            onCancel={props.onCancel}
-            onChange={props.onChange}
-            onDelete={props.onDelete}
-            onSubmit={props.onSubmit}
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
         >
             <FS.Field>
-                <FS.Input.Textarea name={"name"} />
+                <FS.Input.Textarea {...inputProps} />
             </FS.Field>
 
             <FS.Button.Cancel />
@@ -688,16 +713,9 @@ InputTextarea.args = {
             submit: "Spara"
         }
     },
-    onCancel: (...props) => {
-        console.log("onCancel", props)
-        props[1]()
-    },
+    name: "name",
     onChange: (...props) => {
         console.log("onChange", props)
-    },
-    onDelete: (...props) => {
-        console.log("onDelete", props)
-        props[1]()
     },
     onSubmit: (...props) => {
         console.log("onSubmit", props)
