@@ -9,6 +9,7 @@ import { RadioGroupProps } from "./components/Input/RadioGroup/types"
 import { SwitchProps } from "./components/Input/Switch/types"
 import { TextProps } from "./components/Input/Text/types"
 import { TextareaProps } from "./components/Input/Textarea/types"
+import { TimePickerProps } from "./components/Input/TimePicker/types"
 import * as Contexts from "./contexts"
 
 import FS from './index'
@@ -673,7 +674,7 @@ InputText.args = {
 const InputTextareaTemplate: Story<
     InputStoryFormProps &
     Omit<TextareaProps, "onChange" | "onSubmit" | "disabled">
-> = (props) => {
+    > = (props) => {
     const {
         disabled,
         i18n,
@@ -702,6 +703,66 @@ const InputTextareaTemplate: Story<
 
 export const InputTextarea = InputTextareaTemplate.bind({})
 InputTextarea.args = {
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    name: "name",
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }
+}
+
+/**
+ * TimePicker
+ */
+
+const InputTimePickerTemplate: Story<
+    InputStoryFormProps &
+    Omit<TimePickerProps, "onChange" | "onSubmit" | "disabled">
+    > = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
+    return (
+        <FS.Form
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
+        >
+            <FS.Field>
+                <FS.Input.TimePicker
+                    dateFormat={"p"}
+                    {...inputProps}
+                />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputTimePicker = InputTimePickerTemplate.bind({})
+InputTimePicker.args = {
     disabled: false,
     i18n: {
         fields: {

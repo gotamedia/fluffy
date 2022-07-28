@@ -4,6 +4,7 @@ import RadioGroup from "./RadioGroup"
 import Switch from "./Switch"
 import Text from "./Text"
 import Textarea from "./Textarea"
+import TimePicker from "./TimePicker"
 
 export {
     Checkbox,
@@ -11,5 +12,6 @@ export {
     RadioGroup,
     Switch,
     Text,
-    Textarea
+    Textarea,
+    TimePicker
 }
