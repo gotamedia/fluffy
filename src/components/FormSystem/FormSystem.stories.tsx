@@ -75,10 +75,9 @@ const Reset: React.FC<ResetProps> = (props) => {
 }
 
 export default {
-    title: 'Components/FormSystem',
+    title: 'Developments/Components/FormSystem',
     component: FS.Form,
-    argTypes: {
-    },
+    argTypes: { },
 } as Meta<typeof FS.Form>
 
 const AccountCreationTemplate: Story<Types.Form> = (props) => {
@@ -358,32 +357,35 @@ AccountCreation.args = {
 }
 
 /**
- * Input stories
- */
-type InputStoryFormProps = Pick<Types.Form, "disabled" | "i18n" | "onChange" | "onSubmit">
-
-/**
  * Checkbox
  */
 
 const InputCheckboxTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<CheckboxProps, "onChange" | "onSubmit" | "disabled">
 > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.Checkbox {...inputProps} />
@@ -421,23 +423,31 @@ InputCheckbox.args = {
  */
 
 const InputDatePickerTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<DatePickerProps, "onChange" | "onSubmit" | "disabled">
 > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.DatePicker
@@ -498,23 +508,31 @@ InputDatePicker.args = {
  */
 
 const InputNumberTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<TextProps, "onChange" | "onSubmit" | "disabled">
     > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.Text {...inputProps} type={"number"} />
@@ -555,23 +573,31 @@ InputNumber.args = {
  */
 
 const InputRadioGroupTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<RadioGroupProps, "onChange" | "onSubmit" | "disabled">
 > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.RadioGroup {...inputProps} />
@@ -615,23 +641,31 @@ InputRadioGroup.args = {
  */
 
 const InputSwitchTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<SwitchProps, "onChange" | "onSubmit" | "disabled">
 > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.Switch {...inputProps} />
@@ -672,23 +706,31 @@ InputSwitch.args = {
  */
 
 const InputTextTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<TextProps, "onChange" | "onSubmit" | "disabled">
 > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.Text {...inputProps} />
@@ -729,23 +771,31 @@ InputText.args = {
  */
 
 const InputTextareaTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<TextareaProps, "onChange" | "onSubmit" | "disabled">
     > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.Textarea {...inputProps} />
@@ -786,23 +836,31 @@ InputTextarea.args = {
  */
 
 const InputTimePickerTemplate: Story<
-    InputStoryFormProps &
+    Types.Form &
     Omit<TimePickerProps, "onChange" | "onSubmit" | "disabled">
     > = (props) => {
     const {
+        defaultValue,
         disabled,
         i18n,
+        onCancel,
+        onDelete,
         onChange,
         onSubmit,
+        value,
         ...inputProps
     } = props
 
     return (
         <FS.Form
+            defaultValue={defaultValue}
             disabled={disabled}
             i18n={i18n}
+            onCancel={onCancel}
             onChange={onChange}
+            onDelete={onDelete}
             onSubmit={onSubmit}
+            value={value}
         >
             <FS.Field>
                 <FS.Input.TimePicker
