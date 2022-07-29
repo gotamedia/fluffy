@@ -100,7 +100,7 @@ export {
 }
 
 export default {
-    title: 'Components/Card',
+    title: 'Developments/Components/Card',
     component: Card,
     argTypes: {},
     args: {

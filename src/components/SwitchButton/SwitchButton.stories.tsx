@@ -30,7 +30,7 @@ export {
 }
 
 export default {
-    title: 'Components/SwitchButton',
+    title: 'Developments/Components/SwitchButton',
     component: SwitchButton,
     argTypes: {},
     args: {

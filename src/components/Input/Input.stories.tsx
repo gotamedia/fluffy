@@ -30,7 +30,7 @@ export {
 }
 
 export default {
-    title: 'Components/Input',
+    title: 'Developments/Components/Input',
     component: Input,
     argTypes: {},
     args: {

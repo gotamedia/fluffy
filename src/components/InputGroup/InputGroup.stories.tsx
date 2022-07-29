@@ -152,7 +152,7 @@ export {
 }
 
 export default {
-    title: 'Components/InputGroup',
+    title: 'Developments/Components/InputGroup',
     component: InputGroup,
     argTypes: {},
     args: {

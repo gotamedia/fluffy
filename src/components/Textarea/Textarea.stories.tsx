@@ -30,7 +30,7 @@ export {
 }
 
 export default {
-    title: 'Components/Textarea',
+    title: 'Developments/Components/Textarea',
     component: Textarea,
     argTypes: {},
     args: {

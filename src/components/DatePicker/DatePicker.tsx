@@ -1,5 +1,6 @@
 import {
     forwardRef,
+    useCallback,
     useEffect
 } from 'react'
 
@@ -9,6 +10,7 @@ import DatePickerInput from './components/DatePickerInput'
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { SyntheticEvent } from 'react'
 
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -19,6 +21,9 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
         popperPlacement = 'bottom-start',
         inputProps,
         calendarClassName,
+        onClear,
+        isClearable = false,
+        onChange,
         ...filteredProps
     } = props
 
@@ -30,6 +35,16 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
         DateUtility.registerLocale(localeName as string, localeObject)
     }, [locale])
 
+    const handleOnChange = useCallback((date: Date | null, event?: SyntheticEvent<any, Event>) => {
+        if (date) {
+            if (typeof onChange === 'function') {
+                onChange(date, event)
+            }
+        } else if (isClearable && typeof onClear === 'function') {
+            onClear()
+        }
+    }, [onChange, isClearable, onClear])
+
     return (
         <Styled.Wrapper className={className}>
             <Styled.DatePicker
@@ -40,8 +55,11 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
                 customInput={(
                     <DatePickerInput
                         {...inputProps}
+                        isClearable={isClearable}
+                        onClear={onClear}
                     />
                 )}
+                onChange={handleOnChange}
                 {...filteredProps}
                 calendarClassName={`${calendarClassName ? calendarClassName : ''} fluffy-date-picker`}
             />

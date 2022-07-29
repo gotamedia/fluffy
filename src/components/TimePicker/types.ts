@@ -8,7 +8,8 @@ import type { ReactDatePicker, ReactDatePickerProps } from 'react-datepicker'
 import type { InputProps } from '../Input'
 
 export interface TimePickerProps extends ReactDatePickerProps {
-    inputProps?: InputProps
+    inputProps?: InputProps,
+    onClear?: () => void
 }
 
 export type TimePickerRef = ReactDatePicker

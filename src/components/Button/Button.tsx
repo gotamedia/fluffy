@@ -25,7 +25,7 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
         >
             {Children.map(children, (child) => {
                 if (child) {
-                    if (typeof child === 'string') {
+                    if (typeof child === 'string' || typeof child === 'number') {
                         return (
                             <Styled.ButtonTexts>
                                 {child}

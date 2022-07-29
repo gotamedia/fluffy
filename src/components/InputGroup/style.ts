@@ -28,7 +28,6 @@ const Wrapper = styled.div<WrapperProps>`
     .input-group {
         &__icon {
             z-index: 1;
-            pointer-events: none;
             position: absolute;
             top: 50%;
             transform: translate(-0, -50%);

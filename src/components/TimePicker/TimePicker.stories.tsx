@@ -22,6 +22,10 @@ const Basic: Story<Types.TimePickerProps> = (props) => {
 
     const [value, setValue] = useState<Date | null | undefined>(roundToNearestMinutes(new Date()))
 
+    const handleOnClear = () => {
+        setValue(null)
+    }
+
     const handlOnChange = (date: Date) => {
         setValue(roundToNearestMinutes(date))
     }
@@ -35,6 +39,7 @@ const Basic: Story<Types.TimePickerProps> = (props) => {
             <TimePicker
                 {...props}
                 selected={value}
+                onClear={handleOnClear}
                 onChange={handlOnChange}
             />
         </>
@@ -49,15 +54,16 @@ export {
 }
 
 export default {
-    title: 'Components/TimePicker',
+    title: 'Developments/Components/TimePicker',
     component: TimePicker,
     argTypes: {},
     args: {
         locale: 'sv',
-        dateFormat: 'P',
+        dateFormat: 'p',
         disabled: false,
+        isClearable: false,
         timeIntervals: 15,
-        placeholderText: 'Select your date',
+        placeholderText: 'Time',
         inputProps: {
             variant: 'outline'
         }

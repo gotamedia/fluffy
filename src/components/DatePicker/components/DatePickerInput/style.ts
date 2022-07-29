@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import InputComponent from '@components/Input'
 import InputGroupComponent from '@components/InputGroup'
@@ -16,18 +16,33 @@ const Input = styled(InputComponent)`
     min-width: 300px;
 `
 
-const Icon = styled(IconComponent).attrs(() => {
+const iconStyle = css`
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.brand};
+    fill: ${({ theme }) => theme.colors.brand};
+`
+
+const ClearIcon = styled(IconComponent).attrs(() => {
+    return {
+        icon: Icons.Cross,
+        size: IconSizes.Small
+    }
+})`
+    ${iconStyle};
+`
+
+const CalendarIcon = styled(IconComponent).attrs(() => {
     return {
         icon: Icons.Calendar,
         size: IconSizes.Small
     }
 })`
-    color: ${({ theme }) => theme.colors.brand};
-    fill: ${({ theme }) => theme.colors.brand};
+    ${iconStyle};
 `
 
 export {
     InputGroup,
     Input,
-    Icon
+    ClearIcon,
+    CalendarIcon
 }
