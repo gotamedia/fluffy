@@ -32,7 +32,6 @@ pipelines:
               - node
             script:
               - npm i
-              - npm run start:ci &
               - npm run cy:run
       
       Storybook:

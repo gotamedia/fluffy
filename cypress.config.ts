@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
-    retries: 1,
+    retries: 2,
     viewportWidth: 1000,
     viewportHeight: 660,
     component: {
