@@ -26,7 +26,7 @@ pipelines:
   custom:
       Test:
         - step:
-            name: Test
+            name: Cypress Test
             image: cypress/browsers:node16.14.2-slim-chrome103-ff102
             caches:
               - node
