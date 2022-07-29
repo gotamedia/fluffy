@@ -25,6 +25,10 @@
             "@hooks/*": ["./hooks/*"],
             "@utils/*": ["./utils/*"]
         },
+        "types": [
+            "cypress",
+            "cypress-real-events"
+        ],
         "plugins": [
             {
                 "transform": "@zerollup/ts-transform-paths"
