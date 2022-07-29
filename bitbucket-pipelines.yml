@@ -30,7 +30,6 @@ pipelines:
             image: cypress/browsers:node16.14.2-slim-chrome103-ff102
             caches:
               - node
-              - cypress
             script:
               - npm i
               - npm run start:ci &
