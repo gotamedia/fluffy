@@ -9,7 +9,7 @@ pipelines:
             - node
           script:
             - npm i
-            - npm run cypress:run
+            - npm test
             - npm run build
           artifacts:
             - dist/**
@@ -24,6 +24,15 @@ pipelines:
               variables:
                 NPM_TOKEN: ${NPM_TOKEN}
   custom:
+      Test:
+        - step:
+            name: Test
+            caches:
+              - node
+            script:
+              - npm i
+              - npm run cypress:run
+      
       Storybook:
         - step:
             name: Build
