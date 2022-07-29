@@ -24,6 +24,12 @@ declare namespace Cypress {
         * */
         (chainer: 'not.be.colored'): Chainer<Subject>
     }
+
+    interface Chainable<Subject> {
+        cssBefore(property: string): Chainable<Subject>
+
+        cssAfter(property: string): Chainable<Subject>
+    }
 }
 
 declare module 'chai-colors'

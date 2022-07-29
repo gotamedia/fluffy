@@ -25,13 +25,33 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+const unquote = (str: string) => {
+    return str.replace(/(^")|("$)/g, '')
+}
+
+Cypress.Commands.add(
+    'cssBefore',
+    {
+        //@ts-ignore
+        prevSubject: 'element',
+    },
+    (el: HTMLElement[], property) => {
+        const win = el[0].ownerDocument.defaultView
+        const before = win!.getComputedStyle(el[0], 'before')
+        return unquote(before.getPropertyValue(property))
+    },
+)
+
+Cypress.Commands.add(
+    'cssAfter',
+    {
+        //@ts-ignore
+        prevSubject: 'element',
+    },
+    (el: HTMLElement[], property) => {
+        const win = el[0].ownerDocument.defaultView
+        const before = win!.getComputedStyle(el[0], 'after')
+        return unquote(before.getPropertyValue(property))
+    },
+)
