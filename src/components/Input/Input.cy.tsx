@@ -102,6 +102,24 @@ describe('Input', () => {
             cy.get('@onChangeSpy').should('not.have.been.called')
             cy.get(inputSelector).should('not.have.value', 'Input value')
         })
+
+        it('Should NOT call onValueChange while disabled', () => {
+            const onValueChangeSpy = cy.spy().as('onValueChangeSpy')
+    
+            cy.mount(
+                <Input
+                    data-cy={'input'}
+                    disabled
+                    onValueChange={onValueChangeSpy}
+                />
+            )
+    
+            cy.get(inputSelector).realClick()
+            cy.realType('Input value')
+    
+            cy.get('@onValueChangeSpy').should('not.have.been.called')
+            cy.get(inputSelector).should('not.have.value', 'Input value')
+        })
     })
 
     describe('Variants', () => {
