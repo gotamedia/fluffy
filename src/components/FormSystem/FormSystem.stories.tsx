@@ -494,6 +494,63 @@ InputDatePicker.args = {
 }
 
 /**
+ * Number
+ */
+
+const InputNumberTemplate: Story<
+    InputStoryFormProps &
+    Omit<TextProps, "onChange" | "onSubmit" | "disabled">
+    > = (props) => {
+    const {
+        disabled,
+        i18n,
+        onChange,
+        onSubmit,
+        ...inputProps
+    } = props
+
+    return (
+        <FS.Form
+            disabled={disabled}
+            i18n={i18n}
+            onChange={onChange}
+            onSubmit={onSubmit}
+        >
+            <FS.Field>
+                <FS.Input.Text {...inputProps} type={"number"} />
+            </FS.Field>
+
+            <FS.Button.Cancel />
+            <FS.Button.Delete />
+            <FS.Button.Submit />
+        </FS.Form>
+    )
+}
+
+export const InputNumber = InputNumberTemplate.bind({})
+InputNumber.args = {
+    disabled: false,
+    i18n: {
+        fields: {
+            name: "Label",
+        },
+        buttons: {
+            cancel: "Tillbaka",
+            delete: "Radera",
+            submit: "Spara"
+        }
+    },
+    name: "name",
+    onChange: (...props) => {
+        console.log("onChange", props)
+    },
+    onSubmit: (...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }
+}
+
+/**
  * Radio Group
  */
 
