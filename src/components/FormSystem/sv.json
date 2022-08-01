@@ -6,6 +6,9 @@
       },
       "required": {
         "text": "\"${label}\" is required!"
+      },
+      "ssn": {
+        "text": "\"${value}\" is no valid SSN!"
       }
     },
     "form": {

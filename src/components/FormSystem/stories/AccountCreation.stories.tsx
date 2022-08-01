@@ -90,7 +90,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         }
 
         if (fieldName === "ssn") {
-            if (new RegExp(/\d{8}-\d{4}/).test(String(value))) {
+            if (new RegExp(/^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/).test(String(value))) {
                 setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "progress" }))
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
 
@@ -191,6 +191,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                     <FS.Field>
                         <FS.Input.Text name={"ssn"}>
                             <FS.Validation.Field.Required />
+                            <FS.Validation.Field.SSN />
                             <FS.Validation.Field.Loading
                                 condition={["progress", "manual_progress"].includes(formState.ssnResolvingStatus)}
                                 i18n={{ text: "Hämtar adress från folkbokföringen..." }}

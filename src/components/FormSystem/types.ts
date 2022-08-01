@@ -1,3 +1,4 @@
+import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
 import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
@@ -95,7 +96,8 @@ namespace FormContext {
         validations?: {
             field?: {
                 email?: EmailI18n
-                required?: RequiredI18n
+                required?: RequiredI18n,
+                ssn?: SSNI18n
             }
             form?: {
                 sameValue?: SameValueI18n
