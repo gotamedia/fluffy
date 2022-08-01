@@ -160,11 +160,6 @@ describe('Checkbox', () => {
             cy.get(checkboxSelector)
                 .should('have.css', 'box-shadow', 'rgb(255, 255, 255) 0px 0px 0px 2px, rgb(46, 42, 37) 0px 0px 0px 4px')
 
-            // foucs
-            cy.get(checkboxSelector).realMouseUp()
-            cy.get(checkboxSelector)
-                .should('have.css', 'box-shadow', 'rgb(255, 255, 255) 0px 0px 0px 2px, rgb(46, 42, 37) 0px 0px 0px 4px')
-
             // disabled
             cy.get(disabledCheckboxSelector)
                 .should('have.css', 'border-color')
@@ -180,7 +175,7 @@ describe('Checkbox', () => {
     })
 
     describe('Sizes', () => {
-        it('Should render an input with "tiny" size', () => {
+        it('Should render a checkbox with "tiny" size', () => {
             cy.mount(
                 <Checkbox
                     data-cy={'checkbox'}
@@ -200,7 +195,7 @@ describe('Checkbox', () => {
                 .should('eq', '10px')
         })
 
-        it('Should render an input with "small" size', () => {
+        it('Should render a checkbox with "small" size', () => {
             cy.mount(
                 <Checkbox
                     data-cy={'checkbox'}
@@ -220,7 +215,7 @@ describe('Checkbox', () => {
                 .should('eq', '12px')
         })
 
-        it('Should render an input with "normal" size', () => {
+        it('Should render a checkbox with "normal" size', () => {
             cy.mount(
                 <Checkbox
                     data-cy={'checkbox'}
@@ -240,7 +235,7 @@ describe('Checkbox', () => {
                 .should('eq', '14px')
         })
 
-        it('Should render an input with "big" size', () => {
+        it('Should render a checkbox with "big" size', () => {
             cy.mount(
                 <Checkbox
                     data-cy={'checkbox'}
@@ -260,7 +255,7 @@ describe('Checkbox', () => {
                 .should('eq', '16px')
         })
 
-        it('Should render an input with "huge" size', () => {
+        it('Should render a checkbox with "huge" size', () => {
             cy.mount(
                 <Checkbox
                     data-cy={'checkbox'}
