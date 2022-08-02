@@ -118,4 +118,7 @@ export { default as Image } from '@components/Image'
 export * from '@components/ListItem'
 export { default as ListItem } from '@components/ListItem'
 
+export * from '@components/List'
+export { default as List } from '@components/List'
+
 // <==== Components
