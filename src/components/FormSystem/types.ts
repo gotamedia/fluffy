@@ -64,6 +64,7 @@ namespace FormContext {
         export type onChange = (
             fieldName: string,
             value: FormDataValue,
+            valid: boolean | undefined,
             isManualChange: boolean,
             formData: FormData,
             setFieldValue: (

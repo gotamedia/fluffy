@@ -81,6 +81,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
     const onChange: Types.FormContext.Events.onChange = useCallback(async (
         fieldName,
         value,
+        valid,
         isManualChange,
         formData,
         setFieldValue
@@ -90,7 +91,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         }
 
         if (fieldName === "ssn") {
-            if (new RegExp(/^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/).test(String(value))) {
+            if (valid) {
                 setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "progress" }))
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
 
@@ -113,6 +114,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         }
 
         if (fieldName === "zipCode") {
+            // TODO check for valid once a length validation was added
             if ((value as string).length === 5) {
                 setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "progress" }))
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
