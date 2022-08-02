@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.14.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.13.0...v0.14.0) (2022-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added List component
+* Added 'scroll-into-view-if-needed' library and exposed as a Fluffy package
+* Added ListItem component
+* Added Color Palette/ContrastChecker stories
+
+### Features
+
+* Added 'scroll-into-view-if-needed' library and exposed as a Fluffy package ([1fd23c2](http://bitbucket.org/gotamedia/fluffy/commit/1fd23c23ed7978de911a146caf1fab0ea92225f0))
+* Added Color Palette/ContrastChecker stories ([761e8ca](http://bitbucket.org/gotamedia/fluffy/commit/761e8cafd60d02ed441d0d09b1e8551f9aa3091f))
+* Added List component ([8d37ed3](http://bitbucket.org/gotamedia/fluffy/commit/8d37ed3ff7ab3adc30b038eac07acc821fc08a26))
+* Added ListItem component ([b5cb88a](http://bitbucket.org/gotamedia/fluffy/commit/b5cb88a9c9ee92633f95c30cef942170456afe77))
+* **doc:** Added DateUtility documentations ([61b15a6](http://bitbucket.org/gotamedia/fluffy/commit/61b15a6609641f80f479c328fbbcfafe3ea45b09))
+* **doc:** Added Polished package documentation ([cf19484](http://bitbucket.org/gotamedia/fluffy/commit/cf194843362061e4d20247701fd05e275f4c2e20))
+* **doc:** Added ReactIntersectionObserver package documentation ([acb950d](http://bitbucket.org/gotamedia/fluffy/commit/acb950d6b4aaf3dff3a0b4b9bde707a0c4a4f749))
+* **story:** Added hooks documentations ([9d85871](http://bitbucket.org/gotamedia/fluffy/commit/9d85871e5f9986d33faab76607d708563587625b))
+* **test:** Added Cypress for unit testing ([f706c39](http://bitbucket.org/gotamedia/fluffy/commit/f706c3919cf609b13e4535f3fc468e0b24db2a46))
+
+
+### Bug Fixes
+
+* Added demo link to README ([beedfd8](http://bitbucket.org/gotamedia/fluffy/commit/beedfd89f1deaf7b83edb68020c7a219ba529ea3))
+* **ci:** Fixed build script tsconfig to ignore cypress test files ([4b4ed55](http://bitbucket.org/gotamedia/fluffy/commit/4b4ed55e8a2c598bf2a3e0416bc54ddcdd8f1885))
+* **story:** Fixed useLifeCycle docs typo ([1fe2505](http://bitbucket.org/gotamedia/fluffy/commit/1fe2505dc642872ede544992b908f4ed2b0f176b))
+* **test:** Replaced Jest tests with Cypress tests for Button ([8b1c923](http://bitbucket.org/gotamedia/fluffy/commit/8b1c923e4989c048b60ea01a505ef67f3fa37c0f))
+
 ## [0.13.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.12.0...v0.13.0) (2022-07-26)
 
 
