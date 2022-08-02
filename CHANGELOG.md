@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.14.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.0...v0.14.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* defaulted 'normal' border for List component ([5d0bc6f](http://bitbucket.org/gotamedia/fluffy/commit/5d0bc6f328a7c07e83a40ae773d1143b5d764d57))
+
 ## [0.14.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.13.0...v0.14.0) (2022-08-02)
 
 
