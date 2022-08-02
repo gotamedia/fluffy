@@ -30,8 +30,8 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
     const {
         type = 'normal',
         size = 'normal',
+        border = 'normal',
         allowKeyboardNavigation = true,
-        border,
         children,
         onKeyDown,
         onFocus,
