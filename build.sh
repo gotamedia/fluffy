@@ -17,6 +17,7 @@ cp -r ./src/* $temp_root_dir
 node > ./$temp_root_dir/tsconfig.json <<EOF
     const tsConfig = require('./tsconfig.json')
     tsConfig.compilerOptions.baseUrl = './'
+    tsConfig.exclude.push('**/**/*.cy.tsx')
     console.log(JSON.stringify(tsConfig, null, 4))
 EOF
 
