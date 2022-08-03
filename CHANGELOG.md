@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.15.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.1...v0.15.0) (2022-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Test bundling Fluffy with Rollup "again 🥸"
+
+### ci
+
+* Test bundling Fluffy with Rollup "again 🥸" ([e12fb90](http://bitbucket.org/gotamedia/fluffy/commit/e12fb901b488f9262e2894ab8a72660c2d54f261))
+
 ### [0.14.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.0...v0.14.1) (2022-08-02)
 
 
