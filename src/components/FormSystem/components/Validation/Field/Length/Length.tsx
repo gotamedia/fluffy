@@ -1,0 +1,109 @@
+import { LengthI18n } from "@components/FormSystem/components/Validation/Field/Length/i18nTypes"
+import * as Contexts from "@components/FormSystem/contexts"
+import { FormDataValue } from "@components/FormSystem/types"
+import sprintf from "@utils/sprintf"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import { renderToString } from "react-dom/server"
+import { v4 as uuidv4 } from "uuid"
+import * as FSTypes from "../../../../types"
+import * as Types from "./types"
+import defaultI18n from "../../../../sv.json"
+
+const validationName = "length"
+
+const Length: Types.LengthComponent = (props) => {
+    const {
+        children,
+        exactly,
+        i18n,
+        min,
+        max,
+        type = FSTypes.Validation.Types.Error
+    } = props
+
+    const [uuid] = useState(uuidv4())
+
+    const { i18n: formI18n } = useContext(Contexts.FormContext)
+    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+
+    useEffect(() => {
+        // check for undefined to allow 0 as well
+        if (exactly !== undefined && (min !== undefined || max !== undefined)) {
+            console.error("Warning: You provided a `exactly` props to a FS.Validation.Length while also providing a `min` and/or `max` prop")
+        }
+    }, [exactly, max, min])
+
+    const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
+        if (typeof value !== "string") {
+            return []
+        }
+
+        let textKey: keyof LengthI18n | undefined
+
+        if (exactly !== undefined) {
+            if (value.length !== exactly) {
+                textKey = "exactly"
+            }
+        } else {
+            if (min !== undefined && max !== undefined) {
+                if (min === max) {
+                    if (value.length !== min) {
+                        textKey = "exactly"
+                    }
+                } else {
+                    if (value.length < min || value.length > max) {
+                        textKey = "between"
+                    }
+                }
+            } else if (min !== undefined) {
+                if (value.length < min) {
+                    textKey = "min"
+                }
+            } else if (max !== undefined) {
+                if (value.length > max) {
+                    textKey = "max"
+                }
+            }
+        }
+
+        if (textKey) {
+            return [
+                {
+                    fieldName,
+                    type,
+                    text: children !== undefined
+                        ? renderToString(<>{children}</>)
+                        : sprintf(
+                            (
+                                i18n?.[textKey] ||
+                                formI18n?.validations?.field?.length?.[textKey] ||
+                                defaultI18n.validation.field.length?.[textKey]
+                            ),
+                            {
+                                value: String(value),
+                                fieldName,
+                                label: String(label),
+                                exactly: exactly === undefined && min === max ? String(min) : String(exactly),
+                                max: String(max),
+                                min: String(min)
+                            }
+                        )
+                }
+            ]
+        }
+
+        return []
+    }, [children, exactly, formI18n?.validations?.field?.length, i18n, label, max, min, type])
+
+    useEffect(() => {
+        addValidation(`${validationName}_${uuid}`, validation)
+
+        return () => {
+            removeValidation(`${validationName}_${uuid}`)
+        }
+    }, [addValidation, removeValidation, uuid, validation])
+
+    return null
+}
+
+export default Length

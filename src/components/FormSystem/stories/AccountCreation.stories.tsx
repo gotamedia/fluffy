@@ -267,6 +267,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                                         disabled={["succeeded", "manual_progress"].includes(formState.ssnResolvingStatus)}
                                     >
                                         <FS.Validation.Field.Required />
+                                        <FS.Validation.Field.Length exactly={5} />
                                         <FS.Validation.Field.Loading
                                             condition={
                                                 ["progress", "manual_progress"].includes(formState.zipcodeResolvingStatus)

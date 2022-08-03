@@ -4,6 +4,12 @@
       "email": {
         "text": "\"${value}\" is no valid email address!"
       },
+      "length": {
+        "between": "\"${label}\" must have a length between ${min} and ${max}!",
+        "exactly": "\"${label}\" must have exactly a length of ${exactly}!",
+        "max": "\"${label}\" must at most have a length of ${max}!",
+        "min": "\"${label}\" must at least have a length of ${min}!"
+      },
       "required": {
         "text": "\"${label}\" is required!"
       },
