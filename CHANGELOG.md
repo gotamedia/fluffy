@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.16.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.15.1...v0.16.0) (2022-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Marked as breaking changes since the destruction of Fluffy package has been changed by removing the "dist" directory and export all the components/modules from the package root "@gotamedia/fluffy/" instead of "@gotamedia/fluffy/dist/"
+
+### Bug Fixes
+
+* Added default export for the package "scroll-into-view-if-needed" ([2ee490f](http://bitbucket.org/gotamedia/fluffy/commit/2ee490f3f89c762c28ddb5bac0936e67a3b89c05))
+
 ### [0.15.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.15.0...v0.15.1) (2022-08-03)
 
 ## [0.15.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.1...v0.15.0) (2022-08-03)
