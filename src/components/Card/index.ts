@@ -7,11 +7,11 @@ import CardHeadline from './components/CardHeadline'
 import CardIconsWrapper from './components/CardIconsWrapper'
 import CardParagraph from './components/CardParagraph'
 
-import { ComponentType } from './types'
+import { CardComponentType } from './types'
 
 export * from './types'
 
-const Card = BaseComponent as ComponentType
+const Card = BaseComponent as CardComponentType
 
 Card.Image = CardImage
 Card.Image.displayName = 'Card.Image'

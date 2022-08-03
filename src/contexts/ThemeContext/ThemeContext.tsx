@@ -32,3 +32,5 @@ export {
     ThemeContext,
     ThemeProvider
 }
+
+export default ThemeContext

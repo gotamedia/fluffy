@@ -52,6 +52,9 @@ export { default as useMounted } from '@hooks/useMounted'
 
 // Components ====>
 
+export * from '@components/Alert'
+export { default as Alert } from '@components/Alert'
+
 export * from '@components/Button'
 export { default as Button } from '@components/Button'
 
