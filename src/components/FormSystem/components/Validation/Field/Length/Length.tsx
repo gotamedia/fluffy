@@ -29,7 +29,7 @@ const Length: Types.LengthComponent = (props) => {
     useEffect(() => {
         // check for undefined to allow 0 as well
         if (exactly !== undefined && (min !== undefined || max !== undefined)) {
-            console.error("Warning: You provided a `exactly` props to a FS.Validation.Length while also providing a `min` and/or `max` prop")
+            console.error("Warning: You provided a `exactly` prop to a FS.Validation.Length while also providing a `min` and/or `max` prop")
         }
     }, [exactly, max, min])
 
