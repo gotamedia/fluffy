@@ -26,6 +26,7 @@
             "@utils/*": ["./utils/*"]
         },
         "types": [
+            "node",
             "cypress",
             "cypress-real-events"
         ],

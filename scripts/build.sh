@@ -71,6 +71,10 @@ npm run types
 
 cp -r $temp_root_dir/dist/* $temp_dist_dir
 
+cp ./package.json ./dist/package.json
+cp ./README.md ./dist/README.md
+cp ./CHANGELOG.md ./dist/CHANGELOG.md
+
 rm -rf $temp_root_dir
 
 npm run babel

@@ -23,7 +23,29 @@ pipelines:
             - pipe: atlassian/npm-publish:0.2.0
               variables:
                 NPM_TOKEN: ${NPM_TOKEN}
+                FOLDER: "dist"
   custom:
+      TestPublish:
+        - step:
+            name: Build and Test
+            caches:
+              - node
+            script:
+              - npm i
+              - npm test
+              - npm run build
+            artifacts:
+              - dist/**
+        - step:
+            name: Publish
+            deployment: production
+            script:
+              - pipe: atlassian/npm-publish:0.2.0
+                variables:
+                  NPM_TOKEN: ${NPM_TOKEN}
+                  FOLDER: "dist"
+                  EXTRA_ARGS: "--dry-run"
+      
       Test:
         - step:
             name: Cypress Test
