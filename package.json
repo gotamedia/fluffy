@@ -8,7 +8,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "finalize-package": "./scripts/finalize-package.sh",
-    "local": "npm run build && yalc publish dist",
+    "local": "npm run build && npm run finalize-package && yalc publish dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "./scripts/storybook.sh && build-storybook",
     "babel": "babel temp_dist --source-root temp_dist --out-dir dist --extensions .js --copy-files --quiet",
