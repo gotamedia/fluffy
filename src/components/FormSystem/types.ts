@@ -9,7 +9,7 @@ import { ButtonProps as Button } from "./components/Button/types"
 import { FieldProps as Field } from "./components/Field/types"
 import { FormProps as Form } from "./components/Form/types"
 import { GroupProps as Group } from "./components/Group/types"
-import * as Input from "./components/Input/types"
+import * as Component from "./components/types"
 
 interface Action<T> {
     type: T,
@@ -280,10 +280,10 @@ namespace Validation {
 
 export {
     Button,
+    Component,
     Field,
     Form,
     Group,
-    Input,
     InputLogic,
     FormData,
     FormDataField,
