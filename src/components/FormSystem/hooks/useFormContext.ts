@@ -231,7 +231,8 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 ...state.formData,
                 [fieldName]: {
                     ...state.formData[fieldName],
-                    value: fieldValue
+                    value: fieldValue,
+                    requiresValidation
                 }
             }
             const validationMessages = generateFieldValidationMessages(fieldName, formData)
@@ -244,7 +245,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                     true
                 ),
                 isManualChange,
-                state.formData,
+                formData,
                 (fieldName: string, fieldValue: Types.FormDataValue, requiresValidation: boolean = true) => {
                     setFieldValue(fieldName, fieldValue, requiresValidation, true)
                 }
