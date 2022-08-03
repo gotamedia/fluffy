@@ -1,1 +1,2 @@
-export { default as ScrollIntoViewIfNeeded } from 'scroll-into-view-if-needed'
+export * from 'scroll-into-view-if-needed'
+export { default } from 'scroll-into-view-if-needed'
