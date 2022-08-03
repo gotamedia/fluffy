@@ -1,9 +1,8 @@
-import { HintI18n } from "./i18nTypes"
 import React, { PropsWithChildren } from "react"
-import * as Types from "../../../../types"
+import { HintI18n } from "./i18nTypes"
 
 export type HintProps = PropsWithChildren<{
-    type?: Types.Validation.Types
+    condition?: boolean,
     i18n?: HintI18n
 }>
 

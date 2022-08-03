@@ -1,6 +1,8 @@
 import * as FSTypes from "@components/FormSystem/types"
 import { FormDataValue } from "@components/FormSystem/types"
-import { useCallback, useContext, useEffect, useState } from "react"
+import sprintf from "@utils/sprintf"
+import React, { useCallback, useContext, useEffect, useState } from "react"
+import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from 'uuid'
 import * as Contexts from "../../../../contexts"
 import * as Types from "./types"
@@ -8,11 +10,15 @@ import * as Types from "./types"
 const validationName = "loading"
 
 const Loading: Types.LoadingComponent = (props) => {
-    const { condition, i18n } = props
+    const {
+        children,
+        condition = true,
+        i18n
+    } = props
 
     const [uuid] = useState(uuidv4())
 
-    const { addValidation, removeValidation } = useContext(Contexts.FieldContext)
+    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (!condition) {
@@ -23,10 +29,15 @@ const Loading: Types.LoadingComponent = (props) => {
             {
                 fieldName,
                 type: FSTypes.Validation.Types.Loading,
-                text: i18n.text
+                text: children !== undefined
+                    ? renderToString(<>{children}</>)
+                    : sprintf(
+                        i18n?.text || "",
+                        { value: String(value), fieldName, label: String(label) }
+                    )
             }
         ]
-    }, [condition, i18n])
+    }, [children, condition, i18n?.text, label])
 
     useEffect(() => {
         if (condition) {

@@ -12,8 +12,8 @@ const validationName = "hint"
 const Hint: Types.HintComponent = (props) => {
     const {
         children,
+        condition = true,
         i18n,
-        type = FSTypes.Validation.Types.Hint
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -21,10 +21,14 @@ const Hint: Types.HintComponent = (props) => {
     const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
+        if (!condition) {
+            return []
+        }
+
         return [
             {
                 fieldName,
-                type,
+                type: FSTypes.Validation.Types.Hint,
                 text: children !== undefined
                     ? renderToString(<>{children}</>)
                     : sprintf(
@@ -33,7 +37,7 @@ const Hint: Types.HintComponent = (props) => {
                     )
             }
         ]
-    }, [children, i18n?.text, label, type])
+    }, [children, condition, i18n?.text, label])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation)
