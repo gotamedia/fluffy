@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.17.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.16.0...v0.17.0) (2022-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ci:** Added shareable ESLint config to be extended
+* Added Anchor component with useAnchor hook
+* Added useIsomorphicLayoutEffect hook
+* Added useWindowSize hook
+
+### Features
+
+* Added Anchor component with useAnchor hook ([c4c6d39](http://bitbucket.org/gotamedia/fluffy/commit/c4c6d39a4dbaf2a501ab5432d2627c5a43425d6b))
+* Added useIsomorphicLayoutEffect hook ([f753337](http://bitbucket.org/gotamedia/fluffy/commit/f753337df6653305401ebbebb880e071fbfbcf8b))
+* Added useWindowSize hook ([6b62774](http://bitbucket.org/gotamedia/fluffy/commit/6b6277476c09a7aaa1ae0708dc045c9f38d85ce0))
+* **ci:** Added shareable ESLint config to be extended ([591a0b5](http://bitbucket.org/gotamedia/fluffy/commit/591a0b56051a991a5c0a7e265d468533c29db6f3))
+
+
+### Bug Fixes
+
+* **story:** Fixed Anchor story ([af13727](http://bitbucket.org/gotamedia/fluffy/commit/af137276aac10e8e748a8ab01f41c42f41e422ed))
+
 ## [0.16.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.15.1...v0.16.0) (2022-08-03)
 
 
