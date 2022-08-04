@@ -36,39 +36,40 @@ const Template: Story<Types.AnchorProps> = (props) => {
                 ref={setButton1Ref}
                 style={{ position: 'absolute', top: 0, left: 0 }}
             >
-                {'I am a Button 1!'}
+                {'I am Button 1!'}
             </button>
 
             <button
                 ref={setButton2Ref}
                 style={{ position: 'absolute', top: 0, right: 0 }}
             >
-                {'I am a Button 2!'}
+                {'I am Button 2!'}
             </button>
 
             <button
                 ref={setButton3Ref}
                 style={{ position: 'absolute', bottom: 0, right: 0 }}
             >
-                {'I am a Button 3!'}
+                {'I am Button 3!'}
             </button>
 
             <button
                 ref={setButton4Ref}
                 style={{ position: 'absolute', bottom: 0, left: 0 }}
             >
-                {'I am a Button 4!'}
+                {'I am Button 4!'}
             </button>
 
             <button
                 ref={setButton5Ref}
                 style={{ position: 'absolute', top: 200, left: 500 }}
             >
-                {'I am a Button 5!'}
+                {'I am Button 5!'}
             </button>
 
             <Anchor
                 {...props}
+                style={{ position: 'absolute' }}
                 anchor={button1Ref}
             >
                 <AnchoredItem name={'Button 1'}/>
@@ -76,6 +77,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
             
             <Anchor
                 {...props}
+                style={{ position: 'absolute' }}
                 anchor={button2Ref}
             >
                 <AnchoredItem name={'Button 2'}/>
@@ -83,6 +85,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
 
             <Anchor
                 {...props}
+                style={{ position: 'absolute' }}
                 anchor={button3Ref}
             >
                 <AnchoredItem name={'Button 3'}/>
@@ -90,6 +93,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
 
             <Anchor
                 {...props}
+                style={{ position: 'absolute' }}
                 anchor={button4Ref}
             >
                 <AnchoredItem name={'Button 4'}/>
@@ -97,6 +101,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
 
             <Anchor
                 {...props}
+                style={{ position: 'absolute' }}
                 anchor={button5Ref}
             >
                 <AnchoredItem name={'Button 5'}/>
