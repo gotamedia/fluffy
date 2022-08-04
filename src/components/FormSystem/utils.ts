@@ -65,3 +65,23 @@ export const getAgeFromSSN = (ssn: string) => {
 
     return Math.abs(diffDate.getUTCFullYear() - 1970);
 }
+
+export const containsLowerCase = (text: string) => {
+    return Boolean(text.match(/[a-z]/gm))
+}
+
+export const containsUpperCase = (text: string) => {
+    return Boolean(text.match(/[A-Z]/gm))
+}
+
+export const containsNumber = (text: string) => {
+    return Boolean(text.match(/[0-9]/gm))
+}
+
+export const containsSpecialChars = (text: string) => {
+    return Boolean(text.match(/[^a-zA-Z0-9]/gm))
+}
+
+export const containsGiven = (text: string, search: string[]) => {
+    return search.some(searchItem => text.includes(searchItem));
+}

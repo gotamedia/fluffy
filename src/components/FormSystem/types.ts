@@ -1,4 +1,5 @@
 import { LengthI18n } from "@components/FormSystem/components/Validation/Field/Length/i18nTypes"
+import { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
 import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
@@ -99,6 +100,7 @@ namespace FormContext {
             field?: {
                 email?: EmailI18n,
                 length?: LengthI18n,
+                password?: PasswordI18n,
                 required?: RequiredI18n,
                 ssn?: SSNI18n
             }
