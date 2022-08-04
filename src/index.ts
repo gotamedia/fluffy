@@ -47,6 +47,9 @@ export { default as useScroll } from '@hooks/useScroll'
 export * from '@hooks/useMounted'
 export { default as useMounted } from '@hooks/useMounted'
 
+export * from '@hooks/useWindowSize'
+export { default as useWindowSize } from '@hooks/useWindowSize'
+
 // <==== Hooks
 
 
