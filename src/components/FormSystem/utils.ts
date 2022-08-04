@@ -50,3 +50,18 @@ export const getDateValue = (date: Date | null | [Date | null, Date | null]) => 
 
     return value
 }
+
+export const getAgeFromSSN = (ssn: string) => {
+    const regExp = /^(\d{4})(\d{2})(\d{2})/
+    const matchResults = ssn.match(regExp)
+
+    if (!matchResults?.[1] || !matchResults?.[2] || !matchResults?.[3]) {
+        return undefined
+    }
+
+    const date = new Date(`${matchResults[1]}-${matchResults[2]}-${matchResults[3]}`)
+    const diff = Date.now() - Number(date)
+    const diffDate = new Date(diff)
+
+    return Math.abs(diffDate.getUTCFullYear() - 1970);
+}

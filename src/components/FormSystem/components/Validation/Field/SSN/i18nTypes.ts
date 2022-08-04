@@ -1,3 +1,4 @@
 export interface SSNI18n {
-    text?: string
+    text?: string,
+    textMinAge?: string
 }

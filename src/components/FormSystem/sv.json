@@ -14,6 +14,10 @@
         "text": "\"${label}\" is required!"
       },
       "ssn": {
+        "text": "\"${value}\" is no valid SSN!",
+        "textMinAge": "You need to be at least ${minAge} years old!"
+      },
+      "ssn18": {
         "text": "\"${value}\" is no valid SSN!"
       }
     },

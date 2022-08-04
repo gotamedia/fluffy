@@ -3,8 +3,9 @@ import React, { PropsWithChildren } from "react"
 import * as Types from "../../../../types"
 
 export type SSNProps = PropsWithChildren<{
-    type?: Types.Validation.Types
+    minAge?: number
     i18n?: SSNI18n
+    type?: Types.Validation.Types
 }>
 
 export type SSNComponent = React.FC<SSNProps>

@@ -1,5 +1,7 @@
+import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
 import * as Contexts from "@components/FormSystem/contexts"
 import { FormDataValue } from "@components/FormSystem/types"
+import { getAgeFromSSN } from "@components/FormSystem/utils"
 import sprintf from "@utils/sprintf"
 import React, { useCallback, useContext, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
@@ -15,6 +17,7 @@ const SSN: Types.SSNComponent = (props) => {
     const {
         children,
         i18n,
+        minAge,
         type = FSTypes.Validation.Types.Error
     } = props
 
@@ -24,8 +27,26 @@ const SSN: Types.SSNComponent = (props) => {
     const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
-        if (typeof value !== "string" || String(value).length === 0 || regExp.test(String(value))) {
+        if (typeof value !== "string" || String(value).length === 0) {
             return []
+        }
+
+        let textKey: keyof SSNI18n = "text"
+        let additionalVariables = {}
+
+        if (regExp.test(String(value))) {
+            if (minAge) {
+                const age = getAgeFromSSN(String(value))
+
+                if (!age || age > minAge) {
+                    return []
+                } else {
+                    textKey = "textMinAge"
+                    additionalVariables = { age, minAge }
+                }
+            } else {
+                return []
+            }
         }
 
         return [
@@ -36,15 +57,15 @@ const SSN: Types.SSNComponent = (props) => {
                     ? renderToString(<>{children}</>)
                     : sprintf(
                         (
-                            i18n?.text ||
-                            formI18n?.validations?.field?.ssn?.text ||
-                            defaultI18n.validation.field.ssn.text
+                            i18n?.[textKey] ||
+                            formI18n?.validations?.field?.ssn?.[textKey] ||
+                            defaultI18n.validation.field.ssn?.[textKey]
                         ),
-                        { value: String(value), fieldName, label: String(label) }
+                        { ...additionalVariables, value: String(value), fieldName, label: String(label) }
                     )
             }
         ]
-    }, [children, formI18n?.validations?.field?.ssn?.text, i18n?.text, label, type])
+    }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, type])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation)
