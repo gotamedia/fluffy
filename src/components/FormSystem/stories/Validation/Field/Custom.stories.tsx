@@ -26,6 +26,7 @@ const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) =
                     checkbox: "Checkbox label",
                     datepicker: "DatePicker label",
                     number: "Number label",
+                    password: "Password label",
                     radiogroup: "RadioGroup label",
                     switch: "Switch label",
                     text: "Text label",
@@ -56,6 +57,11 @@ const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) =
                 <FS.Input.Text name={"number"} type={"number"}>
                     <FS.Validation.Field.Custom {...props} />
                 </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Password name={"password"}>
+                    <FS.Validation.Field.Custom {...props} />
+                </FS.Input.Password>
             </FS.Field>
             <FS.Field>
                 <FS.Input.RadioGroup

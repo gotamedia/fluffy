@@ -24,6 +24,7 @@ const HintTemplate: Story<Types.Component.Validation.Field.Hint> = (props) => {
                     checkbox: "Checkbox label",
                     datepicker: "DatePicker label",
                     number: "Number label",
+                    password: "Password label",
                     radiogroup: "RadioGroup label",
                     switch: "Switch label",
                     text: "Text label",
@@ -54,6 +55,11 @@ const HintTemplate: Story<Types.Component.Validation.Field.Hint> = (props) => {
                 <FS.Input.Text name={"number"} type={"number"}>
                     <FS.Validation.Field.Hint {...props} />
                 </FS.Input.Text>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Password name={"password"}>
+                    <FS.Validation.Field.Hint {...props} />
+                </FS.Input.Password>
             </FS.Field>
             <FS.Field>
                 <FS.Input.RadioGroup
