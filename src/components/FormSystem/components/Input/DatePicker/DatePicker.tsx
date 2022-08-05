@@ -15,6 +15,7 @@ const DatePicker: Types.DatePickerComponent = (props) => {
         disabled: disabledCombined,
         onBlur,
         setFieldValue,
+        validateInstantUpdate,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
@@ -25,11 +26,12 @@ const DatePicker: Types.DatePickerComponent = (props) => {
     ) => {
         setFieldValue(name, getDateValue(date))
         clearValidationMessages(name)
+        validateInstantUpdate(name, getDateValue(date))
 
         if (propsOnChange) {
             propsOnChange(date as Date | null, event)
         }
-    }, [setFieldValue, name, clearValidationMessages, propsOnChange])
+    }, [setFieldValue, name, clearValidationMessages, validateInstantUpdate, propsOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {

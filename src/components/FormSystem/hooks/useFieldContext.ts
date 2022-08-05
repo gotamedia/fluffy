@@ -2,7 +2,7 @@ import * as Contexts from "@components/FormSystem/contexts"
 import React, { useCallback, useContext, useMemo } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
-import { FormDataValue } from "../types"
+import { FormData, FormDataValue } from "../types"
 
 const useFieldContext = (): Types.FieldContext.Value => {
     const {
@@ -20,9 +20,18 @@ const useFieldContext = (): Types.FieldContext.Value => {
         { }
     )
 
-    const addValidation = useCallback((validationId: string, validationFunction: Types.Validation.Field.Function) => {
+    const addValidation = useCallback((
+        validationId: string,
+        validationFunction: Types.Validation.Field.Function,
+        instantUpdate?: boolean
+    ) => {
         if (state?.fieldName) {
-            addFieldValidation(`${state?.fieldName}_${validationId}`, String(state?.fieldName), validationFunction)
+            addFieldValidation(
+                `${state?.fieldName}_${validationId}`,
+                String(state?.fieldName),
+                validationFunction,
+                instantUpdate
+            )
         }
     }, [addFieldValidation, state?.fieldName])
 
@@ -56,8 +65,8 @@ const useFieldContext = (): Types.FieldContext.Value => {
         terminateField(fieldName)
     }, [terminateField])
 
-    const validate = useCallback(() => {
-        validateField(String(state?.fieldName), getFormData())
+    const validate = useCallback((formData?: FormData, instantUpdateOnly?: boolean) => {
+        validateField(String(state?.fieldName), formData || getFormData(), instantUpdateOnly)
     }, [getFormData, state?.fieldName, validateField])
 
     return useMemo(() => ({

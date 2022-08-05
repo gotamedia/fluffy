@@ -15,6 +15,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
     const {
         clearValidationMessages,
         disabled: formDisabled,
+        formData,
         getFieldValue,
         getHighestValidationMessageType,
         isActing,
@@ -51,6 +52,18 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         validate()
     }, [clearValidationMessages, name, validate])
 
+    const validateInstantUpdate = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
+        const updatedFormData = {
+            ...formData,
+            [fieldName]: {
+                ...formData[fieldName],
+                value: fieldValue
+            }
+        }
+
+        validate(updatedFormData, true)
+    }, [formData, validate])
+
     return {
         clearValidationMessages,
         disabled: Boolean(formDisabled || isActing || disabled),
@@ -58,6 +71,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         onBlur,
         setFieldValue,
         theme,
+        validateInstantUpdate,
         validationType: getHighestValidationMessageType(name),
         value: getFieldValue(name)
     }

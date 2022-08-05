@@ -12,6 +12,7 @@ const Textarea: Types.TextareaComponent = (props) => {
         disabled: disabledCombined,
         onBlur: inputLogicOnBlur,
         setFieldValue,
+        validateInstantUpdate,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
 
@@ -26,11 +27,12 @@ const Textarea: Types.TextareaComponent = (props) => {
     const onChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
         setFieldValue(name, event?.target?.value)
         clearValidationMessages(name)
+        validateInstantUpdate(name, event?.target?.value)
 
         if (propsOnChange) {
             propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, propsOnChange])
+    }, [setFieldValue, name, clearValidationMessages, validateInstantUpdate, propsOnChange])
 
     return (
         <>

@@ -51,6 +51,7 @@ namespace InputLogic {
             isManualChange?: boolean
         ) => void
         theme: DefaultTheme,
+        validateInstantUpdate: (fieldName: string, fieldValue: FormDataValue) => void,
         validationType: Validation.Types | undefined,
         value: FormDataValue | undefined
     }
@@ -124,7 +125,8 @@ namespace FormContext {
         addFieldValidation: (
             validationId: string,
             fieldName: string,
-            validationFunction: Validation.Field.Function
+            validationFunction: Validation.Field.Function,
+            instantUpdate?: boolean
         ) => void
         addFormValidation: (
             validationId: string,
@@ -155,7 +157,7 @@ namespace FormContext {
         setIsDeleting: (isDeleting: boolean) => void
         setIsSubmitting: (isSubmitting: boolean) => void
         terminateField: (fieldName: string) => void
-        validateField: (fieldName: string, formData: FormData) => Validation.Message[]
+        validateField: (fieldName: string, formData: FormData, instantUpdateOnly?: boolean) => Validation.Message[]
         validateForm: (formData: FormData) => Validation.Message[]
     }
 
@@ -204,7 +206,11 @@ namespace FormContext {
 
 namespace FieldContext {
     export interface Value {
-        addValidation: (validationId: string, validationFunction: Validation.Field.Function) => void
+        addValidation: (
+            validationId: string,
+            validationFunction: Validation.Field.Function,
+            instantUpdate?: boolean
+        ) => void
         initialize: (fieldName: string, defaultValue: FormDataValue) => void
         isRequired?: boolean
         label: string
@@ -213,7 +219,7 @@ namespace FieldContext {
         setIsRequired: (isRequired: boolean) => void
         setFieldName: (fieldName: string) => void
         terminate: (fieldName: string) => void
-        validate: () => void
+        validate: (formData?: FormData, instantUpdateOnly?: boolean) => void
     }
 
     export interface ReducerState {
@@ -266,7 +272,8 @@ namespace Validation {
         export interface StoredValidation {
             validationId: string,
             fieldName: string,
-            validationFunction: Function
+            validationFunction: Function,
+            instantUpdate: boolean
         }
     }
 
@@ -276,7 +283,8 @@ namespace Validation {
         export interface StoredValidation {
             validationId: string,
             involvedFieldNames: string[],
-            validationFunction: Function
+            validationFunction: Function,
+            instantUpdate: boolean
         }
     }
 }

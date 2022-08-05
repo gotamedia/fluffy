@@ -12,7 +12,24 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                         {
                             validationId: action?.payload?.validationId,
                             fieldName: action?.payload?.fieldName,
-                            validationFunction: action?.payload?.validationFunction
+                            validationFunction: action?.payload?.validationFunction,
+                            instantUpdate: action?.payload?.instantUpdate
+                        }
+                    ]
+                }
+            }
+        case Types.FormContext.ReducerActionTypes.AddFormValidation:
+            return {
+                ...state,
+                validations: {
+                    ...state?.validations,
+                    form: [
+                        ...(state?.validations?.form || []),
+                        {
+                            validationId: action?.payload?.validationId,
+                            involvedFieldNames: action?.payload?.involvedFieldNames,
+                            validationFunction: action?.payload?.validationFunction,
+                            instantUpdate: action?.payload?.instantUpdate
                         }
                     ]
                 }
@@ -29,21 +46,6 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                             ...(action?.payload?.validationMessages || [])
                         ]
                     }
-                }
-            }
-        case Types.FormContext.ReducerActionTypes.AddFormValidation:
-            return {
-                ...state,
-                validations: {
-                    ...state?.validations,
-                    form: [
-                        ...(state?.validations?.form || []),
-                        {
-                            validationId: action?.payload?.validationId,
-                            involvedFieldNames: action?.payload?.involvedFieldNames,
-                            validationFunction: action?.payload?.validationFunction
-                        }
-                    ]
                 }
             }
         case Types.FormContext.ReducerActionTypes.ClearValidationMessages:
