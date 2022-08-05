@@ -247,6 +247,7 @@ namespace Validation {
     export interface Message {
         fieldName: string,
         involvedFieldNames?: string[],
+        sticky?: boolean,
         type: Types,
         text?: string
     }
