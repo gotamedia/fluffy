@@ -80,11 +80,8 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                                 return (
                                     action?.payload?.types !== "all" &&
                                     (
-                                        validationMessage.sticky ||
-                                        (
-                                            !Array.isArray(action?.payload?.types) ||
-                                            !action?.payload?.types.includes(validationMessage?.type)
-                                        )
+                                        !Array.isArray(action?.payload?.types) ||
+                                        !action?.payload?.types.includes(validationMessage?.type)
                                     )
                                 )
                             })
