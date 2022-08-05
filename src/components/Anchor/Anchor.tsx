@@ -35,6 +35,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
             {...filterdProps}
             style={{
                 ...anchorRect,
+                zIndex: 1000,
                 width: anchorRect.width || undefined,
                 height: anchorRect.height || undefined,
                 position: 'fixed',
