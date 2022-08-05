@@ -1,58 +1,62 @@
 import { Meta, Story } from "@storybook/react"
-import React from "react"
+import React, { useCallback } from "react"
 import { DatePickerProps } from "../../components/Input/DatePicker/types"
 import FS from "../../index"
 import * as Types from "../../types"
 
-const InputDatePickerTemplate: Story<
-    Types.Form &
-    Omit<DatePickerProps, "onChange" | "onSubmit" | "disabled">
-    > = (props) => {
-    const {
-        defaultValue,
-        disabled,
-        i18n,
-        onCancel,
-        onDelete,
-        onChange,
-        onSubmit,
-        value,
-        ...inputProps
-    } = props
+const DatePickerTemplate: Story<DatePickerProps> = (props) => {
+    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
+        console.log("onCancel", props)
+    }, [])
+
+    const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
+        console.log("onChange", props)
+    }, [])
+
+    const onSubmit: Types.FormContext.Events.onSubmit = useCallback((...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }, [])
 
     return (
         <FS.Form
-            defaultValue={defaultValue}
-            disabled={disabled}
-            i18n={i18n}
+            i18n={{
+                fields: {
+                    name1: "Date",
+                    name2: "Date with time",
+                    name3: "Range",
+                },
+                buttons: {
+                    cancel: "Tillbaka",
+                    submit: "Spara"
+                }
+            }}
             onCancel={onCancel}
             onChange={onChange}
-            onDelete={onDelete}
             onSubmit={onSubmit}
-            value={value}
         >
             <FS.Field>
                 <FS.Input.DatePicker
-                    {...inputProps}
-                    name={"name1"}
                     dateFormat={"yyyy-MM-dd"}
+                    {...props}
+                    name={"name1"}
                 />
             </FS.Field>
             <FS.Field>
                 <FS.Input.DatePicker
-                    {...inputProps}
-                    name={"name2"}
                     dateFormat={"yyyy-MM-dd HH:mm"}
                     showTimeInput
                     shouldCloseOnSelect={false}
+                    {...props}
+                    name={"name2"}
                 />
             </FS.Field>
             <FS.Field>
                 <FS.Input.DatePicker
-                    {...inputProps}
                     selectsRange
-                    name={"name3"}
                     dateFormat={"yyyy-MM-dd"}
+                    {...props}
+                    name={"name3"}
                 />
             </FS.Field>
 
@@ -61,32 +65,11 @@ const InputDatePickerTemplate: Story<
     )
 }
 
-export const InputDatePicker = InputDatePickerTemplate.bind({})
-InputDatePicker.args = {
-    disabled: false,
-    i18n: {
-        fields: {
-            name1: "Date",
-            name2: "Date with time",
-            name3: "Range",
-        },
-        buttons: {
-            cancel: "Tillbaka",
-            delete: "Radera",
-            submit: "Spara"
-        }
-    },
-    onChange: (...props) => {
-        console.log("onChange", props)
-    },
-    onSubmit: (...props) => {
-        console.log("onSubmit", props)
-        props[3]()
-    }
-}
+export const DatePicker = DatePickerTemplate.bind({})
+DatePicker.args = {}
 
 export default {
     title: 'Developments/Components/FormSystem/Input',
-    component: FS.Form,
+    component: FS.Input.DatePicker,
     argTypes: { },
-} as Meta<typeof FS.Form>
+} as Meta<typeof FS.Input.DatePicker>

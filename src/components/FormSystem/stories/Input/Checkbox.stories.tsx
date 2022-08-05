@@ -1,38 +1,40 @@
 import { Meta, Story } from "@storybook/react"
-import React from "react"
+import React, { useCallback } from "react"
 import { CheckboxProps } from "../../components/Input/Checkbox/types"
 import FS from "../../index"
 import * as Types from "../../types"
 
-const CheckboxTemplate: Story<
-    Types.Form &
-    Omit<CheckboxProps, "onChange" | "onSubmit" | "disabled">
-    > = (props) => {
-    const {
-        defaultValue,
-        disabled,
-        i18n,
-        onCancel,
-        onDelete,
-        onChange,
-        onSubmit,
-        value,
-        ...inputProps
-    } = props
+const CheckboxTemplate: Story<CheckboxProps> = (props) => {
+    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
+        console.log("onCancel", props)
+    }, [])
+
+    const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
+        console.log("onChange", props)
+    }, [])
+
+    const onSubmit: Types.FormContext.Events.onSubmit = useCallback((...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }, [])
 
     return (
         <FS.Form
-            defaultValue={defaultValue}
-            disabled={disabled}
-            i18n={i18n}
+            i18n={{
+                fields: {
+                    name: "Label",
+                },
+                buttons: {
+                    cancel: "Tillbaka",
+                    submit: "Spara"
+                }
+            }}
             onCancel={onCancel}
             onChange={onChange}
-            onDelete={onDelete}
             onSubmit={onSubmit}
-            value={value}
         >
             <FS.Field>
-                <FS.Input.Checkbox {...inputProps} />
+                <FS.Input.Checkbox {...props} />
             </FS.Field>
 
             <FS.Button.Submit />
@@ -42,28 +44,11 @@ const CheckboxTemplate: Story<
 
 export const Checkbox = CheckboxTemplate.bind({})
 Checkbox.args = {
-    i18n: {
-        fields: {
-            name: "Label",
-        },
-        buttons: {
-            cancel: "Tillbaka",
-            delete: "Radera",
-            submit: "Spara"
-        }
-    },
-    name: "name",
-    onChange: (...props) => {
-        console.log("onChange", props)
-    },
-    onSubmit: (...props) => {
-        console.log("onSubmit", props)
-        props[3]()
-    }
+    name: "name"
 }
 
 export default {
     title: 'Developments/Components/FormSystem/Input',
-    component: FS.Form,
+    component: FS.Input.Checkbox,
     argTypes: { },
-} as Meta<typeof FS.Form>
+} as Meta<typeof FS.Input.Checkbox>

@@ -1,38 +1,40 @@
 import { Meta, Story } from "@storybook/react"
-import React from "react"
+import React, { useCallback } from "react"
 import { RadioGroupProps } from "../../components/Input/RadioGroup/types"
 import FS from "../../index"
 import * as Types from "../../types"
 
-const InputRadioGroupTemplate: Story<
-    Types.Form &
-    Omit<RadioGroupProps, "onChange" | "onSubmit" | "disabled">
-    > = (props) => {
-    const {
-        defaultValue,
-        disabled,
-        i18n,
-        onCancel,
-        onDelete,
-        onChange,
-        onSubmit,
-        value,
-        ...inputProps
-    } = props
+const RadioGroupTemplate: Story<RadioGroupProps> = (props) => {
+    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
+        console.log("onCancel", props)
+    }, [])
+
+    const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
+        console.log("onChange", props)
+    }, [])
+
+    const onSubmit: Types.FormContext.Events.onSubmit = useCallback((...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }, [])
 
     return (
         <FS.Form
-            defaultValue={defaultValue}
-            disabled={disabled}
-            i18n={i18n}
+            i18n={{
+                fields: {
+                    name: "Label",
+                },
+                buttons: {
+                    cancel: "Tillbaka",
+                    submit: "Spara"
+                }
+            }}
             onCancel={onCancel}
             onChange={onChange}
-            onDelete={onDelete}
             onSubmit={onSubmit}
-            value={value}
         >
             <FS.Field>
-                <FS.Input.RadioGroup {...inputProps} />
+                <FS.Input.RadioGroup {...props} />
             </FS.Field>
 
             <FS.Button.Submit />
@@ -40,28 +42,9 @@ const InputRadioGroupTemplate: Story<
     )
 }
 
-export const InputRadioGroup = InputRadioGroupTemplate.bind({})
-InputRadioGroup.args = {
-    allowDeselect: false,
-    disabled: false,
-    i18n: {
-        fields: {
-            name: "Label",
-        },
-        buttons: {
-            cancel: "Tillbaka",
-            delete: "Radera",
-            submit: "Spara"
-        }
-    },
+export const RadioGroup = RadioGroupTemplate.bind({})
+RadioGroup.args = {
     name: "name",
-    onChange: (...props) => {
-        console.log("onChange", props)
-    },
-    onSubmit: (...props) => {
-        console.log("onSubmit", props)
-        props[3]()
-    },
     options: [
         { label: "Option 1", value: "1" },
         { label: "Option 2", value: "2" }
@@ -70,6 +53,6 @@ InputRadioGroup.args = {
 
 export default {
     title: 'Developments/Components/FormSystem/Input',
-    component: FS.Form,
+    component: FS.Input.RadioGroup,
     argTypes: { },
-} as Meta<typeof FS.Form>
+} as Meta<typeof FS.Input.RadioGroup>

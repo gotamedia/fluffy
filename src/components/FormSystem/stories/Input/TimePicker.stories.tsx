@@ -1,41 +1,40 @@
 import { Meta, Story } from "@storybook/react"
-import React from "react"
+import React, { useCallback } from "react"
 import { TimePickerProps } from "../../components/Input/TimePicker/types"
 import FS from "../../index"
 import * as Types from "../../types"
 
-const InputTimePickerTemplate: Story<
-    Types.Form &
-    Omit<TimePickerProps, "onChange" | "onSubmit" | "disabled">
-    > = (props) => {
-    const {
-        defaultValue,
-        disabled,
-        i18n,
-        onCancel,
-        onDelete,
-        onChange,
-        onSubmit,
-        value,
-        ...inputProps
-    } = props
+const TimePickerTemplate: Story<TimePickerProps> = (props) => {
+    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
+        console.log("onCancel", props)
+    }, [])
+
+    const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
+        console.log("onChange", props)
+    }, [])
+
+    const onSubmit: Types.FormContext.Events.onSubmit = useCallback((...props) => {
+        console.log("onSubmit", props)
+        props[3]()
+    }, [])
 
     return (
         <FS.Form
-            defaultValue={defaultValue}
-            disabled={disabled}
-            i18n={i18n}
+            i18n={{
+                fields: {
+                    name: "Label",
+                },
+                buttons: {
+                    cancel: "Tillbaka",
+                    submit: "Spara"
+                }
+            }}
             onCancel={onCancel}
             onChange={onChange}
-            onDelete={onDelete}
             onSubmit={onSubmit}
-            value={value}
         >
             <FS.Field>
-                <FS.Input.TimePicker
-                    dateFormat={"p"}
-                    {...inputProps}
-                />
+                <FS.Input.TimePicker {...props} />
             </FS.Field>
 
             <FS.Button.Cancel />
@@ -45,31 +44,14 @@ const InputTimePickerTemplate: Story<
     )
 }
 
-export const InputTimePicker = InputTimePickerTemplate.bind({})
-InputTimePicker.args = {
-    disabled: false,
-    i18n: {
-        fields: {
-            name: "Label",
-        },
-        buttons: {
-            cancel: "Tillbaka",
-            delete: "Radera",
-            submit: "Spara"
-        }
-    },
-    name: "name",
-    onChange: (...props) => {
-        console.log("onChange", props)
-    },
-    onSubmit: (...props) => {
-        console.log("onSubmit", props)
-        props[3]()
-    }
+export const TimePicker = TimePickerTemplate.bind({})
+TimePicker.args = {
+    dateFormat: "p",
+    name: "name"
 }
 
 export default {
     title: 'Developments/Components/FormSystem/Input',
-    component: FS.Form,
+    component: FS.Input.TimePicker,
     argTypes: { },
-} as Meta<typeof FS.Form>
+} as Meta<typeof FS.Input.TimePicker>
