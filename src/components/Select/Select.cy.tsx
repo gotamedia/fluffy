@@ -4,7 +4,7 @@ describe('Select', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Select>
+                <Select selected={[]}>
                     {null}
                 </Select>
             )

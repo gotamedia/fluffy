@@ -11,7 +11,7 @@ import {
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
-import List from '../List'
+import Menu from '../Menu'
 
 import { ListItemTypes } from '../ListItem/types'
 
@@ -172,55 +172,47 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 <Styled.Icon $isOpen={isOpen} />
             </Styled.Button>
 
-            <Styled.Popover
+            <Menu
                 {...filterdProps}
                 ref={undefined}
-                style={{
-                    ...filterdProps.style,
-                    overflow: 'unset'
-                }}
-                overlayProps={overlayProps}
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                listProps={{
+                    ...listProps,
+                    ref: setListRef,
+                    type: ListItemTypes.Select,
+                    onSelect: handleOnSelect,
+                    onKeyDown: handleOnKeyDown
+                }}
             >
-                <Styled.Container>
-                    <List
-                        ref={setListRef}
-                        {...listProps}
-                        type={ListItemTypes.Select}
-                        onSelect={handleOnSelect}
-                        onKeyDown={handleOnKeyDown}
-                    >
-                        {
-                            Children.map(children, (child) => {
-                                if (child) {
-                                    const childElement = child as ReactElement<ListItemProps>
-                    
-                                    const childProps = {
-                                        ...childElement.props,
-                                        selected: selected
-                                            .map(i => i.value)
-                                            .includes(childElement.props?.value),
-                                        value: {
-                                            label: childElement.props.text,
-                                            value: childElement.props.value
-                                        }
-                                    }
-
-                                    return (
-                                        cloneElement(childElement, childProps)
-                                    )
-                                } else {
-                                    return (
-                                        null
-                                    )
+                {
+                    Children.map(children, (child) => {
+                        if (child) {
+                            const childElement = child as ReactElement<ListItemProps>
+            
+                            const childProps = {
+                                ...childElement.props,
+                                selected: selected
+                                    .map(i => i.value)
+                                    .includes(childElement.props?.value),
+                                value: {
+                                    label: childElement.props.text,
+                                    value: childElement.props.value
                                 }
-                            })
+                            }
+
+                            return (
+                                cloneElement(childElement, childProps)
+                            )
+                        } else {
+                            return (
+                                null
+                            )
                         }
-                    </List>
-                </Styled.Container>
-            </Styled.Popover>
+                    })
+                }
+            </Menu>
         </>
     )
 })
