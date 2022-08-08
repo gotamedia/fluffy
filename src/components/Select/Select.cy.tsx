@@ -1,12 +1,12 @@
-import Dropdown from './index'
+import Select from './index'
 
-describe('Dropdown', () => {
+describe('Select', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Dropdown label={'Open'}>
+                <Select>
                     {null}
-                </Dropdown>
+                </Select>
             )
         })
     })

@@ -12,7 +12,10 @@ import List from '../List'
 
 import * as Styled from './style'
 import * as Types from './types'
-import type { MouseEventHandler } from 'react'
+import type {
+    MouseEventHandler,
+    KeyboardEventHandler
+} from 'react'
 
 const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     const {
@@ -72,6 +75,23 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         setIsOpen(current => !current)
     }, [])
 
+    const handleOnKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>((event) => {
+        if (typeof listProps?.onKeyDown === 'function') {
+            listProps.onKeyDown(event)
+        }
+
+        if (isOpen) {
+            switch(event.code) {
+                case 'Escape': {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    
+                    setIsOpen(false)
+                }
+            }
+        }
+    }, [isOpen, listProps])
+
     const handleOnSelect = useCallback((value: any) => {
         if (typeof onSelect === 'function') {
             onSelect(value)
@@ -109,6 +129,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                         ref={setListRef}
                         {...listProps}
                         onSelect={handleOnSelect}
+                        onKeyDown={handleOnKeyDown}
                     >
                         {children}
                     </List>

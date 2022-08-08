@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
 
 const normal = css`
-    padding-left: 20px;
+    padding-left: 30px;
 `
 
 const select = css`
