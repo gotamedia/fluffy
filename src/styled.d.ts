@@ -38,12 +38,21 @@ interface Colors {
     payment: string,
     socialMedia: SocialMedia,
     error: string,
-    alert: Alert
+    alert: Alert,
+    pill: Pill
 }
 
 interface Alert {
     error: Error,
     info: Error
+}
+
+interface Pill {
+    alert: string,
+    warning: string,
+    success: string,
+    disabled: string,
+
 }
 
 interface Error {
