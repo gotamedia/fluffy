@@ -74,7 +74,7 @@ const useAnchor: Types.UseAnchor = (props) => {
                 calculatedRect.height = anchorRect.top - CALCULATION_PADDING - offsetValue.y
             } else {
                 calculatedRect.top = anchorRect.bottom + offsetValue.y
-                calculatedRect.height = Math.abs(viewHeight - calculatedRect.top)
+                calculatedRect.height = Math.abs(viewHeight - calculatedRect.top) - CALCULATION_PADDING
             }
             
             rectData = calculatedRect

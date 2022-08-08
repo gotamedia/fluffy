@@ -39,6 +39,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
                 width: anchorRect.width || undefined,
                 height: anchorRect.height || undefined,
                 position: 'fixed',
+                overflow: 'auto',
                 ...style
             }}
         >
