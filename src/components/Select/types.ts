@@ -11,7 +11,6 @@ import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
 
 export interface SelectProps extends HTMLAttributes<HTMLDivElement> {
-    label: string,
     triggerProps?: ButtonProps,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>,
