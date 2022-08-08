@@ -31,6 +31,10 @@
       },
       "ssn18": {
         "text": "\"${value}\" is no valid SSN!"
+      },
+      "value": {
+        "text": "\"${value}\" is not equal to \"${compareValue}\"!",
+        "textInverted": "\"${value}\" is equal to \"${compareValue}\"!"
       }
     },
     "form": {

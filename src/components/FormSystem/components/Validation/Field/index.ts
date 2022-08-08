@@ -6,6 +6,7 @@ import Loading from "./Loading"
 import Password from "./Password"
 import Required from "./Required"
 import SSN from "./SSN"
+import Value from "./Value"
 
 export {
     Custom,
@@ -15,5 +16,6 @@ export {
     Loading,
     Password,
     Required,
-    SSN
+    SSN,
+    Value
 }

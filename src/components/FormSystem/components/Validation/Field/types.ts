@@ -6,6 +6,7 @@ import { LoadingProps as Loading } from "./Loading/types"
 import { PasswordProps as Password } from "./Password/types"
 import { RequiredProps as Required } from "./Required/types"
 import { SSNProps as SSN } from "./SSN/types"
+import { ValueProps as Value } from "./Value/types"
 
 export {
     Custom,
@@ -15,5 +16,6 @@ export {
     Loading,
     Password,
     Required,
-    SSN
+    SSN,
+    Value
 }

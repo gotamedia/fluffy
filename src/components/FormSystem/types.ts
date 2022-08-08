@@ -1,6 +1,7 @@
 import { LengthI18n } from "@components/FormSystem/components/Validation/Field/Length/i18nTypes"
 import { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
+import { ValueI18n } from "@components/FormSystem/components/Validation/Field/Value/i18nTypes"
 import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
@@ -103,7 +104,8 @@ namespace FormContext {
                 length?: LengthI18n,
                 password?: PasswordI18n,
                 required?: RequiredI18n,
-                ssn?: SSNI18n
+                ssn?: SSNI18n,
+                value?: ValueI18n
             }
             form?: {
                 sameValue?: SameValueI18n
