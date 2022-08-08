@@ -21,11 +21,10 @@ export type PopoverVariantType = PopoverVariantsType[keyof PopoverVariantsType]
 export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     show: boolean,
-    anchorProps: AnchorProps,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>
 }
 
 export type PopoverRef = HTMLDivElement
 
-export type PopoverComponent = ForwardRefExoticComponent<PopoverProps & RefAttributes<PopoverRef>>
+export type PopoverComponent = ForwardRefExoticComponent<PopoverProps & AnchorProps & RefAttributes<PopoverRef>>

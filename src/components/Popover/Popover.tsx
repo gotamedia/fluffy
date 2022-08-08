@@ -7,7 +7,6 @@ import Portal from '@components/Portal'
 import Anchor from '@components/Anchor'
 import Overlay from '@components/Overlay'
 
-import * as Styled from './style'
 import * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
@@ -15,7 +14,6 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     const {
         children,
         show,
-        anchorProps,
         overlayProps,
         onClickOutside,
         ...filterdProps
@@ -32,27 +30,23 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     }, [onClickOutside, overlayProps])
 
     return (
-        <Styled.Wrapper
-            ref={ref}
-            {...filterdProps}
-        >
-            {
-                show ? (
-                    <Portal>
-                        <Overlay
-                            {...overlayProps}
-                            onClick={handleOnClickOutside}
-                        />
+        show ? (
+            <Portal>
+                <Overlay
+                    {...overlayProps}
+                    onClick={handleOnClickOutside}
+                />
 
-                        <Anchor {...anchorProps}>
-                            {children}
-                        </Anchor>
-                    </Portal>
-                ) : (
-                    null
-                )
-            }
-        </Styled.Wrapper>
+                <Anchor
+                    ref={ref}
+                    {...filterdProps}
+                >
+                    {children}
+                </Anchor>
+            </Portal>
+        ) : (
+            null
+        )
     )
 })
 

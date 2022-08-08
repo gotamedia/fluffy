@@ -28,9 +28,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
                 {...props}
                 show={showPopover}
                 onClickOutside={() => setShowPopover(false)}
-                anchorProps={{
-                    anchor: buttonRef
-                }}
+                anchor={buttonRef}
             >
                 <div style={{
                     width: 300,
@@ -46,36 +44,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
     )
 }
 
-// TODO: Don't remove, this is needed because of: https://github.com/storybookjs/storybook/issues/17098
 export const Basic = Template.bind({})
-Basic.parameters = {
-    docs: {
-        source: {
-            code: `
-const [ref, setRef] = useState(null)
-
-return (
-    <div>
-        <Button ref={setRef}>
-            {'Popover anchor'}
-        </Button>
-
-        <Popover
-            show={true}
-            anchorProps={{
-                anchor: ref
-            }}
-        >
-            {...}
-        </Popover>
-    </div>
-)
-`,
-            language: "tsx",
-            type: "auto",
-        }
-    },
-}
 
 export default {
     title: 'Developments/Components/Popover',
