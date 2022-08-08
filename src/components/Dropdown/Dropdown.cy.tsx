@@ -1,15 +1,12 @@
-import Popover from './index'
+import Dropdown from './index'
 
-describe('Popover', () => {
+describe('Dropdown', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Popover
-                    show={true}
-                    anchorProps={{}}
-                >
+                <Dropdown label={'Open'}>
                     {null}
-                </Popover>
+                </Dropdown>
             )
         })
     })
