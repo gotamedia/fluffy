@@ -1,11 +1,15 @@
-import Overlay from './index'
+import Popover from './index'
 
-describe('Overlay', () => {
+describe('Popover', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Overlay>
-                </Overlay>
+                <Popover
+                    show={true}
+                    anchorProps={{}}
+                >
+                    {null}
+                </Popover>
             )
         })
     })
