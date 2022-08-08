@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.19.0...v0.20.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* introduced new pill component
+
+### Features
+
+* introduced new pill component ([03f9099](http://bitbucket.org/gotamedia/fluffy/commit/03f90997632f418c2d23b1d11d819326a96deae5))
+
 ## [0.19.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.18.0...v0.19.0) (2022-08-08)
 
 

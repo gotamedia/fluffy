@@ -142,4 +142,8 @@ export { default as Container } from '@components/Container'
 export * from '@components/Dropdown'
 export { default as Dropdown } from '@components/Dropdown'
 
+export * from '@components/Pill'
+export { default as Pill } from '@components/Pill'
+
+
 // <==== Components
