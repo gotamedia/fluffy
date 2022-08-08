@@ -26,6 +26,8 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         label,
         listProps,
         onSelect,
+        variant,
+        size,
         ...filterdProps
     } = props
 
@@ -105,6 +107,8 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
             <Button
                 ref={setTriggerRef}
                 {...triggerProps}
+                variant={variant}
+                size={size}
                 onClick={toggleOpen}
             >
                 {label}

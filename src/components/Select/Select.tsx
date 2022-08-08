@@ -39,6 +39,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         minWidth,
         closeOnSelect = false,
         isMultiSelect = false,
+        variant,
+        size,
         ...filterdProps
     } = props
 
@@ -157,6 +159,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             <Styled.Button
                 ref={setTriggerRef}
                 {...triggerProps}
+                variant={variant}
+                size={size}
                 onClick={toggleOpen}
                 style={{
                     width: triggerWidth,
