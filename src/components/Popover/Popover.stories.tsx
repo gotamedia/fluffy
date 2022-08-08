@@ -46,6 +46,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
     )
 }
 
+// TODO: Don't remove, this is needed because of: https://github.com/storybookjs/storybook/issues/17098
 export const Basic = Template.bind({})
 Basic.parameters = {
     docs: {
