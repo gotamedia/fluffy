@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.18.0...v0.19.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic Select component
+
+### Features
+
+* Added basic Select component ([90c24a0](http://bitbucket.org/gotamedia/fluffy/commit/90c24a04209b4fc694bb153c8316ca4c44a57d66))
+
+
+### Bug Fixes
+
+* Fixed ability to close Dropdown on "escape" ([fd56509](http://bitbucket.org/gotamedia/fluffy/commit/fd5650941cd84cc8631fe89fa1abce3daa818986))
+* **style:** Fixed Container background-color ([f26e0ad](http://bitbucket.org/gotamedia/fluffy/commit/f26e0adac4af04a9c192f55b883ff1874f25950a))
+* **style:** Minor ListItem style ([97c6e3f](http://bitbucket.org/gotamedia/fluffy/commit/97c6e3f5cd024874bf228077f579c0df3d398f5d))
+
 ## [0.18.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.17.0...v0.18.0) (2022-08-08)
 
 
