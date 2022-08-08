@@ -139,4 +139,7 @@ export { default as Anchor } from '@components/Anchor'
 export * from '@components/Container'
 export { default as Container } from '@components/Container'
 
+export * from '@components/Dropdown'
+export { default as Dropdown } from '@components/Dropdown'
+
 // <==== Components
