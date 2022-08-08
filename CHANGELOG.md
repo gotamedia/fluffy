@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.18.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.17.0...v0.18.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic Dropdown component
+* Added basic Container component
+* Added basic Popover component
+* Added basic Overlay component
+
+### Features
+
+* Added basic Container component ([7e1658d](http://bitbucket.org/gotamedia/fluffy/commit/7e1658d62b9c023397a45895bd27c48f37af9675))
+* Added basic Dropdown component ([7bad5c4](http://bitbucket.org/gotamedia/fluffy/commit/7bad5c406d957be0be710ca5adce51e304e7c4da))
+* Added basic Overlay component ([943014d](http://bitbucket.org/gotamedia/fluffy/commit/943014d4740b2fc952dc0c942daf663bd6008f84))
+* Added basic Popover component ([4b4ad53](http://bitbucket.org/gotamedia/fluffy/commit/4b4ad5304dcc1b87fce0ca71eeff0a42ed95e45c))
+
+
+### Bug Fixes
+
+* Adjust Anchor style height ([e6415ad](http://bitbucket.org/gotamedia/fluffy/commit/e6415ad34c3006743fccd7f82af74d97a612c105))
+* Minor type/style fixes for List/ListItem/Popover ([ed34cd8](http://bitbucket.org/gotamedia/fluffy/commit/ed34cd8734086886bf035a88c608de79ed884f50))
+* **story:** Added TODO for Popover story's fix ([4f53642](http://bitbucket.org/gotamedia/fluffy/commit/4f536420e064f1be4d7b48df43588c1ee314eba4))
+* **style:** Added default "z-index" to Anchor's content ([4d85c54](http://bitbucket.org/gotamedia/fluffy/commit/4d85c545c67d5fd79b075e0c604d992636eaab2f))
+
 ## [0.17.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.16.0...v0.17.0) (2022-08-04)
 
 
