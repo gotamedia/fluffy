@@ -136,4 +136,7 @@ export { default as List } from '@components/List'
 export * from '@components/Anchor'
 export { default as Anchor } from '@components/Anchor'
 
+export * from '@components/Container'
+export { default as Container } from '@components/Container'
+
 // <==== Components
