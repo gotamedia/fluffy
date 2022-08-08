@@ -145,5 +145,7 @@ export { default as Dropdown } from '@components/Dropdown'
 export * from '@components/Pill'
 export { default as Pill } from '@components/Pill'
 
+export * from '@components/Menu'
+export { default as Menu } from '@components/Menu'
 
 // <==== Components
