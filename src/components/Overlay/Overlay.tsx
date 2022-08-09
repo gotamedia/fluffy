@@ -7,14 +7,14 @@ const Overlay: Types.OverlayComponent = forwardRef((props, ref) => {
     const {
         variant = 'normal',
         children,
-        ...filterdProps
+        ...DOMProps
     } = props
 
     return (
         <Styled.Wrapper
             ref={ref}
             $variant={variant}
-            {...filterdProps}
+            {...DOMProps}
         >
             {children}
         </Styled.Wrapper>
