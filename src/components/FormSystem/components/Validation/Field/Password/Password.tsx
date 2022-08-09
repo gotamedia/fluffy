@@ -45,42 +45,42 @@ const Password: Types.PasswordComponent = (props) => {
         }
 
         const length = value.length
+        const allMessageKeys: (keyof PasswordI18n)[] = []
         const messageKeys: (keyof PasswordI18n)[] = []
 
-        if (lowerCase && (showAllRequirements || !containsLowerCase(String(value)))) {
-            messageKeys.push("lowerCase")
+        const addMessageKey = (condition: boolean, key: keyof PasswordI18n) => {
+            if (condition) {
+                messageKeys.push(key)
+            }
+            allMessageKeys.push(key)
         }
-        if (upperCase && (showAllRequirements || !containsUpperCase(String(value)))) {
-            messageKeys.push("upperCase")
+
+        if (lowerCase) {
+            addMessageKey(!containsLowerCase(String(value)), "lowerCase")
         }
-        if (number && (showAllRequirements || !containsNumber(String(value)))) {
-            messageKeys.push("number")
+        if (upperCase) {
+            addMessageKey(!containsUpperCase(String(value)), "upperCase")
         }
-        if (specialChars && (showAllRequirements || !containsSpecialChars(String(value)))) {
-            messageKeys.push("specialChar")
+        if (number) {
+            addMessageKey(!containsNumber(String(value)), "number")
         }
-        if (blacklist && (showAllRequirements || containsGiven(String(value), blacklist.split("")))) {
-            messageKeys.push("exclude")
+        if (specialChars) {
+            addMessageKey(!containsSpecialChars(String(value)), "specialChar")
+        }
+        if (blacklist) {
+            addMessageKey(containsGiven(String(value), blacklist.split("")), "exclude")
         }
         if (minLength || maxLength) {
             if (minLength && maxLength) {
                 if (minLength === maxLength) {
-                    if (showAllRequirements || length !== minLength) {
-                        messageKeys.push("exactlyLength")
-                    }
+                    addMessageKey(length !== minLength, "exactlyLength")
                 } else {
-                    if (showAllRequirements || length < minLength || length > maxLength) {
-                        messageKeys.push("betweenLength")
-                    }
+                    addMessageKey(length < minLength || length > maxLength, "betweenLength")
                 }
             } else if (minLength) {
-                if (showAllRequirements || length < minLength) {
-                    messageKeys.push("minLength")
-                }
+                addMessageKey(length < minLength, "minLength")
             } else if (maxLength) {
-                if (showAllRequirements || length > maxLength) {
-                    messageKeys.push("maxLength")
-                }
+                addMessageKey(length > maxLength, "maxLength")
             }
         }
 
@@ -114,7 +114,7 @@ const Password: Types.PasswordComponent = (props) => {
                                 variables
                             )}
                             <ul>
-                                {messageKeys.map((key) => {
+                                {(showAllRequirements ? allMessageKeys : messageKeys).map((key) => {
                                     const template = i18n?.[key] ||
                                         formI18n?.validations?.field?.password?.[key] ||
                                         defaultI18n.validation.field.password[key]
