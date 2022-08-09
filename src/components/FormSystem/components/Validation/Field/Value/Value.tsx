@@ -26,13 +26,6 @@ const Value: Types.ValueComponent = (props) => {
     const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
-        console.log("Value validation", {
-            value,
-            fieldName,
-            compareValue,
-            valueType: typeof value,
-            compareValueType: typeof compareValue
-        })
         if (
             (
                 typeof value === typeof compareValue &&
@@ -44,10 +37,7 @@ const Value: Types.ValueComponent = (props) => {
             (
                 typeof value === "string" &&
                 typeof compareValue === "object" &&
-                (
-                    (!compareValue.test(value) && !invertedValue) ||
-                    (compareValue.test(value) && invertedValue)
-                )
+                Boolean(String(value).match(compareValue)) !== invertedValue
             )
         ) {
             const textKey: keyof ValueI18n = invertedValue ? "textInverted" : "text"
