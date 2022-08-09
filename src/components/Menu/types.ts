@@ -1,14 +1,14 @@
 import {
     ForwardRefExoticComponent,
-    HTMLAttributes,
     MouseEventHandler,
     RefAttributes
 } from 'react'
 
 import type { OverlayProps } from '../Overlay/types'
 import type { ListProps, ListRef } from '../List/types'
+import type { AnchorProps } from '../Anchor/types'
 
-export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
+export interface MenuProps extends AnchorProps {
     show: boolean,
     anchor?: HTMLElement | null,
     overlayProps?: OverlayProps,
