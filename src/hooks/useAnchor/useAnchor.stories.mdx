@@ -1,0 +1,64 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useAnchor'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useAnchor is a helper hook that returns a calculated rect object to anchor contnet to a specific elements on the screen
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useAnchor } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const [anchorDomElement, setAnchorDomElement] = useState()
+    const [contentDomElement, setContentDomElement] = useState()\n
+    const anchorRect = useAnchor({
+        anchor: anchorDomElement,
+        anchored: contentDomElement
+    })\n
+    return (
+        <div>
+            <button ref={setAnchorDomElement}>
+                {'Click!'}
+            </button>\n
+            {...}\n
+            <div
+                ref={setContentDomElement}
+                style={{
+                    ...anchorRect,
+                    width: anchorRect.width || undefined,
+                    height: anchorRect.height || undefined,
+                    position: 'absolute',
+                }}
+            >
+                {...}
+            </div>
+        </div>
+    )
+}
+`}
+/>
+
+## Options
+
+<Source
+    language={'ts'}
+    code={`{
+    anchor?: HTMLElement | null,
+    anchored: HTMLElement | null,
+    padding?: number,
+    offset?: {
+        x?: number,
+        y?: number
+    }
+}`}
+/>

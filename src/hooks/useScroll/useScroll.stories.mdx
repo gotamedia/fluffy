@@ -1,0 +1,95 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useScroll'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useScroll is a helper hook that allows you to preform a scroll action on window or on a specific scrollable element
+
+## Usage
+### Window example
+<Source
+    language={'tsx'}
+    code={`
+import { useCallback } from 'react'
+import { useScroll, Button } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const scroll = useScroll()\n
+    const handleScroll = useCallback(() => {
+        scroll({
+            position: {
+                top: 0
+            }
+        })
+    },[])\n
+    return (
+        <div>
+            {...}\n
+            <Button onClick={handleScroll}>
+                {'Scroll to the top'}
+            </Button>
+        </div>
+    )
+}
+`}
+/>
+
+### Scrollable element example
+<Source
+    language={'tsx'}
+    code={`
+import { useState, useCallback } from 'react'
+import { useScroll, Button } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const [node, setNode] = useState(null)\n
+    const scroll = useScroll({
+        element: node
+    })\n
+    const handleScroll = useCallback(() => {
+        scroll({
+            position: {
+                top: 0
+            }
+        })
+    },[])\n
+    return (
+        <div>
+            <Button onClick={handleScroll}>
+                {'Scroll to the top'}
+            </Button>\n
+            <div ref={setNode}>
+                {...}
+            </div>
+        </div>
+    )
+}
+`}
+/>
+
+## Props and Options
+Hook props:
+<Source
+    language={'ts'}
+    code={`{
+        element?: NODE,
+        behavior?: 'smooth' | 'auto'
+}`}
+/>
+
+Scroll options:
+<Source
+    language={'ts'}
+    code={`{
+        position?: {
+            top?: number,
+            left?: number
+        },
+        direction?: 'smooth' | 'auto'
+}`}
+/>

@@ -1,0 +1,27 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useDeepCompareEffect'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useDeepCompareEffect is React's useEffect hook except it uses deep comparison on the dependencies array instead of reference equality
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useDeepCompareEffect } from '@gotamedia/fluffy'
+\nconst Component = ({ objectProp, arrayProp }) => {
+    useDeepCompareEffect(() => {
+        console.log('This msg shold NOT be logged if the two props contents stays the same even if they got a new references')
+    }, [objectProp, arrayProp])
+}
+`}
+/>

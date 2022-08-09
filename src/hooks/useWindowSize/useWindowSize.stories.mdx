@@ -1,0 +1,33 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useWindowSize'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useWindowSize is a helper hook that returns an object containing the window's width and height
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useWindowSize } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    {...}\n
+    const windowSize = useWindowSize()\n
+    {...}\n
+    return (
+        <div>
+            <p>Window width: {windowSize.width}</p>
+            <p>Window height: {windowSize.height}</p>
+        </div>
+    )
+}
+`}
+/>

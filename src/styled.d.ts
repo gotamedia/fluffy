@@ -38,7 +38,8 @@ interface Colors {
     payment: string,
     socialMedia: SocialMedia,
     error: string,
-    alert: Alert
+    alert: Alert,
+    pill: Pill
 }
 
 interface Alert {
@@ -48,6 +49,14 @@ interface Alert {
     info: Error,
     loading: Error
     hint: Error
+}
+
+interface Pill {
+    alert: string,
+    warning: string,
+    success: string,
+    disabled: string,
+
 }
 
 interface Error {

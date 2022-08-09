@@ -1,0 +1,53 @@
+import { Source, Meta } from '@storybook/addon-docs'
+import DateUtility from './index'
+
+<Meta
+    title={'Utils/Date'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+Fluffy DateUtility exposes all DateFNS functionality with all the locales included and two extra methods used for setting locale for DatePicker/TimePicker components
+
+For more info please refer to [DateFNS official DOCs](https://date-fns.org/docs/Getting-Started)
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { DateUtility } from '@gotamedia/fluffy'
+\nconst isBeforeToday = DateUtility.isBefore(new Date('2022-07-26'), new Date())
+\nconsole.log(isBeforeToday)    // true
+`}
+/>
+
+### DatePicker/TimePicker
+Fluffy DateUtility exposes both methods:
+* registerLocale()
+* setDefaultLocale()
+
+from `react-datepicker` library, for more info please refer to [React Date Picker official DOCs](https://www.npmjs.com/package/react-datepicker#Localization)
+<Source
+    language={'tsx'}
+    code={`
+import { DateUtility } from '@gotamedia/fluffy'
+\nDateUtility.registerLocale('sv', DateUtility.locales.sv)
+`}
+/>
+
+## Content
+
+<Source
+    language={'json'}
+    code={`${(() => {
+        const content = {}
+        Object.entries(DateUtility).forEach((item) => {
+            content[item[0]] = typeof item[1]
+        })
+        return JSON.stringify(content, null, 4)
+    })()}`}
+/>

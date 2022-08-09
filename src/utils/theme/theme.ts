@@ -37,6 +37,12 @@ const theme: DefaultTheme = {
             linkedIn: "#0072B1"
         },
         error: "#db0000",
+        pill: {
+            warning: "#fdc800",
+            success: "#0ab775",
+            alert: "#d7170f",
+            disabled: "#e9e9e8"
+        },
         alert: {
             error: {
                 text: "#730E0E",

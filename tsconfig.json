@@ -1,17 +1,17 @@
 {
     "compilerOptions": {
-        "baseUrl": "src",
+        "baseUrl": "src/",
         "esModuleInterop": true,
         "strict": true,
         "skipLibCheck": true,
         "jsx": "react-jsx",
         "module": "esnext",
         "outDir": "dist",
+        "declarationDir": "dist",
         "declaration": true,
         "sourceMap": false,
         "target": "es5",
         "moduleResolution": "node",
-        "emitDeclarationOnly": false,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
@@ -26,6 +26,11 @@
             "@hooks/*": ["./hooks/*"],
             "@utils/*": ["./utils/*"]
         },
+        "types": [
+            "node",
+            "cypress",
+            "cypress-real-events"
+        ],
         "plugins": [
             {
                 "transform": "@zerollup/ts-transform-paths"

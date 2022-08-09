@@ -2,6 +2,143 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.20.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.19.0...v0.20.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* introduced new pill component
+
+### Features
+
+* introduced new pill component ([03f9099](http://bitbucket.org/gotamedia/fluffy/commit/03f90997632f418c2d23b1d11d819326a96deae5))
+
+## [0.19.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.18.0...v0.19.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic Select component
+
+### Features
+
+* Added basic Select component ([90c24a0](http://bitbucket.org/gotamedia/fluffy/commit/90c24a04209b4fc694bb153c8316ca4c44a57d66))
+
+
+### Bug Fixes
+
+* Fixed ability to close Dropdown on "escape" ([fd56509](http://bitbucket.org/gotamedia/fluffy/commit/fd5650941cd84cc8631fe89fa1abce3daa818986))
+* **style:** Fixed Container background-color ([f26e0ad](http://bitbucket.org/gotamedia/fluffy/commit/f26e0adac4af04a9c192f55b883ff1874f25950a))
+* **style:** Minor ListItem style ([97c6e3f](http://bitbucket.org/gotamedia/fluffy/commit/97c6e3f5cd024874bf228077f579c0df3d398f5d))
+
+## [0.18.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.17.0...v0.18.0) (2022-08-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic Dropdown component
+* Added basic Container component
+* Added basic Popover component
+* Added basic Overlay component
+
+### Features
+
+* Added basic Container component ([7e1658d](http://bitbucket.org/gotamedia/fluffy/commit/7e1658d62b9c023397a45895bd27c48f37af9675))
+* Added basic Dropdown component ([7bad5c4](http://bitbucket.org/gotamedia/fluffy/commit/7bad5c406d957be0be710ca5adce51e304e7c4da))
+* Added basic Overlay component ([943014d](http://bitbucket.org/gotamedia/fluffy/commit/943014d4740b2fc952dc0c942daf663bd6008f84))
+* Added basic Popover component ([4b4ad53](http://bitbucket.org/gotamedia/fluffy/commit/4b4ad5304dcc1b87fce0ca71eeff0a42ed95e45c))
+
+
+### Bug Fixes
+
+* Adjust Anchor style height ([e6415ad](http://bitbucket.org/gotamedia/fluffy/commit/e6415ad34c3006743fccd7f82af74d97a612c105))
+* Minor type/style fixes for List/ListItem/Popover ([ed34cd8](http://bitbucket.org/gotamedia/fluffy/commit/ed34cd8734086886bf035a88c608de79ed884f50))
+* **story:** Added TODO for Popover story's fix ([4f53642](http://bitbucket.org/gotamedia/fluffy/commit/4f536420e064f1be4d7b48df43588c1ee314eba4))
+* **style:** Added default "z-index" to Anchor's content ([4d85c54](http://bitbucket.org/gotamedia/fluffy/commit/4d85c545c67d5fd79b075e0c604d992636eaab2f))
+
+## [0.17.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.16.0...v0.17.0) (2022-08-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ci:** Added shareable ESLint config to be extended
+* Added Anchor component with useAnchor hook
+* Added useIsomorphicLayoutEffect hook
+* Added useWindowSize hook
+
+### Features
+
+* Added Anchor component with useAnchor hook ([c4c6d39](http://bitbucket.org/gotamedia/fluffy/commit/c4c6d39a4dbaf2a501ab5432d2627c5a43425d6b))
+* Added useIsomorphicLayoutEffect hook ([f753337](http://bitbucket.org/gotamedia/fluffy/commit/f753337df6653305401ebbebb880e071fbfbcf8b))
+* Added useWindowSize hook ([6b62774](http://bitbucket.org/gotamedia/fluffy/commit/6b6277476c09a7aaa1ae0708dc045c9f38d85ce0))
+* **ci:** Added shareable ESLint config to be extended ([591a0b5](http://bitbucket.org/gotamedia/fluffy/commit/591a0b56051a991a5c0a7e265d468533c29db6f3))
+
+
+### Bug Fixes
+
+* **story:** Fixed Anchor story ([af13727](http://bitbucket.org/gotamedia/fluffy/commit/af137276aac10e8e748a8ab01f41c42f41e422ed))
+
+## [0.16.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.15.1...v0.16.0) (2022-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Marked as breaking changes since the destruction of Fluffy package has been changed by removing the "dist" directory and export all the components/modules from the package root "@gotamedia/fluffy/" instead of "@gotamedia/fluffy/dist/"
+
+### Bug Fixes
+
+* Added default export for the package "scroll-into-view-if-needed" ([2ee490f](http://bitbucket.org/gotamedia/fluffy/commit/2ee490f3f89c762c28ddb5bac0936e67a3b89c05))
+
+### [0.15.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.15.0...v0.15.1) (2022-08-03)
+
+## [0.15.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.1...v0.15.0) (2022-08-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* Test bundling Fluffy with Rollup "again 🥸"
+
+### ci
+
+* Test bundling Fluffy with Rollup "again 🥸" ([e12fb90](http://bitbucket.org/gotamedia/fluffy/commit/e12fb901b488f9262e2894ab8a72660c2d54f261))
+
+### [0.14.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.14.0...v0.14.1) (2022-08-02)
+
+
+### Bug Fixes
+
+* defaulted 'normal' border for List component ([5d0bc6f](http://bitbucket.org/gotamedia/fluffy/commit/5d0bc6f328a7c07e83a40ae773d1143b5d764d57))
+
+## [0.14.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.13.0...v0.14.0) (2022-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added List component
+* Added 'scroll-into-view-if-needed' library and exposed as a Fluffy package
+* Added ListItem component
+* Added Color Palette/ContrastChecker stories
+
+### Features
+
+* Added 'scroll-into-view-if-needed' library and exposed as a Fluffy package ([1fd23c2](http://bitbucket.org/gotamedia/fluffy/commit/1fd23c23ed7978de911a146caf1fab0ea92225f0))
+* Added Color Palette/ContrastChecker stories ([761e8ca](http://bitbucket.org/gotamedia/fluffy/commit/761e8cafd60d02ed441d0d09b1e8551f9aa3091f))
+* Added List component ([8d37ed3](http://bitbucket.org/gotamedia/fluffy/commit/8d37ed3ff7ab3adc30b038eac07acc821fc08a26))
+* Added ListItem component ([b5cb88a](http://bitbucket.org/gotamedia/fluffy/commit/b5cb88a9c9ee92633f95c30cef942170456afe77))
+* **doc:** Added DateUtility documentations ([61b15a6](http://bitbucket.org/gotamedia/fluffy/commit/61b15a6609641f80f479c328fbbcfafe3ea45b09))
+* **doc:** Added Polished package documentation ([cf19484](http://bitbucket.org/gotamedia/fluffy/commit/cf194843362061e4d20247701fd05e275f4c2e20))
+* **doc:** Added ReactIntersectionObserver package documentation ([acb950d](http://bitbucket.org/gotamedia/fluffy/commit/acb950d6b4aaf3dff3a0b4b9bde707a0c4a4f749))
+* **story:** Added hooks documentations ([9d85871](http://bitbucket.org/gotamedia/fluffy/commit/9d85871e5f9986d33faab76607d708563587625b))
+* **test:** Added Cypress for unit testing ([f706c39](http://bitbucket.org/gotamedia/fluffy/commit/f706c3919cf609b13e4535f3fc468e0b24db2a46))
+
+
+### Bug Fixes
+
+* Added demo link to README ([beedfd8](http://bitbucket.org/gotamedia/fluffy/commit/beedfd89f1deaf7b83edb68020c7a219ba529ea3))
+* **ci:** Fixed build script tsconfig to ignore cypress test files ([4b4ed55](http://bitbucket.org/gotamedia/fluffy/commit/4b4ed55e8a2c598bf2a3e0416bc54ddcdd8f1885))
+* **story:** Fixed useLifeCycle docs typo ([1fe2505](http://bitbucket.org/gotamedia/fluffy/commit/1fe2505dc642872ede544992b908f4ed2b0f176b))
+* **test:** Replaced Jest tests with Cypress tests for Button ([8b1c923](http://bitbucket.org/gotamedia/fluffy/commit/8b1c923e4989c048b60ea01a505ef67f3fa37c0f))
+
 ## [0.13.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.12.0...v0.13.0) (2022-07-26)
 
 

@@ -39,7 +39,7 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export type CardComponent = FC<CardProps>
 
-export type ComponentType = CardComponent & {
+export type CardComponentType = CardComponent & {
     Image: typeof CardImage,
     Body: typeof CardBody,
     Title: typeof CardTitle,

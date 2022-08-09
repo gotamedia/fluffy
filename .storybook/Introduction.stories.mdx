@@ -25,11 +25,19 @@ Install with NPM
 ### Peer dependencies
 Fluffy requires that you install following depdencies in your own project
 
+### ESLint
+Fluffy also shiped with some ESLint config to help you write awesome code 🦄 
+
+You can simply extend your config with the Fluffy one
 <Source
-    language={'bash'}
+    language={'json'}
     code={`
-        npm install react styled-components
-    `}
+{
+    "extends": [
+        "./node_modules/@gotamedia/fluffy/dev/eslint-config"
+    ]
+}
+`}
 />
 
 ## Usage

@@ -20,10 +20,21 @@ pipelines:
             - npm i -g standard-version
             - npm run release
             - git push --follow-tags origin trunk
-            - pipe: atlassian/npm-publish:0.2.0
+            - pipe: atlassian/npm-publish:0.3.2
               variables:
                 NPM_TOKEN: ${NPM_TOKEN}
+                FOLDER: "dist"
   custom:
+      Test:
+        - step:
+            name: Cypress Test
+            image: cypress/browsers:node16.14.2-slim-chrome103-ff102
+            caches:
+              - node
+            script:
+              - npm i
+              - npm run cy:run
+      
       Storybook:
         - step:
             name: Build

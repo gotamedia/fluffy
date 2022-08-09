@@ -4,6 +4,8 @@
 
 Fluffy is a opinionated but highly customizable UI library used by Gota Media AB.
 
+**[DEMO](https://fluffy.gotamedia.se)**
+
 ## Install
 
 ```

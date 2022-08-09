@@ -1,0 +1,63 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useLifeCycle'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useLifeCycle is a helper hook that returns allows you to mimic the Class component's life cycle
+
+## Usage
+
+### willMount
+
+<Source
+    language={'tsx'}
+    code={`
+import { useLifeCycle } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    useLifeCycle({
+        willMount: () => {
+            console.log('This msg should be logged before the initial render')
+        }
+    })
+}
+`}
+/>
+
+### didMount
+
+<Source
+    language={'tsx'}
+    code={`
+import { useLifeCycle } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    useLifeCycle({
+        didMount: () => {
+            console.log('This msg should be logged after the initial render')
+        }
+    })
+}
+`}
+/>
+
+### willUnmount
+
+<Source
+    language={'tsx'}
+    code={`
+import { useLifeCycle } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    useLifeCycle({
+        willUnmount: () => {
+            console.log('This msg should be logged once the component unmount')
+        }
+    })
+}
+`}
+/>

@@ -11,12 +11,14 @@ rm -rf $temp_root_dir
 mkdir $dist_dir
 mkdir $temp_dist_dir
 mkdir $temp_root_dir
+mkdir $temp_root_dir/dist
 
 cp -r ./src/* $temp_root_dir
 
 node > ./$temp_root_dir/tsconfig.json <<EOF
     const tsConfig = require('./tsconfig.json')
     tsConfig.compilerOptions.baseUrl = './'
+    tsConfig.exclude.push('**/**/*.cy.tsx')
     console.log(JSON.stringify(tsConfig, null, 4))
 EOF
 
@@ -27,15 +29,21 @@ fi
 
 find ./$temp_root_dir -name \*.stories.tsx -type f -delete
 find ./$temp_root_dir -name \*.test.tsx -type f -delete
+find ./$temp_root_dir -name \*.cy.tsx -type f -delete
 
 ignore_list=(
     "tests"
 )
 
+no_transpile_list=(
+    "dev"
+)
+
 for pattern in components \
     contexts \
     hooks \
-    utils
+    utils \
+    dev
 do
     echo ""
     echo "-----------------------------------"
@@ -53,12 +61,18 @@ do
         else
             echo "   ✅   Copy:       $pattern/$sourceName"
 
-            mkdir $temp_root_dir/$sourceName
+            if [[ " ${no_transpile_list[*]} " =~ " $pattern " ]]; then
+                mkdir $temp_root_dir/dist/$pattern
 
-            echo "export * from '../$pattern/$sourceName'" >> $temp_root_dir/$sourceName/index.ts
+                cp -r ./$temp_root_dir/$pattern/* $temp_root_dir/dist/$pattern/
+            else
+                mkdir $temp_root_dir/$sourceName
 
-            if grep -q -E "export { default }|export default" "$sourcePath/index.ts"; then
-                echo "export { default } from '../$pattern/$sourceName'" >> $temp_root_dir/$sourceName/index.ts
+                echo "export * from '../$pattern/$sourceName'" >> $temp_root_dir/$sourceName/index.ts
+
+                if grep -q -E "export { default }|export default" "$sourcePath/index.ts"; then
+                    echo "export { default } from '../$pattern/$sourceName'" >> $temp_root_dir/$sourceName/index.ts
+                fi
             fi
         fi
     done

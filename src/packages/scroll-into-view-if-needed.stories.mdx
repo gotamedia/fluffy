@@ -1,0 +1,52 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+import { ScrollIntoViewIfNeeded } from './scroll-into-view-if-needed'
+
+<Meta
+    title={'Packages/ScrollIntoViewIfNeeded'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+ScrollIntoView used to be a ponyfill for Element.scrollIntoViewIfNeeded.
+Since then the CSS working group have decided to implement its features in Element.scrollIntoView as the option scrollMode: "if-needed".
+Thus this library got rewritten to implement that spec instead of the soon to be deprecated one.
+
+For more info please refer to [ScrollIntoViewIfNeeded official DOCs](https://scroll-into-view-if-needed.netlify.app/)
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useRef } from 'react'
+import { ScrollIntoViewIfNeeded } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const elementRef = useRef()\n
+    const scrollIntoElement = () => {
+        ScrollIntoViewIfNeeded(elementRef.current)
+    }\n
+    return (
+        <div onClick={scrollIntoElement}>
+            <p ref={elementRef}>
+                {'Hellow world!'}
+            </p>\n
+            {...}
+        </div>
+    )
+}
+`}
+/>
+
+## Content
+
+<Source
+    language={'json'}
+    code={`${(() => {
+        return typeof ScrollIntoViewIfNeeded
+    })()}`}
+/>

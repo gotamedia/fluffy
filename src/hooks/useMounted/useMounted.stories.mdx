@@ -1,0 +1,32 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useMounted'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useMounted is a helper hook that returns a boolean status determine once the component is mounted and compleated the initial render cycle
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useMounted } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    {...}\n
+    const isMounted = useMounted()\n
+    {...}\n
+    return (
+        <div>
+            {...}
+        </div>
+    )
+}
+`}
+/>
