@@ -31,11 +31,12 @@ export type DropdownSizeType = DropdownSizesType[keyof DropdownSizesType]
 
 export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
     label: string,
+    value?: any,
     triggerProps?: ButtonProps,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>,
     listProps?: ListProps,
-    onSelect?: ListItemProps['onSelect'],
+    onChange?: ListItemProps['onSelect'],
     variant?: DropdownVariantType,
     size?: DropdownSizeType
 }

@@ -2,7 +2,9 @@ import {
     forwardRef,
     useState,
     useImperativeHandle,
-    useCallback
+    useCallback,
+    Children,
+    cloneElement
 } from 'react'
 
 import Button from '../Button'
@@ -12,18 +14,21 @@ import * as Styled from './style'
 import * as Types from './types'
 import type {
     MouseEventHandler,
-    KeyboardEventHandler
+    KeyboardEventHandler,
+    ReactElement
 } from 'react'
+import type { ListItemProps } from '../ListItem/types'
 
 const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     const {
+        value,
         children,
         triggerProps,
         overlayProps,
         onClickOutside,
         label,
         listProps,
-        onSelect,
+        onChange,
         variant,
         size,
         ...filterdProps
@@ -74,12 +79,12 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     }, [isOpen, listProps])
 
     const handleOnSelect = useCallback((value: any) => {
-        if (typeof onSelect === 'function') {
-            onSelect(value)
+        if (typeof onChange === 'function') {
+            onChange(value)
         }
 
         setIsOpen(false)
-    }, [onSelect])
+    }, [onChange])
 
     return (
         <>
@@ -107,7 +112,26 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                     onKeyDown: handleOnKeyDown
                 }}
             >
-                {children}
+                {
+                    Children.map(children, (child) => {
+                        if (child) {
+                            const childElement = child as ReactElement<ListItemProps>
+            
+                            const childProps = {
+                                ...childElement.props,
+                                selected: value !== undefined && value === childElement.props?.value
+                            }
+
+                            return (
+                                cloneElement(childElement, childProps)
+                            )
+                        } else {
+                            return (
+                                null
+                            )
+                        }
+                    })
+                }
             </Menu>
         </>
     )
