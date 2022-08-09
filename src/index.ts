@@ -149,4 +149,7 @@ export { default as Pill } from '@components/Pill'
 export * from '@components/Menu'
 export { default as Menu } from '@components/Menu'
 
+export * from '@components/SubMenu'
+export { default as SubMenu } from '@components/SubMenu'
+
 // <==== Components
