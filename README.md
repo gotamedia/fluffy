@@ -110,14 +110,10 @@ npm install -g yalc
 
 To use Fluffy in your project locally make sure to build Fluffy by running:
 ```
-npm run build
+npm run local
 ```
 
-Then run the following command while standing on Fluffy root dir:
-```
-yalc publish
-```
-This will make sure to publish Fluffy into a local registery on your machine so you can install it as a package in your projects
+This will make sure to build and publish Fluffy into a local registery on your machine so you can install it as a package in your projects
 
 ### Install locally
 
