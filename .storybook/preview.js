@@ -1,5 +1,6 @@
 import React from 'react'
-import { themes } from '@storybook/theming'
+
+import { DocsContainer } from './DocsContainer'
 
 import { ThemeProvider } from 'styled-components'
 import { addDecorator } from '@storybook/react'
@@ -37,7 +38,7 @@ export const parameters = {
         ],
     },
     docs: {
-        theme: themes.dark
+        container: DocsContainer
     },
     viewport: {
         viewports: INITIAL_VIEWPORTS
