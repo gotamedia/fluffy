@@ -26,6 +26,7 @@ const PasswordTemplate: Story<Types.Component.Validation.Field.Password> = (prop
                     number: "Number label",
                     password: "Password label",
                     radiogroup: "RadioGroup label",
+                    select: "Select label",
                     switch: "Switch label",
                     text: "Text label",
                     textarea: "Textarea label",
@@ -72,6 +73,17 @@ const PasswordTemplate: Story<Types.Component.Validation.Field.Password> = (prop
                 >
                     <FS.Validation.Field.Password {...props} />
                 </FS.Input.RadioGroup>
+            </FS.Field>
+            <FS.Field>
+                <FS.Input.Select
+                    name={"select"}
+                    options={[
+                        { text: "Option 1", value: "1" },
+                        { text: "Option 2", value: "2" }
+                    ]}
+                >
+                    <FS.Validation.Field.Password {...props} />
+                </FS.Input.Select>
             </FS.Field>
             <FS.Field>
                 <FS.Input.Switch name={"switch"}>

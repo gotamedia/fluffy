@@ -27,6 +27,8 @@ const SameValueTemplate: Story<Types.Component.Validation.Form.SameValue> = (pro
                     text2: "Text2 label",
                     text3: "Text3 label",
                     text4: "Text4 label",
+                    text5: "Text5 label",
+                    select: "Select label",
                     number: "Number label",
                     radio: "RadioGroup label"
                 },
@@ -79,6 +81,21 @@ const SameValueTemplate: Story<Types.Component.Validation.Form.SameValue> = (pro
                         options={[
                             { value: "1", label: "Option with value \"1\"" },
                             { value: "2", label: "Option with value \"2\"" }
+                        ]}
+                    />
+                </FS.Field>
+            </FS.Group>
+            <FS.Group>
+                <FS.Validation.Form.SameValue fieldAName={"text5"} fieldBName={"select"} />
+                <FS.Field>
+                    <FS.Input.Text name={"text5"} />
+                </FS.Field>
+                <FS.Field>
+                    <FS.Input.Select
+                        name={"select"}
+                        options={[
+                            { text: "Option 1", value: "1" },
+                            { text: "Option 2", value: "2" }
                         ]}
                     />
                 </FS.Field>
