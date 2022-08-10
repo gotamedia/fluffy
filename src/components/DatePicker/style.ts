@@ -4,7 +4,12 @@ import { tint } from 'polished'
 
 import ReactDatePicker from 'react-datepicker'
 
+// @ts-ignore
+import datePickerStyle from '../../../node_modules/react-datepicker/dist/react-datepicker.css'
+
 const Wrapper = styled.div`
+    ${datePickerStyle};
+    
     .react-datepicker-popper {
         z-index: 999;
     }
