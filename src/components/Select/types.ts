@@ -41,7 +41,8 @@ export interface SelectProps extends HTMLAttributes<HTMLDivElement> {
     minWidth?: number | string,
     selected: any[],
     variant?: SelectVariantType,
-    size?: SelectSizeType
+    size?: SelectSizeType,
+    disabled?: boolean
 }
 
 export type SelectRef = {

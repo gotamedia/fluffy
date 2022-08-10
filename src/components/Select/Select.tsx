@@ -41,6 +41,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         isMultiSelect = false,
         variant,
         size,
+        disabled,
         ...filterdProps
     } = props
 
@@ -50,7 +51,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const [triggerRef, setTriggerRef] = useState<HTMLButtonElement | null>(null)
     const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
     const [triggerWidth, setTriggerWidth] = useState<Types.SelectProps['width']>(width)
-    
+
     const [isOpen, setIsOpen] = useState(!width && !minWidth ? true : false)
 
     useImperativeHandle(ref, () => {
@@ -64,10 +65,10 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         if (!width && !minWidth) {
             if (listRef && triggerWidth === undefined ) {
                 const listRect = listRef.getBoundingClientRect()
-    
+
                 setTriggerWidth(listRect.width)
                 setIsOpen(false)
-                
+
                 shouldfocusTrigger.current = true
             }
         }
@@ -83,7 +84,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             if (!isOpen && previousIsOpenState.current && triggerRef) {
                 triggerRef.focus()
             }
-    
+
             previousIsOpenState.current = isOpen
         }
     }, [isOpen, triggerRef])
@@ -128,7 +129,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             }
         }
     }, [isOpen, listProps])
-    
+
     const handleOnSelect = useCallback((item: any) => {
         if (typeof onSelect === 'function') {
             onSelect(item)
@@ -157,7 +158,9 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     return (
         <>
             <Styled.Button
+                type={"button"}
                 ref={setTriggerRef}
+                disabled={disabled}
                 {...triggerProps}
                 variant={variant}
                 size={size}
@@ -190,7 +193,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                     Children.map(children, (child) => {
                         if (child) {
                             const childElement = child as ReactElement<ListItemProps>
-            
+
                             const childProps = {
                                 ...childElement.props,
                                 selected: selected
