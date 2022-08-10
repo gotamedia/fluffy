@@ -11,7 +11,7 @@ import {
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
-import List from '../List'
+import Menu from '../Menu'
 
 import { ListItemTypes } from '../ListItem/types'
 
@@ -39,6 +39,9 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         minWidth,
         closeOnSelect = false,
         isMultiSelect = false,
+        variant,
+        size,
+        disabled,
         ...filterdProps
     } = props
 
@@ -48,7 +51,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const [triggerRef, setTriggerRef] = useState<HTMLButtonElement | null>(null)
     const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
     const [triggerWidth, setTriggerWidth] = useState<Types.SelectProps['width']>(width)
-    
+
     const [isOpen, setIsOpen] = useState(!width && !minWidth ? true : false)
 
     useImperativeHandle(ref, () => {
@@ -62,10 +65,10 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         if (!width && !minWidth) {
             if (listRef && triggerWidth === undefined ) {
                 const listRect = listRef.getBoundingClientRect()
-    
+
                 setTriggerWidth(listRect.width)
                 setIsOpen(false)
-                
+
                 shouldfocusTrigger.current = true
             }
         }
@@ -81,7 +84,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             if (!isOpen && previousIsOpenState.current && triggerRef) {
                 triggerRef.focus()
             }
-    
+
             previousIsOpenState.current = isOpen
         }
     }, [isOpen, triggerRef])
@@ -126,7 +129,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             }
         }
     }, [isOpen, listProps])
-    
+
     const handleOnSelect = useCallback((item: any) => {
         if (typeof onSelect === 'function') {
             onSelect(item)
@@ -155,8 +158,12 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     return (
         <>
             <Styled.Button
+                type={"button"}
                 ref={setTriggerRef}
+                disabled={disabled}
                 {...triggerProps}
+                variant={variant}
+                size={size}
                 onClick={toggleOpen}
                 style={{
                     width: triggerWidth,
@@ -168,55 +175,47 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 <Styled.Icon $isOpen={isOpen} />
             </Styled.Button>
 
-            <Styled.Popover
+            <Menu
                 {...filterdProps}
                 ref={undefined}
-                style={{
-                    ...filterdProps.style,
-                    overflow: 'unset'
-                }}
-                overlayProps={overlayProps}
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                listProps={{
+                    ...listProps,
+                    ref: setListRef,
+                    type: ListItemTypes.Select,
+                    onSelect: handleOnSelect,
+                    onKeyDown: handleOnKeyDown
+                }}
             >
-                <Styled.Container>
-                    <List
-                        ref={setListRef}
-                        {...listProps}
-                        type={ListItemTypes.Select}
-                        onSelect={handleOnSelect}
-                        onKeyDown={handleOnKeyDown}
-                    >
-                        {
-                            Children.map(children, (child) => {
-                                if (child) {
-                                    const childElement = child as ReactElement<ListItemProps>
-                    
-                                    const childProps = {
-                                        ...childElement.props,
-                                        selected: selected
-                                            .map(i => i.value)
-                                            .includes(childElement.props?.value),
-                                        value: {
-                                            label: childElement.props.text,
-                                            value: childElement.props.value
-                                        }
-                                    }
+                {
+                    Children.map(children, (child) => {
+                        if (child) {
+                            const childElement = child as ReactElement<ListItemProps>
 
-                                    return (
-                                        cloneElement(childElement, childProps)
-                                    )
-                                } else {
-                                    return (
-                                        null
-                                    )
+                            const childProps = {
+                                ...childElement.props,
+                                selected: selected
+                                    .map(i => i.value)
+                                    .includes(childElement.props?.value),
+                                value: {
+                                    label: childElement.props.text,
+                                    value: childElement.props.value
                                 }
-                            })
+                            }
+
+                            return (
+                                cloneElement(childElement, childProps)
+                            )
+                        } else {
+                            return (
+                                null
+                            )
                         }
-                    </List>
-                </Styled.Container>
-            </Styled.Popover>
+                    })
+                }
+            </Menu>
         </>
     )
 })

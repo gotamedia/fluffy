@@ -5,13 +5,31 @@ import {
     RefAttributes
 } from 'react'
 
+import {
+    ButtonVariants,
+    ButtonSizes
+} from '../Button'
+
 import type { ButtonProps } from '../Button'
 import type { OverlayProps } from '../Overlay/types'
 import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
 
+export const SelectVariants = {
+    Primary: ButtonVariants.Primary,
+    Secondary: ButtonVariants.Secondary,
+    Outline: ButtonVariants.Outline
+}
+
+export type SelectVariantsType = typeof SelectVariants
+export type SelectVariantType = SelectVariantsType[keyof SelectVariantsType]
+
+export const SelectSizes = ButtonSizes
+
+export type SelectSizesType = typeof SelectSizes
+export type SelectSizeType = SelectSizesType[keyof SelectSizesType]
+
 export interface SelectProps extends HTMLAttributes<HTMLDivElement> {
-    label: string,
     triggerProps?: ButtonProps,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>,
@@ -21,7 +39,10 @@ export interface SelectProps extends HTMLAttributes<HTMLDivElement> {
     isMultiSelect?: boolean,
     width?: number | string,
     minWidth?: number | string,
-    selected: any[]
+    selected: any[],
+    variant?: SelectVariantType,
+    size?: SelectSizeType,
+    disabled?: boolean
 }
 
 export type SelectRef = {

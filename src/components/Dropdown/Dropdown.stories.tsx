@@ -20,14 +20,14 @@ const Basic: Story<Types.DropdownProps> = (props) => {
 
             <Dropdown
                 {...props}
-                onSelect={setSelectedItem}
+                value={selectedItem}
+                onChange={setSelectedItem}
             >
                 {
                     [...new Array(5)].map((i, idx) => {
                         return (
                             <ListItem
                                 key={idx}
-                                selected={selectedItem === `Dropdown list item ${idx + 1}`}
                                 value={`Dropdown list item ${idx + 1}`}
                                 text={`Dropdown list item ${idx + 1}`}
                             />
@@ -58,14 +58,14 @@ const Select: Story<Types.DropdownProps> = (props) => {
 
             <Dropdown
                 {...props}
-                onSelect={setSelectedItem}
+                value={selectedItem}
+                onChange={setSelectedItem}
             >
                 {
                     [...new Array(5)].map((i, idx) => {
                         return (
                             <ListItem
                                 key={idx}
-                                selected={selectedItem === `Dropdown list item ${idx + 1}`}
                                 value={`Dropdown list item ${idx + 1}`}
                                 text={`Dropdown list item ${idx + 1}`}
                             />

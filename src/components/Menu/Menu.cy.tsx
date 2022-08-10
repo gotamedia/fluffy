@@ -1,12 +1,12 @@
-import Select from './index'
+import Menu from './index'
 
-describe('Select', () => {
+describe('Menu', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Select selected={[]}>
+                <Menu show={true}>
                     {null}
-                </Select>
+                </Menu>
             )
         })
     })

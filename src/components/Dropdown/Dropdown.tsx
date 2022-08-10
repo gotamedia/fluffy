@@ -1,38 +1,40 @@
 import {
     forwardRef,
-    useRef,
     useState,
     useImperativeHandle,
-    useEffect,
-    useCallback
+    useCallback,
+    Children,
+    cloneElement
 } from 'react'
 
 import Button from '../Button'
-import List from '../List'
+import Menu from '../Menu'
 
 import * as Styled from './style'
 import * as Types from './types'
 import type {
     MouseEventHandler,
-    KeyboardEventHandler
+    KeyboardEventHandler,
+    ReactElement
 } from 'react'
+import type { ListItemProps } from '../ListItem/types'
 
 const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     const {
+        value,
         children,
         triggerProps,
         overlayProps,
         onClickOutside,
         label,
         listProps,
-        onSelect,
+        onChange,
+        variant,
+        size,
         ...filterdProps
     } = props
 
-    const previousIsOpenState = useRef(false)
-
     const [triggerRef, setTriggerRef] = useState<HTMLButtonElement | null>(null)
-    const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -42,22 +44,6 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
             close: () => setIsOpen(false)
         }
     }, [])
-
-    useEffect(() => {
-        if (!isOpen && previousIsOpenState.current && triggerRef) {
-            triggerRef.focus()
-        }
-
-        previousIsOpenState.current = isOpen
-    }, [isOpen, triggerRef])
-
-    useEffect(() => {
-        if (isOpen && listRef) {
-            if (document.activeElement !== listRef) {
-                listRef.focus()
-            }
-        }
-    }, [isOpen, listRef])
 
     const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
         if (typeof onClickOutside === 'function') {
@@ -93,18 +79,20 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     }, [isOpen, listProps])
 
     const handleOnSelect = useCallback((value: any) => {
-        if (typeof onSelect === 'function') {
-            onSelect(value)
+        if (typeof onChange === 'function') {
+            onChange(value)
         }
 
         setIsOpen(false)
-    }, [onSelect])
+    }, [onChange])
 
     return (
         <>
             <Button
                 ref={setTriggerRef}
                 {...triggerProps}
+                variant={variant}
+                size={size}
                 onClick={toggleOpen}
             >
                 {label}
@@ -112,29 +100,39 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                 <Styled.Icon $isOpen={isOpen} />
             </Button>
 
-            <Styled.Popover
+            <Menu
                 {...filterdProps}
                 ref={undefined}
-                style={{
-                    ...filterdProps.style,
-                    overflow: 'unset'
-                }}
-                overlayProps={overlayProps}
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                listProps={{
+                    ...listProps,
+                    onSelect: handleOnSelect,
+                    onKeyDown: handleOnKeyDown
+                }}
             >
-                <Styled.Container>
-                    <List
-                        ref={setListRef}
-                        {...listProps}
-                        onSelect={handleOnSelect}
-                        onKeyDown={handleOnKeyDown}
-                    >
-                        {children}
-                    </List>
-                </Styled.Container>
-            </Styled.Popover>
+                {
+                    Children.map(children, (child) => {
+                        if (child) {
+                            const childElement = child as ReactElement<ListItemProps>
+            
+                            const childProps = {
+                                ...childElement.props,
+                                selected: value !== undefined && value === childElement.props?.value
+                            }
+
+                            return (
+                                cloneElement(childElement, childProps)
+                            )
+                        } else {
+                            return (
+                                null
+                            )
+                        }
+                    })
+                }
+            </Menu>
         </>
     )
 })

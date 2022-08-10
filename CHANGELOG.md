@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.0...v0.21.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* Added the missing disabled prop and button type to the Select ([60ff335](http://bitbucket.org/gotamedia/fluffy/commit/60ff3350c3c8a6cf3eeddd0a632a89a4f90f0be3))
+
+## [0.21.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.20.0...v0.21.0) (2022-08-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic Menu component
+* Added variant/size to Select
+* Added variant/size to Dropdown
+
+### Features
+
+* Added basic Menu component ([39a69a8](http://bitbucket.org/gotamedia/fluffy/commit/39a69a895dcd9d11a77ce6f47281bc716f8a240f))
+* Added variant/size to Dropdown ([e4458a9](http://bitbucket.org/gotamedia/fluffy/commit/e4458a9733d08bed452aa58770cd9a7162c56a3f))
+* Added variant/size to Select ([e04ed9c](http://bitbucket.org/gotamedia/fluffy/commit/e04ed9c693c587c869db74209852a9f76cdd7cc8))
+* Utilised Menu component in Dropdown/Select ([6278005](http://bitbucket.org/gotamedia/fluffy/commit/62780052958735f252fa0c0130302d085d79f1de))
+
+
+### Bug Fixes
+
+* Removed unused "label" prop from Select types ([b8d3c07](http://bitbucket.org/gotamedia/fluffy/commit/b8d3c07bf4a8619bfef3156f2cbfa67c27be421d))
+* Replaced onSelect with onChange callback for Dropdown and allow passing value prop to Dropdown ([99effd1](http://bitbucket.org/gotamedia/fluffy/commit/99effd1a5bdaf8523bd6c766516eaeb73a57a277))
+
 ## [0.20.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.19.0...v0.20.0) (2022-08-08)
 
 
