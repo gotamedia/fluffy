@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.1...v0.21.2) (2022-08-10)
+
+
+### Bug Fixes
+
+* fixed pill variant types ([801cdae](http://bitbucket.org/gotamedia/fluffy/commit/801cdae0cf47b26db23a50f22a67a8ff91071abd))
+
 ### [0.21.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.0...v0.21.1) (2022-08-10)
 
 
