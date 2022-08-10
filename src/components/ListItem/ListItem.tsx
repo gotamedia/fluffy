@@ -32,6 +32,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         value,
         onSelect,
         onClick,
+        children,
         ...DOMProps
     } = props
 
@@ -108,6 +109,8 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                         )
                     }
                 </Styled.TextWrapper>
+
+                {children}
             </Styled.InnerWrapper>
 
             {

@@ -2,12 +2,6 @@ import styled from 'styled-components'
 
 import ButtonComponent from '../Button'
 import IconComponent, { Icons } from '../Icon'
-import PopoverComponent from '../Popover'
-import ContainerComponent from '../Container'
-
-const Wrapper = styled.div`
-    
-`
 
 const Button = styled(ButtonComponent)`
     > span:first-child {
@@ -29,19 +23,7 @@ const Icon = styled(IconComponent).attrs(({ $isOpen } : { $isOpen: boolean }) =>
 
 `
 
-const Popover = styled(PopoverComponent)`
-
-`
-
-const Container = styled(ContainerComponent)`
-    overflow: auto;
-    height: 100%;
-`
-
 export {
-    Wrapper,
     Button,
-    Icon,
-    Popover,
-    Container
+    Icon
 }

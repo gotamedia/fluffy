@@ -38,7 +38,8 @@ export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
     listProps?: ListProps,
     onChange?: ListItemProps['onSelect'],
     variant?: DropdownVariantType,
-    size?: DropdownSizeType
+    size?: DropdownSizeType,
+    disabled?: boolean
 }
 
 export type DropdownRef = {

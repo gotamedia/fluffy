@@ -3,10 +3,15 @@ import {
     useRef,
     useState,
     useEffect,
-    useCallback
+    useCallback,
+    useMemo
 } from 'react'
 
+import useMenu from './hooks/useMenu'
+import MenuContext from './contexts/MenuContext'
+
 import List from '../List'
+import Popover from '../Popover'
 
 import * as Styled from './style'
 import * as Types from './types'
@@ -25,6 +30,9 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
 
     const previousIsOpenState = useRef(false)
 
+    const menuContext = useMenu()
+
+    const [activeSubMenus, setActiveSubMenus] = useState<string[]>([])
     const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
 
     useEffect(() => {
@@ -66,28 +74,56 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         }
     }, [onClickOutside, overlayProps])
 
+    const handleAddActiveSubMenu = useCallback((id: string) => {
+        setActiveSubMenus(current => [
+            ...current,
+            id
+        ])
+    }, [])
+
+    const handleRemoveActiveSubMenu = useCallback((id: string) => {
+        setActiveSubMenus(current => current.filter(i => i !== id))
+    }, [])
+
+    const menuContextValue = useMemo(() => {
+        return menuContext || {
+            activeSubMenuId: activeSubMenus[activeSubMenus.length -1],
+            onClickOutside: handleOnClickOutside,
+            addSubMenu: handleAddActiveSubMenu,
+            removeSubMenu: handleRemoveActiveSubMenu
+        }
+    }, [
+        menuContext,
+        activeSubMenus,
+        handleOnClickOutside,
+        handleAddActiveSubMenu,
+        handleRemoveActiveSubMenu
+    ])
+
     return (
-        <Styled.Popover
-            ref={ref}
-            {...filterdProps}
-            style={{
-                ...filterdProps.style,
-                overflow: 'unset'
-            }}
-            show={show}
-            anchor={anchor}
-            overlayProps={overlayProps}
-            onClickOutside={handleOnClickOutside}
-        >
-            <Styled.Container>
-                <List
-                    ref={handleListRef}
-                    {...listProps}
-                >
-                    {children}
-                </List>
-            </Styled.Container>
-        </Styled.Popover>
+        <MenuContext.Provider value={menuContextValue}>
+            <Popover
+                ref={ref}
+                {...filterdProps}
+                style={{
+                    ...filterdProps.style,
+                    overflow: 'unset'
+                }}
+                show={show}
+                anchor={anchor}
+                overlayProps={overlayProps}
+                onClickOutside={handleOnClickOutside}
+            >
+                <Styled.Container>
+                    <List
+                        ref={handleListRef}
+                        {...listProps}
+                    >
+                        {children}
+                    </List>
+                </Styled.Container>
+            </Popover>
+        </MenuContext.Provider>
     )
 })
 

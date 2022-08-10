@@ -108,12 +108,14 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
             switch (event.code) {
                 case 'ArrowUp': {
                     event.preventDefault()
+                    event.stopPropagation()
                     handleOnArrowUp()
                     break
                 }
     
                 case 'ArrowDown': {
                     event.preventDefault()
+                    event.stopPropagation()
                     handleOnArrowDown()
                     break
                 }
@@ -121,6 +123,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
                 case 'Enter':
                 case 'Space': {
                     event.preventDefault()
+                    event.stopPropagation()
                     handleOnSelect()
                     break
                 }

@@ -12,7 +12,8 @@ import type * as Types from './types'
 
 const InnerWrapper = styled.div<{ $type?: Types.ListItemProps['type'], $hasIcon: boolean }>`
     display: flex;
-    margin: 0 30px 10px 0px;
+    margin: 0 0 10px 0px;
+    padding-right: 30px;
     position: relative;
 
     ${({ $type }) => types[$type || 'normal']};
@@ -92,6 +93,7 @@ const Wrapper = styled.div<WrapperProps>`
     }
 
     ${({ $targeted }) => $targeted && css`
+        cursor: default;
         background-color: ${({ theme }) => tint(0.1, theme.colors.brand)};
 
         ${Icon} {
