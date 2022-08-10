@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.22.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.2...v0.22.0) (2022-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+
+### Features
+
+* Added "uuid" lib and exposed as a package ([9db70ef](http://bitbucket.org/gotamedia/fluffy/commit/9db70ef730d3e2da5b8e89693420482652a9075c))
+* Added "uuid" lib and exposed as a package ([a0c1792](http://bitbucket.org/gotamedia/fluffy/commit/a0c1792c702a6524cf74171115cda55d3a90f625))
+* Added basic SubMenu component ([08444bd](http://bitbucket.org/gotamedia/fluffy/commit/08444bdd60203116d0fbef538c430d8a186efc32))
+* Added basic SubMenu component ([48cf40d](http://bitbucket.org/gotamedia/fluffy/commit/48cf40d8b62c6f50949ed5ecf673bd233718af85))
+
+
+### Bug Fixes
+
+* Added disabled prop to DropDown ([b5653ee](http://bitbucket.org/gotamedia/fluffy/commit/b5653ee78116508479fd5eab04bd567ddce1dee4))
+* correcting height on pill ([e7b0bf2](http://bitbucket.org/gotamedia/fluffy/commit/e7b0bf2b5c8e6cbb64d4ed42308eaacfe61d26ad))
+* DatePicker css style by adding the css-rules into the styled Wrapper ([9fae1cb](http://bitbucket.org/gotamedia/fluffy/commit/9fae1cbdf4b30e8c6bc85c07c0ada8ec7660d4b6))
+* Minor fixes and cleanup ([68f8d58](http://bitbucket.org/gotamedia/fluffy/commit/68f8d58b8ad7688159abbf3eed3460c7f142e3ce))
+* Minor fixes and cleanup ([eb24115](http://bitbucket.org/gotamedia/fluffy/commit/eb2411592e4a6d513fdc56d302f3405dce2257c4))
+* **story:** Updated Manu types and story ([595459d](http://bitbucket.org/gotamedia/fluffy/commit/595459d8cf6045f945d2b1c5eddf57e59b14b5a7))
+* **story:** Updated Manu types and story ([2b5a3a6](http://bitbucket.org/gotamedia/fluffy/commit/2b5a3a6f9193e9b29aecace8d3565e2d7067c712))
+
 ### [0.21.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.1...v0.21.2) (2022-08-10)
 
 
