@@ -18,7 +18,6 @@ const Pill: Types.PillComponent = forwardRef((props, ref) => {
             $variant={variant}
             {...DOMProps}
         >
-
             {children}
         </Styled.Pill>
     )
