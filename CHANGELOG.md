@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.21.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.0...v0.21.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* Added the missing disabled prop and button type to the Select ([60ff335](http://bitbucket.org/gotamedia/fluffy/commit/60ff3350c3c8a6cf3eeddd0a632a89a4f90f0be3))
+
 ## [0.21.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.20.0...v0.21.0) (2022-08-09)
 
 
