@@ -1,0 +1,10 @@
+import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from "react"
+
+interface TableRowProps
+    extends DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
+    hover?: boolean
+}
+
+type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
+
+export type { TableRow }
