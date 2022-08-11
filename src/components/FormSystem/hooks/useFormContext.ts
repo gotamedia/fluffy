@@ -4,25 +4,13 @@ import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
 
-const getFormDataState = (
-    value: FSTypes.FormData | undefined,
-    defaultValue: FSTypes.FormData | undefined
-) => {
+const getFormDataState = (initialValue: FSTypes.FormData | undefined) => {
     if (
+        initialValue === undefined ||
         (
-            value === undefined &&
-            defaultValue === undefined
-        ) || (
-            typeof value === "object" &&
+            typeof initialValue === "object" &&
             Object
-                .values(value)
-                .filter(Boolean)
-                .filter((field) => field.value && field.value !== "")
-                .length === 0
-        ) || (
-            typeof defaultValue === "object" &&
-            Object
-                .values(defaultValue)
+                .values(initialValue)
                 .filter(Boolean)
                 .filter((field) => field.value && field.value !== "")
                 .length === 0
@@ -35,31 +23,23 @@ const getFormDataState = (
 }
 
 const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
-    const { defaultValue, disabled, i18n, onCancel, onChange, onDelete, value } = props
+    const { defaultValue, disabled, i18n, initialValue, onCancel, onChange, onDelete } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
         Reducers.FormContextReducer,
         {
-            formData: (value || defaultValue || {}),
+            formData: (initialValue || defaultValue || {}),
             i18n,
             isCanceling: false,
             isDeleting: false,
             isSubmitting: false,
             onCancel,
             onDelete,
-            type: getFormDataState(value, defaultValue),
+            type: getFormDataState(initialValue),
             validations: { field: [], form: [] }
         }
     )
     const previousState = usePrevious(state.validations)
-
-    useEffect(() => {
-        // check to not overwrite the defaultValue if value is not given
-        if (typeof value === "object") {
-            // controlled way
-            dispatch({ type: Types.FormContext.ReducerActionTypes.SetFormData, payload: value })
-        }
-    }, [value])
 
     const generateFieldValidationMessages = useCallback((
         fieldName: string,
@@ -227,15 +207,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         requiresValidation: boolean = false,
         isManualChange: boolean = false
     ) => {
-        if (!value) {
-            // uncontrolled way
-            dispatch({
-                type: Types.FormContext.ReducerActionTypes.SetFormDataFieldValue,
-                payload: { fieldName, value: fieldValue, requiresValidation, isManualChange }
-            })
-        }
+        dispatch({
+            type: Types.FormContext.ReducerActionTypes.SetFormDataFieldValue,
+            payload: { fieldName, value: fieldValue, requiresValidation, isManualChange }
+        })
 
-        // onChange is triggered in both ways
         if (onChange) {
             const formData = {
                 ...state.formData,
@@ -261,7 +237,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 }
             )
         }
-    }, [generateFieldValidationMessages, onChange, state.formData, value])
+    }, [generateFieldValidationMessages, onChange, state.formData])
 
     const setIsCanceling = useCallback((isCanceling: boolean) => {
         dispatch({

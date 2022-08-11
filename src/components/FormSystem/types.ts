@@ -114,13 +114,13 @@ namespace FormContext {
     }
 
     export interface HookProps {
-        i18n: I18n
         defaultValue?: FormData
         disabled?: boolean
+        i18n: I18n
+        initialValue?: FormData
         onCancel?: Events.onCancel
         onChange?: Events.onChange
         onDelete?: Events.onDelete
-        value?: FormData
     }
 
     export interface Value extends ReducerState {
