@@ -74,6 +74,9 @@ export { default as IconButton } from '@components/IconButton'
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
 
+export * from '@components/Collapsible'
+export { default as Collapsible } from '@components/Collapsible'
+
 export * from '@components/Icon'
 export { default as Icon } from '@components/Icon'
 
