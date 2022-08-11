@@ -34,7 +34,7 @@ const ValidationMessages: Types.ValidationMessagesComponent = () => {
         )
     }, [fieldName, formData])
 
-    return (
+    return groups.length === 0 ? null : (
         <Styled.Wrapper>
             {groups.map((group, index) => (
                 <ValidationMessagesGroup key={index} validationMessages={group} />
