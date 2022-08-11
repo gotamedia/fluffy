@@ -182,6 +182,10 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         setFilterValue(value)
     }, [])
 
+    const handleOnFilterClear = useCallback(() => {
+        setFilterValue('')
+    }, [])
+
     const hadnleOnInputKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
         if (typeof onKeyDown === 'function') {
             onKeyDown(event)
@@ -227,12 +231,16 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         >
             {
                 showFilter && (
-                    <Styled.Input
-                        ref={filterRef}
-                        value={filterValue}
-                        onValueChange={handleOnFilterValueChange}
-                        onKeyDown={hadnleOnInputKeyDown}
-                    />
+                    <Styled.InputGroup>
+                        <Styled.Input
+                            ref={filterRef}
+                            value={filterValue}
+                            onValueChange={handleOnFilterValueChange}
+                            onKeyDown={hadnleOnInputKeyDown}
+                        />
+
+                        <Styled.ClearIcon onClick={handleOnFilterClear}/>
+                    </Styled.InputGroup>
                 )
             }
 

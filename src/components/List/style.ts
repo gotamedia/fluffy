@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
+import InputGroupComponent from '../InputGroup'
 import InputComponent from '../Input'
+import Icon, { Icons, IconSizes } from '../Icon'
 
 const Wrapper = styled.div`
     outline: none;
@@ -9,16 +11,30 @@ const Wrapper = styled.div`
     flex-direction: column;
 `
 
+const InputGroup = styled(InputGroupComponent)`
+    margin-bottom: 5px;
+`
+
 const Input = styled(InputComponent)`
     min-width: unset;
-    margin-bottom: 5px;
 
     &:focus {
         box-shadow: unset;
     }
 `
 
+const ClearIcon = styled(Icon).attrs(() => {
+    return {
+        icon: Icons.Cross,
+        size: IconSizes.Tiny
+    }
+})`
+    
+`
+
 export {
     Wrapper,
-    Input
+    InputGroup,
+    Input,
+    ClearIcon
 }
