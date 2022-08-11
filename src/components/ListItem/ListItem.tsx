@@ -8,7 +8,6 @@ import {
 
 import scrollIntoView from 'scroll-into-view-if-needed'
 
-import { Icons } from '../Icon'
 import {
     ListItemSizes,
     ListItemTypes
@@ -63,9 +62,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         handleOnSelect()
     }, [onClick, handleOnSelect])
 
-    const isTypeSelect = selected && type === ListItemTypes.Select
-
-    const listItemIcon = isTypeSelect ? Icons.Checkmark : icon
+    const isTypeSelect = type === ListItemTypes.Select
 
     return (
         <Styled.Wrapper
@@ -81,8 +78,19 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                 $hasIcon={!!icon}
             >
                 {
-                    listItemIcon ? (
-                        <Styled.Icon icon={listItemIcon} />
+                    isTypeSelect && selected ? (
+                        <Styled.CheckIcon />
+                    ) : (
+                        null
+                    )
+                }
+
+                {
+                    icon ? (
+                        <Styled.Icon
+                            icon={icon}
+                            $isTypeSelect={isTypeSelect}
+                        />
                     ) : (
                         null
                     )
