@@ -54,6 +54,7 @@ const Required: Types.RequiredComponent = (props) => {
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
+            setIsRequired(false)
         }
     }, [addValidation, removeValidation, setIsRequired, uuid, validation])
 
