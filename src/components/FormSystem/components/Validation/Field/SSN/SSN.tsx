@@ -38,7 +38,7 @@ const SSN: Types.SSNComponent = (props) => {
             if (minAge) {
                 const age = getAgeFromSSN(String(value))
 
-                if (!age || age > minAge) {
+                if (typeof age !== "number" || age >= minAge) {
                     return []
                 } else {
                     textKey = "textMinAge"
