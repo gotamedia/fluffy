@@ -23,5 +23,5 @@ const Container = styled(ContainerComponent)`
 export {
     Wrapper,
     Icon,
-    Container
+    Container,
 }

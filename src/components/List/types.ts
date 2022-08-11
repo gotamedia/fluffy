@@ -11,7 +11,8 @@ export interface ListProps extends HTMLAttributes<HTMLDivElement> {
     border?: ListItemProps['border'],
     type?: ListItemProps['type'],
     onSelect?: ListItemProps['onSelect'],
-    allowKeyboardNavigation?: boolean
+    allowKeyboardNavigation?: boolean,
+    showFilter?: boolean
 }
 
 export type ListRef = HTMLDivElement
