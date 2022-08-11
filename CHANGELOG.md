@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.24.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.23.0...v0.24.0) (2022-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added clear filter icon to filter input in List
+* Support rendering an icon with select ListItem
+* Added filter functionality for List/Select components
+
+### Features
+
+* Added clear filter icon to filter input in List ([95e95ba](http://bitbucket.org/gotamedia/fluffy/commit/95e95baf7f5a7c5baec4a429178e3ead01d9d345))
+* Added filter functionality for List/Select components ([196c584](http://bitbucket.org/gotamedia/fluffy/commit/196c5842f7c2aff3aa7b5239a62cca5cd02188c2))
+* Support rendering an icon with select ListItem ([3b0b82a](http://bitbucket.org/gotamedia/fluffy/commit/3b0b82af5ed07d61bc40a341520b2aa8ee15514b))
+
+
+### Bug Fixes
+
+* **ci:** Updated README ([2cc4dfe](http://bitbucket.org/gotamedia/fluffy/commit/2cc4dfe0d1f0af8db7135b6457f26c503343975e))
+* Export name for uuid package in index file ([698cbf4](http://bitbucket.org/gotamedia/fluffy/commit/698cbf4b9f92487bc8e125750ae130246174ffb2))
+
 ## [0.23.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.2...v0.23.0) (2022-08-10)
 
 
