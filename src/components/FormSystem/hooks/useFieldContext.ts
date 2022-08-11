@@ -61,6 +61,10 @@ const useFieldContext = (): Types.FieldContext.Value => {
         })
     }, [getFieldLabel])
 
+    const setShowDefaultLabel = useCallback((showDefaultLabel: boolean) => {
+        dispatch({ type: Types.FieldContext.ReducerActionTypes.SetShowDefaultLabel, payload: showDefaultLabel })
+    }, [])
+
     const terminate = useCallback((fieldName: string) => {
         terminateField(fieldName)
     }, [terminateField])
@@ -78,6 +82,8 @@ const useFieldContext = (): Types.FieldContext.Value => {
         removeValidation,
         setIsRequired,
         setFieldName,
+        setShowDefaultLabel,
+        showDefaultLabel: state.showDefaultLabel,
         terminate,
         validate
     }), [
@@ -86,9 +92,11 @@ const useFieldContext = (): Types.FieldContext.Value => {
         removeValidation,
         setFieldName,
         setIsRequired,
+        setShowDefaultLabel,
         state.fieldName,
         state.isRequired,
         state.label,
+        state.showDefaultLabel,
         terminate,
         validate
     ])

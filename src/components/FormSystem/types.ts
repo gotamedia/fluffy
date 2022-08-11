@@ -220,6 +220,8 @@ namespace FieldContext {
         removeValidation: (validationId: string) => void
         setIsRequired: (isRequired: boolean) => void
         setFieldName: (fieldName: string) => void
+        setShowDefaultLabel: (show: boolean) => void
+        showDefaultLabel: boolean | undefined
         terminate: (fieldName: string) => void
         validate: (formData?: FormData, instantUpdateOnly?: boolean) => void
     }
@@ -228,11 +230,13 @@ namespace FieldContext {
         fieldName?: string
         label?: string
         isRequired?: boolean
+        showDefaultLabel?: boolean
     }
 
     export enum ReducerActionTypes {
         SetFieldName = "SET_FIELD_NAME",
-        SetIsRequired = "SET_IS_REQUIRED"
+        SetIsRequired = "SET_IS_REQUIRED",
+        SetShowDefaultLabel = "SET_SHOW_DEFAULT_LABEL"
     }
 
     export type ReducerAction = Action<ReducerActionTypes>

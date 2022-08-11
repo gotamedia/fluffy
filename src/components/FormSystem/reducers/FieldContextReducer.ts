@@ -13,6 +13,11 @@ const FieldContextReducer: Types.FieldContext.Reducer = (state, action) => {
                 fieldName: action?.payload?.fieldName,
                 label: action?.payload?.label
             }
+        case Types.FieldContext.ReducerActionTypes.SetShowDefaultLabel:
+            return {
+                ...state,
+                showDefaultLabel: action?.payload
+            }
         default:
             return { ...state }
     }

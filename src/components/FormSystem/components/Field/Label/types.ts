@@ -1,6 +1,6 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
-export interface LabelProps { }
+export type LabelProps = PropsWithChildren<{ }>
 
 export type LabelComponent = React.FC<LabelProps>
 

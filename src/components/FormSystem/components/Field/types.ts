@@ -1,3 +1,4 @@
+import Label from "@components/FormSystem/components/Field/Label"
 import React, { PropsWithChildren } from "react"
 
 export type StyledFieldProps = {
@@ -10,4 +11,6 @@ export type FieldProps = PropsWithChildren<{
 
 export type FieldComponent = React.FC<FieldProps>
 
-export type ComponentType = FieldComponent
+export type ComponentType = FieldComponent & {
+    Label: typeof Label
+}
