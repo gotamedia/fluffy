@@ -2,6 +2,8 @@ import React from "react"
 import * as Types from "../types"
 
 const FieldContext = React.createContext<Types.FieldContext.Value>({
+    addAdditionalInputProp: () => { },
+    additionalInputProps: { },
     addValidation: () => { },
     initialize: () => { },
     isRequired: false,
@@ -10,6 +12,8 @@ const FieldContext = React.createContext<Types.FieldContext.Value>({
     removeValidation: () => { },
     setIsRequired: () => { },
     setFieldName: () => { },
+    setShowDefaultLabel: () => { },
+    showDefaultLabel: true,
     terminate: () => { },
     validate: () => []
 })

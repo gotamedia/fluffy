@@ -17,6 +17,7 @@ const Password: Types.PasswordComponent = (props) => {
     } = props
 
     const {
+        additionalInputProps,
         clearValidationMessages,
         disabled: disabledCombined,
         onBlur: inputLogicOnBlur,
@@ -53,6 +54,7 @@ const Password: Types.PasswordComponent = (props) => {
         <>
             <InputGroup>
                 <Input
+                    maxLength={additionalInputProps?.maxLength}
                     disabled={disabledCombined}
                     id={name}
                     name={name}

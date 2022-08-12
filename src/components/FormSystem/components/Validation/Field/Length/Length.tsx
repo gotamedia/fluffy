@@ -24,7 +24,7 @@ const Length: Types.LengthComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const { addAdditionalInputProp, addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     useEffect(() => {
         // check for undefined to allow 0 as well
@@ -32,6 +32,10 @@ const Length: Types.LengthComponent = (props) => {
             console.error("Warning: You provided a `exactly` prop to a FS.Validation.Length while also providing a `min` and/or `max` prop")
         }
     }, [exactly, max, min])
+
+    useEffect(() => {
+        addAdditionalInputProp("maxLength", exactly || max ? exactly || max : undefined)
+    }, [addAdditionalInputProp, exactly, max])
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (typeof value !== "string") {

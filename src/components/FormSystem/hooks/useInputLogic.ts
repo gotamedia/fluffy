@@ -23,6 +23,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
     } = useContext(Contexts.FormContext)
 
     const {
+        additionalInputProps,
         fieldName,
         initialize,
         setFieldName,
@@ -65,6 +66,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
     }, [formData, validate])
 
     return {
+        additionalInputProps: additionalInputProps || { },
         clearValidationMessages,
         disabled: Boolean(formDisabled || isActing || disabled),
         getFieldValue,

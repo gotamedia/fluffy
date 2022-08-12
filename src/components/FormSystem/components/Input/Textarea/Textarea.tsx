@@ -8,6 +8,7 @@ const Textarea: Types.TextareaComponent = (props) => {
     const { children, disabled, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props
 
     const {
+        additionalInputProps,
         clearValidationMessages,
         disabled: disabledCombined,
         onBlur: inputLogicOnBlur,
@@ -37,6 +38,7 @@ const Textarea: Types.TextareaComponent = (props) => {
     return (
         <>
             <PlainTextarea
+                maxLength={additionalInputProps?.maxLength}
                 disabled={disabledCombined}
                 id={name}
                 name={name}

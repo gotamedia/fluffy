@@ -33,6 +33,10 @@ interface FormData {
     [key: string]: FormDataField
 }
 
+interface AdditionalInputProps {
+    maxLength?: number
+}
+
 namespace InputLogic {
     export interface HookProps {
         defaultValue: FormDataValue,
@@ -41,19 +45,20 @@ namespace InputLogic {
     }
 
     export interface Value {
-        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void,
-        disabled: boolean,
-        getFieldValue: (fieldName: string) => FormDataValue | undefined,
-        onBlur: () => void,
+        additionalInputProps: AdditionalInputProps
+        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
+        disabled: boolean
+        getFieldValue: (fieldName: string) => FormDataValue | undefined
+        onBlur: () => void
         setFieldValue: (
             fieldName: string,
             value: FormDataValue,
             requiresValidation?: boolean,
             isManualChange?: boolean
         ) => void
-        theme: DefaultTheme,
-        validateInstantUpdate: (fieldName: string, fieldValue: FormDataValue) => void,
-        validationType: Validation.Types | undefined,
+        theme: DefaultTheme
+        validateInstantUpdate: (fieldName: string, fieldValue: FormDataValue) => void
+        validationType: Validation.Types | undefined
         value: FormDataValue | undefined
     }
 }
@@ -207,26 +212,27 @@ namespace FormContext {
 }
 
 namespace FieldContext {
-    export interface Value {
+    export interface Value extends ReducerState {
+        addAdditionalInputProp: (
+            key: keyof AdditionalInputProps,
+            value: any
+        ) => void
         addValidation: (
             validationId: string,
             validationFunction: Validation.Field.Function,
             instantUpdate?: boolean
         ) => void
         initialize: (fieldName: string, defaultValue: FormDataValue) => void
-        isRequired?: boolean
-        label: string
-        fieldName?: string
         removeValidation: (validationId: string) => void
         setIsRequired: (isRequired: boolean) => void
         setFieldName: (fieldName: string) => void
         setShowDefaultLabel: (show: boolean) => void
-        showDefaultLabel: boolean | undefined
         terminate: (fieldName: string) => void
         validate: (formData?: FormData, instantUpdateOnly?: boolean) => void
     }
 
     export interface ReducerState {
+        additionalInputProps?: AdditionalInputProps
         fieldName?: string
         label?: string
         isRequired?: boolean
@@ -234,6 +240,7 @@ namespace FieldContext {
     }
 
     export enum ReducerActionTypes {
+        AddAdditionalInputProp = "ADD_INITIAL_INPUT_PROP",
         SetFieldName = "SET_FIELD_NAME",
         SetIsRequired = "SET_IS_REQUIRED",
         SetShowDefaultLabel = "SET_SHOW_DEFAULT_LABEL"
@@ -295,6 +302,7 @@ namespace Validation {
 }
 
 export {
+    AdditionalInputProps,
     Button,
     Component,
     Field,

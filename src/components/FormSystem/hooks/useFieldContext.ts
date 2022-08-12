@@ -20,6 +20,13 @@ const useFieldContext = (): Types.FieldContext.Value => {
         { }
     )
 
+    const addAdditionalInputProp = useCallback((
+        key: keyof Types.AdditionalInputProps,
+        value: any
+    ) => {
+        dispatch({ type: Types.FieldContext.ReducerActionTypes.AddAdditionalInputProp, payload: { key, value }})
+    }, [])
+
     const addValidation = useCallback((
         validationId: string,
         validationFunction: Types.Validation.Field.Function,
@@ -74,6 +81,8 @@ const useFieldContext = (): Types.FieldContext.Value => {
     }, [getFormData, state?.fieldName, validateField])
 
     return useMemo(() => ({
+        addAdditionalInputProp,
+        additionalInputProps: state.additionalInputProps,
         addValidation,
         initialize,
         isRequired: state.isRequired,
@@ -87,12 +96,14 @@ const useFieldContext = (): Types.FieldContext.Value => {
         terminate,
         validate
     }), [
+        addAdditionalInputProp,
         addValidation,
         initialize,
         removeValidation,
         setFieldName,
         setIsRequired,
         setShowDefaultLabel,
+        state.additionalInputProps,
         state.fieldName,
         state.isRequired,
         state.label,

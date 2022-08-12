@@ -7,6 +7,7 @@ const Text: Types.TextComponent = (props) => {
     const { children, disabled, name, onBlur: propsOnBlur, onChange: propsOnChange, ...plainTextProps  } = props
 
     const {
+        additionalInputProps,
         clearValidationMessages,
         disabled: disabledCombined,
         onBlur: inputLogicOnBlur,
@@ -36,6 +37,7 @@ const Text: Types.TextComponent = (props) => {
     return (
         <>
             <Input
+                maxLength={additionalInputProps?.maxLength}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
