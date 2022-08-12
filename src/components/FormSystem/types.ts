@@ -213,9 +213,9 @@ namespace FormContext {
 
 namespace FieldContext {
     export interface Value extends ReducerState {
-        addAdditionalInputProp: (
-            key: keyof AdditionalInputProps,
-            value: any
+        addAdditionalInputProp: <T extends keyof AdditionalInputProps>(
+            key: T,
+            value: AdditionalInputProps[T]
         ) => void
         addValidation: (
             validationId: string,

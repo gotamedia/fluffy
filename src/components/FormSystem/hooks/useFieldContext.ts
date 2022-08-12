@@ -20,9 +20,9 @@ const useFieldContext = (): Types.FieldContext.Value => {
         { }
     )
 
-    const addAdditionalInputProp = useCallback((
-        key: keyof Types.AdditionalInputProps,
-        value: any
+    const addAdditionalInputProp = useCallback(<T extends keyof Types.AdditionalInputProps>(
+        key: T,
+        value: Types.AdditionalInputProps[T]
     ) => {
         dispatch({ type: Types.FieldContext.ReducerActionTypes.AddAdditionalInputProp, payload: { key, value }})
     }, [])
