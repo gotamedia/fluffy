@@ -1,13 +1,16 @@
-import {
+import type {
     ForwardRefExoticComponent,
     HTMLAttributes,
-    ReactNode,
     RefAttributes
 } from 'react'
 
+import type { OverlayProps } from '../Overlay'
+
 export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-    children?: ReactNode,
-    onClose?: () => void
+    onClose?: () => void,
+    withCloseIcon?: boolean,
+    overlayProps?: OverlayProps,
+    closeOnClickOutside?: boolean
 }
 
 export type ModalRef = HTMLDivElement

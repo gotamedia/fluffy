@@ -2,14 +2,10 @@ import styled, { css } from 'styled-components'
 
 import { themeHelpers } from '@utils/theme'
 
-import OverlayComponent, { OverlayVariants } from '../Overlay'
+import OverlayComponent from '../Overlay'
 import Icon, { Icons } from '../Icon'
 
-const Overlay = styled(OverlayComponent).attrs(() => {
-    return {
-        variant: OverlayVariants.Dim
-    }
-})`
+const Overlay = styled(OverlayComponent)`
     display: flex;
 `
 
