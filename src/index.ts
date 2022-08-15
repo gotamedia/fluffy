@@ -57,6 +57,9 @@ export { default as useIsomorphicLayoutEffect } from '@hooks/useIsomorphicLayout
 export * from '@hooks/useAnchor'
 export { default as useAnchor } from '@hooks/useAnchor'
 
+export * from '@hooks/useRect'
+export { default as useRect } from '@hooks/useRect'
+
 // <==== Hooks
 
 
