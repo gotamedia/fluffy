@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.25.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.24.0...v0.25.0) (2022-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Exposed "popmotion" lib as a fluffy package
+* Added basic Sheet component
+* Added Modal component
+* Added FocusTrap component
+
+### Features
+
+* Added basic Sheet component ([c3abb5e](http://bitbucket.org/gotamedia/fluffy/commit/c3abb5e3a03971a2bf6b840e85f37f72bd91918c))
+* Added FocusTrap component ([394a79d](http://bitbucket.org/gotamedia/fluffy/commit/394a79d877ff0ee57052875187c82eb475973475))
+* Added Modal component ([beb5bc4](http://bitbucket.org/gotamedia/fluffy/commit/beb5bc480f9742cd69f515c4551b6cad03573dda))
+* Exposed "popmotion" lib as a fluffy package ([f2b1300](http://bitbucket.org/gotamedia/fluffy/commit/f2b13000028662b2dde24d00b2ed8feb7e974ff4))
+
+
+### Bug Fixes
+
+* Ability to render close icon for Modal and added closeOnClickOutside option ([3293c60](http://bitbucket.org/gotamedia/fluffy/commit/3293c609c1987891cf349f4015b63e3735374916))
+* Icon sizes ([db5b741](http://bitbucket.org/gotamedia/fluffy/commit/db5b741634f0a07335b6c3131fe703979e9cbf8d))
+* Overlay types/background ([85efc31](http://bitbucket.org/gotamedia/fluffy/commit/85efc319d3ee963c7c9e09f91968839ce186f689))
+* Types for FocusTrap/Overlay ([866ebdd](http://bitbucket.org/gotamedia/fluffy/commit/866ebdd420caceceb4381e4949629a3f2caf2235))
+* Wrapped Modal's content with FocusTrap ([344ee00](http://bitbucket.org/gotamedia/fluffy/commit/344ee00014a3172191b08860cddb123bb899173c))
+
 ## [0.24.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.23.0...v0.24.0) (2022-08-11)
 
 
