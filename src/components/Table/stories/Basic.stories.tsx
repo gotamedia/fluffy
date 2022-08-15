@@ -1,4 +1,3 @@
-import React from "react"
 import TableBody from "../components/Body"
 import TableCaption from "../components/Caption"
 import TableCell from "../components/Cell"
@@ -6,7 +5,7 @@ import TableFoot from "../components/Foot"
 import TableHead from "../components/Head"
 import TableRow from "../components/Row"
 import Table from "../components/Table"
-import { default as basicContent } from "./content/basic.json"
+import { default as basicContent } from "../content/basic.json"
 
 const BasicComponent = ({ caption, headRows, bodyRows, footRows }) => (
     <Table>
