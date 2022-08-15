@@ -4,10 +4,14 @@ import { DocsContainer } from './DocsContainer'
 
 import { ThemeProvider } from 'styled-components'
 import { addDecorator } from '@storybook/react'
+import { themes } from '@storybook/theming'
 import { withThemes } from '@react-theming/storybook-addon'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
 import { getTheme } from '../src/utils/theme'
+
+import gotaLogoLight from './gota-logo-light.svg'
+import gotaLogoDark from './gota-logo-dark.svg'
 
 import { GlobalStyle } from './style'
 
@@ -36,6 +40,16 @@ export const parameters = {
                 value: '#ffffff',
             },
         ],
+    },
+    darkMode: {
+        dark: {
+            ...themes.dark,
+            brandImage: gotaLogoLight
+        },
+        light: {
+            ...themes.normal,
+            brandImage: gotaLogoDark,
+        },
     },
     docs: {
         container: DocsContainer

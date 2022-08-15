@@ -1,7 +1,7 @@
 {
   "name": "@gotamedia/fluffy",
   "description": "Fluffy UI",
-  "version": "0.24.0",
+  "version": "0.25.0",
   "private": false,
   "main": "./index.js",
   "module": "./index.js",
@@ -116,6 +116,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "pigeon-maps": "^0.21.0",
     "polished": "^4.2.2",
+    "popmotion": "^11.0.4",
     "react-datepicker": "^4.8.0",
     "react-intersection-observer": "^9.4.0",
     "scroll-into-view-if-needed": "^2.2.29",

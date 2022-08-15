@@ -4,6 +4,7 @@ export * as Polished from 'polished'
 export * as ReactIntersectionObserver from 'react-intersection-observer'
 export { default as ScrollIntoViewIfNeeded } from 'scroll-into-view-if-needed'
 export * as uuid from 'uuid'
+export * as Popmotion from 'popmotion'
 
 // <==== Packages
 
@@ -157,5 +158,14 @@ export { default as Menu } from '@components/Menu'
 
 export * from '@components/SubMenu'
 export { default as SubMenu } from '@components/SubMenu'
+
+export * from '@components/FocusTrap'
+export { default as FocusTrap } from '@components/FocusTrap'
+
+export * from '@components/Modal'
+export { default as Modal } from '@components/Modal'
+
+export * from '@components/Sheet'
+export { default as Sheet } from '@components/Sheet'
 
 // <==== Components

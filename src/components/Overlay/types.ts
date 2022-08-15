@@ -1,7 +1,6 @@
 import {
     ForwardRefExoticComponent,
     HTMLAttributes,
-    ReactNode,
     RefAttributes
 } from 'react'
 
@@ -15,7 +14,6 @@ export type OverlayVariantType = OverlayVariantsType[keyof OverlayVariantsType]
 
 
 export interface OverlayProps extends HTMLAttributes<HTMLDivElement> {
-    children?: ReactNode,
     variant?: OverlayVariantType
 }
 

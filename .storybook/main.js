@@ -13,11 +13,11 @@ module.exports = {
         '../src/**/**/*.stories.@(js|jsx|ts|tsx)'
     ],
     addons: [
+        'storybook-dark-mode',
         '@storybook/addon-links',
         '@storybook/addon-essentials',
         '@storybook/addon-a11y',
-        '@react-theming/storybook-addon',
-        'storybook-dark-mode'
+        '@react-theming/storybook-addon'
     ],
     webpackFinal: async (config) => {
         return {

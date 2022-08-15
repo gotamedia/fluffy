@@ -11,17 +11,17 @@ const small = css`
 `
 
 const normal = css`
-    height: 28px;
+    height: 24px;
     width: auto;
 `
 
 const big = css`
-    height: 35px;
+    height: 28px;
     width: auto;
 `
 
 const huge = css`
-    height: 42px;
+    height: 36px;
     width: auto;
 `
 
