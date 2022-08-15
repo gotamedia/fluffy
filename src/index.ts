@@ -155,4 +155,7 @@ export { default as SubMenu } from '@components/SubMenu'
 export * from '@components/FocusTrap'
 export { default as FocusTrap } from '@components/FocusTrap'
 
+export * from '@components/Modal'
+export { default as Modal } from '@components/Modal'
+
 // <==== Components
