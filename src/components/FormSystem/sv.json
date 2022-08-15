@@ -42,9 +42,12 @@
       }
     },
     "form": {
+      "dateOrder": {
+        "text": "The following dates must be in chronological order: ${fieldNames}!"
+      },
       "sameValue": {
-        "textA": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value",
-        "textB": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value"
+        "textA": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value!",
+        "textB": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value!"
       }
     }
   }

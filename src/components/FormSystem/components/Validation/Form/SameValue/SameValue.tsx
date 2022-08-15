@@ -20,8 +20,7 @@ const SameValue: Types.SameValueComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { i18n: formI18n, getFieldLabel } = useContext(Contexts.FormContext)
-    const { addFormValidation, removeFormValidation } = useContext(Contexts.FormContext)
+    const { addFormValidation, i18n: formI18n, getFieldLabel, removeFormValidation } = useContext(Contexts.FormContext)
 
     const validation = useCallback<FSTypes.Validation.Form.Function>((formData) => {
         if (formData[fieldAName]?.value !== formData[fieldBName]?.value) {

@@ -3,6 +3,7 @@ import { LengthI18n } from "@components/FormSystem/components/Validation/Field/L
 import { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
 import { ValueI18n } from "@components/FormSystem/components/Validation/Field/Value/i18nTypes"
+import { DateOrderI18n } from "@components/FormSystem/components/Validation/Form/DateOrder/i18nTypes"
 import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
@@ -117,6 +118,7 @@ namespace FormContext {
                 value?: ValueI18n
             }
             form?: {
+                dateOrder?: DateOrderI18n
                 sameValue?: SameValueI18n
             }
         }
