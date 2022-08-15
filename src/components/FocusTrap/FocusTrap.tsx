@@ -74,7 +74,7 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
                         }
                     }
                 } else {
-                    console.warn(`Couldn'ref find any focusable elements to trap the focus`)
+                    console.warn(`Couldn't find any focusable elements to trap the focus`)
                 }
             }
         }

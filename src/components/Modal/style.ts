@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 
 import { themeHelpers } from '@utils/theme'
 
+import FocusTrap from '../FocusTrap'
 import OverlayComponent from '../Overlay'
 import Icon, { Icons } from '../Icon'
 
@@ -9,7 +10,7 @@ const Overlay = styled(OverlayComponent)`
     display: flex;
 `
 
-const Wrapper = styled.div`
+const FocusTrapWrapper = styled(FocusTrap)`
     z-index: 900;
     height: auto;
     width: 890px;
@@ -29,7 +30,8 @@ const Wrapper = styled.div`
 
 const CloseIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.Cross
+        icon: Icons.Cross,
+        tabIndex: 0
     }
 })`
     position: absolute;
@@ -40,6 +42,6 @@ const CloseIcon = styled(Icon).attrs(() => {
 
 export {
     Overlay,
-    Wrapper,
+    FocusTrapWrapper,
     CloseIcon
 }

@@ -44,18 +44,18 @@ const Modal: Types.ModalComponent = forwardRef((props, ref) => {
                 variant={OverlayVariants.Dim}
                 onClick={handleOnOverlayClick}
             >
-                <Styled.Wrapper
+                <Styled.FocusTrapWrapper
                     ref={ref}
                     {...DOMProps}
                 >
                     {
                         withCloseIcon && (
-                            <Styled.CloseIcon onClick={onClose}/>
+                            <Styled.CloseIcon onClick={onClose} />
                         )
                     }
 
                     {children}
-                </Styled.Wrapper>
+                </Styled.FocusTrapWrapper>
             </Styled.Overlay>
         </Portal>
     )
