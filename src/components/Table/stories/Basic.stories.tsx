@@ -8,7 +8,7 @@ import TableRow from "../components/Row"
 import Table from "../components/Table"
 import { default as basicContent } from "./content/basic.json"
 
-const Component = ({ caption, headRows, bodyRows, footRows }) => (
+const BasicComponent = ({ caption, headRows, bodyRows, footRows }) => (
     <Table>
         <TableCaption>{caption}</TableCaption>
         <TableHead>
@@ -37,7 +37,7 @@ const Component = ({ caption, headRows, bodyRows, footRows }) => (
     </Table>
 )
 
-const Template = (args) => Component(args)
+const Template = (args) => BasicComponent(args)
 export const Basic = Template.bind({})
 Basic.args = basicContent
 
