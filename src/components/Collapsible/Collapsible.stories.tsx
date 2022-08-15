@@ -1,31 +1,36 @@
-import { Meta } from "@storybook/react"
 import React, { useCallback, useState } from "react"
+import { Meta } from "@storybook/react"
+
 import Button from "../Button/"
 import Image from "../Image/"
-import Component from "./index"
 import * as Types from "./types"
 
-const Basic = (props) => {
-    const [isOpen, setIsOpen] = useState(false)
-    const onClickHandler = useCallback(() => {
-        setIsOpen(!isOpen)
-    }, [isOpen])
+import Collapsible from "./index"
 
-    return (
-        <div>
-            <Button onClick={onClickHandler}>{"test"}</Button>
-            <Component {...props} open={isOpen}>
-                <Image src={"https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg"} />
-            </Component>
-        </div>
-    )
+const Basic = () => {
+	const [isOpen, setIsOpen] = useState(false)
+	const onClickHandler = useCallback(() => {
+		setIsOpen(!isOpen)
+	}, [isOpen])
+
+	return (
+		<div>
+			<Button onClick={onClickHandler}>{"Collapsible"}</Button>
+			<Collapsible open={isOpen}>
+				<Image
+                    src={
+						"https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg"
+                    }
+					/>
+			</Collapsible>
+		</div>
+	)
 }
 
 export const BasicStory = Basic.bind({})
 BasicStory.storyName = "Basic"
 
 export default {
-    title: "Developments/Components/Collapsible",
-    component: Component,
-    argTypes: {},
+	title: "Developments/Components/Collapsible",
+	component: Collapsible
 } as Meta<Types.Collapsible>
