@@ -35,7 +35,9 @@ interface FormData {
 }
 
 interface AdditionalInputProps {
-    maxLength?: number
+    maxLength?: number,
+    minDate?: Date,
+    maxDate?: Date
 }
 
 namespace InputLogic {

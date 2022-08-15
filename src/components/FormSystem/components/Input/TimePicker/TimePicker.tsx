@@ -11,6 +11,7 @@ const TimePicker: Types.TimePickerComponent = (props) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainTimePickerProps } = props
 
     const {
+        additionalInputProps,
         clearValidationMessages,
         disabled: disabledCombined,
         onBlur,
@@ -46,6 +47,8 @@ const TimePicker: Types.TimePickerComponent = (props) => {
                 id={name}
                 name={name}
                 onChange={onChange}
+                minDate={additionalInputProps.minDate}
+                maxDate={additionalInputProps.maxDate}
                 {...buildDatePickerValueProps(value)}
                 {...plainTimePickerProps}
             />

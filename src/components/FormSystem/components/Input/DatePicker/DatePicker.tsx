@@ -11,6 +11,7 @@ const DatePicker: Types.DatePickerComponent = (props) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainDatePickerProps } = props
 
     const {
+        additionalInputProps,
         clearValidationMessages,
         disabled: disabledCombined,
         onBlur,
@@ -46,6 +47,8 @@ const DatePicker: Types.DatePickerComponent = (props) => {
                 id={name}
                 name={name}
                 onChange={onChange}
+                minDate={additionalInputProps.minDate}
+                maxDate={additionalInputProps.maxDate}
                 {...buildDatePickerValueProps(value)}
                 {...plainDatePickerProps}
             />

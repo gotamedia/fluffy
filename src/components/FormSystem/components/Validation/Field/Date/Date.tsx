@@ -25,7 +25,7 @@ const DateValidation: Types.DateComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const { addAdditionalInputProp, addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
 
     const [minDate, setMinDate] = useState<Date | undefined>()
     const [maxDate, setMaxDate] = useState<Date | undefined>()
@@ -57,7 +57,10 @@ const DateValidation: Types.DateComponent = (props) => {
         if (minDate && maxDate && isBefore(maxDate, minDate)) {
             console.error(`Max date (${format(maxDate, "yyyy-MM-dd HH:mm")}) is before min date (${format(minDate, "yyyy-MM-dd HH:mm")}), which can't be validated.`)
         }
-    }, [maxDate, minDate])
+
+        addAdditionalInputProp("minDate", minDate ? minDate : undefined)
+        addAdditionalInputProp("maxDate", maxDate ? maxDate : undefined)
+    }, [addAdditionalInputProp, maxDate, minDate])
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         const validationMessages: FSTypes.Validation.Message[] = []
