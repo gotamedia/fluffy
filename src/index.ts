@@ -4,6 +4,7 @@ export * as Polished from 'polished'
 export * as ReactIntersectionObserver from 'react-intersection-observer'
 export { default as ScrollIntoViewIfNeeded } from 'scroll-into-view-if-needed'
 export * as uuid from 'uuid'
+export * as Popmotion from 'popmotion'
 
 // <==== Packages
 
