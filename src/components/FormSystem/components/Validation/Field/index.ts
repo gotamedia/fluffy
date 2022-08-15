@@ -1,4 +1,5 @@
 import Custom from "./Custom"
+import Date from "./Date"
 import Email from "./Email"
 import Hint from "./Hint"
 import Length from "./Length"
@@ -10,6 +11,7 @@ import Value from "./Value"
 
 export {
     Custom,
+    Date,
     Email,
     Hint,
     Length,

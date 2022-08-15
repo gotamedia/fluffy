@@ -1,6 +1,10 @@
 {
   "validation": {
     "field": {
+      "date": {
+        "min": "\"${label}\" ${valueDate} must not be before ${minDate}",
+        "max": "\"${label}\" ${valueDate} must not be after ${maxDate}"
+      },
       "email": {
         "text": "\"${value}\" is no valid email address!"
       },

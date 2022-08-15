@@ -1,3 +1,4 @@
+import { DateI18n } from "@components/FormSystem/components/Validation/Field/Date/i18nTypes"
 import { LengthI18n } from "@components/FormSystem/components/Validation/Field/Length/i18nTypes"
 import { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
@@ -105,11 +106,12 @@ namespace FormContext {
         },
         validations?: {
             field?: {
-                email?: EmailI18n,
-                length?: LengthI18n,
-                password?: PasswordI18n,
-                required?: RequiredI18n,
-                ssn?: SSNI18n,
+                date?: DateI18n
+                email?: EmailI18n
+                length?: LengthI18n
+                password?: PasswordI18n
+                required?: RequiredI18n
+                ssn?: SSNI18n
                 value?: ValueI18n
             }
             form?: {
