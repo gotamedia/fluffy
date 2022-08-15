@@ -13,7 +13,7 @@ const basePillStyle = css`
     border: 1px solid; 
     border-radius: 3px; 
     padding: 0px 5px;
-    height: 22px;
+    height: 16px;
     font-size: ${({ theme }) => theme.fontSizes[0]}px;
     font-family: ${({ theme }) => theme.fonts.generic[1]};
 `

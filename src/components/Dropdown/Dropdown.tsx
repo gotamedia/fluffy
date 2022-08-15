@@ -31,6 +31,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         onChange,
         variant,
         size,
+        disabled,
         ...filterdProps
     } = props
 
@@ -90,6 +91,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         <>
             <Button
                 ref={setTriggerRef}
+                disabled={disabled}
                 {...triggerProps}
                 variant={variant}
                 size={size}

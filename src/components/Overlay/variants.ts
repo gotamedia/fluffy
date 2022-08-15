@@ -5,7 +5,7 @@ const normal = css`
 `
 
 const dim = css`
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.18);
 `
 
 const variants = {

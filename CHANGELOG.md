@@ -2,6 +2,123 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.25.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.24.0...v0.25.0) (2022-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Exposed "popmotion" lib as a fluffy package
+* Added basic Sheet component
+* Added Modal component
+* Added FocusTrap component
+
+### Features
+
+* Added basic Sheet component ([c3abb5e](http://bitbucket.org/gotamedia/fluffy/commit/c3abb5e3a03971a2bf6b840e85f37f72bd91918c))
+* Added FocusTrap component ([394a79d](http://bitbucket.org/gotamedia/fluffy/commit/394a79d877ff0ee57052875187c82eb475973475))
+* Added Modal component ([beb5bc4](http://bitbucket.org/gotamedia/fluffy/commit/beb5bc480f9742cd69f515c4551b6cad03573dda))
+* Exposed "popmotion" lib as a fluffy package ([f2b1300](http://bitbucket.org/gotamedia/fluffy/commit/f2b13000028662b2dde24d00b2ed8feb7e974ff4))
+
+
+### Bug Fixes
+
+* Ability to render close icon for Modal and added closeOnClickOutside option ([3293c60](http://bitbucket.org/gotamedia/fluffy/commit/3293c609c1987891cf349f4015b63e3735374916))
+* Icon sizes ([db5b741](http://bitbucket.org/gotamedia/fluffy/commit/db5b741634f0a07335b6c3131fe703979e9cbf8d))
+* Overlay types/background ([85efc31](http://bitbucket.org/gotamedia/fluffy/commit/85efc319d3ee963c7c9e09f91968839ce186f689))
+* Types for FocusTrap/Overlay ([866ebdd](http://bitbucket.org/gotamedia/fluffy/commit/866ebdd420caceceb4381e4949629a3f2caf2235))
+* Wrapped Modal's content with FocusTrap ([344ee00](http://bitbucket.org/gotamedia/fluffy/commit/344ee00014a3172191b08860cddb123bb899173c))
+
+## [0.24.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.23.0...v0.24.0) (2022-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added clear filter icon to filter input in List
+* Support rendering an icon with select ListItem
+* Added filter functionality for List/Select components
+
+### Features
+
+* Added clear filter icon to filter input in List ([95e95ba](http://bitbucket.org/gotamedia/fluffy/commit/95e95baf7f5a7c5baec4a429178e3ead01d9d345))
+* Added filter functionality for List/Select components ([196c584](http://bitbucket.org/gotamedia/fluffy/commit/196c5842f7c2aff3aa7b5239a62cca5cd02188c2))
+* Support rendering an icon with select ListItem ([3b0b82a](http://bitbucket.org/gotamedia/fluffy/commit/3b0b82af5ed07d61bc40a341520b2aa8ee15514b))
+
+
+### Bug Fixes
+
+* **ci:** Updated README ([2cc4dfe](http://bitbucket.org/gotamedia/fluffy/commit/2cc4dfe0d1f0af8db7135b6457f26c503343975e))
+* Export name for uuid package in index file ([698cbf4](http://bitbucket.org/gotamedia/fluffy/commit/698cbf4b9f92487bc8e125750ae130246174ffb2))
+
+## [0.23.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.2...v0.23.0) (2022-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+
+### Features
+
+* Added "uuid" lib and exposed as a package ([9db70ef](http://bitbucket.org/gotamedia/fluffy/commit/9db70ef730d3e2da5b8e89693420482652a9075c))
+* Added "uuid" lib and exposed as a package ([a0c1792](http://bitbucket.org/gotamedia/fluffy/commit/a0c1792c702a6524cf74171115cda55d3a90f625))
+* Added basic SubMenu component ([08444bd](http://bitbucket.org/gotamedia/fluffy/commit/08444bdd60203116d0fbef538c430d8a186efc32))
+* Added basic SubMenu component ([48cf40d](http://bitbucket.org/gotamedia/fluffy/commit/48cf40d8b62c6f50949ed5ecf673bd233718af85))
+
+
+### Bug Fixes
+
+* Added disabled prop to DropDown ([b5653ee](http://bitbucket.org/gotamedia/fluffy/commit/b5653ee78116508479fd5eab04bd567ddce1dee4))
+* correcting height on pill ([e7b0bf2](http://bitbucket.org/gotamedia/fluffy/commit/e7b0bf2b5c8e6cbb64d4ed42308eaacfe61d26ad))
+* DatePicker css style by adding the css-rules into the styled Wrapper ([9fae1cb](http://bitbucket.org/gotamedia/fluffy/commit/9fae1cbdf4b30e8c6bc85c07c0ada8ec7660d4b6))
+* Minor fixes and cleanup ([68f8d58](http://bitbucket.org/gotamedia/fluffy/commit/68f8d58b8ad7688159abbf3eed3460c7f142e3ce))
+* Minor fixes and cleanup ([eb24115](http://bitbucket.org/gotamedia/fluffy/commit/eb2411592e4a6d513fdc56d302f3405dce2257c4))
+* **story:** Updated Manu types and story ([595459d](http://bitbucket.org/gotamedia/fluffy/commit/595459d8cf6045f945d2b1c5eddf57e59b14b5a7))
+* **story:** Updated Manu types and story ([2b5a3a6](http://bitbucket.org/gotamedia/fluffy/commit/2b5a3a6f9193e9b29aecace8d3565e2d7067c712))
+
+## [0.22.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.2...v0.22.0) (2022-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+* Added basic SubMenu component
+* Added "uuid" lib and exposed as a package
+
+### Features
+
+* Added "uuid" lib and exposed as a package ([9db70ef](http://bitbucket.org/gotamedia/fluffy/commit/9db70ef730d3e2da5b8e89693420482652a9075c))
+* Added "uuid" lib and exposed as a package ([a0c1792](http://bitbucket.org/gotamedia/fluffy/commit/a0c1792c702a6524cf74171115cda55d3a90f625))
+* Added basic SubMenu component ([08444bd](http://bitbucket.org/gotamedia/fluffy/commit/08444bdd60203116d0fbef538c430d8a186efc32))
+* Added basic SubMenu component ([48cf40d](http://bitbucket.org/gotamedia/fluffy/commit/48cf40d8b62c6f50949ed5ecf673bd233718af85))
+
+
+### Bug Fixes
+
+* Added disabled prop to DropDown ([b5653ee](http://bitbucket.org/gotamedia/fluffy/commit/b5653ee78116508479fd5eab04bd567ddce1dee4))
+* correcting height on pill ([e7b0bf2](http://bitbucket.org/gotamedia/fluffy/commit/e7b0bf2b5c8e6cbb64d4ed42308eaacfe61d26ad))
+* DatePicker css style by adding the css-rules into the styled Wrapper ([9fae1cb](http://bitbucket.org/gotamedia/fluffy/commit/9fae1cbdf4b30e8c6bc85c07c0ada8ec7660d4b6))
+* Minor fixes and cleanup ([68f8d58](http://bitbucket.org/gotamedia/fluffy/commit/68f8d58b8ad7688159abbf3eed3460c7f142e3ce))
+* Minor fixes and cleanup ([eb24115](http://bitbucket.org/gotamedia/fluffy/commit/eb2411592e4a6d513fdc56d302f3405dce2257c4))
+* **story:** Updated Manu types and story ([595459d](http://bitbucket.org/gotamedia/fluffy/commit/595459d8cf6045f945d2b1c5eddf57e59b14b5a7))
+* **story:** Updated Manu types and story ([2b5a3a6](http://bitbucket.org/gotamedia/fluffy/commit/2b5a3a6f9193e9b29aecace8d3565e2d7067c712))
+
+### [0.21.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.1...v0.21.2) (2022-08-10)
+
+
+### Bug Fixes
+
+* fixed pill variant types ([801cdae](http://bitbucket.org/gotamedia/fluffy/commit/801cdae0cf47b26db23a50f22a67a8ff91071abd))
+
+### [0.21.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.21.0...v0.21.1) (2022-08-10)
+
+
+### Bug Fixes
+
+* Added the missing disabled prop and button type to the Select ([60ff335](http://bitbucket.org/gotamedia/fluffy/commit/60ff3350c3c8a6cf3eeddd0a632a89a4f90f0be3))
+
 ## [0.21.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.20.0...v0.21.0) (2022-08-09)
 
 

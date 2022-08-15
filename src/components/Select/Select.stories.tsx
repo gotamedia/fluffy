@@ -66,6 +66,14 @@ MultiSelectStory.args = {
     width: 250
 }
 
+export const FilterSelectStory = Basic.bind({})
+FilterSelectStory.storyName = 'With filter'
+FilterSelectStory.args = {
+    isMultiSelect: true,
+    width: 250,
+    showFilter: true
+}
+
 export default {
     title: 'Developments/Components/Select',
     component: Select,

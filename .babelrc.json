@@ -9,5 +9,8 @@
                 "runtime": "automatic"
             }
         ]
+    ],
+    "plugins": [
+        "transform-css-import-to-string"
     ]
 }
