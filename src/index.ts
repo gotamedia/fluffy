@@ -158,4 +158,7 @@ export { default as FocusTrap } from '@components/FocusTrap'
 export * from '@components/Modal'
 export { default as Modal } from '@components/Modal'
 
+export * from '@components/Sheet'
+export { default as Sheet } from '@components/Sheet'
+
 // <==== Components
