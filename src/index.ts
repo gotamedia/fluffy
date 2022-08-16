@@ -162,4 +162,7 @@ export { default as Modal } from '@components/Modal'
 export * from '@components/Sheet'
 export { default as Sheet } from '@components/Sheet'
 
+export * from '@components/Overlay'
+export { default as Overlay } from '@components/Overlay'
+
 // <==== Components
