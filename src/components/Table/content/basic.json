@@ -1,0 +1,43 @@
+{
+    "caption": "Sport League Stats",
+    "headRows": [
+        {
+            "id": "name",
+            "label": "Team"
+        },
+        {
+            "id": "wins",
+            "label": "Winning Games"
+        },
+        {
+            "id": "score",
+            "label": "Total Score"
+        }
+    ],
+    "bodyRows": [
+        {
+            "name": "Team 1",
+            "wins": "5",
+            "score": "10"
+        },
+        {
+            "name": "Team 2",
+            "wins": "2",
+            "score": "3"
+        }
+    ],
+    "footRows": [
+        {
+            "id": "total",
+            "label": "Total:"
+        },
+        {
+            "id": "win",
+            "label": "7"
+        },
+        {
+            "id": "score",
+            "label": "13"
+        }
+    ]
+}
