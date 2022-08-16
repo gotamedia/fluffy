@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.26.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.26.0..v0.25.0) (2022-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Component - Table
+
+### Features
+
+* Component - Table ([b37edf7](http://bitbucket.org/gotamedia/fluffy/commits/b37edf7d21af7af091759b1f121e3fe6f0a2cedb))
+* Table component ([96d72e7](http://bitbucket.org/gotamedia/fluffy/commits/96d72e70b14d0e1a76e98583e011b203dd931483))
+
+
+### Bug Fixes
+
+* **ci:** Fixed .versionrc config with correct bitbucket urls and updated all broken links in CHANGELOG ([b50f52b](http://bitbucket.org/gotamedia/fluffy/commits/b50f52bba5b594890cc2126890af11627d223774))
+* **ci:** Updated README ([2a08e00](http://bitbucket.org/gotamedia/fluffy/commits/2a08e0053922c2ad03b72d5f6b241bef077d902b))
+
 ## [0.25.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.25.0..v0.24.0) (2022-08-15)
 
 
