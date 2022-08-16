@@ -42,6 +42,36 @@
       }
     },
     "form": {
+      "dateDiff": {
+        "max": "The difference between \"${fieldALabel}\" and \"${fieldBLabel}\" must not be more than ${maxDiff} ${maxUnitLabel}!",
+        "min": "The difference between \"${fieldALabel}\" and \"${fieldBLabel}\" must not be less than ${minDiff} ${minUnitLabel}!",
+        "units": {
+          "seconds": {
+            "singular": "second",
+            "plural": "seconds"
+          },
+          "minutes": {
+            "singular": "minute",
+            "plural": "minutes"
+          },
+          "hours": {
+            "singular": "hour",
+            "plural": "hours"
+          },
+          "days": {
+            "singular": "day",
+            "plural": "days"
+          },
+          "weeks": {
+            "singular": "week",
+            "plural": "weeks"
+          },
+          "years": {
+            "singular": "year",
+            "plural": "years"
+          }
+        }
+      },
       "dateOrder": {
         "text": "The following dates must be in chronological order: ${fieldNames}!"
       },
