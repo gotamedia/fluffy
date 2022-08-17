@@ -105,10 +105,6 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
             <Popover
                 ref={ref}
                 {...filterdProps}
-                style={{
-                    ...filterdProps.style,
-                    overflow: 'unset'
-                }}
                 show={show}
                 anchor={anchor}
                 overlayProps={overlayProps}
