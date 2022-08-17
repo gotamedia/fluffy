@@ -1,11 +1,19 @@
 import { css } from 'styled-components'
 
-const normal = css`
-    padding-left: 30px;
+const normal = css<{ $hasIcon: boolean }>`
+    padding-left: 20px;
+
+    ${({ $hasIcon }) => $hasIcon && css`
+        padding-left: 40px;
+    `}
 `
 
-const select = css`
+const select = css<{ $hasIcon: boolean }>`
     padding-left: 40px;
+
+    ${({ $hasIcon }) => $hasIcon && css`
+        padding-left: 70px;
+    `}
 `
 
 const types = {

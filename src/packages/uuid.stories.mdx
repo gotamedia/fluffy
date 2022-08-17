@@ -1,0 +1,41 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+import * as uuid from './uuid'
+
+<Meta
+    title={'Packages/uuid'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+For the creation of [RFC4122](https://www.ietf.org/rfc/rfc4122.txt) UUIDs
+
+For more info please refer to [uuid official DOCs](https://github.com/uuidjs/uuid)
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { uuid } from '@gotamedia/fluffy'
+\nconst id = uuid.v4()
+\nconsole.log(id)    // output should be similar to: '72a19910-b9a1-41b8-bb22-d0dc36add488'
+`}
+/>
+
+## Content
+
+<Source
+    language={'json'}
+    code={`${(() => {
+        const content = {}
+        Object.entries(uuid).forEach((item) => {
+            content[item[0]] = typeof item[1]
+        })
+        return JSON.stringify(content, null, 4)
+    })()}`}
+/>

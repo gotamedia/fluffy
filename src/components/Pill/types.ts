@@ -5,19 +5,21 @@ import type {
     ReactNode
 } from 'react'
 
-
-export type PillVariants = {
-    Success: 'success',
-    Alert: 'alert',
-    Warning: 'warning',
-    Disabled: 'disabled'
+export const PillVariants = {
+    Success: 'success' as const,
+    Alert: 'alert' as const,
+    Warning: 'warning' as const,
+    Disabled: 'disabled' as const
 }
+
+export type  PillVariantsType = typeof  PillVariants
+export type  PillVariantType =  PillVariantsType[keyof  PillVariantsType]
 
 type NativeDivProps = HTMLAttributes<HTMLDivElement>
 
 export interface PillProps extends NativeDivProps {
     children?: ReactNode,
-    variant?: PillVariants[keyof PillVariants]
+    variant?: PillVariantType
 }
 
 export type PillRef = HTMLDivElement

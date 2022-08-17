@@ -4,16 +4,20 @@ import type {
     RefAttributes
 } from 'react'
 
-import type { ListItemProps } from '../ListItem/types'
+import type { ListItemProps } from '../ListItem'
 
 export interface ListProps extends HTMLAttributes<HTMLDivElement> {
     size?: ListItemProps['size'],
     border?: ListItemProps['border'],
     type?: ListItemProps['type'],
     onSelect?: ListItemProps['onSelect'],
-    allowKeyboardNavigation?: boolean
+    allowKeyboardNavigation?: boolean,
+    showFilter?: boolean
 }
 
-export type ListRef = HTMLDivElement
+export type ListRef = HTMLDivElement & {
+    isFocused: boolean,
+    setFocus: (focused: boolean) => void
+}
 
 export type ListComponent = ForwardRefExoticComponent<ListProps & RefAttributes<ListRef>>

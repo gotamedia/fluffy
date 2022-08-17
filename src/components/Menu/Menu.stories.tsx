@@ -7,7 +7,7 @@ import { Story, Meta } from '@storybook/react'
 
 import Menu from './index'
 import ListItem from '../ListItem'
-import IconButton from '../IconButton'
+import IconButton, { IconButtonShapes, IconButtonSizes } from '../IconButton'
 
 import { Icons } from '../Icon'
 
@@ -27,11 +27,17 @@ const Basic: Story<Types.MenuProps> = (props) => {
             <IconButton
                 ref={setAnchorRef}
                 icon={Icons.Menu}
+                shape={IconButtonShapes.Circle}
+                size={IconButtonSizes.Small}
                 onClick={toggleShowMenu}
             />
 
             <Menu
                 {...props}
+                offset={{
+                    x: 16,
+                    y: -16
+                }}
                 show={showMenu}
                 anchor={anchorRef}
                 onClickOutside={toggleShowMenu}

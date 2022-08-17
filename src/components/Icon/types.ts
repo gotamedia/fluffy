@@ -130,6 +130,7 @@ export type IconsType = typeof Icons
 export type IconType = IconsType[keyof IconsType]
 
 export const IconSizes = {
+    Micro: 'micro' as const,
     Tiny: 'tiny' as const,
     Small: 'small' as const,
     Normal: 'normal' as const,

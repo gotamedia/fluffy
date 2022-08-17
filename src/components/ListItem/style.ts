@@ -2,7 +2,10 @@ import styled, { css } from 'styled-components'
 
 import { tint } from 'polished'
 
-import IconComponent, { IconSizes } from '../Icon'
+import IconComponent, {
+    Icons,
+    IconSizes
+} from '../Icon'
 
 import types from './typeVariants'
 import sizes from './sizes'
@@ -12,25 +15,34 @@ import type * as Types from './types'
 
 const InnerWrapper = styled.div<{ $type?: Types.ListItemProps['type'], $hasIcon: boolean }>`
     display: flex;
-    margin: 0 30px 10px 0px;
+    margin: 0 0 10px 0px;
+    padding-right: 30px;
     position: relative;
 
     ${({ $type }) => types[$type || 'normal']};
-
-    ${({ $hasIcon }) => $hasIcon && types['select']}
 `
 
 const Icon = styled(IconComponent).attrs(() => {
     return {
         size: IconSizes.Small
     }
+})<{ $isTypeSelect: boolean }>`
+    position: absolute;
+    left: 10px;
+
+    ${({ $isTypeSelect }) => $isTypeSelect && css`
+        left: 40px;
+    `}
+`
+
+const CheckIcon = styled(IconComponent).attrs(() => {
+    return {
+        icon: Icons.Checkmark,
+        size: IconSizes.Small
+    }
 })`
     position: absolute;
     left: 10px;
-`
-
-const Content = styled.div`
-
 `
 
 const TextWrapper = styled.div`
@@ -92,7 +104,13 @@ const Wrapper = styled.div<WrapperProps>`
     }
 
     ${({ $targeted }) => $targeted && css`
+        cursor: default;
         background-color: ${({ theme }) => tint(0.1, theme.colors.brand)};
+
+        ${CheckIcon} {
+            color: white;
+            fill: white;
+        }
 
         ${Icon} {
             color: white;
@@ -112,7 +130,7 @@ const Wrapper = styled.div<WrapperProps>`
 export {
     Wrapper,
     InnerWrapper,
-    Content,
+    CheckIcon,
     Icon,
     TextWrapper,
     Text,

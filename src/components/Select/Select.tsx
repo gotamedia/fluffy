@@ -42,6 +42,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         variant,
         size,
         disabled,
+        showFilter,
         ...filterdProps
     } = props
 
@@ -183,6 +184,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 onClickOutside={handleOnClickOutside}
                 listProps={{
                     ...listProps,
+                    showFilter: showFilter,
                     ref: setListRef,
                     type: ListItemTypes.Select,
                     onSelect: handleOnSelect,

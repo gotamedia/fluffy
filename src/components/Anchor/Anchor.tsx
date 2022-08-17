@@ -15,7 +15,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         offset,
         children,
         style,
-        ...filterdProps
+        ...DOMProps
     } = props
 
     const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
@@ -32,14 +32,13 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     return (
         <div
             ref={setContentElement}
-            {...filterdProps}
+            {...DOMProps}
             style={{
                 ...anchorRect,
                 zIndex: 1000,
                 width: anchorRect.width || undefined,
                 height: anchorRect.height || undefined,
                 position: 'fixed',
-                overflow: 'auto',
                 ...style
             }}
         >

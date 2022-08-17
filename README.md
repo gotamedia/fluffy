@@ -110,14 +110,10 @@ npm install -g yalc
 
 To use Fluffy in your project locally make sure to build Fluffy by running:
 ```
-npm run build
+npm run local
 ```
 
-Then run the following command while standing on Fluffy root dir:
-```
-yalc publish
-```
-This will make sure to publish Fluffy into a local registery on your machine so you can install it as a package in your projects
+This will make sure to build and publish Fluffy into a local registery on your machine so you can install it as a package in your projects
 
 ### Install locally
 
@@ -150,9 +146,3 @@ This project uses a [trunk based development](https://cloud.google.com/architect
 
 ### Conventional commits
 This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-## Deploy
-Add deploy guide here
-
-#### Troubleshoot/Command not found
-Fluffy uses Husky for running git hooks in development. Before a commit is made Fluffy will run all tests and only allow the commit if successful. If prompted with a `command not found` error in for example sourcetree follow the solution in the Husky documentation ***[https://typicode.github.io/husky/#/?id=command-not-found](https://typicode.github.io/husky/#/?id=command-not-found)***
