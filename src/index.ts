@@ -165,4 +165,13 @@ export { default as Modal } from '@components/Modal'
 export * from '@components/Sheet'
 export { default as Sheet } from '@components/Sheet'
 
+export * from '@components/Overlay'
+export { default as Overlay } from '@components/Overlay'
+
+export * from '@components/Tag'
+export { default as Tag } from '@components/Tag'
+
+export * from '@components/TagSearch'
+export { default as TagSearch } from '@components/TagSearch'
+
 // <==== Components

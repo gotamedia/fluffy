@@ -1,11 +1,12 @@
 import {
     forwardRef,
-    useRef,
-    useEffect,
+    useState,
     useCallback,
     Children,
     cloneElement
 } from 'react'
+
+import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
 
 import Button from '../Button'
 import IconButton from '../IconButton'
@@ -57,20 +58,32 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         ...filteredProps
     } = props
 
-    const elements = useRef({
+    const [elements, setElements] = useState({
         left: '',
         right: ''
     })
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
+        const elements = {
+            left: '',
+            right: ''
+        }
+
         Children.forEach(children, (child, idx) => {
             const childElement = child as ReactElement<InputProps, any>
 
             if (idx === 0) {
-                elements.current.left = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
+                elements.left = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
             } else if (idx === (Children.count(children) - 1)) {
-                elements.current.right = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
+                elements.right = childElement && childElement.type !== Input ? _getChildType(childElement) : ''
             }
+
+            setElements(current => {
+                return {
+                    ...current,
+                    ...elements
+                }
+            })
         })
     }, [children])
 
@@ -88,7 +101,6 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         return position
     }, [children])
 
-
     const getChildClassName = useCallback((child: ReactElement, index: number) => {
         const type = _getChildType(child)
         const position = getChildPosition(index)
@@ -101,7 +113,7 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
             ref={ref}
             $size={size}
             $variant={variant}
-            $elements={elements.current}
+            $elements={elements}
             {...filteredProps}
         >
             {
