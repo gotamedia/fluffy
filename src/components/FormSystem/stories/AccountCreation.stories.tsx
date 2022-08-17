@@ -95,7 +95,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                 setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "progress" }))
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
 
-                if (value === "12345678-1234") {
+                if (value === "20000101-1234") {
                     setFormState((currentFormState) => ({ ...currentFormState, ssnResolvingStatus: "succeeded" }))
                     setFieldValue("firstName", "Johan", true)
                     setFieldValue("lastName", "Johanson", true)
@@ -114,8 +114,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
         }
 
         if (fieldName === "zipCode") {
-            // TODO check for valid once a length validation was added
-            if ((value as string).length === 5) {
+            if (valid) {
                 setFormState((currentFormState) => ({ ...currentFormState, zipcodeResolvingStatus: "progress" }))
                 await new Promise(resolve => setTimeout(resolve, 1000)) // aka request
 
