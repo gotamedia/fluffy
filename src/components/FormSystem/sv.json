@@ -2,8 +2,8 @@
   "validation": {
     "field": {
       "date": {
-        "min": "\"${label}\" ${valueDate} must not be before ${minDate}",
-        "max": "\"${label}\" ${valueDate} must not be after ${maxDate}"
+        "min": "\"${label}\" must not be before ${minDate}",
+        "max": "\"${label}\" must not be after ${maxDate}"
       },
       "email": {
         "text": "\"${value}\" is no valid email address!"
@@ -74,6 +74,10 @@
       },
       "dateOrder": {
         "text": "The following dates must be in chronological order: ${fieldNames}!"
+      },
+      "dateRange": {
+        "min": "\"${label}\" must not be before \"${minLabel}\" (${minDate})!",
+        "max": "\"${label}\" must not be after \"${maxLabel}\" (${maxDate})!"
       },
       "sameValue": {
         "textA": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value!",
