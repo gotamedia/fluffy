@@ -6,7 +6,9 @@ import { FormData, FormDataValue } from "../types"
 
 const useFieldContext = (): Types.FieldContext.Value => {
     const {
+        addAdditionalInputProp: addAdditionalInputPropForm,
         addFieldValidation,
+        formData,
         getFieldLabel,
         getFormData,
         initializeField,
@@ -24,8 +26,10 @@ const useFieldContext = (): Types.FieldContext.Value => {
         key: T,
         value: Types.AdditionalInputProps[T]
     ) => {
-        dispatch({ type: Types.FieldContext.ReducerActionTypes.AddAdditionalInputProp, payload: { key, value }})
-    }, [])
+        if (state.fieldName) {
+            addAdditionalInputPropForm(state.fieldName, key, value)
+        }
+    }, [addAdditionalInputPropForm, state.fieldName])
 
     const addValidation = useCallback((
         validationId: string,
@@ -82,7 +86,7 @@ const useFieldContext = (): Types.FieldContext.Value => {
 
     return useMemo(() => ({
         addAdditionalInputProp,
-        additionalInputProps: state.additionalInputProps,
+        additionalInputProps: !state.fieldName ? {} : (formData[state.fieldName]?.additionalInputProps || {}),
         addValidation,
         initialize,
         isRequired: state.isRequired,
@@ -98,12 +102,12 @@ const useFieldContext = (): Types.FieldContext.Value => {
     }), [
         addAdditionalInputProp,
         addValidation,
+        formData,
         initialize,
         removeValidation,
         setFieldName,
         setIsRequired,
         setShowDefaultLabel,
-        state.additionalInputProps,
         state.fieldName,
         state.isRequired,
         state.label,

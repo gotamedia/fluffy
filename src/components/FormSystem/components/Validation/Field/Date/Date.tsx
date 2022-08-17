@@ -60,6 +60,11 @@ const DateValidation: Types.DateComponent = (props) => {
 
         addAdditionalInputProp("minDate", minDate ? minDate : undefined)
         addAdditionalInputProp("maxDate", maxDate ? maxDate : undefined)
+
+        return () => {
+            addAdditionalInputProp("minDate", undefined)
+            addAdditionalInputProp("maxDate", undefined)
+        }
     }, [addAdditionalInputProp, maxDate, minDate])
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {

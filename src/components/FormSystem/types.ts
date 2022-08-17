@@ -29,7 +29,8 @@ interface FormDataField {
     name: string,
     value: FormDataValue,
     validationMessages?: Validation.MessageWithId[],
-    requiresValidation?: boolean
+    requiresValidation?: boolean,
+    additionalInputProps?: AdditionalInputProps
 }
 
 interface FormData {
@@ -137,6 +138,11 @@ namespace FormContext {
     }
 
     export interface Value extends ReducerState {
+        addAdditionalInputProp: <T extends keyof AdditionalInputProps>(
+            fieldName: string,
+            key: T,
+            value: AdditionalInputProps[T]
+        ) => void
         addFieldValidation: (
             validationId: string,
             fieldName: string,
@@ -197,6 +203,7 @@ namespace FormContext {
     }
 
     export enum ReducerActionTypes {
+        AddAdditionalInputProp = "ADD_INITIAL_INPUT_PROP",
         AddFieldValidation = "ADD_FIELD_VALIDATION",
         AddFormValidation = "ADD_FORM_VALIDATION",
         AddValidationMessages = "ADD_VALIDATION_MESSAGES",
@@ -225,6 +232,7 @@ namespace FieldContext {
             key: T,
             value: AdditionalInputProps[T]
         ) => void
+        additionalInputProps?: AdditionalInputProps
         addValidation: (
             validationId: string,
             validationFunction: Validation.Field.Function,
@@ -240,7 +248,6 @@ namespace FieldContext {
     }
 
     export interface ReducerState {
-        additionalInputProps?: AdditionalInputProps
         fieldName?: string
         label?: string
         isRequired?: boolean
@@ -248,7 +255,6 @@ namespace FieldContext {
     }
 
     export enum ReducerActionTypes {
-        AddAdditionalInputProp = "ADD_INITIAL_INPUT_PROP",
         SetFieldName = "SET_FIELD_NAME",
         SetIsRequired = "SET_IS_REQUIRED",
         SetShowDefaultLabel = "SET_SHOW_DEFAULT_LABEL"

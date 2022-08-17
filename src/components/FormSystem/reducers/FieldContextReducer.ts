@@ -2,14 +2,6 @@ import * as Types from "../types"
 
 const FieldContextReducer: Types.FieldContext.Reducer = (state, action) => {
     switch (action?.type) {
-        case Types.FieldContext.ReducerActionTypes.AddAdditionalInputProp:
-            return {
-                ...state,
-                additionalInputProps: {
-                    ...state?.additionalInputProps,
-                    [action?.payload?.key]: action?.payload?.value
-                }
-            }
         case Types.FieldContext.ReducerActionTypes.SetIsRequired:
             return {
                 ...state,

@@ -35,6 +35,10 @@ const Length: Types.LengthComponent = (props) => {
 
     useEffect(() => {
         addAdditionalInputProp("maxLength", exactly || max ? exactly || max : undefined)
+
+        return () => {
+            addAdditionalInputProp("maxLength", undefined)
+        }
     }, [addAdditionalInputProp, exactly, max])
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {

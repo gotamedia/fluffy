@@ -2,6 +2,20 @@ import * as Types from "../types"
 
 const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
     switch (action?.type) {
+        case Types.FormContext.ReducerActionTypes.AddAdditionalInputProp:
+            return {
+                ...state,
+                formData: {
+                    ...state?.formData,
+                    [action?.payload?.fieldName]: {
+                        ...state?.formData[action?.payload?.fieldName],
+                        additionalInputProps: {
+                            ...state?.formData[action?.payload?.fieldName]?.additionalInputProps,
+                            [action?.payload?.key]: action?.payload?.value
+                        }
+                    }
+                }
+            }
         case Types.FormContext.ReducerActionTypes.AddFieldValidation:
             return {
                 ...state,
@@ -116,7 +130,8 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                         ...state?.formData[action?.payload?.fieldName],
                         name: state?.formData[action?.payload?.fieldName]?.name || action?.payload?.fieldName,
                         validationMessages: state?.formData[action?.payload?.fieldName]?.validationMessages || [],
-                        value: state?.formData[action?.payload?.fieldName]?.value || action?.payload?.defaultValue
+                        value: state?.formData[action?.payload?.fieldName]?.value || action?.payload?.defaultValue,
+                        additionalInputProps: state?.formData[action?.payload?.fieldName]?.additionalInputProps || {}
                     }
                 }
             }

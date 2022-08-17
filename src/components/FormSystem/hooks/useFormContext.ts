@@ -1,3 +1,4 @@
+import { AdditionalInputProps } from "@components/FormSystem/types"
 import * as FSTypes from "@components/FormSystem/types"
 import usePrevious from "@hooks/usePrevious"
 import React, { useCallback, useEffect } from "react"
@@ -79,6 +80,14 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
             ...formValidationMessages
         ]
     }, [state.validations.field, state.validations.form])
+
+    const addAdditionalInputProp = useCallback(<T extends keyof AdditionalInputProps>(
+        fieldName: string,
+        key: T,
+        value: AdditionalInputProps[T]
+    ) => {
+        dispatch({ type: Types.FormContext.ReducerActionTypes.AddAdditionalInputProp, payload: { fieldName, key, value }})
+    }, [])
 
     const addFieldValidation = useCallback((
         validationId: string,
@@ -380,6 +389,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
 
     return {
         ...state,
+        addAdditionalInputProp,
         addFieldValidation,
         addFormValidation,
         addValidationMessages,
