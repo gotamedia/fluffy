@@ -33,9 +33,6 @@
         "text": "\"${value}\" is no valid SSN!",
         "textMinAge": "You need to be at least ${minAge} years old!"
       },
-      "ssn18": {
-        "text": "\"${value}\" is no valid SSN!"
-      },
       "value": {
         "text": "\"${value}\" is not equal to \"${compareValue}\"!",
         "textInverted": "\"${value}\" is equal to \"${compareValue}\"!"
@@ -73,7 +70,7 @@
         }
       },
       "dateOrder": {
-        "text": "The following dates must be in chronological order: ${fieldNames}!"
+        "text": "The following dates must be in chronological order: ${fieldLabels}!"
       },
       "dateRange": {
         "min": "\"${label}\" must not be before \"${minLabel}\" (${minDate})!",

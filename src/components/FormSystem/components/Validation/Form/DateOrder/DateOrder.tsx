@@ -66,7 +66,7 @@ const DateOrder: Types.DateOrderComponent = (props) => {
                         defaultI18n.validation.form.dateOrder.text
                     ),
                     {
-                        fieldNames: order.map((fieldName) => getFieldLabel(fieldName)).join(", ")
+                        fieldLabels: order.map((fieldName) => getFieldLabel(fieldName)).join(", ")
                     }
                 )
         }))
