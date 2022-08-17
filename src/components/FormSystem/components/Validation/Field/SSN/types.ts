@@ -5,6 +5,7 @@ import * as Types from "../../../../types"
 export type SSNProps = PropsWithChildren<{
     minAge?: number
     i18n?: SSNI18n
+    skipDash?: boolean
     type?: Types.Validation.Types
 }>
 

@@ -31,7 +31,8 @@
       },
       "ssn": {
         "text": "\"${value}\" is no valid SSN!",
-        "textMinAge": "You need to be at least ${minAge} years old!"
+        "textMinAge": "You need to be at least ${minAge} years old!",
+        "textDash": "Please enter the SSN without a \"-\" in between!"
       },
       "value": {
         "text": "\"${value}\" is not equal to \"${compareValue}\"!",

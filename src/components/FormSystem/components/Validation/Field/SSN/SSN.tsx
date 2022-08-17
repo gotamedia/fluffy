@@ -11,13 +11,15 @@ import * as Types from "./types"
 import defaultI18n from "../../../../sv.json"
 
 const validationName = "ssn"
-const regExp = /^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/
+const regExpWithDash = /^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/
+const regExpWithoutDash = /^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))\d{4}$/
 
 const SSN: Types.SSNComponent = (props) => {
     const {
         children,
         i18n,
         minAge,
+        skipDash,
         type = FSTypes.Validation.Types.Error
     } = props
 
@@ -34,6 +36,8 @@ const SSN: Types.SSNComponent = (props) => {
         let textKey: keyof SSNI18n = "text"
         let additionalVariables = {}
 
+        const regExp = skipDash ? regExpWithoutDash : regExpWithDash
+
         if (regExp.test(String(value))) {
             if (minAge) {
                 const age = getAgeFromSSN(String(value))
@@ -47,6 +51,8 @@ const SSN: Types.SSNComponent = (props) => {
             } else {
                 return []
             }
+        } else if (skipDash && regExpWithDash.test(String(value))) {
+            textKey = "textDash"
         }
 
         return [
@@ -65,7 +71,7 @@ const SSN: Types.SSNComponent = (props) => {
                     )
             }
         ]
-    }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, type])
+    }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, skipDash, type])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation)
