@@ -1,11 +1,12 @@
 import {
     ForwardRefExoticComponent,
     HTMLAttributes,
+    MouseEventHandler,
     RefAttributes
 } from 'react'
 
 export const TagSizes = {
-    Snall: 'small' as const,
+    Small: 'small' as const,
     Normal: 'normal' as const,
     Big: 'big' as const
 }
@@ -15,7 +16,9 @@ export type TagSizeType = TagSizesType[keyof TagSizesType]
 
 export interface TagProps extends HTMLAttributes<HTMLDivElement> {
     label: string,
-    size?: TagSizeType
+    size?: TagSizeType,
+    disabled?: boolean,
+    onRemove?: MouseEventHandler<HTMLButtonElement>
 }
 
 export type TagRef = HTMLDivElement

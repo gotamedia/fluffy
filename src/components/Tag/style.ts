@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { Icons } from '../Icon'
 import IconButton, { IconButtonVariants, IconButtonSizes } from '../IconButton'
@@ -41,7 +41,7 @@ const ClearIcon = styled(IconButton).attrs(() => {
     }
 `
 
-const Wrapper = styled.div<{ $size: Types.TagSizeType }>`
+const Wrapper = styled.div<{ $size: Types.TagSizeType, $disabled?: boolean }>`
     box-sizing: border-box;
     display: inline-flex;
     flex-direction: row;
@@ -50,6 +50,7 @@ const Wrapper = styled.div<{ $size: Types.TagSizeType }>`
     padding: 4px 16px;
     position: relative;
     border: 1px solid black;
+    background-color: #ffffff;
 
     ${({ $size }) => sizes[$size || 'normal'].wrapper};
 
@@ -64,6 +65,10 @@ const Wrapper = styled.div<{ $size: Types.TagSizeType }>`
     ${ClearIcon} {
         ${({ $size }) => sizes[$size || 'normal'].icon};
     }
+
+    ${({ $disabled }) => $disabled && css`
+        opacity: 0.6;
+    `}
 `
 
 export {
