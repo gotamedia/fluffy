@@ -9,26 +9,21 @@ import {
     containsUpperCase
 } from "@components/FormSystem/utils"
 import sprintf from "@utils/sprintf"
-import React, { useCallback, useContext, useEffect, useState } from "react"
-import { renderToString } from "react-dom/server"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
+import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
-import defaultI18n from "../../../../sv.json"
 
 const validationName = "password"
 
 const Password: Types.PasswordComponent = (props) => {
     const {
         blacklist,
-        children,
         i18n,
         instantUpdate,
         lowerCase,
-        maxLength,
-        minLength,
         number,
-        showAllRequirements,
         specialChars,
         type = FSTypes.Validation.Types.Error,
         upperCase
@@ -44,111 +39,62 @@ const Password: Types.PasswordComponent = (props) => {
             return []
         }
 
-        const length = value.length
-        const allMessageKeys: (keyof PasswordI18n)[] = []
         const messageKeys: (keyof PasswordI18n)[] = []
 
-        const addMessageKey = (condition: boolean, key: keyof PasswordI18n) => {
-            if (condition) {
-                messageKeys.push(key)
-            }
-            allMessageKeys.push(key)
-        }
-
         if (lowerCase) {
-            addMessageKey(!containsLowerCase(String(value)), "lowerCase")
+            if (!containsLowerCase(String(value))) {
+                messageKeys.push("lowerCase")
+            }
         }
         if (upperCase) {
-            addMessageKey(!containsUpperCase(String(value)), "upperCase")
-        }
-        if (number) {
-            addMessageKey(!containsNumber(String(value)), "number")
-        }
-        if (specialChars) {
-            addMessageKey(!containsSpecialChars(String(value)), "specialChar")
-        }
-        if (blacklist) {
-            addMessageKey(containsGiven(String(value), blacklist.split("")), "exclude")
-        }
-        if (minLength || maxLength) {
-            if (minLength && maxLength) {
-                if (minLength === maxLength) {
-                    addMessageKey(length !== minLength, "exactlyLength")
-                } else {
-                    addMessageKey(length < minLength || length > maxLength, "betweenLength")
-                }
-            } else if (minLength) {
-                addMessageKey(length < minLength, "minLength")
-            } else if (maxLength) {
-                addMessageKey(length > maxLength, "maxLength")
+            if (!containsUpperCase(String(value))) {
+                messageKeys.push("upperCase")
             }
         }
-
-        if (messageKeys.length === 0) {
-            return []
+        if (number) {
+            if (!containsNumber(String(value))) {
+                messageKeys.push("number")
+            }
+        }
+        if (specialChars) {
+            if (!containsSpecialChars(String(value))) {
+                messageKeys.push("specialChar")
+            }
+        }
+        if (blacklist) {
+            if (containsGiven(String(value), blacklist.split(""))) {
+                messageKeys.push("exclude")
+            }
         }
 
         const variables = {
             fieldName,
             blacklist: blacklist ? blacklist.split("").join(" ") : "",
             label: String(label),
-            maxLength: String(maxLength),
-            minLength: String(minLength),
             value: String(value)
         }
 
-        return [
-            {
+        return messageKeys.map((key) => {
+            return {
                 fieldName,
                 type,
-                text: children !== undefined
-                    ? renderToString(<>{children}</>)
-                    : renderToString(
-                        <>
-                            {sprintf(
-                                (
-                                    i18n?.text ||
-                                    formI18n?.validations?.field?.password?.text ||
-                                    defaultI18n.validation.field.password.text
-                                ),
-                                variables
-                            )}
-                            <ul>
-                                {(showAllRequirements ? allMessageKeys : messageKeys).map((key) => {
-                                    const template = i18n?.[key] ||
-                                        formI18n?.validations?.field?.password?.[key] ||
-                                        defaultI18n.validation.field.password[key]
-                                    return template
-                                        ? (
-                                            <li key={key}>
-                                                {sprintf(
-                                                    (
-                                                        i18n?.[key] ||
-                                                        formI18n?.validations?.field?.password?.[key] ||
-                                                        defaultI18n.validation.field.password[key]
-                                                    ),
-                                                    variables
-                                                )}
-                                            </li>
-                                        )
-                                        : undefined
-                                }).filter(Boolean)}
-                            </ul>
-                        </>
-                    )
+                text: sprintf(
+                    (
+                        i18n?.[key] ||
+                        formI18n?.validations?.field?.password?.[key] ||
+                        defaultI18n.validation.field.password[key]
+                    ),
+                    variables
+                )
             }
-        ]
+        })
     }, [
         blacklist,
-        children,
         formI18n?.validations?.field?.password,
         i18n,
         label,
         lowerCase,
-        maxLength,
-        minLength,
         number,
-        showAllRequirements,
         specialChars,
         type,
         upperCase

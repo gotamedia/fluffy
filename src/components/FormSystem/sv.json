@@ -15,15 +15,10 @@
         "min": "\"${label}\" must at least have a length of ${min}!"
       },
       "password": {
-        "betweenLength":  "It must have a length between ${minLength} and ${maxLength}",
-        "exactlyLength": "It must have exactly a length of ${minLength}",
         "exclude":  "It must not contain any of these characters: ${blacklist}",
         "lowerCase": "It must contain a lower case character",
-        "maxLength":  "It must at most have a length of ${maxLength}",
-        "minLength": "It must at least have a length of ${minLength}",
         "number":  "It must contain a number",
         "specialChar": "It must contain a special character",
-        "text":  "Invalid value. It needs to fulfill the following criteria:",
         "upperCase": "It must contain an upper case character"
       },
       "required": {

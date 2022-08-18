@@ -7,10 +7,7 @@ export type PasswordProps = PropsWithChildren<{
     i18n?: PasswordI18n
     instantUpdate?: boolean
     lowerCase?: boolean
-    maxLength?: number
-    minLength?: number
     number?: boolean
-    showAllRequirements?: boolean
     specialChars?: boolean
     type?: Types.Validation.Types
     upperCase?: boolean
