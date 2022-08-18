@@ -18,11 +18,11 @@ describe("Basic Table", () => {
 
     it("should not contain <th> elements inside <tbody>", () => {
         cy.mount(<Table {...BasicContent} />)
-        cy.get("thead").find("td").should("have.length", 0)
+        cy.get("tbody").find("th").should("have.length", 0)
     })
 
     it("should not contain <th> elements inside <tfoot>", () => {
         cy.mount(<Table {...BasicContent} />)
-        cy.get("thead").find("td").should("have.length", 0)
+        cy.get("tfoot").find("th").should("have.length", 0)
     })
 })
