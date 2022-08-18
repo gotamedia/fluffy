@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.27.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.0..v0.26.0) (2022-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic TagSearch component
+* Added basic Tag component
+
+### Features
+
+* Added basic Tag component ([ba6cd65](http://bitbucket.org/gotamedia/fluffy/commits/ba6cd65ba0910bc3fe687d6ac969f8399cfea877))
+* Added basic TagSearch component ([1baa372](http://bitbucket.org/gotamedia/fluffy/commits/1baa372a36c971dc29f3ccd90a027dd6fc31c8aa))
+
+
+### Bug Fixes
+
+* Anchor/Menu overflow style ([b137fc4](http://bitbucket.org/gotamedia/fluffy/commits/b137fc4948acc7e529fcb1ae51a1a2435639a3f6))
+* Exported Overlay ([c4caff4](http://bitbucket.org/gotamedia/fluffy/commits/c4caff4f02b208f4c608b15afe66021646dc7300))
+* Fixed Tag sizes typo and added disabled/onRemove props ([2d11ff3](http://bitbucket.org/gotamedia/fluffy/commits/2d11ff366a5b86b42a70114c104e15f0a43c4f42))
+* InputGroup ref handling ([7405223](http://bitbucket.org/gotamedia/fluffy/commits/7405223ce8436cff224d3e2e8793ea822ca9a35a))
+* List forwarded ref ([8b98e41](http://bitbucket.org/gotamedia/fluffy/commits/8b98e416d9dcbc563fdc81f8ec15bd7e2e04420c))
+* **style:** Added "micro" size to Icon ([cfab7f1](http://bitbucket.org/gotamedia/fluffy/commits/cfab7f16fcc570b63a8db368cd37987ba449383f))
+* Table test for parent and children relationship ([00117ff](http://bitbucket.org/gotamedia/fluffy/commits/00117ff289b77ce938b0a7d066fd08c7c5288f36))
+
 ## [0.26.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.26.0..v0.25.0) (2022-08-16)
 
 
