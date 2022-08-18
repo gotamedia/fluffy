@@ -41,7 +41,7 @@ export const Basic = Template.bind({})
 Basic.args = basicContent
 
 export default {
-    title: "Developments/Components/Table",
+    title: "Components/Table",
     argTypes: {
         caption: {
             table: {
