@@ -1,28 +1,97 @@
-import { default as BasicContent } from "./content/basic.json"
-import { Basic as Table } from "./stories/Basic.stories"
+import Table from "./"
+import { TableContext } from "./components/context"
 
-describe("Basic Table", () => {
-    it("should not crash", () => {
-        cy.mount(<Table {...BasicContent} />)
+describe("<Table>", () => {
+    it("mounts", () => {
+        cy.mount(<Table />)
+    })
+})
+
+describe("<Table.Caption>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Caption />
+            </TableContext.Provider>
+        )
+    })
+})
+
+describe("<Table.Head>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Head />
+            </TableContext.Provider>
+        )
+    })
+})
+
+describe("<Table.Body>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Body />
+            </TableContext.Provider>
+        )
+    })
+})
+
+describe("<Table.Foot>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Foot />
+            </TableContext.Provider>
+        )
+    })
+})
+
+describe("<Table.Row>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Row />
+            </TableContext.Provider>
+        )
+    })
+})
+
+describe("<Table.Cell>", () => {
+    const defaultContext = { state: {}, parentState: {}, type: null, parentType: null }
+
+    it("mounts", () => {
+        cy.mount(
+            <TableContext.Provider value={defaultContext}>
+                <Table.Cell>{"Mounts"}</Table.Cell>
+            </TableContext.Provider>
+        )
     })
 
-    it("should render table", () => {
-        cy.mount(<Table {...BasicContent} />)
-        cy.get("table").should("be.visible")
+    it("Renders as <th>", () => {
+        const thContext = { ...defaultContext, type: "th", parentType: "thead" } as const
+        cy.mount(
+            <TableContext.Provider value={thContext}>
+                <Table.Cell>{"Table head cell <th> in bold text"}</Table.Cell>
+            </TableContext.Provider>
+        ).then(($tabelCell) => {
+            cy.wrap($tabelCell).get("th")
+        })
     })
 
-    it("should not contain <td> elements inside <thead>", () => {
-        cy.mount(<Table {...BasicContent} />)
-        cy.get("thead").find("td").should("have.length", 0)
-    })
-
-    it("should not contain <th> elements inside <tbody>", () => {
-        cy.mount(<Table {...BasicContent} />)
-        cy.get("tbody").find("th").should("have.length", 0)
-    })
-
-    it("should not contain <th> elements inside <tfoot>", () => {
-        cy.mount(<Table {...BasicContent} />)
-        cy.get("tfoot").find("th").should("have.length", 0)
+    it("Renders as <td>", () => {
+        const tdContext = { ...defaultContext, type: "td", parentType: "tbody" } as const
+        cy.mount(
+            <TableContext.Provider value={tdContext}>
+                <Table.Cell>{"Table data cell <td>"}</Table.Cell>
+            </TableContext.Provider>
+        ).then(($tabelCell) => {
+            cy.wrap($tabelCell).get("td")
+        })
     })
 })
