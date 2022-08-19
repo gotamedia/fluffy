@@ -1,67 +1,43 @@
-import TableBody from "../components/Body"
-import TableCaption from "../components/Caption"
-import TableCell from "../components/Cell"
-import TableFoot from "../components/Foot"
-import TableHead from "../components/Head"
-import TableRow from "../components/Row"
-import Table from "../components/Table"
-import { default as basicContent } from "../content/basic.json"
+import React from "react"
+import Table from "../index"
 
-const BasicComponent = ({ caption, headRows, bodyRows, footRows }) => (
-    <Table>
-        <TableCaption>{caption}</TableCaption>
-        <TableHead>
-            <TableRow>
-                {headRows.map((cell) => (
-                    <TableCell key={cell.id}>{cell.label}</TableCell>
-                ))}
-            </TableRow>
-        </TableHead>
-        <TableBody>
-            {bodyRows.map((cell) => (
-                <TableRow key={cell.name}>
-                    <TableCell>{cell.name}</TableCell>
-                    <TableCell>{cell.wins}</TableCell>
-                    <TableCell>{cell.score}</TableCell>
-                </TableRow>
-            ))}
-        </TableBody>
-        <TableFoot>
-            <TableRow>
-                {footRows.map((cell) => (
-                    <TableCell key={cell.id}>{cell.label}</TableCell>
-                ))}
-            </TableRow>
-        </TableFoot>
-    </Table>
-)
+import basicContent from "../content/basic.json"
 
-const Template = (args) => BasicComponent(args)
-export const Basic = Template.bind({})
-Basic.args = basicContent
+const BasicComponent = () => {
+    const { caption, headRows, bodyRows, footRows } = basicContent
+
+    return (
+        <Table>
+            <Table.Caption>{caption}</Table.Caption>
+            <Table.Head>
+                <Table.Row>
+                    {headRows.map((cell) => (
+                        <Table.Cell key={cell.id}>{cell.label}</Table.Cell>
+                    ))}
+                </Table.Row>
+            </Table.Head>
+            <Table.Body>
+                {bodyRows.map((cell) => (
+                    <Table.Row key={cell.name}>
+                        <Table.Cell>{cell.name}</Table.Cell>
+                        <Table.Cell>{cell.wins}</Table.Cell>
+                        <Table.Cell>{cell.score}</Table.Cell>
+                    </Table.Row>
+                ))}
+            </Table.Body>
+            <Table.Foot>
+                <Table.Row>
+                    {footRows.map((cell) => (
+                        <Table.Cell key={cell.id}>{cell.label}</Table.Cell>
+                    ))}
+                </Table.Row>
+            </Table.Foot>
+        </Table>
+    )
+}
+
+export const Basic = BasicComponent.bind({})
 
 export default {
     title: "Components/Table",
-    argTypes: {
-        caption: {
-            table: {
-                disable: true,
-            },
-        },
-        headRows: {
-            table: {
-                disable: true,
-            },
-        },
-        bodyRows: {
-            table: {
-                disable: true,
-            },
-        },
-        footRows: {
-            table: {
-                disable: true,
-            },
-        },
-    },
 }
