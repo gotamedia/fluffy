@@ -1,10 +1,11 @@
-import { forwardRef, useMemo } from "react"
+import { forwardRef, useCallback, useEffect, useMemo, useState } from "react"
 import { TableContext, useTableContext } from "../context"
 import { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const TableRow: Types.TableRow = forwardRef(({ children, hover, ...rest }, ref) => {
+const TableRow: Types.TableRow = forwardRef(({ children, onHover, hover, ...rest }, ref) => {
+    const [isHover, setIsHover] = useState<boolean>()
     const { type, state } = useTableContext()
     const elementType: TableElements = "tr"
     const context = useMemo(
@@ -17,9 +18,29 @@ const TableRow: Types.TableRow = forwardRef(({ children, hover, ...rest }, ref) 
         [elementType, type, state]
     )
 
+    useEffect(() => {
+        if (onHover && isHover !== undefined) {
+            onHover(isHover)
+        }
+    }, [onHover, isHover])
+
+    const onMouseEnter = useCallback(() => {
+        setIsHover(true)
+    }, [])
+
+    const onMouseLeave = useCallback(() => {
+        setIsHover(false)
+    }, [])
+
     return (
         <TableContext.Provider value={context}>
-            <Style.Row {...rest} hover={hover} ref={ref}>
+            <Style.Row
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
+                hover={hover}
+                ref={ref}
+                {...rest}
+            >
                 {children}
             </Style.Row>
         </TableContext.Provider>
