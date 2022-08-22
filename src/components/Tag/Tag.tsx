@@ -9,6 +9,7 @@ const Tag: Types.TagComponent = forwardRef((props, ref) => {
         size = 'normal',
         onRemove,
         disabled,
+        iconProps,
         ...DOMProps
     } = props
 
@@ -27,6 +28,7 @@ const Tag: Types.TagComponent = forwardRef((props, ref) => {
 
             <Styled.ClearIcon
                 disabled={disabled}
+                {...iconProps}
                 onClick={onRemove}
             />
         </Styled.Wrapper>
