@@ -8,7 +8,7 @@ import { useCallback } from 'react'
 const Portal: Types.PortalComponent = (props) => {
     const {
         dom,
-        portalWhenMounted = true,
+        portalWhenMounted = false,
         children
     } = props
 
