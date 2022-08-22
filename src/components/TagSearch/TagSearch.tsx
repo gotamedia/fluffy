@@ -64,6 +64,16 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         setShowPopover(true)
     }, [])
 
+    const togglePopover = useCallback(() => {
+        setShowPopover(current => !current)
+    }, [])
+
+    const handleOnPopoverFocus = useCallback(() => {
+        if (inputRef) {
+            inputRef.focus()
+        }
+    }, [inputRef])
+
     const handleCreateNewTag = useCallback((value: string) => {
         if (createable && typeof onCreate === 'function') {
             onCreate(value)
@@ -228,6 +238,7 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                 }}
                 tabIndex={disabled ? -1 : 0}
                 onClickOutside={() => setShowPopover(false)}
+                onFocus={handleOnPopoverFocus}
             >
                 <Styled.InputGroup>
                     <Icon icon={Icons.Search} />
@@ -239,7 +250,10 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                         onValueChange={handleOnInputValueChange}
                     />
 
-                    <Icon icon={Icons.ArrowUp} />
+                    <Icon
+                        icon={Icons.ArrowUp}
+                        onClick={togglePopover}
+                    />
                 </Styled.InputGroup>
 
                 {selectedTags}
