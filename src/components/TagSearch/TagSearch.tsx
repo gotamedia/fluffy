@@ -8,10 +8,9 @@ import {
 } from 'react'
 
 import Tag, { TagSizes } from '../Tag'
-import List from '../List'
 import ListItem, { ListItemTypes } from '../ListItem'
-import Popover from '../Popover'
 import Icon, { Icons } from '../Icon'
+import List from '../List'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -32,11 +31,14 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         onRemove,
         onChange,
         onCreate,
+        onClick,
         ...DOMProps
     } = props
 
     const tagsRef = useRef<Types.TagItem[]>(tags)
     const listRef = useRef<ListRef>(null)
+
+    const previousShowPopoverState = useRef(false)
     
     const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
     const [inputRef, setInputRef] = useState<HTMLInputElement | null>(null)
@@ -55,17 +57,71 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         if (showPopover && inputRef) {
             inputRef.focus()
         }
-    }, [showPopover, inputRef])
 
-    const handleOnInputFocus = useCallback(() => {
-        setShowPopover(true)
+        if (!showPopover) {
+            setInputValue('')
+        }
+    }, [showPopover, inputRef, wrapperRef])
+
+    useEffect(() => {
+        if (!showPopover && previousShowPopoverState.current) {
+            wrapperRef?.focus()
+        }
+    }, [showPopover, wrapperRef])
+
+    useEffect(() => {
+        previousShowPopoverState.current = showPopover
+    }, [showPopover])
+
+    const togglePopover = useCallback(() => {
+        setShowPopover(current => !current)
     }, [])
+
+    const handleOnWrapperClick = useCallback<MouseEventHandler<HTMLDivElement>>((event) => {
+        if (!disabled) {
+            if (!showPopover) {
+                setShowPopover(true)
+            }
+    
+            if (typeof onClick === 'function') {
+                onClick(event)
+            }
+        }
+    }, [disabled, showPopover, onClick])
 
     const handleCreateNewTag = useCallback((value: string) => {
         if (createable && typeof onCreate === 'function') {
             onCreate(value)
         }
     }, [createable, onCreate])
+
+    const handleOnWrapperKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
+        switch (event.code) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+            case 'ArrowRight':
+            case 'ArrowLeft': {
+                event.stopPropagation()
+                event.preventDefault()
+
+                break
+            }
+
+            case 'Enter': {
+                if (!showPopover) {
+                    setShowPopover(true)
+                }
+
+                break
+            }
+
+            case 'Escape': {
+                setShowPopover(false)
+
+                break
+            }
+        }
+    }, [showPopover])
 
     const pipeKeyDownToList = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
         if (listRef.current) {
@@ -80,9 +136,14 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     }, [])
 
     const handleOnInputKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
-        event.stopPropagation()
+        // event.stopPropagation()
 
         switch (event.code) {
+            case 'Escape': {
+                setShowPopover(false)
+                break
+            }
+
             case 'ArrowUp':
             case 'ArrowDown': {
                 event.preventDefault()
@@ -146,27 +207,30 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             onAdd?.(tagItem)
             handleOnChange(tagItem)
         }
-    }, [handleOnRemove, onAdd, handleOnChange])
+
+        inputRef?.focus()
+    }, [
+        handleOnRemove,
+        onAdd,
+        handleOnChange,
+        inputRef
+    ])
 
     const handleOnTagRemove = useCallback((selectedTag: Types.TagItem): MouseEventHandler<HTMLButtonElement> => {
         return (event) => {
             event.stopPropagation()
+            
             handleOnRemove(selectedTag)
+
+            inputRef?.focus()
         }
-    }, [handleOnRemove])
+    }, [handleOnRemove, inputRef])
 
     const hasTags = Array.isArray(tags) && tags.length ? true : false
 
-    const maxWidth = ((wrapperRef?.getBoundingClientRect()?.width || 0) - 20) || 'unset'
-
     const selectedTags = (
-        hasTags ? (
-            <Styled.TagsWrapper
-                $asInput={!showPopover}
-                style={{
-                    maxWidth: maxWidth
-                }}
-            >
+        <Styled.TagsWrapper $asInput={!showPopover}>
+            <Styled.TagsElements>
                 {
                     hasTags ? (
                         tags.map(tag => {
@@ -177,6 +241,9 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                         key={tag.id}
                                         label={tag.label}
                                         size={TagSizes.Small}
+                                        iconProps={{
+                                            tabIndex: showPopover ? 0 : -1
+                                        }}
                                         onRemove={handleOnTagRemove(tag)}
                                     />
                                 )
@@ -188,10 +255,8 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                         null
                     )
                 }
-            </Styled.TagsWrapper>
-        ) : (
-            null
-        )
+            </Styled.TagsElements>
+        </Styled.TagsWrapper>
     )
 
     return (
@@ -200,7 +265,8 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             {...DOMProps}
             $disabled={disabled}
             tabIndex={disabled ? -1 : 0}
-            onFocus={!disabled ? handleOnInputFocus : undefined}
+            onKeyDown={handleOnWrapperKeyDown}
+            onClick={handleOnWrapperClick}
         >
             {
                 !showPopover ? (
@@ -216,33 +282,41 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                 )
             }
 
-            <Popover
+            <Styled.Popover
+                forceDirection
+                withFocusTrap
                 show={showPopover}
                 anchor={wrapperRef}
+                style={{
+                    width: wrapperRef?.getBoundingClientRect()?.width
+                }}
                 offset={{
                     y: -40
                 }}
                 tabIndex={disabled ? -1 : 0}
                 onClickOutside={() => setShowPopover(false)}
             >
-                <Styled.InnerWrapper>
-                    <Styled.InputGroup>
-                        <Icon icon={Icons.Search} />
+                <Styled.InputGroup>
+                    <Icon icon={Icons.Search} />
 
-                        <Styled.Input
-                            ref={setInputRef}
-                            value={inputValue}
-                            onKeyDown={handleOnInputKeyDown}
-                            onValueChange={handleOnInputValueChange}
-                        />
+                    <Styled.Input
+                        ref={setInputRef}
+                        value={inputValue}
+                        onKeyDown={handleOnInputKeyDown}
+                        onValueChange={handleOnInputValueChange}
+                    />
 
-                        <Icon icon={Icons.ArrowUp} />
-                    </Styled.InputGroup>
+                    <Icon
+                        icon={Icons.ArrowUp}
+                        onClick={togglePopover}
+                    />
+                </Styled.InputGroup>
 
-                    {selectedTags}
+                {selectedTags}
 
-                    {
-                        !showListOnInput || inputValue ? (
+                {
+                    !showListOnInput || inputValue ? (
+                        <Styled.ListWrapper>
                             <List
                                 ref={listRef}
                                 type={ListItemTypes.Select}
@@ -252,15 +326,11 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                     hasTags ? (
                                         tags
                                             .filter(tag => {
-                                                if (showListOnInput) {
-                                                    if (inputValue) {
-                                                        return tag
-                                                            .label
-                                                            .toLowerCase()
-                                                            .includes(inputValue.toLowerCase())
-                                                    } else {
-                                                        return false
-                                                    }
+                                                if (!showListOnInput || inputValue) {
+                                                    return tag
+                                                        .label
+                                                        .toLowerCase()
+                                                        .includes(inputValue.toLowerCase())
                                                 } else {
                                                     return true
                                                 }
@@ -284,13 +354,12 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                     )
                                 }
                             </List>
-                        ) : (
-                            null
-                        )
-                    }
-
-                </Styled.InnerWrapper>
-            </Popover>
+                        </Styled.ListWrapper>
+                    ) : (
+                        null
+                    )
+                }
+            </Styled.Popover>
         </Styled.Wrapper>
     )
 })

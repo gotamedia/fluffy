@@ -1,4 +1,3 @@
-
 export type UseAnchorProps = {
     anchor?: HTMLElement | null,
     anchored: HTMLElement | null,
@@ -6,14 +5,16 @@ export type UseAnchorProps = {
     offset?: {
         x?: number,
         y?: number
-    }
+    },
+    forceDirection?: boolean
 }
 
 export type AnchorRect = {
-    top: number,
+    top?: number,
+    bottom?: number,
     left: number,
     width: number,
-    height: number | null
+    maxHeight: number
 }
 
 export type UseAnchor = (props: UseAnchorProps) => AnchorRect

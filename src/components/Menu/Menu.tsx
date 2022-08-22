@@ -15,6 +15,7 @@ import Popover from '../Popover'
 
 import * as Styled from './style'
 import * as Types from './types'
+import type { ListRef } from '../List'
 import type { MouseEventHandler } from 'react'
 
 const Menu: Types.MenuComponent = forwardRef((props, ref) => {
@@ -22,6 +23,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         children,
         show,
         anchor,
+        shouldFocusOnClose = true,
         overlayProps,
         onClickOutside,
         listProps,
@@ -33,15 +35,15 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
     const menuContext = useMenu()
 
     const [activeSubMenus, setActiveSubMenus] = useState<string[]>([])
-    const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
+    const [listRef, setListRef] = useState<ListRef>()
 
     useEffect(() => {
-        if (!show && previousIsOpenState.current && anchor) {
+        if (shouldFocusOnClose && !show && previousIsOpenState.current && anchor) {
             anchor.focus()
         }
 
         previousIsOpenState.current = show
-    }, [show, anchor])
+    }, [shouldFocusOnClose, show, anchor])
 
     useEffect(() => {
         if (show && listRef) {
@@ -51,7 +53,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         }
     }, [show, listRef])
 
-    const handleListRef = useCallback((list: HTMLDivElement) => {
+    const handleListRef = useCallback((list: ListRef) => {
         setListRef(list)
 
         if (listProps?.ref) {

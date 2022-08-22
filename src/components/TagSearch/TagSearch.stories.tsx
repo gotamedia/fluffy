@@ -52,9 +52,7 @@ const Template: Story<Types.TagSearchProps> = (props) => {
                 tags={tags}
                 onChange={handleOnChange}
                 onCreate={handleOnCreate}
-            >
-                
-            </TagSearch>
+            />
         </div>
     )
 }
