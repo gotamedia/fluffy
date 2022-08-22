@@ -121,7 +121,7 @@ Custom.args = {
         return [
             {
                 fieldName,
-                type: Types.Validation.Types.Error,
+                type: Types.ValidationTypes.Error,
                 text: sprintf(
                     "Custom validation message. Value: \"${value}\". FieldName: \"${fieldName}\".",
                     { value: String(value), fieldName }

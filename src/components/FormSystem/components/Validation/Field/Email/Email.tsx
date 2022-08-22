@@ -15,7 +15,7 @@ const Email: Types.EmailComponent = (props) => {
     const {
         children,
         i18n,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

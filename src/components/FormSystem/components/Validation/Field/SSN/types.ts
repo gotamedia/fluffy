@@ -6,7 +6,7 @@ export type SSNProps = PropsWithChildren<{
     minAge?: number
     i18n?: SSNI18n
     skipDash?: boolean
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
 }>
 
 export type SSNComponent = React.FC<SSNProps>

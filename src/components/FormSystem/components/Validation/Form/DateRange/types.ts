@@ -10,7 +10,7 @@ export type DateRangeProps = PropsWithChildren<{
     maxFieldName?: string
     minExclusive?: boolean
     minFieldName?: string
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
 }>
 
 export type DateRangeComponent = React.FC<DateRangeProps>

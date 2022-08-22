@@ -7,7 +7,7 @@ export type LengthProps = PropsWithChildren<{
     i18n?: LengthI18n,
     min?: number,
     max?: number,
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
 }>
 
 export type LengthComponent = React.FC<LengthProps>

@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react"
 import * as Types from "../../../../types"
 
 export type EmailProps = PropsWithChildren<{
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
     i18n?: EmailI18n
 }>
 

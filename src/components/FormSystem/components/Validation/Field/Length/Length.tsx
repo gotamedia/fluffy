@@ -18,7 +18,7 @@ const Length: Types.LengthComponent = (props) => {
         i18n,
         min,
         max,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

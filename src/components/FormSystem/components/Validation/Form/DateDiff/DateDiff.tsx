@@ -20,7 +20,7 @@ const DateDiff: Types.DateDiffComponent = (props) => {
         i18n,
         maxDiff,
         minDiff,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

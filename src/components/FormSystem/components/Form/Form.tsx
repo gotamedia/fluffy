@@ -37,7 +37,7 @@ const Form: Types.FormComponent = (props) => {
         const validationMessages = formContextValue.validateForm(formContextValue.getFormData())
         const isValid = validationMessages.reduce(
             (isValidSoFar, validationMessage) =>
-                isValidSoFar && validationMessage.type !== FSTypes.Validation.Types.Error,
+                isValidSoFar && validationMessage.type !== FSTypes.ValidationTypes.Error,
             true
         )
 

@@ -28,7 +28,7 @@ const Hint: Types.HintComponent = (props) => {
         return [
             {
                 fieldName,
-                type: FSTypes.Validation.Types.Hint,
+                type: FSTypes.ValidationTypes.Info,
                 text: children !== undefined
                     ? renderToString(<>{children}</>)
                     : sprintf(

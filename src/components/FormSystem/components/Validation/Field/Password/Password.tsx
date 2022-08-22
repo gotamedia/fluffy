@@ -30,7 +30,7 @@ const Password: Types.PasswordComponent = (props) => {
         number,
         showAllRequirements,
         specialChars,
-        type = FSTypes.Validation.Types.Error,
+        type = FSTypes.ValidationTypes.Error,
         upperCase
     } = props
 

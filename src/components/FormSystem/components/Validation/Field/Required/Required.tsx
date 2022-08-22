@@ -11,11 +11,13 @@ import * as Types from "./types"
 const validationName = "required"
 
 const Required: Types.RequiredComponent = (props) => {
+    console.log("required", props)
     const {
         children,
         i18n,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
+    console.log("required 2")
 
     const [uuid] = useState(uuidv4())
 

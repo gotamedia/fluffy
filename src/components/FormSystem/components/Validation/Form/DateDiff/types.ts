@@ -18,7 +18,7 @@ export type DateDiffProps = PropsWithChildren<{
     i18n?: DateDiffI18n
     maxDiff?: number
     minDiff?: number
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
 }>
 
 export type DateDiffComponent = React.FC<DateDiffProps>

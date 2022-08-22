@@ -5,7 +5,7 @@ import * as Types from "../../../../types"
 export type ValueProps = PropsWithChildren<{
     i18n?: ValueI18n
     invertedValue?: boolean
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
     value: Types.FormDataValue | RegExp
 }>
 

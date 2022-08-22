@@ -2,6 +2,7 @@ import React from "react"
 import * as Types from "../types"
 
 const FormContext = React.createContext<Types.FormContext.Value>({
+    addAdditionalInputProp: () => { },
     addFieldValidation: () => { },
     addFormValidation: () => { },
     addValidationMessages: () => { },

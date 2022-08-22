@@ -53,7 +53,7 @@ namespace InputLogic {
 
     export interface Value {
         additionalInputProps: AdditionalInputProps
-        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
+        clearValidationMessages: (fieldName: string, types?: ValidationTypes[] | "all") => void
         disabled: boolean
         getFieldValue: (fieldName: string) => FormDataValue | undefined
         onBlur: () => void
@@ -65,7 +65,7 @@ namespace InputLogic {
         ) => void
         theme: DefaultTheme
         validateInstantUpdate: (fieldName: string, fieldValue: FormDataValue) => void
-        validationType: Validation.Types | undefined
+        validationType: ValidationTypes | undefined
         value: FormDataValue | undefined
     }
 }
@@ -157,15 +157,15 @@ namespace FormContext {
             validationFunction: Validation.Form.Function
         ) => void
         addValidationMessages: (fieldName: string, validationMessages: Validation.MessageWithId[]) => void
-        clearAllValidationMessages: (types?: Validation.Types[] | "all") => void
-        clearValidationMessages: (fieldName: string, types?: Validation.Types[] | "all") => void
+        clearAllValidationMessages: (types?: ValidationTypes[] | "all") => void
+        clearValidationMessages: (fieldName: string, types?: ValidationTypes[] | "all") => void
         disabled: boolean
         initializeField: (fieldName: string, defaultValue: FormDataValue) => void
         isActing: boolean
         getButtonLabel: (buttonType: ButtonTypes) => string | undefined
         getFieldLabel: (fieldName: string) => string | undefined
         getFieldValidationMessages: (fieldName: string) => Validation.Message[]
-        getHighestValidationMessageType: (fieldName: string) => Validation.Types | undefined
+        getHighestValidationMessageType: (fieldName: string) => ValidationTypes | undefined
         getFieldValue: (fieldName: string) => FormDataValue | undefined
         getFormData: () => FormData
         removeFieldValidation: (fieldName: string, validationId: string) => void
@@ -268,21 +268,10 @@ namespace FieldContext {
 }
 
 namespace Validation {
-    /**
-     * Those types are in a priority order from important to unimportant
-     */
-    export enum Types {
-        Error = "error",
-        Warning = "warning",
-        Success = "success",
-        Loading = "loading",
-        Hint = "hint"
-    }
-
     export interface Message {
         fieldName: string,
         involvedFieldNames?: string[],
-        type: Types,
+        type: ValidationTypes,
         text?: string
     }
 
@@ -331,5 +320,6 @@ export {
     ButtonTypes,
     FormContext,
     FieldContext,
-    Validation
+    Validation,
+    ValidationTypes
 }

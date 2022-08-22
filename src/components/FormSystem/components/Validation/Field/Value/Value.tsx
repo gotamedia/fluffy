@@ -16,7 +16,7 @@ const Value: Types.ValueComponent = (props) => {
         children,
         i18n,
         invertedValue,
-        type = FSTypes.Validation.Types.Error,
+        type = FSTypes.ValidationTypes.Error,
         value: compareValue
     } = props
 

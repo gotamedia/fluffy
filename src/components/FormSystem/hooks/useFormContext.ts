@@ -1,5 +1,6 @@
 import { AdditionalInputProps } from "@components/FormSystem/types"
 import * as FSTypes from "@components/FormSystem/types"
+import { HintTypes } from "@components/Hint/types"
 import usePrevious from "@hooks/usePrevious"
 import React, { useCallback, useEffect } from "react"
 import * as Reducers from "../reducers"
@@ -129,11 +130,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
 
     const clearValidationMessages = useCallback((
         fieldName: string,
-        types: Types.Validation.Types[] | "all" = [
-            Types.Validation.Types.Error,
-            Types.Validation.Types.Warning,
-            Types.Validation.Types.Success,
-            Types.Validation.Types.Loading
+        types: Types.ValidationTypes[] | "all" = [
+            Types.ValidationTypes.Error,
+            Types.ValidationTypes.Warning,
+            Types.ValidationTypes.Success,
+            Types.ValidationTypes.Loading
         ]
     ) => {
         dispatch({
@@ -143,11 +144,11 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [])
 
     const clearAllValidationMessages = useCallback((
-        types: Types.Validation.Types[] | "all" = [
-            Types.Validation.Types.Error,
-            Types.Validation.Types.Warning,
-            Types.Validation.Types.Success,
-            Types.Validation.Types.Loading
+        types: Types.ValidationTypes[] | "all" = [
+            Types.ValidationTypes.Error,
+            Types.ValidationTypes.Warning,
+            Types.ValidationTypes.Success,
+            Types.ValidationTypes.Loading
         ]
     ) => {
         dispatch({
@@ -176,16 +177,18 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [state?.formData])
 
     const getHighestValidationMessageType = useCallback((fieldName: string) => {
-        const validationStateOrder: Types.Validation.Types[] = Object.values(FSTypes.Validation.Types)
+        console.log("get highest")
+        const validationStateOrder: Types.ValidationTypes[] = Object.values(HintTypes)
+        console.log(validationStateOrder)
 
         return (state?.formData?.[fieldName]?.validationMessages || [])
-            .reduce<Types.Validation.Types | undefined>((highest, current: Types.Validation.Message) => {
+            .reduce<Types.ValidationTypes | undefined>((highest, current: Types.Validation.Message) => {
                 if (!highest) {
                     return current?.type
                 }
 
                 return highest &&
-                    validationStateOrder.indexOf(highest as Types.Validation.Types) <= validationStateOrder.indexOf(current?.type)
+                    validationStateOrder.indexOf(highest as Types.ValidationTypes) <= validationStateOrder.indexOf(current?.type)
                         ? highest
                         : current?.type
             }, undefined)
@@ -236,7 +239,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 fieldName,
                 fieldValue,
                 validationMessages.reduce(
-                    (valid, message) => valid && message.type !== Types.Validation.Types.Error,
+                    (valid, message) => valid && message.type !== Types.ValidationTypes.Error,
                     true
                 ),
                 isManualChange,
@@ -365,7 +368,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 ...formValidationMessages
             ].filter((validationMessage) => (
                 state?.type === FSTypes.FormContext.Types.Update ||
-                [FSTypes.Validation.Types.Hint, FSTypes.Validation.Types.Loading].includes(validationMessage.type)
+                [FSTypes.ValidationTypes.Info, FSTypes.ValidationTypes.Loading].includes(validationMessage.type)
             ))
 
             validationMessages.forEach((validationMessage) => {

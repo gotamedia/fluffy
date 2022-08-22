@@ -16,7 +16,7 @@ const DateOrder: Types.DateOrderComponent = (props) => {
         i18n,
         ignoreEqualDates,
         order,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

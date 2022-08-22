@@ -1,3 +1,4 @@
+import { HintTypes } from "@components/Hint/types"
 import ValidationMessagesGroup from "./Group"
 import * as Contexts from "../../../contexts"
 import * as FSTypes from "../../../types"
@@ -23,9 +24,9 @@ const ValidationMessages: Types.ValidationMessagesComponent = () => {
             }, {})
 
         setGroups(
-            Object.values(FSTypes.Validation.Types)
+            Object.values(HintTypes)
                 .reverse()
-                .reduce<FSTypes.Validation.Message[][]>((orderedGroupedMessages, type: FSTypes.Validation.Types) => {
+                .reduce<FSTypes.Validation.Message[][]>((orderedGroupedMessages, type: FSTypes.ValidationTypes) => {
                     return [
                         ...orderedGroupedMessages,
                         ...(unorderedGroupedMessages[type] ? [unorderedGroupedMessages[type]] : [])

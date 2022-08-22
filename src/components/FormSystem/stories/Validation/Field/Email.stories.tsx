@@ -59,7 +59,7 @@ const EmailTemplate: Story<Types.Component.Validation.Field.Email> = (props) => 
             </FS.Field>
             <FS.Field>
                 <FS.Input.Password name={"password"}>
-                    <FS.Validation.Field.Email {...props} />
+                    <FS.Validation.Field.Email {...props} type={Types.ValidationTypes.Error} />
                 </FS.Input.Password>
             </FS.Field>
             <FS.Field>

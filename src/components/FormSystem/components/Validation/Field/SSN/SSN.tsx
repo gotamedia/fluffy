@@ -20,7 +20,7 @@ const SSN: Types.SSNComponent = (props) => {
         i18n,
         minAge,
         skipDash,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

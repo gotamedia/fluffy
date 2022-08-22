@@ -12,7 +12,7 @@ export type PasswordProps = PropsWithChildren<{
     number?: boolean
     showAllRequirements?: boolean
     specialChars?: boolean
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
     upperCase?: boolean
 }>
 

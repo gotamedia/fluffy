@@ -19,7 +19,7 @@ const DateValidation: Types.DateComponent = (props) => {
         maxExclusive,
         min,
         minExclusive,
-        type = FSTypes.Validation.Types.Error
+        type = FSTypes.ValidationTypes.Error
     } = props
 
     const [uuid] = useState(uuidv4())

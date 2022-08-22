@@ -5,7 +5,7 @@ import * as Types from "../../../../types"
 export type SameValueProps = PropsWithChildren<{
     fieldAName: string
     fieldBName: string
-    type?: Types.Validation.Types
+    type?: Types.ValidationTypes
     i18n?: SameValueI18n
 }>
 

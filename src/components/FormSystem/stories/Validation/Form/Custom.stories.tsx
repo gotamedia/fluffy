@@ -66,7 +66,7 @@ Custom.args = {
         return [
             {
                 fieldName: "text1",
-                type: Types.Validation.Types.Error,
+                type: Types.ValidationTypes.Error,
                 involvedFieldNames: ["text1", "involvedField"],
                 text: "Custom validation message."
             }

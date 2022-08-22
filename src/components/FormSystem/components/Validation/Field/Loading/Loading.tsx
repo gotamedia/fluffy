@@ -28,7 +28,7 @@ const Loading: Types.LoadingComponent = (props) => {
         return [
             {
                 fieldName,
-                type: FSTypes.Validation.Types.Loading,
+                type: FSTypes.ValidationTypes.Loading,
                 text: children !== undefined
                     ? renderToString(<>{children}</>)
                     : sprintf(
