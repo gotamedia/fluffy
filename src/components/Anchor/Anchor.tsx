@@ -6,6 +6,8 @@ import {
 
 import useAnchor from '@hooks/useAnchor'
 
+import FocusTrap from '@components/FocusTrap'
+
 import * as Types from './types'
 
 const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
@@ -16,6 +18,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         children,
         style,
         forceDirection,
+        withFocusTrap,
         ...DOMProps
     } = props
 
@@ -30,9 +33,11 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         offset: offset,
         forceDirection: forceDirection
     })
+    
+    const Content = withFocusTrap ? FocusTrap : 'div'
 
     return (
-        <div
+        <Content
             ref={setContentElement}
             {...DOMProps}
             style={{
@@ -45,7 +50,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
             }}
         >
             {children}
-        </div>
+        </Content>
     )
 })
 

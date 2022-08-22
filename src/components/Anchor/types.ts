@@ -11,7 +11,8 @@ export interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
         x?: number,
         y?: number
     },
-    forceDirection?: boolean
+    forceDirection?: boolean,
+    withFocusTrap?: boolean
 }
 
 export type AnchorRef = HTMLDivElement
