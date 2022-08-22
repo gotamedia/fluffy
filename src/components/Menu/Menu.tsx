@@ -23,6 +23,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         children,
         show,
         anchor,
+        shouldFocusOnClose = true,
         overlayProps,
         onClickOutside,
         listProps,
@@ -37,12 +38,12 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
     const [listRef, setListRef] = useState<ListRef>()
 
     useEffect(() => {
-        if (!show && previousIsOpenState.current && anchor) {
+        if (shouldFocusOnClose && !show && previousIsOpenState.current && anchor) {
             anchor.focus()
         }
 
         previousIsOpenState.current = show
-    }, [show, anchor])
+    }, [shouldFocusOnClose, show, anchor])
 
     useEffect(() => {
         if (show && listRef) {
