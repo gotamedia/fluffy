@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.27.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.1..v0.27.0) (2022-08-22)
+
+
+### Features
+
+* **TableRow:** Add the ability to check if component is on hover ([1eb977d](http://bitbucket.org/gotamedia/fluffy/commits/1eb977da4737005875da46f748760b8e358c9987))
+* **TableRow:** Added the abililty for the parent to listen for mouse enter and mouse leave events ([b2a684b](http://bitbucket.org/gotamedia/fluffy/commits/b2a684b2620debe346321d6d5d08503cc55449a7))
+
 ## [0.27.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.0..v0.26.0) (2022-08-18)
 
 
