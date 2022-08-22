@@ -8,10 +8,9 @@ import {
 } from 'react'
 
 import Tag, { TagSizes } from '../Tag'
-import List from '../List'
 import ListItem, { ListItemTypes } from '../ListItem'
-import Popover from '../Popover'
 import Icon, { Icons } from '../Icon'
+import List from '../List'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -55,6 +54,10 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         if (showPopover && inputRef) {
             inputRef.focus()
         }
+
+        if (!showPopover) {
+            setInputValue('')
+        }
     }, [showPopover, inputRef])
 
     const handleOnInputFocus = useCallback(() => {
@@ -66,6 +69,11 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             onCreate(value)
         }
     }, [createable, onCreate])
+
+    const handleOnWrapperKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
+        event.stopPropagation()
+        event.preventDefault()
+    }, [])
 
     const pipeKeyDownToList = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
         if (listRef.current) {
@@ -157,16 +165,9 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
 
     const hasTags = Array.isArray(tags) && tags.length ? true : false
 
-    const maxWidth = ((wrapperRef?.getBoundingClientRect()?.width || 0) - 20) || 'unset'
-
     const selectedTags = (
-        hasTags ? (
-            <Styled.TagsWrapper
-                $asInput={!showPopover}
-                style={{
-                    maxWidth: maxWidth
-                }}
-            >
+        <Styled.TagsWrapper $asInput={!showPopover}>
+            <Styled.TagsElements>
                 {
                     hasTags ? (
                         tags.map(tag => {
@@ -188,10 +189,8 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                         null
                     )
                 }
-            </Styled.TagsWrapper>
-        ) : (
-            null
-        )
+            </Styled.TagsElements>
+        </Styled.TagsWrapper>
     )
 
     return (
@@ -200,6 +199,7 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             {...DOMProps}
             $disabled={disabled}
             tabIndex={disabled ? -1 : 0}
+            onKeyDown={handleOnWrapperKeyDown}
             onFocus={!disabled ? handleOnInputFocus : undefined}
         >
             {
@@ -216,33 +216,37 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                 )
             }
 
-            <Popover
+            <Styled.Popover
+                forceDirection
                 show={showPopover}
                 anchor={wrapperRef}
+                style={{
+                    width: wrapperRef?.getBoundingClientRect()?.width
+                }}
                 offset={{
                     y: -40
                 }}
                 tabIndex={disabled ? -1 : 0}
                 onClickOutside={() => setShowPopover(false)}
             >
-                <Styled.InnerWrapper>
-                    <Styled.InputGroup>
-                        <Icon icon={Icons.Search} />
+                <Styled.InputGroup>
+                    <Icon icon={Icons.Search} />
 
-                        <Styled.Input
-                            ref={setInputRef}
-                            value={inputValue}
-                            onKeyDown={handleOnInputKeyDown}
-                            onValueChange={handleOnInputValueChange}
-                        />
+                    <Styled.Input
+                        ref={setInputRef}
+                        value={inputValue}
+                        onKeyDown={handleOnInputKeyDown}
+                        onValueChange={handleOnInputValueChange}
+                    />
 
-                        <Icon icon={Icons.ArrowUp} />
-                    </Styled.InputGroup>
+                    <Icon icon={Icons.ArrowUp} />
+                </Styled.InputGroup>
 
-                    {selectedTags}
+                {selectedTags}
 
-                    {
-                        !showListOnInput || inputValue ? (
+                {
+                    !showListOnInput || inputValue ? (
+                        <Styled.ListWrapper>
                             <List
                                 ref={listRef}
                                 type={ListItemTypes.Select}
@@ -252,15 +256,11 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                     hasTags ? (
                                         tags
                                             .filter(tag => {
-                                                if (showListOnInput) {
-                                                    if (inputValue) {
-                                                        return tag
-                                                            .label
-                                                            .toLowerCase()
-                                                            .includes(inputValue.toLowerCase())
-                                                    } else {
-                                                        return false
-                                                    }
+                                                if (!showListOnInput || inputValue) {
+                                                    return tag
+                                                        .label
+                                                        .toLowerCase()
+                                                        .includes(inputValue.toLowerCase())
                                                 } else {
                                                     return true
                                                 }
@@ -284,13 +284,12 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                     )
                                 }
                             </List>
-                        ) : (
-                            null
-                        )
-                    }
-
-                </Styled.InnerWrapper>
-            </Popover>
+                        </Styled.ListWrapper>
+                    ) : (
+                        null
+                    )
+                }
+            </Styled.Popover>
         </Styled.Wrapper>
     )
 })
