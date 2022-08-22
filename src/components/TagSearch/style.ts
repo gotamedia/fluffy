@@ -23,6 +23,10 @@ const Wrapper = styled.div<{ $disabled?: boolean }>`
     ${({ $disabled }) => $disabled && css`
         opacity: 0.5;
     `}
+
+    &:focus {
+        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+    }
 `
 
 const ElementsWrapper = styled.div`

@@ -31,11 +31,14 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         onRemove,
         onChange,
         onCreate,
+        onClick,
         ...DOMProps
     } = props
 
     const tagsRef = useRef<Types.TagItem[]>(tags)
     const listRef = useRef<ListRef>(null)
+
+    const previousShowPopoverState = useRef(false)
     
     const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
     const [inputRef, setInputRef] = useState<HTMLInputElement | null>(null)
@@ -58,21 +61,33 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
         if (!showPopover) {
             setInputValue('')
         }
-    }, [showPopover, inputRef])
+    }, [showPopover, inputRef, wrapperRef])
 
-    const handleOnInputFocus = useCallback(() => {
-        setShowPopover(true)
-    }, [])
+    useEffect(() => {
+        if (!showPopover && previousShowPopoverState.current) {
+            wrapperRef?.focus()
+        }
+    }, [showPopover, wrapperRef])
+
+    useEffect(() => {
+        previousShowPopoverState.current = showPopover
+    }, [showPopover])
 
     const togglePopover = useCallback(() => {
         setShowPopover(current => !current)
     }, [])
 
-    const handleOnPopoverFocus = useCallback(() => {
-        if (inputRef) {
-            inputRef.focus()
+    const handleOnWrapperClick = useCallback<MouseEventHandler<HTMLDivElement>>((event) => {
+        if (!disabled) {
+            if (!showPopover) {
+                setShowPopover(true)
+            }
+    
+            if (typeof onClick === 'function') {
+                onClick(event)
+            }
         }
-    }, [inputRef])
+    }, [disabled, showPopover, onClick])
 
     const handleCreateNewTag = useCallback((value: string) => {
         if (createable && typeof onCreate === 'function') {
@@ -81,9 +96,32 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     }, [createable, onCreate])
 
     const handleOnWrapperKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
-        event.stopPropagation()
-        event.preventDefault()
-    }, [])
+        switch (event.code) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+            case 'ArrowRight':
+            case 'ArrowLeft': {
+                event.stopPropagation()
+                event.preventDefault()
+
+                break
+            }
+
+            case 'Enter': {
+                if (!showPopover) {
+                    setShowPopover(true)
+                }
+
+                break
+            }
+
+            case 'Escape': {
+                setShowPopover(false)
+
+                break
+            }
+        }
+    }, [showPopover])
 
     const pipeKeyDownToList = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
         if (listRef.current) {
@@ -98,9 +136,14 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     }, [])
 
     const handleOnInputKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
-        event.stopPropagation()
+        // event.stopPropagation()
 
         switch (event.code) {
+            case 'Escape': {
+                setShowPopover(false)
+                break
+            }
+
             case 'ArrowUp':
             case 'ArrowDown': {
                 event.preventDefault()
@@ -164,14 +207,24 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             onAdd?.(tagItem)
             handleOnChange(tagItem)
         }
-    }, [handleOnRemove, onAdd, handleOnChange])
+
+        inputRef?.focus()
+    }, [
+        handleOnRemove,
+        onAdd,
+        handleOnChange,
+        inputRef
+    ])
 
     const handleOnTagRemove = useCallback((selectedTag: Types.TagItem): MouseEventHandler<HTMLButtonElement> => {
         return (event) => {
             event.stopPropagation()
+            
             handleOnRemove(selectedTag)
+
+            inputRef?.focus()
         }
-    }, [handleOnRemove])
+    }, [handleOnRemove, inputRef])
 
     const hasTags = Array.isArray(tags) && tags.length ? true : false
 
@@ -188,6 +241,9 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                                         key={tag.id}
                                         label={tag.label}
                                         size={TagSizes.Small}
+                                        iconProps={{
+                                            tabIndex: showPopover ? 0 : -1
+                                        }}
                                         onRemove={handleOnTagRemove(tag)}
                                     />
                                 )
@@ -210,7 +266,7 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
             $disabled={disabled}
             tabIndex={disabled ? -1 : 0}
             onKeyDown={handleOnWrapperKeyDown}
-            onFocus={!disabled ? handleOnInputFocus : undefined}
+            onClick={handleOnWrapperClick}
         >
             {
                 !showPopover ? (
@@ -228,6 +284,7 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
 
             <Styled.Popover
                 forceDirection
+                withFocusTrap
                 show={showPopover}
                 anchor={wrapperRef}
                 style={{
@@ -238,7 +295,6 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                 }}
                 tabIndex={disabled ? -1 : 0}
                 onClickOutside={() => setShowPopover(false)}
-                onFocus={handleOnPopoverFocus}
             >
                 <Styled.InputGroup>
                     <Icon icon={Icons.Search} />
