@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.28.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.0..v0.27.1) (2022-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added useMeasure hook
+
+### Features
+
+* Added ability to render FocusTrap instead of a div for Anchor ([afef079](http://bitbucket.org/gotamedia/fluffy/commits/afef0797811c45f82cfe049d802f2de6a4e966a9))
+* Added useMeasure hook ([16f5d21](http://bitbucket.org/gotamedia/fluffy/commits/16f5d212b2cc8f797d2c435665cd1c3271c85c11))
+
+
+### Bug Fixes
+
+* Allow close TagSearch with ArrowIcon while opened ([0684b35](http://bitbucket.org/gotamedia/fluffy/commits/0684b35263311925be822b80bbaf2f7ba573fb7e))
+* Allow passing down iconProps for Tag's closeIcon ([4491b58](http://bitbucket.org/gotamedia/fluffy/commits/4491b5845bf9214caa689fd2439f2ec351e3e23c))
+* Better keyboard handling for TagSearch ([6345bb6](http://bitbucket.org/gotamedia/fluffy/commits/6345bb60191d6ff8f718c5c4ad3d45e859a4592c))
+* Defaulted Portal to render on first render-cycle instead on first-mount ([27e3f6b](http://bitbucket.org/gotamedia/fluffy/commits/27e3f6b5f993a8ae2fbbc7beb0652fe125ad81ce))
+* FocusTrap forwardRef ([ee3d6f3](http://bitbucket.org/gotamedia/fluffy/commits/ee3d6f331f5b74e13f083b51294fe355b36fe638))
+* Improved Anchor/useAnchor calculation ([c1c077d](http://bitbucket.org/gotamedia/fluffy/commits/c1c077d61ad8a45e5a1cda1388d80b6d36f7c829))
+* Improved on TagSearch to handle filtering/resizing List ([0a467e8](http://bitbucket.org/gotamedia/fluffy/commits/0a467e883fc851d66b9ec5417d8e1fbcf89ce450))
+* ListRef type in Menu ([1a64e40](http://bitbucket.org/gotamedia/fluffy/commits/1a64e40ca6f977af5d8d036c6ef478544e47cfc2))
+* Updated Menu/Select trigger re-focus state onClose ([add12bb](http://bitbucket.org/gotamedia/fluffy/commits/add12bb018556871637f7326b4c0639892605a11))
+
 ### [0.27.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.1..v0.27.0) (2022-08-22)
 
 
