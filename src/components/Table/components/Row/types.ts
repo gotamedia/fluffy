@@ -3,6 +3,7 @@ import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttrib
 interface TableRowProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
     hover?: boolean
+    onHover?: (isHover: boolean) => void
 }
 
 type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
