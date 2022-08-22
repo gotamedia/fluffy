@@ -6,6 +6,7 @@ import { ValueI18n } from "@components/FormSystem/components/Validation/Field/Va
 import { DateDiffI18n } from "@components/FormSystem/components/Validation/Form/DateDiff/i18nTypes"
 import { DateOrderI18n } from "@components/FormSystem/components/Validation/Form/DateOrder/i18nTypes"
 import { DateRangeI18n } from "@components/FormSystem/components/Validation/Form/DateRange/i18nTypes"
+import { HintTypes as ValidationTypes } from "@components/Hint/types"
 import { DefaultTheme } from "styled-components"
 import { EmailI18n } from "./components/Validation/Field/Email/i18nTypes"
 import { RequiredI18n } from "./components/Validation/Field/Required/i18nTypes"
@@ -280,7 +281,7 @@ namespace Validation {
     }
 
     export interface Groups {
-        [key: string]: Validation.Message[]
+        [key: string]: Message[]
     }
 
     export namespace Field {
