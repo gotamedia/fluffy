@@ -15,6 +15,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         offset,
         children,
         style,
+        forceDirection,
         ...DOMProps
     } = props
 
@@ -26,7 +27,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         anchor: anchor,
         anchored: contentElement,
         padding: padding,
-        offset: offset
+        offset: offset,
+        forceDirection: forceDirection
     })
 
     return (
@@ -37,7 +39,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
                 ...anchorRect,
                 zIndex: 1000,
                 width: anchorRect.width || undefined,
-                height: anchorRect.height || undefined,
+                outline: 'none',
                 position: 'fixed',
                 ...style
             }}
