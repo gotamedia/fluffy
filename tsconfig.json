@@ -5,6 +5,7 @@
         "strict": true,
         "skipLibCheck": true,
         "jsx": "react-jsx",
+        "resolveJsonModule": true,
         "module": "esnext",
         "outDir": "dist",
         "declarationDir": "dist",

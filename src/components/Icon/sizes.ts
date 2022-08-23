@@ -1,5 +1,10 @@
 import { css } from 'styled-components'
 
+const micro = css`
+    height: 12px;
+    width: auto;
+`
+
 const tiny = css`
     height: 16px;
     width: auto;
@@ -26,6 +31,7 @@ const huge = css`
 `
 
 const sizes = {
+    micro,
     tiny,
     small,
     normal,

@@ -146,9 +146,3 @@ This project uses a [trunk based development](https://cloud.google.com/architect
 
 ### Conventional commits
 This project works with [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
-## Deploy
-Add deploy guide here
-
-#### Troubleshoot/Command not found
-Fluffy uses Husky for running git hooks in development. Before a commit is made Fluffy will run all tests and only allow the commit if successful. If prompted with a `command not found` error in for example sourcetree follow the solution in the Husky documentation ***[https://typicode.github.io/husky/#/?id=command-not-found](https://typicode.github.io/husky/#/?id=command-not-found)***

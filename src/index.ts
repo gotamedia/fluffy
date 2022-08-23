@@ -58,8 +58,8 @@ export { default as useIsomorphicLayoutEffect } from '@hooks/useIsomorphicLayout
 export * from '@hooks/useAnchor'
 export { default as useAnchor } from '@hooks/useAnchor'
 
-export * from '@hooks/useRect'
-export { default as useRect } from '@hooks/useRect'
+export * from '@hooks/useMeasure'
+export { default as useMeasure } from '@hooks/useMeasure'
 
 // <==== Hooks
 
@@ -156,6 +156,9 @@ export { default as Pill } from '@components/Pill'
 export * from '@components/Menu'
 export { default as Menu } from '@components/Menu'
 
+export * from '@components/Table'
+export { default as Table } from '@components/Table'
+
 export * from '@components/SubMenu'
 export { default as SubMenu } from '@components/SubMenu'
 
@@ -167,5 +170,14 @@ export { default as Modal } from '@components/Modal'
 
 export * from '@components/Sheet'
 export { default as Sheet } from '@components/Sheet'
+
+export * from '@components/Overlay'
+export { default as Overlay } from '@components/Overlay'
+
+export * from '@components/Tag'
+export { default as Tag } from '@components/Tag'
+
+export * from '@components/TagSearch'
+export { default as TagSearch } from '@components/TagSearch'
 
 // <==== Components

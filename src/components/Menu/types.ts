@@ -13,7 +13,8 @@ export interface MenuProps extends AnchorProps {
     anchor?: HTMLElement | null,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>,
-    listProps?: ListProps & RefAttributes<ListRef>
+    listProps?: ListProps & RefAttributes<ListRef>,
+    shouldFocusOnClose?: boolean
 }
 
 export type MenuRef = HTMLDivElement

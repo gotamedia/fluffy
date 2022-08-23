@@ -2,6 +2,7 @@ import {
     forwardRef,
     useRef,
     useState,
+    useImperativeHandle,
     useEffect,
     Children,
     useCallback,
@@ -61,6 +62,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
+    const wrapperRef = useRef<HTMLDivElement>(null)
     const targetedIndexRef = useRef<number>(-1)
     const filterRef = useRef<HTMLInputElement>(null)
 
@@ -71,6 +73,15 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
     const [filteredChildren, setFilteredChildren] = useState<ReactNode>()
 
     const listChildren = filteredChildren || children
+
+    useImperativeHandle(ref, () => {
+        const listRef = wrapperRef.current! as Types.ListRef
+
+        listRef.isFocused = isFocused
+        listRef.setFocus = (focused) => setIsFocused(focused)
+
+        return listRef
+    }, [isFocused])
 
     useEffect(() => {
         targetedIndexRef.current = targetedIndex
@@ -146,6 +157,8 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         }
 
         if (allowKeyboardNavigation) {
+            setIsFocused(true)
+
             switch (event.code) {
                 case 'ArrowUp': {
                     event.preventDefault()
@@ -195,21 +208,18 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
 
         switch (event.code) {
             case 'ArrowUp': {
-                setIsFocused(true)
                 hadnleOnKeyDown(event)
 
                 break
             }
 
             case 'ArrowDown': {
-                setIsFocused(true)
                 hadnleOnKeyDown(event)
                 
                 break
             }
 
             case 'Enter': {
-                setIsFocused(true)
                 hadnleOnKeyDown(event)
 
                 break
@@ -222,7 +232,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
 
     return (
         <Styled.Wrapper
-            ref={ref}
+            ref={wrapperRef}
             tabIndex={0}
             onKeyDown={hadnleOnKeyDown}
             onFocus={handleOnFocus}
