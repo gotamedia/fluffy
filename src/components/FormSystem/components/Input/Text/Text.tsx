@@ -12,19 +12,19 @@ const Text: Types.TextComponent = (props) => {
         disabled: disabledCombined,
         onBlur: inputLogicOnBlur,
         setFieldValue,
-        validateInstantUpdate,
+        validateOnChange,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.value)
         clearValidationMessages(name)
-        validateInstantUpdate(name, event?.target?.value)
+        validateOnChange(name, event?.target?.value)
 
         if (propsOnChange) {
             propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, validateInstantUpdate, propsOnChange])
+    }, [setFieldValue, name, clearValidationMessages, validateOnChange, propsOnChange])
 
     const onBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
         inputLogicOnBlur()

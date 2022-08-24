@@ -15,7 +15,7 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
         getFieldValue,
         onBlur,
         setFieldValue,
-        validateInstantUpdate,
+        validateOnChange,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
@@ -29,12 +29,12 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
 
         setFieldValue(name, value)
         clearValidationMessages(name)
-        validateInstantUpdate(name, value)
+        validateOnChange(name, value)
 
         if (optionOnChange) {
             optionOnChange(event)
         }
-    }, [allowDeselect, clearValidationMessages, getFieldValue, name, setFieldValue, validateInstantUpdate])
+    }, [allowDeselect, clearValidationMessages, getFieldValue, name, setFieldValue, validateOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {

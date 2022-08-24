@@ -23,7 +23,7 @@ const Password: Types.PasswordComponent = (props) => {
         blacklist,
         children,
         i18n,
-        instantUpdate,
+        validateOnChange,
         lowerCase,
         maxLength,
         minLength,
@@ -155,12 +155,12 @@ const Password: Types.PasswordComponent = (props) => {
     ])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation, instantUpdate)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, instantUpdate, removeValidation, uuid, validation])
+    }, [addValidation, validateOnChange, removeValidation, uuid, validation])
 
     return null
 }

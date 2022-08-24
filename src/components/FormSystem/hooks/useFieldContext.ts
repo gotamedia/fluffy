@@ -34,14 +34,14 @@ const useFieldContext = (): Types.FieldContext.Value => {
     const addValidation = useCallback((
         validationId: string,
         validationFunction: Types.Validation.Field.Function,
-        instantUpdate?: boolean
+        validateOnChange?: boolean
     ) => {
         if (state?.fieldName) {
             addFieldValidation(
                 `${state?.fieldName}_${validationId}`,
                 String(state?.fieldName),
                 validationFunction,
-                instantUpdate
+                validateOnChange
             )
         }
     }, [addFieldValidation, state?.fieldName])
@@ -80,8 +80,8 @@ const useFieldContext = (): Types.FieldContext.Value => {
         terminateField(fieldName)
     }, [terminateField])
 
-    const validate = useCallback((formData?: FormData, instantUpdateOnly?: boolean) => {
-        validateField(String(state?.fieldName), formData || getFormData(), instantUpdateOnly)
+    const validate = useCallback((formData?: FormData, validateOnChangeOnly?: boolean) => {
+        validateField(String(state?.fieldName), formData || getFormData(), validateOnChangeOnly)
     }, [getFormData, state?.fieldName, validateField])
 
     return useMemo(() => ({

@@ -5,7 +5,7 @@ import * as Types from "../../../../types"
 export type PasswordProps = PropsWithChildren<{
     blacklist?: string
     i18n?: PasswordI18n
-    instantUpdate?: boolean
+    validateOnChange?: boolean
     lowerCase?: boolean
     maxLength?: number
     minLength?: number

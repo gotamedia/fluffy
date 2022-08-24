@@ -46,7 +46,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const generateFieldValidationMessages = useCallback((
         fieldName: string,
         formData: Types.FormData,
-        instantUpdateOnly?: boolean
+        validateOnChangeOnly?: boolean
     ) => {
         const fieldValidationMessages = state.validations.field.reduce<Types.Validation.MessageWithId[]>((
             validationResult,
@@ -54,7 +54,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         ) => [
             ...validationResult,
             ...(
-                validation.fieldName === fieldName && (!instantUpdateOnly || validation.instantUpdate)
+                validation.fieldName === fieldName && (!validateOnChangeOnly || validation.validateOnChange)
                     ? validation
                         .validationFunction(formData[fieldName]?.value, fieldName)
                         .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
@@ -68,7 +68,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         ) => [
             ...validationResult,
             ...(
-                validation.involvedFieldNames.includes(fieldName) && (!instantUpdateOnly || validation.instantUpdate)
+                validation.involvedFieldNames.includes(fieldName) && (!validateOnChangeOnly || validation.validateOnChange)
                     ? validation
                         .validationFunction(formData)
                         .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
@@ -94,7 +94,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         validationId: string,
         fieldName: string,
         validationFunction: Types.Validation.Field.Function,
-        instantUpdate?: boolean
+        validateOnChange?: boolean
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFieldValidation,
@@ -102,7 +102,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
                 validationId,
                 fieldName,
                 validationFunction,
-                instantUpdate
+                validateOnChange
             }
         })
     }, [])
@@ -277,10 +277,10 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
         })
     }, [])
 
-    const validateField = useCallback((fieldName: string, formData: Types.FormData, instantUpdateOnly?: boolean) => {
+    const validateField = useCallback((fieldName: string, formData: Types.FormData, validateOnChangeOnly?: boolean) => {
         dispatch({ type: Types.FormContext.ReducerActionTypes.ResetFieldRequiresValidation, payload: { fieldName } })
 
-        const validationMessages = generateFieldValidationMessages(fieldName, formData, instantUpdateOnly)
+        const validationMessages = generateFieldValidationMessages(fieldName, formData, validateOnChangeOnly)
 
         validationMessages.forEach((validationMessage) => {
             addValidationMessages(

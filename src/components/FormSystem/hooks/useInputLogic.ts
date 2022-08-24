@@ -53,7 +53,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         validate()
     }, [clearValidationMessages, name, validate])
 
-    const validateInstantUpdate = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
+    const validateOnChange = useCallback((fieldName: string, fieldValue: Types.FormDataValue) => {
         const updatedFormData = {
             ...formData,
             [fieldName]: {
@@ -73,7 +73,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         onBlur,
         setFieldValue,
         theme,
-        validateInstantUpdate,
+        validateOnChange,
         validationType: getHighestValidationMessageType(name),
         value: getFieldValue(name)
     }

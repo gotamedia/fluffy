@@ -16,7 +16,7 @@ const TimePicker: Types.TimePickerComponent = (props) => {
         disabled: disabledCombined,
         onBlur,
         setFieldValue,
-        validateInstantUpdate,
+        validateOnChange,
         value
     } = useInputLogic({ defaultValue: "", disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
@@ -27,12 +27,12 @@ const TimePicker: Types.TimePickerComponent = (props) => {
     ) => {
         setFieldValue(name, getDateValue(date))
         clearValidationMessages(name)
-        validateInstantUpdate(name, getDateValue(date))
+        validateOnChange(name, getDateValue(date))
 
         if (propsOnChange) {
             propsOnChange(date as Date | null, event)
         }
-    }, [setFieldValue, name, clearValidationMessages, validateInstantUpdate, propsOnChange])
+    }, [setFieldValue, name, clearValidationMessages, validateOnChange, propsOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {

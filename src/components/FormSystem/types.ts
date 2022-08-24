@@ -65,7 +65,7 @@ namespace InputLogic {
             isManualChange?: boolean
         ) => void
         theme: DefaultTheme
-        validateInstantUpdate: (fieldName: string, fieldValue: FormDataValue) => void
+        validateOnChange: (fieldName: string, fieldValue: FormDataValue) => void
         validationType: ValidationTypes | undefined
         value: FormDataValue | undefined
     }
@@ -150,7 +150,7 @@ namespace FormContext {
             validationId: string,
             fieldName: string,
             validationFunction: Validation.Field.Function,
-            instantUpdate?: boolean
+            validateOnChange?: boolean
         ) => void
         addFormValidation: (
             validationId: string,
@@ -181,7 +181,7 @@ namespace FormContext {
         setIsDeleting: (isDeleting: boolean) => void
         setIsSubmitting: (isSubmitting: boolean) => void
         terminateField: (fieldName: string) => void
-        validateField: (fieldName: string, formData: FormData, instantUpdateOnly?: boolean) => Validation.Message[]
+        validateField: (fieldName: string, formData: FormData, validateOnChangeOnly?: boolean) => Validation.Message[]
         validateForm: (formData: FormData) => Validation.Message[]
     }
 
@@ -239,7 +239,7 @@ namespace FieldContext {
         addValidation: (
             validationId: string,
             validationFunction: Validation.Field.Function,
-            instantUpdate?: boolean
+            validateOnChange?: boolean
         ) => void
         initialize: (fieldName: string, defaultValue: FormDataValue) => void
         removeValidation: (validationId: string) => void
@@ -247,7 +247,7 @@ namespace FieldContext {
         setFieldName: (fieldName: string) => void
         setShowDefaultLabel: (show: boolean) => void
         terminate: (fieldName: string) => void
-        validate: (formData?: FormData, instantUpdateOnly?: boolean) => void
+        validate: (formData?: FormData, validateOnChangeOnly?: boolean) => void
     }
 
     export interface ReducerState {
@@ -291,7 +291,7 @@ namespace Validation {
             validationId: string,
             fieldName: string,
             validationFunction: Function,
-            instantUpdate: boolean
+            validateOnChange: boolean
         }
     }
 
@@ -302,7 +302,7 @@ namespace Validation {
             validationId: string,
             involvedFieldNames: string[],
             validationFunction: Function,
-            instantUpdate: boolean
+            validateOnChange: boolean
         }
     }
 }

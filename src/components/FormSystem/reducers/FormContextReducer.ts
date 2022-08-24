@@ -27,7 +27,7 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                             validationId: action?.payload?.validationId,
                             fieldName: action?.payload?.fieldName,
                             validationFunction: action?.payload?.validationFunction,
-                            instantUpdate: action?.payload?.instantUpdate
+                            validateOnChange: action?.payload?.validateOnChange
                         }
                     ]
                 }
@@ -43,7 +43,7 @@ const FormContextReducer: Types.FormContext.Reducer = (state, action) => {
                             validationId: action?.payload?.validationId,
                             involvedFieldNames: action?.payload?.involvedFieldNames,
                             validationFunction: action?.payload?.validationFunction,
-                            instantUpdate: action?.payload?.instantUpdate
+                            validateOnChange: action?.payload?.validateOnChange
                         }
                     ]
                 }

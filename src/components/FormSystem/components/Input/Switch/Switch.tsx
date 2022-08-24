@@ -14,7 +14,7 @@ const Switch: Types.SwitchComponent = (props) => {
         disabled: disabledCombined,
         onBlur,
         setFieldValue,
-        validateInstantUpdate,
+        validateOnChange,
         value
     } = useInputLogic({ defaultValue: false, disabled, name })
     const previousValue: FormDataValue | undefined = usePrevious(value)
@@ -22,12 +22,12 @@ const Switch: Types.SwitchComponent = (props) => {
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setFieldValue(name, event?.target?.checked)
         clearValidationMessages(name)
-        validateInstantUpdate(name, event?.target?.checked)
+        validateOnChange(name, event?.target?.checked)
 
         if (propsOnChange) {
             propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, validateInstantUpdate, propsOnChange])
+    }, [setFieldValue, name, clearValidationMessages, validateOnChange, propsOnChange])
 
     useEffect(() => {
         if (previousValue !== value) {
