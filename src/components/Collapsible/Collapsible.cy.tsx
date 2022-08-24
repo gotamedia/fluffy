@@ -1,9 +1,7 @@
 import Collapsible from "./index"
 
-describe("Collapsible", () => {
-    describe("Functionality", () => {
-        it("Should not crash", () => {
-            cy.mount(<Collapsible>{null}</Collapsible>)
-        })
+describe("<Collapsible>", () => {
+    it("mounts", () => {
+        cy.mount(<Collapsible />)
     })
 })

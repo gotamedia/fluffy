@@ -1,57 +1,37 @@
-import { forwardRef, useRef, useState, useCallback } from "react"
+import { forwardRef, useRef } from "react"
 
-import useRect from "@root/hooks/useRect"
-import useIsomorphicLayoutEffect from "@root/hooks/useIsomorphicLayoutEffect"
+import useAnimation from "@hooks/useAnimation"
+import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 
 import * as Styled from "./style"
 import * as Types from "./types"
 
-const Collapsible: Types.Collapsible = forwardRef(({ open, children, ...rest }, ref) => {
-	const [renderChildren, setRenderChildren] = useState<boolean>()
-	const wrapperRef = useRef<HTMLDivElement>(null)
-	const childrenWrapperRef = useRef<HTMLDivElement>(null)
-	const wrapperHeight = useRect(wrapperRef)?.height
-	const childrenWrapperHeight = useRect(childrenWrapperRef)?.height
+const Collapsible: Types.Collapsible = forwardRef(({ 
+    open,
+    children,
+    ...rest
+}, ref) => {
+    const { heightTransition } = useAnimation()
+    const wrapperRef = useRef<HTMLDivElement>(null)
+    const contentRef = useRef<HTMLDivElement>(null)
 
-	const fireHeightTransition = useCallback((height: number) => {
-		if (wrapperRef.current) {
-			wrapperRef.current.style.height = height + "px"
-		}
-	}, [])
+    useIsomorphicLayoutEffect(() => {
+        if (wrapperRef.current && contentRef.current && typeof open === "boolean") {
+            const contentHeight = contentRef.current.getBoundingClientRect().height
+            const element = wrapperRef.current
+            const to = open ? contentHeight : 0
+            const from = open ? 0 : contentHeight
+            heightTransition({ element, to, from })
+        }
+    }, [heightTransition, open])
 
-	useIsomorphicLayoutEffect(() => {
-		if (renderChildren) {
-			if (open && childrenWrapperHeight) {
-				fireHeightTransition(childrenWrapperHeight)
-			} else if (open === false) {
-				fireHeightTransition(0)
-			}
-		}
-	}, [open, renderChildren, childrenWrapperHeight, fireHeightTransition])
-
-	useIsomorphicLayoutEffect(() => {
-		if (open) {
-			setRenderChildren(true)
-		}
-		if (open === false) {
-			const heightTransitionFinish = wrapperHeight === 0
-			if (heightTransitionFinish) {
-				setRenderChildren(false)
-			}
-		}
-	}, [open, wrapperHeight])
-
-	return (
-		<Styled.Container ref={ref} {...rest}>
-			<Styled.Wrapper ref={wrapperRef}>
-				<Styled.InnerWrapper>
-					<Styled.ChildrenWrapper ref={childrenWrapperRef}>
-						{renderChildren ? children : null}
-					</Styled.ChildrenWrapper>
-				</Styled.InnerWrapper>
-			</Styled.Wrapper>
-		</Styled.Container>
-	)
+    return (
+        <Styled.Container ref={ref} {...rest}>
+            <Styled.Wrapper ref={wrapperRef}>
+                <Styled.ContentWrapper ref={contentRef}>{children}</Styled.ContentWrapper>
+            </Styled.Wrapper>
+        </Styled.Container>
+    )
 })
 
 Collapsible.displayName = "Collapsible"
