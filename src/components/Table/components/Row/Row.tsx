@@ -1,7 +1,7 @@
 import {
     Children,
-    isValidElement,
     forwardRef,
+    isValidElement,
     MouseEventHandler,
     useCallback,
     useEffect,
@@ -9,8 +9,8 @@ import {
     useState,
 } from "react"
 
-import Icon, { Icons } from "@components/Icon"
 import Collapsible from "@components/Collapsible"
+import Icon, { Icons } from "@components/Icon"
 
 import { TableContext, useTableContext } from "../context"
 import { TableElements } from "../types"
@@ -139,7 +139,7 @@ const TableRow: Types.TableRow = forwardRef(({
                         </Style.CollapsibleRow>
                         <Style.Row>
                             <Style.CollapsibleCell colSpan={childrenCount}>
-                                <Collapsible isOpen={isOpen}>{hiddenElement}</Collapsible>
+                                <Collapsible open={isOpen}>{hiddenElement}</Collapsible>
                             </Style.CollapsibleCell>
                         </Style.Row>
                     </TableContext.Provider>
