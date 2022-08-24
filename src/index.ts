@@ -25,6 +25,9 @@ export * from '@contexts/ThemeContext'
 
 // Hooks ====>
 
+export * from '@hooks/useAnimation'
+export { default as useAnimation } from '@hooks/useAnimation'
+
 export * from '@hooks/useDeepCompareCallback'
 export { default as useDeepCompareCallback } from '@hooks/useDeepCompareCallback'
 
