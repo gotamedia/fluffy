@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.2..v0.28.1) (2022-08-24)
+
+
+### Bug Fixes
+
+* Updated variables for certificate and domain name. ([b3e1869](http://bitbucket.org/gotamedia/fluffy/commits/b3e1869617263cc8242886aa20e260b8aa60a08c))
+
 ### [0.28.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.1..v0.28.0) (2022-08-24)
 
 
