@@ -76,9 +76,9 @@ const DateValidation: Types.DateComponent = (props) => {
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         const validationMessages: FSTypes.Validation.Message[] = []
-        const date = value ? new Date(String(value)) : undefined
+        const date = value && typeof value === "string" ? Date.parse(String(value)) : undefined
 
-        if (!date) {
+        if (!date || isNaN(date)) {
             return []
         }
 
