@@ -48,6 +48,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
     const previousIsOpenState = useRef(false)
     const shouldfocusTrigger = useRef(false)
+    const initiatedRef = useRef(false)
 
     const [triggerRef, setTriggerRef] = useState<HTMLButtonElement | null>(null)
     const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
@@ -71,7 +72,11 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 setIsOpen(false)
 
                 shouldfocusTrigger.current = true
+                initiatedRef.current = true
             }
+        } else {
+            initiatedRef.current = true
+            shouldfocusTrigger.current = true
         }
     }, [
         width,
@@ -85,10 +90,14 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             if (!isOpen && previousIsOpenState.current && triggerRef) {
                 triggerRef.focus()
             }
-
-            previousIsOpenState.current = isOpen
         }
     }, [isOpen, triggerRef])
+
+    useEffect(() => {
+        if (initiatedRef.current) {
+            previousIsOpenState.current = isOpen
+        }
+    }, [isOpen])
 
     useEffect(() => {
         if (isOpen && listRef) {
@@ -178,6 +187,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
             <Menu
                 {...filterdProps}
+                shouldFocusOnClose={false}
                 ref={undefined}
                 show={isOpen}
                 anchor={triggerRef}

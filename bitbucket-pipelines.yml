@@ -34,8 +34,14 @@ pipelines:
             script:
               - npm i
               - npm run cy:run
-      
+
       Storybook:
+        - variables:
+            - name: ENVIRONMENT
+              default: DEV
+              allowed-values:
+                - "DEV"
+                - "PROD"
         - step:
             name: Build
             caches:
@@ -52,39 +58,49 @@ pipelines:
               name: gotamedia/aws-cli:latest
               run-as-user: 1000
             script:
-              - export AWS_ACCESS_KEY_ID=${PROD_AWS_ACCESS_KEY_ID}
-              - export AWS_SECRET_ACCESS_KEY=${PROD_AWS_SECRET_ACCESS_KEY}
+              - >
+                if [[ ${ENVIRONMENT} == "PROD" ]]; then
+                  export AWS_ACCESS_KEY_ID=${PROD_AWS_ACCESS_KEY_ID}
+                  export AWS_SECRET_ACCESS_KEY=${PROD_AWS_SECRET_ACCESS_KEY}
+                  export CERTIFICATE_ARN=${PROD_CERTIFICATE_ARN}
+                  export DOMAIN_NAME=${PROD_DOMAIN_NAME}
+                else
+                  export AWS_ACCESS_KEY_ID=${DEV_AWS_ACCESS_KEY_ID}
+                  export AWS_SECRET_ACCESS_KEY=${DEV_AWS_SECRET_ACCESS_KEY}
+                  export CERTIFICATE_ARN=${DEV_CERTIFICATE_ARN}
+                  export DOMAIN_NAME=${DEV_DOMAIN_NAME}
+                fi
               - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
               - >
                 aws cloudformation deploy \
-                    --template-file "aws/template.yml" \
-                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
-                    --capabilities CAPABILITY_IAM \
-                    --no-fail-on-empty-changeset \
-                    --parameter-overrides \
-                      CertificateARN="${CERTIFICATE_ARN}" \
-                      DomainName="${DOMAIN_NAME}" \
-                    --tags \
-                      AppId=${APP_ID} \
-                      AppName=${BITBUCKET_REPO_SLUG} \
-                      CostBearer=${COST_BEARER} \
-                      CostCenter=${COST_CENTER} \
-                      Environment=prod \
-                      Owner=${OWNER} \
-                      Role=${ROLE} \
-                      SLA=${SLA}
+                  --template-file "aws/template.yml" \
+                  --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                  --capabilities CAPABILITY_IAM \
+                  --no-fail-on-empty-changeset \
+                  --parameter-overrides \
+                    CertificateARN="${CERTIFICATE_ARN}" \
+                    DomainName="${DOMAIN_NAME}" \
+                  --tags \
+                    AppId=${APP_ID} \
+                    AppName=${BITBUCKET_REPO_SLUG} \
+                    CostBearer=${COST_BEARER} \
+                    CostCenter=${COST_CENTER} \
+                    Environment=${ENVIRONMENT} \
+                    Owner=${OWNER} \
+                    Role=${ROLE} \
+                    SLA=${SLA}
               - >
                 S3_BUCKET=$(aws cloudformation describe-stacks \
-                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
-                    --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" \
-                    --output text)
+                  --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                  --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" \
+                  --output text)
               - aws s3 sync ./storybook-static s3://${S3_BUCKET} --delete --no-progress
               - >
                 DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
-                    --stack-name "${BITBUCKET_REPO_SLUG,,}" \
-                    --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" \
-                    --output text)
+                  --stack-name "${BITBUCKET_REPO_SLUG,,}" \
+                  --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" \
+                  --output text)
               - >
                 aws cloudfront create-invalidation \
-                    --distribution-id ${DISTRIBUTION_ID} \
-                    --paths "/*"
+                  --distribution-id ${DISTRIBUTION_ID} \
+                  --paths "/*"

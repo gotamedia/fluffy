@@ -1,0 +1,43 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useMeasure'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useMeasure is a helper hook that tracks dimensions of an HTML element using the Resize Observer API.
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import { useMeasure } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const [element, setElementRef] = useState()
+    \nconst elementRect = useMeasure(element)
+    \nreturn (
+        <div>
+            <div ref={setElementRef}>
+                {...}
+            </div>\n
+            {JSON.stringify(elementRect)}
+        </div>
+    )
+}
+`}
+/>
+
+## Options
+
+<Source
+    language={'ts'}
+    code={`(
+    target: HTMLElement | null
+)`}
+/>

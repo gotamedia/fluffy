@@ -1,4 +1,5 @@
 import {
+    useCallback,
     useRef,
     useState
 } from 'react'
@@ -15,7 +16,8 @@ const useAnchor: Types.UseAnchor = (props) => {
         anchor,
         anchored,
         padding,
-        offset
+        offset,
+        forceDirection
     } = props
 
     const paddingValue = typeof padding === 'number' ? padding : 0
@@ -34,12 +36,10 @@ const useAnchor: Types.UseAnchor = (props) => {
         top: 0,
         left: 0,
         width: viewWidth,
-        height: viewHeight
+        maxHeight: 10000
     })
 
-    const [rect, setRect] = useState<Types.AnchorRect>(defaultRect.current)
-
-    useIsomorphicLayoutEffect(() => {
+    const calculateRect = useCallback(() => {
         let rectData = defaultRect.current
 
         const anchorElement = anchor || document.body
@@ -49,47 +49,61 @@ const useAnchor: Types.UseAnchor = (props) => {
             const anchoredRect = anchored.getBoundingClientRect()
 
             const calculatedRect = {
-                top: anchorRect.bottom,
-                left: anchorRect.left,
+                top: anchorRect.bottom + offsetValue.y,
+                left: anchorRect.left + offsetValue.x,
                 width: (anchorRect.width < anchoredRect.width ? anchoredRect.width : anchorRect.width),
-                height: anchoredRect.height || null
-            }
+                maxHeight: 10000
+            } as Types.AnchorRect
 
             if (anchorRect.left + offsetValue.x + calculatedRect.width <= viewWidth) {
+                // Anchored can extend to the right
                 calculatedRect.left = anchorRect.left + offsetValue.x
-            } else if (anchorRect.right - calculatedRect.width + (-1 * offsetValue.x) >= CALCULATION_PADDING) {
+            } else if (anchorRect.right - calculatedRect.width - offsetValue.x >= CALCULATION_PADDING) {
+                // Anchored can extend to the left
                 calculatedRect.left = anchorRect.right - calculatedRect.width + (-1 * offsetValue.x) 
             } else if (viewWidth - calculatedRect.width < 0) {
+                // Anchored is wider than the viewWidth
                 calculatedRect.left = 0
             } else {
+                // Anchored fits only within the viewWidth
                 calculatedRect.left = viewWidth - calculatedRect.width
             }
-    
-            if (anchorRect.bottom + offsetValue.y + anchoredRect.height < viewHeight) {
-                calculatedRect.top = anchorRect.bottom + offsetValue.y
-            } else if (anchorRect.top - anchoredRect.height - offsetValue.y >= CALCULATION_PADDING) {
-                calculatedRect.top = anchorRect.top - anchoredRect.height - offsetValue.y
-            } else if (anchorRect.top - CALCULATION_PADDING > Math.abs(viewHeight - anchorRect.bottom)) {
-                calculatedRect.top = CALCULATION_PADDING
-                calculatedRect.height = anchorRect.top - CALCULATION_PADDING - offsetValue.y
+
+            const startBottom = anchorRect.bottom + offsetValue.y
+            const startTop = anchorRect.top - offsetValue.y
+
+            const availableBottomSpace = Math.max(viewHeight - startBottom - CALCULATION_PADDING, CALCULATION_PADDING)
+            const availableTopSpace = Math.max(startTop - CALCULATION_PADDING, CALCULATION_PADDING)
+
+            if (!forceDirection && availableTopSpace > availableBottomSpace) {
+                calculatedRect.top = undefined
+                calculatedRect.bottom = (windowSize.height - anchorRect.top) + offsetValue.y
+                calculatedRect.maxHeight = availableTopSpace
             } else {
                 calculatedRect.top = anchorRect.bottom + offsetValue.y
-                calculatedRect.height = Math.abs(viewHeight - calculatedRect.top) - CALCULATION_PADDING
+                calculatedRect.maxHeight = availableBottomSpace
             }
-            
+
             rectData = calculatedRect
         }
 
-        setRect(rectData)
+        return rectData
     }, [
         anchor,
         anchored,
+        forceDirection,
         offsetValue.x,
         offsetValue.y,
-        padding,
+        windowSize.height,
         viewHeight,
         viewWidth
     ])
+
+    const [rect, setRect] = useState<Types.AnchorRect>(calculateRect)
+    
+    useIsomorphicLayoutEffect(() => {
+        setRect(calculateRect())
+    }, [calculateRect])
 
     return rect
 }

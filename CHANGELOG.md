@@ -2,6 +2,77 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.2..v0.28.1) (2022-08-24)
+
+
+### Bug Fixes
+
+* Updated variables for certificate and domain name. ([b3e1869](http://bitbucket.org/gotamedia/fluffy/commits/b3e1869617263cc8242886aa20e260b8aa60a08c))
+
+### [0.28.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.1..v0.28.0) (2022-08-24)
+
+
+### Features
+
+* Option to deploy either dev or production. ([9da6c86](http://bitbucket.org/gotamedia/fluffy/commits/9da6c86ea074a01112b5fc3a2bac966d062a0914))
+
+## [0.28.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.0..v0.27.1) (2022-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added useMeasure hook
+
+### Features
+
+* Added ability to render FocusTrap instead of a div for Anchor ([afef079](http://bitbucket.org/gotamedia/fluffy/commits/afef0797811c45f82cfe049d802f2de6a4e966a9))
+* Added useMeasure hook ([16f5d21](http://bitbucket.org/gotamedia/fluffy/commits/16f5d212b2cc8f797d2c435665cd1c3271c85c11))
+
+
+### Bug Fixes
+
+* Allow close TagSearch with ArrowIcon while opened ([0684b35](http://bitbucket.org/gotamedia/fluffy/commits/0684b35263311925be822b80bbaf2f7ba573fb7e))
+* Allow passing down iconProps for Tag's closeIcon ([4491b58](http://bitbucket.org/gotamedia/fluffy/commits/4491b5845bf9214caa689fd2439f2ec351e3e23c))
+* Better keyboard handling for TagSearch ([6345bb6](http://bitbucket.org/gotamedia/fluffy/commits/6345bb60191d6ff8f718c5c4ad3d45e859a4592c))
+* Defaulted Portal to render on first render-cycle instead on first-mount ([27e3f6b](http://bitbucket.org/gotamedia/fluffy/commits/27e3f6b5f993a8ae2fbbc7beb0652fe125ad81ce))
+* FocusTrap forwardRef ([ee3d6f3](http://bitbucket.org/gotamedia/fluffy/commits/ee3d6f331f5b74e13f083b51294fe355b36fe638))
+* Improved Anchor/useAnchor calculation ([c1c077d](http://bitbucket.org/gotamedia/fluffy/commits/c1c077d61ad8a45e5a1cda1388d80b6d36f7c829))
+* Improved on TagSearch to handle filtering/resizing List ([0a467e8](http://bitbucket.org/gotamedia/fluffy/commits/0a467e883fc851d66b9ec5417d8e1fbcf89ce450))
+* ListRef type in Menu ([1a64e40](http://bitbucket.org/gotamedia/fluffy/commits/1a64e40ca6f977af5d8d036c6ef478544e47cfc2))
+* Updated Menu/Select trigger re-focus state onClose ([add12bb](http://bitbucket.org/gotamedia/fluffy/commits/add12bb018556871637f7326b4c0639892605a11))
+
+### [0.27.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.1..v0.27.0) (2022-08-22)
+
+
+### Features
+
+* **TableRow:** Add the ability to check if component is on hover ([1eb977d](http://bitbucket.org/gotamedia/fluffy/commits/1eb977da4737005875da46f748760b8e358c9987))
+* **TableRow:** Added the abililty for the parent to listen for mouse enter and mouse leave events ([b2a684b](http://bitbucket.org/gotamedia/fluffy/commits/b2a684b2620debe346321d6d5d08503cc55449a7))
+
+## [0.27.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.27.0..v0.26.0) (2022-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added basic TagSearch component
+* Added basic Tag component
+
+### Features
+
+* Added basic Tag component ([ba6cd65](http://bitbucket.org/gotamedia/fluffy/commits/ba6cd65ba0910bc3fe687d6ac969f8399cfea877))
+* Added basic TagSearch component ([1baa372](http://bitbucket.org/gotamedia/fluffy/commits/1baa372a36c971dc29f3ccd90a027dd6fc31c8aa))
+
+
+### Bug Fixes
+
+* Anchor/Menu overflow style ([b137fc4](http://bitbucket.org/gotamedia/fluffy/commits/b137fc4948acc7e529fcb1ae51a1a2435639a3f6))
+* Exported Overlay ([c4caff4](http://bitbucket.org/gotamedia/fluffy/commits/c4caff4f02b208f4c608b15afe66021646dc7300))
+* Fixed Tag sizes typo and added disabled/onRemove props ([2d11ff3](http://bitbucket.org/gotamedia/fluffy/commits/2d11ff366a5b86b42a70114c104e15f0a43c4f42))
+* InputGroup ref handling ([7405223](http://bitbucket.org/gotamedia/fluffy/commits/7405223ce8436cff224d3e2e8793ea822ca9a35a))
+* List forwarded ref ([8b98e41](http://bitbucket.org/gotamedia/fluffy/commits/8b98e416d9dcbc563fdc81f8ec15bd7e2e04420c))
+* **style:** Added "micro" size to Icon ([cfab7f1](http://bitbucket.org/gotamedia/fluffy/commits/cfab7f16fcc570b63a8db368cd37987ba449383f))
+* Table test for parent and children relationship ([00117ff](http://bitbucket.org/gotamedia/fluffy/commits/00117ff289b77ce938b0a7d066fd08c7c5288f36))
+
 ## [0.26.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.26.0..v0.25.0) (2022-08-16)
 
 

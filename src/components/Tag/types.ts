@@ -18,7 +18,8 @@ export interface TagProps extends HTMLAttributes<HTMLDivElement> {
     label: string,
     size?: TagSizeType,
     disabled?: boolean,
-    onRemove?: MouseEventHandler<HTMLButtonElement>
+    onRemove?: MouseEventHandler<HTMLButtonElement>,
+    iconProps?: HTMLAttributes<HTMLButtonElement>
 }
 
 export type TagRef = HTMLDivElement

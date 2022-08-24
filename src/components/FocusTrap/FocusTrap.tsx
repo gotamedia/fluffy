@@ -1,6 +1,7 @@
 import {
     forwardRef,
-    useRef,
+    useState,
+    useImperativeHandle,
     useCallback,
     useEffect
 } from 'react'
@@ -30,17 +31,9 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
-    const trapContainerRef = useRef<HTMLDivElement>(null)
+    const [trapContainerRef, setTrapContainerRef] = useState<HTMLDivElement | null>(null)
 
-    useEffect(() => {
-        if (ref) {
-            if (typeof ref === 'function') {
-                ref(trapContainerRef.current)
-            } else {
-                ref.current = trapContainerRef.current
-            }
-        }
-    }, [ref])
+    useImperativeHandle(ref, () => trapContainerRef as HTMLDivElement, [trapContainerRef])
 
     const handleOnKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>((event) => {
         if (typeof onKeyDown === 'function') {
@@ -49,7 +42,7 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
 
         if (!disabled) {
             if (event.code === 'Tab') {
-                const trapContainer = trapTarget?.current ? trapTarget.current : trapContainerRef.current!
+                const trapContainer = trapTarget?.current ? trapTarget.current : trapContainerRef!
                 const query = Array.isArray(focusableElementsQuery) && focusableElementsQuery.length ? (
                     focusableElementsQuery
                 ) : (
@@ -79,6 +72,7 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
             }
         }
     }, [
+        trapContainerRef,
         disabled,
         focusableElementsQuery,
         onKeyDown,
@@ -99,7 +93,7 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
 
     return (
         <Styled.Wrapper
-            ref={trapContainerRef}
+            ref={setTrapContainerRef}
             onKeyDown={!useGlobalListener ? handleOnKeyDown : undefined}
             {...DOMProps}
         >

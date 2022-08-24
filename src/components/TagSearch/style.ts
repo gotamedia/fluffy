@@ -6,12 +6,13 @@ import Icon, { Icons } from '../Icon'
 import Container from '../Container'
 import InputComponent from '../Input'
 import InputGroupComponent from '../InputGroup'
+import PopoverComponent from '../Popover'
 
 const Wrapper = styled.div<{ $disabled?: boolean }>`
     display: inline-flex;
     position: relative;
     outline: none;
-    padding: 4px 6px;
+    padding: 0 6px;
     align-items: center;
     width: 100%;
     min-height: 40px;
@@ -22,6 +23,10 @@ const Wrapper = styled.div<{ $disabled?: boolean }>`
     ${({ $disabled }) => $disabled && css`
         opacity: 0.5;
     `}
+
+    &:focus {
+        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
+    }
 `
 
 const ElementsWrapper = styled.div`
@@ -36,7 +41,7 @@ const SearchIcon = styled(Icon).attrs(() => {
         icon: Icons.Search
     }
 })`
-    margin: auto 10px auto 3px;
+    margin: auto 0px auto 3px;
 `
 
 const ArrowIcon = styled(Icon).attrs(() => {
@@ -44,32 +49,50 @@ const ArrowIcon = styled(Icon).attrs(() => {
         icon: Icons.ArrowDown
     }
 })`
-    margin: auto 3px auto 10px;
+    margin: auto 3px auto 0px;
+`
+
+const Popover = styled(PopoverComponent)`
+    box-shadow: 0px 2px 15px rgb(0 0 0 / 20%);
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1px;
 `
 
 const InnerWrapper = styled(Container)`
     min-height: 40px;
     width: 100%;
+    height: 100%;
     overflow: hidden;
+`
+
+const TagsElements = styled.div`
+    padding: 5px 10px;
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
 `
 
 const TagsWrapper = styled.div<{ $asInput: boolean }>`
     position: relative;
+    width: 100%;
+    margin: auto 0;
+    min-height: 40px;
     display: flex;
-    flex: 1;
-    gap: 5px;
-    min-height: 30px;
-    justify-content: flex-start;
-    align-items: center;
     background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
-    padding: 5px 10px;
-    flex-wrap: wrap;
 
     ${({ $asInput }) => $asInput && css`
         overflow: hidden;
-        padding: unset;
         background-color: unset;
-        flex-wrap: nowrap;
+
+        ${TagsElements} {
+            overflow: hidden;
+            flex-wrap: nowrap;
+        }
         
         &:after {
             content: "";
@@ -103,6 +126,11 @@ const Input = styled(InputComponent)`
     }
 `
 
+const ListWrapper = styled.div`
+    flex: 1;
+    overflow: auto;
+`
+
 export {
     Wrapper,
     ElementsWrapper,
@@ -110,6 +138,9 @@ export {
     ArrowIcon,
     InnerWrapper,
     TagsWrapper,
+    TagsElements,
     InputGroup,
-    Input
+    Input,
+    Popover,
+    ListWrapper
 }
