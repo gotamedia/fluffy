@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.28.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.1..v0.28.0) (2022-08-24)
+
+
+### Features
+
+* Option to deploy either dev or production. ([9da6c86](http://bitbucket.org/gotamedia/fluffy/commits/9da6c86ea074a01112b5fc3a2bac966d062a0914))
+
 ## [0.28.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.0..v0.27.1) (2022-08-22)
 
 
