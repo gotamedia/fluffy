@@ -18,7 +18,8 @@ const Length: Types.LengthComponent = (props) => {
         i18n,
         min,
         max,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -104,12 +105,12 @@ const Length: Types.LengthComponent = (props) => {
     }, [children, exactly, formI18n?.validations?.field?.length, i18n, label, max, min, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

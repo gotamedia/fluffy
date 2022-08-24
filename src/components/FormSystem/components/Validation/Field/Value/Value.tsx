@@ -17,6 +17,7 @@ const Value: Types.ValueComponent = (props) => {
         i18n,
         invertedValue,
         type = FSTypes.ValidationTypes.Error,
+        validateOnChange,
         value: compareValue
     } = props
 
@@ -69,12 +70,12 @@ const Value: Types.ValueComponent = (props) => {
     }, [children, compareValue, formI18n?.validations?.field?.value, i18n, invertedValue, label, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

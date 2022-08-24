@@ -15,7 +15,8 @@ const Email: Types.EmailComponent = (props) => {
     const {
         children,
         i18n,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -47,12 +48,12 @@ const Email: Types.EmailComponent = (props) => {
     }, [children, formI18n?.validations?.field?.email?.text, i18n?.text, label, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

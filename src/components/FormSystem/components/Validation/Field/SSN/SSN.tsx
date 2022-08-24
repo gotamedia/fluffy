@@ -20,7 +20,8 @@ const SSN: Types.SSNComponent = (props) => {
         i18n,
         minAge,
         skipDash,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -74,12 +75,12 @@ const SSN: Types.SSNComponent = (props) => {
     }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, skipDash, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

@@ -11,13 +11,12 @@ import * as Types from "./types"
 const validationName = "required"
 
 const Required: Types.RequiredComponent = (props) => {
-    console.log("required", props)
     const {
         children,
         i18n,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
-    console.log("required 2")
 
     const [uuid] = useState(uuidv4())
 
@@ -51,14 +50,14 @@ const Required: Types.RequiredComponent = (props) => {
     }, [children, formI18n?.validations?.field?.required?.text, i18n?.text, label, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
         setIsRequired(true)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
             setIsRequired(false)
         }
-    }, [addValidation, removeValidation, setIsRequired, uuid, validation])
+    }, [addValidation, removeValidation, setIsRequired, uuid, validateOnChange, validation])
 
     return null
 }

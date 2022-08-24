@@ -19,7 +19,8 @@ const DateValidation: Types.DateComponent = (props) => {
         maxExclusive,
         min,
         minExclusive,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -137,12 +138,12 @@ const DateValidation: Types.DateComponent = (props) => {
     ])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validation])
+    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

@@ -9,6 +9,7 @@ export type DateProps = PropsWithChildren<{
     maxExclusive?: boolean
     min?: string | Date
     minExclusive?: boolean
+    validateOnChange?: boolean
 }>
 
 export type DateComponent = React.FC<DateProps>

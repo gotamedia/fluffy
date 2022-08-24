@@ -4,10 +4,11 @@ import * as Types from "../../../../types"
 
 export type LengthProps = PropsWithChildren<{
     exactly?: number
-    i18n?: LengthI18n,
-    min?: number,
-    max?: number,
+    i18n?: LengthI18n
+    min?: number
+    max?: number
     type?: Types.ValidationTypes
+    validateOnChange?: boolean
 }>
 
 export type LengthComponent = React.FC<LengthProps>

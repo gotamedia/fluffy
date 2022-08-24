@@ -5,6 +5,7 @@ import * as Types from "../../../../types"
 export type RequiredProps = PropsWithChildren<{
     i18n?: RequiredI18n
     type?: Types.ValidationTypes
+    validateOnChange?: boolean
 }>
 
 export type RequiredComponent = React.FC<RequiredProps>

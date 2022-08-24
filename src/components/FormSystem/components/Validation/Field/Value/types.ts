@@ -6,6 +6,7 @@ export type ValueProps = PropsWithChildren<{
     i18n?: ValueI18n
     invertedValue?: boolean
     type?: Types.ValidationTypes
+    validateOnChange?: boolean
     value: Types.FormDataValue | RegExp
 }>
 
