@@ -13,11 +13,21 @@ import borders from './borders'
 
 import type * as Types from './types'
 
-const InnerWrapper = styled.div<{ $type?: Types.ListItemProps['type'], $hasIcon: boolean }>`
+type InnerWrapperProps = {
+    $type?: Types.ListItemProps['type'],
+    $hasIcon: boolean,
+    $asTitle?: Types.ListItemProps['asTitle']
+}
+
+const InnerWrapper = styled.div<InnerWrapperProps>`
     display: flex;
     margin: 0 0 10px 0px;
     padding-right: 30px;
     position: relative;
+
+    ${({ $asTitle }) => $asTitle && css`
+        margin: 0 0 8px 0px;
+    `};
 
     ${({ $type }) => types[$type || 'normal']};
 `
@@ -128,6 +138,8 @@ const Wrapper = styled.div<WrapperProps>`
     `};
 
     ${({ $asTitle }) => $asTitle && css`
+        padding: 8px 0 0 0;
+
         ${Text} {
             color: gray;
         }

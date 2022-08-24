@@ -78,6 +78,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
             <Styled.InnerWrapper
                 $type={type}
                 $hasIcon={!!icon}
+                $asTitle={asTitle}
             >
                 {
                     !asTitle && isTypeSelect && selected ? (
@@ -127,7 +128,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                 border ? (
                     <Styled.Border
                         //@ts-ignore
-                        $border={border}
+                        $border={asTitle ? 'full' : border}
                         $hasIcon={!!icon}
                         $type={type}
                     />

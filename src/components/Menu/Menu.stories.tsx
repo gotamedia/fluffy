@@ -85,9 +85,7 @@ const Basic: Story<Types.MenuProps> = (props) => {
 export const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 BasicStory.args = {
-    listProps: {
-        border: 'full'
-    }
+    
 }
 
 export default {
