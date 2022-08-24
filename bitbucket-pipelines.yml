@@ -71,6 +71,7 @@ pipelines:
                   export DOMAIN_NAME=${DEV_DOMAIN_NAME}
                 fi
               - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+              - aws configure list
               - >
                 aws cloudformation deploy \
                   --template-file "aws/template.yml" \
