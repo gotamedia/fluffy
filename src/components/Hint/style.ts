@@ -7,7 +7,7 @@ const Wrapper = styled.div<StyledHintProps>`
     ${Variants.type};
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     
     a,
     a:visited {
