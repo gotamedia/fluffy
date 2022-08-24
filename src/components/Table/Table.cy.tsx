@@ -1,7 +1,16 @@
 import Table from "./"
 import { TableContext } from "./components/context"
+import type { TableSizes } from "./components/types"
 
-const context = { state: {}, parentState: {}, type: null, parentType: null }
+const context = {
+    state: {
+        collapsible: false,
+        size: "small" as TableSizes,
+    },
+    parentState: {},
+    type: null,
+    parentType: null,
+}
 
 describe("<Table>", () => {
     it("mounts", () => {

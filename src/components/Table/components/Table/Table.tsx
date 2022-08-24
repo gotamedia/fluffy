@@ -4,16 +4,24 @@ import type { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const Table: Types.Table = forwardRef(({ children, ...rest }, ref) => {
+const Table: Types.Table = forwardRef(({
+    children,
+    size,
+    collapsible,
+    ...rest
+}, ref) => {
     const type: TableElements = "table"
     const context = useMemo(
         () => ({
-            state: {},
+            state: {
+                collapsible: collapsible || false,
+                size: size || "small",
+            },
             type,
             parentType: null,
             parentState: null,
         }),
-        []
+        [collapsible, size]
     )
 
     return (
