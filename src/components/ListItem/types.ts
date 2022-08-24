@@ -41,7 +41,8 @@ export interface ListItemProps extends HTMLAttributes<HTMLDivElement> {
     selected?: boolean,
     value?: any,
     onSelect?: (value: any) => void,
-    scrollOnTargeted?: boolean
+    scrollOnTargeted?: boolean,
+    asTitle?: boolean
 }
 
 export type ListItemRef = HTMLDivElement

@@ -78,7 +78,8 @@ const Border = styled.div<{ $border?: Types.ListItemProps['border'], $type?: Typ
 
 type WrapperProps = {
     $size?: Types.ListItemProps['size'],
-    $targeted?: Types.ListItemProps['targeted']
+    $targeted?: Types.ListItemProps['targeted'],
+    $asTitle?: Types.ListItemProps['asTitle']
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -91,7 +92,7 @@ const Wrapper = styled.div<WrapperProps>`
     ${({ $size }) => sizes[$size || 'normal']};
 
     &:hover {
-        ${({ $targeted }) => !$targeted && css`
+        ${({ $targeted, $asTitle }) => !$asTitle && !$targeted && css`
             cursor: pointer;
             background-color: ${({ theme }) => tint(0.88, theme.colors.brand)};
         `}
@@ -123,6 +124,12 @@ const Wrapper = styled.div<WrapperProps>`
 
         ${SubText} {
             color: white;
+        }
+    `};
+
+    ${({ $asTitle }) => $asTitle && css`
+        ${Text} {
+            color: gray;
         }
     `}
 `

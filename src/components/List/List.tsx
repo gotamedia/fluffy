@@ -111,31 +111,53 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         setIsFocused(false)
     }, [onBlur])
 
-    const handleOnArrowUp = useCallback(() => {
-        setTargetedIndex(current => {
-            let nextIndex = current -1
+    const getPreviousIndex = useCallback((index: number, currentIndex?: number): number => {
+        let nextIndex = index -1
 
-            if (nextIndex < 0) {
-                nextIndex = 0
-            } else if (nextIndex > (Children.count(listChildren) -1)) {
-                nextIndex = Children.count(listChildren) -1    
+        if (nextIndex < 0) {
+            nextIndex = 0
+        }
+
+        const targetedChild = getChildByIndex(listChildren, nextIndex)
+
+        if (targetedChild && targetedChild?.props.asTitle) {
+            if (nextIndex === 0) {
+                return currentIndex || index
+            } else {
+                return getPreviousIndex(nextIndex, currentIndex || index)
             }
+        }
 
-            return nextIndex
-        })
+        return nextIndex
     }, [listChildren])
+
+    const getNextIndex = useCallback((index: number, currentIndex?: number): number => {
+        let nextIndex = index +1
+
+        if (nextIndex > (Children.count(listChildren) -1)) {
+            nextIndex = Children.count(listChildren) -1
+        }
+
+        const targetedChild = getChildByIndex(listChildren, nextIndex)
+
+        if (targetedChild && targetedChild?.props.asTitle) {
+            if (nextIndex === (Children.count(listChildren) -1)) {
+                return currentIndex || index
+            } else {
+                return getNextIndex(nextIndex, currentIndex || index)
+            }
+        }
+
+        return nextIndex
+    }, [listChildren])
+
+    const handleOnArrowUp = useCallback(() => {
+        setTargetedIndex(current => getPreviousIndex(current))
+    }, [getPreviousIndex])
 
     const handleOnArrowDown = useCallback(() => {
-        setTargetedIndex(current => {
-            let nextIndex = current +1
-
-            if ((Children.count(listChildren) -1) < nextIndex) {
-                nextIndex = Children.count(listChildren) -1
-            }
-
-            return nextIndex
-        })
-    }, [listChildren])
+        setTargetedIndex(current => getNextIndex(current))
+    }, [getNextIndex])
 
     const handleOnSelect = useCallback(() => {
         if (isFocused && typeof onSelect === 'function') {

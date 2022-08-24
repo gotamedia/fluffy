@@ -21,6 +21,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
     const {
         type = 'normal',
         size = 'normal',
+        asTitle = false,
         scrollOnTargeted = true,
         text,
         subText,
@@ -72,13 +73,14 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
             {...DOMProps}
             $size={size}
             $targeted={targeted}
+            $asTitle={asTitle}
         >
             <Styled.InnerWrapper
                 $type={type}
                 $hasIcon={!!icon}
             >
                 {
-                    isTypeSelect && selected ? (
+                    !asTitle && isTypeSelect && selected ? (
                         <Styled.CheckIcon />
                     ) : (
                         null
@@ -86,7 +88,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                 }
 
                 {
-                    icon ? (
+                    !asTitle && icon ? (
                         <Styled.Icon
                             icon={icon}
                             $isTypeSelect={isTypeSelect}
@@ -108,7 +110,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                     }
 
                     {
-                        subText && size === ListItemSizes.TwoRow ? (
+                        !asTitle && subText && size === ListItemSizes.TwoRow ? (
                             <Styled.SubText>
                                 {subText}
                             </Styled.SubText>
