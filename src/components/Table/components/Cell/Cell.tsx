@@ -20,7 +20,7 @@ const TableCell: Types.TableCell = forwardRef(({ children, ...rest }, ref) => {
 
     return (
         <TableContext.Provider value={context}>
-            <Style.Cell {...rest} as={elementType} ref={ref}>
+            <Style.Cell {...rest} ref={ref} as={elementType} $size={state.size}>
                 {children}
             </Style.Cell>
         </TableContext.Provider>
