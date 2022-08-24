@@ -8,7 +8,7 @@ import * as Types from "./types"
 import Collapsible from "./index"
 
 const Basic = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState<boolean>()
     const onClickHandler = useCallback(() => {
         setIsOpen(!isOpen)
     }, [isOpen])
