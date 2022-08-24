@@ -26,7 +26,13 @@ const DateValidation: Types.DateComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addAdditionalInputProp, addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const {
+        addAdditionalInputProp,
+        addValidation,
+        removeValidation,
+        label,
+        validateOnChange: fieldContextValidateOnChange
+    } = useContext(Contexts.FieldContext)
 
     const [minDate, setMinDate] = useState<Date | undefined>()
     const [maxDate, setMaxDate] = useState<Date | undefined>()
@@ -138,12 +144,12 @@ const DateValidation: Types.DateComponent = (props) => {
     ])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
+    }, [addValidation, fieldContextValidateOnChange, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

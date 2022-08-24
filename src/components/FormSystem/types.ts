@@ -247,6 +247,7 @@ namespace FieldContext {
         setIsRequired: (isRequired: boolean) => void
         setFieldName: (fieldName: string) => void
         setShowDefaultLabel: (show: boolean) => void
+        setValidateOnChange: (validateOnChange: boolean) => void
         terminate: (fieldName: string) => void
         validate: (formData?: FormData, validateOnChangeOnly?: boolean) => void
     }
@@ -256,12 +257,14 @@ namespace FieldContext {
         label?: string
         isRequired?: boolean
         showDefaultLabel?: boolean
+        validateOnChange?: boolean
     }
 
     export enum ReducerActionTypes {
         SetFieldName = "SET_FIELD_NAME",
         SetIsRequired = "SET_IS_REQUIRED",
-        SetShowDefaultLabel = "SET_SHOW_DEFAULT_LABEL"
+        SetShowDefaultLabel = "SET_SHOW_DEFAULT_LABEL",
+        SetValidateOnChange = "SET_VALIDATE_ON_CHANGE"
     }
 
     export type ReducerAction = Action<ReducerActionTypes>

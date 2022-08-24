@@ -25,7 +25,13 @@ const Length: Types.LengthComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addAdditionalInputProp, addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const {
+        addAdditionalInputProp,
+        addValidation,
+        label,
+        removeValidation,
+        validateOnChange: fieldContextValidateOnChange
+    } = useContext(Contexts.FieldContext)
 
     useEffect(() => {
         // check for undefined to allow 0 as well
@@ -105,12 +111,12 @@ const Length: Types.LengthComponent = (props) => {
     }, [children, exactly, formI18n?.validations?.field?.length, i18n, label, max, min, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
+    }, [addValidation, fieldContextValidateOnChange, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }

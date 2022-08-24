@@ -12,6 +12,7 @@ const FieldContext = React.createContext<Types.FieldContext.Value>({
     setIsRequired: () => { },
     setFieldName: () => { },
     setShowDefaultLabel: () => { },
+    setValidateOnChange: () => { },
     showDefaultLabel: true,
     terminate: () => { },
     validate: () => []

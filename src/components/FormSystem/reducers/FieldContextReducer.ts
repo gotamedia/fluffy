@@ -18,6 +18,11 @@ const FieldContextReducer: Types.FieldContext.Reducer = (state, action) => {
                 ...state,
                 showDefaultLabel: action?.payload
             }
+        case Types.FieldContext.ReducerActionTypes.SetValidateOnChange:
+            return {
+                ...state,
+                validateOnChange: action?.payload
+            }
         default:
             return { ...state }
     }

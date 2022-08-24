@@ -76,6 +76,10 @@ const useFieldContext = (): Types.FieldContext.Value => {
         dispatch({ type: Types.FieldContext.ReducerActionTypes.SetShowDefaultLabel, payload: showDefaultLabel })
     }, [])
 
+    const setValidateOnChange = useCallback((validateOnChange: boolean) => {
+        dispatch({ type: Types.FieldContext.ReducerActionTypes.SetValidateOnChange, payload: validateOnChange })
+    }, [])
+
     const terminate = useCallback((fieldName: string) => {
         terminateField(fieldName)
     }, [terminateField])
@@ -96,9 +100,11 @@ const useFieldContext = (): Types.FieldContext.Value => {
         setIsRequired,
         setFieldName,
         setShowDefaultLabel,
+        setValidateOnChange,
         showDefaultLabel: state.showDefaultLabel,
         terminate,
-        validate
+        validate,
+        validateOnChange: state.validateOnChange
     }), [
         addAdditionalInputProp,
         addValidation,
@@ -108,10 +114,12 @@ const useFieldContext = (): Types.FieldContext.Value => {
         setFieldName,
         setIsRequired,
         setShowDefaultLabel,
+        setValidateOnChange,
         state.fieldName,
         state.isRequired,
         state.label,
         state.showDefaultLabel,
+        state.validateOnChange,
         terminate,
         validate
     ])

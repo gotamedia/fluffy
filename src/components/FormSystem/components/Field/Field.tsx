@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import DefaultLabel from "./DefaultLabel"
@@ -6,9 +7,13 @@ import * as Types from "./types"
 import ValidationMessages from "./ValidationMessages"
 
 const Field: Types.FieldComponent = (props) => {
-    const { children, width } = props
+    const { children, validateOnChange, width } = props
 
     const fieldContextValue = Hooks.useFieldContext()
+
+    useEffect(() => {
+        fieldContextValue.setValidateOnChange(Boolean(validateOnChange))
+    }, [fieldContextValue, validateOnChange])
 
     return (
         <Styled.Wrapper width={width}>

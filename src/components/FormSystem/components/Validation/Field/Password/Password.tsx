@@ -37,7 +37,12 @@ const Password: Types.PasswordComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const {
+        addValidation,
+        label,
+        removeValidation,
+        validateOnChange: fieldContextValidateOnChange
+    } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (typeof value !== "string" || String(value).length === 0) {
@@ -155,12 +160,12 @@ const Password: Types.PasswordComponent = (props) => {
     ])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, validateOnChange, removeValidation, uuid, validation])
+    }, [addValidation, validateOnChange, removeValidation, uuid, validation, fieldContextValidateOnChange])
 
     return null
 }

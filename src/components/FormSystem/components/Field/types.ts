@@ -6,7 +6,7 @@ export type StyledFieldProps = {
 }
 
 export type FieldProps = PropsWithChildren<{
-
+    validateOnChange?: boolean
 } & StyledFieldProps>
 
 export type FieldComponent = React.FC<FieldProps>

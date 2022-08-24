@@ -27,7 +27,12 @@ const SSN: Types.SSNComponent = (props) => {
     const [uuid] = useState(uuidv4())
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const {
+        addValidation,
+        label,
+        removeValidation,
+        validateOnChange: fieldContextValidateOnChange
+    } = useContext(Contexts.FieldContext)
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (typeof value !== "string" || String(value).length === 0) {
@@ -75,12 +80,12 @@ const SSN: Types.SSNComponent = (props) => {
     }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, skipDash, type])
 
     useEffect(() => {
-        addValidation(`${validationName}_${uuid}`, validation, validateOnChange)
+        addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
 
         return () => {
             removeValidation(`${validationName}_${uuid}`)
         }
-    }, [addValidation, removeValidation, uuid, validateOnChange, validation])
+    }, [addValidation, fieldContextValidateOnChange, removeValidation, uuid, validateOnChange, validation])
 
     return null
 }
