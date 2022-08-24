@@ -7,9 +7,9 @@ import { v4 as uuidv4 } from "uuid"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
 
-const validationName = "hint"
+const validationName = "info"
 
-const Hint: Types.HintComponent = (props) => {
+const Info: Types.InfoComponent = (props) => {
     const {
         children,
         condition = true,
@@ -50,4 +50,4 @@ const Hint: Types.HintComponent = (props) => {
     return null
 }
 
-export default Hint
+export default Info

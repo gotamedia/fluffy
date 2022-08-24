@@ -177,9 +177,7 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }, [state?.formData])
 
     const getHighestValidationMessageType = useCallback((fieldName: string) => {
-        console.log("get highest")
         const validationStateOrder: Types.ValidationTypes[] = Object.values(HintTypes)
-        console.log(validationStateOrder)
 
         return (state?.formData?.[fieldName]?.validationMessages || [])
             .reduce<Types.ValidationTypes | undefined>((highest, current: Types.Validation.Message) => {

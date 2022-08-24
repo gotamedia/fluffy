@@ -1,7 +1,7 @@
 import Custom from "./Custom"
 import Date from "./Date"
 import Email from "./Email"
-import Hint from "./Hint"
+import Info from "./Info"
 import Length from "./Length"
 import Loading from "./Loading"
 import Password from "./Password"
@@ -13,7 +13,7 @@ export {
     Custom,
     Date,
     Email,
-    Hint,
+    Info,
     Length,
     Loading,
     Password,

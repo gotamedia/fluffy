@@ -1,7 +1,7 @@
 import { CustomProps as Custom } from "./Custom/types"
 import { DateProps as Date } from "./Date/types"
 import { EmailProps as Email } from "./Email/types"
-import { HintProps as Hint } from "./Hint/types"
+import { InfoProps as Info } from "./Info/types"
 import { LengthProps as Length } from "./Length/types"
 import { LoadingProps as Loading } from "./Loading/types"
 import { PasswordProps as Password } from "./Password/types"
@@ -13,7 +13,7 @@ export {
     Custom,
     Date,
     Email,
-    Hint,
+    Info,
     Length,
     Loading,
     Password,

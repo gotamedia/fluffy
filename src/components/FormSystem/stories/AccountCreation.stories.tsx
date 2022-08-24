@@ -198,7 +198,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                                 i18n={{ text: "Hämtar adress från folkbokföringen..." }}
                             />
                             {["failed"].includes(formState.ssnResolvingStatus) && (
-                                <FS.Validation.Field.Hint
+                                <FS.Validation.Field.Info
                                     i18n={{ text: "Kunde inte hämta adress. Vänligen fyll i nedan." }}
                                 />
                             )}
@@ -274,7 +274,7 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                                             i18n={{ text: "Hämtar postort..." }}
                                         />
                                         {["failed"].includes(formState.zipcodeResolvingStatus) && (
-                                            <FS.Validation.Field.Hint
+                                            <FS.Validation.Field.Info
                                                 i18n={{ text: "Kunde inte hitta postnummer. Kontrollera postnummer och försök igen." }}
                                             />
                                         )}
