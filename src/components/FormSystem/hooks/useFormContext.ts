@@ -110,11 +110,17 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     const addFormValidation = useCallback((
         validationId: string,
         involvedFieldNames: string[],
-        validationFunction: Types.Validation.Form.Function
+        validationFunction: Types.Validation.Form.Function,
+        validateOnChange?: boolean
     ) => {
         dispatch({
             type: Types.FormContext.ReducerActionTypes.AddFormValidation,
-            payload: { validationId, involvedFieldNames, validationFunction }
+            payload: {
+                validationId,
+                involvedFieldNames,
+                validationFunction,
+                validateOnChange
+            }
         })
     }, [])
 

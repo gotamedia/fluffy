@@ -15,7 +15,8 @@ const SameValue: Types.SameValueComponent = (props) => {
         fieldAName,
         fieldBName,
         i18n,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -84,12 +85,12 @@ const SameValue: Types.SameValueComponent = (props) => {
     ])
 
     useEffect(() => {
-        addFormValidation(`${validationName}_${uuid}`, [fieldAName, fieldBName], validation)
+        addFormValidation(`${validationName}_${uuid}`, [fieldAName, fieldBName], validation, validateOnChange)
 
         return () => {
             removeFormValidation(`${validationName}_${uuid}`)
         }
-    }, [addFormValidation, fieldAName, fieldBName, removeFormValidation, uuid, validation])
+    }, [addFormValidation, fieldAName, fieldBName, removeFormValidation, uuid, validateOnChange, validation])
 
     return null
 }

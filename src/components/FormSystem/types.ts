@@ -155,7 +155,8 @@ namespace FormContext {
         addFormValidation: (
             validationId: string,
             involvedFieldNames: string[],
-            validationFunction: Validation.Form.Function
+            validationFunction: Validation.Form.Function,
+            validateOnChange?: boolean
         ) => void
         addValidationMessages: (fieldName: string, validationMessages: Validation.MessageWithId[]) => void
         clearAllValidationMessages: (types?: ValidationTypes[] | "all") => void

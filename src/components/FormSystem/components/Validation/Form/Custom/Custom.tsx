@@ -5,7 +5,7 @@ import * as FSTypes from "../../../../types"
 import * as Types from "./types"
 
 const Custom: Types.CustomComponent = (props) => {
-    const { validationFunction, involvedFieldNames } = props
+    const { involvedFieldNames, validateOnChange, validationFunction } = props
 
     const [uuid] = useState(uuidv4())
 
@@ -27,12 +27,12 @@ const Custom: Types.CustomComponent = (props) => {
     }, [involvedFieldNames, validationFunction])
 
     useEffect(() => {
-        addFormValidation("custom_form_" + uuid, involvedFieldNames, validation)
+        addFormValidation("custom_form_" + uuid, involvedFieldNames, validation, validateOnChange)
 
         return () => {
             removeFormValidation("custom_form_" + uuid)
         }
-    }, [addFormValidation, involvedFieldNames, removeFormValidation, uuid, validation])
+    }, [addFormValidation, involvedFieldNames, removeFormValidation, uuid, validateOnChange, validation])
 
     return null
 }

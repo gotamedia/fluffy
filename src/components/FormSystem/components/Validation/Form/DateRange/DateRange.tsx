@@ -21,7 +21,8 @@ const DateRange: Types.DateRangeComponent = (props) => {
         maxFieldName,
         minExclusive,
         minFieldName,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -181,13 +182,23 @@ const DateRange: Types.DateRangeComponent = (props) => {
         addFormValidation(
             `${validationName}_${uuid}`,
             [fieldName, maxFieldName, minFieldName].filter(Boolean) as string[],
-            validation
+            validation,
+            validateOnChange
         )
 
         return () => {
             removeFormValidation(`${validationName}_${uuid}`)
         }
-    }, [addFormValidation, fieldName, maxFieldName, minFieldName, removeFormValidation, uuid, validation])
+    }, [
+        addFormValidation,
+        fieldName,
+        maxFieldName,
+        minFieldName,
+        removeFormValidation,
+        uuid,
+        validateOnChange,
+        validation
+    ])
 
     return null
 }

@@ -16,7 +16,8 @@ const DateOrder: Types.DateOrderComponent = (props) => {
         i18n,
         ignoreEqualDates,
         order,
-        type = FSTypes.ValidationTypes.Error
+        type = FSTypes.ValidationTypes.Error,
+        validateOnChange
     } = props
 
     const [uuid] = useState(uuidv4())
@@ -81,12 +82,12 @@ const DateOrder: Types.DateOrderComponent = (props) => {
     ])
 
     useEffect(() => {
-        addFormValidation(`${validationName}_${uuid}`, order || [], validation)
+        addFormValidation(`${validationName}_${uuid}`, order || [], validation, validateOnChange)
 
         return () => {
             removeFormValidation(`${validationName}_${uuid}`)
         }
-    }, [addFormValidation, order, removeFormValidation, uuid, validation])
+    }, [addFormValidation, order, removeFormValidation, uuid, validateOnChange, validation])
 
     return null
 }

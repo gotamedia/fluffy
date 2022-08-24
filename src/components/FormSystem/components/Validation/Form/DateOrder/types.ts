@@ -7,6 +7,7 @@ export type DateOrderProps = PropsWithChildren<{
     ignoreEqualDates?: boolean
     order: string[]
     type?: Types.ValidationTypes
+    validateOnChange?: boolean
 }>
 
 export type DateOrderComponent = React.FC<DateOrderProps>
