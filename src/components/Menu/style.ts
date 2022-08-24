@@ -17,7 +17,6 @@ const Icon = styled(IconComponent).attrs(({ $isOpen } : { $isOpen: boolean }) =>
 
 const Container = styled(ContainerComponent)`
     overflow: auto;
-    height: 100%;
 `
 
 export {
