@@ -193,15 +193,15 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                         <FS.Input.Text name={"ssn"}>
                             <FS.Validation.Field.Required />
                             <FS.Validation.Field.SSN />
+                            <FS.Validation.Field.Length max={13} />
                             <FS.Validation.Field.Loading
                                 condition={["progress", "manual_progress"].includes(formState.ssnResolvingStatus)}
                                 i18n={{ text: "Hämtar adress från folkbokföringen..." }}
                             />
-                            {["failed"].includes(formState.ssnResolvingStatus) && (
-                                <FS.Validation.Field.Info
-                                    i18n={{ text: "Kunde inte hämta adress. Vänligen fyll i nedan." }}
-                                />
-                            )}
+                            <FS.Validation.Field.Info
+                                condition={["failed"].includes(formState.ssnResolvingStatus)}
+                                i18n={{ text: "Kunde inte hämta adress. Vänligen fyll i nedan." }}
+                            />
                         </FS.Input.Text>
                     </FS.Field>
                     {["succeeded", "manual", "manual_progress"].includes(formState.ssnResolvingStatus) && (

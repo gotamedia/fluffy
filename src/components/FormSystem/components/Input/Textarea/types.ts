@@ -4,8 +4,9 @@ import { TextareaProps as PlainTextareaProps } from "@components/Textarea"
 
 export type TextareaProps = PropsWithChildren<{
     disabled?: boolean
-    readOnly?: boolean
+    filter?: RegExp
     name: string
+    readOnly?: boolean
 } & PlainTextareaProps>
 
 export type TextareaComponent = React.FC<TextareaProps>

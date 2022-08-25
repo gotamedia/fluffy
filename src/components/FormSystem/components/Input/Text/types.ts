@@ -3,8 +3,9 @@ import React, { PropsWithChildren } from "react"
 
 export type TextProps = PropsWithChildren<{
     disabled?: boolean
-    readOnly?: boolean
+    filter?: RegExp
     name: string
+    readOnly?: boolean
 } & InputProps>
 
 export type TextComponent = React.FC<TextProps>

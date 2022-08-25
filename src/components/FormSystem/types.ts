@@ -40,9 +40,10 @@ interface FormData {
 }
 
 interface AdditionalInputProps {
-    maxLength?: number,
-    minDate?: Date,
+    filter?: RegExp
     maxDate?: Date
+    maxLength?: number
+    minDate?: Date
 }
 
 namespace InputLogic {

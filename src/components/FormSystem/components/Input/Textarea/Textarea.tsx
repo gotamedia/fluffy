@@ -5,7 +5,7 @@ import PlainTextarea from "@components/Textarea"
 import * as Types from "./types"
 
 const Textarea: Types.TextareaComponent = (props) => {
-    const { children, disabled, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props
+    const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props
 
     const {
         additionalInputProps,
@@ -26,14 +26,32 @@ const Textarea: Types.TextareaComponent = (props) => {
     }, [propsOnBlur, inputLogicOnBlur])
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setFieldValue(name, event?.target?.value)
+        let newValue = event?.target?.value
+
+        if (filter) {
+            newValue = String(event?.target?.value).replace(filter, "")
+        }
+
+        if (additionalInputProps.filter) {
+            newValue = String(event?.target?.value).replace(additionalInputProps.filter, "")
+        }
+
+        setFieldValue(name, newValue)
         clearValidationMessages(name)
-        validateOnChange(name, event?.target?.value)
+        validateOnChange(name, newValue)
 
         if (propsOnChange) {
             propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, validateOnChange, propsOnChange])
+    }, [
+        filter,
+        additionalInputProps.filter,
+        setFieldValue,
+        name,
+        clearValidationMessages,
+        validateOnChange,
+        propsOnChange
+    ])
 
     return (
         <>

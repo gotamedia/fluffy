@@ -4,7 +4,7 @@ import React, { useCallback } from "react"
 import * as Types from "./types"
 
 const Text: Types.TextComponent = (props) => {
-    const { children, disabled, name, onBlur: propsOnBlur, onChange: propsOnChange, ...plainTextProps  } = props
+    const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...plainTextProps  } = props
 
     const {
         additionalInputProps,
@@ -17,14 +17,32 @@ const Text: Types.TextComponent = (props) => {
     } = useInputLogic({ defaultValue: "", disabled, name })
 
     const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-        setFieldValue(name, event?.target?.value)
+        let newValue = event?.target?.value
+
+        if (filter) {
+            newValue = newValue.replace(filter, "")
+        }
+
+        if (additionalInputProps.filter) {
+            newValue = newValue.replace(additionalInputProps.filter, "")
+        }
+
+        setFieldValue(name, newValue)
         clearValidationMessages(name)
-        validateOnChange(name, event?.target?.value)
+        validateOnChange(name, newValue)
 
         if (propsOnChange) {
             propsOnChange(event)
         }
-    }, [setFieldValue, name, clearValidationMessages, validateOnChange, propsOnChange])
+    }, [
+        filter,
+        additionalInputProps.filter,
+        setFieldValue,
+        name,
+        clearValidationMessages,
+        validateOnChange,
+        propsOnChange
+    ])
 
     const onBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
         inputLogicOnBlur()

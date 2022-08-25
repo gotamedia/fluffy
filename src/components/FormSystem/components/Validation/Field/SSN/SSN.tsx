@@ -29,6 +29,7 @@ const SSN: Types.SSNComponent = (props) => {
 
     const { i18n: formI18n } = useContext(Contexts.FormContext)
     const {
+        addAdditionalInputProp,
         addValidation,
         label,
         removeValidation,
@@ -79,6 +80,22 @@ const SSN: Types.SSNComponent = (props) => {
                 )
         }))
     }, [children, formI18n?.validations?.field?.ssn, i18n, label, maxAge, minAge, skipDash, type])
+
+    useEffect(() => {
+        let regExp
+
+        if (skipDash) {
+            regExp = /[^0-9]/g
+        } else {
+            regExp = /[^0-9-]/g
+        }
+
+        addAdditionalInputProp("filter", regExp)
+
+        return () => {
+            addAdditionalInputProp("filter", undefined)
+        }
+    }, [addAdditionalInputProp, skipDash])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
