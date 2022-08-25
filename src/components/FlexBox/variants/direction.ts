@@ -1,7 +1,7 @@
 import { css } from "styled-components"
-import { StyledGroupProps } from "../types"
+import { StyledFlexBoxProps } from "../types"
 
-const directionVariants = css<StyledGroupProps>`
+const directionVariants = css<StyledFlexBoxProps>`
     ${({ $direction }) => {
     switch($direction) {
         case 'vertical':

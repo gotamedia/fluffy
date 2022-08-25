@@ -1,21 +1,20 @@
 import styled from "styled-components"
-import { StyledGroupProps } from "./types"
+import { StyledFlexBoxProps } from "./types"
 import * as Variants from "./variants"
 
-const Group = styled.div<StyledGroupProps>`
+const Wrapper = styled.div<StyledFlexBoxProps>`
     display: flex;
     ${Variants.direction};
-    gap: 16px;
+    ${(props) => props.$gap ? `gap: ${props.$gap};` : ""}
     
-    ${(props) => props.inline ? undefined : `
+    ${(props) => props.$inline ? undefined : `
         & > * {
             flex-grow: 1;
             ${props.$direction !== "horizontal" ? "" : "width: 0;"}
         }
     `}
-    ${(props) => !props.width ? "" : `width: ${props.width}`}
 `
 
 export {
-    Group
+    Wrapper
 }

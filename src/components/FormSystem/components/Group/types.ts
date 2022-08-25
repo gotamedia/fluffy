@@ -1,14 +1,7 @@
-import React, { PropsWithChildren } from "react"
+import { FlexBoxProps } from "@components/FlexBox/types"
+import React from "react"
 
-export type StyledGroupProps = {
-    $direction?: "horizontal" | "vertical"
-    inline?: boolean
-    width?: string
-}
-
-interface GroupPropsWithoutChildren extends StyledGroupProps { }
-
-export type GroupProps = PropsWithChildren<GroupPropsWithoutChildren>
+export type GroupProps = FlexBoxProps
 
 export type GroupComponent = React.FC<GroupProps>
 

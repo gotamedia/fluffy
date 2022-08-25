@@ -89,7 +89,7 @@ const PauseSubscriptionTemplate: Story<Types.Form> = (props) => {
                             event.preventDefault()
                             alert("Show tos")
                         }}
-                        style={{ cursor: "pointer", textDecoration: "underline" }}
+                        style={{ marginLeft: "4px", cursor: "pointer", textDecoration: "underline" }}
                     >{props.i18n?.fields?.tosButton}</span>
                 </FS.Field.Label>
                 <FS.Input.Switch name={"tos"}>
@@ -111,7 +111,7 @@ PauseSubscription.args = {
             start: "Från och med",
             end: "Återdatum",
             tos: "Jag har läst reglerna",
-            tosText: "Jag har läst ",
+            tosText: "Jag har läst",
             tosButton: "reglerna"
         },
         buttons: {
