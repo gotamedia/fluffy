@@ -38,10 +38,10 @@ pipelines:
       Storybook:
         - variables:
             - name: ENVIRONMENT
-              default: DEV
+              default: dev
               allowed-values:
-                - "DEV"
-                - "PROD"
+                - "dev"
+                - "prod"
         - step:
             name: Build
             caches:
@@ -59,16 +59,16 @@ pipelines:
               run-as-user: 1000
             script:
               - >
-                if [[ ${ENVIRONMENT} == "PROD" ]]; then
-                  export AWS_ACCESS_KEY_ID=${PROD_AWS_ACCESS_KEY_ID}
-                  export AWS_SECRET_ACCESS_KEY=${PROD_AWS_SECRET_ACCESS_KEY}
-                  export CERTIFICATE_ARN=${PROD_CERTIFICATE_ARN}
-                  export DOMAIN_NAME=${PROD_DOMAIN_NAME}
+                if [[ ${ENVIRONMENT} == "prod" ]]; then
+                  export AWS_ACCESS_KEY_ID=${prod_AWS_ACCESS_KEY_ID}
+                  export AWS_SECRET_ACCESS_KEY=${prod_AWS_SECRET_ACCESS_KEY}
+                  export CERTIFICATE_ARN=${prod_CERTIFICATE_ARN}
+                  export DOMAIN_NAME=${prod_DOMAIN_NAME}
                 else
-                  export AWS_ACCESS_KEY_ID=${DEV_AWS_ACCESS_KEY_ID}
-                  export AWS_SECRET_ACCESS_KEY=${DEV_AWS_SECRET_ACCESS_KEY}
-                  export CERTIFICATE_ARN=${DEV_CERTIFICATE_ARN}
-                  export DOMAIN_NAME=${DEV_DOMAIN_NAME}
+                  export AWS_ACCESS_KEY_ID=${dev_AWS_ACCESS_KEY_ID}
+                  export AWS_SECRET_ACCESS_KEY=${dev_AWS_SECRET_ACCESS_KEY}
+                  export CERTIFICATE_ARN=${dev_CERTIFICATE_ARN}
+                  export DOMAIN_NAME=${dev_DOMAIN_NAME}
                 fi
               - export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
               - >
