@@ -3,8 +3,9 @@ import React, { PropsWithChildren } from "react"
 import * as Types from "../../../../types"
 
 export type SSNProps = PropsWithChildren<{
-    minAge?: number
     i18n?: SSNI18n
+    maxAge?: number
+    minAge?: number
     skipDash?: boolean
     type?: Types.ValidationTypes
     validateOnChange?: boolean

@@ -6,9 +6,9 @@ import sprintf from "@utils/sprintf"
 import React, { useCallback, useContext, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
+import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
 import * as Types from "./types"
-import defaultI18n from "../../../../sv.json"
 
 const validationName = "ssn"
 const regExpWithDash = /^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/
@@ -18,6 +18,7 @@ const SSN: Types.SSNComponent = (props) => {
     const {
         children,
         i18n,
+        maxAge,
         minAge,
         skipDash,
         type = FSTypes.ValidationTypes.Error,
@@ -39,45 +40,45 @@ const SSN: Types.SSNComponent = (props) => {
             return []
         }
 
-        let textKey: keyof SSNI18n = "text"
+        const textKeys: (keyof SSNI18n)[] = []
         let additionalVariables = {}
 
         const regExp = skipDash ? regExpWithoutDash : regExpWithDash
 
         if (regExp.test(String(value))) {
-            if (minAge) {
-                const age = getAgeFromSSN(String(value))
+            const age = getAgeFromSSN(String(value))
 
-                if (typeof age !== "number" || age >= minAge) {
-                    return []
-                } else {
-                    textKey = "textMinAge"
+            if (typeof age === "number") {
+                if (minAge && age < minAge) {
+                    textKeys.push("textMinAge")
                     additionalVariables = { age, minAge }
                 }
-            } else {
-                return []
+                if (maxAge && age > maxAge) {
+                    textKeys.push("textMaxAge")
+                    additionalVariables = { age, maxAge }
+                }
             }
         } else if (skipDash && regExpWithDash.test(String(value))) {
-            textKey = "textDash"
+            textKeys.push("textDash")
+        } else {
+            textKeys.push("text")
         }
 
-        return [
-            {
-                fieldName,
-                type,
-                text: children !== undefined
-                    ? renderToString(<>{children}</>)
-                    : sprintf(
-                        (
-                            i18n?.[textKey] ||
-                            formI18n?.validations?.field?.ssn?.[textKey] ||
-                            defaultI18n.validation.field.ssn?.[textKey]
-                        ),
-                        { ...additionalVariables, value: String(value), fieldName, label: String(label) }
-                    )
-            }
-        ]
-    }, [children, formI18n?.validations?.field?.ssn, i18n, label, minAge, skipDash, type])
+        return textKeys.map((textKey) => ({
+            fieldName,
+            type,
+            text: children !== undefined
+                ? renderToString(<>{children}</>)
+                : sprintf(
+                    (
+                        i18n?.[textKey] ||
+                        formI18n?.validations?.field?.ssn?.[textKey] ||
+                        defaultI18n.validation.field.ssn?.[textKey]
+                    ),
+                    { ...additionalVariables, value: String(value), fieldName, label: String(label) }
+                )
+        }))
+    }, [children, formI18n?.validations?.field?.ssn, i18n, label, maxAge, minAge, skipDash, type])
 
     useEffect(() => {
         addValidation(`${validationName}_${uuid}`, validation, validateOnChange || fieldContextValidateOnChange)
