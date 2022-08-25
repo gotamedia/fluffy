@@ -25,6 +25,9 @@ export * from '@contexts/ThemeContext'
 
 // Hooks ====>
 
+export * from '@hooks/useAnimation'
+export { default as useAnimation } from '@hooks/useAnimation'
+
 export * from '@hooks/useDeepCompareCallback'
 export { default as useDeepCompareCallback } from '@hooks/useDeepCompareCallback'
 
@@ -77,6 +80,9 @@ export { default as IconButton } from '@components/IconButton'
 
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
+
+export * from '@components/Collapsible'
+export { default as Collapsible } from '@components/Collapsible'
 
 export * from '@components/Icon'
 export { default as Icon } from '@components/Icon'
