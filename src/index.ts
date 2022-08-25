@@ -78,6 +78,9 @@ export { default as IconButton } from '@components/IconButton'
 export * from '@components/Checkbox'
 export { default as Checkbox } from '@components/Checkbox'
 
+export * from '@components/FormSystem'
+export { default as FormSystem } from '@components/FormSystem'
+
 export * from '@components/Icon'
 export { default as Icon } from '@components/Icon'
 
