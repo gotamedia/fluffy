@@ -24,6 +24,8 @@ type BorderType = "bordered"
 
 type TableSizes = "small" | "medium"
 
+type TableThemes = "primary" | "secondary" | "tertiary" | "quaternary"
+
 interface TableStateProps {
     collapsible: boolean
     size: TableSizes
@@ -41,8 +43,16 @@ interface TableCommonProps {
 }
 
 type TableBorderStyledProps = StyledPrefixThemeProps<TableCommonProps>
+type TableThemeStyledProps = StyledPrefixThemeProps<{
+    theme?: TableThemes
+}>
+
 export type {
     TableElements,
     TableSizes,
     TableElementContext,
     TableBorderStyledProps,
+    TableThemeStyledProps,
+    TableCommonProps,
+    TableThemes
+}
