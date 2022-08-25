@@ -8,6 +8,7 @@ const Table: Types.Table = forwardRef(({
     children,
     size,
     collapsible,
+    border,
     ...rest
 }, ref) => {
     const type: TableElements = "table"
@@ -26,7 +27,7 @@ const Table: Types.Table = forwardRef(({
 
     return (
         <TableContext.Provider value={context}>
-            <Style.Table {...rest} ref={ref}>
+            <Style.Table {...rest} ref={ref} $border={border}>
                 {children}
             </Style.Table>
         </TableContext.Provider>

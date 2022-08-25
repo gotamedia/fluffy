@@ -4,7 +4,11 @@ import { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const TableCell: Types.TableCell = forwardRef(({ children, ...rest }, ref) => {
+const TableCell: Types.TableCell = forwardRef(({
+    children,
+    border,
+    ...rest
+}, ref) => {
     const { type, parentType, state } = useTableContext()
 
     const elementType: TableElements = parentType === "thead" ? "th" : "td"
@@ -20,7 +24,13 @@ const TableCell: Types.TableCell = forwardRef(({ children, ...rest }, ref) => {
 
     return (
         <TableContext.Provider value={context}>
-            <Style.Cell {...rest} ref={ref} as={elementType} $size={state.size}>
+            <Style.Cell
+                {...rest}
+                ref={ref}
+                as={elementType}
+                $border={border}
+                $size={state.size}
+            >
                 {children}
             </Style.Cell>
         </TableContext.Provider>

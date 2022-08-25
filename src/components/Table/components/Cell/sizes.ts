@@ -1,7 +1,7 @@
 import { css } from "styled-components"
 import * as Types from "./types"
 
-const cellSizesStyleFn = ({ $size }: Types.TableCellProps) => {
+const cellSizesStyleFn = ({ $size }: Types.TableCellStyledProps) => {
     let styles
     switch ($size) {
         case "small":

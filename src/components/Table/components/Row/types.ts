@@ -1,11 +1,12 @@
 import {
-    ReactNode,
-    MouseEventHandler,
     DetailedHTMLProps,
     ForwardRefExoticComponent,
     HTMLAttributes,
-    RefAttributes
+    MouseEventHandler,
+    ReactNode,
+    RefAttributes,
 } from "react"
+import * as TableTypes from "../types"
 
 enum TableRowEnum {
     Default = "Default",
@@ -13,8 +14,13 @@ enum TableRowEnum {
     THeadCollapsible = "THeadCollapsible",
 }
 
-interface TableRowCommonProps extends DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
+interface TableRowCommonProps extends 
+    TableTypes.TableCommonProps,
+    DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>,
+    HTMLTableRowElement
+    > {
     hover?: boolean
+    theme?: TableTypes.TableThemes
     onHover?: (isHover: boolean) => void
 }
 
@@ -33,5 +39,15 @@ type TableRowProps = TableRowCommonProps & TableRowConditionalProps
 
 type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
 
+type TableRowStyledProps = TableTypes.TableBorderStyledProps  & TableTypes.TableThemeStyledProps
+
+type TableRowCollapsibleStyledProps = TableRowStyledProps & TableTypes.TableThemeStyledProps & {
+    $active: boolean | undefined
+}
+
 export { TableRowEnum }
-export type { TableRow }
+export type {
+    TableRow,
+    TableRowStyledProps,
+    TableRowCollapsibleStyledProps
+}

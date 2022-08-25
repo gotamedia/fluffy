@@ -1,12 +1,12 @@
 import {
-    RefAttributes,
-    HTMLAttributes,
     DetailedHTMLProps,
-    ForwardRefExoticComponent
+    ForwardRefExoticComponent,
+    HTMLAttributes,
+    RefAttributes
 } from "react"
-import { TableSizes } from "../types"
+import { TableCommonProps, TableSizes } from "../types"
 
-interface TableProps extends DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement> {
+interface TableProps extends TableCommonProps, DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement> {
     collapsible?: boolean
     size?: TableSizes
 }

@@ -6,7 +6,7 @@ import {
     useCallback,
     useEffect,
     useMemo,
-    useState,
+    useState
 } from "react"
 
 import Collapsible from "@components/Collapsible"
@@ -19,13 +19,14 @@ import * as Types from "./types"
 
 const TableRow: Types.TableRow = forwardRef(({
     children,
+    border,
     hiddenElement,
+    theme,
     onHover,
     onClick,
     onMouseEnter,
     onMouseLeave,
-    ...rest
-}, ref) => {
+    ...rest }, ref) => {
         const [isHover, setIsHover] = useState<boolean>()
         const [isOpen, setIsOpen] = useState<boolean>()
         const { type, state } = useTableContext()
@@ -85,10 +86,13 @@ const TableRow: Types.TableRow = forwardRef(({
 
         switch (findRowType) {
             case Types.TableRowEnum.Default: {
+                const rowTheme = type === "thead" ? "tertiary" : "primary"
                 return (
                     <TableContext.Provider value={context}>
                         <Style.Row
                             ref={ref}
+                            $border={border}
+                            $theme={theme || rowTheme}
                             onClick={onClick}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
@@ -104,6 +108,8 @@ const TableRow: Types.TableRow = forwardRef(({
                     <TableContext.Provider value={context}>
                         <Style.HeadRow
                             ref={ref}
+                            $border={border}
+                            $theme={theme || "tertiary"}
                             onClick={onClick}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
@@ -117,12 +123,16 @@ const TableRow: Types.TableRow = forwardRef(({
             }
             case Types.TableRowEnum.TBodyCollapsible: {
                 const childrenCount = Children.count(children) + 1
+                const hasBottomBorder = border === "bordered" || border === "bottom"
+                const collapsibleTheme = isHover && !isOpen ? "tertiary" : isOpen ? "quaternary" : "primary"
 
                 return (
                     <TableContext.Provider value={context}>
                         <Style.CollapsibleRow
                             ref={ref}
                             $active={isOpen}
+                            $border={border}
+                            $theme={theme || collapsibleTheme}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
                             onClick={handleCollapsibleRowOnClick}
@@ -137,7 +147,7 @@ const TableRow: Types.TableRow = forwardRef(({
                                 />
                             </Style.CollapsibleIconCell>
                         </Style.CollapsibleRow>
-                        <Style.Row>
+                        <Style.Row $border={isOpen && hasBottomBorder ? "bottom" : undefined}>
                             <Style.CollapsibleCell colSpan={childrenCount}>
                                 <Collapsible open={isOpen}>{hiddenElement}</Collapsible>
                             </Style.CollapsibleCell>
