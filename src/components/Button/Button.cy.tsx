@@ -3,7 +3,7 @@ import {
     shade
 } from 'polished'
 
-import { theme } from '../../utils/theme'
+import { theme } from '@utils/theme'
 
 import Button, {
     ButtonVariants,
