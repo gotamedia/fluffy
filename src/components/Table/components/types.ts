@@ -1,5 +1,6 @@
 import { StyledPrefixThemeProps } from "@root/types/prefix"
 import { ReactHTML } from "react"
+import * as Constants from "../constants"
 
 type TableElements = keyof Pick<
     ReactHTML, "table"
@@ -22,9 +23,8 @@ type BorderType = "bordered"
     | "none"
     | undefined
 
-type TableSizes = "small" | "medium"
-
-type TableThemes = "primary" | "secondary" | "tertiary" | "quaternary"
+type TableSizes = Lowercase<keyof typeof Constants.TableSizes>
+type TableThemes = Lowercase<keyof typeof Constants.TableThemes>
 
 interface TableStateProps {
     collapsible: boolean
