@@ -2,80 +2,80 @@
   "validation": {
     "field": {
       "date": {
-        "min": "\"${label}\" must not be before ${minDate}",
-        "max": "\"${label}\" must not be after ${maxDate}"
+        "min": "${label} får inte infalla före ${minDate}.",
+        "max": "${label} får inte infalla efter ${maxDate}."
       },
       "email": {
-        "text": "\"${value}\" is no valid email address!"
+        "text": "Kontrollera e-postadressens format."
       },
       "length": {
-        "between": "\"${label}\" must have a length between ${min} and ${max}!",
-        "exactly": "\"${label}\" must have exactly a length of ${exactly}!",
-        "max": "\"${label}\" must at most have a length of ${max}!",
-        "min": "\"${label}\" must at least have a length of ${min}!"
+        "between": "${label} måste vara mellan ${min} och ${max} tecken.",
+        "exactly": "${label} måste vara exakt ${exactly} tecken.",
+        "max": "${label} får inte vara längre än ${max} tecken.",
+        "min": "${label} får inte vara kortare än ${min} tecken."
       },
       "password": {
-        "exclude":  "It must not contain any of these characters: ${blacklist}",
-        "lowerCase": "It must contain a lower case character",
-        "number":  "It must contain a number",
-        "specialChar": "It must contain a special character",
-        "upperCase": "It must contain an upper case character"
+        "exclude":  "Får inte innehålla något av följande tecken: ${blacklist}",
+        "lowerCase": "Måste innehålla minst en liten bokstav.",
+        "number":  "Måste innehålla minst en siffra.",
+        "specialChar": "Måste innehålla minst ett specialtecken.",
+        "upperCase": "Måste innehålla minst en stor bokstav."
       },
       "required": {
-        "text": "\"${label}\" is required!"
+        "text": "${label} krävs."
       },
       "ssn": {
-        "text": "\"${value}\" is no valid SSN!",
-        "textMaxAge": "You need to be at most ${maxAge} years old!",
-        "textMinAge": "You need to be at least ${minAge} years old!",
-        "textDash": "Please enter the SSN without a \"-\" in between!"
+        "text": "Använd formatet ÅÅÅÅMMDD-XXXX.",
+        "textDash": "Använd formatet ÅÅÅÅMMDDXXXX.",
+        "textMinAge": "Du måste vara minst ${minAge} år eller äldre.",
+        "textMaxAge": "Du får inte vara äldre än ${maxAge} år."
       },
       "value": {
-        "text": "\"${value}\" is not equal to \"${compareValue}\"!",
-        "textInverted": "\"${value}\" is equal to \"${compareValue}\"!"
+        "text": "\"${value}\" måste vara samma som \"${compareValue}\".",
+        "textInverted": "\"${value}\" får inte vara samma som \"${compareValue}\"."
       }
     },
     "form": {
       "dateDiff": {
-        "max": "The difference between \"${fieldALabel}\" and \"${fieldBLabel}\" must not be more than ${maxDiff} ${maxUnitLabel}!",
-        "min": "The difference between \"${fieldALabel}\" and \"${fieldBLabel}\" must not be less than ${minDiff} ${minUnitLabel}!",
+        "max": "Skillnaden mellan ${fieldALabel} och ${fieldBLabel} får inte vara mer än ${maxDiff} ${maxUnitLabel}.",
+        "min": "Skillnaden mellan ${fieldALabel} och ${fieldBLabel} måste vara mer än ${minDiff} ${minUnitLabel}",
         "units": {
           "seconds": {
-            "singular": "second",
-            "plural": "seconds"
+            "singular": "sekund",
+            "plural": "sekunder"
           },
           "minutes": {
-            "singular": "minute",
-            "plural": "minutes"
+            "singular": "minut",
+            "plural": "minuter"
           },
           "hours": {
-            "singular": "hour",
-            "plural": "hours"
+            "singular": "timme",
+            "plural": "timmar"
           },
           "days": {
-            "singular": "day",
-            "plural": "days"
+            "singular": "dag",
+            "plural": "dagar"
           },
           "weeks": {
-            "singular": "week",
-            "plural": "weeks"
+            "singular": "vecka",
+            "plural": "veckor"
           },
           "years": {
-            "singular": "year",
-            "plural": "years"
+            "singular": "år",
+            "plural": "år"
           }
         }
       },
       "dateOrder": {
-        "text": "The following dates must be in chronological order: ${fieldLabels}!"
+        "text": "Följande måste anges i kronologisk tidsföljd: ${fieldLabels}."
       },
       "dateRange": {
-        "min": "\"${label}\" must not be before \"${minLabel}\" (${minDate})!",
-        "max": "\"${label}\" must not be after \"${maxLabel}\" (${maxDate})!"
+        "min": "${label} får inte infalla före ${minLabel}.",
+        "max": "${label} får inte infalla efter ${maxLabel}."
       },
       "sameValue": {
-        "textA": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value!",
-        "textB": "\"${fieldALabel}\" and \"${fieldBLabel}\" must have the same value!"
+        "textA": "${fieldALabel} och ${fieldBLabel} måste vara samma.",
+        "textB": "${fieldBLabel} och ${fieldALabel} måste vara samma."
       }
     }
   }
