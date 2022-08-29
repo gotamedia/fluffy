@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
 
+import { pillShapes } from "./shapes"
 import * as variants from './variants'
-
-import type { PillProps } from './types'
+import * as Types from "./types"
 
 // TODO: Fix colors / theme
 const basePillStyle = css`
@@ -18,8 +18,9 @@ const basePillStyle = css`
     font-family: ${({ theme }) => theme.fonts.generic[1]};
 `
 
-const Pill = styled.div<{ $variant?: PillProps['variant'] }>`
+const Pill = styled.div<Types.PillStyledProps>`
     ${basePillStyle};
+    ${pillShapes};
     ${({ $variant }) => variants[$variant || 'alert']};
 `
 
