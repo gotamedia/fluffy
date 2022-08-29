@@ -4,10 +4,7 @@ describe('Popover', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <Popover
-                    show={true}
-                    anchorProps={{}}
-                >
+                <Popover show={true}>
                     {null}
                 </Popover>
             )
