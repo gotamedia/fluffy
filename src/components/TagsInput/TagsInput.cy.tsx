@@ -1,10 +1,10 @@
-import TagSearch from './index'
+import TagsInput from './index'
 
-describe('TagSearch', () => {
+describe('TagsInput', () => {
     describe('Functionality', () => {
         it('Should not crash', () => {
             cy.mount(
-                <TagSearch tags={[]}/>
+                <TagsInput tags={[]}/>
             )
         })
     })

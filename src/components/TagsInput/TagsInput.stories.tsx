@@ -5,11 +5,11 @@ import React, {
 
 import { Story, Meta } from '@storybook/react'
 
-import TagSearch from './index'
+import TagsInput from './index'
 
 import * as Types from './types'
 
-const Template: Story<Types.TagSearchProps> = (props) => {
+const Template: Story<Types.TagsInputProps> = (props) => {
     const [tags, setTags] = useState(props.tags)
 
     const handleOnChange = useCallback((items) => {
@@ -47,7 +47,7 @@ const Template: Story<Types.TagSearchProps> = (props) => {
 
     return (
         <div>
-            <TagSearch
+            <TagsInput
                 {...props}
                 tags={tags}
                 onChange={handleOnChange}
@@ -63,8 +63,8 @@ Basic.args = {
 }
 
 export default {
-    title: 'Developments/Components/TagSearch',
-    component: TagSearch,
+    title: 'Developments/Components/TagsInput',
+    component: TagsInput,
     argTypes: {
     },
     args: {
@@ -91,4 +91,4 @@ export default {
             }
         ]
     }
-} as Meta<Types.TagSearchComponent>
+} as Meta<Types.TagsInputComponent>

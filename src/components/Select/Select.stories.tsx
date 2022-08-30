@@ -15,8 +15,8 @@ const Basic: Story<Types.SelectProps> = (props) => {
 
     const handleOnSelect = useCallback((item: any) => {
         setSelectedValues(current => {
-            if (current.map(i => i.value).includes(item.value)) {
-                return current.filter(i => i.value !== item.value)
+            if (current.map(i => i.id).includes(item.id)) {
+                return current.filter(i => i.id !== item.id)
             } else {
                 if (props.isMultiSelect) {
                     return [
@@ -42,8 +42,12 @@ const Basic: Story<Types.SelectProps> = (props) => {
                         return (
                             <ListItem
                                 key={idx}
-                                value={i}
+                                value={{
+                                    id: i,
+                                    label: i
+                                }}
                                 text={i}
+                                id={`${i}`}
                             />
                         )
                     })

@@ -13,11 +13,21 @@ import borders from './borders'
 
 import type * as Types from './types'
 
-const InnerWrapper = styled.div<{ $type?: Types.ListItemProps['type'], $hasIcon: boolean }>`
+type InnerWrapperProps = {
+    $type?: Types.ListItemProps['type'],
+    $hasIcon: boolean,
+    $asTitle?: Types.ListItemProps['asTitle']
+}
+
+const InnerWrapper = styled.div<InnerWrapperProps>`
     display: flex;
     margin: 0 0 10px 0px;
     padding-right: 30px;
     position: relative;
+
+    ${({ $asTitle }) => $asTitle && css`
+        margin: 0 0 8px 0px;
+    `};
 
     ${({ $type }) => types[$type || 'normal']};
 `
@@ -54,7 +64,6 @@ const TextWrapper = styled.div`
 
 const Text = styled.p`
     margin: 0;
-    font-weight: 500;
 `
 
 const SubText = styled.p`
@@ -78,7 +87,8 @@ const Border = styled.div<{ $border?: Types.ListItemProps['border'], $type?: Typ
 
 type WrapperProps = {
     $size?: Types.ListItemProps['size'],
-    $targeted?: Types.ListItemProps['targeted']
+    $targeted?: Types.ListItemProps['targeted'],
+    $asTitle?: Types.ListItemProps['asTitle']
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -91,7 +101,7 @@ const Wrapper = styled.div<WrapperProps>`
     ${({ $size }) => sizes[$size || 'normal']};
 
     &:hover {
-        ${({ $targeted }) => !$targeted && css`
+        ${({ $targeted, $asTitle }) => !$asTitle && !$targeted && css`
             cursor: pointer;
             background-color: ${({ theme }) => tint(0.88, theme.colors.brand)};
         `}
@@ -123,6 +133,14 @@ const Wrapper = styled.div<WrapperProps>`
 
         ${SubText} {
             color: white;
+        }
+    `};
+
+    ${({ $asTitle }) => $asTitle && css`
+        padding: 8px 0 0 0;
+
+        ${Text} {
+            color: gray;
         }
     `}
 `

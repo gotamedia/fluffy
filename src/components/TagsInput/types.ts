@@ -11,10 +11,11 @@ export type TagItem = {
     isNew?: boolean
 }
 
-export interface TagSearchProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface TagsInputProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
     disabled?: boolean,
     tags: TagItem[],
     createable?: boolean,
+    withList?: boolean,
     filterNewTagsFromList?: boolean,
     showListOnInput?: boolean,
     onAdd?: (tag: TagItem) => void,
@@ -23,6 +24,6 @@ export interface TagSearchProps extends Omit<HTMLAttributes<HTMLDivElement>, 'on
     onCreate?: (value: string) => void
 }
 
-export type TagSearchRef = HTMLDivElement
+export type TagsInputRef = HTMLDivElement
 
-export type TagSearchComponent = ForwardRefExoticComponent<TagSearchProps & RefAttributes<TagSearchRef>>
+export type TagsInputComponent = ForwardRefExoticComponent<TagsInputProps & RefAttributes<TagsInputRef>>

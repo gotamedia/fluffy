@@ -35,8 +35,4 @@ interface ExampleStyledProps {
 */
 type StyledPrefixThemeProps<Props> = Prefix<Props, "$"> & { theme: DefaultTheme }
 
-export type {
-	Prefix,
-	StyledPrefixProps,
-	StyledPrefixThemeProps
-}
+export type { Prefix, StyledPrefixProps, StyledPrefixThemeProps }

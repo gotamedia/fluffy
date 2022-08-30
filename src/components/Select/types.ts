@@ -1,6 +1,5 @@
 import {
     ForwardRefExoticComponent,
-    HTMLAttributes,
     MouseEventHandler,
     RefAttributes
 } from 'react'
@@ -14,6 +13,7 @@ import type { ButtonProps } from '../Button'
 import type { OverlayProps } from '../Overlay/types'
 import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
+import type { AnchorProps } from '../Anchor/types'
 
 export const SelectVariants = {
     Primary: ButtonVariants.Primary,
@@ -29,7 +29,7 @@ export const SelectSizes = ButtonSizes
 export type SelectSizesType = typeof SelectSizes
 export type SelectSizeType = SelectSizesType[keyof SelectSizesType]
 
-export interface SelectProps extends HTMLAttributes<HTMLDivElement> {
+export interface SelectProps extends AnchorProps {
     triggerProps?: ButtonProps,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>,
