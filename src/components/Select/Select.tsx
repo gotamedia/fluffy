@@ -177,7 +177,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 onClick={toggleOpen}
                 style={{
                     width: triggerWidth,
-                    minWidth: minWidth
+                    minWidth: minWidth,
+                    ...triggerProps?.style
                 }}
             >
                 {label}
@@ -209,12 +210,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                             const childProps = {
                                 ...childElement.props,
                                 selected: selected
-                                    .map(i => i.value)
-                                    .includes(childElement.props?.value),
-                                value: {
-                                    label: childElement.props.text,
-                                    value: childElement.props.value
-                                }
+                                    .map(i => i.id)
+                                    .includes(childElement.props?.id)
                             }
 
                             return (

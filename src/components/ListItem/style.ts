@@ -64,7 +64,6 @@ const TextWrapper = styled.div`
 
 const Text = styled.p`
     margin: 0;
-    font-weight: 500;
 `
 
 const SubText = styled.p`
