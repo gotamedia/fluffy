@@ -1,29 +1,18 @@
-import type {
-    HTMLAttributes,
-    ForwardRefExoticComponent,
-    RefAttributes,
-    ReactNode
-} from 'react'
 import { StyledPrefixThemeProps } from "@root/types/prefix"
+import type {
+    ForwardRefExoticComponent,
+    HTMLAttributes,
+    ReactNode,
+    RefAttributes
+} from 'react'
+import {
+    PillShapes,
+    PillSizes,
+    PillVariants
+} from "./constants"
 
-export const PillVariants = {
-    Success: 'success' as const,
-    Alert: 'alert' as const,
-    Warning: 'warning' as const,
-    Disabled: 'disabled' as const
-}
-
-const PillShapes = {
-    Round: 'round' as const,
-    Rectangle: 'rectangle' as const
-}
-
-const PillSizes = {
-    Small: 'small' as const,
-}
-
-export type  PillVariantsType = typeof  PillVariants
-export type  PillVariantType =  PillVariantsType[keyof  PillVariantsType]
+export type PillVariantsType = typeof  PillVariants
+export type PillVariantType = PillVariantsType[keyof  PillVariantsType]
 
 type NativeDivProps = HTMLAttributes<HTMLDivElement>
 
@@ -43,7 +32,5 @@ export type PillComponent = ForwardRefExoticComponent<PillProps & RefAttributes<
 
 
 export {
-    PillShapes,
-    PillSizes,
     PillStyledProps
 }
