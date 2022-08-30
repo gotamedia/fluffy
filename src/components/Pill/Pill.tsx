@@ -8,6 +8,8 @@ import type * as Types from './types'
 const Pill: Types.PillComponent = forwardRef((props, ref) => {
     const {
         variant = 'alert',
+        size = "small",
+        shape = "rectangle",
         children,
         ...DOMProps
     } = props
@@ -16,6 +18,8 @@ const Pill: Types.PillComponent = forwardRef((props, ref) => {
         <Styled.Pill
             ref={ref}
             $variant={variant}
+            $shape={shape}
+            $size={size}
             {...DOMProps}
         >
             {children}

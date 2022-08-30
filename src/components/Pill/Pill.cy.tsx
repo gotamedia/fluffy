@@ -50,4 +50,23 @@ describe('Pill', () => {
                 .and('be.colored', theme.colors.pill.alert)
         })
     })
+
+    describe("UI", () => {
+        const commonProps = {
+            "data-cy": "pill",
+             children: "G"
+        } 
+
+        it("shape is round and size is small", () => {
+            cy.mount(<Pill {...commonProps} shape={"round"} size={"small"} />)
+            cy.get(pillSelector).invoke("css", "height").should("match", /18px/)
+            cy.get(pillSelector).invoke("css", "border-radius").should("match", /16px/)
+        })
+
+        it("shape is rectangle and size is small", () => {
+            cy.mount(<Pill {...commonProps} shape={"rectangle"} size={"small"} />)
+            cy.get(pillSelector).should("have.css", "height").should("match", /16px/)
+            cy.get(pillSelector).should("have.css", "border-radius").should("match", /3px/)
+        })
+    })
 })
