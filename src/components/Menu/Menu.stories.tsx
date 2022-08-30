@@ -42,6 +42,29 @@ const Basic: Story<Types.MenuProps> = (props) => {
                 anchor={anchorRef}
                 onClickOutside={toggleShowMenu}
             >
+                <ListItem
+                    asTitle
+                    text={`Group 1`}
+                />
+
+                {
+                    [...new Array(5)].map((i, idx) => {
+                        return (
+                            <ListItem
+                                key={idx}
+                                onClick={toggleShowMenu}
+                                value={`Menu list item ${idx + 1}`}
+                                text={`Menu list item ${idx + 1}`}
+                            />
+                        )
+                    })
+                }
+
+                <ListItem
+                    asTitle
+                    text={`Group 2`}
+                />
+
                 {
                     [...new Array(5)].map((i, idx) => {
                         return (
@@ -62,9 +85,7 @@ const Basic: Story<Types.MenuProps> = (props) => {
 export const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 BasicStory.args = {
-    listProps: {
-        border: 'full'
-    }
+    
 }
 
 export default {

@@ -45,6 +45,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
                 zIndex: 1000,
                 width: anchorRect.width || undefined,
                 outline: 'none',
+                display: 'flex',
+                flexDirection: 'column',
                 position: 'fixed',
                 ...style
             }}
