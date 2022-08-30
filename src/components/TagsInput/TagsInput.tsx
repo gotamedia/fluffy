@@ -20,11 +20,12 @@ import type {
     KeyboardEventHandler
 } from 'react'
 
-const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
+const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
     const {
         disabled,
         tags,
         createable,
+        withList = true,
         filterNewTagsFromList = true,
         showListOnInput,
         onAdd,
@@ -90,7 +91,7 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     }, [disabled, showPopover, onClick])
 
     const handleCreateNewTag = useCallback((value: string) => {
-        if (createable && typeof onCreate === 'function') {
+        if (createable && value.length && typeof onCreate === 'function') {
             onCreate(value)
         }
     }, [createable, onCreate])
@@ -227,9 +228,13 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     }, [handleOnRemove, inputRef])
 
     const hasTags = Array.isArray(tags) && tags.length ? true : false
+    const hasSelectedTags = hasTags && tags.filter(i => i.selected).length ? true : false
 
     const selectedTags = (
-        <Styled.TagsWrapper $asInput={!showPopover}>
+        <Styled.TagsWrapper
+            $asInput={!showPopover}
+            $hasSelectedTags={hasSelectedTags}
+        >
             <Styled.TagsElements>
                 {
                     hasTags ? (
@@ -315,46 +320,50 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
                 {selectedTags}
 
                 {
-                    !showListOnInput || inputValue ? (
-                        <Styled.ListWrapper>
-                            <List
-                                ref={listRef}
-                                type={ListItemTypes.Select}
-                                onSelect={handleOnSelect}
-                            >
-                                {
-                                    hasTags ? (
-                                        tags
-                                            .filter(tag => {
-                                                if (!showListOnInput || inputValue) {
-                                                    return tag
-                                                        .label
-                                                        .toLowerCase()
-                                                        .includes(inputValue.toLowerCase())
-                                                } else {
-                                                    return true
-                                                }
-                                            })
-                                            .map(tag => {
-                                                if (!filterNewTagsFromList || !tag.isNew) {
-                                                    return (
-                                                        <ListItem
-                                                            key={tag.id}
-                                                            text={tag.label}
-                                                            value={tag}
-                                                            selected={tag.selected}
-                                                        />
-                                                    )
-                                                } else {
-                                                    return null
-                                                }
-                                            })
-                                    ) : (
-                                        null
-                                    )
-                                }
-                            </List>
-                        </Styled.ListWrapper>
+                    withList ? (
+                        !showListOnInput || inputValue ? (
+                            <Styled.ListWrapper>
+                                <List
+                                    ref={listRef}
+                                    type={ListItemTypes.Select}
+                                    onSelect={handleOnSelect}
+                                >
+                                    {
+                                        hasTags ? (
+                                            tags
+                                                .filter(tag => {
+                                                    if (!showListOnInput || inputValue) {
+                                                        return tag
+                                                            .label
+                                                            .toLowerCase()
+                                                            .includes(inputValue.toLowerCase())
+                                                    } else {
+                                                        return true
+                                                    }
+                                                })
+                                                .map(tag => {
+                                                    if (!filterNewTagsFromList || !tag.isNew) {
+                                                        return (
+                                                            <ListItem
+                                                                key={tag.id}
+                                                                text={tag.label}
+                                                                value={tag}
+                                                                selected={tag.selected}
+                                                            />
+                                                        )
+                                                    } else {
+                                                        return null
+                                                    }
+                                                })
+                                        ) : (
+                                            null
+                                        )
+                                    }
+                                </List>
+                            </Styled.ListWrapper>
+                        ) : (
+                            null
+                        )
                     ) : (
                         null
                     )
@@ -364,6 +373,6 @@ const TagSearch: Types.TagSearchComponent = forwardRef((props, ref) => {
     )
 })
 
-TagSearch.displayName = 'TagSearch'
+TagsInput.displayName = 'TagsInput'
 
-export default TagSearch
+export default TagsInput

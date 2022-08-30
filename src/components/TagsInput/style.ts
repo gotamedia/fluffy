@@ -77,11 +77,11 @@ const TagsElements = styled.div`
     flex-wrap: wrap;
 `
 
-const TagsWrapper = styled.div<{ $asInput: boolean }>`
+const TagsWrapper = styled.div<{ $asInput: boolean, $hasSelectedTags: boolean }>`
     position: relative;
     width: 100%;
     margin: auto 0;
-    min-height: 40px;
+    min-height: ${({ $hasSelectedTags }) => $hasSelectedTags ? 'auto' : '34px'};
     display: flex;
     background-color: ${({ theme }) => tint(0.93, theme.colors.brand)};
 

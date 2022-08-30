@@ -174,7 +174,7 @@ export { default as Overlay } from '@components/Overlay'
 export * from '@components/Tag'
 export { default as Tag } from '@components/Tag'
 
-export * from '@components/TagSearch'
-export { default as TagSearch } from '@components/TagSearch'
+export * from '@components/TagsInput'
+export { default as TagsInput } from '@components/TagsInput'
 
 // <==== Components
