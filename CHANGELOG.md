@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.29.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.0..v0.28.2) (2022-08-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* Renamed TagSearch to TagsInput and added some improvements
+* Fixed Select items structure
+* Support rendering ListItem as a title component
+* Hook - useRect
+* Collapsible component
+
+### Features
+
+* Collapsible component ([d874424](http://bitbucket.org/gotamedia/fluffy/commits/d874424bb92b8753812e30aaa6e3cafd53b1fc45))
+* Hook - useRect ([2d68abc](http://bitbucket.org/gotamedia/fluffy/commits/2d68abcdc886bd0b8ec65d843e5388728819e2b1))
+* Implement Collapsible component ([e02ffef](http://bitbucket.org/gotamedia/fluffy/commits/e02ffef7d809eca03bfabce0e92c3e8ce4928258))
+* Implemented useAnimation hook ([ce2f672](http://bitbucket.org/gotamedia/fluffy/commits/ce2f672a8ed395c27ef5f87be250989ddecea105))
+* Support rendering ListItem as a title component ([5f69388](http://bitbucket.org/gotamedia/fluffy/commits/5f693880a959c1cb36e873bd8e45b1dc819aa067))
+
+
+### Bug Fixes
+
+* Anchor height for Menu ([5a74f69](http://bitbucket.org/gotamedia/fluffy/commits/5a74f698dadcff882f366d476594c2efd1d4c9b9))
+* Fixed Select items structure ([5828226](http://bitbucket.org/gotamedia/fluffy/commits/58282261e83f7eb5e732a2c2725bdb997022955a))
+* Renamed TagSearch to TagsInput and added some improvements ([efaa82c](http://bitbucket.org/gotamedia/fluffy/commits/efaa82c4923250df90828ab4ce85e6ef412ad8b6))
+* **style:** Fixed ListItem style when rendered as title ([7ef8bb9](http://bitbucket.org/gotamedia/fluffy/commits/7ef8bb9ba35fe86c97a676cd8c91c8a383095396))
+
 ### [0.28.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.28.2..v0.28.1) (2022-08-24)
 
 
