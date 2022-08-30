@@ -28,7 +28,7 @@ type TableThemes = Lowercase<keyof typeof Constants.TableThemes>
 
 interface TableStateProps {
     collapsible: boolean
-    size: TableSizes
+    size?: TableSizes
 }
 
 interface TableElementContext<T = {}> {

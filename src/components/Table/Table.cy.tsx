@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 import Table from "./"
 import { TableContext } from "./components/context"
 import type { TableSizes } from "./components/types"
@@ -65,12 +66,28 @@ describe("<Table.Foot>", () => {
 })
 
 describe("<Table.Row>", () => {
-    it("mounts", () => {
-        cy.mount(
-            <TableContext.Provider value={context}>
-                <Table.Row />
-            </TableContext.Provider>
-        )
+    it("mounts", () => TableMount(<Table.Row />))
+
+    describe("Collapsible", () => {
+        const collapsible = "[data-cy=collapsible]"
+        const hidden = "[data-cy=hidden]"
+
+        it("should expand and close on click", () => {
+            const collapsibleContext = { state: { collapsible: true }, type: "tbody" } as const
+            TableMount(
+                <Table.Row
+                    data-cy={"collapsible"}
+                    hiddenElement={<div data-cy={"hidden"}>{"hidden"}</div>}
+                    children={<Table.Cell>{"visible"}</Table.Cell>}
+                />,
+                collapsibleContext
+            )
+
+            cy.get(collapsible).click().then(($tabelRow) => {
+                cy.wrap($tabelRow).get(hidden).should("be.visible")
+                cy.wrap($tabelRow).click().get(hidden).should("not.be.visible")
+            })
+        })
     })
 })
 
