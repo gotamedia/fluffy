@@ -1,2 +1,3 @@
-export * from './types'
-export { default } from './Pill'
+export * from "./constants"
+export { default } from "./Pill"
+export { PillProps } from "./types"
