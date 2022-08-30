@@ -12,6 +12,12 @@ const context = {
     parentType: null,
 }
 
+const TableMount = (jsx: ReactNode, overridesContext = {}) => cy.mount(
+    <TableContext.Provider value={{ ...context, ...overridesContext }}>
+        {jsx}
+    </TableContext.Provider>
+)
+
 describe("<Table>", () => {
     it("mounts", () => {
         cy.mount(<Table />)
