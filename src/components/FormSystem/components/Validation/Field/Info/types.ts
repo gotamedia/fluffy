@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react"
-import { InfoI18n } from "./i18nTypes"
+import type { InfoI18n } from "./i18nTypes"
 
 export type InfoProps = PropsWithChildren<{
     condition?: boolean,

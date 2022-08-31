@@ -1,5 +1,5 @@
 import DateOrderComponent from "./DateOrder"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const DateOrder = DateOrderComponent as ComponentType
 

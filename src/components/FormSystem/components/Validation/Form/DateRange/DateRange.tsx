@@ -7,7 +7,7 @@ import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const validationName = "daterange"
 

@@ -1,5 +1,5 @@
 import GroupComponent from "./Group"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Group = GroupComponent as ComponentType
 

@@ -1,4 +1,4 @@
-import { AdditionalInputProps } from "@components/FormSystem/types"
+import type { AdditionalInputProps } from "@components/FormSystem/types"
 import * as FSTypes from "@components/FormSystem/types"
 import { HintTypes } from "@components/Hint/types"
 import usePrevious from "@hooks/usePrevious"

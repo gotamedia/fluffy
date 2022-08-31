@@ -1,7 +1,7 @@
 import { useInputLogic } from "@components/FormSystem/hooks"
 import Input from "@components/Input"
 import React, { useCallback } from "react"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Text: Types.TextComponent = (props) => {
     const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...plainTextProps  } = props

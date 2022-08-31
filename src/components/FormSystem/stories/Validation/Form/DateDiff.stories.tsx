@@ -1,7 +1,7 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
 import FS from "../../../index"
-import * as Types from "../../../types"
+import type * as Types from "../../../types"
 
 const DateDiffTemplate: Story<Types.Component.Validation.Form.DateDiff> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

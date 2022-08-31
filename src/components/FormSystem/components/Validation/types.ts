@@ -1,5 +1,5 @@
-import * as Field from "./Field/types"
-import * as Form from "./Form/types"
+import type * as Field from "./Field/types"
+import type * as Form from "./Form/types"
 
 export {
     Field,

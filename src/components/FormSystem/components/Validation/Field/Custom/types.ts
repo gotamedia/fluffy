@@ -1,5 +1,5 @@
 import React from "react"
-import * as Types from "../../../../types"
+import type * as Types from "../../../../types"
 
 export type CustomProps = {
     validationFunction: Types.Validation.Field.Function

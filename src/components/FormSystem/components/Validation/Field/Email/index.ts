@@ -1,5 +1,5 @@
 import EmailComponent from "./Email"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Email = EmailComponent as ComponentType
 

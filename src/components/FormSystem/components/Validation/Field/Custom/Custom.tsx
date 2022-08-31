@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 import * as Contexts from "../../../../contexts"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Custom: Types.CustomComponent = (props) => {
     const { validationFunction, validateOnChange } = props

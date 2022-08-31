@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
-import { TextareaProps } from "../../components/Input/Textarea/types"
+import type { TextareaProps } from "../../components/Input/Textarea/types"
 import FS from "../../index"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 const TextareaTemplate: Story<TextareaProps> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

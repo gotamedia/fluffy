@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import * as Types from "./types"
+import type * as Types from "./types"
 import * as Contexts from "../../../contexts"
 import * as Styled from "./style"
 

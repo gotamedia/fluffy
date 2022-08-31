@@ -1,6 +1,6 @@
-import { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
+import type { SSNI18n } from "@components/FormSystem/components/Validation/Field/SSN/i18nTypes"
 import * as Contexts from "@components/FormSystem/contexts"
-import { FormDataValue } from "@components/FormSystem/types"
+import type { FormDataValue } from "@components/FormSystem/types"
 import { getAgeFromSSN } from "@components/FormSystem/utils"
 import sprintf from "@utils/sprintf"
 import React, { useCallback, useContext, useEffect, useState } from "react"
@@ -8,7 +8,7 @@ import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const validationName = "ssn"
 const regExpWithDash = /^(20|19)\d{2}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))-\d{4}$/

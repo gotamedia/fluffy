@@ -1,5 +1,5 @@
 import FS from "@components/FormSystem"
-import * as Types from "@components/FormSystem/types"
+import type * as Types from "@components/FormSystem/types"
 import { Meta, Story } from "@storybook/react"
 import { isBefore } from "date-fns"
 import React, { useCallback } from "react"

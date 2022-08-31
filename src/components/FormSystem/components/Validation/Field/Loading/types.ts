@@ -1,4 +1,4 @@
-import { LoadingI18n } from "@components/FormSystem/components/Validation/Field/Loading/i18nTypes"
+import type { LoadingI18n } from "@components/FormSystem/components/Validation/Field/Loading/i18nTypes"
 import React, { PropsWithChildren } from "react"
 
 export type LoadingProps = PropsWithChildren<{

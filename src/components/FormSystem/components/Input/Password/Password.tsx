@@ -3,7 +3,7 @@ import Icon, { Icons } from "@components/Icon"
 import Input from "@components/Input"
 import InputGroup from "@components/InputGroup"
 import React, { useCallback, useState } from "react"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Password: Types.PasswordComponent = (props) => {
     const {

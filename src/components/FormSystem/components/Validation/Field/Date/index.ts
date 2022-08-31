@@ -1,5 +1,5 @@
 import DateComponent from "./Date"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Date = DateComponent as ComponentType
 

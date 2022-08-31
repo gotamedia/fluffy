@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
-import { CheckboxProps } from "../../components/Input/Checkbox/types"
+import type { CheckboxProps } from "../../components/Input/Checkbox/types"
 import FS from "../../index"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 const CheckboxTemplate: Story<CheckboxProps> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

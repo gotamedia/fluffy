@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
-import { TimePickerProps } from "../../components/Input/TimePicker/types"
+import type { TimePickerProps } from "../../components/Input/TimePicker/types"
 import FS from "../../index"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 const TimePickerTemplate: Story<TimePickerProps> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

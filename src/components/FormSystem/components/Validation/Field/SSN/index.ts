@@ -1,5 +1,5 @@
 import SSNComponent from "./SSN"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const SSN = SSNComponent as ComponentType
 

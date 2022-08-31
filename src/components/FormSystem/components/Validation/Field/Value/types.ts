@@ -1,6 +1,6 @@
-import { ValueI18n } from "./i18nTypes"
+import type { ValueI18n } from "./i18nTypes"
 import React, { PropsWithChildren } from "react"
-import * as Types from "../../../../types"
+import type * as Types from "../../../../types"
 
 export type ValueProps = PropsWithChildren<{
     i18n?: ValueI18n

@@ -1,5 +1,5 @@
 import PasswordComponent from "./Password"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Password = PasswordComponent as ComponentType
 

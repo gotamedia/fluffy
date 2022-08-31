@@ -1,5 +1,5 @@
 import FormComponent from "./Form"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Form = FormComponent as ComponentType
 

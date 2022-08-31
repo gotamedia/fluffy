@@ -1,5 +1,5 @@
 import ValidationMessagesComponent from "./ValidationMessages"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const ValidationMessages = ValidationMessagesComponent as ComponentType
 

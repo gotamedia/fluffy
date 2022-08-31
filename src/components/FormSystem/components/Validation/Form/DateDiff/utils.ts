@@ -1,7 +1,7 @@
-import { DateDiffI18n, DateDiffUnitsI18n } from "@components/FormSystem/components/Validation/Form/DateDiff/i18nTypes"
+import type { DateDiffI18n, DateDiffUnitsI18n } from "@components/FormSystem/components/Validation/Form/DateDiff/i18nTypes"
 import { DateDiffUnits } from "@components/FormSystem/components/Validation/Form/DateDiff/types"
-import * as FSTypes from "@components/FormSystem/types"
-import { FormDataValue } from "@components/FormSystem/types"
+import type * as FSTypes from "@components/FormSystem/types"
+import type { FormDataValue } from "@components/FormSystem/types"
 
 export const getFieldDate = (fieldName: string, formData: FSTypes.FormData) => {
     const value: FormDataValue = formData?.[fieldName]?.value

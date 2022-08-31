@@ -1,5 +1,5 @@
 import LengthComponent from "./Length"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Length = LengthComponent as ComponentType
 

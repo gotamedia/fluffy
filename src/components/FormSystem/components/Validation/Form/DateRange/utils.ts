@@ -1,4 +1,4 @@
-import * as Types from "@components/FormSystem/types"
+import type * as Types from "@components/FormSystem/types"
 import { addDays, subDays } from "date-fns"
 
 export const getDates = (

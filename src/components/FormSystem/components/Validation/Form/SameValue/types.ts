@@ -1,6 +1,6 @@
-import { SameValueI18n } from "./i18nTypes"
+import type { SameValueI18n } from "./i18nTypes"
 import React, { PropsWithChildren } from "react"
-import * as Types from "../../../../types"
+import type * as Types from "../../../../types"
 
 export type SameValueProps = PropsWithChildren<{
     fieldAName: string

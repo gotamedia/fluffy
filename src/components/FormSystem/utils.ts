@@ -1,4 +1,4 @@
-import * as FSTypes from "@components/FormSystem/types"
+import type * as FSTypes from "@components/FormSystem/types"
 
 export const buildDatePickerValueProps = (value: FSTypes.FormDataValue) => {
     let selected: Date | undefined = undefined

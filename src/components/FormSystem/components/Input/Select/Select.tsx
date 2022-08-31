@@ -3,9 +3,9 @@ import ListItem from "@components/ListItem"
 import PlainSelect from "@components/Select"
 import usePrevious from "@hooks/usePrevious"
 import React, { useCallback, useEffect } from "react"
-import * as FSTypes from "../../../types"
-import { FormDataValue } from "../../../types"
-import * as Types from "./types"
+import type * as FSTypes from "../../../types"
+import type { FormDataValue } from "../../../types"
+import type * as Types from "./types"
 
 const Select: Types.SelectComponent = (props) => {
     const { children, disabled, isMultiSelect, name, onSelect, options, ...selectProps } = props

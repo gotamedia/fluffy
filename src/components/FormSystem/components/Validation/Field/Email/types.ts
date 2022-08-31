@@ -1,6 +1,6 @@
-import { EmailI18n } from "./i18nTypes"
+import type { EmailI18n } from "./i18nTypes"
 import React, { PropsWithChildren } from "react"
-import * as Types from "../../../../types"
+import type * as Types from "../../../../types"
 
 export type EmailProps = PropsWithChildren<{
     type?: Types.ValidationTypes

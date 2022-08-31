@@ -2,8 +2,8 @@ import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
 import sprintf from "../../../../../utils/sprintf"
 import FS from "../../../index"
-import { FormDataValue } from "../../../types"
-import * as Types from "../../../types"
+import type { FormDataValue } from "../../../types"
+import type * as Types from "../../../types"
 
 const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

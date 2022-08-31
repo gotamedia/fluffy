@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { StyledFieldProps } from "./types"
+import type { StyledFieldProps } from "./types"
 
 const Wrapper = styled.div<StyledFieldProps>`
     display: flex;

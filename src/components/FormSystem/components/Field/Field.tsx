@@ -3,7 +3,7 @@ import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import DefaultLabel from "./DefaultLabel"
 import * as Styled from "./style"
-import * as Types from "./types"
+import type * as Types from "./types"
 import ValidationMessages from "./ValidationMessages"
 
 const Field: Types.FieldComponent = (props) => {

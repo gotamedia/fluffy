@@ -1,9 +1,9 @@
 import { HintTypes } from "@components/Hint/types"
 import ValidationMessagesGroup from "./Group"
 import * as Contexts from "../../../contexts"
-import * as FSTypes from "../../../types"
+import type * as FSTypes from "../../../types"
 import { useContext, useEffect, useState } from "react"
-import * as Types from "./types"
+import type * as Types from "./types"
 import * as Styled from "./style"
 
 const ValidationMessages: Types.ValidationMessagesComponent = () => {

@@ -1,6 +1,6 @@
 import Hint from "@components/Hint/Hint"
-import * as FSTypes from "../../../types"
-import * as Types from "./types"
+import type * as FSTypes from "../../../types"
+import type * as Types from "./types"
 
 const ValidationMessagesGroup: Types.GroupComponent = (props) => (
     <>

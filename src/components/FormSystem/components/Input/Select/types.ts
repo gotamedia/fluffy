@@ -1,5 +1,5 @@
-import { ListItemProps } from "@components/ListItem/types"
-import { SelectProps as PlainSelectProps } from "@components/Select/types"
+import type { ListItemProps } from "@components/ListItem/types"
+import type { SelectProps as PlainSelectProps } from "@components/Select/types"
 import React, { PropsWithChildren } from "react"
 
 export interface SelectOption extends ListItemProps {

@@ -1,5 +1,5 @@
 import InfoComponent from "./Info"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Info = InfoComponent as ComponentType
 

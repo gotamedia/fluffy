@@ -2,7 +2,7 @@ import Button from "@components/Button"
 import * as Contexts from "@components/FormSystem/contexts"
 import Icon, { Icons } from "@components/Icon"
 import React, { useCallback, useContext } from "react"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const DeleteButton: Types.ButtonComponent = () => {
     const {

@@ -3,7 +3,7 @@ import React, { useCallback } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import * as FSTypes from "../../types"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Form: Types.FormComponent = (props) => {
     const {
@@ -55,7 +55,7 @@ const Form: Types.FormComponent = (props) => {
 
     return (
         <form onSubmit={onSubmitLocal}>
-            <Group $direction={"vertical"}>
+            <Group direction={"vertical"}>
                 <Contexts.FormContext.Provider value={formContextValue}>
                     {children}
                 </Contexts.FormContext.Provider>

@@ -5,7 +5,7 @@ import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import * as Contexts from "../../../../contexts"
 import * as FSTypes from "../../../../types"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const validationName = "sameValue"
 

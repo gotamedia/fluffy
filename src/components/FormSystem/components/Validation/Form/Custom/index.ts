@@ -1,5 +1,5 @@
 import CustomComponent from "./Custom"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Custom = CustomComponent as ComponentType
 

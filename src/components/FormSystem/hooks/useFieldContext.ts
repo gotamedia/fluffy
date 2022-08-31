@@ -2,7 +2,7 @@ import * as Contexts from "@components/FormSystem/contexts"
 import React, { useCallback, useContext, useMemo } from "react"
 import * as Reducers from "../reducers"
 import * as Types from "../types"
-import { FormData, FormDataValue } from "../types"
+import type { FormData, FormDataValue } from "../types"
 
 const useFieldContext = (): Types.FieldContext.Value => {
     const {

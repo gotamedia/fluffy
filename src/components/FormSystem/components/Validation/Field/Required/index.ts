@@ -1,5 +1,5 @@
 import RequiredComponent from "./Required"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Required = RequiredComponent as ComponentType
 

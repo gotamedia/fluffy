@@ -2,7 +2,7 @@ import React, { useCallback } from "react"
 
 import { useInputLogic } from "@components/FormSystem/hooks"
 import PlainTextarea from "@components/Textarea"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Textarea: Types.TextareaComponent = (props) => {
     const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props

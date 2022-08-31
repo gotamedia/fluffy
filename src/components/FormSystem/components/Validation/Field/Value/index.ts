@@ -1,5 +1,5 @@
 import ValueComponent from "./Value"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Value = ValueComponent as ComponentType
 

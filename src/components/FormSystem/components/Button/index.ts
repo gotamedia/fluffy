@@ -1,7 +1,7 @@
 import CancelButtonComponent from "./Cancel"
 import DeleteButtonComponent from "./Delete"
 import SubmitButtonComponent from "./Submit"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Button = SubmitButtonComponent as ComponentType
 

@@ -2,9 +2,9 @@ import SwitchButton from "@components/SwitchButton"
 import React, { useCallback, useEffect } from "react"
 
 import { useInputLogic } from "@components/FormSystem/hooks"
-import { FormDataValue } from "@components/FormSystem/types"
+import type { FormDataValue } from "@components/FormSystem/types"
 import usePrevious from "@hooks/usePrevious"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Switch: Types.SwitchComponent = (props) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainSwitchProps } = props

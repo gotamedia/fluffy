@@ -1,5 +1,5 @@
 import DateDiffComponent from "./DateDiff"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const DateDiff = DateDiffComponent as ComponentType
 

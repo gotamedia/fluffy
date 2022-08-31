@@ -1,4 +1,4 @@
-import { FlexBoxProps } from "@components/FlexBox/types"
+import type { FlexBoxProps } from "@components/FlexBox/types"
 import React from "react"
 
 export type GroupProps = FlexBoxProps

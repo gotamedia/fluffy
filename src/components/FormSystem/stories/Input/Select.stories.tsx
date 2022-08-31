@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
-import { SelectProps } from "../../components/Input/Select/types"
+import type { SelectProps } from "../../components/Input/Select/types"
 import FS from "../../index"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 const SelectTemplate: Story<SelectProps> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

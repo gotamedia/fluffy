@@ -1,6 +1,6 @@
-import { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
+import type { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import * as Contexts from "@components/FormSystem/contexts"
-import { FormDataValue } from "@components/FormSystem/types"
+import type { FormDataValue } from "@components/FormSystem/types"
 import {
     containsGiven,
     containsLowerCase,
@@ -13,7 +13,7 @@ import { useCallback, useContext, useEffect, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const validationName = "password"
 

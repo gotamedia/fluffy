@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 export type FormProps = PropsWithChildren<{
     defaultValue?: Types.FormData

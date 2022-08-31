@@ -1,6 +1,6 @@
 import Label from "@components/FormSystem/components/Field/Label"
 import FieldComponent from "./Field"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Field = FieldComponent as ComponentType
 

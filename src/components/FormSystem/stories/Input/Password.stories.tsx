@@ -1,8 +1,8 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
-import { PasswordProps } from "../../components/Input/Password/types"
+import type { PasswordProps } from "../../components/Input/Password/types"
 import FS from "../../index"
-import * as Types from "../../types"
+import type * as Types from "../../types"
 
 const PasswordTemplate: Story<PasswordProps> = (props) => {
     const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {

@@ -1,5 +1,5 @@
 import React from "react"
-import * as Types from "../types"
+import type * as Types from "../types"
 
 const FieldContext = React.createContext<Types.FieldContext.Value>({
     addAdditionalInputProp: () => { },

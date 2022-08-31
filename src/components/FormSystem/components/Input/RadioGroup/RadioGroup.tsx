@@ -1,10 +1,10 @@
 import { useInputLogic } from "@components/FormSystem/hooks"
-import { FormDataValue } from "@components/FormSystem/types"
+import type { FormDataValue } from "@components/FormSystem/types"
 import Radio from "@components/Radio"
 import usePrevious from "@hooks/usePrevious"
 import React, { useCallback, useEffect } from "react"
 import * as Styles from "./style"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const RadioGroup: Types.RadioGroupComponent = (props) => {
     const { allowDeselect, children, disabled, name, options, readOnly } = props

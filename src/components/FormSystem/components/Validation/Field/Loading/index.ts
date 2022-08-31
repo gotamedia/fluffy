@@ -1,5 +1,5 @@
 import LoadingComponent from "./Loading"
-import { ComponentType } from "./types"
+import type { ComponentType } from "./types"
 
 const Loading = LoadingComponent as ComponentType
 
