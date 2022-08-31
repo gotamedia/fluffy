@@ -1,4 +1,5 @@
 import type * as FSTypes from "@components/FormSystem/types"
+import { parseISO } from "date-fns"
 
 export const buildDatePickerValueProps = (value: FSTypes.FormDataValue) => {
     let selected: Date | undefined = undefined
@@ -8,11 +9,11 @@ export const buildDatePickerValueProps = (value: FSTypes.FormDataValue) => {
     if (typeof value === "string" && value.length > 0) {
         if (value.includes("~")) {
             const dates: string[] = value.split("~")
-            startDate = dates[0].length > 0 ? new Date(dates[0]) : undefined
-            endDate = dates[1].length > 0 ? new Date(dates[1]) : undefined
+            startDate = dates[0].length > 0 ? parseISO(dates[0]) : undefined
+            endDate = dates[1].length > 0 ? parseISO(dates[1]) : undefined
             selected = startDate
         } else {
-            selected = new Date(value)
+            selected = parseISO(value)
         }
     }
 
@@ -59,7 +60,7 @@ export const getAgeFromSSN = (ssn: string) => {
         return undefined
     }
 
-    const date = new Date(`${matchResults[1]}-${matchResults[2]}-${matchResults[3]}`)
+    const date = parseISO(`${matchResults[1]}-${matchResults[2]}-${matchResults[3]}`)
     const diff = Date.now() - Number(date)
     const diffDate = new Date(diff)
 
