@@ -82,10 +82,12 @@ describe("<Table.Row>", () => {
                 collapsibleContext
             )
 
-            cy.get(collapsible).click().then(($tabelRow) => {
-                cy.wrap($tabelRow).get(hidden).should("be.visible")
-                cy.wrap($tabelRow).click().get(hidden).should("not.be.visible")
-            })
+            cy.get(collapsible)
+                .click()
+                .then(($tabelRow) => {
+                    cy.wrap($tabelRow).get(hidden).should("be.visible")
+                    cy.wrap($tabelRow).click().get(hidden).should("not.be.visible")
+                })
         })
     })
 })

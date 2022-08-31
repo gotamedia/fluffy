@@ -3,32 +3,14 @@ import { ReactHTML } from "react"
 import * as Constants from "../constants"
 
 type TableElements = keyof Pick<
-    ReactHTML, "table"
-    | "caption"
-    | "tbody"
-    | "thead"
-    | "tfoot"
-    | "tr"
-    | "th"
-    | "td"
+    ReactHTML,
+    "table" | "caption" | "tbody" | "thead" | "tfoot" | "tr" | "th" | "td"
 >
 
-type BorderType = "bordered"
-    | "bottom"
-    | "right"
-    | "left"
-    | "top"
-    | "vertical"
-    | "horizontal"
-    | "none"
-    | undefined
-
-type TableSizes = Lowercase<keyof typeof Constants.TableSizes>
-type TableThemes = Lowercase<keyof typeof Constants.TableThemes>
+type TableVariant = Lowercase<keyof typeof Constants.TableVariant>
 
 interface TableStateProps {
     collapsible: boolean
-    size?: TableSizes
 }
 
 interface TableElementContext<T = {}> {
@@ -38,21 +20,16 @@ interface TableElementContext<T = {}> {
     parentState: unknown | null
 }
 
-interface TableCommonProps {
-    border?: BorderType
-}
+interface TableCommonProps {}
 
-type TableBorderStyledProps = StyledPrefixThemeProps<TableCommonProps>
-type TableThemeStyledProps = StyledPrefixThemeProps<{
-    theme?: TableThemes
+type TableVariantStyledProps = StyledPrefixThemeProps<{
+    variant?: TableVariant
 }>
 
 export type {
     TableElements,
-    TableSizes,
     TableElementContext,
-    TableBorderStyledProps,
-    TableThemeStyledProps,
+    TableVariantStyledProps,
     TableCommonProps,
-    TableThemes
+    TableVariant,
 }

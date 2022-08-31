@@ -1,10 +1,10 @@
 import { css, CSSObject } from "styled-components"
 import * as Types from "./types"
 
-const theme = ({ $theme, theme }: Types.TableThemeStyledProps) => {
+const variant = ({ $variant, theme }: Types.TableVariantStyledProps) => {
     let styles: CSSObject
 
-    switch ($theme) {
+    switch ($variant) {
         case "primary":
             styles = {
                 color: theme.colors.grey[0],
@@ -38,4 +38,4 @@ const theme = ({ $theme, theme }: Types.TableThemeStyledProps) => {
     `
 }
 
-export default theme
+export default variant

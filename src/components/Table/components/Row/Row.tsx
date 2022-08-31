@@ -6,7 +6,7 @@ import {
     useCallback,
     useEffect,
     useMemo,
-    useState
+    useState,
 } from "react"
 
 import Collapsible from "@components/Collapsible"
@@ -44,7 +44,10 @@ const TableRow: Types.TableRow = forwardRef(({
         const findRowType = [
             !collapsible && Types.TableRowEnum.Default,
             collapsible && type === "thead" && Types.TableRowEnum.THeadCollapsible,
-            collapsible && type === "tbody" && isValidElement(hiddenElement) && Types.TableRowEnum.TBodyCollapsible,
+            collapsible &&
+                type === "tbody" &&
+                isValidElement(hiddenElement) &&
+                Types.TableRowEnum.TBodyCollapsible,
         ].find(Boolean)
 
         useEffect(() => {

@@ -1,27 +1,31 @@
 import styled from "styled-components"
-import border from "../border"
 import Cell from "../Cell"
-import theme from "../theme"
+import variant from "../variant"
 import * as Types from "./types"
 
 const Row = styled.tr<Types.TableRowStyledProps>`
-    ${border}
-    ${theme}
+    ${variant}
     font-size: ${({ theme }) => theme.fontSizes[1]}px;
     line-height: ${({ theme }) => theme.lineHeights[1]};
     font-family: ${({ theme }) => theme.fonts.generic[5]};
+    border: ${({ theme }) => `1px solid ${theme.colors.grey[4]}`};
 `
 
 const HeadRow = styled(Row)<Types.TableRowStyledProps>`
-    ${border}
-    ${theme}
+    ${variant}
     font-family: ${({ theme }) => theme.fonts.generic[4]};
+    border: ${({ theme }) => `1px solid ${theme.colors.grey[4]}`};
+`
+
+const CollapsibleRowWrapper = styled(Row)`
+    border: none;
 `
 
 const CollapsibleRow = styled(Row)<Types.TableRowCollapsibleStyledProps>`
-    ${border}
-    ${theme}
-    border-bottom: ${({ $active }) => $active && "none"};
+    ${variant}
+    border-bottom: ${({ $active, theme }) =>
+        $active ? "none" : `1px solid ${theme.colors.grey[4]}`};
+
     &:hover {
         cursor: pointer;
     }
@@ -38,10 +42,12 @@ const CollapsibleIconCell = styled(Cell)`
 const CollapsibleCell = styled(Cell)`
     padding: 0px;
 `
+
 export {
     Row,
     HeadRow,
     CollapsibleRow,
+    CollapsibleRowWrapper,
     CollapsibleIconCell,
     CollapsibleCell,
     CollapsibleEmptyCell,

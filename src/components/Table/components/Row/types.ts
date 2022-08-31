@@ -14,13 +14,11 @@ enum TableRowEnum {
     THeadCollapsible = "THeadCollapsible",
 }
 
-interface TableRowCommonProps extends 
-    TableTypes.TableCommonProps,
-    DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>,
-    HTMLTableRowElement
-    > {
+interface TableRowCommonProps
+    extends TableTypes.TableCommonProps,
+        DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
     hover?: boolean
-    theme?: TableTypes.TableThemes
+    variant?: TableTypes.TableVariant
     onHover?: (isHover: boolean) => void
 }
 
@@ -39,15 +37,12 @@ type TableRowProps = TableRowCommonProps & TableRowConditionalProps
 
 type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
 
-type TableRowStyledProps = TableTypes.TableBorderStyledProps  & TableTypes.TableThemeStyledProps
+type TableRowStyledProps = TableTypes.TableVariantStyledProps
 
-type TableRowCollapsibleStyledProps = TableRowStyledProps & TableTypes.TableThemeStyledProps & {
-    $active: boolean | undefined
-}
+type TableRowCollapsibleStyledProps = TableRowStyledProps &
+    TableTypes.TableVariantStyledProps & {
+        $active: boolean | undefined
+    }
 
 export { TableRowEnum }
-export type {
-    TableRow,
-    TableRowStyledProps,
-    TableRowCollapsibleStyledProps
-}
+export type { TableRow, TableRowStyledProps, TableRowCollapsibleStyledProps }
