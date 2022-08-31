@@ -1,15 +1,17 @@
+import { StyledPrefixThemeProps } from "@root/types/prefix"
 import {
     DetailedHTMLProps,
     ForwardRefExoticComponent,
     HTMLAttributes,
     MouseEventHandler,
     ReactNode,
-    RefAttributes
+    RefAttributes,
 } from "react"
-import * as TableTypes from "../types"
+import * as Constants from "../../constants"
 
 enum TableRowEnum {
-    Default = "Default",
+    THead = "THead",
+    TBody = "TBody",
     TBodyCollapsible = "TBodyCollapsible",
     THeadCollapsible = "THeadCollapsible",
 }
@@ -17,7 +19,6 @@ enum TableRowEnum {
 interface TableRowCommonProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
     hover?: boolean
-    variant?: TableTypes.TableVariant
     onHover?: (isHover: boolean) => void
 }
 
@@ -36,12 +37,14 @@ type TableRowProps = TableRowCommonProps & TableRowConditionalProps
 
 type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
 
-type TableRowStyledProps = TableTypes.TableVariantStyledProps
+interface TableRowStyledProps
+    extends StyledPrefixThemeProps<{
+        variant?: Lowercase<keyof typeof Constants.TableVariant>
+    }> {}
 
-type TableRowCollapsibleStyledProps = TableRowStyledProps &
-    TableTypes.TableVariantStyledProps & {
-        $active: boolean | undefined
-    }
+interface TableRowCollapsibleStyledProps extends TableRowStyledProps {
+    $active: boolean | undefined
+}
 
 export { TableRowEnum }
 export type { TableRow, TableRowStyledProps, TableRowCollapsibleStyledProps }

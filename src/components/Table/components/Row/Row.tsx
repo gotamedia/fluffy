@@ -20,7 +20,6 @@ import * as Types from "./types"
 const TableRow: Types.TableRow = forwardRef(({
     children,
     hiddenElement,
-    variant,
     onHover,
     onClick,
     onMouseEnter,
@@ -42,7 +41,8 @@ const TableRow: Types.TableRow = forwardRef(({
 
         const collapsible = state.collapsible
         const findRowType = [
-            !collapsible && Types.TableRowEnum.Default,
+            !collapsible && type === "tbody" && Types.TableRowEnum.TBody,
+            !collapsible && type === "thead" && Types.TableRowEnum.THead,
             collapsible && type === "thead" && Types.TableRowEnum.THeadCollapsible,
             collapsible &&
                 type === "tbody" &&
@@ -86,56 +86,52 @@ const TableRow: Types.TableRow = forwardRef(({
             [isOpen, onClick]
         )
 
+        const defaultProps = {
+            ref: ref,
+            onClick: onClick,
+            onMouseEnter: handleOnMouseEnter,
+            onMouseLeave: handleOnMouseLeave,
+        }
+
         switch (findRowType) {
-            case Types.TableRowEnum.Default: {
-                const rowVariant = type === "thead" ? "tertiary" : "primary"
+            case Types.TableRowEnum.TBody: {
                 return (
                     <TableContext.Provider value={context}>
-                        <Style.Row
-                            ref={ref}
-                            $variant={variant || rowVariant}
-                            onClick={onClick}
-                            onMouseEnter={handleOnMouseEnter}
-                            onMouseLeave={handleOnMouseLeave}
-                            {...rest}
-                        >
+                        <Style.Row {...rest} {...defaultProps}>
                             {children}
                         </Style.Row>
+                    </TableContext.Provider>
+                )
+            }
+            case Types.TableRowEnum.THead: {
+                return (
+                    <TableContext.Provider value={context}>
+                        <Style.THeadRow {...rest} {...defaultProps}>
+                            {children}
+                        </Style.THeadRow>
                     </TableContext.Provider>
                 )
             }
             case Types.TableRowEnum.THeadCollapsible: {
                 return (
                     <TableContext.Provider value={context}>
-                        <Style.HeadRow
-                            ref={ref}
-                            $variant={variant || "tertiary"}
-                            onClick={onClick}
-                            onMouseEnter={handleOnMouseEnter}
-                            onMouseLeave={handleOnMouseLeave}
-                            {...rest}
-                        >
+                        <Style.THeadRow {...rest} {...defaultProps}>
                             {children}
                             <Style.CollapsibleEmptyCell style={{ width: "5%" }} />
-                        </Style.HeadRow>
+                        </Style.THeadRow>
                     </TableContext.Provider>
                 )
             }
             case Types.TableRowEnum.TBodyCollapsible: {
                 const childrenCount = Children.count(children) + 1
-                const collapsibleVariant =
-                    isHover && !isOpen ? "tertiary" : isOpen ? "quaternary" : "primary"
 
                 return (
                     <TableContext.Provider value={context}>
                         <Style.CollapsibleRow
-                            ref={ref}
-                            $active={isOpen}
-                            $variant={variant || collapsibleVariant}
-                            onMouseEnter={handleOnMouseEnter}
-                            onMouseLeave={handleOnMouseLeave}
-                            onClick={handleCollapsibleRowOnClick}
                             {...rest}
+                            {...defaultProps}
+                            $active={isOpen}
+                            onClick={handleCollapsibleRowOnClick}
                         >
                             {children}
                             <Style.CollapsibleIconCell>

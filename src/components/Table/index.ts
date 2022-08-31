@@ -7,8 +7,6 @@ import TableRow from "./components/Row"
 import BaseTable from "./components/Table"
 import { TableComponentType } from "./types"
 
-export * from "./constants"
-
 const Table = BaseTable as TableComponentType
 Table.Body = TableBody
 Table.Body.displayName = "Table.Body"
