@@ -19,9 +19,8 @@ import * as Types from "./types"
 
 const TableRow: Types.TableRow = forwardRef(({
     children,
-    border,
     hiddenElement,
-    theme,
+    variant,
     onHover,
     onClick,
     onMouseEnter,
@@ -86,13 +85,12 @@ const TableRow: Types.TableRow = forwardRef(({
 
         switch (findRowType) {
             case Types.TableRowEnum.Default: {
-                const rowTheme = type === "thead" ? "tertiary" : "primary"
+                const rowVariant = type === "thead" ? "tertiary" : "primary"
                 return (
                     <TableContext.Provider value={context}>
                         <Style.Row
                             ref={ref}
-                            $border={border}
-                            $theme={theme || rowTheme}
+                            $variant={variant || rowVariant}
                             onClick={onClick}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
@@ -108,8 +106,7 @@ const TableRow: Types.TableRow = forwardRef(({
                     <TableContext.Provider value={context}>
                         <Style.HeadRow
                             ref={ref}
-                            $border={border}
-                            $theme={theme || "tertiary"}
+                            $variant={variant || "tertiary"}
                             onClick={onClick}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
@@ -123,16 +120,15 @@ const TableRow: Types.TableRow = forwardRef(({
             }
             case Types.TableRowEnum.TBodyCollapsible: {
                 const childrenCount = Children.count(children) + 1
-                const hasBottomBorder = border === "bordered" || border === "bottom"
-                const collapsibleTheme = isHover && !isOpen ? "tertiary" : isOpen ? "quaternary" : "primary"
+                const collapsibleVariant =
+                    isHover && !isOpen ? "tertiary" : isOpen ? "quaternary" : "primary"
 
                 return (
                     <TableContext.Provider value={context}>
                         <Style.CollapsibleRow
                             ref={ref}
                             $active={isOpen}
-                            $border={border}
-                            $theme={theme || collapsibleTheme}
+                            $variant={variant || collapsibleVariant}
                             onMouseEnter={handleOnMouseEnter}
                             onMouseLeave={handleOnMouseLeave}
                             onClick={handleCollapsibleRowOnClick}
@@ -141,17 +137,16 @@ const TableRow: Types.TableRow = forwardRef(({
                             {children}
                             <Style.CollapsibleIconCell>
                                 <Icon
-                                    size={"small"}
                                     color={isOpen ? "white" : undefined}
                                     icon={isOpen ? Icons.ArrowUp : Icons.ArrowDown}
                                 />
                             </Style.CollapsibleIconCell>
                         </Style.CollapsibleRow>
-                        <Style.Row $border={isOpen && hasBottomBorder ? "bottom" : undefined}>
+                        <Style.CollapsibleRowWrapper>
                             <Style.CollapsibleCell colSpan={childrenCount}>
                                 <Collapsible open={isOpen}>{hiddenElement}</Collapsible>
                             </Style.CollapsibleCell>
-                        </Style.Row>
+                        </Style.CollapsibleRowWrapper>
                     </TableContext.Provider>
                 )
             }

@@ -1,15 +1,6 @@
-import {
-    DetailedHTMLProps,
-    ForwardRefExoticComponent,
-    HTMLAttributes,
-    RefAttributes
-} from "react"
+import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from "react"
 
-import {
-    TableBorderStyledProps,
-    TableCommonProps,
-    TableSizes
-} from "../types"
+import { TableCommonProps } from "../types"
 
 interface TableCellProps
     extends TableCommonProps,
@@ -21,6 +12,5 @@ interface TableCellProps
 }
 
 type TableCell = ForwardRefExoticComponent<TableCellProps & RefAttributes<HTMLTableCellElement>>
-type TableCellStyledProps = TableBorderStyledProps & TableCellProps & { $size?: TableSizes }
 
-export type { TableCell, TableCellProps, TableCellStyledProps }
+export type { TableCell, TableCellProps }

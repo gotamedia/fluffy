@@ -7,7 +7,7 @@ const BasicComponent = () => {
     const { caption, headRows, bodyRows, footRows } = basicContent
 
     return (
-        <Table border={"bordered"}>
+        <Table>
             <Table.Caption>{caption}</Table.Caption>
             <Table.Head>
                 <Table.Row>
@@ -18,7 +18,7 @@ const BasicComponent = () => {
             </Table.Head>
             <Table.Body>
                 {bodyRows.map((cell) => (
-                    <Table.Row key={cell.name} border={"top"}>
+                    <Table.Row key={cell.name}>
                         <Table.Cell>{cell.name}</Table.Cell>
                         <Table.Cell>{cell.wins}</Table.Cell>
                         <Table.Cell>{cell.score}</Table.Cell>
@@ -26,7 +26,7 @@ const BasicComponent = () => {
                 ))}
             </Table.Body>
             <Table.Foot>
-                <Table.Row border={"top"}>
+                <Table.Row>
                     {footRows.map((cell) => (
                         <Table.Cell key={cell.id}>{cell.label}</Table.Cell>
                     ))}

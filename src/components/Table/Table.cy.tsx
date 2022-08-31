@@ -1,23 +1,22 @@
 import { ReactNode } from "react"
 import Table from "./"
 import { TableContext } from "./components/context"
-import type { TableSizes } from "./components/types"
 
 const context = {
     state: {
         collapsible: false,
-        size: "small" as TableSizes,
     },
     parentState: {},
     type: null,
     parentType: null,
 }
 
-const TableMount = (jsx: ReactNode, overridesContext = {}) => cy.mount(
-    <TableContext.Provider value={{ ...context, ...overridesContext }}>
-        {jsx}
-    </TableContext.Provider>
-)
+const TableMount = (jsx: ReactNode, overridesContext = {}) =>
+    cy.mount(
+        <TableContext.Provider value={{ ...context, ...overridesContext }}>
+            {jsx}
+        </TableContext.Provider>
+    )
 
 describe("<Table>", () => {
     it("mounts", () => {

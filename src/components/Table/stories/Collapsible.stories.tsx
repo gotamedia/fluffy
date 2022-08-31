@@ -8,7 +8,7 @@ const CollapsibleComponent = () => {
     const { headRows, bodyRows } = collapsibleContent
 
     return (
-        <Table collapsible size={"medium"} border={"bordered"}>
+        <Table collapsible>
             <Table.Head>
                 <Table.Row>
                     {headRows.map(({ id, label }) => (
@@ -20,7 +20,6 @@ const CollapsibleComponent = () => {
                 {bodyRows.map(({ name, description, hiddenImage }) => (
                     <Table.Row
                         key={name}
-                        border={"top"}
                         hiddenElement={<Image src={hiddenImage} width={"100%"} />}
                     >
                         <Table.Cell>{name}</Table.Cell>

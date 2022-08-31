@@ -1,9 +1,6 @@
 import styled from "styled-components"
-import border from "../border"
-import * as Types from "../types"
 
-const Table = styled.table<Types.TableBorderStyledProps>`
-    ${border}
+const Table = styled.table`
     table-layout: fixed;
     border-collapse: collapse;
     border-spacing: 0;
