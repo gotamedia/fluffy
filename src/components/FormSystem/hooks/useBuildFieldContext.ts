@@ -4,7 +4,7 @@ import * as Reducers from "../reducers"
 import * as Types from "../types"
 import type { FormData, FormDataValue } from "../types"
 
-const useFieldContext = (): Types.FieldContext.Value => {
+const useBuildFieldContext = (): Types.FieldContext.Value => {
     const {
         addAdditionalInputProp: addAdditionalInputPropForm,
         addFieldValidation,
@@ -125,4 +125,4 @@ const useFieldContext = (): Types.FieldContext.Value => {
     ])
 }
 
-export default useFieldContext
+export default useBuildFieldContext

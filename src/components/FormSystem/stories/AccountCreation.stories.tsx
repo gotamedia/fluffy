@@ -3,7 +3,7 @@ import FS from "@components/FormSystem"
 import * as Contexts from "@components/FormSystem/contexts"
 import type * as Types from "@components/FormSystem/types"
 import Message from "@components/Message/Message"
-import type { MessageTypes } from "@components/Message/types"
+import { MessageTypes } from "@components/Message/types"
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback, useContext, useState } from "react"
 

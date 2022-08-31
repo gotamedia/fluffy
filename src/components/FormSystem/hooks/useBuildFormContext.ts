@@ -24,7 +24,7 @@ const getFormDataState = (initialValue: FSTypes.FormData | undefined) => {
     return FSTypes.FormContext.Types.Update
 }
 
-const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
+const useBuildFormContext = (props: Types.FormContext.HookProps): Types.FormContext.Value => {
     const { defaultValue, disabled, i18n, initialValue, onCancel, onChange, onDelete } = props
 
     const [state, dispatch] = React.useReducer<Types.FormContext.Reducer>(
@@ -423,4 +423,4 @@ const useFormContext = (props: Types.FormContext.HookProps): Types.FormContext.V
     }
 }
 
-export default useFormContext
+export default useBuildFormContext

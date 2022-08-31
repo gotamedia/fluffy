@@ -9,7 +9,7 @@ import ValidationMessages from "./ValidationMessages"
 const Field: Types.FieldComponent = (props) => {
     const { children, validateOnChange, width } = props
 
-    const fieldContextValue = Hooks.useFieldContext()
+    const fieldContextValue = Hooks.useBuildFieldContext()
 
     useEffect(() => {
         fieldContextValue.setValidateOnChange(Boolean(validateOnChange))

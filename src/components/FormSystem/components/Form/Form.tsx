@@ -18,7 +18,7 @@ const Form: Types.FormComponent = (props) => {
         onSubmit
     } = props
 
-    const formContextValue = Hooks.useFormContext({
+    const formContextValue = Hooks.useBuildFormContext({
         defaultValue,
         disabled,
         i18n,
