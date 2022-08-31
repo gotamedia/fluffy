@@ -4,7 +4,7 @@ import {
     HTMLAttributes,
     MouseEventHandler,
     ReactNode,
-    RefAttributes,
+    RefAttributes
 } from "react"
 import * as TableTypes from "../types"
 
@@ -15,8 +15,7 @@ enum TableRowEnum {
 }
 
 interface TableRowCommonProps
-    extends TableTypes.TableCommonProps,
-        DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
+    extends DetailedHTMLProps<HTMLAttributes<HTMLTableRowElement>, HTMLTableRowElement> {
     hover?: boolean
     variant?: TableTypes.TableVariant
     onHover?: (isHover: boolean) => void

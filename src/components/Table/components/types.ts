@@ -20,8 +20,6 @@ interface TableElementContext<T = {}> {
     parentState: unknown | null
 }
 
-interface TableCommonProps {}
-
 type TableVariantStyledProps = StyledPrefixThemeProps<{
     variant?: TableVariant
 }>
@@ -30,6 +28,5 @@ export type {
     TableElements,
     TableElementContext,
     TableVariantStyledProps,
-    TableCommonProps,
     TableVariant,
 }
