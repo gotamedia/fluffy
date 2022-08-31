@@ -5,10 +5,6 @@ import FS from "../../index"
 import type * as Types from "../../types"
 
 const PasswordTemplate: Story<PasswordProps> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -25,11 +21,9 @@ const PasswordTemplate: Story<PasswordProps> = (props) => {
                     name: "Label",
                 },
                 buttons: {
-                    cancel: "Tillbaka",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -37,8 +31,6 @@ const PasswordTemplate: Story<PasswordProps> = (props) => {
                 <FS.Input.Password {...props} />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

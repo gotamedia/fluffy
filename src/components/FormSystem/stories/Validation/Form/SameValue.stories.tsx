@@ -4,10 +4,6 @@ import FS from "../../../index"
 import type * as Types from "../../../types"
 
 const SameValueTemplate: Story<Types.Component.Validation.Form.SameValue> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -33,12 +29,9 @@ const SameValueTemplate: Story<Types.Component.Validation.Form.SameValue> = (pro
                     radio: "RadioGroup label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -101,8 +94,6 @@ const SameValueTemplate: Story<Types.Component.Validation.Form.SameValue> = (pro
                 </FS.Field>
             </FS.Group>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

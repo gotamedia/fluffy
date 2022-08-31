@@ -4,10 +4,6 @@ import FS from "../../../index"
 import type * as Types from "../../../types"
 
 const PasswordTemplate: Story<Types.Component.Validation.Field.Password> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -33,12 +29,9 @@ const PasswordTemplate: Story<Types.Component.Validation.Field.Password> = (prop
                     timepicker: "TimePicker Label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -106,8 +99,6 @@ const PasswordTemplate: Story<Types.Component.Validation.Field.Password> = (prop
                 </FS.Input.TimePicker>
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

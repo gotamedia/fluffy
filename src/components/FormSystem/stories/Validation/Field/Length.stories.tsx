@@ -4,10 +4,6 @@ import FS from "../../../index"
 import type * as Types from "../../../types"
 
 const LengthTemplate: Story<Types.Component.Validation.Field.Length> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -33,12 +29,9 @@ const LengthTemplate: Story<Types.Component.Validation.Field.Length> = (props) =
                     timepicker: "TimePicker Label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -106,8 +99,6 @@ const LengthTemplate: Story<Types.Component.Validation.Field.Length> = (props) =
                 </FS.Input.TimePicker>
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

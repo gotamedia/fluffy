@@ -4,10 +4,6 @@ import FS from "../../../index"
 import type * as Types from "../../../types"
 
 const DateRangeTemplate: Story<Types.Component.Validation.Form.DateRange> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -26,12 +22,9 @@ const DateRangeTemplate: Story<Types.Component.Validation.Form.DateRange> = (pro
                     maxDate: "Max date label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -46,8 +39,6 @@ const DateRangeTemplate: Story<Types.Component.Validation.Form.DateRange> = (pro
                 <FS.Input.DatePicker name={"maxDate"} dateFormat={"yyyy-MM-dd"} />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

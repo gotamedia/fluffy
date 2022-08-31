@@ -4,10 +4,6 @@ import FS from "../../../index"
 import type * as Types from "../../../types"
 
 const DateDiffTemplate: Story<Types.Component.Validation.Form.DateDiff> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -25,12 +21,9 @@ const DateDiffTemplate: Story<Types.Component.Validation.Form.DateDiff> = (props
                     date2: "Date2 label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -42,8 +35,6 @@ const DateDiffTemplate: Story<Types.Component.Validation.Form.DateDiff> = (props
                 <FS.Input.DatePicker name={"date2"} dateFormat={"yyyy-MM-dd"} />
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

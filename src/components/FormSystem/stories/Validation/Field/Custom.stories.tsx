@@ -3,13 +3,9 @@ import React, { useCallback } from "react"
 import sprintf from "../../../../../utils/sprintf"
 import FS from "../../../index"
 import type { FormDataValue } from "../../../types"
-import type * as Types from "../../../types"
+import * as Types from "../../../types"
 
 const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -35,12 +31,9 @@ const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) =
                     timepicker: "TimePicker Label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -108,8 +101,6 @@ const CustomTemplate: Story<Types.Component.Validation.Field.Custom> = (props) =
                 </FS.Input.TimePicker>
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

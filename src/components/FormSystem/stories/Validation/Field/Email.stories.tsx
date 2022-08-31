@@ -1,13 +1,9 @@
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback } from "react"
 import FS from "../../../index"
-import type * as Types from "../../../types"
+import * as Types from "../../../types"
 
 const EmailTemplate: Story<Types.Component.Validation.Field.Email> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -33,12 +29,9 @@ const EmailTemplate: Story<Types.Component.Validation.Field.Email> = (props) => 
                     timepicker: "TimePicker Label"
                 },
                 buttons: {
-                    cancel: "Tillbaka",
-                    delete: "Radera",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
@@ -106,8 +99,6 @@ const EmailTemplate: Story<Types.Component.Validation.Field.Email> = (props) => 
                 </FS.Input.TimePicker>
             </FS.Field>
 
-            <FS.Button.Cancel />
-            <FS.Button.Delete />
             <FS.Button.Submit />
         </FS.Form>
     )

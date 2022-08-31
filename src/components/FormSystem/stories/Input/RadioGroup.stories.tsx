@@ -5,10 +5,6 @@ import FS from "../../index"
 import type * as Types from "../../types"
 
 const RadioGroupTemplate: Story<RadioGroupProps> = (props) => {
-    const onCancel: Types.FormContext.Events.onCancel = useCallback((...props) => {
-        console.log("onCancel", props)
-    }, [])
-
     const onChange: Types.FormContext.Events.onChange = useCallback((...props) => {
         console.log("onChange", props)
     }, [])
@@ -25,11 +21,9 @@ const RadioGroupTemplate: Story<RadioGroupProps> = (props) => {
                     name: "Label",
                 },
                 buttons: {
-                    cancel: "Tillbaka",
                     submit: "Spara"
                 }
             }}
-            onCancel={onCancel}
             onChange={onChange}
             onSubmit={onSubmit}
         >
