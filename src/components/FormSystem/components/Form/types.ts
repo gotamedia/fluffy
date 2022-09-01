@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react"
+import React, { HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 import type * as Types from "../../types"
 
 export type FormProps = PropsWithChildren<{
@@ -10,8 +10,10 @@ export type FormProps = PropsWithChildren<{
     onCancel?: Types.FormContext.Events.onCancel
     onDelete?: Types.FormContext.Events.onDelete
     onSubmit?: Types.FormContext.Events.onSubmit
-}>
+} & Omit<HTMLAttributes<HTMLFormElement>, "onSubmit">>
 
-export type FormComponent = React.FC<FormProps>
+export type FormRef = HTMLFormElement
+
+export type FormComponent = React.FC<FormProps & RefAttributes<FormRef>>
 
 export type ComponentType = FormComponent

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { forwardRef, useEffect } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import DefaultLabel from "./DefaultLabel"
@@ -6,8 +6,8 @@ import * as Styled from "./style"
 import type * as Types from "./types"
 import ValidationMessages from "./ValidationMessages"
 
-const Field: Types.FieldComponent = (props) => {
-    const { children, validateOnChange, width } = props
+const Field: Types.FieldComponent = forwardRef((props, ref) => {
+    const { children, validateOnChange, width, ...wrapperProps } = props
 
     const fieldContextValue = Hooks.useBuildFieldContext()
 
@@ -16,7 +16,11 @@ const Field: Types.FieldComponent = (props) => {
     }, [fieldContextValue, validateOnChange])
 
     return (
-        <Styled.Wrapper width={width}>
+        <Styled.Wrapper
+            ref={ref}
+            width={width}
+            {...wrapperProps}
+        >
             <Contexts.FieldContext.Provider value={fieldContextValue}>
                 <DefaultLabel />
                 {children}
@@ -24,6 +28,6 @@ const Field: Types.FieldComponent = (props) => {
             </Contexts.FieldContext.Provider>
         </Styled.Wrapper>
     )
-}
+})
 
 export default Field

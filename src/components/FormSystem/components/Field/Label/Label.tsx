@@ -1,9 +1,9 @@
 import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
-import { useEffect } from "react"
+import { forwardRef, useEffect } from "react"
 import * as Styled from "./style"
 import type * as Types from "./types"
 
-const Label: Types.LabelComponent = (props) => {
+const Label: Types.LabelComponent = forwardRef((props, ref) => {
     const { children } = props
     const { fieldName, isRequired, setShowDefaultLabel } = useFieldContext()
 
@@ -16,11 +16,15 @@ const Label: Types.LabelComponent = (props) => {
     }, [setShowDefaultLabel])
 
     return (
-        <Styled.Label htmlFor={fieldName}>
+        <Styled.Label
+            ref={ref}
+            htmlFor={fieldName}
+            {...props}
+        >
             {children}
             {isRequired ? (<sup style={{ color: "red" }}>*</sup>) : null}
         </Styled.Label>
     )
-}
+})
 
 export default Label

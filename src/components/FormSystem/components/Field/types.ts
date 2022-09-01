@@ -1,5 +1,5 @@
 import Label from "@components/FormSystem/components/Field/Label"
-import React, { PropsWithChildren } from "react"
+import React, { HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 
 export type StyledFieldProps = {
     width?: string
@@ -7,9 +7,11 @@ export type StyledFieldProps = {
 
 export type FieldProps = PropsWithChildren<{
     validateOnChange?: boolean
-} & StyledFieldProps>
+} & StyledFieldProps & HTMLAttributes<HTMLDivElement>>
 
-export type FieldComponent = React.FC<FieldProps>
+export type FieldRef = HTMLDivElement
+
+export type FieldComponent = React.FC<FieldProps & RefAttributes<FieldRef>>
 
 export type ComponentType = FieldComponent & {
     Label: typeof Label

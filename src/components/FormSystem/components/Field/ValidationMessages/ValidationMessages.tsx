@@ -1,13 +1,13 @@
 import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import { HintTypes } from "@components/Hint/types"
-import { useEffect, useState } from "react"
+import { forwardRef, useEffect, useState } from "react"
 import type * as FSTypes from "../../../types"
 import ValidationMessagesGroup from "./Group"
 import * as Styled from "./style"
 import type * as Types from "./types"
 
-const ValidationMessages: Types.ValidationMessagesComponent = () => {
+const ValidationMessages: Types.ValidationMessagesComponent = forwardRef((props, ref) => {
     const { formData } = useFormContext()
     const { fieldName } = useFieldContext()
     const [groups, setGroups] = useState<FSTypes.Validation.Message[][]>([])
@@ -37,12 +37,15 @@ const ValidationMessages: Types.ValidationMessagesComponent = () => {
     }, [fieldName, formData])
 
     return groups.length === 0 ? null : (
-        <Styled.Wrapper>
+        <Styled.Wrapper
+            ref={ref}
+            {...props}
+        >
             {groups.map((group, index) => (
                 <ValidationMessagesGroup key={index} validationMessages={group} />
             ))}
         </Styled.Wrapper>
     )
-}
+})
 
 export default ValidationMessages

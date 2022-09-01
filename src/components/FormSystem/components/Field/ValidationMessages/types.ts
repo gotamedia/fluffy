@@ -1,13 +1,15 @@
-import React from "react"
+import React, { HTMLAttributes, RefAttributes } from "react"
 import type * as Types from "../../../types"
 
-export interface ValidationMessagesProps { }
+export type ValidationMessagesProps = HTMLAttributes<HTMLDivElement>
 
 export interface ValidationMessagesGroupProps {
     validationMessages: Types.Validation.Message[]
 }
 
-export type ValidationMessagesComponent = React.FC<ValidationMessagesProps>
+export type ValidationMessagesRef = HTMLDivElement
+
+export type ValidationMessagesComponent = React.FC<ValidationMessagesProps & RefAttributes<ValidationMessagesRef>>
 
 export type GroupComponent = React.FC<ValidationMessagesGroupProps>
 

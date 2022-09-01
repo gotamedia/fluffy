@@ -1,11 +1,11 @@
 import Group from "@components/FormSystem/components/Group/Group"
-import React, { useCallback } from "react"
+import React, { forwardRef, useCallback } from "react"
 import * as Contexts from "../../contexts"
 import * as Hooks from "../../hooks"
 import * as FSTypes from "../../types"
 import type * as Types from "./types"
 
-const Form: Types.FormComponent = (props) => {
+const Form: Types.FormComponent = forwardRef((props, ref) => {
     const {
         children,
         defaultValue,
@@ -15,7 +15,8 @@ const Form: Types.FormComponent = (props) => {
         onCancel,
         onChange,
         onDelete,
-        onSubmit
+        onSubmit,
+        ...formProps
     } = props
 
     const formContextValue = Hooks.useBuildFormContext({
@@ -54,7 +55,11 @@ const Form: Types.FormComponent = (props) => {
     }, [formContextValue, onSubmit])
 
     return (
-        <form onSubmit={onSubmitLocal}>
+        <form
+            ref={ref}
+            onSubmit={onSubmitLocal}
+            {...formProps}
+        >
             <Group direction={"vertical"}>
                 <Contexts.FormContext.Provider value={formContextValue}>
                     {children}
@@ -62,6 +67,6 @@ const Form: Types.FormComponent = (props) => {
             </Group>
         </form>
     )
-}
+})
 
 export default Form

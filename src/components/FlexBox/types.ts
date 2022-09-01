@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren } from "react"
+import React, { HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 
 export type Directions = "horizontal" | "vertical"
 
@@ -14,6 +14,8 @@ export type FlexBoxProps = PropsWithChildren<{
     inline?: boolean
 } & HTMLAttributes<HTMLDivElement>>
 
-export type FlexBoxComponent = React.FC<FlexBoxProps>
+export type FlexBoxRef = HTMLDivElement
+
+export type FlexBoxComponent = React.FC<FlexBoxProps & RefAttributes<FlexBoxRef>>
 
 export type ComponentType = FlexBoxComponent

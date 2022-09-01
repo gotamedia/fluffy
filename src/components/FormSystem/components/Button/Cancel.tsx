@@ -1,10 +1,10 @@
 import Button from "@components/Button"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import Icon, { Icons } from "@components/Icon"
-import React, { useCallback } from "react"
+import React, { forwardRef, useCallback } from "react"
 import type * as Types from "./types"
 
-const CancelButton: Types.ButtonComponent = () => {
+const CancelButton: Types.ButtonComponent = forwardRef((props, ref) => {
     const {
         disabled: formDisabled,
         getButtonLabel,
@@ -28,13 +28,19 @@ const CancelButton: Types.ButtonComponent = () => {
     }, [getFormData, onCancel, setIsCanceling])
 
     return (
-        <Button disabled={formDisabled || isActing} type={"button"} onClick={onClick}>
+        <Button
+            ref={ref}
+            disabled={formDisabled || isActing}
+            type={"button"}
+            onClick={onClick}
+            {...props}
+        >
             {isCanceling && (
                 <Icon icon={Icons.Spinner} />
             )}
             {getButtonLabel("cancel")}
         </Button>
     )
-}
+})
 
 export default CancelButton
