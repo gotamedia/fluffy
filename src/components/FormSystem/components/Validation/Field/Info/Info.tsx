@@ -1,7 +1,7 @@
-import * as Contexts from "@components/FormSystem/contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import * as FSTypes from "../../../../types"
@@ -18,7 +18,7 @@ const Info: Types.InfoComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { addValidation, removeValidation, label } = useContext(Contexts.FieldContext)
+    const { addValidation, removeValidation, label } = useFieldContext()
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (!condition) {

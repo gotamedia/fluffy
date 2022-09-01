@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react"
-import type * as Types from "./types"
-import * as Contexts from "../../../contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
+import { useEffect } from "react"
 import * as Styled from "./style"
+import type * as Types from "./types"
 
 const Label: Types.LabelComponent = (props) => {
     const { children } = props
-    const { fieldName, isRequired, setShowDefaultLabel } = useContext(Contexts.FieldContext)
+    const { fieldName, isRequired, setShowDefaultLabel } = useFieldContext()
 
     useEffect(() => {
         setShowDefaultLabel(false)

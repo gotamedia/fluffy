@@ -1,9 +1,9 @@
 import type { ValueI18n } from "@components/FormSystem/components/Validation/Field/Value/i18nTypes"
-import * as Contexts from "@components/FormSystem/contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
@@ -30,7 +30,7 @@ const Value: Types.ValueComponent = (props) => {
         label,
         removeValidation,
         validateOnChange: fieldContextValidateOnChange
-    } = useContext(Contexts.FieldContext)
+    } = useFieldContext()
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (

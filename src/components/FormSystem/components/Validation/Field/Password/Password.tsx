@@ -1,5 +1,5 @@
 import type { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
-import * as Contexts from "@components/FormSystem/contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import {
@@ -10,7 +10,7 @@ import {
     containsUpperCase
 } from "@components/FormSystem/utils"
 import sprintf from "@utils/sprintf"
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
@@ -38,7 +38,7 @@ const Password: Types.PasswordComponent = (props) => {
         label,
         removeValidation,
         validateOnChange: fieldContextValidateOnChange
-    } = useContext(Contexts.FieldContext)
+    } = useFieldContext()
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (typeof value !== "string" || String(value).length === 0) {

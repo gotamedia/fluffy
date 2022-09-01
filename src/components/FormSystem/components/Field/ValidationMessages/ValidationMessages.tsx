@@ -1,7 +1,7 @@
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import { HintTypes } from "@components/Hint/types"
-import { useContext, useEffect, useState } from "react"
-import * as Contexts from "../../../contexts"
+import { useEffect, useState } from "react"
 import type * as FSTypes from "../../../types"
 import ValidationMessagesGroup from "./Group"
 import * as Styled from "./style"
@@ -9,7 +9,7 @@ import type * as Types from "./types"
 
 const ValidationMessages: Types.ValidationMessagesComponent = () => {
     const { formData } = useFormContext()
-    const { fieldName } = useContext(Contexts.FieldContext)
+    const { fieldName } = useFieldContext()
     const [groups, setGroups] = useState<FSTypes.Validation.Message[][]>([])
 
     useEffect(() => {

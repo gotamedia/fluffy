@@ -1,10 +1,9 @@
-import { useContext } from "react"
-import type * as Types from "./types"
-import * as Contexts from "../../../contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import * as Styled from "./style"
+import type * as Types from "./types"
 
 const DefaultLabel: Types.LabelComponent = () => {
-    const { fieldName, isRequired, label, showDefaultLabel } = useContext(Contexts.FieldContext)
+    const { fieldName, isRequired, label, showDefaultLabel } = useFieldContext()
 
     return showDefaultLabel === false || !label ? null : (
         <Styled.Label htmlFor={fieldName}>

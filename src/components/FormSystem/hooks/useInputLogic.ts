@@ -1,7 +1,7 @@
-import * as Contexts from "@components/FormSystem/contexts"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
 import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import useTheme from "@hooks/useTheme"
-import { useCallback, useContext, useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import type * as Types from "../types"
 
 const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Value => {
@@ -30,7 +30,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         setFieldName,
         terminate,
         validate
-    } = useContext(Contexts.FieldContext)
+    } = useFieldContext()
 
     useEffect(() => {
         if (name !== fieldName) {

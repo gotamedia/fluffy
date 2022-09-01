@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import useFieldContext from "@components/FormSystem/hooks/useFieldContext"
+import { useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
-import * as Contexts from "../../../../contexts"
 import type * as Types from "./types"
 
 const Custom: Types.CustomComponent = (props) => {
@@ -12,7 +12,7 @@ const Custom: Types.CustomComponent = (props) => {
         addValidation,
         removeValidation,
         validateOnChange: fieldContextValidateOnChange
-    } = useContext(Contexts.FieldContext)
+    } = useFieldContext()
 
     useEffect(() => {
         addValidation(`custom_field_${uuid}`, validationFunction, validateOnChange || fieldContextValidateOnChange)
