@@ -35,7 +35,9 @@ type TableRowConditionalProps = TableRowDefaultProps | TableRowCollapsibleProps
 
 type TableRowProps = TableRowCommonProps & TableRowConditionalProps
 
-type TableRow = ForwardRefExoticComponent<TableRowProps & RefAttributes<HTMLTableRowElement>>
+type TableRowComponent = ForwardRefExoticComponent<
+    TableRowProps & RefAttributes<HTMLTableRowElement>
+>
 
 interface TableRowStyledProps
     extends StyledPrefixThemeProps<{
@@ -47,4 +49,9 @@ interface TableRowCollapsibleStyledProps extends TableRowStyledProps {
 }
 
 export { TableRowEnum }
-export type { TableRow, TableRowStyledProps, TableRowCollapsibleStyledProps }
+export type {
+    TableRowComponent,
+    TableRowProps,
+    TableRowStyledProps,
+    TableRowCollapsibleStyledProps,
+}

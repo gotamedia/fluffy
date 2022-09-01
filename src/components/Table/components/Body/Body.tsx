@@ -4,7 +4,7 @@ import { TableElements } from "../types"
 import * as Styled from "./style"
 import * as Types from "./types"
 
-const TableBody: Types.TableBody = forwardRef(({ children, ...rest }, ref) => {
+const TableBody: Types.TableBodyComponent = forwardRef(({ children, ...rest }, ref) => {
     const { type, state } = useTableContext()
     const elementType: TableElements = "tbody"
     const context = useMemo(

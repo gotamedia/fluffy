@@ -4,7 +4,7 @@ import { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const TableCaption: Types.TableCaption = forwardRef(({ children, ...rest }, ref) => {
+const TableCaption: Types.TableCaptionComponent = forwardRef(({ children, ...rest }, ref) => {
     const { type, state } = useTableContext()
 
     const elementType: TableElements = "caption"

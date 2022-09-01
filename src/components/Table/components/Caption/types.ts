@@ -2,6 +2,6 @@ import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttrib
 
 interface TableCaptionProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {}
 
-type TableCaption = ForwardRefExoticComponent<TableCaptionProps & RefAttributes<HTMLElement>>
+type TableCaptionComponent = ForwardRefExoticComponent<TableCaptionProps & RefAttributes<HTMLElement>>
 
-export type { TableCaption }
+export type { TableCaptionComponent, TableCaptionProps }

@@ -1,8 +1,8 @@
 import {
-    Children,
     forwardRef,
     isValidElement,
     MouseEventHandler,
+    MutableRefObject,
     useCallback,
     useEffect,
     useMemo,
@@ -17,7 +17,7 @@ import { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const TableRow: Types.TableRow = forwardRef(({
+const TableRow: Types.TableRowComponent = forwardRef(({
     children,
     hiddenElement,
     onHover,
@@ -27,6 +27,7 @@ const TableRow: Types.TableRow = forwardRef(({
     ...rest }, ref) => {
         const [isHover, setIsHover] = useState<boolean>()
         const [isOpen, setIsOpen] = useState<boolean>()
+        const [totalCells, setTotalCells] = useState<number>(0)
         const { type, state } = useTableContext()
         const elementType: TableElements = "tr"
         const context = useMemo(
@@ -41,13 +42,10 @@ const TableRow: Types.TableRow = forwardRef(({
 
         const collapsible = state.collapsible
         const findRowType = [
-            !collapsible && type === "tbody" && Types.TableRowEnum.TBody,
             !collapsible && type === "thead" && Types.TableRowEnum.THead,
             collapsible && type === "thead" && Types.TableRowEnum.THeadCollapsible,
-            collapsible &&
-                type === "tbody" &&
-                isValidElement(hiddenElement) &&
-                Types.TableRowEnum.TBodyCollapsible,
+            (!collapsible || (collapsible && !hiddenElement && type === "tbody")) && Types.TableRowEnum.TBody,
+            collapsible && type === "tbody" && isValidElement(hiddenElement) && Types.TableRowEnum.TBodyCollapsible,
         ].find(Boolean)
 
         useEffect(() => {
@@ -87,7 +85,6 @@ const TableRow: Types.TableRow = forwardRef(({
         )
 
         const defaultProps = {
-            ref: ref,
             onClick: onClick,
             onMouseEnter: handleOnMouseEnter,
             onMouseLeave: handleOnMouseLeave,
@@ -97,7 +94,7 @@ const TableRow: Types.TableRow = forwardRef(({
             case Types.TableRowEnum.TBody: {
                 return (
                     <TableContext.Provider value={context}>
-                        <Style.Row {...rest} {...defaultProps}>
+                        <Style.Row {...rest} {...defaultProps} ref={ref}>
                             {children}
                         </Style.Row>
                     </TableContext.Provider>
@@ -106,7 +103,7 @@ const TableRow: Types.TableRow = forwardRef(({
             case Types.TableRowEnum.THead: {
                 return (
                     <TableContext.Provider value={context}>
-                        <Style.THeadRow {...rest} {...defaultProps}>
+                        <Style.THeadRow {...rest} {...defaultProps} ref={ref}>
                             {children}
                         </Style.THeadRow>
                     </TableContext.Provider>
@@ -115,7 +112,7 @@ const TableRow: Types.TableRow = forwardRef(({
             case Types.TableRowEnum.THeadCollapsible: {
                 return (
                     <TableContext.Provider value={context}>
-                        <Style.THeadRow {...rest} {...defaultProps}>
+                        <Style.THeadRow {...rest} {...defaultProps} ref={ref}>
                             {children}
                             <Style.CollapsibleEmptyCell style={{ width: "5%" }} />
                         </Style.THeadRow>
@@ -123,26 +120,33 @@ const TableRow: Types.TableRow = forwardRef(({
                 )
             }
             case Types.TableRowEnum.TBodyCollapsible: {
-                const childrenCount = Children.count(children) + 1
-
                 return (
                     <TableContext.Provider value={context}>
                         <Style.CollapsibleRow
                             {...rest}
                             {...defaultProps}
+                            ref={(element) => {
+                                if (element) {
+                                    setTotalCells(element.cells.length)
+                                    if (ref) {
+                                        (ref as MutableRefObject<HTMLTableRowElement>).current = element
+                                    }
+                                }
+                            }}
                             $active={isOpen}
                             onClick={handleCollapsibleRowOnClick}
                         >
                             {children}
                             <Style.CollapsibleIconCell>
                                 <Icon
+                                    size={"tiny"}
                                     color={isOpen ? "white" : undefined}
                                     icon={isOpen ? Icons.ArrowUp : Icons.ArrowDown}
                                 />
                             </Style.CollapsibleIconCell>
                         </Style.CollapsibleRow>
                         <Style.CollapsibleRowWrapper>
-                            <Style.CollapsibleCell colSpan={childrenCount}>
+                            <Style.CollapsibleCell colSpan={totalCells}>
                                 <Collapsible open={isOpen}>{hiddenElement}</Collapsible>
                             </Style.CollapsibleCell>
                         </Style.CollapsibleRowWrapper>

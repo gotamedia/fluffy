@@ -4,6 +4,6 @@ interface TableProps extends DetailedHTMLProps<HTMLAttributes<HTMLTableElement>,
     collapsible?: boolean
 }
 
-type Table = ForwardRefExoticComponent<TableProps & RefAttributes<HTMLTableElement>>
+type TableComponent = ForwardRefExoticComponent<TableProps & RefAttributes<HTMLTableElement>>
 
-export type { Table }
+export type { TableComponent, TableProps }

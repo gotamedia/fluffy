@@ -4,7 +4,7 @@ import { TableElements } from "../types"
 import * as Style from "./style"
 import * as Types from "./types"
 
-const TableCell: Types.TableCell = forwardRef(({ children, ...rest }, ref) => {
+const TableCell: Types.TableCellComponent = forwardRef(({ children, ...rest }, ref) => {
     const { type, parentType, state } = useTableContext()
 
     const elementType: TableElements = parentType === "thead" ? "th" : "td"
