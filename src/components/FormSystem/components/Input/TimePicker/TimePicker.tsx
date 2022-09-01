@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 
 import PlainTimePicker from "@components/TimePicker"
 import { useInputLogic } from "@components/FormSystem/hooks"
@@ -7,7 +7,7 @@ import { buildDatePickerValueProps, getDateValue } from "@components/FormSystem/
 import usePrevious from "@hooks/usePrevious"
 import type * as Types from "./types"
 
-const TimePicker: Types.TimePickerComponent = (props) => {
+const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainTimePickerProps } = props
 
     const {
@@ -43,6 +43,7 @@ const TimePicker: Types.TimePickerComponent = (props) => {
     return (
         <>
             <PlainTimePicker
+                ref={ref}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
@@ -55,6 +56,6 @@ const TimePicker: Types.TimePickerComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default TimePicker

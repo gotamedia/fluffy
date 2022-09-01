@@ -1,5 +1,5 @@
-import { TimePickerProps as PlainTimePickerProps } from "@components/TimePicker"
-import React, { PropsWithChildren } from "react"
+import { TimePickerProps as PlainTimePickerProps, TimePickerRef } from "@components/TimePicker"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type TimePickerProps = PropsWithChildren<{
     disabled?: boolean
@@ -7,6 +7,6 @@ export type TimePickerProps = PropsWithChildren<{
     name: string
 } & Omit<PlainTimePickerProps, "onChange"> & Partial<Pick<PlainTimePickerProps, "onChange">>>
 
-export type TimePickerComponent = React.FC<TimePickerProps>
+export type TimePickerComponent = ForwardRefExoticComponent<TimePickerProps & RefAttributes<TimePickerRef>>
 
 export type ComponentType = TimePickerComponent

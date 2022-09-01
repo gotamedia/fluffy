@@ -1,12 +1,12 @@
 import PlainCheckbox from "@components/Checkbox"
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 
 import { useInputLogic } from "@components/FormSystem/hooks"
 import type { FormDataValue } from "@components/FormSystem/types"
 import usePrevious from "@hooks/usePrevious"
 import type * as Types from "./types"
 
-const Checkbox: Types.CheckboxComponent = (props) => {
+const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainCheckboxProps } = props
 
     const {
@@ -38,6 +38,7 @@ const Checkbox: Types.CheckboxComponent = (props) => {
     return (
         <>
             <PlainCheckbox
+                ref={ref}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
@@ -48,6 +49,6 @@ const Checkbox: Types.CheckboxComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Checkbox

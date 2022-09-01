@@ -1,12 +1,12 @@
 import SwitchButton from "@components/SwitchButton"
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 
 import { useInputLogic } from "@components/FormSystem/hooks"
 import type { FormDataValue } from "@components/FormSystem/types"
 import usePrevious from "@hooks/usePrevious"
 import type * as Types from "./types"
 
-const Switch: Types.SwitchComponent = (props) => {
+const Switch: Types.SwitchComponent = forwardRef((props, ref) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainSwitchProps } = props
 
     const {
@@ -38,6 +38,7 @@ const Switch: Types.SwitchComponent = (props) => {
     return (
         <>
             <SwitchButton
+                ref={ref}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
@@ -48,6 +49,6 @@ const Switch: Types.SwitchComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Switch

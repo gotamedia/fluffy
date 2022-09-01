@@ -1,5 +1,5 @@
 import { RadioProps } from "@components/Radio"
-import React, { PropsWithChildren } from "react"
+import React, { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type onChange = (
     optionOnChange: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void
@@ -20,6 +20,8 @@ export type RadioGroupProps = PropsWithChildren<{
     readOnly?: boolean
 }>
 
-export type RadioGroupComponent = React.FC<RadioGroupProps>
+export type RadioGroupRef = HTMLDivElement
+
+export type RadioGroupComponent = ForwardRefExoticComponent<RadioGroupProps & RefAttributes<HTMLDivElement>>
 
 export type ComponentType = RadioGroupComponent

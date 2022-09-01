@@ -1,6 +1,5 @@
-import React, { PropsWithChildren } from "react"
-
-import { CheckboxProps as PlainCheckboxProps } from "@components/Checkbox"
+import { CheckboxProps as PlainCheckboxProps, CheckboxRef } from "@components/Checkbox"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type CheckboxProps = PropsWithChildren<{
     disabled?: boolean
@@ -8,6 +7,6 @@ export type CheckboxProps = PropsWithChildren<{
     name: string
 } & PlainCheckboxProps>
 
-export type CheckboxComponent = React.FC<CheckboxProps>
+export type CheckboxComponent = ForwardRefExoticComponent<CheckboxProps & RefAttributes<CheckboxRef>>
 
 export type ComponentType = CheckboxComponent

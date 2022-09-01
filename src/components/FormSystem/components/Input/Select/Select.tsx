@@ -2,12 +2,12 @@ import { useInputLogic } from "@components/FormSystem/hooks"
 import ListItem from "@components/ListItem"
 import PlainSelect from "@components/Select"
 import usePrevious from "@hooks/usePrevious"
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 import type * as FSTypes from "../../../types"
 import type { FormDataValue } from "../../../types"
 import type * as Types from "./types"
 
-const Select: Types.SelectComponent = (props) => {
+const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const { children, disabled, isMultiSelect, name, onSelect, options, ...selectProps } = props
 
     const {
@@ -55,6 +55,7 @@ const Select: Types.SelectComponent = (props) => {
     return (
         <>
             <PlainSelect
+                ref={ref}
                 isMultiSelect={isMultiSelect}
                 {...selectProps}
                 disabled={disabledCombined}
@@ -68,6 +69,6 @@ const Select: Types.SelectComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Select

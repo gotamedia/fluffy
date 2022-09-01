@@ -1,5 +1,5 @@
-import { SwitchButtonProps } from "@components/SwitchButton"
-import React, { PropsWithChildren } from "react"
+import { SwitchButtonProps, SwitchButtonRef } from "@components/SwitchButton"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type SwitchProps = PropsWithChildren<{
     disabled?: boolean
@@ -7,6 +7,6 @@ export type SwitchProps = PropsWithChildren<{
     name: string
 } & SwitchButtonProps>
 
-export type SwitchComponent = React.FC<SwitchProps>
+export type SwitchComponent = ForwardRefExoticComponent<SwitchProps & RefAttributes<SwitchButtonRef>>
 
 export type ComponentType = SwitchComponent

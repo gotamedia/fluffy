@@ -1,5 +1,5 @@
-import { InputProps } from "@components/Input"
-import React, { PropsWithChildren } from "react"
+import { InputProps, InputRef } from "@components/Input"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type PasswordProps = PropsWithChildren<{
     disabled?: boolean
@@ -8,6 +8,6 @@ export type PasswordProps = PropsWithChildren<{
     visibilityToggleable?: boolean
 } & InputProps>
 
-export type PasswordComponent = React.FC<PasswordProps>
+export type PasswordComponent = ForwardRefExoticComponent<PasswordProps & RefAttributes<InputRef>>
 
 export type ComponentType = PasswordComponent

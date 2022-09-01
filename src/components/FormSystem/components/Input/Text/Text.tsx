@@ -1,9 +1,9 @@
 import { useInputLogic } from "@components/FormSystem/hooks"
 import Input from "@components/Input"
-import React, { useCallback } from "react"
+import React, { forwardRef, useCallback } from "react"
 import type * as Types from "./types"
 
-const Text: Types.TextComponent = (props) => {
+const Text: Types.TextComponent = forwardRef((props, ref) => {
     const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...plainTextProps  } = props
 
     const {
@@ -55,6 +55,7 @@ const Text: Types.TextComponent = (props) => {
     return (
         <>
             <Input
+                ref={ref}
                 maxLength={additionalInputProps?.maxLength}
                 disabled={disabledCombined}
                 id={name}
@@ -67,6 +68,6 @@ const Text: Types.TextComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Text

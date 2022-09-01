@@ -1,5 +1,5 @@
-import { DatePickerProps as PlainDatePickerProps } from "@components/DatePicker"
-import React, { PropsWithChildren } from "react"
+import { DatePickerProps as PlainDatePickerProps, DatePickerRef } from "@components/DatePicker"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type DatePickerProps = PropsWithChildren<{
     disabled?: boolean
@@ -7,6 +7,6 @@ export type DatePickerProps = PropsWithChildren<{
     name: string
 } & Omit<PlainDatePickerProps, "onChange"> & Partial<Pick<PlainDatePickerProps, "onChange">>>
 
-export type DatePickerComponent = React.FC<DatePickerProps>
+export type DatePickerComponent = ForwardRefExoticComponent<DatePickerProps & RefAttributes<DatePickerRef>>
 
 export type ComponentType = DatePickerComponent

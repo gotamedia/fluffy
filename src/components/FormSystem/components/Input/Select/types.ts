@@ -1,6 +1,7 @@
 import type { ListItemProps } from "@components/ListItem/types"
 import type { SelectProps as PlainSelectProps } from "@components/Select/types"
-import React, { PropsWithChildren } from "react"
+import { SelectRef } from "@components/Select/types"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export interface SelectOption extends ListItemProps {
 }
@@ -11,6 +12,6 @@ export type SelectProps = PropsWithChildren<{
     options: SelectOption[]
 } & Omit<PlainSelectProps, "label" | "selected">>
 
-export type SelectComponent = React.FC<SelectProps>
+export type SelectComponent = ForwardRefExoticComponent<SelectProps & RefAttributes<SelectRef>>
 
 export type ComponentType = SelectComponent

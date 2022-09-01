@@ -1,6 +1,5 @@
-import React, { PropsWithChildren } from "react"
-
-import { TextareaProps as PlainTextareaProps } from "@components/Textarea"
+import { TextareaProps as PlainTextareaProps, TextareaRef } from "@components/Textarea"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type TextareaProps = PropsWithChildren<{
     disabled?: boolean
@@ -9,6 +8,6 @@ export type TextareaProps = PropsWithChildren<{
     readOnly?: boolean
 } & PlainTextareaProps>
 
-export type TextareaComponent = React.FC<TextareaProps>
+export type TextareaComponent = ForwardRefExoticComponent<TextareaProps & RefAttributes<TextareaRef>>
 
 export type ComponentType = TextareaComponent

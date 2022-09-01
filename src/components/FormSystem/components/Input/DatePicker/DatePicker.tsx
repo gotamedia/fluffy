@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 
 import PlainDatePicker from "@components/DatePicker"
 import { useInputLogic } from "@components/FormSystem/hooks"
@@ -7,7 +7,7 @@ import { buildDatePickerValueProps, getDateValue } from "@components/FormSystem/
 import usePrevious from "@hooks/usePrevious"
 import type * as Types from "./types"
 
-const DatePicker: Types.DatePickerComponent = (props) => {
+const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
     const { children, disabled, name, onChange: propsOnChange, ...plainDatePickerProps } = props
 
     const {
@@ -43,6 +43,7 @@ const DatePicker: Types.DatePickerComponent = (props) => {
     return (
         <>
             <PlainDatePicker
+                ref={ref}
                 disabled={disabledCombined}
                 id={name}
                 name={name}
@@ -55,6 +56,6 @@ const DatePicker: Types.DatePickerComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default DatePicker

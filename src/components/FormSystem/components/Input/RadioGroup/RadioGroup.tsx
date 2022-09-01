@@ -2,11 +2,11 @@ import { useInputLogic } from "@components/FormSystem/hooks"
 import type { FormDataValue } from "@components/FormSystem/types"
 import Radio from "@components/Radio"
 import usePrevious from "@hooks/usePrevious"
-import React, { useCallback, useEffect } from "react"
+import React, { forwardRef, useCallback, useEffect } from "react"
 import * as Styles from "./style"
 import type * as Types from "./types"
 
-const RadioGroup: Types.RadioGroupComponent = (props) => {
+const RadioGroup: Types.RadioGroupComponent = forwardRef((props, ref) => {
     const { allowDeselect, children, disabled, name, options, readOnly } = props
 
     const {
@@ -44,7 +44,7 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
 
     return (
         <>
-            <Styles.Wrapper>
+            <Styles.Wrapper ref={ref}>
                 {options.map((option) => (
                     <Radio
                         key={option.value}
@@ -59,6 +59,6 @@ const RadioGroup: Types.RadioGroupComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default RadioGroup

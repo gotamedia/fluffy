@@ -1,10 +1,10 @@
-import React, { useCallback } from "react"
+import React, { forwardRef, useCallback } from "react"
 
 import { useInputLogic } from "@components/FormSystem/hooks"
 import PlainTextarea from "@components/Textarea"
 import type * as Types from "./types"
 
-const Textarea: Types.TextareaComponent = (props) => {
+const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
     const { children, disabled, filter, name, onBlur: propsOnBlur, onChange: propsOnChange, ...textareaProps } = props
 
     const {
@@ -56,6 +56,7 @@ const Textarea: Types.TextareaComponent = (props) => {
     return (
         <>
             <PlainTextarea
+                ref={ref}
                 maxLength={additionalInputProps?.maxLength}
                 disabled={disabledCombined}
                 id={name}
@@ -68,6 +69,6 @@ const Textarea: Types.TextareaComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Textarea

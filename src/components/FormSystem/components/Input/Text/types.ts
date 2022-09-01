@@ -1,5 +1,5 @@
-import { InputProps } from "@components/Input"
-import React, { PropsWithChildren } from "react"
+import { InputProps, InputRef } from "@components/Input"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 
 export type TextProps = PropsWithChildren<{
     disabled?: boolean
@@ -8,6 +8,6 @@ export type TextProps = PropsWithChildren<{
     readOnly?: boolean
 } & InputProps>
 
-export type TextComponent = React.FC<TextProps>
+export type TextComponent = ForwardRefExoticComponent<TextProps & RefAttributes<InputRef>>
 
 export type ComponentType = TextComponent

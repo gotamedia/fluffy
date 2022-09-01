@@ -2,10 +2,10 @@ import { useInputLogic } from "@components/FormSystem/hooks"
 import Icon, { Icons } from "@components/Icon"
 import Input from "@components/Input"
 import InputGroup from "@components/InputGroup"
-import React, { useCallback, useState } from "react"
+import React, { forwardRef, useCallback, useState } from "react"
 import type * as Types from "./types"
 
-const Password: Types.PasswordComponent = (props) => {
+const Password: Types.PasswordComponent = forwardRef((props, ref) => {
     const {
         children,
         disabled,
@@ -52,7 +52,7 @@ const Password: Types.PasswordComponent = (props) => {
 
     return (
         <>
-            <InputGroup>
+            <InputGroup ref={ref}>
                 <Input
                     maxLength={additionalInputProps?.maxLength}
                     disabled={disabledCombined}
@@ -73,6 +73,6 @@ const Password: Types.PasswordComponent = (props) => {
             {children}
         </>
     )
-}
+})
 
 export default Password
