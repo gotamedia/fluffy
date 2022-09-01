@@ -4,7 +4,7 @@ import type { StyledFieldProps } from "./types"
 const Wrapper = styled.div<StyledFieldProps>`
     display: flex;
     flex-direction: column;
-    ${(props) => !props.width ? "" : `width: ${props.width}`}
+    width: ${(props) => props.width}
 `
 
 export {
