@@ -10,7 +10,7 @@ export type FormProps = PropsWithChildren<{
     onCancel?: Types.FormContext.Events.onCancel
     onDelete?: Types.FormContext.Events.onDelete
     onSubmit?: Types.FormContext.Events.onSubmit
-} & Omit<HTMLAttributes<HTMLFormElement>, "onSubmit">>
+} & Omit<HTMLAttributes<HTMLFormElement>, "onChange" | "onSubmit">>
 
 export type FormRef = HTMLFormElement
 
