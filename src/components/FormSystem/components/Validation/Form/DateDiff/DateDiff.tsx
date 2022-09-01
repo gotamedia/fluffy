@@ -1,8 +1,8 @@
 import { getFieldDate, getUnitLabel } from "@components/FormSystem/components/Validation/Form/DateDiff/utils"
-import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import sprintf from "@utils/sprintf"
 import { differenceInSeconds } from "date-fns"
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
@@ -26,7 +26,7 @@ const DateDiff: Types.DateDiffComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { addFormValidation, i18n: formI18n, getFieldLabel, removeFormValidation } = useContext(Contexts.FormContext)
+    const { addFormValidation, i18n: formI18n, getFieldLabel, removeFormValidation } = useFormContext()
 
     useEffect(() => {
         if (minDiff && maxDiff && minDiff > maxDiff) {

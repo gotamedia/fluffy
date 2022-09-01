@@ -1,13 +1,14 @@
 import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
 import { addDays, format, isAfter, isBefore, subDays } from "date-fns"
 import React, { useCallback, useContext, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
+import defaultI18n from "../../../../sv.json"
 import * as FSTypes from "../../../../types"
 import type * as Types from "./types"
-import defaultI18n from "../../../../sv.json"
 
 const validationName = "date"
 
@@ -25,7 +26,7 @@ const DateValidation: Types.DateComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { i18n: formI18n } = useContext(Contexts.FormContext)
+    const { i18n: formI18n } = useFormContext()
     const {
         addAdditionalInputProp,
         addValidation,

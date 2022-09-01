@@ -1,7 +1,7 @@
-import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import sprintf from "@utils/sprintf"
 import { isAfter, isBefore } from "date-fns"
-import React, { useCallback, useContext, useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { renderToString } from "react-dom/server"
 import { v4 as uuidv4 } from "uuid"
 import defaultI18n from "../../../../sv.json"
@@ -22,7 +22,7 @@ const DateOrder: Types.DateOrderComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { addFormValidation, i18n: formI18n, getFieldLabel, removeFormValidation } = useContext(Contexts.FormContext)
+    const { addFormValidation, i18n: formI18n, getFieldLabel, removeFormValidation } = useFormContext()
 
     const validation = useCallback<FSTypes.Validation.Form.Function>((formData) => {
         if (!order) {

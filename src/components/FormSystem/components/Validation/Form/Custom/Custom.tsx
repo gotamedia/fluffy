@@ -1,6 +1,6 @@
-import { useCallback, useContext, useEffect, useState } from "react"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
+import { useCallback, useEffect, useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
-import * as Contexts from "../../../../contexts"
 import type * as FSTypes from "../../../../types"
 import type * as Types from "./types"
 
@@ -9,7 +9,7 @@ const Custom: Types.CustomComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { addFormValidation, removeFormValidation } = useContext(Contexts.FormContext)
+    const { addFormValidation, removeFormValidation } = useFormContext()
 
     const validation = useCallback<FSTypes.Validation.Form.Function>((formData) => {
         const validationMessages = validationFunction(formData)

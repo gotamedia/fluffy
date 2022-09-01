@@ -1,18 +1,18 @@
 import Button from "@components/Button"
 import FS from "@components/FormSystem"
-import * as Contexts from "@components/FormSystem/contexts"
 import type * as Types from "@components/FormSystem/types"
 import Message from "@components/Message/Message"
 import { MessageTypes } from "@components/Message/types"
 import { Meta, Story } from "@storybook/react"
-import React, { useCallback, useContext, useState } from "react"
+import React, { useCallback, useState } from "react"
+import useFormContext from "../hooks/useFormContext"
 
 interface ChangeProps {
     setFormState: (currentFormState: any) => any
 }
 
 const Change: React.FC<ChangeProps> = (props) => {
-    const { setFieldValue } = useContext(Contexts.FormContext)
+    const { setFieldValue } = useFormContext()
 
     return (
         <a
@@ -41,7 +41,7 @@ interface ResetProps {
 }
 
 const Reset: React.FC<ResetProps> = (props) => {
-    const { setFieldValue } = useContext(Contexts.FormContext)
+    const { setFieldValue } = useFormContext()
 
     return (
         <a

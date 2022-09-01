@@ -1,5 +1,6 @@
 import type { PasswordI18n } from "@components/FormSystem/components/Validation/Field/Password/i18nTypes"
 import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import {
     containsGiven,
@@ -31,7 +32,7 @@ const Password: Types.PasswordComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { i18n: formI18n } = useContext(Contexts.FormContext)
+    const { i18n: formI18n } = useFormContext()
     const {
         addValidation,
         label,

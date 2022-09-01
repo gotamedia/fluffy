@@ -1,4 +1,5 @@
 import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import type { FormDataValue } from "@components/FormSystem/types"
 import sprintf from "@utils/sprintf"
 import React, { useCallback, useContext, useEffect, useState } from "react"
@@ -20,7 +21,7 @@ const Required: Types.RequiredComponent = (props) => {
 
     const [uuid] = useState(uuidv4())
 
-    const { i18n: formI18n } = useContext(Contexts.FormContext)
+    const { i18n: formI18n } = useFormContext()
     const {
         addValidation,
         label,

@@ -1,8 +1,8 @@
-import * as Contexts from "@components/FormSystem/contexts"
-import React, { useCallback, useContext, useMemo } from "react"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
+import React, { useCallback, useMemo } from "react"
 import * as Reducers from "../reducers"
-import * as Types from "../types"
 import type { FormData, FormDataValue } from "../types"
+import * as Types from "../types"
 
 const useBuildFieldContext = (): Types.FieldContext.Value => {
     const {
@@ -15,7 +15,7 @@ const useBuildFieldContext = (): Types.FieldContext.Value => {
         removeFieldValidation,
         terminateField,
         validateField
-    } = useContext(Contexts.FormContext)
+    } = useFormContext()
 
     const [state, dispatch] = React.useReducer<Types.FieldContext.Reducer>(
         Reducers.FieldContextReducer,

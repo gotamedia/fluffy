@@ -1,4 +1,5 @@
 import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import useTheme from "@hooks/useTheme"
 import { useCallback, useContext, useEffect } from "react"
 import type * as Types from "../types"
@@ -20,7 +21,7 @@ const useInputLogic = (props: Types.InputLogic.HookProps): Types.InputLogic.Valu
         getHighestValidationMessageType,
         isActing,
         setFieldValue
-    } = useContext(Contexts.FormContext)
+    } = useFormContext()
 
     const {
         additionalInputProps,

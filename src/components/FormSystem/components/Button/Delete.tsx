@@ -1,7 +1,7 @@
 import Button from "@components/Button"
-import * as Contexts from "@components/FormSystem/contexts"
+import useFormContext from "@components/FormSystem/hooks/useFormContext"
 import Icon, { Icons } from "@components/Icon"
-import React, { useCallback, useContext } from "react"
+import React, { useCallback } from "react"
 import type * as Types from "./types"
 
 const DeleteButton: Types.ButtonComponent = () => {
@@ -13,7 +13,7 @@ const DeleteButton: Types.ButtonComponent = () => {
         isDeleting,
         onDelete,
         setIsDeleting
-    } = useContext(Contexts.FormContext)
+    } = useFormContext()
 
     const onClick = useCallback(() => {
         if (onDelete) {
