@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
+import { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 import type * as Types from "../../types"
 
 export type FormProps = PropsWithChildren<{
@@ -14,6 +14,6 @@ export type FormProps = PropsWithChildren<{
 
 export type FormRef = HTMLFormElement
 
-export type FormComponent = React.FC<FormProps & RefAttributes<FormRef>>
+export type FormComponent = ForwardRefExoticComponent<FormProps & RefAttributes<FormRef>>
 
 export type ComponentType = FormComponent
