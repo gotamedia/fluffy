@@ -114,7 +114,7 @@ const TableRow: Types.TableRowComponent = forwardRef(({
                     <TableContext.Provider value={context}>
                         <Style.THeadRow {...rest} {...defaultProps} ref={ref}>
                             {children}
-                            <Style.CollapsibleEmptyCell style={{ width: "5%" }} />
+                            <Style.CollapsibleEmptyCell />
                         </Style.THeadRow>
                     </TableContext.Provider>
                 )

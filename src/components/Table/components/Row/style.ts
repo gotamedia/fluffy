@@ -33,7 +33,7 @@ const CollapsibleRow = styled(Row)<Types.TableRowCollapsibleStyledProps>`
 `
 
 const CollapsibleEmptyCell = styled(Cell)`
-    width: 5%;
+    width: 1%;
 `
 
 const CollapsibleIconCell = styled(Cell)`
