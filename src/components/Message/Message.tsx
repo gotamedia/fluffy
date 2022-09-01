@@ -1,22 +1,28 @@
 import Icon, { Icons } from "@components/Icon"
 import useTheme from "@hooks/useTheme"
-import React from "react"
+import React, { forwardRef } from "react"
 import { Button } from "../../index"
 import * as Styled from './style'
 import * as Types from './types'
 
-const Message: Types.MessageComponent = (props) => {
+const Message: Types.MessageComponent = forwardRef((props, ref) => {
     const {
         type,
         headline,
         text,
-        action
+        action,
+        ...wrapperProps
     } = props
 
     const theme = useTheme()
 
     return (
-        <Styled.Wrapper $type={type} $theme={theme}>
+        <Styled.Wrapper
+            ref={ref}
+            $type={type}
+            $theme={theme}
+            {...wrapperProps}
+        >
             {headline && (<Styled.Headline>{headline}</Styled.Headline>)}
             {text && (<Styled.Text>{text}</Styled.Text>)}
             {action && (
@@ -32,6 +38,6 @@ const Message: Types.MessageComponent = (props) => {
             )}
         </Styled.Wrapper>
     )
-}
+})
 
 export default Message

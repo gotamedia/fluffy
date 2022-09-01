@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react"
+import React, { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 import { DefaultTheme } from "styled-components"
 
 export enum MessageTypes {
@@ -24,8 +24,10 @@ export type MessageProps = PropsWithChildren<{
         loading?: boolean
         disabled?: boolean
     }
-}>
+} & HTMLAttributes<HTMLDivElement>>
 
-export type MessageComponent = FC<MessageProps>
+export type MessageRef = HTMLDivElement
+
+export type MessageComponent = ForwardRefExoticComponent<MessageProps & RefAttributes<MessageRef>>
 
 export type ComponentType = MessageComponent
