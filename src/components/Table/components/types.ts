@@ -5,8 +5,12 @@ type TableElements = keyof Pick<
     "table" | "caption" | "tbody" | "thead" | "tfoot" | "tr" | "th" | "td"
 >
 
+interface TableStateProps {
+    collapsible: boolean
+}
+
 interface TableElementContext<T = {}> {
-    state: T
+    state: T & TableStateProps
     type: TableElements | null
     parentType: TableElements | null
     parentState: unknown | null

@@ -8,6 +8,6 @@ interface TableCellProps
     headers?: string
 }
 
-type TableCell = ForwardRefExoticComponent<TableCellProps & RefAttributes<HTMLTableCellElement>>
+type TableCellComponent = ForwardRefExoticComponent<TableCellProps & RefAttributes<HTMLTableCellElement>>
 
-export type { TableCell, TableCellProps }
+export type { TableCellComponent, TableCellProps }

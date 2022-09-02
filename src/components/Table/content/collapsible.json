@@ -1,0 +1,19 @@
+{
+    "headRows": [
+        {
+            "id": "Name",
+            "label": "Name"
+        },
+        {
+            "id": "Description",
+            "label": "Description"
+        }
+    ],
+    "bodyRows": [
+        {
+            "name": "Fluffy",
+            "description": "Awesome UI library!",
+            "hiddenImage": "https://media0.giphy.com/media/DTLzZIeBh33S8/giphy.gif"
+        }
+    ]
+}
