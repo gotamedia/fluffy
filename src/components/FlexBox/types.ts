@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
+import { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 
 export type Directions = "horizontal" | "vertical"
 
@@ -16,6 +16,6 @@ export type FlexBoxProps = PropsWithChildren<{
 
 export type FlexBoxRef = HTMLDivElement
 
-export type FlexBoxComponent = React.FC<FlexBoxProps & RefAttributes<FlexBoxRef>>
+export type FlexBoxComponent = ForwardRefExoticComponent<FlexBoxProps & RefAttributes<FlexBoxRef>>
 
 export type ComponentType = FlexBoxComponent

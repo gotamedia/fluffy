@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react"
+import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
 import { DefaultTheme } from "styled-components"
 
 export enum HintTypes {
@@ -19,6 +19,8 @@ export type HintProps = PropsWithChildren<{
     type?: HintTypes
 }>
 
-export type HintComponent = React.FC<HintProps>
+export type HintRef = HTMLDivElement
+
+export type HintComponent = ForwardRefExoticComponent<HintProps & RefAttributes<HintRef>>
 
 export type ComponentType = HintComponent
