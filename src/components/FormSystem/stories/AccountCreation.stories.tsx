@@ -1,10 +1,11 @@
 import Button from "@components/Button"
 import FS from "@components/FormSystem"
 import type * as Types from "@components/FormSystem/types"
-import Message from "@components/Message/Message"
+import Message from "@components/Message"
 import { MessageTypes } from "@components/Message/types"
 import { Meta, Story } from "@storybook/react"
 import React, { useCallback, useState } from "react"
+import { Icon, Icons } from "../../../index"
 import useFormContext from "../hooks/useFormContext"
 
 interface ChangeProps {
@@ -300,16 +301,21 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                     </FS.Field>
 
                     {["failed", "progress"].includes(formState.submitStatus) && (
-                        <Message
-                            type={MessageTypes.Error}
-                            text={"Ditt konto skapades, men ett tekniskt problem uppstod. Försök igen om en liten stund."}
-                            action={{
-                                text: "Försök igen",
-                                onClick: onRetry,
-                                loading: formState.submitStatus === "progress",
-                                disabled: formState.submitStatus === "progress"
-                            }}
-                        />
+                        <Message type={MessageTypes.Error}>
+                            <Message.Text>
+                                {"Ditt konto skapades, men ett tekniskt problem uppstod. Försök igen om en liten stund."}
+                            </Message.Text>
+
+                            <Button
+                                onClick={onRetry}
+                                disabled={formState.submitStatus === "progress"}
+                            >
+                                {formState.submitStatus === "progress" && (
+                                    <Icon icon={Icons.Spinner} />
+                                )}
+                                {"Försök igen"}
+                            </Button>
+                        </Message>
                     )}
 
                     <FS.Button.Cancel />

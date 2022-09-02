@@ -1,5 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
+import { Button } from "../../index"
 
 import Message from './index'
 
@@ -12,21 +13,31 @@ export default {
     },
 } as Meta<typeof Message>
 
-const Template: Story<Types.MessageProps> = (props) => {
+const Template: Story<
+    Types.MessageProps &
+    { headline: string, text: string, action: { text: string, onClick: () => void }}
+> = (props) => {
     const {
-        type,
+        action,
         headline,
         text,
-        action
+        type
     } = props
 
     return (
-        <Message
-            type={type}
-            headline={headline}
-            text={text}
-            action={action}
-        />
+        <Message type={type}>
+            <Message.Headline>
+                {headline}
+            </Message.Headline>
+
+            <Message.Text>
+                {text}
+            </Message.Text>
+
+            <Button onClick={action.onClick}>
+                {action.text}
+            </Button>
+        </Message>
     )
 }
 

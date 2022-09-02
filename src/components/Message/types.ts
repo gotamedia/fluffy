@@ -1,5 +1,6 @@
-import React, { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
+import { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 import { DefaultTheme } from "styled-components"
+import { Headline, Text } from "./style"
 
 export enum MessageTypes {
     Error = "error",
@@ -16,18 +17,13 @@ export type StyledMessageProps = {
 
 export type MessageProps = PropsWithChildren<{
     type: MessageTypes,
-    headline?: string,
-    text?: string,
-    action?: {
-        text: string,
-        onClick: (event: React.MouseEvent<HTMLButtonElement>) => void,
-        loading?: boolean
-        disabled?: boolean
-    }
 } & HTMLAttributes<HTMLDivElement>>
 
 export type MessageRef = HTMLDivElement
 
 export type MessageComponent = ForwardRefExoticComponent<MessageProps & RefAttributes<MessageRef>>
 
-export type ComponentType = MessageComponent
+export type ComponentType = MessageComponent & {
+    Text: typeof Text
+    Headline: typeof Headline
+}
