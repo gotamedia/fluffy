@@ -1,8 +1,9 @@
 import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttributes } from "react"
 
-interface TableProps
-    extends DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement> {}
+interface TableProps extends DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement> {
+    collapsible?: boolean
+}
 
-type Table = ForwardRefExoticComponent<TableProps & RefAttributes<HTMLTableElement>>
+type TableComponent = ForwardRefExoticComponent<TableProps & RefAttributes<HTMLTableElement>>
 
-export type { Table }
+export type { TableComponent, TableProps }
