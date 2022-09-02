@@ -63,7 +63,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 selected={selected}
             >
                 {options.map((option) => (
-                    <ListItem key={JSON.stringify(option)} {...option} />
+                    <ListItem key={option.value} {...option} />
                 ))}
             </PlainSelect>
             {children}
