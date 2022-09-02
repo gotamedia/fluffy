@@ -5,7 +5,7 @@ import * as Variants from "./variants"
 const Wrapper = styled.div<StyledFlexBoxProps>`
     display: flex;
     ${Variants.direction};
-    gap: ${(props) => props.$gap}
+    gap: ${(props) => props.$gap};
     
     ${(props) => props.$inline ? undefined : css`
         & > * {
