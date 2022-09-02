@@ -6,7 +6,7 @@ import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 import * as Styled from "./style"
 import * as Types from "./types"
 
-const Collapsible: Types.Collapsible = forwardRef(({ 
+const Collapsible: Types.CollapsibleComponent = forwardRef(({
     open,
     children,
     ...rest
