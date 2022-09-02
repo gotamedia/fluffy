@@ -6,7 +6,7 @@ export enum HintTypes {
     Warning = "warning",
     Success = "success",
     Loading = "loading",
-    Info = "hint"
+    Info = "info"
 }
 
 export interface StyledHintProps {
