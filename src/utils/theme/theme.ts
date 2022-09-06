@@ -8,6 +8,7 @@ import IconTheme from '@components/Icon/theme'
 import CheckboxTheme from '@components/Checkbox/theme'
 import DatePickerTheme from '@components/DatePicker/theme'
 import DropdownTheme from '@components/Dropdown/theme'
+import FocusTrapTheme from '@components/FocusTrap/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -112,7 +113,8 @@ let theme: DefaultTheme = {
         Icon: IconTheme,
         Checkbox: CheckboxTheme,
         DatePicker: DatePickerTheme,
-        Dropdown: DropdownTheme
+        Dropdown: DropdownTheme,
+        FocusTrap: FocusTrapTheme
     }
 }
 

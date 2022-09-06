@@ -12,6 +12,7 @@ import type { IconThemeType } from '@components/Icon/theme'
 import type { CheckboxThemeType } from '@components/Checkbox/theme'
 import type { DatePickerThemeType } from '@components/DatePicker/theme'
 import type { DropdownThemeType } from '@components/Dropdown/theme'
+import type { FocusTrapThemeType } from '@components/FocusTrap/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -127,6 +128,7 @@ export interface FluffyTheme {
         Icon: IconThemeType,
         Checkbox: CheckboxThemeType,
         DatePicker: DatePickerThemeType
-        Dropdown: DropdownThemeType
+        Dropdown: DropdownThemeType,
+        FocusTrap: FocusTrapThemeType
     }
 }

@@ -6,6 +6,8 @@ import {
     useEffect
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import type { KeyboardEventHandler } from 'react'
 
 import * as Styled from './style'
@@ -91,11 +93,17 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
         }
     }, [useGlobalListener, handleOnKeyDown])
 
+    const className = classNames({
+        'fluffy-focus-trap': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <Styled.Wrapper
             ref={setTrapContainerRef}
             onKeyDown={!useGlobalListener ? handleOnKeyDown : undefined}
             {...DOMProps}
+            className={className}
         >
             {children}
         </Styled.Wrapper>
