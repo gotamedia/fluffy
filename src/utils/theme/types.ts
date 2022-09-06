@@ -8,6 +8,7 @@ import type { ButtonThemeType } from '@components/Button/theme'
 import type { UploadButtonThemeType } from '@components/UploadButton/theme'
 import type { IconButtonThemeType } from '@components/IconButton/theme'
 import type { ButtonGroupThemeType } from '@components/ButtonGroup/theme'
+import type { IconThemeType } from '@components/Icon/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -119,6 +120,7 @@ export interface FluffyTheme {
         Button: ButtonThemeType,
         UploadButton: UploadButtonThemeType,
         IconButton: IconButtonThemeType,
-        ButtonGroup: ButtonGroupThemeType
+        ButtonGroup: ButtonGroupThemeType,
+        Icon: IconThemeType
     }
 }

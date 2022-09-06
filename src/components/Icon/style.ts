@@ -1,14 +1,14 @@
 import styled from 'styled-components'
 
-import sizes from './sizes'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import type { IconProps } from './types'
 
 const Span = styled.span<{ $size?: IconProps['size']}>`
-    display: inline-flex;
+    ${props => getComponentTheme('Icon', 'style', props)?.root};
 
     svg {
-        ${({ $size }) => sizes[$size || 'normal']};
+        ${props => getComponentTheme('Icon', 'sizes', props)?.[props.$size || 'normal']};
     }
 `
 

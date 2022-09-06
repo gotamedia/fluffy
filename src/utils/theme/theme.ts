@@ -4,6 +4,7 @@ import ButtonTheme from '@components/Button/theme'
 import UploadButtonTheme from '@components/UploadButton/theme'
 import IconButtonTheme from '@components/IconButton/theme'
 import ButtonGroupTheme from '@components/ButtonGroup/theme'
+import IconTheme from '@components/Icon/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -104,7 +105,8 @@ let theme: DefaultTheme = {
         Button: ButtonTheme,
         UploadButton: UploadButtonTheme,
         IconButton: IconButtonTheme,
-        ButtonGroup: ButtonGroupTheme
+        ButtonGroup: ButtonGroupTheme,
+        Icon: IconTheme
     }
 }
 
