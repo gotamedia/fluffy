@@ -7,13 +7,13 @@ import Icon, { Icons } from '../Icon'
 import type { UploadButtonProps } from './types'
 
 const Wrapper = styled.div`
-    ${props => getComponentTheme('UploadButton', 'style', props)?.root};
+    ${props => getComponentTheme('UploadButton', 'style.root', props)};
 `
 
 const InnerWrapper = styled.label<{ $size?: UploadButtonProps['size'], $variant?: UploadButtonProps['variant'] }>`
-    ${props => getComponentTheme('UploadButton', 'style', props)?.main};
-    ${props => getComponentTheme('UploadButton', 'sizes', props)?.[props.$size || 'normal']};
-    ${props => getComponentTheme('UploadButton', 'variants', props)?.[props.$variant || 'primary']};
+    ${props => getComponentTheme('UploadButton', 'style.main', props)};
+    ${props => getComponentTheme('UploadButton', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('UploadButton', `variants.${props.$variant || 'primary'}`, props)};
 `
 
 const UploadInput = styled.input`
@@ -26,7 +26,7 @@ const UploadIcon = styled(Icon).attrs(() => {
         icon: Icons.Link
     }
 })`
-    ${props => getComponentTheme('UploadButton', 'style', props)?.icon};
+    ${props => getComponentTheme('UploadButton', 'style.icon', props)};
     
 `
 
@@ -35,7 +35,7 @@ const Text = styled.span`
 `
 
 const Filename = styled.p`
-    ${props => getComponentTheme('UploadButton', 'style', props)?.label};
+    ${props => getComponentTheme('UploadButton', 'style.label', props)};
 `
 
 export {

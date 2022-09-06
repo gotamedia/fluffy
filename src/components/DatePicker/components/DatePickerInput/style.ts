@@ -14,7 +14,7 @@ const InputGroup = styled(InputGroupComponent)`
 `
 
 const Input = styled(InputComponent)`
-    ${props => getComponentTheme('DatePicker', 'style', props)?.input};
+    ${props => getComponentTheme('DatePicker', 'style.input', props)};
 `
 
 const ClearIcon = styled(IconComponent).attrs(() => {
@@ -23,7 +23,7 @@ const ClearIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${props => getComponentTheme('DatePicker', 'style', props)?.icon};
+    ${props => getComponentTheme('DatePicker', 'style.icon', props)};
 `
 
 const CalendarIcon = styled(IconComponent).attrs(() => {
@@ -32,7 +32,7 @@ const CalendarIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${props => getComponentTheme('DatePicker', 'style', props)?.icon};
+    ${props => getComponentTheme('DatePicker', 'style.icon', props)};
 `
 
 export {

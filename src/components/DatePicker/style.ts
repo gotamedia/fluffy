@@ -5,11 +5,11 @@ import getComponentTheme from '@root/internal/getComponentTheme'
 import ReactDatePicker from 'react-datepicker'
 
 const Wrapper = styled.div`
-    ${props => getComponentTheme('DatePicker', 'style', props)?.datepicker};
-    ${props => getComponentTheme('DatePicker', 'style', props)?.root};
+    ${props => getComponentTheme('DatePicker', 'style.datepicker', props)};
+    ${props => getComponentTheme('DatePicker', 'style.root', props)};
 
     .fluffy-date-picker {
-        ${props => getComponentTheme('DatePicker', 'style', props)?.calendar};
+        ${props => getComponentTheme('DatePicker', 'style.calendar', props)};
     }
 `
 

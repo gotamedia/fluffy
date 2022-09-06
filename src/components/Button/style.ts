@@ -10,12 +10,12 @@ type StyledButtonType = {
 }
 
 const Button = styled.button<StyledButtonType>`
-    ${props => getComponentTheme('Button', 'style', props)?.root};
-    ${props => getComponentTheme('Button', 'sizes', props)?.[props.$size || 'normal']};
-    ${props => getComponentTheme('Button', 'variants', props)?.[props.$variant || 'primary']};
+    ${props => getComponentTheme('Button', 'style.root', props)};
+    ${props => getComponentTheme('Button', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('Button', `variants.${props.$variant || 'primary'}`, props)};
 
     .fluffy-icon {
-        ${props => getComponentTheme('Button', 'style', props)?.icon};
+        ${props => getComponentTheme('Button', 'style.icon', props)};
     }
 `
 
