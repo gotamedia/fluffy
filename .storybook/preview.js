@@ -1,17 +1,18 @@
 import React from 'react'
+import merge from 'lodash/merge'
 
-import { DocsContainer } from './DocsContainer'
-
-import { ThemeProvider } from 'styled-components'
 import { addDecorator } from '@storybook/react'
 import { themes } from '@storybook/theming'
 import { withThemes } from '@react-theming/storybook-addon'
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport'
 
-import { getTheme } from '../src/utils/theme'
-
 import gotaLogoLight from './gota-logo-light.svg'
 import gotaLogoDark from './gota-logo-dark.svg'
+
+import { getTheme } from '../src/utils/theme'
+import { ThemeProvider } from '../src/contexts/ThemeContext'
+
+import { DocsContainer } from './DocsContainer'
 
 import { GlobalStyle } from './style'
 
@@ -101,4 +102,14 @@ const fluffyThemes = [
     }
 ]
 
-addDecorator(withThemes(ThemeProvider, fluffyThemes))
+const providerFn = (props) => {
+    const selectedTheme = fluffyThemes.find(i => i.name === props.theme.name)
+    
+    return (
+        <ThemeProvider theme={selectedTheme}>
+            {props.children}
+        </ThemeProvider>
+    )
+}
+
+addDecorator(withThemes(null, merge([], fluffyThemes), { providerFn }))

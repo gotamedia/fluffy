@@ -1,50 +1,21 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import sizes from './sizes'
-import variants from './variants'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import type { ButtonProps } from './types'
 
-export const baseButtonStyle = css`
-    display: inline-flex;
-    appearance: none;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    position: relative;
-    white-space: nowrap;
-    outline: none;
-    width: auto;
-    line-height: 1.2;
-    border-radius: 2px;
-    font-weight: normal;
-    border-width: 0;
-    border-style: solid;
-    box-sizing: border-box;
-`
+type StyledButtonType = {
+    $size?: ButtonProps['size'],
+    $variant?: ButtonProps['variant']
+}
 
-const Button = styled.button<{ $size?: ButtonProps['size'], $variant?: ButtonProps['variant'] }>`
-    ${baseButtonStyle};
-    ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+const Button = styled.button<StyledButtonType>`
+    ${props => getComponentTheme('Button', 'style', props)?.root};
+    ${props => getComponentTheme('Button', 'sizes', props)?.[props.$size || 'normal']};
+    ${props => getComponentTheme('Button', 'variants', props)?.[props.$variant || 'primary']};
 
     .fluffy-icon {
-        margin-top: auto;
-        margin-bottom: auto;
-        fill: currentColor;
-
-        &:first-of-type {
-            margin-right: 10px;
-        }
-
-        &:last-of-type {
-            margin-left: 10px;
-        }
-
-        &:only-child {
-            margin-right: 0;
-            margin-left: 0;
-        }
+        ${props => getComponentTheme('Button', 'style', props)?.icon};
     }
 `
 

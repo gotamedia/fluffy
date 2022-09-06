@@ -1,43 +1,24 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import sizes from './sizes'
-import variants from './variants'
-import shapes from './shapes'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import type { IconButtonProps } from './types'
 
-// TODO: Fix colors / theme
-const baseIconButtonStyle = css`
-    display: inline-flex;
-    appearance: none;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    position: relative;
-    white-space: nowrap;
-    outline: none;
-    width: auto;
-    line-height: 1.2;
-    font-weight: normal;
-    box-sizing: border-box;
-`
 
 type StyledIconButtonProps = {
     $size?: IconButtonProps['size'],
-    $variant?: IconButtonProps['variant'],
-    $shape?: IconButtonProps['shape']
+    $shape?: IconButtonProps['shape'],
+    $variant?: IconButtonProps['variant']
 }
 
 const IconButton = styled.button<StyledIconButtonProps>`
-    ${baseIconButtonStyle};
-    ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $shape }) => shapes[$shape || 'square']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${props => getComponentTheme('IconButton', 'style', props)?.root};
+    ${props => getComponentTheme('IconButton', 'sizes', props)?.[props.$size || 'normal']};
+    ${props => getComponentTheme('IconButton', 'shapes', props)?.[props.$shape || 'square']};
+    ${props => getComponentTheme('IconButton', 'variants', props)?.[props.$variant || 'primary']};
 
     .fluffy-icon {
-        margin-top: auto;
-        margin-bottom: auto;
-        fill: currentColor;
+        ${props => getComponentTheme('Button', 'style', props)?.icon};
     }
 `
 

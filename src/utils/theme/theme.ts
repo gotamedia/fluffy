@@ -1,8 +1,15 @@
+import merge from 'lodash/merge'
+
+import ButtonTheme from '@components/Button/theme'
+import UploadButtonTheme from '@components/UploadButton/theme'
+import IconButtonTheme from '@components/IconButton/theme'
+import ButtonGroupTheme from '@components/ButtonGroup/theme'
+
 import type { DefaultTheme } from 'styled-components'
 
 //TODO: Fix a better theme since this one were copied from NXT!
 
-const theme: DefaultTheme = {
+let theme: DefaultTheme = {
     //      0  1  2  3   4   5   6   7   8   9  10  11  12
     space: [0, 2, 4, 8, 12, 16, 20, 22, 24, 32, 40, 48, 64],
     //           0   1   2   3   4   5   6   7   8   9  10  11  12, 13,  14
@@ -92,14 +99,25 @@ const theme: DefaultTheme = {
         "-2px 1px 2px rgba(0, 0, 0, 0.08)", // 2
         "0px 2px 15px rgba(0, 0, 0, 0.2)", // 3
         "0px 2px 4px rgba(0, 0, 0, 0.5)" // 4
-    ]
+    ],
+    components: {
+        Button: ButtonTheme,
+        UploadButton: UploadButtonTheme,
+        IconButton: IconButtonTheme,
+        ButtonGroup: ButtonGroupTheme
+    }
+}
+
+const createTheme = (themeObject: Partial<DefaultTheme>): DefaultTheme => {
+    return merge({}, theme, themeObject)
 }
 
 const getTheme = (): DefaultTheme => theme
 
 export {
     theme,
-    getTheme
+    getTheme,
+    createTheme
 }
 
 export default theme

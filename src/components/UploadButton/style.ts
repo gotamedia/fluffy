@@ -1,22 +1,19 @@
 import styled from 'styled-components'
 
-import Icon, { Icons } from '../Icon'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
-import sizes from '../Button/sizes'
-import variants from '../Button/variants'
-import { baseButtonStyle } from '../Button/style'
+import Icon, { Icons } from '../Icon'
 
 import type { UploadButtonProps } from './types'
 
 const Wrapper = styled.div`
-    display: flex;
-    position: relative;
+    ${props => getComponentTheme('UploadButton', 'style', props)?.root};
 `
 
 const InnerWrapper = styled.label<{ $size?: UploadButtonProps['size'], $variant?: UploadButtonProps['variant'] }>`
-    ${baseButtonStyle};
-    ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${props => getComponentTheme('UploadButton', 'style', props)?.main};
+    ${props => getComponentTheme('UploadButton', 'sizes', props)?.[props.$size || 'normal']};
+    ${props => getComponentTheme('UploadButton', 'variants', props)?.[props.$variant || 'primary']};
 `
 
 const UploadInput = styled.input`
@@ -29,10 +26,8 @@ const UploadIcon = styled(Icon).attrs(() => {
         icon: Icons.Link
     }
 })`
-    margin-top: auto;
-    margin-bottom: auto;
-    fill: currentColor;
-    margin-right: 10px;
+    ${props => getComponentTheme('UploadButton', 'style', props)?.icon};
+    
 `
 
 const Text = styled.span`
@@ -40,11 +35,7 @@ const Text = styled.span`
 `
 
 const Filename = styled.p`
-    color: #494949;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin: auto 0 auto 15px;
+    ${props => getComponentTheme('UploadButton', 'style', props)?.label};
 `
 
 export {

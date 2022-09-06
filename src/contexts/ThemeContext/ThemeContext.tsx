@@ -9,6 +9,7 @@ import merge from 'lodash/merge'
 
 import { getTheme } from '@utils/theme'
 
+import type { DefaultTheme } from 'styled-components'
 import type {
     FC,
     ReactNode,
@@ -16,9 +17,9 @@ import type {
 
 const ThemeContext = ThemeContextSC
 
-const ThemeProvider: FC<{ children: ReactNode, theme?: Record<string, unknown> }> = ({ children, theme }) => {
+const ThemeProvider: FC<{ children: ReactNode, theme?: DefaultTheme }> = ({ children, theme }) => {
     const themeValue = useMemo(() => {
-        return merge(getTheme(), theme)
+        return merge({}, getTheme(), theme)
     }, [theme])
 
     return (
