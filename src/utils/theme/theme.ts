@@ -5,6 +5,7 @@ import UploadButtonTheme from '@components/UploadButton/theme'
 import IconButtonTheme from '@components/IconButton/theme'
 import ButtonGroupTheme from '@components/ButtonGroup/theme'
 import IconTheme from '@components/Icon/theme'
+import CheckboxTheme from '@components/Checkbox/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -106,7 +107,8 @@ let theme: DefaultTheme = {
         UploadButton: UploadButtonTheme,
         IconButton: IconButtonTheme,
         ButtonGroup: ButtonGroupTheme,
-        Icon: IconTheme
+        Icon: IconTheme,
+        Checkbox: CheckboxTheme
     }
 }
 

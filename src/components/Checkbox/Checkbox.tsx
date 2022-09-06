@@ -27,6 +27,10 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const componentState = {
+        disabled: disabled
+    }
+
     return (
         <Styled.Wrapper>
             <Styled.Checkbox
@@ -40,7 +44,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
 
             {
                 label ? (
-                    <Styled.Text $disabled={disabled}>
+                    <Styled.Text $componentState={componentState}>
                         {label}
                     </Styled.Text>
                 ) : (
