@@ -10,6 +10,7 @@ import type { IconButtonThemeType } from '@components/IconButton/theme'
 import type { ButtonGroupThemeType } from '@components/ButtonGroup/theme'
 import type { IconThemeType } from '@components/Icon/theme'
 import type { CheckboxThemeType } from '@components/Checkbox/theme'
+import type { DatePickerThemeType } from '@components/DatePicker/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -123,6 +124,7 @@ export interface FluffyTheme {
         IconButton: IconButtonThemeType,
         ButtonGroup: ButtonGroupThemeType,
         Icon: IconThemeType,
-        Checkbox: CheckboxThemeType
+        Checkbox: CheckboxThemeType,
+        DatePicker: DatePickerThemeType
     }
 }

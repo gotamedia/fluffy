@@ -1,4 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import InputComponent from '@components/Input'
 import InputGroupComponent from '@components/InputGroup'
@@ -12,14 +14,7 @@ const InputGroup = styled(InputGroupComponent)`
 `
 
 const Input = styled(InputComponent)`
-    width: 300px;
-    min-width: 300px;
-`
-
-const iconStyle = css`
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.brand};
-    fill: ${({ theme }) => theme.colors.brand};
+    ${props => getComponentTheme('DatePicker', 'style', props)?.input};
 `
 
 const ClearIcon = styled(IconComponent).attrs(() => {
@@ -28,7 +23,7 @@ const ClearIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${iconStyle};
+    ${props => getComponentTheme('DatePicker', 'style', props)?.icon};
 `
 
 const CalendarIcon = styled(IconComponent).attrs(() => {
@@ -37,7 +32,7 @@ const CalendarIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${iconStyle};
+    ${props => getComponentTheme('DatePicker', 'style', props)?.icon};
 `
 
 export {
