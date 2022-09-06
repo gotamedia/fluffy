@@ -7,6 +7,8 @@ import {
     useMemo
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useMenu from './hooks/useMenu'
 import MenuContext from './contexts/MenuContext'
 
@@ -102,11 +104,17 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         handleRemoveActiveSubMenu
     ])
 
+    const className = classNames({
+        'fluffy-menu': true,
+        [filterdProps.className || '']: true
+    })
+
     return (
         <MenuContext.Provider value={menuContextValue}>
             <Popover
                 ref={ref}
                 {...filterdProps}
+                className={className}
                 show={show}
                 anchor={anchor}
                 overlayProps={overlayProps}

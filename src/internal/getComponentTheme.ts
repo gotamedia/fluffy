@@ -26,7 +26,7 @@ const getComponentTheme: GetComponentTheme = (name, property, props) => {
             const themeObject = getObject(componentTheme, property)
 
             if (themeObject) {
-                let style = themeObject
+                let style = {...themeObject}
     
                 Object.entries(themeObject).forEach(([key, value]) => {
                     style[key] = typeof value === 'function' ? value(props) : value

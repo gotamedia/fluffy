@@ -7,9 +7,6 @@ import {
     cloneElement
 } from 'react'
 
-import Button from '../Button'
-import Menu from '../Menu'
-
 import * as Styled from './style'
 import * as Types from './types'
 import type {
@@ -87,9 +84,13 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         setIsOpen(false)
     }, [onChange])
 
+    const componentState = {
+        isOpen: isOpen
+    }
+
     return (
         <>
-            <Button
+            <Styled.Button
                 ref={setTriggerRef}
                 disabled={disabled}
                 {...triggerProps}
@@ -99,10 +100,10 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
             >
                 {label}
 
-                <Styled.Icon $isOpen={isOpen} />
-            </Button>
+                <Styled.Icon $componentState={componentState} />
+            </Styled.Button>
 
-            <Menu
+            <Styled.Menu
                 {...filterdProps}
                 ref={undefined}
                 show={isOpen}
@@ -134,7 +135,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                         }
                     })
                 }
-            </Menu>
+            </Styled.Menu>
         </>
     )
 })

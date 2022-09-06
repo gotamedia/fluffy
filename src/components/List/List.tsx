@@ -9,6 +9,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type {
@@ -252,6 +254,11 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         }
     }, [onKeyDown, hadnleOnKeyDown])
 
+    const className = classNames({
+        'fluffy-list': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <Styled.Wrapper
             ref={wrapperRef}
@@ -260,6 +267,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
             onFocus={handleOnFocus}
             onBlur={handleOnBlur}
             {...DOMProps}
+            className={className}
         >
             {
                 showFilter && (

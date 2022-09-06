@@ -8,6 +8,8 @@ import {
 
 import scrollIntoView from 'scroll-into-view-if-needed'
 
+import classNames from '@utils/classNames'
+
 import {
     ListItemSizes,
     ListItemTypes
@@ -63,6 +65,11 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         handleOnSelect()
     }, [onClick, handleOnSelect])
 
+    const className = classNames({
+        'fluffy-list-item': true,
+        [DOMProps.className || '']: true
+    })
+
     const isTypeSelect = type === ListItemTypes.Select
 
     return (
@@ -71,6 +78,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
             tabIndex={-1}
             onClick={handleOnClick}
             {...DOMProps}
+            className={className}
             $size={size}
             $targeted={targeted}
             $asTitle={asTitle}

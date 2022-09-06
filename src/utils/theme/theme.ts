@@ -7,6 +7,7 @@ import ButtonGroupTheme from '@components/ButtonGroup/theme'
 import IconTheme from '@components/Icon/theme'
 import CheckboxTheme from '@components/Checkbox/theme'
 import DatePickerTheme from '@components/DatePicker/theme'
+import DropdownTheme from '@components/Dropdown/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -110,7 +111,8 @@ let theme: DefaultTheme = {
         ButtonGroup: ButtonGroupTheme,
         Icon: IconTheme,
         Checkbox: CheckboxTheme,
-        DatePicker: DatePickerTheme
+        DatePicker: DatePickerTheme,
+        Dropdown: DropdownTheme
     }
 }
 
