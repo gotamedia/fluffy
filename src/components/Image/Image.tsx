@@ -4,8 +4,11 @@ import {
     useEffect
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import LazyImage from './components/LazyImage'
 
+import * as Styled from './style'
 import type * as Types from './types'
 
 let isNativeLazyLoadingSupported: boolean | undefined
@@ -32,18 +35,28 @@ const Image: Types.ImageComponent = forwardRef((props, ref) => {
         }
     }, [])
 
+    const className = classNames({
+        'fluffy-image': true,
+        [filteredProps.className || '']: true
+    })
+
+    const imageProps = {
+        ...filteredProps,
+        className: className
+    }
+
     return (
         lazyLoading ? (
             useNativeLazyLoading && doesSupportNativeLoading ? (
-                <img
+                <Styled.Image
                     ref={ref}
-                    {...filteredProps}
+                    {...imageProps}
                     loading={'lazy'}
                 />
             ) : (
                 <LazyImage
                     ref={ref}
-                    {...filteredProps}
+                    {...imageProps}
                     thumbnail={thumbnail}
                     thumbnailSrc={thumbnailSrc}
                     withPlaceholder={withPlaceholder}
@@ -53,9 +66,9 @@ const Image: Types.ImageComponent = forwardRef((props, ref) => {
                 />
             )
         ) : (
-            <img
+            <Styled.Image
                 ref={ref}
-                {...filteredProps}
+                {...imageProps}
             />
         )
     )

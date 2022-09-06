@@ -46,6 +46,12 @@ const LazyImage: Types.LazyImageComponent = forwardRef((props, ref) => {
         setRenderPlaceHolder(false)
     }, [])
 
+    const componentState = {
+        isLoaded: isLoaded,
+        loadingEffect: loadingEffect,
+        transitionDuration: transitionDuration
+    }
+
     return (
         <Styled.Wrapper
             style={{
@@ -65,18 +71,12 @@ const LazyImage: Types.LazyImageComponent = forwardRef((props, ref) => {
                                     thumbnailSrc ? (
                                         <Styled.Thumbnail
                                             {...filteredProps}
-                                            $isLoaded={isLoaded}
-                                            $loadingEffect={loadingEffect}
-                                            $transitionDuration={transitionDuration}
+                                            $componentState={componentState}
                                             ref={ref}
                                             src={thumbnailSrc}
                                         />
                                     ) : (
-                                        <Styled.Placeholder
-                                            $isLoaded={isLoaded}
-                                            $loadingEffect={loadingEffect}
-                                            $transitionDuration={transitionDuration}
-                                        />
+                                        <Styled.Placeholder $componentState={componentState} />
                                     )
                                 )
                             ) : (
@@ -86,8 +86,7 @@ const LazyImage: Types.LazyImageComponent = forwardRef((props, ref) => {
 
                         <Styled.Image
                             {...filteredProps}
-                            $isLoaded={isLoaded}
-                            $transitionDuration={transitionDuration}
+                            $componentState={componentState}
                             ref={ref}
                             onLoad={handleOnLoad}
                             onTransitionEnd={handleOnTransitionEnd}

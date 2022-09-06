@@ -1,69 +1,26 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { tint } from 'polished'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
-import { ImageLoadingEffects } from './types'
-
-import * as Types from './types'
+type StyledType = {
+    $componentState: Record<string, unknown>
+}
 
 const Wrapper = styled.div`
-    position: relative;
+    ${props => getComponentTheme('Image', 'style.lazy.root', props)};
 `
 
-const imageStyle = css`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+const Image = styled.img<StyledType>`
+    ${props => getComponentTheme('Image', 'style.lazy.image', props)};
 `
 
-const Image = styled.img<
-{
-    $isLoaded: boolean,
-    $transitionDuration: Types.LazyImageProps['transitionDuration']
-}>`
-    ${imageStyle};
 
-    ${({ $isLoaded, $transitionDuration }) => $isLoaded && css`
-        opacity: 1;
-
-        ${$transitionDuration && $transitionDuration > 0 && css`
-            transition: opacity ${$transitionDuration}s ease-out;
-        `}
-    `}
+const Thumbnail = styled.img<StyledType>`
+    ${props => getComponentTheme('Image', 'style.lazy.thumbnail', props)};
 `
 
-const placeholderStyle = css<
-{
-    $isLoaded: boolean,
-    $loadingEffect: Types.LazyImageProps['loadingEffect'],
-    $transitionDuration: Types.LazyImageProps['transitionDuration']
-}>`
-    ${imageStyle};
-
-    opacity: 1;
-
-    ${({ $loadingEffect }) => $loadingEffect === ImageLoadingEffects.Blur && css`
-        filter: blur(10px);
-    `}
-
-    ${({ $transitionDuration }) => $transitionDuration && $transitionDuration > 0 && css`
-        transition: opacity ${$transitionDuration}s ease-out;
-    `}
-
-    ${({ $isLoaded }) => $isLoaded && css`
-        opacity: 0;
-    `}
-`
-
-const Thumbnail = styled.img`
-    ${placeholderStyle};
-`
-
-const Placeholder = styled.div`
-    ${placeholderStyle};
-
-    background-color: ${({ theme }) => tint(0.5, theme.colors.brand)};
+const Placeholder = styled.div<StyledType>`
+    ${props => getComponentTheme('Image', 'style.lazy.placeholder', props)};
 `
 
 export {

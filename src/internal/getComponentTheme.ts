@@ -26,13 +26,11 @@ const getComponentTheme: GetComponentTheme = (name, property, props) => {
             const themeObject = getObject(componentTheme, property)
 
             if (themeObject) {
-                let style = {...themeObject}
-    
-                Object.entries(themeObject).forEach(([key, value]) => {
-                    style[key] = typeof value === 'function' ? value(props) : value
-                })
-                
-                return style as Record<string, ThemeStyleObject>
+                if (typeof themeObject === 'function') {
+                    return themeObject(props)
+                } else {
+                    return themeObject
+                }
             }
         }
     }
