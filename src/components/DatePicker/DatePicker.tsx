@@ -5,6 +5,7 @@ import {
 } from 'react'
 
 import DateUtility from '@utils/date'
+import classNames from '@utils/classNames'
 
 import DatePickerInput from './components/DatePickerInput'
 
@@ -43,8 +44,18 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
         }
     }, [onChange, isClearable, onClear])
 
+    const classNameValue = classNames({
+        'fluffy-datepicker': true,
+        [className || '']: true
+    })
+
+    const calendarClassNameValue = classNames({
+        'fluffy-datepicker-calendar': true,
+        [calendarClassName || '']: true
+    })
+
     return (
-        <Styled.Wrapper className={className}>
+        <Styled.Wrapper className={classNameValue}>
             <Styled.DatePicker
                 ref={ref}
                 locale={locale}
@@ -59,7 +70,7 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
                 )}
                 onChange={handleOnChange}
                 {...filteredProps}
-                calendarClassName={`${calendarClassName ? calendarClassName : ''} fluffy-date-picker`}
+                calendarClassName={calendarClassNameValue}
             />
         </Styled.Wrapper>
     )

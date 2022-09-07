@@ -1,5 +1,7 @@
 import { useMemo } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Icons from '@root/icons'
 
 import * as Styled from './style'
@@ -44,11 +46,16 @@ const Icon: FC<Types.IconProps> = (props) => {
         null
     )
 
+    const classNameValue = classNames({
+        'fluffy-icon': true,
+        [className || '']: true
+    })
+
     return (
         <Styled.Span
             style={style}
             $size={size}
-            className={`fluffy-icon ${className ? className : ''}`}
+            className={classNameValue}
             aria-label={ariaLabel}
             onClick={onClick}
         >

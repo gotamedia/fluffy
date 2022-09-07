@@ -102,6 +102,7 @@ const InputTheme: InputThemeType = {
         }),
         secondary: ({ theme }) => ({
             backgroundColor: tint(0.93, theme.colors.brand),
+            border: `1px solid ${tint(0.93, theme.colors.brand)}`,
 
             '&:hover': {
                 backgroundColor: tint(0.93, theme.colors.brand)

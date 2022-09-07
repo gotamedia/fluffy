@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
@@ -27,6 +29,11 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const className = classNames({
+        'fluffy-checkbox': true,
+        [DOMProps.className || '']: true
+    })
+
     const componentState = {
         disabled: disabled
     }
@@ -40,6 +47,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
                 onChange={handleOnChange}
                 {...DOMProps}
                 type={'checkbox'}
+                className={className}
             />
 
             {

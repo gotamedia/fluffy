@@ -7,6 +7,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import * as Types from './types'
 import type {
@@ -84,6 +86,16 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         setIsOpen(false)
     }, [onChange])
 
+    const triggerClassName = classNames({
+        'fluffy-dropdown-trigger': true,
+        [triggerProps?.className || ''] : true
+    })
+
+    const className = classNames({
+        'fluffy-dropdown': true,
+        [filterdProps.className || ''] : true
+    })
+
     const componentState = {
         isOpen: isOpen
     }
@@ -94,6 +106,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                 ref={setTriggerRef}
                 disabled={disabled}
                 {...triggerProps}
+                className={triggerClassName}
                 variant={variant}
                 size={size}
                 onClick={toggleOpen}
@@ -105,6 +118,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
 
             <Styled.Menu
                 {...filterdProps}
+                className={className}
                 ref={undefined}
                 show={isOpen}
                 anchor={triggerRef}

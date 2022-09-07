@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
@@ -27,6 +29,11 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const className = classNames({
+        'fluffy-input': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <>
             {
@@ -45,6 +52,7 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
                 $variant={variant}
                 onChange={handleOnChange}
                 {...DOMProps}
+                className={className}
             />
         </>
     )

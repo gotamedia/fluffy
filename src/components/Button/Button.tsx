@@ -4,6 +4,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ReactElement } from 'react'
@@ -15,6 +17,11 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
         children,
         ...DOMProps
     } = props
+
+    const className = classNames({
+        'fluffy-button': true,
+        [DOMProps.className || '']: true
+    })
     
     return (
         <Styled.Button
@@ -22,6 +29,7 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
             $size={size}
             $variant={variant}
             {...DOMProps}
+            className={className}
         >
             {Children.map(children, (child) => {
                 if (child) {

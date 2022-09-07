@@ -4,6 +4,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import IconButton, { IconButtonShapes } from '../IconButton'
 
 import * as Styled from './style'
@@ -20,12 +22,18 @@ const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
         children,
         ...DOMProps
     } = props
+
+    const className = classNames({
+        'fluffy-button-group': true,
+        [DOMProps.className || '']: true
+    })
     
     return (
         <Styled.Wrapper
             ref={ref}
             $variant={variant}
             {...DOMProps}
+            className={className}
         >
             {Children.map(children, (child) => {
                 const childElement = child as ReactElement<ButtonProps>

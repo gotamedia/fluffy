@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     ${props => getComponentTheme('DatePicker', 'style.datepicker', props)};
     ${props => getComponentTheme('DatePicker', 'style.root', props)};
 
-    .fluffy-date-picker {
+    .fluffy-datepicker-calendar {
         ${props => getComponentTheme('DatePicker', 'style.calendar', props)};
     }
 `

@@ -14,7 +14,7 @@ export type GetComponentTheme = (
     property: string,
     props: {
         theme: DefaultTheme,
-        $componentState?: Record<string, unknown>
+        $componentState?: Record<string, any>
     }
 ) => Record<string, ThemeStyleObject> | undefined
 
