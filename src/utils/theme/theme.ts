@@ -10,6 +10,7 @@ import DatePickerTheme from '@components/DatePicker/theme'
 import DropdownTheme from '@components/Dropdown/theme'
 import FocusTrapTheme from '@components/FocusTrap/theme'
 import ImageTheme from '@components/Image/theme'
+import InputTheme from '@components/Input/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -116,7 +117,8 @@ let theme: DefaultTheme = {
         DatePicker: DatePickerTheme,
         Dropdown: DropdownTheme,
         FocusTrap: FocusTrapTheme,
-        Image: ImageTheme
+        Image: ImageTheme,
+        Input: InputTheme
     }
 }
 
