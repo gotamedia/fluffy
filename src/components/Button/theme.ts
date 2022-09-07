@@ -4,7 +4,6 @@ import {
 } from 'polished'
 
 import type { ThemeStyleItem } from '@root/types'
-import type { DefaultTheme } from 'styled-components'
 
 const sharedStyle = {
     disabled: {
@@ -110,7 +109,7 @@ const ButtonTheme: ButtonThemeType = {
         }
     },
     variants: {
-        primary: ({ theme }: { theme: DefaultTheme }) => ({
+        primary: ({ theme }) => ({
             color: 'white',
             backgroundColor: theme.colors.brand,
             borderColor: theme.colors.brand,
@@ -132,7 +131,7 @@ const ButtonTheme: ButtonThemeType = {
             ...sharedStyle.focus,
             ...sharedStyle.disabled
         }),
-        secondary: ({ theme }: { theme: DefaultTheme }) => ({
+        secondary: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: tint(0.93, theme.colors.brand),
             borderColor: tint(0.93, theme.colors.brand),
@@ -152,7 +151,7 @@ const ButtonTheme: ButtonThemeType = {
             ...sharedStyle.focus,
             ...sharedStyle.disabled
         }),
-        outline: ({ theme }: { theme: DefaultTheme }) => ({
+        outline: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: 'white',
             borderColor: theme.colors.brand,
@@ -176,7 +175,7 @@ const ButtonTheme: ButtonThemeType = {
                 backgroundColor: 'transparent'
             }
         }),
-        text: ({ theme }: { theme: DefaultTheme }) => ({
+        text: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: 'transparent',
             borderColor: 'transparent',

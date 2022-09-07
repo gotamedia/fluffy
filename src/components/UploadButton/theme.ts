@@ -4,7 +4,6 @@ import {
 } from 'polished'
 
 import type { ThemeStyleItem } from '@root/types'
-import type { DefaultTheme } from 'styled-components'
 
 const sharedStyle = {
     disabled: {
@@ -111,7 +110,7 @@ const UploadButtonTheme: UploadButtonThemeType = {
         }
     },
     variants: {
-        primary: ({ theme }: { theme: DefaultTheme }) => ({
+        primary: ({ theme }) => ({
             color: 'white',
             backgroundColor: theme.colors.brand,
             borderColor: theme.colors.brand,
@@ -133,7 +132,7 @@ const UploadButtonTheme: UploadButtonThemeType = {
             ...sharedStyle.focus,
             ...sharedStyle.disabled
         }),
-        secondary: ({ theme }: { theme: DefaultTheme }) => ({
+        secondary: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: tint(0.93, theme.colors.brand),
             borderColor: tint(0.93, theme.colors.brand),
@@ -153,7 +152,7 @@ const UploadButtonTheme: UploadButtonThemeType = {
             ...sharedStyle.focus,
             ...sharedStyle.disabled
         }),
-        outline: ({ theme }: { theme: DefaultTheme }) => ({
+        outline: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: 'white',
             borderColor: theme.colors.brand,
@@ -177,7 +176,7 @@ const UploadButtonTheme: UploadButtonThemeType = {
                 backgroundColor: 'transparent'
             }
         }),
-        text: ({ theme }: { theme: DefaultTheme }) => ({
+        text: ({ theme }) => ({
             color: theme.colors.brand,
             backgroundColor: 'transparent',
             borderColor: 'transparent',
