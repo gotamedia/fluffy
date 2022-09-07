@@ -11,6 +11,7 @@ import DropdownTheme from '@components/Dropdown/theme'
 import FocusTrapTheme from '@components/FocusTrap/theme'
 import ImageTheme from '@components/Image/theme'
 import InputTheme from '@components/Input/theme'
+import TextareaTheme from '@components/Textarea/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -118,7 +119,8 @@ let theme: DefaultTheme = {
         Dropdown: DropdownTheme,
         FocusTrap: FocusTrapTheme,
         Image: ImageTheme,
-        Input: InputTheme
+        Input: InputTheme,
+        Textarea: TextareaTheme
     }
 }
 

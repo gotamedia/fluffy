@@ -1,37 +1,17 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import sizes from './sizes'
-import variants from './variants'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import type { TextareaProps } from './types'
 
-const baseTextareaStyle = css`
-    resize: none;
-    display: inline-flex;
-    appearance: none;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    white-space: nowrap;
-    outline: none;
-    width: 100%;
-    line-height: 1.2;
-    border-radius: 6px;
-    font-weight: normal;
-    border-width: 0;
-    border-style: solid;
-    box-sizing: border-box;
-`
-
 const Textarea = styled.textarea<{ $size?: TextareaProps['size'], $variant?: TextareaProps['variant'] }>`
-    ${baseTextareaStyle};
-    ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${props => getComponentTheme('Textarea', 'style.root', props)};
+    ${props => getComponentTheme('Textarea', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('Textarea', `variants.${props.$variant || 'primary'}`, props)};
 `
 
 const Label = styled.p`
-    margin: 0 0 5px 0;
-    color: ${({ theme }) => theme.colors.brand};
+    ${props => getComponentTheme('Textarea', 'style.label', props)};
 `
 
 export {

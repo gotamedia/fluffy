@@ -15,6 +15,7 @@ import type { DropdownThemeType } from '@components/Dropdown/theme'
 import type { FocusTrapThemeType } from '@components/FocusTrap/theme'
 import type { ImageThemeType } from '@components/Image/theme'
 import type { InputThemeType } from '@components/Input/theme'
+import type { TextareaThemeType } from '@components/Textarea/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -133,6 +134,7 @@ export interface FluffyTheme {
         Dropdown: DropdownThemeType,
         FocusTrap: FocusTrapThemeType,
         Image: ImageThemeType,
-        Input: InputThemeType
+        Input: InputThemeType,
+        Textarea: TextareaThemeType
     }
 }
