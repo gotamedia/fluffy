@@ -16,6 +16,7 @@ import type { FocusTrapThemeType } from '@components/FocusTrap/theme'
 import type { ImageThemeType } from '@components/Image/theme'
 import type { InputThemeType } from '@components/Input/theme'
 import type { TextareaThemeType } from '@components/Textarea/theme'
+import type { InputGroupThemeType } from '@components/InputGroup/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -135,6 +136,7 @@ export interface FluffyTheme {
         FocusTrap: FocusTrapThemeType,
         Image: ImageThemeType,
         Input: InputThemeType,
-        Textarea: TextareaThemeType
+        Textarea: TextareaThemeType,
+        InputGroup: InputGroupThemeType
     }
 }

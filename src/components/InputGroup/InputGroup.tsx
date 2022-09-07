@@ -6,6 +6,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
 
 import Button from '../Button'
@@ -18,7 +20,7 @@ import type * as Types from './types'
 import type { InputProps } from '../Input/types'
 import type { ReactElement } from 'react'
 
-const CLASSNAME_PREFIX = 'input-group'
+const CLASSNAME_PREFIX = 'fluffy-input-group'
 
 type StyledComponentType = { target: ReactElement['type'] }
 
@@ -108,13 +110,23 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         return `${CLASSNAME_PREFIX}__${type} ${CLASSNAME_PREFIX}--${position}`
     }, [getChildPosition])
 
+    const className = classNames({
+        [CLASSNAME_PREFIX]: true,
+        [filteredProps.className || '']: true
+    })
+
+    const componentState = {
+        elements: elements
+    }
+
     return (
         <Styled.Wrapper
             ref={ref}
             $size={size}
             $variant={variant}
-            $elements={elements}
+            $componentState={componentState}
             {...filteredProps}
+            className={className}
         >
             {
                 Children.map(children, (child, index) => {

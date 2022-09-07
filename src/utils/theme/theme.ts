@@ -12,6 +12,7 @@ import FocusTrapTheme from '@components/FocusTrap/theme'
 import ImageTheme from '@components/Image/theme'
 import InputTheme from '@components/Input/theme'
 import TextareaTheme from '@components/Textarea/theme'
+import InputGroupTheme from '@components/InputGroup/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -120,7 +121,8 @@ let theme: DefaultTheme = {
         FocusTrap: FocusTrapTheme,
         Image: ImageTheme,
         Input: InputTheme,
-        Textarea: TextareaTheme
+        Textarea: TextareaTheme,
+        InputGroup: InputGroupTheme
     }
 }
 
