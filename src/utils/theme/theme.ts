@@ -13,6 +13,7 @@ import ImageTheme from '@components/Image/theme'
 import InputTheme from '@components/Input/theme'
 import TextareaTheme from '@components/Textarea/theme'
 import InputGroupTheme from '@components/InputGroup/theme'
+import ListTheme from '@components/List/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -122,7 +123,8 @@ let theme: DefaultTheme = {
         Image: ImageTheme,
         Input: InputTheme,
         Textarea: TextareaTheme,
-        InputGroup: InputGroupTheme
+        InputGroup: InputGroupTheme,
+        List: ListTheme
     }
 }
 
