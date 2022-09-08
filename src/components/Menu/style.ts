@@ -1,26 +1,25 @@
 import styled from 'styled-components'
 
-import IconComponent, { Icons } from '../Icon'
+import getComponentTheme from '@root/internal/getComponentTheme'
+
+import PopoverComponent from '../Popover'
 import ContainerComponent from '../Container'
+import ListComponent from '../List'
 
-const Wrapper = styled.div`
-    
-`
-
-const Icon = styled(IconComponent).attrs(({ $isOpen } : { $isOpen: boolean }) => {
-    return {
-        icon: $isOpen ? Icons.ArrowUp : Icons.ArrowDown
-    }
-})<{ $isOpen: boolean }>`
-
+const Popover = styled(PopoverComponent)`
+    ${props => getComponentTheme('Menu', 'style.root', props)};
 `
 
 const Container = styled(ContainerComponent)`
-    overflow: auto;
+    ${props => getComponentTheme('Menu', 'style.container', props)};
+`
+
+const List = styled(ListComponent)`
+    ${props => getComponentTheme('Menu', 'style.list', props)};
 `
 
 export {
-    Wrapper,
-    Icon,
+    Popover,
     Container,
+    List
 }

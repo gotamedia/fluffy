@@ -19,6 +19,7 @@ import type { TextareaThemeType } from '@components/Textarea/theme'
 import type { InputGroupThemeType } from '@components/InputGroup/theme'
 import type { ListThemeType } from '@components/List/theme'
 import type { ListItemThemeType } from '@components/ListItem/theme'
+import type { MenuThemeType } from '@components/Menu/theme'
 
 export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
 
@@ -141,6 +142,7 @@ export interface FluffyTheme {
         Textarea: TextareaThemeType,
         InputGroup: InputGroupThemeType,
         List: ListThemeType,
-        ListItem: ListItemThemeType
+        ListItem: ListItemThemeType,
+        Menu: MenuThemeType
     }
 }

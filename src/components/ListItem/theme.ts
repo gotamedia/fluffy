@@ -60,7 +60,7 @@ const ListItemTheme: ListItemThemeType = {
         }),
         wrapper: ({ $componentState }) => ({
             display: 'flex',
-            paddingRght: '30px',
+            paddingRight: '30px',
             position: 'relative',
             margin: $componentState?.astitle ? '0 0 8px 0px' : '0 0 10px 0px'
         }),

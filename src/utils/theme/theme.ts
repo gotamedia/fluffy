@@ -15,6 +15,7 @@ import TextareaTheme from '@components/Textarea/theme'
 import InputGroupTheme from '@components/InputGroup/theme'
 import ListTheme from '@components/List/theme'
 import ListItemTheme from '@components/ListItem/theme'
+import MenuTheme from '@components/Menu/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -126,7 +127,8 @@ let theme: DefaultTheme = {
         Textarea: TextareaTheme,
         InputGroup: InputGroupTheme,
         List: ListTheme,
-        ListItem: ListItemTheme
+        ListItem: ListItemTheme,
+        Menu: MenuTheme
     }
 }
 

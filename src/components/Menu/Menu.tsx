@@ -12,9 +12,6 @@ import classNames from '@utils/classNames'
 import useMenu from './hooks/useMenu'
 import MenuContext from './contexts/MenuContext'
 
-import List from '../List'
-import Popover from '../Popover'
-
 import * as Styled from './style'
 import * as Types from './types'
 import type { ListRef } from '../List'
@@ -111,7 +108,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
 
     return (
         <MenuContext.Provider value={menuContextValue}>
-            <Popover
+            <Styled.Popover
                 ref={ref}
                 {...filterdProps}
                 className={className}
@@ -121,14 +118,14 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
                 onClickOutside={handleOnClickOutside}
             >
                 <Styled.Container>
-                    <List
+                    <Styled.List
                         ref={handleListRef}
                         {...listProps}
                     >
                         {children}
-                    </List>
+                    </Styled.List>
                 </Styled.Container>
-            </Popover>
+            </Styled.Popover>
         </MenuContext.Provider>
     )
 })
