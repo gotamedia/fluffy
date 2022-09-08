@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import Portal from '../Portal'
 
 import { OverlayVariants } from '../Overlay'
@@ -37,6 +39,11 @@ const Modal: Types.ModalComponent = forwardRef((props, ref) => {
         overlayProps
     ])
 
+    const className = classNames({
+        'fluffy-modal': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <Portal>
             <Styled.Overlay
@@ -47,6 +54,7 @@ const Modal: Types.ModalComponent = forwardRef((props, ref) => {
                 <Styled.FocusTrapWrapper
                     ref={ref}
                     {...DOMProps}
+                    className={className}
                 >
                     {
                         withCloseIcon && (

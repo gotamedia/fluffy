@@ -1,31 +1,17 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { themeHelpers } from '@utils/theme'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import FocusTrap from '../FocusTrap'
 import OverlayComponent from '../Overlay'
 import Icon, { Icons } from '../Icon'
 
 const Overlay = styled(OverlayComponent)`
-    display: flex;
+    ${props => getComponentTheme('Modal', 'style.overlay', props)};
 `
 
 const FocusTrapWrapper = styled(FocusTrap)`
-    z-index: 900;
-    height: auto;
-    width: 890px;
-    height: auto;
-    border-radius: 2px;
-    background-color: white;
-    margin: auto;
-    position: relative;
-    overflow: hidden;
-    padding: 16px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-
-    ${themeHelpers.isSmallDevice(css`
-        width: 335px;
-    `)};
+    ${props => getComponentTheme('Modal', 'style.root', props)};
 `
 
 const CloseIcon = styled(Icon).attrs(() => {
@@ -34,10 +20,7 @@ const CloseIcon = styled(Icon).attrs(() => {
         tabIndex: 0
     }
 })`
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    cursor: pointer;
+    ${props => getComponentTheme('Modal', 'style.icon', props)};
 `
 
 export {

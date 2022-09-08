@@ -16,6 +16,7 @@ import InputGroupTheme from '@components/InputGroup/theme'
 import ListTheme from '@components/List/theme'
 import ListItemTheme from '@components/ListItem/theme'
 import MenuTheme from '@components/Menu/theme'
+import ModalTheme from '@components/Modal/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -128,7 +129,8 @@ let theme: DefaultTheme = {
         InputGroup: InputGroupTheme,
         List: ListTheme,
         ListItem: ListItemTheme,
-        Menu: MenuTheme
+        Menu: MenuTheme,
+        Modal: ModalTheme
     }
 }
 

@@ -1,7 +1,8 @@
 import type {
     DefaultTheme,
     FlattenInterpolation,
-    ThemeProps
+    ThemeProps,
+    CSSObject
 } from "styled-components"
 
 import type { ButtonThemeType } from '@components/Button/theme'
@@ -20,10 +21,15 @@ import type { InputGroupThemeType } from '@components/InputGroup/theme'
 import type { ListThemeType } from '@components/List/theme'
 import type { ListItemThemeType } from '@components/ListItem/theme'
 import type { MenuThemeType } from '@components/Menu/theme'
+import type { ModalThemeType } from '@components/Modal/theme'
 
-export type HelperStyle = FlattenInterpolation<ThemeProps<DefaultTheme>>
+export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
+export type HelperStyleCSSObject = CSSObject
 
-export type HelperFunction = (style: HelperStyle) => HelperStyle
+export type HelperFunction = (
+    <Type = HelperStyleCSSFunction | HelperStyleCSSObject>
+    (style: Type) => Type extends HelperStyleCSSFunction ? HelperStyleCSSFunction : HelperStyleCSSObject
+)
 
 export type ThemeHelpers = {
     isSmallDevice: HelperFunction,
@@ -33,7 +39,7 @@ export type ThemeHelpers = {
     isNotMediumDevice: HelperFunction,
     isNotLargeDevice: HelperFunction,
     isRtlNested: HelperFunction,
-    rtlNested: HelperFunction
+    rtlNested: () => HelperStyleCSSFunction
 }
 
 // TODO: Fix actual better types, these ones were copied and auto generated!
@@ -143,6 +149,7 @@ export interface FluffyTheme {
         InputGroup: InputGroupThemeType,
         List: ListThemeType,
         ListItem: ListItemThemeType,
-        Menu: MenuThemeType
+        Menu: MenuThemeType,
+        Modal: ModalThemeType
     }
 }
