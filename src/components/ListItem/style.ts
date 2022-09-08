@@ -1,48 +1,33 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { tint } from 'polished'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import IconComponent, {
     Icons,
     IconSizes
 } from '../Icon'
 
-import types from './typeVariants'
-import sizes from './sizes'
-import borders from './borders'
-
 import type * as Types from './types'
 
-type InnerWrapperProps = {
-    $type?: Types.ListItemProps['type'],
-    $hasIcon: boolean,
-    $asTitle?: Types.ListItemProps['asTitle']
+type SharedType = {
+    $componentState?: Record<string, any>
 }
 
-const InnerWrapper = styled.div<InnerWrapperProps>`
-    display: flex;
-    margin: 0 0 10px 0px;
-    padding-right: 30px;
-    position: relative;
+type InnerWrapperProps = {
+    $type?: Types.ListItemProps['type']
+}
 
-    ${({ $asTitle }) => $asTitle && css`
-        margin: 0 0 8px 0px;
-    `};
-
-    ${({ $type }) => types[$type || 'normal']};
+const InnerWrapper = styled.div<InnerWrapperProps & SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.wrapper', props)};
+    ${props => getComponentTheme('ListItem', `types.${props.$type || 'normal'}`, props)};
 `
 
 const Icon = styled(IconComponent).attrs(() => {
     return {
         size: IconSizes.Small
     }
-})<{ $isTypeSelect: boolean }>`
-    position: absolute;
-    left: 10px;
-
-    ${({ $isTypeSelect }) => $isTypeSelect && css`
-        left: 40px;
-    `}
+})<{ $isTypeSelect: boolean } & SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.icon', props)};
 `
 
 const CheckIcon = styled(IconComponent).attrs(() => {
@@ -50,99 +35,34 @@ const CheckIcon = styled(IconComponent).attrs(() => {
         icon: Icons.Checkmark,
         size: IconSizes.Small
     }
-})`
-    position: absolute;
-    left: 10px;
+})<SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.checkIcon', props)};
 `
 
 const TextWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    margin: 0;
-    flex-direction: column;
+    ${props => getComponentTheme('ListItem', 'style.textWrapper', props)};
 `
 
-const Text = styled.p`
-    margin: 0;
+const Text = styled.p<SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.text', props)};
 `
 
-const SubText = styled.p`
-    margin: 0;
-    font-size: 14px;
+const SubText = styled.p<SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.subText', props)};
 `
 
-const Border = styled.div<{ $border?: Types.ListItemProps['border'], $type?: Types.ListItemProps['type'] }>`
-    height: 1px;
-    background-color: lightgray;
-    
-    ${
-        //@ts-ignore
-        ({ $border }) => {
-            if ($border) {
-                return borders[$border]
-            }
-        }
-    };
+const Border = styled.div<{ $border?: Types.ListItemProps['border'] } & SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.border', props)};
+    ${props => getComponentTheme('ListItem', `borders.${props.$border || 'normal'}`, props)};
 `
 
 type WrapperProps = {
-    $size?: Types.ListItemProps['size'],
-    $targeted?: Types.ListItemProps['targeted'],
-    $asTitle?: Types.ListItemProps['asTitle']
+    $size?: Types.ListItemProps['size']
 }
 
-const Wrapper = styled.div<WrapperProps>`
-    width: 100%;
-    padding: 10px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    outline: none;
-
-    ${({ $size }) => sizes[$size || 'normal']};
-
-    &:hover {
-        ${({ $targeted, $asTitle }) => !$asTitle && !$targeted && css`
-            cursor: pointer;
-            background-color: ${({ theme }) => tint(0.88, theme.colors.brand)};
-        `}
-    }
-
-    &:last-of-type {
-        ${Border} {
-            display: none;
-        }
-    }
-
-    ${({ $targeted }) => $targeted && css`
-        cursor: default;
-        background-color: ${({ theme }) => tint(0.1, theme.colors.brand)};
-
-        ${CheckIcon} {
-            color: white;
-            fill: white;
-        }
-
-        ${Icon} {
-            color: white;
-            fill: white;
-        }
-
-        ${Text} {
-            color: white;
-        }
-
-        ${SubText} {
-            color: white;
-        }
-    `};
-
-    ${({ $asTitle }) => $asTitle && css`
-        padding: 8px 0 0 0;
-
-        ${Text} {
-            color: gray;
-        }
-    `}
+const Wrapper = styled.div<WrapperProps & SharedType>`
+    ${props => getComponentTheme('ListItem', 'style.root', props)};
+    ${props => getComponentTheme('ListItem', `sizes.${props.$size || 'normal'}`, props)};
 `
 
 export {

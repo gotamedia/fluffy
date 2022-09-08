@@ -72,6 +72,13 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
 
     const isTypeSelect = type === ListItemTypes.Select
 
+    const componentState = {
+        asTitle: asTitle,
+        targeted: targeted,
+        hasIcon: !!icon,
+        isTypeSelect: isTypeSelect
+    }
+
     return (
         <Styled.Wrapper
             ref={listItemRef}
@@ -80,17 +87,12 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
             {...DOMProps}
             className={className}
             $size={size}
-            $targeted={targeted}
-            $asTitle={asTitle}
+            $componentState={componentState}
         >
-            <Styled.InnerWrapper
-                $type={type}
-                $hasIcon={!!icon}
-                $asTitle={asTitle}
-            >
+            <Styled.InnerWrapper $type={type}>
                 {
                     !asTitle && isTypeSelect && selected ? (
-                        <Styled.CheckIcon />
+                        <Styled.CheckIcon $componentState={componentState}/>
                     ) : (
                         null
                     )
@@ -101,6 +103,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                         <Styled.Icon
                             icon={icon}
                             $isTypeSelect={isTypeSelect}
+                            $componentState={componentState}
                         />
                     ) : (
                         null
@@ -110,7 +113,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                 <Styled.TextWrapper>
                     {
                         text ? (
-                            <Styled.Text>
+                            <Styled.Text $componentState={componentState}>
                                 {text}
                             </Styled.Text>
                         ) : (
@@ -120,7 +123,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
 
                     {
                         !asTitle && subText && size === ListItemSizes.TwoRow ? (
-                            <Styled.SubText>
+                            <Styled.SubText $componentState={componentState}>
                                 {subText}
                             </Styled.SubText>
                         ) : (
@@ -137,8 +140,8 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                     <Styled.Border
                         //@ts-ignore
                         $border={asTitle ? 'full' : border}
-                        $hasIcon={!!icon}
-                        $type={type}
+                        $componentState={componentState}
+                        className={'fluffy-list-item-border'}
                     />
                 ) : (
                     null
