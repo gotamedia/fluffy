@@ -6,22 +6,29 @@ import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 import * as Styled from "./style"
 import * as Types from "./types"
 
-const Collapsible: Types.Collapsible = forwardRef(({ 
+const Collapsible: Types.CollapsibleComponent = forwardRef(({
     open,
     children,
     ...rest
 }, ref) => {
     const { heightTransition } = useAnimation()
+    const initialValue = useRef<boolean | undefined | null>(open)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
     useIsomorphicLayoutEffect(() => {
-        if (wrapperRef.current && contentRef.current && typeof open === "boolean") {
+        const isOpenValid = typeof open === "boolean"
+        const openOnMount = isOpenValid && open && initialValue.current
+        const shouldRunAnimation = openOnMount || (isOpenValid && initialValue.current === null)
+        if (wrapperRef.current && contentRef.current && shouldRunAnimation) {
             const contentHeight = contentRef.current.getBoundingClientRect().height
             const element = wrapperRef.current
             const to = open ? contentHeight : 0
             const from = open ? 0 : contentHeight
             heightTransition({ element, to, from })
+        }
+        if (initialValue.current !== null) {
+            initialValue.current = null
         }
     }, [heightTransition, open])
 

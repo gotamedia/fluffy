@@ -4,6 +4,8 @@ interface CollapsibleProps extends HTMLAttributes<HTMLDivElement> {
     open?: boolean
 }
 
-type Collapsible = ForwardRefExoticComponent<CollapsibleProps & RefAttributes<HTMLDivElement>>
+type CollapsibleComponent = ForwardRefExoticComponent<
+    CollapsibleProps & RefAttributes<HTMLDivElement>
+>
 
-export type { Collapsible }
+export type { CollapsibleComponent, CollapsibleProps }
