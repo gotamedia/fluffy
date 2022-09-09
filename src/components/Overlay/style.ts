@@ -1,18 +1,12 @@
 import styled from 'styled-components'
 
-import variants from './variants'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import * as Types from './types'
 
 const Wrapper = styled.div<{ $variant: Types.OverlayProps['variant'] }>`
-    z-index: 900;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    ${({ $variant }) => variants[$variant || 'normal']}
+    ${props => getComponentTheme('Overlay', 'style.root', props)};
+    ${props => getComponentTheme('Overlay', `variants.${props.$variant || 'primary'}`, props)};
 `
 
 export {

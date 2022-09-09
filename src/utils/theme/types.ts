@@ -22,6 +22,7 @@ import type { ListThemeType } from '@components/List/theme'
 import type { ListItemThemeType } from '@components/ListItem/theme'
 import type { MenuThemeType } from '@components/Menu/theme'
 import type { ModalThemeType } from '@components/Modal/theme'
+import type { OverlayThemeType } from '@components/Overlay/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -150,6 +151,7 @@ export interface FluffyTheme {
         List: ListThemeType,
         ListItem: ListItemThemeType,
         Menu: MenuThemeType,
-        Modal: ModalThemeType
+        Modal: ModalThemeType,
+        Overlay: OverlayThemeType
     }
 }
