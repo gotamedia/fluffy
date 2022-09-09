@@ -64,6 +64,9 @@ export { default as useAnchor } from '@hooks/useAnchor'
 export * from '@hooks/useMeasure'
 export { default as useMeasure } from '@hooks/useMeasure'
 
+export * from '@hooks/useResizeObserver'
+export { default as useResizeObserver } from '@hooks/useResizeObserver'
+
 // <==== Hooks
 
 
