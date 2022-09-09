@@ -22,7 +22,7 @@ const sharedStyle = {
 export type CheckboxThemeType = {
     style: {
         root: ThemeStyleItem,
-        main: ThemeStyleItem,
+        checkbox: ThemeStyleItem,
         text: ThemeStyleItem
     },
     sizes: {
@@ -45,7 +45,7 @@ const CheckboxTheme: CheckboxThemeType = {
         root: {
             display: 'inline-flex',
         },
-        main: ({ theme }) => ({
+        checkbox: ({ theme }) => ({
             appearance: 'none',
             margin: '0',
             font: 'inherit',
