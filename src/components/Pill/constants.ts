@@ -2,7 +2,7 @@ const PillVariants = {
     Success: "success" as const,
     Alert: "alert" as const,
     Warning: "warning" as const,
-    Disabled: "disabled" as const,
+    Normal: "normal" as const,
 }
 
 const PillShapes = {

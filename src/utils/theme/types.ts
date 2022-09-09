@@ -24,6 +24,7 @@ import type { MenuThemeType } from '@components/Menu/theme'
 import type { ModalThemeType } from '@components/Modal/theme'
 import type { OverlayThemeType } from '@components/Overlay/theme'
 import type { PaginationThemeType } from '@components/Pagination/theme'
+import type { PillThemeType } from '@components/Pill/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -83,20 +84,11 @@ interface Colors {
     socialMedia: SocialMedia,
     error: string,
     alert: Alert,
-    pill: Pill
 }
 
 interface Alert {
     error: Error,
     info: Error
-}
-
-interface Pill {
-    alert: string,
-    warning: string,
-    success: string,
-    disabled: string,
-
 }
 
 interface Error {
@@ -154,6 +146,7 @@ export interface FluffyTheme {
         Menu: MenuThemeType,
         Modal: ModalThemeType,
         Overlay: OverlayThemeType,
-        Pagination: PaginationThemeType
+        Pagination: PaginationThemeType,
+        Pill: PillThemeType
     }
 }

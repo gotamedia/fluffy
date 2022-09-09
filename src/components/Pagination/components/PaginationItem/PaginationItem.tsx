@@ -27,7 +27,10 @@ const PaginationItem: Types.PaginationItemComponent = (props) => {
     ])
 
     const className = classNames({
-        'fluffy-pagination-item': true
+        'fluffy-pagination-item': true,
+        'fluffy-pagination-icon': type === PaginationElementTypes.PreviousPageButton || type === PaginationElementTypes.NextPageButton,
+        'fluffy-pagination-button': type === PaginationElementTypes.PageButton,
+        'fluffy-pagination-separator': type === PaginationElementTypes.SeparationIndicator
     })
 
     const sharedProps = {
@@ -67,7 +70,7 @@ const PaginationItem: Types.PaginationItemComponent = (props) => {
 
         case PaginationElementTypes.SeparationIndicator: {
             return (
-                <Styled.Separation>
+                <Styled.Separation className={className}>
                     {'...'}
                 </Styled.Separation>
             )

@@ -7,4 +7,7 @@ export type ThemeStyleFunction<Type = ThemeStyleObject> = (props: Record<string,
     $componentState?: Record<string, any>
 }) => Type
 
-export type ThemeStyleItem<Type = ThemeStyleObject> = ThemeStyleObject | ThemeStyleFunction<Type>
+export type ThemeStyleItem<Type = ThemeStyleObject> = (
+    ThemeStyleObject |
+    ThemeStyleFunction<Type>
+)

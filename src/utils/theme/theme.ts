@@ -19,6 +19,7 @@ import MenuTheme from '@components/Menu/theme'
 import ModalTheme from '@components/Modal/theme'
 import OverlayTheme from '@components/Overlay/theme'
 import PaginationTheme from '@components/Pagination/theme'
+import PillTheme from '@components/Pill/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -59,12 +60,6 @@ let theme: DefaultTheme = {
             linkedIn: "#0072B1"
         },
         error: "#db0000",
-        pill: {
-            warning: "#fdc800",
-            success: "#0ab775",
-            alert: "#d7170f",
-            disabled: "#e9e9e8"
-        },
         alert: {
             error: {
                 text: "#730E0E",
@@ -134,7 +129,8 @@ let theme: DefaultTheme = {
         Menu: MenuTheme,
         Modal: ModalTheme,
         Overlay: OverlayTheme,
-        Pagination: PaginationTheme
+        Pagination: PaginationTheme,
+        Pill: PillTheme
     }
 }
 

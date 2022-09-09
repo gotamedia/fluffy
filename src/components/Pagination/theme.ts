@@ -12,7 +12,7 @@ import type { IconButtonShapeType } from '../IconButton'
 export type PaginationThemeType = {
     style: {
         root: ThemeStyleItem,
-        icon: ThemeStyleItem,
+        iconButton: ThemeStyleItem,
         button: ThemeStyleItem,
         separator: ThemeStyleItem
     },
@@ -31,7 +31,7 @@ const PaginationTheme: PaginationThemeType = {
             display: 'flex',
             gap: '7px'
         },
-        icon: {
+        iconButton: {
             margin: 'auto 0'
         },
         button: {

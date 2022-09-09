@@ -1,29 +1,15 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-import { pillShapes } from "./shapes"
-import * as variants from './variants'
+import getComponentTheme from '@root/internal/getComponentTheme'
+
 import * as Types from "./types"
 
-// TODO: Fix colors / theme
-const basePillStyle = css`
-    display: flex;
-    flex-direction: row;
-    justify-content: center; 
-    align-items: center; 
-    border: 1px solid; 
-    border-radius: 3px; 
-    padding: 0px 5px;
-    height: 16px;
-    font-size: ${({ theme }) => theme.fontSizes[0]}px;
-    font-family: ${({ theme }) => theme.fonts.generic[1]};
-`
-
 const Pill = styled.div<Types.PillStyledProps>`
-    ${basePillStyle};
-    ${pillShapes};
-    ${({ $variant }) => variants[$variant || 'alert']};
+    ${props => getComponentTheme('Pill', 'style.root', props)};
+    ${props => getComponentTheme('Pill', `sizes.${props.$size || 'small'}`, props)};
+    ${props => getComponentTheme('Pill', `shapes.${props.$shape || 'rectangle'}`, props)};
+    ${props => getComponentTheme('Pill', `variants.${props.$variant || 'normal'}`, props)};
 `
-
 
 export {
     Pill
