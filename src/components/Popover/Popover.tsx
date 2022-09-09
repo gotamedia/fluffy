@@ -3,10 +3,11 @@ import {
     useCallback
 } from 'react'
 
-import Portal from '@components/Portal'
-import Anchor from '@components/Anchor'
-import Overlay from '@components/Overlay'
+import classNames from '@utils/classNames'
 
+import Portal from '@components/Portal'
+
+import * as Styled from './style'
 import * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
@@ -29,20 +30,26 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
         }
     }, [onClickOutside, overlayProps])
 
+    const className = classNames({
+        'fluffy-popover': true,
+        [filterdProps.className || '']: true
+    })
+
     return (
         show ? (
             <Portal>
-                <Overlay
+                <Styled.Overlay
                     {...overlayProps}
                     onClick={handleOnClickOutside}
                 />
 
-                <Anchor
+                <Styled.Anchor
                     ref={ref}
                     {...filterdProps}
+                    className={className}
                 >
                     {children}
-                </Anchor>
+                </Styled.Anchor>
             </Portal>
         ) : (
             null

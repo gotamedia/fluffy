@@ -20,6 +20,7 @@ import ModalTheme from '@components/Modal/theme'
 import OverlayTheme from '@components/Overlay/theme'
 import PaginationTheme from '@components/Pagination/theme'
 import PillTheme from '@components/Pill/theme'
+import PopoverTheme from '@components/Popover/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -130,7 +131,8 @@ let theme: DefaultTheme = {
         Modal: ModalTheme,
         Overlay: OverlayTheme,
         Pagination: PaginationTheme,
-        Pill: PillTheme
+        Pill: PillTheme,
+        Popover: PopoverTheme
     }
 }
 

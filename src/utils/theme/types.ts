@@ -25,6 +25,7 @@ import type { ModalThemeType } from '@components/Modal/theme'
 import type { OverlayThemeType } from '@components/Overlay/theme'
 import type { PaginationThemeType } from '@components/Pagination/theme'
 import type { PillThemeType } from '@components/Pill/theme'
+import type { PopoverThemeType } from '@components/Popover/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -147,6 +148,7 @@ export interface FluffyTheme {
         Modal: ModalThemeType,
         Overlay: OverlayThemeType,
         Pagination: PaginationThemeType,
-        Pill: PillThemeType
+        Pill: PillThemeType,
+        Popover: PopoverThemeType
     }
 }

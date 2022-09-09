@@ -1,6 +1,6 @@
-import {
-    forwardRef
-} from 'react'
+import { forwardRef } from 'react'
+
+import classNames from '@utils/classNames'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -14,6 +14,11 @@ const Pill: Types.PillComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
+    const className = classNames({
+        'fluffy-pill': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <Styled.Pill
             ref={ref}
@@ -21,6 +26,7 @@ const Pill: Types.PillComponent = forwardRef((props, ref) => {
             $shape={shape}
             $size={size}
             {...DOMProps}
+            className={className}
         >
             {children}
         </Styled.Pill>
