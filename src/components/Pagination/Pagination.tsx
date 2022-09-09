@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import usePagination from './hooks/usePagination'
 
 import PaginationItem from './components/PaginationItem'
@@ -25,7 +27,8 @@ const Pagination: Types.PaginationComponent = forwardRef((props, ref) => {
         showFirstPageButton = true,
         showSeparationIndicator = true,
         showLastPageButton = true,
-        showNextPageButton = true
+        showNextPageButton = true,
+        className,
     } = props
 
     const paginationBlueprint = usePagination({
@@ -55,8 +58,16 @@ const Pagination: Types.PaginationComponent = forwardRef((props, ref) => {
         }
     }, [onChange, activePage])
 
+    const classNameValue = classNames({
+        'fluffy-pagination': true,
+        [className || '']: true
+    })
+
     return (
-        <Styled.Wrapper ref={ref}>
+        <Styled.Wrapper
+            ref={ref}
+            className={classNameValue}
+        >
             {
                 paginationBlueprint.map((item, idx) => {
                     return (

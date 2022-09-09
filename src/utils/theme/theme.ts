@@ -18,6 +18,7 @@ import ListItemTheme from '@components/ListItem/theme'
 import MenuTheme from '@components/Menu/theme'
 import ModalTheme from '@components/Modal/theme'
 import OverlayTheme from '@components/Overlay/theme'
+import PaginationTheme from '@components/Pagination/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -132,7 +133,8 @@ let theme: DefaultTheme = {
         ListItem: ListItemTheme,
         Menu: MenuTheme,
         Modal: ModalTheme,
-        Overlay: OverlayTheme
+        Overlay: OverlayTheme,
+        Pagination: PaginationTheme
     }
 }
 

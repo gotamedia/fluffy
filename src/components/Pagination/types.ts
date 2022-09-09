@@ -29,7 +29,8 @@ export type PaginationProps = usePaginationProps & {
     size?: PaginationSizeType,
     variant?: PaginationVariantType,
     disabled?: boolean,
-    onChange: (page: number) => void
+    onChange: (page: number) => void,
+    className?: string
 }
 
 export type PaginationRef = HTMLDivElement

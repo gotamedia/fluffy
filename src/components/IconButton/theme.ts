@@ -9,7 +9,8 @@ const sharedStyle = {
     disabled: {
         '&:disabled': {
             color: '#8A8A8D',
-            backgroundColor: '#DADAD8'
+            backgroundColor: '#DADAD8',
+            borderColor: '#DADAD8'
         }
     },
     focus: {
@@ -166,7 +167,8 @@ const IconButtonTheme: IconButtonThemeType = {
 
             '&:disabled': {
                 color: '#8A8A8D',
-                backgroundColor: 'transparent'
+                backgroundColor: 'transparent',
+                borderColor: 'transparent'
             }
         })
     }

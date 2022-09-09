@@ -1,5 +1,7 @@
 import { useCallback } from 'react'
 
+import classNames from '@utils/classNames'
+
 import { PaginationElementTypes } from '../../types'
 
 import * as Styled from './style'
@@ -24,11 +26,21 @@ const PaginationItem: Types.PaginationItemComponent = (props) => {
         page
     ])
 
+    const className = classNames({
+        'fluffy-pagination-item': true
+    })
+
     const sharedProps = {
         size: size,
         variant: variant,
         disabled: disabled,
-        onClick: handleOnClick
+        onClick: handleOnClick,
+        className: className
+    }
+
+    const componentState = {
+        active: active,
+        iconType: type
     }
 
     switch(type) {
@@ -36,7 +48,7 @@ const PaginationItem: Types.PaginationItemComponent = (props) => {
         case PaginationElementTypes.NextPageButton: {
             return (
                 <Styled.NavigationButton
-                    $type={type}
+                    $componentState={componentState}
                     {...sharedProps}
                 />
             )
@@ -45,7 +57,7 @@ const PaginationItem: Types.PaginationItemComponent = (props) => {
         case PaginationElementTypes.PageButton: {
             return (
                 <Styled.PageButton
-                    $active={active}
+                    $componentState={componentState}
                     {...sharedProps}
                 >
                     {page}

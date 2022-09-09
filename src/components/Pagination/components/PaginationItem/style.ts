@@ -1,39 +1,29 @@
 import styled from 'styled-components'
 
-import IconButton, {
-    IconButtonShapes
-} from '@components/IconButton'
-import { Icons } from '@components/Icon'
-import Button, { ButtonVariants } from '@components/Button'
+import getComponentTheme from '@root/internal/getComponentTheme'
 
-import { PaginationElementTypes } from '../../types'
+import IconButton from '@components/IconButton'
+import Button from '@components/Button'
 
-const NavigationButton = styled(IconButton).attrs(({ $type }: { $type: PaginationElementTypes }) => {
+const NavigationButton = styled(IconButton).attrs((props) => {
     return {
-        icon: $type === PaginationElementTypes.PreviousPageButton ? (
-            Icons.ArrowLeft
-        ) : (
-            Icons.ArrowRight
-        ),
-        shape: IconButtonShapes.Circle
+        icon: getComponentTheme('Pagination', 'props.iconButton.icon', props),
+        shape: getComponentTheme('Pagination', 'props.iconButton.shape', props)
     }
-})<{ $type: PaginationElementTypes }>`
-    margin: auto 0;
+})`
+    ${props => getComponentTheme('Pagination', 'style.iconButton', props)};
 `
 
-const PageButton = styled(Button).attrs<{ $active?: boolean }>(({ $active, variant }) => {
+const PageButton = styled(Button).attrs((props) => {
     return {
-        variant: $active ? variant : ButtonVariants.Text
+        variant: getComponentTheme('Pagination', 'props.button', props)
     }
-})<{ $active?: boolean }>`
-
+})`
+    ${props => getComponentTheme('Pagination', 'style.button', props)};
 `
 
 const Separation = styled.p`
-    min-width: 40px;
-    display: flex;
-    justify-content: center;
-    margin: auto 0;
+    ${props => getComponentTheme('Pagination', 'style.separator', props)};
 `
 
 export {
