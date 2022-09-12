@@ -9,6 +9,8 @@ import {
     cloneElement
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import { ListItemTypes } from '../ListItem/types'
@@ -21,7 +23,6 @@ import type {
     ReactElement
 } from 'react'
 import type { ListItemProps } from '../ListItem/types'
-import classNames from '@root/utils/classNames'
 
 // TODO: Add "close/clear" buttons below the list?
 const Select: Types.SelectComponent = forwardRef((props, ref) => {

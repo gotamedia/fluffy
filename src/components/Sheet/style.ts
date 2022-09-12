@@ -1,14 +1,9 @@
 import styled from 'styled-components'
 
+import getComponentTheme from '@root/internal/getComponentTheme'
+
 const Wrapper = styled.div`
-    padding: 0;
-    opacity: 0;
-    outline: none;
-    margin: 0 auto;
-    position: absolute;
-    background: #ffffff;
-    overflow: hidden;
-    z-index: 900;
+    ${props => getComponentTheme('Sheet', 'style.root', props)};
 `
 
 export {

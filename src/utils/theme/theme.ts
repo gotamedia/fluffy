@@ -23,6 +23,7 @@ import PillTheme from '@components/Pill/theme'
 import PopoverTheme from '@components/Popover/theme'
 import RadioTheme from '@components/Radio/theme'
 import SelectTheme from '@components/Select/theme'
+import SheetTheme from '@components/Sheet/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -136,7 +137,8 @@ let theme: DefaultTheme = {
         Pill: PillTheme,
         Popover: PopoverTheme,
         Radio: RadioTheme,
-        Select: SelectTheme
+        Select: SelectTheme,
+        Sheet: SheetTheme
     }
 }
 

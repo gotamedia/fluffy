@@ -13,9 +13,11 @@ import {
     toDecimal
 } from "popmotion"
 
-import { SheetDirections } from './types'
+import classNames from '@utils/classNames'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
+
+import { SheetDirections } from './types'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -156,11 +158,17 @@ const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
         }
     }, [closeSheet, openSheet])
 
+    const className = classNames({
+        'fluffy-sheet': true,
+        [DOMProps.className || '']: true
+    })
+
     return (
         <Styled.Wrapper
             // @ts-ignore
             ref={wrapperRef}
             {...DOMProps}
+            className={className}
             style={{
                 ...DOMProps?.style,
                 width: sheetRect.width,
