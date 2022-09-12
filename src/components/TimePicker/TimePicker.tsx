@@ -1,5 +1,7 @@
 import { forwardRef } from 'react'
 
+import classNames from '@utils/classNames'
+
 import TimePickerInput from './components/TimePickerInput'
 
 import * as Styled from './style'
@@ -17,6 +19,16 @@ const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
         ...filteredProps
     } = props
 
+    const className = classNames({
+        'fluffy-time-picker': true,
+        [filteredProps.className || '']: true
+    })
+
+    const calendarClassNameValue = classNames({
+        'fluffy-time-picker-calendar': true,
+        [calendarClassName || '']: true
+    })
+
     return (
         <Styled.DatePicker
             ref={ref}
@@ -33,9 +45,10 @@ const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
                 />
             )}
             {...filteredProps}
+            className={className}
             showTimeSelect
             showTimeSelectOnly
-            calendarClassName={`${calendarClassName ? calendarClassName : ''} fluffy-time-picker`}
+            calendarClassName={calendarClassNameValue}
         />
     )
 })

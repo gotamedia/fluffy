@@ -45,12 +45,12 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
     }, [onChange, isClearable, onClear])
 
     const classNameValue = classNames({
-        'fluffy-datepicker': true,
+        'fluffy-date-picker': true,
         [className || '']: true
     })
 
     const calendarClassNameValue = classNames({
-        'fluffy-datepicker-calendar': true,
+        'fluffy-date-picker-calendar': true,
         [calendarClassName || '']: true
     })
 

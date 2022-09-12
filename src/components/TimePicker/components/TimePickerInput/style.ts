@@ -1,4 +1,6 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+
+import getComponentTheme from '@root/internal/getComponentTheme'
 
 import InputComponent from '@components/Input'
 import InputGroupComponent from '@components/InputGroup'
@@ -12,14 +14,7 @@ const InputGroup = styled(InputGroupComponent)`
 `
 
 const Input = styled(InputComponent)`
-    width: 125px;
-    min-width: 125px;
-`
-
-const iconStyle = css`
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.brand};
-    fill: ${({ theme }) => theme.colors.brand};
+    ${props => getComponentTheme('TimePicker', 'style.input', props)};
 `
 
 const ClearIcon = styled(IconComponent).attrs(() => {
@@ -28,7 +23,7 @@ const ClearIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${iconStyle};
+    ${props => getComponentTheme('TimePicker', 'style.icon', props)};
 `
 
 const ClockIcon = styled(IconComponent).attrs(() => {
@@ -37,7 +32,7 @@ const ClockIcon = styled(IconComponent).attrs(() => {
         size: IconSizes.Small
     }
 })`
-    ${iconStyle};
+    ${props => getComponentTheme('TimePicker', 'style.icon', props)};
 `
 
 export {
