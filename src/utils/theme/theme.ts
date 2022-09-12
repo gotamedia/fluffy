@@ -25,6 +25,7 @@ import RadioTheme from '@components/Radio/theme'
 import SelectTheme from '@components/Select/theme'
 import SheetTheme from '@components/Sheet/theme'
 import SubMenuTheme from '@components/SubMenu/theme'
+import SwitchButtonTheme from '@components/SwitchButton/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -140,7 +141,8 @@ let theme: DefaultTheme = {
         Radio: RadioTheme,
         Select: SelectTheme,
         Sheet: SheetTheme,
-        SubMenu: SubMenuTheme
+        SubMenu: SubMenuTheme,
+        SwitchButton: SwitchButtonTheme
     }
 }
 

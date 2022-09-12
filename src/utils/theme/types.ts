@@ -30,6 +30,7 @@ import type { RadioThemeType } from '@components/Radio/theme'
 import type { SelectThemeType } from '@components/Select/theme'
 import type { SheetThemeType } from '@components/Sheet/theme'
 import type { SubMenuThemeType } from '@components/SubMenu/theme'
+import type { SwitchButtonThemeType } from '@components/SwitchButton/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -157,6 +158,7 @@ export interface FluffyTheme {
         Radio: RadioThemeType,
         Select: SelectThemeType,
         Sheet: SheetThemeType,
-        SubMenu: SubMenuThemeType
+        SubMenu: SubMenuThemeType,
+        SwitchButton: SwitchButtonThemeType
     }
 }

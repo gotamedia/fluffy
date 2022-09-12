@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
@@ -27,6 +29,15 @@ const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const className = classNames({
+        'fluffy-switch-button': true,
+        [DOMProps.className || '']: true
+    })
+
+    const componentState = {
+        disabled: disabled
+    }
+
     return (
         <Styled.Wrapper>
             <Styled.SwitchButton
@@ -35,12 +46,13 @@ const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref) => {
                 disabled={disabled}
                 onChange={handleOnChange}
                 {...DOMProps}
+                className={className}
                 type={'checkbox'}
             />
 
             {
                 label ? (
-                    <Styled.Text $disabled={disabled}>
+                    <Styled.Text $componentState={componentState}>
                         {label}
                     </Styled.Text>
                 ) : (
