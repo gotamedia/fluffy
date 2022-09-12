@@ -11,8 +11,6 @@ import {
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
-import Menu from '../Menu'
-
 import { ListItemTypes } from '../ListItem/types'
 
 import * as Styled from './style'
@@ -23,6 +21,7 @@ import type {
     ReactElement
 } from 'react'
 import type { ListItemProps } from '../ListItem/types'
+import classNames from '@root/utils/classNames'
 
 // TODO: Add "close/clear" buttons below the list?
 const Select: Types.SelectComponent = forwardRef((props, ref) => {
@@ -165,6 +164,15 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         placeholder
     )
 
+    const className = classNames({
+        'fluffy-select': true,
+        [triggerProps?.className || '']: true
+    })
+
+    const componentState = {
+        isOpen: isOpen
+    }
+
     return (
         <>
             <Styled.Button
@@ -172,6 +180,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 ref={setTriggerRef}
                 disabled={disabled}
                 {...triggerProps}
+                className={className}
                 variant={variant}
                 size={size}
                 onClick={toggleOpen}
@@ -183,10 +192,10 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             >
                 {label}
 
-                <Styled.Icon $isOpen={isOpen} />
+                <Styled.Icon $componentState={componentState} />
             </Styled.Button>
 
-            <Menu
+            <Styled.Menu
                 {...filterdProps}
                 shouldFocusOnClose={false}
                 ref={undefined}
@@ -224,7 +233,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                         }
                     })
                 }
-            </Menu>
+            </Styled.Menu>
         </>
     )
 })

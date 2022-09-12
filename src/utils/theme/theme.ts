@@ -22,6 +22,7 @@ import PaginationTheme from '@components/Pagination/theme'
 import PillTheme from '@components/Pill/theme'
 import PopoverTheme from '@components/Popover/theme'
 import RadioTheme from '@components/Radio/theme'
+import SelectTheme from '@components/Select/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -134,7 +135,8 @@ let theme: DefaultTheme = {
         Pagination: PaginationTheme,
         Pill: PillTheme,
         Popover: PopoverTheme,
-        Radio: RadioTheme
+        Radio: RadioTheme,
+        Select: SelectTheme
     }
 }
 

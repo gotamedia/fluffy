@@ -27,6 +27,7 @@ import type { PaginationThemeType } from '@components/Pagination/theme'
 import type { PillThemeType } from '@components/Pill/theme'
 import type { PopoverThemeType } from '@components/Popover/theme'
 import type { RadioThemeType } from '@components/Radio/theme'
+import type { SelectThemeType } from '@components/Select/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -151,6 +152,7 @@ export interface FluffyTheme {
         Pagination: PaginationThemeType,
         Pill: PillThemeType,
         Popover: PopoverThemeType,
-        Radio: RadioThemeType
+        Radio: RadioThemeType,
+        Select: SelectThemeType
     }
 }

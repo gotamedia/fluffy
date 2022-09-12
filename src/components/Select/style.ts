@@ -1,29 +1,30 @@
 import styled from 'styled-components'
 
+import getComponentTheme from '@root/internal/getComponentTheme'
+
+import MenuComponent from '../Menu'
+
 import ButtonComponent from '../Button'
-import IconComponent, { Icons } from '../Icon'
+import IconComponent from '../Icon'
 
 const Button = styled(ButtonComponent)`
-    > span:first-child {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: auto auto auto 0;
-    }
-
-    .fluffy-icon {
-        margin: auto 0 auto auto;
-    }
+    ${props => getComponentTheme('Select', 'style.trigger', props)};
 `
 
-const Icon = styled(IconComponent).attrs(({ $isOpen } : { $isOpen: boolean }) => {
+const Icon = styled(IconComponent).attrs((props) => {
     return {
-        icon: $isOpen ? Icons.ArrowUp : Icons.ArrowDown
+        icon: getComponentTheme('Select', 'props.icon', props)
     }
-})<{ $isOpen: boolean }>`
+})`
+    ${props => getComponentTheme('Select', 'style.icon', props)};
+`
 
+const Menu = styled(MenuComponent)`
+    ${props => getComponentTheme('Select', 'style.root', props)};
 `
 
 export {
     Button,
-    Icon
+    Icon,
+    Menu
 }

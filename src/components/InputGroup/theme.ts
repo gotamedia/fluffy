@@ -71,13 +71,21 @@ const InputGroupTheme: InputGroupThemeType = {
             },
 
             'input': {
-                borderTopLeftRadius: $componentState?.elements?.left === 'element' ? '0' : 'INVALUD_CSS',
-                borderBottomLeftRadius: $componentState?.elements?.left === 'element' ? '0' : 'INVALUD_CSS',
-                borderTopRightRadius: $componentState?.elements?.right === 'element' ? '0' : 'INVALUD_CSS',
-                borderBottomRightRadius: $componentState?.elements?.right === 'element' ? '0' : 'INVALUD_CSS',
+                ...($componentState?.elements?.left === 'element' ? {
+                    borderTopLeftRadius: '0',
+                    borderBottomLeftRadius: '0'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'element' ? {
+                    borderTopRightRadius: '0',
+                    borderBottomRightRadius: '0'
+                } : {}),
 
                 '&:focus': {
-                    zIndex: $componentState?.elements?.left === 'element' || $componentState?.elements?.right === 'element' ? 1 : 'INVALID_CSS'
+                    ...($componentState?.elements?.left === 'element' ||
+                        $componentState?.elements?.right === 'element' ? {
+                            zIndex: 1
+                    } : {})
                 }
             }
         })
@@ -89,8 +97,13 @@ const InputGroupTheme: InputGroupThemeType = {
             },
         
             'input': {
-                paddingLeft: $componentState?.elements?.left === 'icon' ? '26px' : 'INVALID_CSS',
-                paddingRight: $componentState?.elements?.right === 'icon' ? '26px' : 'INVALID_CSS'
+                ...($componentState?.elements?.left === 'icon' ? {
+                    paddingLeft: '26px'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'icon' ? {
+                    paddingRight: '26px'
+                } : {})
             }
         }),
         small: ({ $componentState }) => ({
@@ -99,8 +112,13 @@ const InputGroupTheme: InputGroupThemeType = {
             },
         
             'input': {
-                paddingLeft: $componentState?.elements?.left === 'icon' ? '34px' : 'INVALID_CSS',
-                paddingRight: $componentState?.elements?.right === 'icon' ? '34px' : 'INVALID_CSS'
+                ...($componentState?.elements?.left === 'icon' ? {
+                    paddingLeft: '34px'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'icon' ? {
+                    paddingRight: '34px'
+                } : {})
             }
         }),
         normal: ({ $componentState }) => ({
@@ -109,8 +127,13 @@ const InputGroupTheme: InputGroupThemeType = {
             },
         
             'input': {
-                paddingLeft: $componentState?.elements?.left === 'icon' ? '46px' : 'INVALID_CSS',
-                paddingRight: $componentState?.elements?.right === 'icon' ? '46px' : 'INVALID_CSS'
+                ...($componentState?.elements?.left === 'icon' ? {
+                    paddingLeft: '46px'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'icon' ? {
+                    paddingRight: '46px'
+                } : {})
             }
         }),
         big: ({ $componentState }) => ({
@@ -119,8 +142,13 @@ const InputGroupTheme: InputGroupThemeType = {
             },
         
             'input': {
-                paddingLeft: $componentState?.elements?.left === 'icon' ? '58px' : 'INVALID_CSS',
-                paddingRight: $componentState?.elements?.right === 'icon' ? '58px' : 'INVALID_CSS'
+                ...($componentState?.elements?.left === 'icon' ? {
+                    paddingLeft: '58px'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'icon' ? {
+                    paddingRight: '58px'
+                } : {})
             }
         }),
         huge: ({ $componentState }) => ({
@@ -129,8 +157,13 @@ const InputGroupTheme: InputGroupThemeType = {
             },
         
             'input': {
-                paddingLeft: $componentState?.elements?.left === 'icon' ? '62px' : 'INVALID_CSS',
-                paddingRight: $componentState?.elements?.right === 'icon' ? '62px' : 'INVALID_CSS'
+                ...($componentState?.elements?.left === 'icon' ? {
+                    paddingLeft: '62px'
+                } : {}),
+
+                ...($componentState?.elements?.right === 'icon' ? {
+                    paddingRight: '62px'
+                } : {})
             }
         })
     },

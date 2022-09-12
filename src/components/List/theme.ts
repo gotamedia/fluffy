@@ -24,7 +24,7 @@ const ListTheme: ListThemeType = {
             minWidth: 'unset',
 
             '&:focus': {
-                boxshadow: 'unset'
+                boxShadow: 'unset'
             }
         }
     }
