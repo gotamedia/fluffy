@@ -4,7 +4,7 @@ import { Icons } from '../Icon'
 
 import type { IconType } from '../Icon'
 
-export type DropdownThemeType = {
+export type SubMenuThemeType = {
     style: {
         trigger: ThemeStyleItem,
         icon: ThemeStyleItem,
@@ -15,17 +15,23 @@ export type DropdownThemeType = {
     }
 }
 
-const DropdownTheme: DropdownThemeType = {
+const SubMenuTheme: SubMenuThemeType = {
     style: {
         trigger: {},
-        icon: {},
+        icon: ({ $componentState }) => ({
+            position: 'absolute',
+            right: '5px',
+
+            ...($componentState?.targeted ? {
+                color: 'white',
+                fill: 'white'
+            } : {})
+        }),
         root: {}
     },
     props: {
-        icon: ({ $componentState }) => {
-            return $componentState?.isOpen ? Icons.ArrowUp : Icons.ArrowDown
-        }
+        icon: Icons.ArrowRight
     }
 }
 
-export default DropdownTheme
+export default SubMenuTheme

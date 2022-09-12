@@ -18,7 +18,7 @@ export type PaginationThemeType = {
     },
     props: {
         iconButton: {
-            icon: ThemeStyleItem<IconType>,
+            icon: ThemeStyleItem<IconType> | IconType,
             shape: IconButtonShapeType
         }
         button: ThemeStyleItem<ButtonVariantType>

@@ -29,6 +29,7 @@ import type { PopoverThemeType } from '@components/Popover/theme'
 import type { RadioThemeType } from '@components/Radio/theme'
 import type { SelectThemeType } from '@components/Select/theme'
 import type { SheetThemeType } from '@components/Sheet/theme'
+import type { SubMenuThemeType } from '@components/SubMenu/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -155,6 +156,7 @@ export interface FluffyTheme {
         Popover: PopoverThemeType,
         Radio: RadioThemeType,
         Select: SelectThemeType,
-        Sheet: SheetThemeType
+        Sheet: SheetThemeType,
+        SubMenu: SubMenuThemeType
     }
 }

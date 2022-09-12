@@ -9,11 +9,10 @@ import {
 
 import { v4 as createUniqueId } from 'uuid'
 
+import classNames from '@utils/classNames'
+
 import useLazyRef from '@hooks/useLazyRef'
 import useMenu from '@components/Menu/hooks/useMenu'
-
-import ListItem from '../ListItem'
-import Menu from '../Menu'
 
 import * as Styled from './style'
 import * as Types from './types'
@@ -144,21 +143,31 @@ const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
         }
     }, [])
 
+    const className = classNames({
+        'fluffy-sub-menu': true,
+        [filteredProps.className || '']: true
+    })
+
     const isTargeted = (showSubMenu || targeted) ? true : false
+
+    const componentState = {
+        targeted: isTargeted
+    }
 
     return (
         <>
-            <ListItem
+            <Styled.ListItem
                 {...filteredProps}
+                className={className}
                 targeted={isTargeted}
                 onMouseEnter={handleOnMouseEnterListItem}
                 onMouseLeave={handleOnMouseLeaveListItem}
                 ref={setListItemRef}
             >
-                <Styled.SubMenuIcon $targeted={isTargeted}/>
-            </ListItem>
+                <Styled.SubMenuIcon $componentState={componentState}/>
+            </Styled.ListItem>
 
-            <Menu
+            <Styled.Menu
                 offset={offset}
                 show={showSubMenu}
                 anchor={listItemRef}
@@ -169,7 +178,7 @@ const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
                 }}
             >
                 {children}
-            </Menu>
+            </Styled.Menu>
         </>
     )
 })

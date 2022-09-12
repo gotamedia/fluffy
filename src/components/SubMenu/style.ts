@@ -1,25 +1,33 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+
+import getComponentTheme from '@root/internal/getComponentTheme'
+
+import ListItemComponent from '../ListItem'
+import MenuComponent from '../Menu'
 
 import Icon, {
-    Icons,
     IconSizes
 } from '../Icon'
 
-const SubMenuIcon = styled(Icon).attrs(() => {
+const ListItem = styled(ListItemComponent)`
+    ${props => getComponentTheme('SubMenu', 'style.trigger', props)};
+`
+
+const SubMenuIcon = styled(Icon).attrs((props) => {
     return {
-        icon: Icons.ArrowRight,
+        icon: getComponentTheme('SubMenu', 'props.icon', props),
         size: IconSizes.Small
     }
-})<{ $targeted: boolean }>`
-    position: absolute;
-    right: 5px;
+})`
+    ${props => getComponentTheme('SubMenu', 'style.icon', props)};
+`
 
-    ${({ $targeted }) => $targeted && css`
-        color: white;
-        fill: white;
-    `}
+const Menu = styled(MenuComponent)`
+    ${props => getComponentTheme('SubMenu', 'style.root', props)};
 `
 
 export {
-    SubMenuIcon
+    SubMenuIcon,
+    ListItem,
+    Menu
 }

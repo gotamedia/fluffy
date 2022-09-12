@@ -11,7 +11,7 @@ export type SelectThemeType = {
         root: ThemeStyleItem
     },
     props: {
-        icon: ThemeStyleItem<IconType>
+        icon: ThemeStyleItem<IconType> | IconType
     }
 }
 

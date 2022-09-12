@@ -24,6 +24,7 @@ import PopoverTheme from '@components/Popover/theme'
 import RadioTheme from '@components/Radio/theme'
 import SelectTheme from '@components/Select/theme'
 import SheetTheme from '@components/Sheet/theme'
+import SubMenuTheme from '@components/SubMenu/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -138,7 +139,8 @@ let theme: DefaultTheme = {
         Popover: PopoverTheme,
         Radio: RadioTheme,
         Select: SelectTheme,
-        Sheet: SheetTheme
+        Sheet: SheetTheme,
+        SubMenu: SubMenuTheme
     }
 }
 
