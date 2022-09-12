@@ -168,7 +168,7 @@ const IconButtonTheme: IconButtonThemeType = {
             '&:disabled': {
                 color: '#8A8A8D',
                 backgroundColor: 'transparent',
-                borderColor: 'transparent'
+                borderColor: '#8A8A8D'
             }
         })
     }
