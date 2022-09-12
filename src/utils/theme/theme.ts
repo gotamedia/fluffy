@@ -26,6 +26,7 @@ import SelectTheme from '@components/Select/theme'
 import SheetTheme from '@components/Sheet/theme'
 import SubMenuTheme from '@components/SubMenu/theme'
 import SwitchButtonTheme from '@components/SwitchButton/theme'
+import TagTheme from '@components/Tag/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -142,7 +143,8 @@ let theme: DefaultTheme = {
         Select: SelectTheme,
         Sheet: SheetTheme,
         SubMenu: SubMenuTheme,
-        SwitchButton: SwitchButtonTheme
+        SwitchButton: SwitchButtonTheme,
+        Tag: TagTheme
     }
 }
 

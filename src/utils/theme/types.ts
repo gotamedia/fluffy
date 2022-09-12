@@ -31,6 +31,7 @@ import type { SelectThemeType } from '@components/Select/theme'
 import type { SheetThemeType } from '@components/Sheet/theme'
 import type { SubMenuThemeType } from '@components/SubMenu/theme'
 import type { SwitchButtonThemeType } from '@components/SwitchButton/theme'
+import type { TagThemeType } from '@components/Tag/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -159,6 +160,7 @@ export interface FluffyTheme {
         Select: SelectThemeType,
         Sheet: SheetThemeType,
         SubMenu: SubMenuThemeType,
-        SwitchButton: SwitchButtonThemeType
+        SwitchButton: SwitchButtonThemeType,
+        Tag: TagThemeType
     }
 }
