@@ -28,6 +28,7 @@ import SubMenuTheme from '@components/SubMenu/theme'
 import SwitchButtonTheme from '@components/SwitchButton/theme'
 import TagTheme from '@components/Tag/theme'
 import TimePickerTheme from '@components/TimePicker/theme'
+import ContainerTheme from '@components/Container/theme'
 
 import type { DefaultTheme } from 'styled-components'
 
@@ -146,7 +147,8 @@ let theme: DefaultTheme = {
         SubMenu: SubMenuTheme,
         SwitchButton: SwitchButtonTheme,
         Tag: TagTheme,
-        TimePicker: TimePickerTheme
+        TimePicker: TimePickerTheme,
+        Container: ContainerTheme
     }
 }
 

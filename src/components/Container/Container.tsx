@@ -2,6 +2,8 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 
@@ -31,4 +33,4 @@ const Container: Types.ContainerComponent = forwardRef((props, ref) => {
 
 Container.displayName = 'Container'
 
-export default Container
+export default withThemeProps(Container) as Types.ContainerComponent

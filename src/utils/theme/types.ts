@@ -33,6 +33,7 @@ import type { SubMenuThemeType } from '@components/SubMenu/theme'
 import type { SwitchButtonThemeType } from '@components/SwitchButton/theme'
 import type { TagThemeType } from '@components/Tag/theme'
 import type { TimePickerThemeType } from '@components/TimePicker/theme'
+import type { ContainerThemeType } from '@components/Container/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -163,6 +164,7 @@ export interface FluffyTheme {
         SubMenu: SubMenuThemeType,
         SwitchButton: SwitchButtonThemeType,
         Tag: TagThemeType,
-        TimePicker: TimePickerThemeType
+        TimePicker: TimePickerThemeType,
+        Container: ContainerThemeType
     }
 }
