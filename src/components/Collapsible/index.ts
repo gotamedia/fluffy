@@ -1,5 +1,5 @@
 import BaseCollapsible from "./Collapsible"
-import { CollapsibleComponent, CollapsibleProps } from "./types"
+import type { CollapsibleComponent, CollapsibleProps } from "./types"
 
 const Collapsible = BaseCollapsible as CollapsibleComponent
 

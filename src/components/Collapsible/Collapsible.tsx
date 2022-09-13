@@ -5,7 +5,7 @@ import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 import useResizeObserver from "@hooks/useResizeObserver"
 
 import * as Styled from "./style"
-import * as Types from "./types"
+import type * as Types from "./types"
 
 const Collapsible: Types.CollapsibleComponent = forwardRef(({
     open,
