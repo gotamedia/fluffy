@@ -23,13 +23,13 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         const currentValue: string[] = value && typeof value === "string" ? value.split("~") : []
         let newValue: FSTypes.FormDataValue
 
-        if (currentValue.includes(option.value)) {
-            newValue = currentValue.filter((currentOption) => currentOption !== option.value).join("~")
+        if (currentValue.includes(option)) {
+            newValue = currentValue.filter((currentOption) => currentOption !== option).join("~")
         } else {
             if (isMultiSelect) {
-                newValue = [...currentValue, option.value].join("~")
+                newValue = [...currentValue, option].join("~")
             } else {
-                newValue = option.value
+                newValue = option
             }
         }
 
