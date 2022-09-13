@@ -8,6 +8,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import type { KeyboardEventHandler } from 'react'
 
 import * as Styled from './style'
@@ -112,4 +114,4 @@ const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
 
 FocusTrap.displayName = 'FocusTrap'
 
-export default FocusTrap
+export default withThemeProps(FocusTrap) as Types.FocusTrapComponent
