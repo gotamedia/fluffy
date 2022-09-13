@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 import IconButton, { IconButtonShapes } from './'
 import { Icons } from '../Icon'

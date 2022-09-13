@@ -32,7 +32,7 @@ find ./$temp_root_dir -name \*.test.tsx -type f -delete
 find ./$temp_root_dir -name \*.cy.tsx -type f -delete
 
 ignore_list=(
-    "tests"
+    
 )
 
 no_transpile_list=(

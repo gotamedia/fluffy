@@ -10,7 +10,9 @@ module.exports = {
             '@components': path.resolve(rootDir, 'src/components/'),
             '@contexts': path.resolve(rootDir, 'src/contexts/'),
             '@hooks': path.resolve(rootDir, 'src/hooks/'),
-            '@utils': path.resolve(rootDir, 'src/utils/')
+            '@utils': path.resolve(rootDir, 'src/utils/'),
+            '@internal': path.resolve(rootDir, 'src/internal/'),
+            '@hocs': path.resolve(rootDir, 'src/hocs/')
         }
     },
     module: {

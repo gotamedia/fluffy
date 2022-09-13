@@ -12,14 +12,14 @@ export type ComponentThemeItem = {
 export type GetComponentTheme = (
     name: keyof DefaultTheme['components'],
     property: string,
-    props: {
+    props?: {
         theme: DefaultTheme,
         $componentState?: Record<string, any>
     }
 ) => Record<string, ThemeStyleObject> | undefined
 
 const getComponentTheme: GetComponentTheme = (name, property, props) => {
-    if (props.theme) {
+    if (props?.theme) {
         const componentTheme = props.theme.components[name]
         
         if (componentTheme) {

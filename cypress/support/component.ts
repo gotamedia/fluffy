@@ -5,7 +5,7 @@ import '@testing-library/cypress/add-commands'
 import chaiColors from 'chai-colors'
 import 'cypress-real-events/support'
 
-import WithThemeProvider from '../../src/utils/tests/WithThemeProvider'
+import WithThemeProvider from '@internal/hocs/WithThemeProvider'
 
 chai.use(chaiColors)
 

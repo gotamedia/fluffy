@@ -30,7 +30,9 @@ module.exports = {
                     "@components": path.resolve(ROOT_DIR, 'src/components/'),
                     "@contexts": path.resolve(ROOT_DIR, 'src/contexts/'),
                     "@hooks": path.resolve(ROOT_DIR, 'src/hooks/'),
-                    "@utils": path.resolve(ROOT_DIR, 'src/utils/')
+                    "@utils": path.resolve(ROOT_DIR, 'src/utils/'),
+                    "@internal": path.resolve(ROOT_DIR, 'src/internal/'),
+                    "@hocs": path.resolve(ROOT_DIR, 'src/hocs/')
                 }
             }
         }

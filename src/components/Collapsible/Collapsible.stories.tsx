@@ -1,5 +1,5 @@
 import { Meta } from "@storybook/react"
-import React, { useCallback, useState } from "react"
+import { useCallback, useState } from "react"
 
 import Button from "../Button/"
 import Image from "../Image/"

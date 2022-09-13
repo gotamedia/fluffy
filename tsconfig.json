@@ -24,10 +24,13 @@
             "@components/*": ["./components/*"],
             "@contexts/*": ["./contexts/*"],
             "@hooks/*": ["./hooks/*"],
-            "@utils/*": ["./utils/*"]
+            "@utils/*": ["./utils/*"],
+            "@hocs/*": ["./hocs/*"],
+            "@internal/*": ["./internal/*"]
         },
         "types": [
             "node",
+            "jest",
             "cypress",
             "cypress-real-events"
         ],
@@ -48,9 +51,6 @@
     "exclude": [
         "dist",
         "src/icons",
-        "src/utils/tests",
-        "node_modules",
-        "src/**/*.test.tsx",
-        "src/**/*.stories.tsx"
+        "node_modules"
     ]
 }

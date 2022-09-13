@@ -27,7 +27,9 @@
       "^@components(.*)$": "<rootDir>/src/components$1",
       "^@contexts(.*)$": "<rootDir>/src/contexts$1",
       "^@hooks(.*)$": "<rootDir>/src/hooks$1",
-      "^@utils(.*)$": "<rootDir>/src/utils$1"
+      "^@utils(.*)$": "<rootDir>/src/utils$1",
+      "^@hocs(.*)$": "<rootDir>/src/hocs$1",
+      "^@internal(.*)$": "<rootDir>/src/internal$1"
     },
     "collectCoverageFrom": [
       "src/*/**",

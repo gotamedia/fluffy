@@ -1,12 +1,16 @@
-import React from 'react'
+
 import { render } from '@testing-library/react'
+
+import WithThemeProvider from '../../internal/hocs/WithThemeProvider'
 
 import Icon, { Icons } from './index'
 
 describe('<Icon />', () => {
     it('should not crash', () => {
         render(
-            <Icon icon={Icons.Info}/>
+            WithThemeProvider(
+                <Icon icon={Icons.Info}/>
+            )
         )
     })
 })

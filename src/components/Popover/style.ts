@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import getComponentTheme from '@root/internal/getComponentTheme'
+import getComponentTheme from '@internal/utils/getComponentTheme'
 
 import AnchorComponent from '@components/Anchor'
 import OverlayComponent from '@components/Overlay'
