@@ -3,7 +3,8 @@ import {
     useCallback
 } from 'react'
 
-import { DatePicker } from './DatePicker'
+import DatePicker from './'
+import { DatePicker as Component } from './DatePicker'
 
 import DateUtility from '../../utils/date'
 
@@ -141,7 +142,7 @@ export {
 
 export default {
     title: 'Developments/Components/DatePicker',
-    component: DatePicker,
+    component: Component,
     argTypes: {},
     args: {
         locale: 'sv',
@@ -153,4 +154,4 @@ export default {
             variant: 'outline'
         }
     }
-} as Meta<typeof DatePicker>
+} as Meta<Types.DatePickerComponent>

@@ -5,7 +5,8 @@ import {
 
 import { Story, Meta } from '@storybook/react'
 
-import { Menu } from './Menu'
+import Menu from './'
+import { Menu as Component} from './Menu'
 
 import ListItem from '../ListItem'
 import IconButton, { IconButtonShapes, IconButtonSizes } from '../IconButton'
@@ -91,7 +92,7 @@ BasicStory.args = {
 
 export default {
     title: 'Developments/Components/Menu',
-    component: Menu,
+    component: Component,
     argTypes: {
     },
     args: {

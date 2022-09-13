@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { Button } from './Button'
+import Button from './'
+import { Button as Component } from './Button'
 
 import Icon, { Icons, IconType } from '../Icon'
 
@@ -59,10 +60,9 @@ export {
 
 export default {
     title: 'Components/Button',
-    component: Button,
+    component: Component,
     argTypes: {},
     args: {
-        variant: 'primary',
         text: 'Click me!',
         size: 'normal',
         icon: Icons.Eye,

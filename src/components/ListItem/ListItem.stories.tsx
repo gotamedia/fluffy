@@ -3,7 +3,8 @@ import {
     useCallback
 } from 'react'
 
-import { ListItem } from './ListItem'
+import ListItem from './'
+import { ListItem as Component } from './ListItem'
 import { ListItemSizes } from './types'
 
 import type * as Types from './types'
@@ -34,7 +35,7 @@ export {
 
 export default {
     title: 'Developments/Components/ListItem',
-    component: ListItem,
+    component: Component,
     argTypes: {},
     args: {
         size: ListItemSizes.Normal,

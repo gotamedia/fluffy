@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 
-import { Overlay } from './Overlay'
+import Overlay from './'
+import { Overlay as Component} from './Overlay'
 
 import * as Types from './types'
 
@@ -25,7 +26,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/Overlay',
-    component: Overlay,
+    component: Component,
     argTypes: {
     },
     args: {

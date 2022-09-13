@@ -1,4 +1,5 @@
-import { Image } from './Image'
+import Image from './'
+import { Image as Component } from './Image'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -76,7 +77,7 @@ export {
 
 export default {
     title: 'Developments/Components/Image',
-    component: Image,
+    component: Component,
     argTypes: {},
     args: {
         alt: 'Mr.Weng',
@@ -85,4 +86,4 @@ export default {
         src: 'https://c.tenor.com/kZdxnMmK5B4AAAAd/weng-stare.gif',
         thumbnailSrc: 'https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg'
     }
-} as Meta<typeof Image>
+} as Meta<Types.ImageComponent>

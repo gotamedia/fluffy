@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { Dropdown } from './Dropdown'
+import Dropdown from './'
+import { Dropdown as Component} from './Dropdown'
 
 import ListItem from '../ListItem'
 
@@ -86,7 +87,7 @@ SelectStory.args = {
 
 export default {
     title: 'Developments/Components/Dropdown',
-    component: Dropdown,
+    component: Component,
     argTypes: {
     },
     args: {

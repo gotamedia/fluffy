@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
-import { InputGroup } from './InputGroup'
+import InputGroup from './'
+import { InputGroup as Component } from './InputGroup'
 
 import Input from '../Input'
 import IconButton from '../IconButton'
@@ -154,10 +155,10 @@ export {
 
 export default {
     title: 'Developments/Components/InputGroup',
-    component: InputGroup,
+    component: Component,
     argTypes: {},
     args: {
         size: 'normal',
         variant: 'primary'
     }
-} as Meta<typeof InputGroup>
+} as Meta<Types.InputGroupComponent>

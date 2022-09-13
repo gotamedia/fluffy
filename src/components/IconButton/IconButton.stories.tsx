@@ -1,5 +1,5 @@
-import { IconButton } from './IconButton'
-import { IconButtonShapes } from './'
+import IconButton, { IconButtonShapes } from './'
+import { IconButton as Component } from './IconButton'
 
 import { Icons } from '../Icon'
 
@@ -21,7 +21,7 @@ export {
 
 export default {
     title: 'Components/IconButton',
-    component: IconButton,
+    component: Component,
     argTypes: {},
     args: {
         variant: 'primary',
@@ -30,4 +30,4 @@ export default {
         shape: IconButtonShapes.Square,
         disabled: false
     }
-} as Meta<typeof IconButton>
+} as Meta<Types.IconButtonComponent>

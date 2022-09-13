@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 
-import { Container } from './Container'
+import Container from './'
+import { Container as Component } from './Container'
 
 import * as Types from './types'
 
@@ -18,7 +19,7 @@ export const Basic = Template.bind({})
 
 export default {
     title: 'Developments/Components/Container',
-    component: Container,
+    component: Component,
     argTypes: {
     },
     args: {

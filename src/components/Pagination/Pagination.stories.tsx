@@ -3,7 +3,8 @@ import {
     useCallback
 } from 'react'
 
-import { Pagination } from './Pagination'
+import Pagination from './'
+import { Pagination as Component } from './Pagination'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -37,7 +38,7 @@ export {
 
 export default {
     title: 'Developments/Components/Pagination',
-    component: Pagination,
+    component: Component,
     argTypes: {},
     args: {
         size: 'normal',
@@ -46,4 +47,4 @@ export default {
         totalPages: 100,
         visiblePages: 10
     }
-} as Meta<typeof Pagination>
+} as Meta<Types.PaginationComponent>

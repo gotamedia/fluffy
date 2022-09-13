@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import { LazyLoad } from './LazyLoad'
+import LazyLoad from './'
+import { LazyLoad as Component} from './LazyLoad'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -49,9 +50,9 @@ export {
 
 export default {
     title: 'Developments/Components/LazyLoad',
-    component: LazyLoad,
+    component: Component,
     argTypes: {},
     args: {
         
     }
-} as Meta<typeof LazyLoad>
+} as Meta<Types.LazyLoadComponent>

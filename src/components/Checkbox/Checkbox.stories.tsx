@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
-import { Checkbox } from './Checkbox'
+import Checkbox from './'
+import { Checkbox as Component } from './Checkbox'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -31,7 +32,7 @@ export {
 
 export default {
     title: 'Developments/Components/Checkbox',
-    component: Checkbox,
+    component: Component,
     argTypes: {},
     args: {
         checked: true,
@@ -39,4 +40,4 @@ export default {
         disabled: false,
         label: 'Check me!'
     }
-} as Meta<typeof Checkbox>
+} as Meta<Types.CheckboxComponent>

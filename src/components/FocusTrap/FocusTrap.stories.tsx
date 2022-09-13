@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react'
 
-import { FocusTrap } from './FocusTrap'
+import FocusTrap from './'
+import { FocusTrap as Component} from './FocusTrap'
 
 import Button from '../Button'
 import Input from '../Input'
@@ -46,7 +47,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/FocusTrap',
-    component: FocusTrap,
+    component: Component,
     argTypes: {
     },
     args: {

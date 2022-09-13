@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import { ButtonGroup } from './ButtonGroup'
+import ButtonGroup from './'
+import { ButtonGroup as Component } from './ButtonGroup'
 
 import Button from '../Button'
 import IconButton from '../IconButton'
@@ -88,7 +89,7 @@ export {
 
 export default {
     title: 'Components/ButtonGroup',
-    component: ButtonGroup,
+    component: Component,
     argTypes: {},
     args: {
         variant: 'primary',
@@ -96,4 +97,4 @@ export default {
         size: 'normal',
         disabled: false
     }
-} as Meta<typeof ButtonGroup>
+} as Meta<Types.ButtonGroupComponent>

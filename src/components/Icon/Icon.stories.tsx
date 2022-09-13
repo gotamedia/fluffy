@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
-import { Icon } from './Icon'
-
-import {
+import Icon, {
     Icons,
     IconSizes
 } from './'
+import { Icon as Component } from './Icon'
 
 import * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -83,10 +82,10 @@ export {
 
 export default {
     title: 'Components/Icon',
-    component: Icon,
+    component: Component,
     argTypes: {},
     args: {
         icon: Icons.Bank,
         size: IconSizes.Normal
     }
-} as Meta<typeof Icon>
+} as Meta<Types.IconComponent>

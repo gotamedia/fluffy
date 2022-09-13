@@ -3,7 +3,8 @@ import {
     useCallback
 } from 'react'
 
-import { List } from './List'
+import List from './'
+import { List as Component } from './List'
 
 import ListItem from '../ListItem'
 import { ListItemTypes } from '../ListItem/types'
@@ -60,7 +61,7 @@ export {
 
 export default {
     title: 'Developments/Components/List',
-    component: List,
+    component: Component,
     argTypes: {},
     args: {
         

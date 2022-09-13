@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 import { Story, Meta } from '@storybook/react'
 
-import { Modal } from './Modal'
+import Modal from './'
+import { Modal as Component } from './Modal'
 
 import Button from '../Button'
 
@@ -43,7 +44,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/Modal',
-    component: Modal,
+    component: Component,
     argTypes: {
     },
     args: {
