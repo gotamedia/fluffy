@@ -3,7 +3,11 @@ import {
     tint
 } from 'polished'
 
-import type { ThemeStyleItem } from '@root/types'
+import type { ButtonProps } from './types'
+
+import type {
+    ThemeStyleItem
+} from '@root/types'
 
 const sharedStyle = {
     disabled: {
@@ -21,6 +25,7 @@ const sharedStyle = {
 }
 
 export type ButtonThemeType = {
+    defaultProps: Partial<ButtonProps>,
     style: {
         root: ThemeStyleItem,
         icon: ThemeStyleItem
@@ -41,6 +46,7 @@ export type ButtonThemeType = {
 }
 
 const ButtonTheme: ButtonThemeType = {
+    defaultProps: {},
     style: {
         root: {
             display: 'inline-flex',

@@ -6,6 +6,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ReactElement } from 'react'
@@ -64,4 +66,4 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
 
 Button.displayName = 'Button'
 
-export default Button
+export default withThemeProps(Button)
