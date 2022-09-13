@@ -319,7 +319,7 @@ const useBuildFormContext = (props: Types.FormContext.HookProps): Types.FormCont
                 .map((validationMessage) => ({ ...validationMessage, validationId: validation.validationId }))
         ], [])
 
-        const validationMessages = [
+        const validationMessages: FSTypes.Validation.MessageWithId[] = [
             ...fieldValidationMessages,
             ...formValidationMessages
         ]

@@ -100,7 +100,7 @@ namespace FormContext {
         export type onSubmit = (
             formData: FormData,
             isValid: boolean,
-            validationMessages: Validation.Message[],
+            validationMessages: Validation.MessageWithId[],
             endSubmissionState: () => void
         ) => void
     }
@@ -184,7 +184,7 @@ namespace FormContext {
         setIsSubmitting: (isSubmitting: boolean) => void
         terminateField: (fieldName: string) => void
         validateField: (fieldName: string, formData: FormData, validateOnChangeOnly?: boolean) => Validation.Message[]
-        validateForm: (formData: FormData) => Validation.Message[]
+        validateForm: (formData: FormData) => Validation.MessageWithId[]
     }
 
     export enum Types {
