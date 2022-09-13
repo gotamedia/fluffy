@@ -2,6 +2,8 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import Icon from '../Icon'
 
 import * as Styled from './style'
@@ -40,4 +42,4 @@ export const IconButton: Types.IconButtonComponent = forwardRef((props, ref) => 
 
 IconButton.displayName = 'IconButton'
 
-export default IconButton
+export default withThemeProps(IconButton) as Types.IconButtonComponent

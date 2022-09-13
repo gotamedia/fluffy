@@ -4,6 +4,7 @@ import {
 } from 'polished'
 
 import type { ThemeStyleItem } from '@root/types'
+import type { IconButtonProps } from './types'
 
 const sharedStyle = {
     disabled: {
@@ -21,6 +22,7 @@ const sharedStyle = {
 }
 
 export type IconButtonThemeType = {
+    defaultProps: Partial<IconButtonProps>,
     style: {
         root: ThemeStyleItem,
         icon: ThemeStyleItem
@@ -44,6 +46,7 @@ export type IconButtonThemeType = {
 }
 
 const IconButtonTheme: IconButtonThemeType = {
+    defaultProps: {},
     style: {
         root: {
             display: 'inline-flex',
