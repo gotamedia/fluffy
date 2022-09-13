@@ -3,8 +3,10 @@ import { tint } from 'polished'
 import { ImageLoadingEffects } from './components/LazyImage/types'
 
 import type { ThemeStyleItem } from '@root/types'
+import type { ImageProps } from './types'
 
 export type ImageThemeType = {
+    defaultProps: Partial<ImageProps>,
     style: {
         root: ThemeStyleItem,
         lazy: {
@@ -17,6 +19,11 @@ export type ImageThemeType = {
 }
 
 const ImageTheme: ImageThemeType = {
+    defaultProps: {
+        useNativeLazyLoading: false,
+        loadingEffect: ImageLoadingEffects.Blur,
+        transitionDuration: 1
+    },
     style: {
         root: {},
         lazy: {

@@ -6,6 +6,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import LazyImage from './components/LazyImage'
 
 import * as Styled from './style'
@@ -19,9 +21,9 @@ export const Image: Types.ImageComponent = forwardRef((props, ref) => {
         thumbnail,
         thumbnailSrc,
         withPlaceholder,
-        useNativeLazyLoading = false,
-        loadingEffect = 'blur',
-        transitionDuration = 1,
+        useNativeLazyLoading,
+        loadingEffect,
+        transitionDuration,
         observerOptions = {},
         ...filteredProps
     } = props
@@ -76,4 +78,4 @@ export const Image: Types.ImageComponent = forwardRef((props, ref) => {
 
 Image.displayName = 'Image'
 
-export default Image
+export default withThemeProps(Image) as Types.ImageComponent
