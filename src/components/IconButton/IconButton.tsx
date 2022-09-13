@@ -11,9 +11,9 @@ import type * as Types from './types'
 
 export const IconButton: Types.IconButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
-        shape = 'square',
+        size,
+        variant,
+        shape,
         icon,
         ...DOMProps
     } = props

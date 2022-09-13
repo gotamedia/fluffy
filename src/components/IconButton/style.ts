@@ -13,9 +13,9 @@ type StyledIconButtonProps = {
 
 const IconButton = styled.button<StyledIconButtonProps>`
     ${props => getComponentTheme('IconButton', 'style.root', props)};
-    ${props => getComponentTheme('IconButton', `sizes.${props.$size || 'normal'}`, props)};
-    ${props => getComponentTheme('IconButton', `shapes.${props.$shape || 'square'}`, props)};
-    ${props => getComponentTheme('IconButton', `variants.${props.$variant || 'primary'}`, props)};
+    ${props => getComponentTheme('IconButton', `sizes.${props.$size}`, props)};
+    ${props => getComponentTheme('IconButton', `shapes.${props.$shape}`, props)};
+    ${props => getComponentTheme('IconButton', `variants.${props.$variant}`, props)};
 
     .fluffy-icon {
         ${props => getComponentTheme('Button', 'style.icon', props)};

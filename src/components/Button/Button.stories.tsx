@@ -50,6 +50,10 @@ const WithIcon: Story<Types.ButtonProps & {
     )
 }
 
+WithIcon.args = {
+    icon: Icons.Eye,
+}
+
 const WithIconStory = WithIcon.bind({})
 WithIconStory.storyName = 'WithIcon'
 
@@ -64,8 +68,6 @@ export default {
     argTypes: {},
     args: {
         text: 'Click me!',
-        size: 'normal',
-        icon: Icons.Eye,
         disabled: false
     }
 } as Meta<Types.ButtonComponent>

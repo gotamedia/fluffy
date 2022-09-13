@@ -1,3 +1,5 @@
+import { ContainerBackdrops } from './types'
+
 import type { ThemeStyleItem } from '@root/types'
 import type { ContainerProps } from './types'
 
@@ -15,7 +17,9 @@ export type ContainerThemeType = {
 }
 
 const ContainerTheme: ContainerThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        backdrop: ContainerBackdrops.Medium
+    },
     style: {
         root: {
             borderRadius: '5px',

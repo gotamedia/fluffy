@@ -18,12 +18,12 @@ import type { SyntheticEvent } from 'react'
 export const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
     const {
         className,
-        locale = 'sv',
-        popperPlacement = 'bottom-start',
+        locale,
+        popperPlacement,
         inputProps,
         calendarClassName,
         onClear,
-        isClearable = false,
+        isClearable,
         onChange,
         ...filteredProps
     } = props

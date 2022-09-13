@@ -13,7 +13,7 @@ import type { ChangeEventHandler } from 'react'
 
 export const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
+        size,
         label,
         onChange,
         onValueChange,

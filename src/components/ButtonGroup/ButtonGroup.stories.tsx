@@ -92,9 +92,7 @@ export default {
     component: Component,
     argTypes: {},
     args: {
-        variant: 'primary',
         text: 'Click me!',
-        size: 'normal',
         disabled: false
     }
 } as Meta<Types.ButtonGroupComponent>

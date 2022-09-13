@@ -36,7 +36,6 @@ export default {
     argTypes: {},
     args: {
         checked: true,
-        size: 'normal',
         disabled: false,
         label: 'Check me!'
     }

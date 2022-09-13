@@ -18,8 +18,8 @@ import type { ReactElement } from 'react'
 
 export const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         disabled,
         children,
         ...DOMProps

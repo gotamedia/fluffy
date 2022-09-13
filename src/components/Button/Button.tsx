@@ -14,8 +14,8 @@ import type { ReactElement } from 'react'
 
 export const Button: Types.ButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         children,
         ...DOMProps
     } = props

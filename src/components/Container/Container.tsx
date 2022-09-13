@@ -10,7 +10,7 @@ import type * as Types from './types'
 export const Container: Types.ContainerComponent = forwardRef((props, ref) => {
     const {
         children,
-        backdrop = 'medium',
+        backdrop,
         ...filteredProps
     } = props
 

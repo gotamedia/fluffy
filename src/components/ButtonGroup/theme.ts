@@ -1,3 +1,8 @@
+import {
+    ButtonGroupVariants,
+    ButtonGroupSizes
+ } from './types'
+
 import type { ThemeStyleItem } from '@root/types'
 import type { ButtonGroupProps } from './types'
 
@@ -13,7 +18,10 @@ export type ButtonGroupThemeType = {
 }
 
 const ButtonGroupTheme: ButtonGroupThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        variant: ButtonGroupVariants.Primary,
+        size: ButtonGroupSizes.Normal
+    },
     style: {
         root: {
             display: 'inline-flex',

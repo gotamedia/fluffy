@@ -3,6 +3,12 @@ import {
     tint
 } from 'polished'
 
+import {
+    IconButtonSizes,
+    IconButtonVariants,
+    IconButtonShapes
+} from './types'
+
 import type { ThemeStyleItem } from '@root/types'
 import type { IconButtonProps } from './types'
 
@@ -46,7 +52,11 @@ export type IconButtonThemeType = {
 }
 
 const IconButtonTheme: IconButtonThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        size: IconButtonSizes.Normal,
+        variant: IconButtonVariants.Primary,
+        shape: IconButtonShapes.Square,
+    },
     style: {
         root: {
             display: 'inline-flex',

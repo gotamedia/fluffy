@@ -145,13 +145,8 @@ export default {
     component: Component,
     argTypes: {},
     args: {
-        locale: 'sv',
-        dateFormat: 'PPP',
         disabled: false,
         isClearable: false,
-        placeholderText: 'Select your date',
-        inputProps: {
-            variant: 'outline'
-        }
+        placeholderText: 'Select your date'
     }
 } as Meta<Types.DatePickerComponent>

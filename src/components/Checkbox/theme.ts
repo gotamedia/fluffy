@@ -3,6 +3,8 @@ import {
     tint
 } from 'polished'
 
+import { CheckboxSizes } from './types'
+
 import type { ThemeStyleItem } from '@root/types'
 import type { CheckboxProps } from './types'
 
@@ -43,7 +45,9 @@ export type CheckboxThemeType = {
 }
 
 const CheckboxTheme: CheckboxThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        size: CheckboxSizes.Normal
+    },
     style: {
         root: {
             display: 'inline-flex',

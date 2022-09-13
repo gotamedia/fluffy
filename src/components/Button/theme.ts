@@ -3,6 +3,11 @@ import {
     tint
 } from 'polished'
 
+import {
+    ButtonVariants,
+    ButtonSizes
+} from './types'
+
 import type { ThemeStyleItem } from '@root/types'
 import type { ButtonProps } from './types'
 
@@ -43,7 +48,10 @@ export type ButtonThemeType = {
 }
 
 const ButtonTheme: ButtonThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        size: ButtonSizes.Normal,
+        variant: ButtonVariants.Primary
+    },
     style: {
         root: {
             display: 'inline-flex',

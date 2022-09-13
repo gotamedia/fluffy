@@ -18,7 +18,15 @@ export type DatePickerThemeType = {
 }
 
 const DatePickerTheme: DatePickerThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        locale: 'sv',
+        dateFormat: 'PPP',
+        popperPlacement: 'bottom-start',
+        isClearable: false,
+        inputProps: {
+            variant: 'outline'
+        }
+    },
     style: {
         datepicker: datePickerStyle,
         root: {

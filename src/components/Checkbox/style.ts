@@ -10,7 +10,7 @@ const Wrapper = styled.label`
 
 const Checkbox = styled.input<{ $size?: CheckboxProps['size'] }>`
     ${props => getComponentTheme('Checkbox', 'style.checkbox', props)};
-    ${props => getComponentTheme('Checkbox', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('Checkbox', `sizes.${props.$size}`, props)};
 `
 
 const Text = styled.span<{ $componentState: Record<string, any> }>`

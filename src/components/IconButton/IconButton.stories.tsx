@@ -1,4 +1,4 @@
-import IconButton, { IconButtonShapes } from './'
+import IconButton from './'
 import { IconButton as Component } from './IconButton'
 
 import { Icons } from '../Icon'
@@ -24,10 +24,7 @@ export default {
     component: Component,
     argTypes: {},
     args: {
-        variant: 'primary',
-        size: 'normal',
         icon: Icons.Eye,
-        shape: IconButtonShapes.Square,
         disabled: false
     }
 } as Meta<Types.IconButtonComponent>
