@@ -7,6 +7,8 @@ import {
 import DateUtility from '@utils/date'
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import DatePickerInput from './components/DatePickerInput'
 
 import * as Styled from './style'
@@ -78,4 +80,4 @@ const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
 
 DatePicker.displayName = 'DatePicker'
 
-export default DatePicker
+export default withThemeProps(DatePicker) as Types.DatePickerComponent

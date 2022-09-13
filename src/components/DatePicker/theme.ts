@@ -1,11 +1,13 @@
 import { tint } from 'polished'
 
-import type { ThemeStyleItem } from '@root/types'
-
 // @ts-ignore
 import datePickerStyle from '../../../node_modules/react-datepicker/dist/react-datepicker.css'
 
+import type { ThemeStyleItem } from '@root/types'
+import type { DatePickerProps } from './types'
+
 export type DatePickerThemeType = {
+    defaultProps: Partial<DatePickerProps>,
     style: {
         datepicker: string,
         root: ThemeStyleItem,
@@ -16,6 +18,7 @@ export type DatePickerThemeType = {
 }
 
 const DatePickerTheme: DatePickerThemeType = {
+    defaultProps: {},
     style: {
         datepicker: datePickerStyle,
         root: {
