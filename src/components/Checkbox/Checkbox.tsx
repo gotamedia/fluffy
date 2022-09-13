@@ -5,6 +5,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
@@ -65,4 +67,4 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
 
 Checkbox.displayName = 'Checkbox'
 
-export default Checkbox
+export default withThemeProps(Checkbox) as Types.CheckboxComponent

@@ -4,6 +4,7 @@ import {
 } from 'polished'
 
 import type { ThemeStyleItem } from '@root/types'
+import type { CheckboxProps } from './types'
 
 const sharedStyle = {
     disabled: {
@@ -20,6 +21,7 @@ const sharedStyle = {
 }
 
 export type CheckboxThemeType = {
+    defaultProps: Partial<CheckboxProps>,
     style: {
         root: ThemeStyleItem,
         checkbox: ThemeStyleItem,
@@ -41,6 +43,7 @@ export type CheckboxThemeType = {
 }
 
 const CheckboxTheme: CheckboxThemeType = {
+    defaultProps: {},
     style: {
         root: {
             display: 'inline-flex',
