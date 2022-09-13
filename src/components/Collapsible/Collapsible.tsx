@@ -13,20 +13,23 @@ const Collapsible: Types.CollapsibleComponent = forwardRef(({
     ...rest
 }, ref) => {
     const { heightTransition } = useAnimation()
+    const [contentRef, diminsions] = useResizeObserver<HTMLDivElement>()
     const initialValue = useRef<boolean | undefined | null>(open)
     const wrapperRef = useRef<HTMLDivElement>(null)
-    const [contentRef, diminsions] = useResizeObserver<HTMLDivElement>()
+    const trackFromHeight = useRef(0)
 
     useIsomorphicLayoutEffect(() => {
+        const wrapperElement = wrapperRef?.current
+        const observeElementHeight = diminsions?.height
         const isOpenValid = typeof open === "boolean"
         const openOnMount = isOpenValid && open && initialValue.current
         const shouldRunAnimation = openOnMount || (isOpenValid && initialValue.current === null)
-        if (wrapperRef.current && diminsions?.height && shouldRunAnimation) {
-            const contentHeight = diminsions.height
-            const element = wrapperRef.current
-            const to = open ? contentHeight : 0
-            const from = open ? 0 : contentHeight
-            heightTransition({ element, to, from })
+
+        if (wrapperElement && observeElementHeight && shouldRunAnimation) {
+            const from = open ? trackFromHeight.current : observeElementHeight
+            const to = open ? observeElementHeight : 0
+            trackFromHeight.current = to
+            heightTransition({ element: wrapperElement, from, to })
         }
         if (initialValue.current !== null) {
             initialValue.current = null
