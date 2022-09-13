@@ -7,7 +7,7 @@ import type * as Types from "./types"
 import ValidationMessages from "./ValidationMessages"
 
 const Field: Types.FieldComponent = forwardRef((props, ref) => {
-    const { children, validateOnChange, width, ...wrapperProps } = props
+    const { children, defaultLabelProps, validateOnChange, width, ...wrapperProps } = props
 
     const fieldContextValue = Hooks.useBuildFieldContext()
 
@@ -22,7 +22,7 @@ const Field: Types.FieldComponent = forwardRef((props, ref) => {
             {...wrapperProps}
         >
             <Contexts.FieldContext.Provider value={fieldContextValue}>
-                <DefaultLabel />
+                <DefaultLabel {...defaultLabelProps} />
                 {children}
                 <ValidationMessages />
             </Contexts.FieldContext.Provider>

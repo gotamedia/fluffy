@@ -1,3 +1,4 @@
+import { LabelProps } from "@components/FormSystem/components/Field/DefaultLabel/types"
 import Label from "@components/FormSystem/components/Field/Label"
 import { ForwardRefExoticComponent, HTMLAttributes, PropsWithChildren, RefAttributes } from "react"
 
@@ -6,6 +7,7 @@ export type StyledFieldProps = {
 }
 
 export type FieldProps = PropsWithChildren<{
+    defaultLabelProps?: LabelProps & { [key: string]: string }
     validateOnChange?: boolean
 } & StyledFieldProps & HTMLAttributes<HTMLDivElement>>
 
