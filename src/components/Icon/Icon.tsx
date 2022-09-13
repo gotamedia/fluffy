@@ -1,14 +1,18 @@
-import { useMemo } from 'react'
+import {
+    useMemo,
+    forwardRef
+} from 'react'
 
 import classNames from '@utils/classNames'
+
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Icons from '@root/icons'
 
 import * as Styled from './style'
 import * as Types from './types'
-import type { FC } from 'react'
 
-export const Icon: FC<Types.IconProps> = (props) => {
+export const Icon: Types.IconComponent = forwardRef((props, ref) => {
     const {
         icon,
         width,
@@ -22,10 +26,10 @@ export const Icon: FC<Types.IconProps> = (props) => {
         ...filteredProps
     } = props
 
-    const IconCompoennt = useMemo<Types.IconComponent | null>(() => {
+    const IconCompoennt = useMemo<Types.SVGIconComponent | null>(() => {
         if (icon) {            
             try {
-                return Icons[icon] as Types.IconComponent
+                return Icons[icon] as Types.SVGIconComponent
             } catch(error) {
                 console.warn('Icon not found, could not find icon with name: ', icon)
                 return null
@@ -53,6 +57,7 @@ export const Icon: FC<Types.IconProps> = (props) => {
 
     return (
         <Styled.Span
+            ref={ref}
             style={style}
             $size={size}
             className={classNameValue}
@@ -62,6 +67,6 @@ export const Icon: FC<Types.IconProps> = (props) => {
             {iconContent}
         </Styled.Span>
     )
-}
+})
 
-export default Icon
+export default withThemeProps(Icon) as Types.IconComponent

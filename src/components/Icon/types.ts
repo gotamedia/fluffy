@@ -1,5 +1,10 @@
-import { MouseEventHandler, ComponentType } from "react"
 import { CSSProperties } from "styled-components"
+import {
+    MouseEventHandler,
+    ForwardRefExoticComponent,
+    RefAttributes,
+    ComponentType
+} from "react"
 
 //TODO: came up with better icon names structure?
 export const Icons = {
@@ -148,6 +153,9 @@ export type IconProps = {
     ariaLabel?: string
 }
 
-export type IconComponent = ComponentType<Partial<IconProps> & {
+export type IconRef = HTMLSpanElement
+export type IconComponent = ForwardRefExoticComponent<IconProps & RefAttributes<IconRef>>
+
+export type SVGIconComponent = ComponentType<Partial<IconProps> & {
     fill?: string
 }>

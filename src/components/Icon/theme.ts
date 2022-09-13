@@ -1,6 +1,8 @@
 import type { ThemeStyleItem } from '@root/types'
+import type { IconProps } from './types'
 
 export type IconThemeType = {
+    defaultProps: Partial<IconProps>,
     style: {
         root: ThemeStyleItem
     },
@@ -15,6 +17,7 @@ export type IconThemeType = {
 }
 
 const IconTheme: IconThemeType = {
+    defaultProps: {},
     style: {
         root: {
             display: 'inline-flex'
