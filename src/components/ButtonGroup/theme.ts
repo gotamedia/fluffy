@@ -1,6 +1,8 @@
 import type { ThemeStyleItem } from '@root/types'
+import type { ButtonGroupProps } from './types'
 
 export type ButtonGroupThemeType = {
+    defaultProps: Partial<ButtonGroupProps>,
     style: {
         root: ThemeStyleItem,
         button: ThemeStyleItem
@@ -11,6 +13,7 @@ export type ButtonGroupThemeType = {
 }
 
 const ButtonGroupTheme: ButtonGroupThemeType = {
+    defaultProps: {},
     style: {
         root: {
             display: 'inline-flex',

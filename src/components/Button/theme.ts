@@ -3,11 +3,8 @@ import {
     tint
 } from 'polished'
 
+import type { ThemeStyleItem } from '@root/types'
 import type { ButtonProps } from './types'
-
-import type {
-    ThemeStyleItem
-} from '@root/types'
 
 const sharedStyle = {
     disabled: {

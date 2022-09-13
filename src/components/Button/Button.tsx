@@ -66,4 +66,4 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
 
 Button.displayName = 'Button'
 
-export default withThemeProps(Button)
+export default withThemeProps(Button) as Types.ButtonComponent

@@ -6,6 +6,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import IconButton, { IconButtonShapes } from '../IconButton'
 
 import * as Styled from './style'
@@ -65,4 +67,4 @@ const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
 
 ButtonGroup.displayName = 'ButtonGroup'
 
-export default ButtonGroup
+export default withThemeProps(ButtonGroup) as Types.ButtonGroupComponent
