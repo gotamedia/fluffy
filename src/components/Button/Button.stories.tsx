@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
-import Button from './'
+import { Button } from './Button'
+
 import Icon, { Icons, IconType } from '../Icon'
 
 import type * as Types from './types'
@@ -67,4 +68,4 @@ export default {
         icon: Icons.Eye,
         disabled: false
     }
-} as Meta<typeof Button>
+} as Meta<Types.ButtonComponent>

@@ -3,7 +3,8 @@ import {
     useCallback
 } from 'react'
 
-import List from '.'
+import { List } from './List'
+
 import ListItem from '../ListItem'
 import { ListItemTypes } from '../ListItem/types'
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Checkbox from './index'
+import { Checkbox } from './Checkbox'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

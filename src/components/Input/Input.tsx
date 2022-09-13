@@ -9,7 +9,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const Input: Types.InputComponent = forwardRef((props, ref) => {
+export const Input: Types.InputComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

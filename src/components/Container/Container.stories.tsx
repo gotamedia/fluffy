@@ -1,8 +1,6 @@
-
-
 import { Story, Meta } from '@storybook/react'
 
-import Container from './index'
+import { Container } from './Container'
 
 import * as Types from './types'
 

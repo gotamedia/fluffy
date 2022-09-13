@@ -19,7 +19,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
-const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
+export const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
     const {
         type = 'normal',
         size = 'normal',

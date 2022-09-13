@@ -5,7 +5,8 @@ import {
 
 import { Story, Meta } from '@storybook/react'
 
-import Menu from './index'
+import { Menu } from './Menu'
+
 import ListItem from '../ListItem'
 import IconButton, { IconButtonShapes, IconButtonSizes } from '../IconButton'
 

@@ -1,8 +1,7 @@
-
-
 import { Story, Meta } from '@storybook/react'
 
-import FocusTrap from './index'
+import { FocusTrap } from './FocusTrap'
+
 import Button from '../Button'
 import Input from '../Input'
 

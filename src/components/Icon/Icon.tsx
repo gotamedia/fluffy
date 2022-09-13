@@ -8,7 +8,7 @@ import * as Styled from './style'
 import * as Types from './types'
 import type { FC } from 'react'
 
-const Icon: FC<Types.IconProps> = (props) => {
+export const Icon: FC<Types.IconProps> = (props) => {
     const {
         icon,
         width,

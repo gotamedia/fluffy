@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import LazyLoad from '.'
+import { LazyLoad } from './LazyLoad'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

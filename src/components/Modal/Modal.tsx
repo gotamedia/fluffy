@@ -13,7 +13,7 @@ import * as Styled from './style'
 import * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
-const Modal: Types.ModalComponent = forwardRef((props, ref) => {
+export const Modal: Types.ModalComponent = forwardRef((props, ref) => {
     const {
         children,
         onClose,

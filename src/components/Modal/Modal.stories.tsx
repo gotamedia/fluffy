@@ -1,11 +1,10 @@
-import {
-    useState
-} from 'react'
+import { useState } from 'react'
 
 import { Story, Meta } from '@storybook/react'
 
+import { Modal } from './Modal'
+
 import Button from '../Button'
-import Modal from './index'
 
 import * as Types from './types'
 

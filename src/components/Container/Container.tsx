@@ -7,7 +7,7 @@ import withThemeProps from '@internal/hocs/withThemeProps'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Container: Types.ContainerComponent = forwardRef((props, ref) => {
+export const Container: Types.ContainerComponent = forwardRef((props, ref) => {
     const {
         children,
         backdrop = 'medium',

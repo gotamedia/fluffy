@@ -12,7 +12,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { ReactElement } from 'react'
 
-const Button: Types.ButtonComponent = forwardRef((props, ref) => {
+export const Button: Types.ButtonComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

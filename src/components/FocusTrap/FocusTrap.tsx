@@ -24,7 +24,7 @@ const defaultFocusableElementsQuery = [
     '[tabindex]:not([tabindex="-1"])'
 ]
 
-const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
+export const FocusTrap: Types.FocusTrapComponent = forwardRef((props, ref) => {
     const {
         children,
         disabled,

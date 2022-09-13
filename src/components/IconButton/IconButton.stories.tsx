@@ -1,6 +1,6 @@
+import { IconButton } from './IconButton'
+import { IconButtonShapes } from './'
 
-
-import IconButton, { IconButtonShapes } from './'
 import { Icons } from '../Icon'
 
 import type * as Types from './types'

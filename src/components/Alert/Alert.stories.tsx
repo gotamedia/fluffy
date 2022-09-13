@@ -1,4 +1,3 @@
-
 import { Story, Meta } from '@storybook/react'
 
 import Alert, { AlertVariants } from './index'

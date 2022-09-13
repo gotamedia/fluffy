@@ -15,7 +15,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { SyntheticEvent } from 'react'
 
-const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
+export const DatePicker: Types.DatePickerComponent = forwardRef((props, ref) => {
     const {
         className,
         locale = 'sv',

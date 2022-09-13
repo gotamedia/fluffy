@@ -7,7 +7,7 @@ import Icon from '../Icon'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const IconButton: Types.IconButtonComponent = forwardRef((props, ref) => {
+export const IconButton: Types.IconButtonComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

@@ -13,7 +13,7 @@ import type * as Types from './types'
 
 let isNativeLazyLoadingSupported: boolean | undefined
 
-const Image: Types.ImageComponent = forwardRef((props, ref) => {
+export const Image: Types.ImageComponent = forwardRef((props, ref) => {
     const {
         lazyLoading,
         thumbnail,

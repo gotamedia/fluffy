@@ -11,7 +11,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
+export const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         label,

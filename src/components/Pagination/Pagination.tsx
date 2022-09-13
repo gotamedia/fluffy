@@ -14,7 +14,7 @@ import { PaginationElementTypes } from './types'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Pagination: Types.PaginationComponent = forwardRef((props, ref) => {
+export const Pagination: Types.PaginationComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

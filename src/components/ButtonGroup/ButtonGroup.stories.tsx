@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import ButtonGroup from '.'
+import { ButtonGroup } from './ButtonGroup'
 
 import Button from '../Button'
 import IconButton from '../IconButton'

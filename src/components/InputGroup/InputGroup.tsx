@@ -52,7 +52,7 @@ const _getChildType = (child: ReactElement) => {
 }
 
 //TODO: Support text elements to be rendered inside input like the icons
-const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
+export const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

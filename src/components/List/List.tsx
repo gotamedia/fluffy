@@ -49,7 +49,7 @@ const mapChildren = (children: ReactNode, filterValue?: string) => {
     })
 }
 
-const List: Types.ListComponent = forwardRef((props, ref) => {
+export const List: Types.ListComponent = forwardRef((props, ref) => {
     const {
         type = 'normal',
         size = 'normal',

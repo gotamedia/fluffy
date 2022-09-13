@@ -1,6 +1,4 @@
-
-
-import Image from '.'
+import { Image } from './Image'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

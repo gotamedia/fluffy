@@ -3,7 +3,7 @@ import {
     useCallback
 } from 'react'
 
-import Pagination from './index'
+import { Pagination } from './Pagination'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

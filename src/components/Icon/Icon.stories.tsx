@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-import Icon, {
+import { Icon } from './Icon'
+
+import {
     Icons,
     IconSizes
 } from './'

@@ -20,7 +20,7 @@ import type {
 } from 'react'
 import type { ListItemProps } from '../ListItem/types'
 
-const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
+export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
     const {
         value,
         children,

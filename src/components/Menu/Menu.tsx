@@ -17,7 +17,7 @@ import * as Types from './types'
 import type { ListRef } from '../List'
 import type { MouseEventHandler } from 'react'
 
-const Menu: Types.MenuComponent = forwardRef((props, ref) => {
+export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
     const {
         children,
         show,

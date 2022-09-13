@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer'
 
 import type * as Types from './types'
 
-const LazyLoad: Types.LazyLoadComponent = forwardRef((props, ref) => {
+export const LazyLoad: Types.LazyLoadComponent = forwardRef((props, ref) => {
     const {
         children,
         onLoaded,

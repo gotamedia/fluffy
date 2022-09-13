@@ -5,7 +5,7 @@ import classNames from '@utils/classNames'
 import * as Styled from './style'
 import * as Types from './types'
 
-const Overlay: Types.OverlayComponent = forwardRef((props, ref) => {
+export const Overlay: Types.OverlayComponent = forwardRef((props, ref) => {
     const {
         variant = 'normal',
         children,

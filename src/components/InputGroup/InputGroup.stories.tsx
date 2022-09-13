@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+import { InputGroup } from './InputGroup'
+
 import Input from '../Input'
 import IconButton from '../IconButton'
 import Button from '../Button'
 import Icon, { Icons } from '../Icon'
-import InputGroup from './'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

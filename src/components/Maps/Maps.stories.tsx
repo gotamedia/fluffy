@@ -1,5 +1,3 @@
-
-
 import Maps from '.'
 
 import type { Story, Meta } from '@storybook/react'

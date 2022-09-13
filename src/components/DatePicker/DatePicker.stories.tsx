@@ -3,7 +3,7 @@ import {
     useCallback
 } from 'react'
 
-import DatePicker from './index'
+import { DatePicker } from './DatePicker'
 
 import DateUtility from '../../utils/date'
 

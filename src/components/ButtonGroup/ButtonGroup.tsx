@@ -16,7 +16,7 @@ import type { ButtonProps } from '../Button/types'
 import type { IconButtonProps } from '../IconButton'
 import type { ReactElement } from 'react'
 
-const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
+export const ButtonGroup: Types.ButtonGroupComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
         variant = 'primary',

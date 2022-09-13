@@ -1,8 +1,6 @@
-
-
 import { Story, Meta } from '@storybook/react'
 
-import Overlay from './index'
+import { Overlay } from './Overlay'
 
 import * as Types from './types'
 

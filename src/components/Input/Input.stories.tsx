@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import Input from './index'
+import { Input } from './Input'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'

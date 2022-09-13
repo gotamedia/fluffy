@@ -1,10 +1,8 @@
-import {
-    useState
-} from 'react'
-
+import { useState } from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import Dropdown from './index'
+import { Dropdown } from './Dropdown'
+
 import ListItem from '../ListItem'
 
 import * as Types from './types'
