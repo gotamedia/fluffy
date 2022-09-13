@@ -7,7 +7,7 @@ import * as Styles from "./style"
 import type * as Types from "./types"
 
 const RadioGroup: Types.RadioGroupComponent = forwardRef((props, ref) => {
-    const { allowDeselect, children, disabled, name, options, readOnly } = props
+    const { allowDeselect, children, disabled, name, options, readOnly, ...containerProps } = props
 
     const {
         clearValidationMessages,
@@ -44,7 +44,7 @@ const RadioGroup: Types.RadioGroupComponent = forwardRef((props, ref) => {
 
     return (
         <>
-            <Styles.Wrapper ref={ref}>
+            <Styles.Wrapper ref={ref} {...containerProps}>
                 {options.map((option) => (
                     <Radio
                         key={option.value}
