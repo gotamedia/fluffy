@@ -34,17 +34,19 @@ const Value: Types.ValueComponent = (props) => {
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
         if (
-            (
-                typeof value === typeof compareValue &&
+            String(value).length > 0 && (
                 (
-                    (value !== compareValue && !invertedValue) ||
-                    (value === compareValue && invertedValue)
+                    typeof value === typeof compareValue &&
+                    (
+                        (value !== compareValue && !invertedValue) ||
+                        (value === compareValue && invertedValue)
+                    )
+                ) ||
+                (
+                    typeof value === "string" &&
+                    typeof compareValue === "object" &&
+                    Boolean(String(value).match(compareValue)) !== invertedValue
                 )
-            ) ||
-            (
-                typeof value === "string" &&
-                typeof compareValue === "object" &&
-                Boolean(String(value).match(compareValue)) !== invertedValue
             )
         ) {
             const textKey: keyof ValueI18n = invertedValue ? "textInverted" : "text"
