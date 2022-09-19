@@ -50,7 +50,7 @@ const Length: Types.LengthComponent = (props) => {
     }, [addAdditionalInputProp, exactly, max])
 
     const validation = useCallback<FSTypes.Validation.Field.Function>((value: FormDataValue, fieldName: string) => {
-        if (typeof value !== "string") {
+        if (typeof value !== "string" || value.length === 0) {
             return []
         }
 
