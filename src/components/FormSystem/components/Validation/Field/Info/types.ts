@@ -3,7 +3,7 @@ import type { InfoI18n } from "./i18nTypes"
 
 export type InfoProps = PropsWithChildren<{
     condition?: boolean,
-    i18n?: InfoI18n
+    i18n: InfoI18n
 }>
 
 export type InfoComponent = React.FC<InfoProps>
