@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.29.3](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.3..v0.29.2) (2022-09-20)
+
+
+### Bug Fixes
+
+* Fixed focusing on filter input within a list while preventing scrolling ([e66b248](http://bitbucket.org/gotamedia/fluffy/commits/e66b248bd1d0cbdd7c3e0a91b786607b5d60668c))
+
 ### [0.29.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.2..v0.29.1) (2022-09-02)
 
 ### [0.29.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.1..v0.29.0) (2022-09-02)
