@@ -97,7 +97,9 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         }
 
         if (filterRef.current) {
-            filterRef.current.focus()
+            filterRef.current.focus({
+                preventScroll: true
+            })
         }
 
         setIsFocused(true)
