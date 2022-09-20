@@ -5,14 +5,16 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
 export const Input: Types.InputComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         onChange,
         onValueChange,
         label,
@@ -60,4 +62,4 @@ export const Input: Types.InputComponent = forwardRef((props, ref) => {
 
 Input.displayName = 'Input'
 
-export default Input
+export default withThemeProps(Input) as Types.InputComponent

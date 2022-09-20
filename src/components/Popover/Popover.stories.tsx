@@ -7,6 +7,7 @@ import { Story, Meta } from '@storybook/react'
 import Button from '../Button'
 
 import Popover from './index'
+import { Popover as Component } from './Popover'
 
 import * as Types from './types'
 
@@ -48,7 +49,7 @@ export const Basic = Template.bind({})
 
 export default {
     title: 'Developments/Components/Popover',
-    component: Popover,
+    component: Component,
     argTypes: {
     },
     args: {

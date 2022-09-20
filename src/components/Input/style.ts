@@ -6,8 +6,8 @@ import type { InputProps } from './types'
 
 const Input = styled.input<{ $size?: InputProps['size'], $variant?: InputProps['variant'] }>`
     ${props => getComponentTheme('Input', 'style.root', props)};
-    ${props => getComponentTheme('Input', `sizes.${props.$size || 'normal'}`, props)};
-    ${props => getComponentTheme('Input', `variants.${props.$variant || 'primary'}`, props)};
+    ${props => getComponentTheme('Input', `sizes.${props.$size}`, props)};
+    ${props => getComponentTheme('Input', `variants.${props.$variant}`, props)};
 `
 
 const Label = styled.p`

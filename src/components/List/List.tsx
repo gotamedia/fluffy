@@ -11,6 +11,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type {
@@ -51,16 +53,16 @@ const mapChildren = (children: ReactNode, filterValue?: string) => {
 
 export const List: Types.ListComponent = forwardRef((props, ref) => {
     const {
-        type = 'normal',
-        size = 'normal',
-        border = 'normal',
-        allowKeyboardNavigation = true,
+        type,
+        size,
+        border,
+        allowKeyboardNavigation,
+        showFilter,
         children,
         onKeyDown,
         onFocus,
         onBlur,
         onSelect,
-        showFilter,
         ...DOMProps
     } = props
 
@@ -310,4 +312,4 @@ export const List: Types.ListComponent = forwardRef((props, ref) => {
 
 List.displayName = 'List'
 
-export default List
+export default withThemeProps(List) as Types.ListComponent

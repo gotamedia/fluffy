@@ -6,7 +6,7 @@ import * as Types from './types'
 
 const Wrapper = styled.div<{ $variant: Types.OverlayProps['variant'] }>`
     ${props => getComponentTheme('Overlay', 'style.root', props)};
-    ${props => getComponentTheme('Overlay', `variants.${props.$variant || 'primary'}`, props)};
+    ${props => getComponentTheme('Overlay', `variants.${props.$variant}`, props)};
 `
 
 export {

@@ -1,6 +1,8 @@
 import type { ThemeStyleItem } from '@root/types'
+import type { MenuProps } from './types'
 
 export type MenuThemeType = {
+    defaultProps: Partial<MenuProps>
     style: {
         root: ThemeStyleItem,
         container: ThemeStyleItem,
@@ -9,6 +11,9 @@ export type MenuThemeType = {
 }
 
 const MenuTheme: MenuThemeType = {
+    defaultProps: {
+        shouldFocusOnClose: true
+    },
     style: {
         root: {},
         container: {

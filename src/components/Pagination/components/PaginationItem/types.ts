@@ -7,8 +7,8 @@ import type {
 } from '../../types'
 
 export type PaginationItemProps = PaginationElement & {
-    size: PaginationSizeType,
-    variant: PaginationVariantType,
+    size?: PaginationSizeType,
+    variant?: PaginationVariantType,
     onClick: (type: PaginationElement['type'], page: PaginationElement['page']) => void
 }
 

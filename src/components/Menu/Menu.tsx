@@ -9,6 +9,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useMenu from './hooks/useMenu'
 import MenuContext from './contexts/MenuContext'
 
@@ -22,7 +24,7 @@ export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         children,
         show,
         anchor,
-        shouldFocusOnClose = true,
+        shouldFocusOnClose,
         overlayProps,
         onClickOutside,
         listProps,
@@ -132,4 +134,4 @@ export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
 
 Menu.displayName = 'Menu'
 
-export default Menu
+export default withThemeProps(Menu) as Types.MenuComponent

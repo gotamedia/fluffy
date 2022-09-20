@@ -1,4 +1,10 @@
+import {
+    InputSizes,
+    InputVariants
+} from '../Input/types'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { InputGroupProps } from './types'
 
 const sharedStyle = {
     focus: {
@@ -9,6 +15,7 @@ const sharedStyle = {
 }
 
 export type InputGroupThemeType = {
+    defaultProps: Partial<InputGroupProps>,
     style: {
         root: ThemeStyleItem
     },
@@ -26,8 +33,11 @@ export type InputGroupThemeType = {
     }
 }
 
-// TODO: fix better styling for condition cases
 const InputGroupTheme: InputGroupThemeType = {
+    defaultProps: {
+        size: InputSizes.Normal,
+        variant: InputVariants.Primary
+    },
     style: {
         root: ({ $componentState }) => ({
             display: 'inline-flex',

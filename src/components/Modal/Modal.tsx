@@ -5,6 +5,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import Portal from '../Portal'
 
 import { OverlayVariants } from '../Overlay'
@@ -18,7 +20,7 @@ export const Modal: Types.ModalComponent = forwardRef((props, ref) => {
         children,
         onClose,
         overlayProps,
-        withCloseIcon = true,
+        withCloseIcon,
         closeOnClickOutside,
         ...DOMProps
     } = props
@@ -71,4 +73,4 @@ export const Modal: Types.ModalComponent = forwardRef((props, ref) => {
 
 Modal.displayName = 'Modal'
 
-export default Modal
+export default withThemeProps(Modal) as Types.ModalComponent

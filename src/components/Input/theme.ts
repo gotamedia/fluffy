@@ -1,6 +1,12 @@
 import { tint } from 'polished'
 
+import {
+    InputSizes,
+    InputVariants
+} from './types'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { InputProps } from './types'
 
 const sharedStyle = {
     focus: {
@@ -18,6 +24,7 @@ const sharedStyle = {
 }
 
 export type InputThemeType = {
+    defaultProps: Partial<InputProps>,
     style: {
         root: ThemeStyleItem,
         label: ThemeStyleItem,
@@ -37,6 +44,10 @@ export type InputThemeType = {
 }
 
 const InputTheme: InputThemeType = {
+    defaultProps: {
+        size: InputSizes.Normal,
+        variant: InputVariants.Primary
+    },
     style: {
         root: {
             display: 'inline-flex',

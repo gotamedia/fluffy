@@ -10,11 +10,11 @@ const usePagination: Types.UsePagination = (props) => {
         activePage,
         totalPages,
         visiblePages,
-        showPreviousPageButton = true,
-        showFirstPageButton = true,
-        showSeparationIndicator = true,
-        showLastPageButton = true,
-        showNextPageButton = true
+        showPreviousPageButton,
+        showFirstPageButton,
+        showSeparationIndicator,
+        showLastPageButton,
+        showNextPageButton
     } = props
 
     const activePageMargin = (visiblePages - 1) / 2
@@ -44,14 +44,14 @@ const usePagination: Types.UsePagination = (props) => {
     if (showFirstPageButton && start > 1) {
         addFirstPageButton = true
         start += 1
-        addFirstPageSeparationIndicator = showSeparationIndicator && start > 2
+        addFirstPageSeparationIndicator = showSeparationIndicator && start > 2 ? true : false
     }
 
     // Separate last page button and add separator
     if (showLastPageButton && end < totalPages) {
         addLastPageButton = true
         end -= 1
-        addLastPageSeparationIndicator = showSeparationIndicator && end < (totalPages - 1)
+        addLastPageSeparationIndicator = showSeparationIndicator && end < (totalPages - 1) ? true : false
     }
 
     const blueprint: PaginationElement[] = []

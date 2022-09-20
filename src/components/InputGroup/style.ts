@@ -17,8 +17,8 @@ type WrapperProps = {
 
 const Wrapper = styled.div<WrapperProps>`
     ${props => getComponentTheme('InputGroup', 'style.root', props)};
-    ${props => getComponentTheme('InputGroup', `variants.${props.$variant || 'primary'}`, props)};
-    ${props => getComponentTheme('InputGroup', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('InputGroup', `variants.${props.$variant}`, props)};
+    ${props => getComponentTheme('InputGroup', `sizes.${props.$size}`, props)};
 `
 
 export {

@@ -5,13 +5,15 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import Portal from '@components/Portal'
 
 import * as Styled from './style'
 import * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
-const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
+export const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     const {
         children,
         show,
@@ -59,4 +61,4 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
 
 Popover.displayName = 'Popover'
 
-export default Popover
+export default withThemeProps(Popover) as Types.PopoverComponent

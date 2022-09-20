@@ -23,9 +23,8 @@ export interface PillProps extends NativeDivProps {
     size?: Lowercase<keyof typeof PillSizes>
 }
 
-type PillStyledProps = StyledPrefixThemeProps<
-    Required<Pick<PillProps, "variant" | "shape" | "size">>
->
+type PillStyledProps = StyledPrefixThemeProps<Pick<PillProps, "variant" | "shape" | "size">>
+
 export type PillRef = HTMLDivElement
 
 export type PillComponent = ForwardRefExoticComponent<PillProps & RefAttributes<PillRef>>

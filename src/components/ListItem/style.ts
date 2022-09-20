@@ -19,7 +19,7 @@ type InnerWrapperProps = {
 
 const InnerWrapper = styled.div<InnerWrapperProps & SharedType>`
     ${props => getComponentTheme('ListItem', 'style.wrapper', props)};
-    ${props => getComponentTheme('ListItem', `types.${props.$type || 'normal'}`, props)};
+    ${props => getComponentTheme('ListItem', `types.${props.$type}`, props)};
 `
 
 const Icon = styled(IconComponent).attrs(() => {
@@ -53,7 +53,7 @@ const SubText = styled.p<SharedType>`
 
 const Border = styled.div<{ $border?: Types.ListItemProps['border'] } & SharedType>`
     ${props => getComponentTheme('ListItem', 'style.border', props)};
-    ${props => getComponentTheme('ListItem', `borders.${props.$border || 'normal'}`, props)};
+    ${props => getComponentTheme('ListItem', `borders.${props.$border}`, props)};
 `
 
 type WrapperProps = {
@@ -62,7 +62,7 @@ type WrapperProps = {
 
 const Wrapper = styled.div<WrapperProps & SharedType>`
     ${props => getComponentTheme('ListItem', 'style.root', props)};
-    ${props => getComponentTheme('ListItem', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('ListItem', `sizes.${props.$size}`, props)};
 `
 
 export {

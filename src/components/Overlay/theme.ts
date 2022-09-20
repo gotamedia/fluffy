@@ -1,6 +1,10 @@
+import { OverlayVariants } from './types'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { OverlayProps } from './types'
 
 export type OverlayThemeType = {
+    defaultProps: Partial<OverlayProps>
     style: {
         root: ThemeStyleItem
     },
@@ -11,6 +15,9 @@ export type OverlayThemeType = {
 }
 
 const OverlayTheme: OverlayThemeType = {
+    defaultProps: {
+        variant: OverlayVariants.Normal
+    },
     style: {
         root: {
             zIndex: '900',

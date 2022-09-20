@@ -10,6 +10,8 @@ import scrollIntoView from 'scroll-into-view-if-needed'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import {
     ListItemSizes,
     ListItemTypes
@@ -21,10 +23,10 @@ import type { MouseEventHandler } from 'react'
 
 export const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
     const {
-        type = 'normal',
-        size = 'normal',
-        asTitle = false,
-        scrollOnTargeted = true,
+        type,
+        size,
+        asTitle,
+        scrollOnTargeted,
         text,
         subText,
         icon,
@@ -153,4 +155,4 @@ export const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
 
 ListItem.displayName = 'ListItem'
 
-export default ListItem
+export default withThemeProps(ListItem) as Types.ListItemComponent

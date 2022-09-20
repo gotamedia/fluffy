@@ -5,6 +5,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import usePagination from './hooks/usePagination'
 
 import PaginationItem from './components/PaginationItem'
@@ -16,18 +18,18 @@ import type * as Types from './types'
 
 export const Pagination: Types.PaginationComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         disabled,
         onChange,
         activePage,
         totalPages,
         visiblePages,
-        showPreviousPageButton = true,
-        showFirstPageButton = true,
-        showSeparationIndicator = true,
-        showLastPageButton = true,
-        showNextPageButton = true,
+        showPreviousPageButton,
+        showFirstPageButton,
+        showSeparationIndicator,
+        showLastPageButton,
+        showNextPageButton,
         className,
     } = props
 
@@ -88,4 +90,4 @@ export const Pagination: Types.PaginationComponent = forwardRef((props, ref) => 
 
 Pagination.displayName = 'Pagination'
 
-export default Pagination
+export default withThemeProps(Pagination) as Types.PaginationComponent

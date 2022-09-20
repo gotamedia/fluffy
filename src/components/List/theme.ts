@@ -1,6 +1,14 @@
+import {
+    ListItemBorders,
+    ListItemSizes,
+    ListItemTypes
+} from '../ListItem'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { ListProps } from './types'
 
 export type ListThemeType = {
+    defaultProps: Partial<ListProps>
     style: {
         root: ThemeStyleItem,
         inputGroup: ThemeStyleItem
@@ -9,6 +17,13 @@ export type ListThemeType = {
 }
 
 const ListTheme: ListThemeType = {
+    defaultProps: {
+        type: ListItemTypes.Normal,
+        size: ListItemSizes.Normal,
+        border: ListItemBorders.Normal,
+        allowKeyboardNavigation: true,
+        showFilter: false
+    },
     style: {
         root: {
             outline: 'none',

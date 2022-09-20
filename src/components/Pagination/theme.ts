@@ -1,15 +1,21 @@
-import type { ThemeStyleItem } from '@root/types'
+import {
+    PaginationSizes,
+    PaginationVariants,
+    PaginationElementTypes
+} from './types'
 
 import { Icons } from '../Icon'
 import { ButtonVariants } from '../Button'
 import { IconButtonShapes } from '../IconButton'
-import { PaginationElementTypes } from './types'
 
+import type { ThemeStyleItem } from '@root/types'
+import type { PaginationProps } from './types'
 import type { IconType } from '../Icon'
 import type { ButtonVariantType } from '../Button'
 import type { IconButtonShapeType } from '../IconButton'
 
 export type PaginationThemeType = {
+    defaultProps: Partial<PaginationProps>
     style: {
         root: ThemeStyleItem,
         iconButton: ThemeStyleItem,
@@ -26,6 +32,15 @@ export type PaginationThemeType = {
 }
 
 const PaginationTheme: PaginationThemeType = {
+    defaultProps: {
+        size: PaginationSizes.Normal,
+        variant: PaginationVariants.Primary,
+        showPreviousPageButton: true,
+        showFirstPageButton: true,
+        showSeparationIndicator: true,
+        showLastPageButton: true,
+        showNextPageButton: true
+    },
     style: {
         root: {
             display: 'flex',

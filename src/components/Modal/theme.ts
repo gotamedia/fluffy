@@ -1,8 +1,10 @@
 import themeHelpers from '@utils/theme/helpers'
 
 import type { ThemeStyleItem } from '@root/types'
+import type { ModalProps } from './types'
 
 export type ModalThemeType = {
+    defaultProps: Partial<ModalProps>
     style: {
         overlay: ThemeStyleItem,
         root: ThemeStyleItem,
@@ -11,6 +13,10 @@ export type ModalThemeType = {
 }
 
 const ModalTheme: ModalThemeType = {
+    defaultProps: {
+        withCloseIcon: true,
+        closeOnClickOutside: false
+    },
     style: {
         overlay: {
             display: 'flex'

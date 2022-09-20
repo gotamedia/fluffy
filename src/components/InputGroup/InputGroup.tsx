@@ -8,6 +8,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
 
 import Button from '../Button'
@@ -54,8 +56,8 @@ const _getChildType = (child: ReactElement) => {
 //TODO: Support text elements to be rendered inside input like the icons
 export const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         children,
         ...filteredProps
     } = props
@@ -161,4 +163,4 @@ export const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => 
 
 InputGroup.displayName = 'InputGroup'
 
-export default InputGroup
+export default withThemeProps(InputGroup) as Types.InputGroupComponent

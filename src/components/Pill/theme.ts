@@ -1,6 +1,14 @@
+import {
+    PillVariants,
+    PillSizes,
+    PillShapes
+} from './constants'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { PillProps } from './types'
 
 export type PillThemeType = {
+    defaultProps: Partial<PillProps>,
     style: {
         root: ThemeStyleItem
     },
@@ -20,6 +28,11 @@ export type PillThemeType = {
 }
 
 const PillTheme: PillThemeType = {
+    defaultProps: {
+        variant: PillVariants.Normal,
+        size: PillSizes.Small,
+        shape: PillShapes.Rectangle
+    },
     style: {
         root: ({ theme }) => ({
             display: 'flex',

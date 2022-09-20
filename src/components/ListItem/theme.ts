@@ -1,8 +1,16 @@
 import { tint } from 'polished'
 
+import {
+    ListItemBorders,
+    ListItemSizes,
+    ListItemTypes
+} from './types'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { ListItemProps } from './types'
 
 export type ListItemThemeType = {
+    defaultProps: Partial<ListItemProps>
     style: {
         root: ThemeStyleItem,
         wrapper: ThemeStyleItem,
@@ -28,6 +36,13 @@ export type ListItemThemeType = {
 }
 
 const ListItemTheme: ListItemThemeType = {
+    defaultProps: {
+        type: ListItemTypes.Normal,
+        size: ListItemSizes.Normal,
+        border: ListItemBorders.Normal,
+        asTitle: false,
+        scrollOnTargeted: true
+    },
     style: {
         root: ({ theme, $componentState }) => ({
             width: '100%',

@@ -18,7 +18,7 @@ const Basic: Story<Types.PaginationProps> = (props) => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px'}}>
-            {`Aactive page: ${activePage}`}
+            {`Active page: ${activePage}`}
 
             <Pagination
                 {...props}
