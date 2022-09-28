@@ -267,6 +267,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
                 showFilter && (
                     <Styled.InputGroup>
                         <Styled.Input
+                            enterKeyHint={'enter'}
                             ref={filterRef}
                             value={filterValue}
                             onValueChange={handleOnFilterValueChange}

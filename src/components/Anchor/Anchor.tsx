@@ -1,7 +1,8 @@
 import {
     forwardRef,
     useState,
-    useImperativeHandle
+    useImperativeHandle,
+    useEffect
 } from 'react'
 
 import useAnchor from '@hooks/useAnchor'
@@ -19,12 +20,23 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         style,
         forceDirection,
         withFocusTrap,
+        preventScrollOutside = true,
         ...DOMProps
     } = props
 
     const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
 
     useImperativeHandle(ref, () => contentElement as HTMLDivElement, [contentElement])
+
+    useEffect(() => {
+        if (preventScrollOutside) {
+            document.body.style.overflow = 'hidden'
+        }
+
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [preventScrollOutside])
 
     const anchorRect = useAnchor({
         anchor: anchor,
