@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.29.4](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.4..v0.29.3) (2022-09-28)
+
+
+### Features
+
+* Added DefaultLabel props to the Field component which will be passed through ([2ae48dd](http://bitbucket.org/gotamedia/fluffy/commits/2ae48dd19defa6bed14a2902890c92569f68bba9))
+
+
+### Bug Fixes
+
+* Added enterKeyHint to inputs in TagsInput and List components ([6caf7a5](http://bitbucket.org/gotamedia/fluffy/commits/6caf7a5a5b687ad19f9602ef7945510643919159))
+* Disabled scrolling outside while Anchor's content is displayed ([356b696](http://bitbucket.org/gotamedia/fluffy/commits/356b69646b2d1a0684344203c71e4878bd62b97e))
+* Fixed focusing on filter input within a list while preventing scrolling ([5345b59](http://bitbucket.org/gotamedia/fluffy/commits/5345b595a2ee312b2db440ae83f8e0013359c305))
+* Fixed the InfoFieldValidation to require i18n props ([20c26d2](http://bitbucket.org/gotamedia/fluffy/commits/20c26d2357e7574ac2bde51e2a9d5ddd4df7ef1a))
+* Fixed the LengthFieldValidation to accept empty inputs as valid ([62894a0](http://bitbucket.org/gotamedia/fluffy/commits/62894a0e520cb8b0213bb012a0adf09130e97327))
+* Fixed the onChange function of the Select component ([9768ca9](http://bitbucket.org/gotamedia/fluffy/commits/9768ca9ed0b314612011657679f7a20e856db3cd))
+* Fixed the RadioGroup and added container HTMLAttributes ([5dbdcbd](http://bitbucket.org/gotamedia/fluffy/commits/5dbdcbd4ec3874806579a8e3059512d355f5cb1a))
+* Fixed the typing for the formContext onSubmit to use MessageWithId instead of the normal Message ([cbf261c](http://bitbucket.org/gotamedia/fluffy/commits/cbf261c97fa0028bf0a15d0ca784a9a2ea94c773))
+* Fixed the ValueFieldValidation to accept empty inputs as valid ([2e78df3](http://bitbucket.org/gotamedia/fluffy/commits/2e78df3e10d9c02c3945fdf7de97f4ea568af3ff))
+
 ### [0.29.3](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.3..v0.29.2) (2022-09-20)
 
 
