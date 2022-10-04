@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.30.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.0..v0.29.4) (2022-10-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added useDataFetch "context/hook" to handle fetching component's data on server-side
+
+### Features
+
+* Added "useDataFetch" hook to dev eslint config ([8fb7dab](http://bitbucket.org/gotamedia/fluffy/commits/8fb7dab888618e4e468c30dfb1b11317232772b0))
+* Added "wait" utility ([dd4cc38](http://bitbucket.org/gotamedia/fluffy/commits/dd4cc382ec2d9628383c0f983a124c4ccbb961dd))
+* Added useDataFetch "context/hook" to handle fetching component's data on server-side ([144cf61](http://bitbucket.org/gotamedia/fluffy/commits/144cf617ddc69845279bac3205bb2d4e0bfb35a6))
+
+
+### Bug Fixes
+
+* **ci:** Fixed publishing to local registry when building Fluffy locally ([83aa203](http://bitbucket.org/gotamedia/fluffy/commits/83aa203148298f4fdd7ca9f0712b2a4e7dab8c0a))
+
 ### [0.29.4](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.4..v0.29.3) (2022-09-28)
 
 
