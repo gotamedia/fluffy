@@ -1,4 +1,8 @@
-import { useEffect, useContext } from 'react'
+import {
+    useEffect,
+    useContext
+} from 'react'
+
 import { v4 as createId } from 'uuid'
 
 import useLazyRef from '@hooks/useLazyRef'
@@ -8,7 +12,7 @@ import { DataFetchContext } from './contexts/DataFetch'
 import type * as Types from './types'
 
 const useDataFetch: Types.UseDataFetch = (effect, dependencies, id) => {
-    const fetchId = useLazyRef(() => id || createId())
+    const fetchId = useLazyRef(() => `${id ? `${id}__` : '' }${createId()}`)
 
     const dataFetchContext = useContext(DataFetchContext)
 
@@ -32,12 +36,8 @@ const useDataFetch: Types.UseDataFetch = (effect, dependencies, id) => {
     }
 
     // Client-Side fetching
-    useEffect(() => {
-        if (!dataFetchContext || dataFetchContext.allResolved) {
-            return effect() as unknown as () => void
-        }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, dependencies)
+    useEffect(effect as unknown as () => () => void, dependencies)
 }
 
 export default useDataFetch
