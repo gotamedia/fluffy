@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.30.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.1..v0.30.0) (2022-10-04)
+
+
+### Bug Fixes
+
+* Removed check for context when running effect callback in useDataFetch for CSR ([742a7dc](http://bitbucket.org/gotamedia/fluffy/commits/742a7dce10a1b0f8c20f06aca21376085d23c490))
+
 ## [0.30.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.0..v0.29.4) (2022-10-04)
 
 
