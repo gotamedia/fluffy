@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.31.0..v0.30.1) (2022-10-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added ability to store data from promises in useDataFetch requests context
+
+### Features
+
+* Added ability to store data from promises in useDataFetch requests context ([6ccae48](http://bitbucket.org/gotamedia/fluffy/commits/6ccae48e552d768f72cc8dc869f7ee1b525bd895))
+
 ### [0.30.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.1..v0.30.0) (2022-10-04)
 
 
