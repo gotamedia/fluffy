@@ -18,20 +18,34 @@ const useDataFetch: Types.UseDataFetch = (effect, dependencies, id) => {
 
     // Server-Side fetching
     if (dataFetchContext && !dataFetchContext.allResolved) {
-        let cancel = () => {}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        let cancel = (value?: any) => {}
 
         const effectPromise = (options: any) => {
             return new Promise((resolve) => {
-                cancel = () => resolve(undefined)
+                cancel = resolve
+                
+                let resolved = false
 
-                effect(options).finally(() => resolve(undefined))
+                effect(options)
+                    .then(value => {
+                        resolved = true
+                        resolve(value)
+                        return value
+                    })
+                    .finally(() => {
+                        if (!resolved) {
+                            resolve(undefined)
+                        }
+                    })
             })
         }
 
         dataFetchContext.requests.push({
             id: fetchId.current!,
             promise: effectPromise,
-            cancel: cancel
+            cancel: cancel,
+            data: undefined
         })
     }
 

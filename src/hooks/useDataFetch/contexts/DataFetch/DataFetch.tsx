@@ -25,39 +25,58 @@ const createServerContext = () => {
         )
     }
 
-    const _cleanUp = (request: Types.DataFetchRequest) => {
-        dataFetchContext.requests = dataFetchContext.requests.filter(item => item.id !== request.id)
+    const _updatePromiseWithData = (id: string, value: any) => {
+        dataFetchContext.requests = dataFetchContext.requests.map(request => {
+            if (request.id === id) {
+                return {
+                    ...request,
+                    data: value
+                }
+            } else {
+                return request
+            }
+        })
     }
 
     const resolveData = async (timeout = 1500, options?: any) => {
-        if (timeout) {
-            const timeoutPromise = wait(timeout, WaitTypes.Reject)
-
-            const effects = dataFetchContext.requests.map((effect) => {
+        const effects = dataFetchContext.requests.map((effect) => {
+            if (timeout) {
                 return Promise
-                .race([effect.promise(options), timeoutPromise])
-                .catch(() => effect.cancel())
-                .finally(() => _cleanUp(effect))
-            })
-
-            await Promise.all(effects)
-        } else {
-            const effects = dataFetchContext.requests.map((effect) => {
+                    .race([
+                        effect.promise(options),
+                        wait(timeout, WaitTypes.Reject)
+                    ])
+                    .then(data => {
+                        _updatePromiseWithData(effect.id, data)
+                        return data
+                    })
+                    .catch(error => {
+                        _updatePromiseWithData(effect.id, error)
+                        effect.cancel(error)
+                    })
+            } else {
                 return effect
                     .promise(options)
-                    .finally(() => _cleanUp(effect))
-            })
+                    .then(data => {
+                        _updatePromiseWithData(effect.id, data)
+                        return data
+                    })
+            }
+        })
 
-            await Promise.all(effects)
-        }
-        
+        await Promise.all(effects)
+
         dataFetchContext.allResolved = true
+    }
+
+    const getRequests = () => {
+        return dataFetchContext.requests
     }
 
     return {
         Provider,
         resolveData,
-        requests: dataFetchContext.requests
+        getRequests: getRequests
     }
 }
 
