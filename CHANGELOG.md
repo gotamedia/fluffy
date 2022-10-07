@@ -2,6 +2,85 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.31.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.31.0..v0.30.1) (2022-10-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added ability to store data from promises in useDataFetch requests context
+
+### Features
+
+* Added ability to store data from promises in useDataFetch requests context ([6ccae48](http://bitbucket.org/gotamedia/fluffy/commits/6ccae48e552d768f72cc8dc869f7ee1b525bd895))
+
+### [0.30.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.1..v0.30.0) (2022-10-04)
+
+
+### Bug Fixes
+
+* Removed check for context when running effect callback in useDataFetch for CSR ([742a7dc](http://bitbucket.org/gotamedia/fluffy/commits/742a7dce10a1b0f8c20f06aca21376085d23c490))
+
+## [0.30.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.30.0..v0.29.4) (2022-10-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added useDataFetch "context/hook" to handle fetching component's data on server-side
+
+### Features
+
+* Added "useDataFetch" hook to dev eslint config ([8fb7dab](http://bitbucket.org/gotamedia/fluffy/commits/8fb7dab888618e4e468c30dfb1b11317232772b0))
+* Added "wait" utility ([dd4cc38](http://bitbucket.org/gotamedia/fluffy/commits/dd4cc382ec2d9628383c0f983a124c4ccbb961dd))
+* Added useDataFetch "context/hook" to handle fetching component's data on server-side ([144cf61](http://bitbucket.org/gotamedia/fluffy/commits/144cf617ddc69845279bac3205bb2d4e0bfb35a6))
+
+
+### Bug Fixes
+
+* **ci:** Fixed publishing to local registry when building Fluffy locally ([83aa203](http://bitbucket.org/gotamedia/fluffy/commits/83aa203148298f4fdd7ca9f0712b2a4e7dab8c0a))
+
+### [0.29.4](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.4..v0.29.3) (2022-09-28)
+
+
+### Features
+
+* Added DefaultLabel props to the Field component which will be passed through ([2ae48dd](http://bitbucket.org/gotamedia/fluffy/commits/2ae48dd19defa6bed14a2902890c92569f68bba9))
+
+
+### Bug Fixes
+
+* Added enterKeyHint to inputs in TagsInput and List components ([6caf7a5](http://bitbucket.org/gotamedia/fluffy/commits/6caf7a5a5b687ad19f9602ef7945510643919159))
+* Disabled scrolling outside while Anchor's content is displayed ([356b696](http://bitbucket.org/gotamedia/fluffy/commits/356b69646b2d1a0684344203c71e4878bd62b97e))
+* Fixed focusing on filter input within a list while preventing scrolling ([5345b59](http://bitbucket.org/gotamedia/fluffy/commits/5345b595a2ee312b2db440ae83f8e0013359c305))
+* Fixed the InfoFieldValidation to require i18n props ([20c26d2](http://bitbucket.org/gotamedia/fluffy/commits/20c26d2357e7574ac2bde51e2a9d5ddd4df7ef1a))
+* Fixed the LengthFieldValidation to accept empty inputs as valid ([62894a0](http://bitbucket.org/gotamedia/fluffy/commits/62894a0e520cb8b0213bb012a0adf09130e97327))
+* Fixed the onChange function of the Select component ([9768ca9](http://bitbucket.org/gotamedia/fluffy/commits/9768ca9ed0b314612011657679f7a20e856db3cd))
+* Fixed the RadioGroup and added container HTMLAttributes ([5dbdcbd](http://bitbucket.org/gotamedia/fluffy/commits/5dbdcbd4ec3874806579a8e3059512d355f5cb1a))
+* Fixed the typing for the formContext onSubmit to use MessageWithId instead of the normal Message ([cbf261c](http://bitbucket.org/gotamedia/fluffy/commits/cbf261c97fa0028bf0a15d0ca784a9a2ea94c773))
+* Fixed the ValueFieldValidation to accept empty inputs as valid ([2e78df3](http://bitbucket.org/gotamedia/fluffy/commits/2e78df3e10d9c02c3945fdf7de97f4ea568af3ff))
+
+### [0.29.3](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.3..v0.29.2) (2022-09-20)
+
+
+### Bug Fixes
+
+* Fixed focusing on filter input within a list while preventing scrolling ([e66b248](http://bitbucket.org/gotamedia/fluffy/commits/e66b248bd1d0cbdd7c3e0a91b786607b5d60668c))
+
+### [0.29.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.2..v0.29.1) (2022-09-02)
+
+### [0.29.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.1..v0.29.0) (2022-09-02)
+
+
+### Features
+
+* **Pill:** Implement shape and sizes for Pill component ([db7476d](http://bitbucket.org/gotamedia/fluffy/commits/db7476d03909148289f6e0957a2df2053e9afa03))
+* **Pill:** Introduce Constant file to be use in NXT components ([539b8ec](http://bitbucket.org/gotamedia/fluffy/commits/539b8ec2e330225165645e2ab5e0790d078236a7))
+* **Table.Cell:** Introduce cell size style function ([191a8b0](http://bitbucket.org/gotamedia/fluffy/commits/191a8b0fbc5129de5cb7e500eec40573076ef3f9))
+* **Table:** Implement border prop for Table components row, cell, and table ([2886f40](http://bitbucket.org/gotamedia/fluffy/commits/2886f4017d6054f5130338a5eeb7e725d8a21229))
+* **Table:** Implement theme prop for Table components ([d5a7a5a](http://bitbucket.org/gotamedia/fluffy/commits/d5a7a5af5f4b5d5c778fc03ecd612c5d17e54567))
+* **Table:** Implement type utility for mapping styled prefix "$" to an interface field values ([b659533](http://bitbucket.org/gotamedia/fluffy/commits/b6595333a28a8bd67701867258561bc3a6e8b284))
+* **Table:** Implemented Table row Head and Collapsible ([1092ad1](http://bitbucket.org/gotamedia/fluffy/commits/1092ad127ee3efced35956af80292a0fd1eafe5e))
+* **Table:** introduce Table context values collapsible and size ([4a1adbe](http://bitbucket.org/gotamedia/fluffy/commits/4a1adbe3db079fe2bfc51c1c8bcb3804d49838e8))
+
 ## [0.29.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.29.0..v0.28.2) (2022-08-30)
 
 

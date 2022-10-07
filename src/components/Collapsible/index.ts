@@ -1,7 +1,8 @@
 import BaseCollapsible from "./Collapsible"
-import * as Types from "./types"
+import { CollapsibleComponent, CollapsibleProps } from "./types"
 
-const Collapsible = BaseCollapsible as Types.Collapsible
+const Collapsible = BaseCollapsible as CollapsibleComponent
 
-export { Types }
+export { CollapsibleComponent, CollapsibleProps }
+
 export default Collapsible
