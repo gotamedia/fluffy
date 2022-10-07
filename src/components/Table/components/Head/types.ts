@@ -3,6 +3,8 @@ import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttrib
 interface TableHeadProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement> {}
 
-type TableHead = ForwardRefExoticComponent<TableHeadProps & RefAttributes<HTMLTableSectionElement>>
+type TableHeadComponent = ForwardRefExoticComponent<
+    TableHeadProps & RefAttributes<HTMLTableSectionElement>
+>
 
-export type { TableHead }
+export type { TableHeadComponent, TableHeadProps }

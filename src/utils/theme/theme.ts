@@ -79,6 +79,26 @@ let theme: DefaultTheme = {
                 text: "#004085",
                 background: "#EBF2F8",
                 border: "#D1E2F0"
+            },
+            warning: {
+                text: "#8d5e00",
+                background: "#fbf9eb",
+                border: "#f7f6d1"
+            },
+            success: {
+                text: "#36730e",
+                background: "#edfbeb",
+                border: "#dcf7d1"
+            },
+            loading: {
+                text: "#565656",
+                background: "#f1f1f1",
+                border: "#c5c5c5"
+            },
+            hint: {
+                text: "#565656",
+                background: "#f1f1f1",
+                border: "#c5c5c5"
             }
         }
     },

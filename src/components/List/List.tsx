@@ -101,7 +101,9 @@ export const List: Types.ListComponent = forwardRef((props, ref) => {
         }
 
         if (filterRef.current) {
-            filterRef.current.focus()
+            filterRef.current.focus({
+                preventScroll: true
+            })
         }
 
         setIsFocused(true)
@@ -275,6 +277,7 @@ export const List: Types.ListComponent = forwardRef((props, ref) => {
                 showFilter && (
                     <Styled.InputGroup>
                         <Styled.Input
+                            enterKeyHint={'enter'}
                             ref={filterRef}
                             value={filterValue}
                             onValueChange={handleOnFilterValueChange}

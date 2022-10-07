@@ -307,6 +307,7 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                     <Styled.Input
                         ref={setInputRef}
                         value={inputValue}
+                        enterKeyHint={'enter'}
                         onKeyDown={handleOnInputKeyDown}
                         onValueChange={handleOnInputValueChange}
                     />

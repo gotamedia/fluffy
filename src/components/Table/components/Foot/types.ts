@@ -3,6 +3,8 @@ import { DetailedHTMLProps, ForwardRefExoticComponent, HTMLAttributes, RefAttrib
 interface TableFootProps
     extends DetailedHTMLProps<HTMLAttributes<HTMLTableSectionElement>, HTMLTableSectionElement> {}
 
-type TableFoot = ForwardRefExoticComponent<TableFootProps & RefAttributes<HTMLTableSectionElement>>
+type TableFootComponent = ForwardRefExoticComponent<
+    TableFootProps & RefAttributes<HTMLTableSectionElement>
+>
 
-export type { TableFoot }
+export type { TableFootComponent, TableFootProps }

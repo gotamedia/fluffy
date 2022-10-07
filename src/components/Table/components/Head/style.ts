@@ -1,7 +1,5 @@
 import styled from "styled-components"
 
-const Head = styled.thead`
-    background-color: ${({ theme }) => theme.colors.grey[5]};
-`
+const Head = styled.thead``
 
 export { Head }
