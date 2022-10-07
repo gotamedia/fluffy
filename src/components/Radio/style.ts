@@ -10,7 +10,7 @@ const Wrapper = styled.label`
 
 const Radio = styled.input<{ $size?: RadioProps['size'] }>`
     ${props => getComponentTheme('Radio', 'style.radio', props)};
-    ${props => getComponentTheme('Radio', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('Radio', `sizes.${props.$size}`, props)};
 `
 
 const Text = styled.span<{ $componentState: Record<string, any> }>`

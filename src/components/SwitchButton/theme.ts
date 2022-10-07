@@ -1,8 +1,12 @@
 import { tint } from 'polished'
 
+import { SwitchButtonSizes } from './types'
+
+import type { SwitchButtonProps } from './types'
 import type { ThemeStyleItem } from '@root/types'
 
 export type SwitchButtonThemeType = {
+    defaultProps: Partial<SwitchButtonProps>,
     style: {
         wrapper: ThemeStyleItem,
         root: ThemeStyleItem,
@@ -18,6 +22,9 @@ export type SwitchButtonThemeType = {
 }
 
 const SwitchButtonTheme: SwitchButtonThemeType = {
+    defaultProps: {
+        size: SwitchButtonSizes.Normal
+    },
     style: {
         wrapper: {
             display: 'inline-flex'

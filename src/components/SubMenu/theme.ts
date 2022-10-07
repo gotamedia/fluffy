@@ -1,10 +1,11 @@
-import type { ThemeStyleItem } from '@root/types'
-
 import { Icons } from '../Icon'
 
+import type { SubMenuProps } from './types'
 import type { IconType } from '../Icon'
+import type { ThemeStyleItem } from '@root/types'
 
 export type SubMenuThemeType = {
+    defaultProps: Partial<SubMenuProps>,
     style: {
         trigger: ThemeStyleItem,
         icon: ThemeStyleItem,
@@ -16,6 +17,9 @@ export type SubMenuThemeType = {
 }
 
 const SubMenuTheme: SubMenuThemeType = {
+    defaultProps: {
+
+    },
     style: {
         trigger: {},
         icon: ({ $componentState }) => ({

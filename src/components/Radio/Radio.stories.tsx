@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import Radio from './index'
+import { Radio as Component } from './Radio'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -76,7 +77,7 @@ export {
 
 export default {
     title: 'Developments/Components/Radio',
-    component: Radio,
+    component: Component,
     argTypes: {},
     args: {
         checked: true,
@@ -84,4 +85,4 @@ export default {
         disabled: false,
         label: 'Check me!'
     }
-} as Meta<typeof Radio>
+} as Meta<Types.RadioComponent>

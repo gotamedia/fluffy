@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import Textarea from './index'
+import { Textarea as Component } from './Textarea'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -31,7 +32,7 @@ export {
 
 export default {
     title: 'Developments/Components/Textarea',
-    component: Textarea,
+    component: Component,
     argTypes: {},
     args: {
         variant: 'primary',
@@ -40,4 +41,4 @@ export default {
         disabled: false,
         placeholder: 'Type something cool!'
     }
-} as Meta<typeof Textarea>
+} as Meta<Types.TextareaComponent>

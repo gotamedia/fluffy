@@ -1,6 +1,5 @@
-
-
 import UploadButton from './index'
+import { UploadButton as Component } from './UploadButton'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -26,11 +25,11 @@ export {
 
 export default {
     title: 'Components/UploadButton',
-    component: UploadButton,
+    component: Component,
     argTypes: {},
     args: {
-        variant: 'primary',
-        size: 'normal',
-        label: 'Upload'
+        // variant: 'primary',
+        // size: 'normal',
+        // label: 'Upload'
     }
-} as Meta<typeof UploadButton>
+} as Meta<Types.UploadButtonComponent>

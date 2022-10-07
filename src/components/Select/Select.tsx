@@ -11,6 +11,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import { ListItemTypes } from '../ListItem/types'
@@ -25,7 +27,7 @@ import type {
 import type { ListItemProps } from '../ListItem/types'
 
 // TODO: Add "close/clear" buttons below the list?
-const Select: Types.SelectComponent = forwardRef((props, ref) => {
+export const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const {
         children,
         triggerProps,
@@ -37,8 +39,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         onSelect,
         width,
         minWidth,
-        closeOnSelect = false,
-        isMultiSelect = false,
+        closeOnSelect,
+        isMultiSelect,
         variant,
         size,
         disabled,
@@ -166,7 +168,10 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     )
 
     const className = classNames({
-        'fluffy-select': true,
+        'fluffy-select': true
+    })
+
+    const triggerClassName = classNames({
         [triggerProps?.className || '']: true
     })
 
@@ -181,7 +186,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 ref={setTriggerRef}
                 disabled={disabled}
                 {...triggerProps}
-                className={className}
+                className={triggerClassName}
                 variant={variant}
                 size={size}
                 onClick={toggleOpen}
@@ -198,6 +203,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
             <Styled.Menu
                 {...filterdProps}
+                className={className}
                 shouldFocusOnClose={false}
                 ref={undefined}
                 show={isOpen}
@@ -241,4 +247,4 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
 Select.displayName = 'Select'
 
-export default Select
+export default withThemeProps(Select) as Types.SelectComponent

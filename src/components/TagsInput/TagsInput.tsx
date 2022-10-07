@@ -7,6 +7,10 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import Tag, { TagSizes } from '../Tag'
 import ListItem, { ListItemTypes } from '../ListItem'
 import Icon, { Icons } from '../Icon'
@@ -20,13 +24,13 @@ import type {
     KeyboardEventHandler
 } from 'react'
 
-const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
+export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
     const {
         disabled,
         tags,
         createable,
-        withList = true,
-        filterNewTagsFromList = true,
+        withList,
+        filterNewTagsFromList,
         showListOnInput,
         onAdd,
         onRemove,
@@ -227,15 +231,23 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
         }
     }, [handleOnRemove, inputRef])
 
+    const className = classNames({
+        'fluffy-tags-input': true,
+        [DOMProps?.className || '']: true
+    })
+
     const hasTags = Array.isArray(tags) && tags.length ? true : false
     const hasSelectedTags = hasTags && tags.filter(i => i.selected).length ? true : false
 
+    const componentState = {
+        disabled: disabled,
+        asInput: !showPopover,
+        hasSelectedTags: hasSelectedTags
+    }
+
     const selectedTags = (
-        <Styled.TagsWrapper
-            $asInput={!showPopover}
-            $hasSelectedTags={hasSelectedTags}
-        >
-            <Styled.TagsElements>
+        <Styled.TagsWrapper $componentState={componentState} >
+            <Styled.TagsElements className={'fluffy-tags-input-tags-element'}>
                 {
                     hasTags ? (
                         tags.map(tag => {
@@ -268,7 +280,8 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
         <Styled.Wrapper
             ref={setWrapperRef}
             {...DOMProps}
-            $disabled={disabled}
+            className={className}
+            $componentState={componentState}
             tabIndex={disabled ? -1 : 0}
             onKeyDown={handleOnWrapperKeyDown}
             onClick={handleOnWrapperClick}
@@ -376,4 +389,4 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
 
 TagsInput.displayName = 'TagsInput'
 
-export default TagsInput
+export default withThemeProps(TagsInput) as Types.TagsInputComponent

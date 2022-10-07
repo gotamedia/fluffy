@@ -27,6 +27,7 @@ import SheetTheme from '@components/Sheet/theme'
 import SubMenuTheme from '@components/SubMenu/theme'
 import SwitchButtonTheme from '@components/SwitchButton/theme'
 import TagTheme from '@components/Tag/theme'
+import TagsInputTheme from '@components/TagsInput/theme'
 import TimePickerTheme from '@components/TimePicker/theme'
 import ContainerTheme from '@components/Container/theme'
 
@@ -167,6 +168,7 @@ let theme: DefaultTheme = {
         SubMenu: SubMenuTheme,
         SwitchButton: SwitchButtonTheme,
         Tag: TagTheme,
+        TagsInput: TagsInputTheme,
         TimePicker: TimePickerTheme,
         Container: ContainerTheme
     }

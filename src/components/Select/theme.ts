@@ -1,10 +1,16 @@
-import type { ThemeStyleItem } from '@root/types'
-
 import { Icons } from '../Icon'
 
+import {
+    SelectVariants,
+    SelectSizes
+} from './types'
+
+import type { SelectProps } from './types'
 import type { IconType } from '../Icon'
+import type { ThemeStyleItem } from '@root/types'
 
 export type SelectThemeType = {
+    defaultProps: Partial<SelectProps>,
     style: {
         trigger: ThemeStyleItem,
         icon: ThemeStyleItem,
@@ -16,6 +22,12 @@ export type SelectThemeType = {
 }
 
 const SelectTheme: SelectThemeType = {
+    defaultProps: {
+        variant: SelectVariants.Primary,
+        size: SelectSizes.Normal,
+        closeOnSelect: false,
+        isMultiSelect: false
+    },
     style: {
         trigger: {
             '> span:first-child': {

@@ -10,7 +10,7 @@ const Wrapper = styled.label`
 
 const SwitchButton = styled.input<{ $size?: SwitchButtonProps['size'] }>`
     ${props => getComponentTheme('SwitchButton', 'style.root', props)};
-    ${props => getComponentTheme('SwitchButton', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('SwitchButton', `sizes.${props.$size}`, props)};
 `
 
 const Text = styled.span<{ $componentState?: Record<string, any> }>`

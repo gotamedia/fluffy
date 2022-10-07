@@ -3,6 +3,12 @@ import {
     tint
 } from 'polished'
 
+import {
+    UploadButtonSizes,
+    UploadButtonVariants
+} from './types'
+
+import type { UploadButtonProps } from './types'
 import type { ThemeStyleItem } from '@root/types'
 
 const sharedStyle = {
@@ -20,6 +26,7 @@ const sharedStyle = {
 }
 
 export type UploadButtonThemeType = {
+    defaultProps: Partial<UploadButtonProps>,
     style: {
         root: ThemeStyleItem,
         main: ThemeStyleItem,
@@ -42,6 +49,12 @@ export type UploadButtonThemeType = {
 }
 
 const UploadButtonTheme: UploadButtonThemeType = {
+    defaultProps: {
+        size: UploadButtonSizes.Normal,
+        variant: UploadButtonVariants.Primary,
+        withIcon: true,
+        withFileName: true
+    },
     style: {
         root: {
             display: 'flex',

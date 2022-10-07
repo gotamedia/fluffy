@@ -9,7 +9,7 @@ import type * as Types from './types'
 
 const Wrapper = styled.div<{ $size: Types.TagSizeType, $componentState?: Record<string, any> }>`
     ${props => getComponentTheme('Tag', 'style.root', props)};
-    ${props => getComponentTheme('Tag', `sizes.${props.$size || 'normal'}`, props)};
+    ${props => getComponentTheme('Tag', `sizes.${props.$size}`, props)};
 `
 
 const Label = styled.p`

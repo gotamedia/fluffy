@@ -4,17 +4,21 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
+export const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         children = 'Upload',
-        withIcon = true,
-        withFileName = true,
+        withIcon,
+        withFileName,
         onChange,
         onFilesChange,
         className,
@@ -39,8 +43,13 @@ const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onFilesChange])
 
+    const wrapperClassName = classNames({
+        'fluffy-upload-button': true,
+        [className || '']: true
+    })
+
     return (
-        <Styled.Wrapper className={className} >
+        <Styled.Wrapper className={wrapperClassName} >
             <Styled.InnerWrapper
                 $size={size}
                 $variant={variant}
@@ -82,4 +91,4 @@ const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
 
 UploadButton.displayName = 'UploadButton'
 
-export default UploadButton
+export default withThemeProps(UploadButton) as Types.UploadButtonComponent

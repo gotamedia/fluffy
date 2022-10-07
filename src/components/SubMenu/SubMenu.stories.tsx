@@ -6,6 +6,8 @@ import {
 import { Story, Meta } from '@storybook/react'
 
 import SubMenu from './index'
+import { SubMenu as Component } from './SubMenu'
+
 import ListItem from '../ListItem'
 import Menu from '../Menu'
 import IconButton, { IconButtonShapes, IconButtonSizes } from '../IconButton'
@@ -87,7 +89,7 @@ BasicStory.args = {
 
 export default {
     title: 'Developments/Components/SubMenu',
-    component: SubMenu,
+    component: Component,
     argTypes: {
     },
     args: {

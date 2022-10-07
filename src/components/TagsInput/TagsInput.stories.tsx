@@ -6,13 +6,14 @@ import {
 import { Story, Meta } from '@storybook/react'
 
 import TagsInput from './index'
+import { TagsInput as Component } from './TagsInput'
 
 import * as Types from './types'
 
 const Template: Story<Types.TagsInputProps> = (props) => {
     const [tags, setTags] = useState(props.tags)
 
-    const handleOnChange = useCallback((items) => {
+    const handleOnChange = useCallback((items: Types.TagItem[]) => {
         setTags(items.filter(i => {
             if (i.isNew) {
                 return i.selected
@@ -64,7 +65,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/TagsInput',
-    component: TagsInput,
+    component: Component,
     argTypes: {
     },
     args: {

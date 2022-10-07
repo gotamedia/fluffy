@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import SwitchButton from './index'
+import { SwitchButton as Component } from './SwitchButton'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -31,7 +32,7 @@ export {
 
 export default {
     title: 'Developments/Components/SwitchButton',
-    component: SwitchButton,
+    component: Component,
     argTypes: {},
     args: {
         checked: true,
@@ -39,4 +40,4 @@ export default {
         disabled: false,
         label: 'Check me!'
     }
-} as Meta<typeof SwitchButton>
+} as Meta<Types.SwitchButtonComponent>

@@ -11,6 +11,8 @@ import { v4 as createUniqueId } from 'uuid'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useLazyRef from '@hooks/useLazyRef'
 import useMenu from '@components/Menu/hooks/useMenu'
 
@@ -18,12 +20,13 @@ import * as Styled from './style'
 import * as Types from './types'
 import type { MouseEventHandler } from 'react'
 
-const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
+export const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
     const {
         children,
         onMouseEnter,
         onMouseLeave,
         targeted,
+        listProps,
         ...filteredProps
     } = props
 
@@ -132,16 +135,24 @@ const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
         }, 50)
     }, [onMouseLeave])
 
-    const handleOnMouseEnterList = useCallback(() => {
+    const handleOnMouseEnterList = useCallback<MouseEventHandler<HTMLDivElement>>((event) => {
         hasBeenVisted.current = true
         clearTimeout(timeoutId.current)
-    }, [])
 
-    const handleOnMouseLeaveList = useCallback(() => {
+        if (typeof listProps?.onMouseEnter === 'function') {
+            listProps.onMouseEnter(event)
+        }
+    }, [listProps])
+
+    const handleOnMouseLeaveList = useCallback<MouseEventHandler<HTMLDivElement>>((event) => {
         if (!hasBeenVisted.current) {
             setShowSubMenu(false)
         }
-    }, [])
+
+        if (typeof listProps?.onMouseLeave === 'function') {
+            listProps.onMouseLeave(event)
+        }
+    }, [listProps])
 
     const className = classNames({
         'fluffy-sub-menu': true,
@@ -173,6 +184,7 @@ const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
                 anchor={listItemRef}
                 onClickOutside={onClickOutside}
                 listProps={{
+                    ...listProps,
                     onMouseEnter: handleOnMouseEnterList,
                     onMouseLeave: handleOnMouseLeaveList
                 }}
@@ -185,4 +197,4 @@ const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
 
 SubMenu.displayName = 'SubMenu'
 
-export default SubMenu
+export default withThemeProps(SubMenu) as Types.SubMenuComponent

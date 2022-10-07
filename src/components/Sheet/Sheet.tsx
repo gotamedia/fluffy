@@ -15,6 +15,8 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import { SheetDirections } from './types'
@@ -22,14 +24,14 @@ import { SheetDirections } from './types'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
+export const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
     const {
         children,
         parentRef,
-        duration = 300,
-        direction = 'bottom',
-        openOnMount = true,
-        forceRender = false,
+        duration,
+        direction,
+        openOnMount,
+        forceRender,
         ...DOMProps
     } = props
 
@@ -81,7 +83,7 @@ const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
         }
 
         const params = {
-            key: direction,
+            key: direction!,
             value: dimensionValue
         }
 
@@ -188,4 +190,4 @@ const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
 
 Sheet.displayName = 'Sheet'
 
-export default Sheet
+export default withThemeProps(Sheet) as Types.SheetComponent

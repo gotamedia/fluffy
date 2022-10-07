@@ -1,8 +1,10 @@
 import { tint } from 'polished'
 
+import type { TimePickerProps } from './types'
 import type { ThemeStyleItem } from '@root/types'
 
 export type TimePickerThemeType = {
+    defaultProps: Partial<TimePickerProps>,
     style: {
         root: ThemeStyleItem,
         calendar: ThemeStyleItem,
@@ -12,6 +14,12 @@ export type TimePickerThemeType = {
 }
 
 const TimePickerTheme: TimePickerThemeType = {
+    defaultProps: {
+        timeIntervals: 15,
+        timeCaption: 'Time',
+        dateFormat: 'p',
+        isClearable: true
+    },
     style: {
         root: {
             

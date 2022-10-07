@@ -12,8 +12,8 @@ const Wrapper = styled.div`
 
 const InnerWrapper = styled.label<{ $size?: UploadButtonProps['size'], $variant?: UploadButtonProps['variant'] }>`
     ${props => getComponentTheme('UploadButton', 'style.main', props)};
-    ${props => getComponentTheme('UploadButton', `sizes.${props.$size || 'normal'}`, props)};
-    ${props => getComponentTheme('UploadButton', `variants.${props.$variant || 'primary'}`, props)};
+    ${props => getComponentTheme('UploadButton', `sizes.${props.$size}`, props)};
+    ${props => getComponentTheme('UploadButton', `variants.${props.$variant}`, props)};
 `
 
 const UploadInput = styled.input`

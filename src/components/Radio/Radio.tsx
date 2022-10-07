@@ -5,13 +5,15 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const Radio: Types.RadioComponent = forwardRef((props, ref) => {
+export const Radio: Types.RadioComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
+        size,
         label,
         onChange,
         onValueChange,
@@ -65,4 +67,4 @@ const Radio: Types.RadioComponent = forwardRef((props, ref) => {
 
 Radio.displayName = 'Radio'
 
-export default Radio
+export default withThemeProps(Radio) as Types.RadioComponent

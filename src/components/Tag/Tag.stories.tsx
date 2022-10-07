@@ -1,8 +1,7 @@
-
-
 import { Story, Meta } from '@storybook/react'
 
 import Tag from './index'
+import { Tag as Component } from './Tag'
 
 import * as Types from './types'
 
@@ -23,7 +22,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/Tag',
-    component: Tag,
+    component: Component,
     argTypes: {
     },
     args: {

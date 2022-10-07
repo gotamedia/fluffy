@@ -6,6 +6,8 @@ import {
 import { Story, Meta } from '@storybook/react'
 
 import Select from './index'
+import { Select as Component } from './Select'
+
 import ListItem from '../ListItem'
 
 import * as Types from './types'
@@ -80,7 +82,7 @@ FilterSelectStory.args = {
 
 export default {
     title: 'Developments/Components/Select',
-    component: Select,
+    component: Component,
     argTypes: {
     },
     args: {

@@ -32,6 +32,7 @@ import type { SheetThemeType } from '@components/Sheet/theme'
 import type { SubMenuThemeType } from '@components/SubMenu/theme'
 import type { SwitchButtonThemeType } from '@components/SwitchButton/theme'
 import type { TagThemeType } from '@components/Tag/theme'
+import type { TagsInputThemeType } from '@components/TagsInput/theme'
 import type { TimePickerThemeType } from '@components/TimePicker/theme'
 import type { ContainerThemeType } from '@components/Container/theme'
 
@@ -97,7 +98,11 @@ interface Colors {
 
 interface Alert {
     error: Error,
-    info: Error
+    warning: Error,
+    success: Error,
+    info: Error,
+    loading: Error
+    hint: Error
 }
 
 interface Error {
@@ -164,6 +169,7 @@ export interface FluffyTheme {
         SubMenu: SubMenuThemeType,
         SwitchButton: SwitchButtonThemeType,
         Tag: TagThemeType,
+        TagsInput: TagsInputThemeType,
         TimePicker: TimePickerThemeType,
         Container: ContainerThemeType
     }

@@ -1,8 +1,12 @@
 import { tint } from 'polished'
 
+import { RadioSizes } from './types'
+
 import type { ThemeStyleItem } from '@root/types'
+import type { RadioProps } from './types'
 
 export type RadioThemeType = {
+    defaultProps: Partial<RadioProps>,
     style: {
         root: ThemeStyleItem,
         radio: ThemeStyleItem,
@@ -18,6 +22,9 @@ export type RadioThemeType = {
 }
 
 const RadioTheme: RadioThemeType = {
+    defaultProps: {
+        size: RadioSizes.Normal
+    },
     style: {
         root: {
             display: 'inline-flex',

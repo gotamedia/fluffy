@@ -5,13 +5,15 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref) => {
+export const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
+        size,
         label,
         onChange,
         onValueChange,
@@ -65,4 +67,4 @@ const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref) => {
 
 SwitchButton.displayName = 'SwitchButton'
 
-export default SwitchButton
+export default withThemeProps(SwitchButton) as Types.SwitchButtonComponent

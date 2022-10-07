@@ -1,8 +1,12 @@
 import { tint } from 'polished'
 
+import { TagSizes } from '@root/index'
+
+import type { TagProps } from '@root/index'
 import type { ThemeStyleItem } from '@root/types'
 
 export type TagThemeType = {
+    defaultProps: Partial<TagProps>,
     style: {
         root: ThemeStyleItem,
         label: ThemeStyleItem,
@@ -17,6 +21,9 @@ export type TagThemeType = {
 }
 
 const TagTheme: TagThemeType = {
+    defaultProps: {
+        size: TagSizes.Normal
+    },
     style: {
         root: ({ $componentState }) => ({
             boxSizing: 'border-box',

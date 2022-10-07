@@ -5,14 +5,16 @@ import {
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
-const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
+export const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size,
+        variant,
         onChange,
         onValueChange,
         label,
@@ -60,4 +62,4 @@ const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
 
 Textarea.displayName = 'Textarea'
 
-export default Textarea
+export default withThemeProps(Textarea) as Types.TextareaComponent

@@ -1,12 +1,20 @@
+import type { SheetProps } from './types'
 import type { ThemeStyleItem } from '@root/types'
 
 export type SheetThemeType = {
+    defaultProps: Partial<SheetProps>,
     style: {
         root: ThemeStyleItem
     }
 }
 
 const SheetTheme: SheetThemeType = {
+    defaultProps: {
+        duration: 300,
+        direction: 'bottom',
+        openOnMount: true,
+        forceRender: false
+    },
     style: {
         root: {
             padding: '0',

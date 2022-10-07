@@ -2,13 +2,15 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Tag: Types.TagComponent = forwardRef((props, ref) => {
+export const Tag: Types.TagComponent = forwardRef((props, ref) => {
     const {
         label,
-        size = 'normal',
+        size,
         onRemove,
         disabled,
         iconProps,
@@ -40,7 +42,7 @@ const Tag: Types.TagComponent = forwardRef((props, ref) => {
     return (
         <Styled.Wrapper
             ref={ref}
-            $size={size}
+            $size={size!}
             $componentState={componentState}
             {...DOMProps}
             className={wrapperClassName}
@@ -63,4 +65,4 @@ const Tag: Types.TagComponent = forwardRef((props, ref) => {
 
 Tag.displayName = 'Tag'
 
-export default Tag
+export default withThemeProps(Tag) as Types.TagComponent

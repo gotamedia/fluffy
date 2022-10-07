@@ -2,20 +2,22 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import TimePickerInput from './components/TimePickerInput'
 
 import * as Styled from './style'
 import type * as Types from './types'
 
-const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
+export const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
     const {
-        timeIntervals = 15,
-        timeCaption = 'Time',
-        dateFormat = 'p',
+        timeIntervals,
+        timeCaption,
+        dateFormat,
         inputProps,
         calendarClassName,
         onClear,
-        isClearable = false,
+        isClearable,
         ...filteredProps
     } = props
 
@@ -55,4 +57,4 @@ const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => {
 
 TimePicker.displayName = 'TimePicker'
 
-export default TimePicker
+export default withThemeProps(TimePicker) as Types.TimePickerComponent

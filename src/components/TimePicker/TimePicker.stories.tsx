@@ -3,15 +3,16 @@ import {
     useCallback
 } from 'react'
 
-import DateUtility from '../../utils/date'
+import DateUtility from '@utils/date'
 
 import TimePicker from './index'
+import { TimePicker as Component } from './TimePicker'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
 
 const Basic: Story<Types.TimePickerProps> = (props) => {
-    const roundToNearestMinutes = useCallback((date) => {
+    const roundToNearestMinutes = useCallback((date: Date) => {
         if (date && props.timeIntervals && props.timeIntervals > 1) {
             const roundedMinutes = Math.floor(DateUtility.getMinutes(date) / props.timeIntervals) * props.timeIntervals
             return DateUtility.setMinutes(DateUtility.startOfMinute(date), roundedMinutes)
@@ -55,7 +56,7 @@ export {
 
 export default {
     title: 'Developments/Components/TimePicker',
-    component: TimePicker,
+    component: Component,
     argTypes: {},
     args: {
         locale: 'sv',
@@ -68,4 +69,4 @@ export default {
             variant: 'outline'
         }
     }
-} as Meta<typeof TimePicker>
+} as Meta<Types.TimePickerComponent>

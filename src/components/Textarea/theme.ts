@@ -1,5 +1,11 @@
 import { tint } from 'polished'
 
+import {
+    TextareaSizes,
+    TextareaVariants
+} from './types'
+
+import type { TextareaProps } from './types'
 import type { ThemeStyleItem } from '@root/types'
 
 const sharedStyle = {
@@ -18,6 +24,7 @@ const sharedStyle = {
 }
 
 export type TextareaThemeType = {
+    defaultProps: Partial<TextareaProps>,
     style: {
         root: ThemeStyleItem,
         label: ThemeStyleItem,
@@ -37,6 +44,10 @@ export type TextareaThemeType = {
 }
 
 const TextareaTheme: TextareaThemeType = {
+    defaultProps: {
+        size: TextareaSizes.Normal,
+        variant: TextareaVariants.Primary
+    },
     style: {
         root: {
             resize: 'none',

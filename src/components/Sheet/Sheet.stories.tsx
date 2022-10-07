@@ -3,6 +3,8 @@ import { useRef } from 'react'
 import { Story, Meta } from '@storybook/react'
 
 import Sheet from './index'
+import { Sheet as Component } from './Sheet'
+
 import Button from '../Button'
 
 import * as Types from './types'
@@ -60,7 +62,7 @@ Basic.args = {
 
 export default {
     title: 'Developments/Components/Sheet',
-    component: Sheet,
+    component: Component,
     argTypes: {
     },
     args: {
