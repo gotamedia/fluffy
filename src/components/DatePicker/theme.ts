@@ -3,10 +3,13 @@ import { tint } from 'polished'
 // @ts-ignore
 import datePickerStyle from '../../../node_modules/react-datepicker/dist/react-datepicker.css'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { DatePickerProps } from './types'
 
-export type DatePickerThemeType = {
+export type DatePickerThemeType = ComponentTheme<{
     defaultProps: Partial<DatePickerProps>,
     style: {
         datepicker: string,
@@ -15,7 +18,7 @@ export type DatePickerThemeType = {
         input: ThemeStyleItem,
         icon: ThemeStyleItem
     }
-}
+}>
 
 const DatePickerTheme: DatePickerThemeType = {
     defaultProps: {

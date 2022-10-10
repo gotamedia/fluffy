@@ -5,8 +5,11 @@ import {
     TextareaVariants
 } from './types'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { TextareaProps } from './types'
-import type { ThemeStyleItem } from '@root/types'
 
 const sharedStyle = {
     focus: {
@@ -23,7 +26,7 @@ const sharedStyle = {
     }
 }
 
-export type TextareaThemeType = {
+export type TextareaThemeType = ComponentTheme<{
     defaultProps: Partial<TextareaProps>,
     style: {
         root: ThemeStyleItem,
@@ -41,7 +44,7 @@ export type TextareaThemeType = {
         secondary: ThemeStyleItem,
         outline: ThemeStyleItem
     }
-}
+}>
 
 const TextareaTheme: TextareaThemeType = {
     defaultProps: {

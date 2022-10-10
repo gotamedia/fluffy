@@ -1,9 +1,12 @@
 import { OverlayVariants } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { OverlayProps } from './types'
 
-export type OverlayThemeType = {
+export type OverlayThemeType = ComponentTheme<{
     defaultProps: Partial<OverlayProps>
     style: {
         root: ThemeStyleItem
@@ -12,7 +15,7 @@ export type OverlayThemeType = {
         normal: ThemeStyleItem,
         dim: ThemeStyleItem
     }
-}
+}>
 
 const OverlayTheme: OverlayThemeType = {
     defaultProps: {

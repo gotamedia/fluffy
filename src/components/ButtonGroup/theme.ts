@@ -3,10 +3,13 @@ import {
     ButtonGroupSizes
  } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ButtonGroupProps } from './types'
 
-export type ButtonGroupThemeType = {
+export type ButtonGroupThemeType = ComponentTheme<{
     defaultProps: Partial<ButtonGroupProps>,
     style: {
         root: ThemeStyleItem,
@@ -15,7 +18,7 @@ export type ButtonGroupThemeType = {
     variants: {
         secondary: ThemeStyleItem
     }
-}
+}>
 
 const ButtonGroupTheme: ButtonGroupThemeType = {
     defaultProps: {

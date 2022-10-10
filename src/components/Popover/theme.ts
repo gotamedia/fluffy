@@ -1,13 +1,16 @@
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { PopoverProps } from './types'
 
-export type PopoverThemeType = {
+export type PopoverThemeType = ComponentTheme<{
     defaultProps: Partial<PopoverProps>,
     style: {
         overlay: ThemeStyleItem,
         root: ThemeStyleItem
     }
-}
+}>
 
 const PopoverTheme: PopoverThemeType = {
     defaultProps: {

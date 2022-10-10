@@ -1,16 +1,19 @@
 import themeHelpers from '@utils/theme/helpers'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ModalProps } from './types'
 
-export type ModalThemeType = {
+export type ModalThemeType = ComponentTheme<{
     defaultProps: Partial<ModalProps>
     style: {
         overlay: ThemeStyleItem,
         root: ThemeStyleItem,
         icon: ThemeStyleItem
     }
-}
+}>
 
 const ModalTheme: ModalThemeType = {
     defaultProps: {

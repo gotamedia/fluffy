@@ -2,10 +2,13 @@ import { tint } from 'polished'
 
 import { SwitchButtonSizes } from './types'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { SwitchButtonProps } from './types'
-import type { ThemeStyleItem } from '@root/types'
 
-export type SwitchButtonThemeType = {
+export type SwitchButtonThemeType = ComponentTheme<{
     defaultProps: Partial<SwitchButtonProps>,
     style: {
         wrapper: ThemeStyleItem,
@@ -19,7 +22,7 @@ export type SwitchButtonThemeType = {
         big: ThemeStyleItem,
         huge: ThemeStyleItem
     }
-}
+}>
 
 const SwitchButtonTheme: SwitchButtonThemeType = {
     defaultProps: {

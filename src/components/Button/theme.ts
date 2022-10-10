@@ -8,7 +8,10 @@ import {
     ButtonSizes
 } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ButtonProps } from './types'
 
 const sharedStyle = {
@@ -26,7 +29,7 @@ const sharedStyle = {
     }
 }
 
-export type ButtonThemeType = {
+export type ButtonThemeType = ComponentTheme<{
     defaultProps: Partial<ButtonProps>,
     style: {
         root: ThemeStyleItem,
@@ -45,7 +48,7 @@ export type ButtonThemeType = {
         outline: ThemeStyleItem,
         text: ThemeStyleItem
     }
-}
+}>
 
 const ButtonTheme: ButtonThemeType = {
     defaultProps: {

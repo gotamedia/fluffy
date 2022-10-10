@@ -4,10 +4,13 @@ import {
     PillShapes
 } from './constants'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { PillProps } from './types'
 
-export type PillThemeType = {
+export type PillThemeType = ComponentTheme<{
     defaultProps: Partial<PillProps>,
     style: {
         root: ThemeStyleItem
@@ -25,7 +28,7 @@ export type PillThemeType = {
         alert: ThemeStyleItem,
         warning: ThemeStyleItem
     }
-}
+}>
 
 const PillTheme: PillThemeType = {
     defaultProps: {

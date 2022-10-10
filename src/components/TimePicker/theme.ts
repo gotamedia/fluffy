@@ -1,9 +1,12 @@
 import { tint } from 'polished'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { TimePickerProps } from './types'
-import type { ThemeStyleItem } from '@root/types'
 
-export type TimePickerThemeType = {
+export type TimePickerThemeType = ComponentTheme<{
     defaultProps: Partial<TimePickerProps>,
     style: {
         root: ThemeStyleItem,
@@ -11,7 +14,7 @@ export type TimePickerThemeType = {
         input: ThemeStyleItem,
         icon: ThemeStyleItem
     }
-}
+}>
 
 const TimePickerTheme: TimePickerThemeType = {
     defaultProps: {

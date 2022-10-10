@@ -2,10 +2,13 @@ import { tint } from 'polished'
 
 import { RadioSizes } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { RadioProps } from './types'
 
-export type RadioThemeType = {
+export type RadioThemeType = ComponentTheme<{
     defaultProps: Partial<RadioProps>,
     style: {
         root: ThemeStyleItem,
@@ -19,7 +22,7 @@ export type RadioThemeType = {
         big: ThemeStyleItem,
         huge: ThemeStyleItem
     }
-}
+}>
 
 const RadioTheme: RadioThemeType = {
     defaultProps: {

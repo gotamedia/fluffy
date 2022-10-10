@@ -1,12 +1,15 @@
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { SheetProps } from './types'
-import type { ThemeStyleItem } from '@root/types'
 
-export type SheetThemeType = {
+export type SheetThemeType = ComponentTheme<{
     defaultProps: Partial<SheetProps>,
     style: {
         root: ThemeStyleItem
     }
-}
+}>
 
 const SheetTheme: SheetThemeType = {
     defaultProps: {

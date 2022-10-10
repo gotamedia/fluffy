@@ -1,12 +1,15 @@
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { FocusTrapProps } from './types'
 
-export type FocusTrapThemeType = {
+export type FocusTrapThemeType = ComponentTheme<{
     defaultProps: Partial<FocusTrapProps>,
     style: {
         root: ThemeStyleItem
     }
-}
+}>
 
 const FocusTrapTheme: FocusTrapThemeType = {
     defaultProps: {},

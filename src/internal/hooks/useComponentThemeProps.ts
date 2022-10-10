@@ -1,24 +1,22 @@
 import { useMemo } from 'react'
 
-import useTheme from '@hooks/useTheme'
-
 import type { DefaultTheme } from 'styled-components'
 
-const useComponentThemeProps = (name: keyof DefaultTheme['components']) => {
-    const theme = useTheme()
-
+const useComponentThemeProps = (theme: DefaultTheme, name: keyof DefaultTheme['components']) => {
     const themeProps = useMemo(() => {
+        const props = {
+            defaultProps: {},
+            components: {}
+        }
+
         if (theme) {
             const componentTheme = theme.components[name]
             
-            // @ts-ignore
-            if (componentTheme?.defaultProps) {
-                // @ts-ignore
-                return componentTheme.defaultProps
-            }
+            props.defaultProps = componentTheme.defaultProps
+            props.components = componentTheme.components || {}
         }
 
-        return {}
+        return props
     }, [theme, name])
 
     return themeProps

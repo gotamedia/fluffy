@@ -5,7 +5,10 @@ import {
 
 import { CheckboxSizes } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { CheckboxProps } from './types'
 
 const sharedStyle = {
@@ -22,7 +25,7 @@ const sharedStyle = {
     }
 }
 
-export type CheckboxThemeType = {
+export type CheckboxThemeType = ComponentTheme<{
     defaultProps: Partial<CheckboxProps>,
     style: {
         root: ThemeStyleItem,
@@ -42,7 +45,7 @@ export type CheckboxThemeType = {
         outline: ThemeStyleItem,
         text: ThemeStyleItem
     }
-}
+}>
 
 const CheckboxTheme: CheckboxThemeType = {
     defaultProps: {

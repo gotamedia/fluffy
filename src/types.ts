@@ -1,5 +1,8 @@
 import type { DefaultTheme, CSSObject } from 'styled-components'
 
+import type { FluffyTheme } from './utils/theme'
+import type { DeepPartial } from './types/utils'
+
 export type ThemeStyleObject = CSSObject
 
 export type ThemeStyleFunction<Type = ThemeStyleObject> = (props: Record<string, any> & {
@@ -11,3 +14,7 @@ export type ThemeStyleItem<Type = ThemeStyleObject> = (
     ThemeStyleObject |
     ThemeStyleFunction<Type>
 )
+
+export type ComponentTheme<T = {}> = T & {
+    components?: DeepPartial<FluffyTheme['components']>
+}

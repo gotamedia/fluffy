@@ -6,10 +6,13 @@ import {
     ListItemTypes
 } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ListItemProps } from './types'
 
-export type ListItemThemeType = {
+export type ListItemThemeType = ComponentTheme<{
     defaultProps: Partial<ListItemProps>
     style: {
         root: ThemeStyleItem,
@@ -33,7 +36,7 @@ export type ListItemThemeType = {
         normal: ThemeStyleItem,
         full: ThemeStyleItem
     }
-}
+}>
 
 const ListItemTheme: ListItemThemeType = {
     defaultProps: {

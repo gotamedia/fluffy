@@ -2,10 +2,13 @@ import { tint } from 'polished'
 
 import { ImageLoadingEffects } from './components/LazyImage/types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ImageProps } from './types'
 
-export type ImageThemeType = {
+export type ImageThemeType = ComponentTheme<{
     defaultProps: Partial<ImageProps>,
     style: {
         root: ThemeStyleItem,
@@ -16,7 +19,7 @@ export type ImageThemeType = {
             placeholder: ThemeStyleItem
         }
     }
-}
+}>
 
 const ImageTheme: ImageThemeType = {
     defaultProps: {

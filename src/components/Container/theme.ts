@@ -1,9 +1,12 @@
 import { ContainerBackdrops } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ContainerProps } from './types'
 
-export type ContainerThemeType = {
+export type ContainerThemeType = ComponentTheme<{
     defaultProps: Partial<ContainerProps>,
     style: {
         root: ThemeStyleItem
@@ -14,7 +17,7 @@ export type ContainerThemeType = {
         strong: ThemeStyleItem,
         none: ThemeStyleItem
     }
-}
+}>
 
 const ContainerTheme: ContainerThemeType = {
     defaultProps: {

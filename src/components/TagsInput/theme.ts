@@ -1,9 +1,12 @@
 import { tint } from 'polished'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { TagsInputProps } from '@root/index'
-import type { ThemeStyleItem } from '@root/types'
 
-export type TagsInputThemeType = {
+export type TagsInputThemeType = ComponentTheme<{
     defaultProps: Partial<TagsInputProps>,
     style: {
         root: ThemeStyleItem,
@@ -17,7 +20,7 @@ export type TagsInputThemeType = {
         input: ThemeStyleItem,
         listWrapper: ThemeStyleItem
     }
-}
+}>
 
 const TagsInputTheme: TagsInputThemeType = {
     defaultProps: {

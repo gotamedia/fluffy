@@ -1,6 +1,14 @@
-import { forwardRef } from 'react'
+import {
+    forwardRef,
+    useMemo
+} from 'react'
+
+import { ThemeProvider } from 'styled-components'
+import merge from 'lodash/merge'
 
 import useComponentThemeProps from '@internal/hooks/useComponentThemeProps'
+
+import useTheme from '@hooks/useTheme'
 
 import type {
     ForwardRefExoticComponent,
@@ -19,14 +27,25 @@ const withThemeProps = <Ref, Props extends {}>(
     WrappedComponent: ComponentType<Ref, Props>
 ): ComponentType<Ref, Props> => {
     const WithThemeProps = forwardRef<Ref, Props>((props, ref) => {
-        const themeProps = useComponentThemeProps(WrappedComponent.displayName as keyof DefaultTheme['components'])
+        const theme = useTheme()
         
+        const {
+            defaultProps,
+            components
+        } = useComponentThemeProps(theme, WrappedComponent.displayName as keyof DefaultTheme['components'])
+
+        const extendedTheme = useMemo(() => {
+            return merge({}, theme, { components: components })
+        }, [theme, components])
+
         return (
-            <WrappedComponent
-                ref={ref}
-                {...themeProps}
-                {...props as PropsWithoutRef<Props>}
-            />
+            <ThemeProvider theme={extendedTheme}>
+                <WrappedComponent
+                    ref={ref}
+                    {...defaultProps}
+                    {...props as PropsWithoutRef<Props>}
+                />
+            </ThemeProvider>
         )
     })
 

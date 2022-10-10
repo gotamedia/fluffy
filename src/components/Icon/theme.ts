@@ -1,7 +1,10 @@
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { IconProps } from './types'
 
-export type IconThemeType = {
+export type IconThemeType = ComponentTheme<{
     defaultProps: Partial<IconProps>,
     style: {
         root: ThemeStyleItem
@@ -14,7 +17,7 @@ export type IconThemeType = {
         big: ThemeStyleItem,
         huge: ThemeStyleItem
     }
-}
+}>
 
 const IconTheme: IconThemeType = {
     defaultProps: {},

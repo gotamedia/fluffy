@@ -2,10 +2,13 @@ import { tint } from 'polished'
 
 import { TagSizes } from '@root/index'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { TagProps } from '@root/index'
-import type { ThemeStyleItem } from '@root/types'
 
-export type TagThemeType = {
+export type TagThemeType = ComponentTheme<{
     defaultProps: Partial<TagProps>,
     style: {
         root: ThemeStyleItem,
@@ -18,7 +21,7 @@ export type TagThemeType = {
         normal: ThemeStyleItem,
         big: ThemeStyleItem
     }
-}
+}>
 
 const TagTheme: TagThemeType = {
     defaultProps: {

@@ -5,11 +5,14 @@ import {
     SelectSizes
 } from './types'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { SelectProps } from './types'
 import type { IconType } from '../Icon'
-import type { ThemeStyleItem } from '@root/types'
 
-export type SelectThemeType = {
+export type SelectThemeType = ComponentTheme<{
     defaultProps: Partial<SelectProps>,
     style: {
         trigger: ThemeStyleItem,
@@ -19,7 +22,7 @@ export type SelectThemeType = {
     props: {
         icon: ThemeStyleItem<IconType> | IconType
     }
-}
+}>
 
 const SelectTheme: SelectThemeType = {
     defaultProps: {

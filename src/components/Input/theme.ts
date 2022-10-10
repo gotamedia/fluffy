@@ -5,7 +5,10 @@ import {
     InputVariants
 } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { InputProps } from './types'
 
 const sharedStyle = {
@@ -23,7 +26,7 @@ const sharedStyle = {
     }
 }
 
-export type InputThemeType = {
+export type InputThemeType = ComponentTheme<{
     defaultProps: Partial<InputProps>,
     style: {
         root: ThemeStyleItem,
@@ -41,7 +44,7 @@ export type InputThemeType = {
         secondary: ThemeStyleItem,
         outline: ThemeStyleItem
     }
-}
+}>
 
 const InputTheme: InputThemeType = {
     defaultProps: {

@@ -8,8 +8,11 @@ import {
     UploadButtonVariants
 } from './types'
 
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { UploadButtonProps } from './types'
-import type { ThemeStyleItem } from '@root/types'
 
 const sharedStyle = {
     disabled: {
@@ -25,7 +28,7 @@ const sharedStyle = {
     }
 }
 
-export type UploadButtonThemeType = {
+export type UploadButtonThemeType = ComponentTheme<{
     defaultProps: Partial<UploadButtonProps>,
     style: {
         root: ThemeStyleItem,
@@ -46,7 +49,7 @@ export type UploadButtonThemeType = {
         outline: ThemeStyleItem,
         text: ThemeStyleItem
     }
-}
+}>
 
 const UploadButtonTheme: UploadButtonThemeType = {
     defaultProps: {

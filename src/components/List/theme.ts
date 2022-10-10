@@ -4,17 +4,20 @@ import {
     ListItemTypes
 } from '../ListItem'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { ListProps } from './types'
 
-export type ListThemeType = {
+export type ListThemeType = ComponentTheme<{
     defaultProps: Partial<ListProps>
     style: {
         root: ThemeStyleItem,
         inputGroup: ThemeStyleItem
         input: ThemeStyleItem
     }
-}
+}>
 
 const ListTheme: ListThemeType = {
     defaultProps: {

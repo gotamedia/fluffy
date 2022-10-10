@@ -1,10 +1,13 @@
 import { Icons } from '../Icon'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { DropdownProps } from './types'
 import type { IconType } from '../Icon'
 
-export type DropdownThemeType = {
+export type DropdownThemeType = ComponentTheme<{
     defaultProps: Partial<DropdownProps>,
     style: {
         trigger: ThemeStyleItem,
@@ -14,7 +17,7 @@ export type DropdownThemeType = {
     props: {
         icon: ThemeStyleItem<IconType> | IconType
     }
-}
+}>
 
 const DropdownTheme: DropdownThemeType = {
     defaultProps: {},

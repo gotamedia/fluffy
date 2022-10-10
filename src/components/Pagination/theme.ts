@@ -8,13 +8,16 @@ import { Icons } from '../Icon'
 import { ButtonVariants } from '../Button'
 import { IconButtonShapes } from '../IconButton'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { PaginationProps } from './types'
 import type { IconType } from '../Icon'
 import type { ButtonVariantType } from '../Button'
 import type { IconButtonShapeType } from '../IconButton'
 
-export type PaginationThemeType = {
+export type PaginationThemeType = ComponentTheme<{
     defaultProps: Partial<PaginationProps>
     style: {
         root: ThemeStyleItem,
@@ -29,7 +32,7 @@ export type PaginationThemeType = {
         }
         button: ThemeStyleItem<ButtonVariantType>
     }
-}
+}>
 
 const PaginationTheme: PaginationThemeType = {
     defaultProps: {

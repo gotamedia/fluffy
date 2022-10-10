@@ -9,7 +9,10 @@ import {
     IconButtonShapes
 } from './types'
 
-import type { ThemeStyleItem } from '@root/types'
+import type {
+    ThemeStyleItem,
+    ComponentTheme
+} from '@root/types'
 import type { IconButtonProps } from './types'
 
 const sharedStyle = {
@@ -27,7 +30,7 @@ const sharedStyle = {
     }
 }
 
-export type IconButtonThemeType = {
+export type IconButtonThemeType = ComponentTheme<{
     defaultProps: Partial<IconButtonProps>,
     style: {
         root: ThemeStyleItem,
@@ -49,7 +52,7 @@ export type IconButtonThemeType = {
         secondary: ThemeStyleItem,
         outline: ThemeStyleItem
     }
-}
+}>
 
 const IconButtonTheme: IconButtonThemeType = {
     defaultProps: {
