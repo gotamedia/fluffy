@@ -18,7 +18,8 @@ import { GlobalStyle } from './style'
 
 export const parameters = {
     options: {
-        showToolbar: true
+        showToolbar: true,
+        showPanel: true
     },
     actions: {
         argTypesRegex: "^on[A-Z].*"

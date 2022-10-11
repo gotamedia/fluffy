@@ -15,7 +15,6 @@
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
-        "resolveJsonModule": true,
         "lib": [
             "es2015",
             "dom"
