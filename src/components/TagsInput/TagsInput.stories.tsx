@@ -58,8 +58,8 @@ const Template: Story<Types.TagsInputProps> = (props) => {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+BasicStory.args = {
     
 }
 

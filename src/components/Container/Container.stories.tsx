@@ -15,7 +15,7 @@ const Template: Story<Types.ContainerProps> = (props) => {
     )
 }
 
-export const Basic = Template.bind({})
+export const BasicStory = Template.bind({})
 
 export default {
     title: 'Developments/Components/Container',

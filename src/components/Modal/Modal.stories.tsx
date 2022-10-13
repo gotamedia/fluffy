@@ -37,8 +37,8 @@ const Template: Story<Types.ModalProps> = () => {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+BasicStory.args = {
     
 }
 

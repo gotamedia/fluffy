@@ -1,5 +1,6 @@
 //@ts-ignore
 import { transform, registerPlugin } from '@babel/standalone'
+import * as Polished from 'polished'
 
 import {
     createTheme,
@@ -48,10 +49,12 @@ const getInstance = (parsedCode: string) => {
         const instance = new Function(
             'createTheme',
             'getTheme',
+            'Polished',
             parsedCode
         )(
             createTheme,
-            getTheme
+            getTheme,
+            Polished
         )
 
         return {

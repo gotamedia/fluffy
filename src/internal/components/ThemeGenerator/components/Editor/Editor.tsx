@@ -21,18 +21,22 @@ import type { KeyboardEventHandler } from 'react'
 import Header from './components/Header'
 
 const example = `import { createTheme, getTheme } from '@gotamedia/fluffy/theme'
+import * as Polished from '@gotamedia/fluffy/packages/polished'
 import type { FluffyTheme } from '@gotamedia/fluffy/theme'
 
 const theme = createTheme({
     colors: {
-        brand: 'green'
+        brand: 'darkcyan'
     },
     components: {
         Button: {
-            style: {
-                root: ({ theme }) => {
+            defaultProps: {
+                variant: 'rounded-primary'
+            },
+            variants: {
+                'rounded-primary': (params) => {
                     return {
-                        ...getTheme().components.Button.style.root,
+                        ...getTheme().components.Button.variants.primary(params),
                         borderRadius: '15px'
                     }
                 }
@@ -43,9 +47,22 @@ const theme = createTheme({
                 root: ({ theme }) => {
                     return {
                         ...getTheme().components.Input.style.root,
-                        color: theme.colors.brand,
+                        color: Polished.tint(0.5, theme.colors.brand),
                         borderRadius: '15px',
                         maxWidth: '500px'
+                    }
+                }
+            }
+        },
+        IconButton: {
+            defaultProps: {
+                variant: 'rounded-primary'
+            },
+            variants: {
+                'rounded-primary': (params) => {
+                    return {
+                        ...getTheme().components.Button.variants.primary(params),
+                        borderRadius: '15px'
                     }
                 }
             }
@@ -101,6 +118,7 @@ const Editor = (props: any) => {
         if (activeTheme.code) {
             const cleanCode = activeTheme.code
                 .replace(`import { createTheme, getTheme } from '@gotamedia/fluffy/theme'`, '')
+                .replace(`import * as Polished from '@gotamedia/fluffy/packages/polished'`, '')
                 .replace(`import type { FluffyTheme } from '@gotamedia/fluffy/theme'`, '')
                 .replace(` as FluffyTheme`, '')
     
@@ -136,7 +154,7 @@ const Editor = (props: any) => {
         constrainedInstance.current.initializeIn(editor)
         constrainedInstance.current.addRestrictionsTo(model, [
             {
-                range: [4, 1, lineCount - 2, 1],
+                range: [5, 1, lineCount - 2, 1],
                 label: "themeContentRange"
             }
         ])
@@ -148,6 +166,7 @@ const Editor = (props: any) => {
         monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
             target: monaco.languages.typescript.ScriptTarget.Latest,
             module: monaco.languages.typescript.ModuleKind.ES2015,
+            moduleResolution: monaco.languages.typescript.ModuleResolutionKind.NodeJs,
             jsx: monaco.languages.typescript.JsxEmit.React,
             allowNonTsExtensions: true,
             lib: ['es2018']
@@ -185,8 +204,16 @@ const Editor = (props: any) => {
                 styledComponentsTypes,
                 `file:///node_modules/@types/styled-components/index.d.ts`
             )
+            
+            const polishedTypesResponse = await fetch('https://unpkg.com/polished@4.2.2')
+            const polishedTypes = await polishedTypesResponse.text()
+
+            monaco.languages.typescript.typescriptDefaults.addExtraLib(
+                polishedTypes,
+                `file:///node_modules/@gotamedia/fluffy/packages/polished.js`
+            )
         } catch (error) {
-            console.error('Editor / Failed to load "styled-components" types:', error)
+            console.error('Editor / Failed to load libraries:', error)
         }
     }, [])
 

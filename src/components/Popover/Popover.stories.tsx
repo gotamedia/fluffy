@@ -45,7 +45,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
     )
 }
 
-export const Basic = Template.bind({})
+export const BasicStory = Template.bind({})
 
 export default {
     title: 'Developments/Components/Popover',

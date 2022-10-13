@@ -1,4 +1,3 @@
-import React from 'react'
 import { Story, Meta } from '@storybook/react'
 import { Button } from "../../index"
 
@@ -41,8 +40,8 @@ const Template: Story<
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+BasicStory.args = {
     type: Types.MessageTypes.Error,
     headline: "This is a message",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",

@@ -33,8 +33,8 @@ const Template: Story<Types.PaperProps & {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+BasicStory.args = {
     image: {
         src: "https://cdn.gotamedia.se/applications/nxt/svg/unlock.svg",
         alt: 'i18n.image.alt',

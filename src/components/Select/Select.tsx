@@ -168,7 +168,8 @@ export const Select: Types.SelectComponent = forwardRef((props, ref) => {
     )
 
     const className = classNames({
-        'fluffy-select': true
+        'fluffy-select': true,
+        [filterdProps?.className || '']: true
     })
 
     const triggerClassName = classNames({

@@ -4,7 +4,6 @@ import {
 } from 'react'
 
 import { getTheme } from '@utils/theme'
-import { ThemeProvider } from '@contexts/ThemeContext'
 
 import Viewer from './components/Viewer'
 import Editor from './components/Editor'
@@ -22,9 +21,7 @@ const ThemeGenerator = () => {
     return (
         <Styled.Wrapper>
             <ErrorBoundary>
-                <ThemeProvider theme={theme}>
-                    <Viewer />
-                </ThemeProvider>
+                <Viewer theme={theme}/>
             </ErrorBoundary>
 
             <Editor onThemeChange={hamdleOnThemeChange} />

@@ -110,8 +110,8 @@ const Template: Story<Types.AnchorProps> = (props) => {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+BasicStory.args = {
     
 }
 

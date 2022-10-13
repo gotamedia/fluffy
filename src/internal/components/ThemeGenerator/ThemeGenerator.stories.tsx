@@ -9,14 +9,14 @@ const Basic: Story = () => {
 }
 
 const BasicStory = Basic.bind({})
-BasicStory.storyName = 'ThemeGenerator'
+BasicStory.storyName = 'Theme Generator'
 
 export {
     BasicStory
 }
 
 export default {
-    title: 'Theme/Generator',
+    title: 'Theme Generator',
     component: ThemeGenerator,
     argTypes: {},
     args: {},

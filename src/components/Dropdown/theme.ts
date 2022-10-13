@@ -1,5 +1,7 @@
 import { Icons } from '../Icon'
 
+import { DropdownSizes, DropdownVariants } from './types'
+
 import type {
     ThemeStyleItem,
     ComponentTheme
@@ -20,7 +22,10 @@ export type DropdownThemeType = ComponentTheme<{
 }>
 
 const DropdownTheme: DropdownThemeType = {
-    defaultProps: {},
+    defaultProps: {
+        variant: DropdownVariants.Primary,
+        size: DropdownSizes.Normal
+    },
     style: {
         trigger: {},
         icon: {},

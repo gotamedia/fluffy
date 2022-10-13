@@ -33,8 +33,9 @@ const Template: Story<Types.AlertProps & {
     )
 }
 
-export const Basic = Template.bind({})
-Basic.args = {
+export const BasicStory = Template.bind({})
+
+BasicStory.args = {
     icon: Icons.Info,
     variant: AlertVariants.Success,
     headline: 'Ta del av våra användarvillkor',
