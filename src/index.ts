@@ -75,6 +75,9 @@ export { default as useMeasure } from '@hooks/useMeasure'
 export * from '@hooks/useDataFetch'
 export { default as useDataFetch } from '@hooks/useDataFetch'
 
+export * from '@hooks/useLocalStorage'
+export { default as useLocalStorage } from '@hooks/useLocalStorage'
+
 // <==== Hooks
 
 
