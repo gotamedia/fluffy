@@ -12,48 +12,8 @@ import ErrorBoundary from './components/ErrorBoundary'
 
 import * as Styled from './style'
 
-const example = `import { createTheme, getTheme } from '@gotamedia/fluffy/theme'
-import type { FluffyTheme } from '@gotamedia/fluffy/theme'
-
-const theme = createTheme({
-    colors: {
-        brand: 'green'
-    },
-    components: {
-        Button: {
-        style: {
-            root: ({ theme }) => {
-                return {
-                    ...getTheme().components.Button.style.root,
-                    borderRadius: '15px'
-                }
-            }
-        }
-        },
-        Input: {
-            style: {
-                root: ({ theme }) => {
-                    return {
-                        ...getTheme().components.Input.style.root,
-                        color: theme.colors.brand,
-                        borderRadius: '15px',
-                        maxWidth: '500px'
-                    }
-                }
-            }
-        }
-    }
-} as FluffyTheme)
-
-export default theme`
-
 const ThemeGenerator = () => {
-    const [code, setCode] = useState(example)
     const [theme, setTheme] = useState(getTheme())
-
-    const hamdleOnCodeChange = useCallback((value: string) => {
-        setCode(value)
-    }, [])
 
     const hamdleOnThemeChange = useCallback((value: any) => {
         setTheme(value)
@@ -67,12 +27,7 @@ const ThemeGenerator = () => {
                 </ThemeProvider>
             </ErrorBoundary>
 
-            <Editor
-                code={code}
-                theme={theme}
-                onCodeChange={hamdleOnCodeChange}
-                onThemeChange={hamdleOnThemeChange}
-            />
+            <Editor onThemeChange={hamdleOnThemeChange} />
         </Styled.Wrapper>
     )
 }

@@ -1,64 +1,135 @@
 //@ts-ignore
 import constrainedEditor from 'constrained-editor-plugin'
+import { v4 as createId } from 'uuid'
 
 import {
     useRef,
     useState,
     useEffect,
-    KeyboardEventHandler
+    useCallback
 } from 'react'
 
 import * as codeParser from './codeParser'
 import * as settings from './settings'
 
+import useLocalStorage from '@root/hooks/useLocalStorage'
+
 import * as Styled from './style'
 import type { Monaco } from '@monaco-editor/react'
+import type { KeyboardEventHandler } from 'react'
+
+import Header from './components/Header'
+
+const example = `import { createTheme, getTheme } from '@gotamedia/fluffy/theme'
+import type { FluffyTheme } from '@gotamedia/fluffy/theme'
+
+const theme = createTheme({
+    colors: {
+        brand: 'green'
+    },
+    components: {
+        Button: {
+            style: {
+                root: ({ theme }) => {
+                    return {
+                        ...getTheme().components.Button.style.root,
+                        borderRadius: '15px'
+                    }
+                }
+            }
+        },
+        Input: {
+            style: {
+                root: ({ theme }) => {
+                    return {
+                        ...getTheme().components.Input.style.root,
+                        color: theme.colors.brand,
+                        borderRadius: '15px',
+                        maxWidth: '500px'
+                    }
+                }
+            }
+        }
+    }
+} as FluffyTheme)
+
+export default theme`
+
+type ThemeMeta = {
+    id: string,
+    name: string,
+    code: string,
+    latest?: boolean
+}
+
+const initialTheme: ThemeMeta = {
+    id: createId(),
+    name: 'Untitled',
+    code: example,
+    latest: true
+}
 
 const Editor = (props: any) => {
     const {
-        code,
-        onCodeChange,
         onThemeChange
     } = props
 
     const constrainedInstance = useRef<any>({})
 
+    const [savedThemes, setSavedThemes] = useLocalStorage<ThemeMeta[]>('fluffy-themes', [ {...initialTheme} ])
+
     const [hasError, setHasError] = useState(false)
-    const [themeMeta, setThemeMeta] = useState({
-        name: 'Untitled'
-    })
+    const [activeTheme, setActiveTheme] = useState<ThemeMeta>({} as ThemeMeta)
 
     useEffect(() => {
-        const cleanCode = code
-            .replace(`import { createTheme, getTheme } from '@gotamedia/fluffy/theme'`, '')
-            .replace(`import type { FluffyTheme } from '@gotamedia/fluffy/theme'`, '')
-            .replace(` as FluffyTheme`, '')
+        if (!activeTheme.code) {
+            if (savedThemes.length) {
+                const latestTheme = savedThemes.find(i => i.latest)
 
-        const {
-            error: parseError,
-            code: parsedCode
-        } = codeParser.parse(cleanCode)
-
-        if (parseError) {
-            setHasError(true)
-        } else if (parsedCode) {
-            setHasError(false)
-            
-            const {
-                error: instanceError,
-                instance
-            } = codeParser.getInstance(parsedCode)
-
-            if (instanceError) {
-                setHasError(true)
-            } else if (instance) {
-                setHasError(false)
-                onThemeChange(instance)
+                if (latestTheme) {
+                    setActiveTheme(latestTheme)
+                } else {
+                    setActiveTheme(savedThemes[0])
+                }
+            } else {
+                setSavedThemes([{...initialTheme}])
             }
         }
-    }, [code, onThemeChange])
+    }, [activeTheme, savedThemes, setSavedThemes])
 
-    const handleEditorDidMount = (editor: any) => {
+    useEffect(() => {
+        if (activeTheme.code) {
+            const cleanCode = activeTheme.code
+                .replace(`import { createTheme, getTheme } from '@gotamedia/fluffy/theme'`, '')
+                .replace(`import type { FluffyTheme } from '@gotamedia/fluffy/theme'`, '')
+                .replace(` as FluffyTheme`, '')
+    
+            const {
+                error: parseError,
+                code: parsedCode
+            } = codeParser.parse(cleanCode)
+    
+            if (parseError) {
+                setHasError(true)
+            } else if (parsedCode) {
+                setHasError(false)
+                
+                const {
+                    error: instanceError,
+                    instance
+                } = codeParser.getInstance(parsedCode)
+    
+                if (instanceError) {
+                    setHasError(true)
+                } else if (instance) {
+                    setHasError(false)
+                    onThemeChange(instance)
+                }
+            }
+        }
+    }, [activeTheme, onThemeChange])
+
+    const handleEditorDidMount = useCallback((editor: any) => {
         const model = editor.getModel()
         const lineCount = model.getLineCount()
         
@@ -69,9 +140,9 @@ const Editor = (props: any) => {
                 label: "themeContentRange"
             }
         ])
-    }
+    }, [])
 
-    const handleEditorWillMount = async (monaco: Monaco) => {
+    const handleEditorWillMount = useCallback(async (monaco: Monaco) => {
         constrainedInstance.current = constrainedEditor(monaco)
 
         monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -117,66 +188,93 @@ const Editor = (props: any) => {
         } catch (error) {
             console.error('Editor / Failed to load "styled-components" types:', error)
         }
-    }
+    }, [])
+
+    const handleSaveTheme = useCallback(() => {
+        let newThemes = savedThemes
+
+        const existingTheme = savedThemes.find(i => i.id === activeTheme.id)
+
+        if (existingTheme) {
+            newThemes = newThemes.map(i => {
+                if (i.id === activeTheme.id) {
+                    return {
+                        ...i,
+                        name: activeTheme.name,
+                        code: activeTheme.code,
+                        latest: true
+                    }
+                } else {
+                    return {
+                        ...i,
+                        latest: false
+                    }
+                }
+            })
+        } else {
+            newThemes = [
+                {
+                    ...activeTheme,
+                    latest: true
+                },
+                ...newThemes.map(i => ({
+                    ...i,
+                    latest: false
+                }))
+            ]
+        }
+
+        setSavedThemes(newThemes)
+    }, [activeTheme, savedThemes, setSavedThemes])
     
-    const handleOnKeyDown: KeyboardEventHandler<HTMLDivElement> = event => {
+    const handleOnKeyDown: KeyboardEventHandler<HTMLDivElement> = useCallback(event => {
         if (event.code === 'KeyS' && (event.metaKey || event.ctrlKey)) {
             event.stopPropagation()
             event.preventDefault()
+
+            handleSaveTheme()
         }
-    }
+    }, [handleSaveTheme])
 
-    const handleOnThemeNameChange: KeyboardEventHandler<HTMLInputElement> = event => {
-        const value = event.target.value
-
-        setThemeMeta(current => {
-            return {
-                ...current,
-                name: value
-            }
-        })
-    }
+    const handleOnCodeChange = useCallback((value: string) => {
+        setActiveTheme(current => ({
+            ...current,
+            code: value
+        }))
+    }, [])
     
     return (
         <Styled.Wrapper onKeyDown={handleOnKeyDown}>
-            <Styled.Header>
-                <Styled.Input
-                    value={themeMeta.name}
-                    onChange={handleOnThemeNameChange}
-                />
-
-                <Styled.IconsGroup>
-                    <Styled.SettingsIconButton />
-
-                    <Styled.SaveIconButton />
-                </Styled.IconsGroup>
-
-                {
-                    hasError ? (
-                        <Styled.ErrorWrapper>
-                            <Styled.ErrorMessage>
-                                {'Invalid code!'}
-                            </Styled.ErrorMessage>
-                        </Styled.ErrorWrapper>
-                    ) : (
-                        null
-                    )
-                }
-            </Styled.Header>
-
-            {/*@ts-ignore*/}
-            <Styled.MonacoEditor
-                path={'file:///index.tsx'}
-                height={'unset'}
-                defaultLanguage={'typescript'}
-                defaultValue={code}
-                theme={'vs-dark'}
-                beforeMount={handleEditorWillMount}
-                onMount={handleEditorDidMount}
-                keepCurrentModel={false}
-                onChange={onCodeChange}
-                options={settings.options}
+            <Header
+                initialTheme={initialTheme}
+                activeTheme={activeTheme}
+                savedThemes={savedThemes}
+                setActiveTheme={setActiveTheme}
+                setSavedThemes={setSavedThemes}
+                handleSaveTheme={handleSaveTheme}
+                hasError={hasError}
             />
+            
+            {
+                activeTheme.code ? (
+                    //@ts-ignore
+                    <Styled.MonacoEditor
+                        key={activeTheme.id}
+                        path={'file:///index.tsx'}
+                        height={'unset'}
+                        defaultLanguage={'typescript'}
+                        defaultValue={activeTheme.code}
+                        theme={'vs-dark'}
+                        beforeMount={handleEditorWillMount}
+                        onMount={handleEditorDidMount}
+                        keepCurrentModel={false}
+                        onChange={handleOnCodeChange}
+                        options={settings.options}
+                    />
+                ) : (
+                    null
+                )
+            }
         </Styled.Wrapper>
     )
 }
