@@ -1,7 +1,7 @@
 import getObject from 'lodash/get'
 
 import type { ThemeStyleObject } from '@root/types'
-import type { DefaultTheme } from 'styled-components'
+import type { FluffyTheme } from '@utils/theme'
 
 export type ComponentThemeItem = {
     style?: Record<string, ThemeStyleObject>,
@@ -10,10 +10,10 @@ export type ComponentThemeItem = {
 }
 
 export type GetComponentTheme = (
-    name: keyof DefaultTheme['components'],
+    name: keyof FluffyTheme['components'],
     property: string,
     props?: {
-        theme: DefaultTheme,
+        theme: FluffyTheme,
         $componentState?: Record<string, any>
     }
 ) => Record<string, ThemeStyleObject> | undefined

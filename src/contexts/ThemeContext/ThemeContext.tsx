@@ -9,16 +9,16 @@ import merge from 'lodash/merge'
 
 import { getTheme } from '@utils/theme'
 
-import type { DefaultTheme } from 'styled-components'
 import type {
     FC,
     ReactNode,
 } from 'react'
+import type { FluffyTheme } from '@utils/theme'
 import type { DeepPartial } from '@root/types/utils'
 
 const ThemeContext = ThemeContextSC
 
-const ThemeProvider: FC<{ children: ReactNode, theme?: DeepPartial<DefaultTheme> }> = ({ children, theme }) => {
+const ThemeProvider: FC<{ children: ReactNode, theme?: DeepPartial<FluffyTheme> }> = ({ children, theme }) => {
     const themeValue = useMemo(() => {
         return merge({}, getTheme(), theme)
     }, [theme])

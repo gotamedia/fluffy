@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 
-import type { DefaultTheme } from 'styled-components'
+import type { FluffyTheme } from '@utils/theme'
 
-const useComponentThemeProps = (theme: DefaultTheme, name: keyof DefaultTheme['components']) => {
+const useComponentThemeProps = (theme: FluffyTheme, name: keyof FluffyTheme['components']) => {
     const themeProps = useMemo(() => {
         const props = {
             defaultProps: {},

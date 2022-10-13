@@ -31,11 +31,11 @@ import TagsInputTheme from '@components/TagsInput/theme'
 import TimePickerTheme from '@components/TimePicker/theme'
 import ContainerTheme from '@components/Container/theme'
 
-import type { DefaultTheme } from 'styled-components'
+import type { FluffyTheme } from './types'
 
 //TODO: Fix a better theme since this one were copied from NXT!
 
-let theme: DefaultTheme = {
+let theme: FluffyTheme = {
     //      0  1  2  3   4   5   6   7   8   9  10  11  12
     space: [0, 2, 4, 8, 12, 16, 20, 22, 24, 32, 40, 48, 64],
     //           0   1   2   3   4   5   6   7   8   9  10  11  12, 13,  14
@@ -174,11 +174,11 @@ let theme: DefaultTheme = {
     }
 }
 
-const createTheme = (themeObject: Partial<DefaultTheme>): DefaultTheme => {
+const createTheme = (themeObject: FluffyTheme): FluffyTheme => {
     return merge({}, theme, themeObject)
 }
 
-const getTheme = (): DefaultTheme => theme
+const getTheme = (): FluffyTheme => theme
 
 export {
     theme,

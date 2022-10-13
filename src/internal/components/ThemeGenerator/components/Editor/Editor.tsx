@@ -1,14 +1,18 @@
 //@ts-ignore
 import constrainedEditor from 'constrained-editor-plugin'
 
-import { useRef, useEffect } from 'react'
-import MonacoEditor, { Monaco } from '@monaco-editor/react'
+import {
+    useRef,
+    useState,
+    useEffect,
+    KeyboardEventHandler
+} from 'react'
 
 import * as codeParser from './codeParser'
-
 import * as settings from './settings'
 
 import * as Styled from './style'
+import type { Monaco } from '@monaco-editor/react'
 
 const Editor = (props: any) => {
     const {
@@ -19,14 +23,38 @@ const Editor = (props: any) => {
 
     const constrainedInstance = useRef<any>({})
 
+    const [hasError, setHasError] = useState(false)
+    const [themeMeta, setThemeMeta] = useState({
+        name: 'Untitled'
+    })
+
     useEffect(() => {
-        const cleanCode = code.replace(`import { createTheme } from '@gotamedia/fluffy/theme'`, '')
+        const cleanCode = code
+            .replace(`import { createTheme, getTheme } from '@gotamedia/fluffy/theme'`, '')
+            .replace(`import type { FluffyTheme } from '@gotamedia/fluffy/theme'`, '')
+            .replace(` as FluffyTheme`, '')
 
-        const parsedCode = codeParser.parse(cleanCode)
-        const theme = codeParser.getInstance(parsedCode)
+        const {
+            error: parseError,
+            code: parsedCode
+        } = codeParser.parse(cleanCode)
 
-        if (theme) {
-            onThemeChange(theme)
+        if (parseError) {
+            setHasError(true)
+        } else if (parsedCode) {
+            setHasError(false)
+            
+            const {
+                error: instanceError,
+                instance
+            } = codeParser.getInstance(parsedCode)
+
+            if (instanceError) {
+                setHasError(true)
+            } else if (instance) {
+                setHasError(false)
+                onThemeChange(instance)
+            }
         }
     }, [code, onThemeChange])
 
@@ -43,7 +71,7 @@ const Editor = (props: any) => {
         ])
     }
 
-    const handleEditorWillMount = (monaco: Monaco) => {
+    const handleEditorWillMount = async (monaco: Monaco) => {
         constrainedInstance.current = constrainedEditor(monaco)
 
         monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
@@ -55,26 +83,91 @@ const Editor = (props: any) => {
         })
 
         monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-            noSemanticValidation: false,
+            noSemanticValidation: true,
             noSyntaxValidation: false
         })
 
-        const themeDeclarations = `
-            declare module '@gotamedia/fluffy/theme' {
-                export function createTheme(theme: any): any
-            }
-        `
+        try {
+            const fluffyTypes = require('!!raw-loader!./types/fluffy.d.ts.raw').default
+    
+            const cleanFluffyTypes = fluffyTypes
+                .replaceAll('@gotamedia/fluffy/components', '@gotamedia/fluffy')
+                .replaceAll('@gotamedia/fluffy/contexts', '@gotamedia/fluffy')
+                .replaceAll('@gotamedia/fluffy/hooks', '@gotamedia/fluffy')
+                .replaceAll('@gotamedia/fluffy/utils', '@gotamedia/fluffy')
+    
+            const themeDeclarationsPath = 'file:///node_modules/@gotamedia/fluffy/index.d.ts'
+    
+            monaco.languages.typescript.typescriptDefaults.addExtraLib(
+                cleanFluffyTypes,
+                themeDeclarationsPath
+            )
+        } catch (error) {
+            console.error('Editor / Failed to load "@gotamedia/fluffy" types:', error)
+        }
 
-        const themeDeclarationsPath = 'file:///node_modules/@gotamedia/fluffy/theme/index.d.ts'
+        try {
+            const styledComponentsTypesResponse = await fetch('https://unpkg.com/@types/styled-components@5.1.25/index.d.ts')
+            const styledComponentsTypes = await styledComponentsTypesResponse.text()
 
-        monaco.languages.typescript.typescriptDefaults.addExtraLib(themeDeclarations, themeDeclarationsPath)
+            monaco.languages.typescript.typescriptDefaults.addExtraLib(
+                styledComponentsTypes,
+                `file:///node_modules/@types/styled-components/index.d.ts`
+            )
+        } catch (error) {
+            console.error('Editor / Failed to load "styled-components" types:', error)
+        }
+    }
+    
+    const handleOnKeyDown: KeyboardEventHandler<HTMLDivElement> = event => {
+        if (event.code === 'KeyS' && (event.metaKey || event.ctrlKey)) {
+            event.stopPropagation()
+            event.preventDefault()
+        }
     }
 
+    const handleOnThemeNameChange: KeyboardEventHandler<HTMLInputElement> = event => {
+        const value = event.target.value
+
+        setThemeMeta(current => {
+            return {
+                ...current,
+                name: value
+            }
+        })
+    }
+    
     return (
-        <Styled.Wrapper>
-            <MonacoEditor
+        <Styled.Wrapper onKeyDown={handleOnKeyDown}>
+            <Styled.Header>
+                <Styled.Input
+                    value={themeMeta.name}
+                    onChange={handleOnThemeNameChange}
+                />
+
+                <Styled.IconsGroup>
+                    <Styled.SettingsIconButton />
+
+                    <Styled.SaveIconButton />
+                </Styled.IconsGroup>
+
+                {
+                    hasError ? (
+                        <Styled.ErrorWrapper>
+                            <Styled.ErrorMessage>
+                                {'Invalid code!'}
+                            </Styled.ErrorMessage>
+                        </Styled.ErrorWrapper>
+                    ) : (
+                        null
+                    )
+                }
+            </Styled.Header>
+
+            {/*@ts-ignore*/}
+            <Styled.MonacoEditor
                 path={'file:///index.tsx'}
-                height={'100vh'}
+                height={'unset'}
                 defaultLanguage={'typescript'}
                 defaultValue={code}
                 theme={'vs-dark'}
@@ -82,7 +175,6 @@ const Editor = (props: any) => {
                 onMount={handleEditorDidMount}
                 keepCurrentModel={false}
                 onChange={onCodeChange}
-                //@ts-ignore
                 options={settings.options}
             />
         </Styled.Wrapper>

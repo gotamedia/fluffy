@@ -15,8 +15,7 @@ import type {
     PropsWithoutRef,
     RefAttributes
 } from 'react'
-
-import type { DefaultTheme } from 'styled-components'
+import type { FluffyTheme } from '@utils/theme'
 
 type ComponentType<Ref, Props> = ForwardRefExoticComponent<
     PropsWithoutRef<Props> &
@@ -32,7 +31,7 @@ const withThemeProps = <Ref, Props extends {}>(
         const {
             defaultProps,
             components
-        } = useComponentThemeProps(theme, WrappedComponent.displayName as keyof DefaultTheme['components'])
+        } = useComponentThemeProps(theme, WrappedComponent.displayName as keyof FluffyTheme['components'])
 
         const extendedTheme = useMemo(() => {
             return merge({}, theme, { components: components })

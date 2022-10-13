@@ -1,0 +1,13 @@
+==========================
+DON'T REMOVE THE EMPTY DIR
+==========================
+
+This directory: "src/internal/components/ThemeGenerator/components/Editor/types/fluffy.d.ts src/internal/components/ThemeGenerator/components/Editor/types"
+is a place holder for the generated types from the "build.sh/storybook.sh" scripts
+
+It is needed to store the generated types from the scripts and use em in the Monaco Editor
+so the Theme generator works with Typescript
+
+==========================
+DON'T REMOVE THE EMPTY DIR
+==========================

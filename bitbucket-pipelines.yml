@@ -48,6 +48,7 @@ pipelines:
               - node
             script:
               - npm i
+              - npm run build
               - npm run build-storybook
             artifacts:
               - storybook-static/**

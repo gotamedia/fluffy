@@ -5,8 +5,6 @@ import * as Styled from './style'
 const viewer = () => {
     return (
         <Styled.Wrapper>
-            {'View components here!'}
-
             <Fluffy.Button>
                 {'Click me!'}
             </Fluffy.Button>

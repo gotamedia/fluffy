@@ -1,9 +1,12 @@
 //@ts-ignore
 import { transform, registerPlugin } from '@babel/standalone'
 
-import { createTheme } from '@utils/theme'
+import {
+    createTheme,
+    getTheme
+} from '@utils/theme'
 
-const plugin = ({ types }: any) => {
+const themeGeneratorParserPlugin = ({ types }: any) => {
     return {
         visitor: {
             ExportDefaultDeclaration(path: any) {
@@ -13,31 +16,53 @@ const plugin = ({ types }: any) => {
     }
 }
 
-registerPlugin('plugin', plugin)
+registerPlugin('themeGeneratorParserPlugin', themeGeneratorParserPlugin)
 
 const parse = (codeString: string) => {
     try {
         const { code } = transform(codeString, {
             filename: 'index.tsx',
-            presets: ['typescript', 'react'],
-            plugins: ['plugin']
+            presets: [
+                'typescript',
+                'react'
+            ],
+            plugins: [
+                'themeGeneratorParserPlugin'
+            ]
         })
 
-        return code
+        return {
+            error: null,
+            code: code
+        }
     } catch (error) {
-        console.error('CodeParser / Error parsing code: ', error)
-        return ''
+        return {
+            error: error,
+            code: null
+        }
     }
 }
 
 const getInstance = (parsedCode: string) => {
     try {
-        const theme = new Function('createTheme', parsedCode)(createTheme)
+        const instance = new Function(
+            'createTheme',
+            'getTheme',
+            parsedCode
+        )(
+            createTheme,
+            getTheme
+        )
 
-        return theme
+        return {
+            error: null,
+            instance: instance
+        }
     } catch (error) {
-        console.error('CodeParser / Error getting instance: ', error)
-        return null
+        return {
+            error: error,
+            instance: null
+        }
     }
 }
 
