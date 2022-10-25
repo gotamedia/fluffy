@@ -141,7 +141,7 @@ const TableRow: Types.TableRowComponent = forwardRef(({
                                 <Icon
                                     size={"tiny"}
                                     color={isOpen ? "white" : undefined}
-                                    icon={isOpen ? Icons.ArrowUp : Icons.ArrowDown}
+                                    icon={isOpen ? Icons.ChevronUp : Icons.ChevronDown}
                                 />
                             </Style.CollapsibleIconCell>
                         </Style.CollapsibleRow>

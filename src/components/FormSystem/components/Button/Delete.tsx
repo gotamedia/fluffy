@@ -36,7 +36,10 @@ const DeleteButton: Types.ButtonComponent = forwardRef((props, ref) => {
             {...props}
         >
             {isDeleting && (
-                <Icon icon={Icons.Spinner} />
+                <Icon
+                    spin
+                    icon={Icons.ArrowPath}
+                />
             )}
             {getButtonLabel("delete")}
         </Button>

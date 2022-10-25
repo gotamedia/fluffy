@@ -22,7 +22,7 @@ const variant = css<{$variant?: Types.AlertProps['variant']}>`
 
                     ${Icon} {
                         svg {
-                            fill: ${({ theme }) => theme.colors.white};
+                            color: ${({ theme }) => theme.colors.white};
                         }
                     };
 
@@ -36,7 +36,7 @@ const variant = css<{$variant?: Types.AlertProps['variant']}>`
 
                     ${CloseIcon} {
                         svg {
-                            fill: ${({ theme }) => theme.colors.white};
+                            color: ${({ theme }) => theme.colors.white};
                         }
                     };
                 `
@@ -127,12 +127,13 @@ const Text = styled.p`
 
 const CloseIcon = styled(IconComponent).attrs(() => {
     return {
-        icon: Icons.Cross
+        icon: Icons.XMark
     }
 })`
     width: 24px;
     height: 24px;
     margin: 0 0 auto 16px;
+    
     cursor: pointer;
 
     svg {

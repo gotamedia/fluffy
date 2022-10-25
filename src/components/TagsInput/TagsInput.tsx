@@ -302,7 +302,7 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                 onClickOutside={() => setShowPopover(false)}
             >
                 <Styled.InputGroup>
-                    <Icon icon={Icons.Search} />
+                    <Icon icon={Icons.MagnifyingGlass} />
 
                     <Styled.Input
                         ref={setInputRef}
@@ -313,7 +313,7 @@ const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                     />
 
                     <Icon
-                        icon={Icons.ArrowUp}
+                        icon={Icons.ChevronUp}
                         onClick={togglePopover}
                     />
                 </Styled.InputGroup>

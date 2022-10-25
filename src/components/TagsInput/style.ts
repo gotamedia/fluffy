@@ -38,7 +38,7 @@ const ElementsWrapper = styled.div`
 
 const SearchIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.Search
+        icon: Icons.MagnifyingGlass
     }
 })`
     margin: auto 0px auto 3px;
@@ -46,7 +46,7 @@ const SearchIcon = styled(Icon).attrs(() => {
 
 const ArrowIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.ArrowDown
+        icon: Icons.ChevronDown
     }
 })`
     margin: auto 3px auto 0px;

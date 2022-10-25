@@ -11,7 +11,7 @@ describe('<IconButton />', () => {
         render(
             WithThemeProvider(
                 <IconButton
-                    icon={Icons.Barometern}
+                    icon={Icons.RocketLaunch}
                 />
             )
         )

@@ -7,7 +7,7 @@ import Icon, {
 
 const SubMenuIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.ArrowRight,
+        icon: Icons.ChevronRight,
         size: IconSizes.Small
     }
 })<{ $targeted: boolean }>`

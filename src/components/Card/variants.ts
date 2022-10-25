@@ -37,7 +37,7 @@ const dark = css`
 
     ${Wrapper} {
         .fluffy-icon {
-            fill: white;
+            color: white;
         }
     }
 `

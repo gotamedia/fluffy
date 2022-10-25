@@ -30,11 +30,11 @@ const WithIcons: Story<Types.CardProps> = (props) => {
                 <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
 
                 <Card.IconsWrapper>
-                    <Icon icon={Icons.Facebook} />
-                    <Icon icon={Icons.Twitter} />
-                    <Icon icon={Icons.Linkedin} />
-                    <Icon icon={Icons.Mail} />
-                    <Icon icon={Icons.ArrowDown} />
+                    <Icon icon={Icons.CommandLine} />
+                    <Icon icon={Icons.FingerPrint} />
+                    <Icon icon={Icons.Gif} />
+                    <Icon icon={Icons.QrCode} />
+                    <Icon icon={Icons.RocketLaunch} />
                 </Card.IconsWrapper>
             </Card.Body>
         </Card>
@@ -78,11 +78,11 @@ const Full: Story<Types.CardProps> = (props) => {
                 <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
 
                 <Card.IconsWrapper>
-                    <Icon icon={Icons.Facebook} />
-                    <Icon icon={Icons.Twitter} />
-                    <Icon icon={Icons.Linkedin} />
-                    <Icon icon={Icons.Mail} />
-                    <Icon icon={Icons.ArrowDown} />
+                    <Icon icon={Icons.CommandLine} />
+                    <Icon icon={Icons.FingerPrint} />
+                    <Icon icon={Icons.Gif} />
+                    <Icon icon={Icons.QrCode} />
+                    <Icon icon={Icons.RocketLaunch} />
                 </Card.IconsWrapper>
             </Card.Body>
         </Card>
