@@ -26,7 +26,7 @@ const Basic: Story<Types.MenuProps> = (props) => {
         <div>
             <IconButton
                 ref={setAnchorRef}
-                icon={Icons.Menu}
+                icon={Icons.Bars3}
                 shape={IconButtonShapes.Circle}
                 size={IconButtonSizes.Small}
                 onClick={toggleShowMenu}

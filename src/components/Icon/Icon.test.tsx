@@ -6,7 +6,7 @@ import Icon, { Icons } from './index'
 describe('<Icon />', () => {
     it('should not crash', () => {
         render(
-            <Icon icon={Icons.Info}/>
+            <Icon icon={Icons.InformationCircle}/>
         )
     })
 })

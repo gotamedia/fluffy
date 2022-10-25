@@ -50,7 +50,7 @@ const Basic: Story<Types.ButtonGroupProps & {
             <ButtonGroup {...props}>
                 <Button>
                     <Icon
-                        icon={Icons.Menu}
+                        icon={Icons.Bars3}
                     />
                 </Button>
 
@@ -64,7 +64,7 @@ const Basic: Story<Types.ButtonGroupProps & {
                     {text}
                 </Button>
 
-                <IconButton icon={Icons.Menu} />
+                <IconButton icon={Icons.Bars3} />
 
                 <Button>
                     {text}

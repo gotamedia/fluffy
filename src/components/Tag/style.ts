@@ -24,7 +24,7 @@ const Divider = styled.div`
 
 const ClearIcon = styled(IconButton).attrs(() => {
     return {
-        icon: Icons.Cross,
+        icon: Icons.XMark,
         size: IconButtonSizes.Tiny,
         variant: IconButtonVariants.Outline,
         theme: {

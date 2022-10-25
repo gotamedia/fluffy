@@ -30,7 +30,7 @@ const FocusTrapWrapper = styled(FocusTrap)`
 
 const CloseIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.Cross,
+        icon: Icons.XMark,
         tabIndex: 0
     }
 })`

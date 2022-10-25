@@ -24,7 +24,7 @@ const iconStyle = css`
 
 const ClearIcon = styled(IconComponent).attrs(() => {
     return {
-        icon: Icons.Cross,
+        icon: Icons.XMark,
         size: IconSizes.Small
     }
 })`

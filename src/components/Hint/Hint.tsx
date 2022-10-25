@@ -6,11 +6,11 @@ import * as Types from "./types"
 import * as Style from "./style"
 
 const iconMap = new Map<Types.HintTypes, IconType>([
-    [Types.HintTypes.Error, Icons.Error],
-    [Types.HintTypes.Info, Icons.Hint],
-    [Types.HintTypes.Loading, Icons.Loading],
-    [Types.HintTypes.Success, Icons.Success],
-    [Types.HintTypes.Warning, Icons.Warning]
+    [Types.HintTypes.Error, Icons.XCircle],
+    [Types.HintTypes.Info, Icons.InformationCircle],
+    [Types.HintTypes.Loading, Icons.ArrowPath],
+    [Types.HintTypes.Success, Icons.CheckCircle],
+    [Types.HintTypes.Warning, Icons.ExclamationCircle]
 ])
 
 const Hint: Types.HintComponent = forwardRef((props, ref) => {
@@ -21,11 +21,13 @@ const Hint: Types.HintComponent = forwardRef((props, ref) => {
     } = props
 
     const theme = useTheme()
+    const icon = iconMap.get(type) || Icons.InformationCircle
 
     return (
         <Style.Wrapper ref={ref} $type={type} $theme={theme}>
             <Icon
-                icon={iconMap.get(type) || Icons.Hint}
+                icon={icon}
+                spin={icon === Icons.ArrowPath}
                 size={IconSizes.Tiny}
             />
             {text && (

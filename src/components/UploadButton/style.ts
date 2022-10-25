@@ -24,9 +24,8 @@ const UploadInput = styled.input`
 `
 
 const UploadIcon = styled(Icon).attrs(() => {
-    // TODO: Update icon once we have "Upload" icon in place
     return {
-        icon: Icons.Link
+        icon: Icons.ArrowUpOnSquare
     }
 })`
     margin-top: auto;

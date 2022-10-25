@@ -15,7 +15,10 @@ const SubmitButton: Types.ButtonComponent = forwardRef((props, ref) => {
             {...props}
         >
             {isSubmitting && (
-                <Icon icon={Icons.Spinner} />
+                <Icon
+                    spin
+                    icon={Icons.ArrowPath}
+                />
             )}
             {getButtonLabel("submit")}
         </Button>
