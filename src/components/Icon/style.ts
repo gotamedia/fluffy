@@ -4,7 +4,7 @@ import getComponentTheme from '@internal/utils/getComponentTheme'
 
 import type { IconProps } from './types'
 
-const Span = styled.span<{ $size?: IconProps['size'] }>`
+const Span = styled.span<{ $size?: IconProps['size'], $componentState: Record<string, any> }>`
     ${props => getComponentTheme('Icon', 'style.root', props)};
 
     svg {

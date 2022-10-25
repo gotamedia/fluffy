@@ -12,6 +12,7 @@ import { IconVariants } from './types'
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { ForwardedRef } from 'react'
 
 const getIcon = (icon: Types.IconType, variant: Types.IconVariantType) => {
     let path = ''
@@ -35,6 +36,7 @@ const getIcon = (icon: Types.IconType, variant: Types.IconVariantType) => {
     return require(`@heroicons/react/${path}/${icon}Icon`)
 }
 
+//@ts-ignore
 export const Icon: Types.IconComponent = forwardRef((props, ref) => {
     const {
         icon,
@@ -77,7 +79,7 @@ export const Icon: Types.IconComponent = forwardRef((props, ref) => {
 
     return (
         <Styled.Span
-            ref={ref}
+            ref={ref as ForwardedRef<HTMLSpanElement>}
             style={style}
             $size={size}
             $componentState={componentState}
@@ -89,4 +91,5 @@ export const Icon: Types.IconComponent = forwardRef((props, ref) => {
     )
 })
 
+//@ts-ignore
 export default WithThemeProps(Icon) as Types.IconComponent
