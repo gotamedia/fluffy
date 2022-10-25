@@ -1,5 +1,7 @@
 import {
+    forwardRef,
     useRef,
+    useImperativeHandle,
     useState,
     useEffect,
 } from 'react'
@@ -12,9 +14,7 @@ import YoutubeProvider from './provider'
 
 import * as Types from './types'
 
-const YouTubeProvider: Types.YouTubeProvider = () => {
-    // eslint-disable-next-line no-undef
-    const playerRef = useRef<YT.Player | null>(null)
+const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
     const iframeRef = useRef<HTMLIFrameElement>(null)
 
     const {
@@ -26,15 +26,27 @@ const YouTubeProvider: Types.YouTubeProvider = () => {
         onEvent
     } = useVideo()
 
+    // eslint-disable-next-line no-undef
+    const [player, setPlayer] = useState<YT.Player | null>(null)
     const [isReady, setIsReady] = useState(false)
     const [videoId, setVideoId] = useState(() => YoutubeProvider.getVideoId(src))
 
+    useImperativeHandle(ref, () => {
+        return {
+            player: player,
+            _domRef: iframeRef
+        }
+    }, [player])
+
     useIsomorphicLayoutEffect(() => {
+        // eslint-disable-next-line no-undef
+        let _player = null as YT.Player | null
+
         const createPlayer = async () => {
             YoutubeProvider.initiate()
             await YoutubeProvider.onReady()
 
-            playerRef.current = new window.YT.Player(`youtube-player-id__${id}`, {
+            _player = new window.YT.Player(`youtube-player-id__${id}`, {
                 events: {
                     onReady: () => {
                         setIsReady(true)
@@ -44,12 +56,14 @@ const YouTubeProvider: Types.YouTubeProvider = () => {
                     }
                 }
             })
+
+            setPlayer(_player)
         }
 
         createPlayer()
 
         return () => {
-            playerRef.current?.destroy()
+            _player?.destroy()
         }
     }, [id, onEvent])
 
@@ -68,18 +82,20 @@ const YouTubeProvider: Types.YouTubeProvider = () => {
     return (
         videoSrc ? (
             <iframe
-                ref={iframeRef}
                 id={`fluffy-youtube-player-${id}`}
+                title={`YouTube video player`}
                 width={width || '720'}
                 height={height || '405'}
-                src={videoSrc}
                 allowFullScreen={true}
                 frameBorder={'0'}
+                {...props}
+                src={videoSrc}
+                ref={iframeRef}
             />
         ) : (
             null
         )
     )
-}
+})
 
 export default YouTubeProvider
