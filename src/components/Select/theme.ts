@@ -48,7 +48,7 @@ const SelectTheme: SelectThemeType = {
     },
     props: {
         icon: ({ $componentState }) => {
-            return $componentState?.isOpen ? Icons.ArrowUp : Icons.ArrowDown
+            return $componentState?.isOpen ? Icons.ChevronUp : Icons.ChevronDown
         }
     }
 }

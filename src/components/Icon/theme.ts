@@ -1,3 +1,5 @@
+import { keyframes } from 'styled-components'
+
 import type {
     ThemeStyleItem,
     ComponentTheme
@@ -19,12 +21,32 @@ export type IconThemeType = ComponentTheme<{
     }
 }>
 
+const spin = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`
+
 const IconTheme: IconThemeType = {
     defaultProps: {},
     style: {
-        root: {
-            display: 'inline-flex'
-        }
+        //@ts-ignore
+        root: ({ $componentState }) => ({
+            display: 'inline-flex',
+
+            ...($componentState?.spin ? {
+                svg: {
+                    animationName: spin,
+                    animationDuration: '2500ms',
+                    animationIterationCount: 'infinite',
+                    animationTimingFunction: 'linear'
+                }
+            } : {})
+        })
     },
     sizes: {
         micro: {

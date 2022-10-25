@@ -9,7 +9,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import Tag, { TagSizes } from '../Tag'
 import ListItem, { ListItemTypes } from '../ListItem'
@@ -315,7 +315,7 @@ export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                 onClickOutside={() => setShowPopover(false)}
             >
                 <Styled.InputGroup>
-                    <Icon icon={Icons.Search} />
+                    <Icon icon={Icons.MagnifyingGlass} />
 
                     <Styled.Input
                         ref={setInputRef}
@@ -326,7 +326,7 @@ export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                     />
 
                     <Icon
-                        icon={Icons.ArrowUp}
+                        icon={Icons.ChevronUp}
                         onClick={togglePopover}
                     />
                 </Styled.InputGroup>
@@ -389,4 +389,4 @@ export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
 
 TagsInput.displayName = 'TagsInput'
 
-export default withThemeProps(TagsInput) as Types.TagsInputComponent
+export default WithThemeProps(TagsInput) as Types.TagsInputComponent

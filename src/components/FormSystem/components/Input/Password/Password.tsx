@@ -65,7 +65,7 @@ const Password: Types.PasswordComponent = forwardRef((props, ref) => {
                     {...plainTextProps}
                 />
                 {visibilityToggleable && (
-                    <Icon icon={showPassword ? Icons.EyeStrikethrough : Icons.Eye} onClick={toggleVisibility} />
+                    <Icon icon={showPassword ? Icons.EyeSlash : Icons.Eye} onClick={toggleVisibility} />
                 )}
             </InputGroup>
 

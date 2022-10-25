@@ -8,7 +8,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
 
@@ -163,4 +163,4 @@ export const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => 
 
 InputGroup.displayName = 'InputGroup'
 
-export default withThemeProps(InputGroup) as Types.InputGroupComponent
+export default WithThemeProps(InputGroup) as Types.InputGroupComponent

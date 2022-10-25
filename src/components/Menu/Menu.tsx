@@ -9,7 +9,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import useMenu from './hooks/useMenu'
 import MenuContext from './contexts/MenuContext'
@@ -134,4 +134,4 @@ export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
 
 Menu.displayName = 'Menu'
 
-export default withThemeProps(Menu) as Types.MenuComponent
+export default WithThemeProps(Menu) as Types.MenuComponent

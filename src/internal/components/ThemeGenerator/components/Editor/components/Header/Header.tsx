@@ -128,7 +128,7 @@ const Header = (props: EditorHeaderProps) => {
                                     onClick={() => setActiveTheme(savedTheme)}
                                 >
                                     <IconButton
-                                        icon={Icons.Cross}
+                                        icon={Icons.XMark}
                                         variant={IconButtonVariants.Outline}
                                         size={IconSizes.Tiny}
                                         shape={IconButtonShapes.Circle}

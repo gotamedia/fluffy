@@ -22,10 +22,10 @@ type ComponentType<Ref, Props> = ForwardRefExoticComponent<
     RefAttributes<Ref>
 >
 
-const withThemeProps = <Ref, Props extends {}>(
+const WithThemeProps = <Ref, Props extends {}>(
     WrappedComponent: ComponentType<Ref, Props>
 ): ComponentType<Ref, Props> => {
-    const WithThemeProps = forwardRef<Ref, Props>((props, ref) => {
+    const Component = forwardRef<Ref, Props>((props, ref) => {
         const theme = useTheme()
         
         const {
@@ -50,9 +50,9 @@ const withThemeProps = <Ref, Props extends {}>(
 
     const displayName = WrappedComponent.displayName || 'Component'
     
-    WithThemeProps.displayName = `WithThemeProps(${displayName})`
+    Component.displayName = `WithThemeProps(${displayName})`
 
-    return WithThemeProps
+    return Component
 }
 
-export default withThemeProps
+export default WithThemeProps

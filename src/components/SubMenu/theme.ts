@@ -37,7 +37,7 @@ const SubMenuTheme: SubMenuThemeType = {
         root: {}
     },
     props: {
-        icon: Icons.ArrowRight
+        icon: Icons.ChevronRight
     }
 }
 

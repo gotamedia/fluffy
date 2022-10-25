@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import Icon from '../Icon'
 
@@ -42,4 +42,4 @@ export const IconButton: Types.IconButtonComponent = forwardRef((props, ref) => 
 
 IconButton.displayName = 'IconButton'
 
-export default withThemeProps(IconButton) as Types.IconButtonComponent
+export default WithThemeProps(IconButton) as Types.IconButtonComponent

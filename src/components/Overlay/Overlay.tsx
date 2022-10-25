@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import * as Styled from './style'
 import * as Types from './types'
@@ -33,4 +33,4 @@ export const Overlay: Types.OverlayComponent = forwardRef((props, ref) => {
 
 Overlay.displayName = 'Overlay'
 
-export default withThemeProps(Overlay) as Types.OverlayComponent
+export default WithThemeProps(Overlay) as Types.OverlayComponent

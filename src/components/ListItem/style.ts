@@ -32,7 +32,7 @@ const Icon = styled(IconComponent).attrs(() => {
 
 const CheckIcon = styled(IconComponent).attrs(() => {
     return {
-        icon: Icons.Checkmark,
+        icon: Icons.Check,
         size: IconSizes.Small
     }
 })<SharedType>`

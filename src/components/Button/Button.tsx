@@ -6,7 +6,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -66,4 +66,4 @@ export const Button: Types.ButtonComponent = forwardRef((props, ref) => {
 
 Button.displayName = 'Button'
 
-export default withThemeProps(Button) as Types.ButtonComponent
+export default WithThemeProps(Button) as Types.ButtonComponent

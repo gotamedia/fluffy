@@ -1,135 +1,14 @@
-import { CSSProperties } from "styled-components"
-import {
-    MouseEventHandler,
+import type {
+    ComponentProps,
+    ComponentType,
     ForwardRefExoticComponent,
     RefAttributes,
-    ComponentType
-} from "react"
+    MouseEventHandler
+} from 'react'
 
-//TODO: came up with better icon names structure?
-export const Icons = {
-    AppStore: 'AppStore' as const,
-    ArrowDown: 'ArrowDown' as const,
-    ArrowDownLong: 'ArrowDownLong' as const,
-    ArrowLeft: 'ArrowLeft' as const,
-    ArrowLeftLong: 'ArrowLeftLong' as const,
-    ArrowUpLong: 'ArrowUpLong' as const,
-    ArrowRight: 'ArrowRight' as const,
-    ArrowRightLong: 'ArrowRightLong' as const,
-    ArrowUp: 'ArrowUp' as const,
-    Bank: 'Bank' as const,
-    Barometern: 'Barometern' as const,
-    BarometernSquare: 'BarometernSquare' as const,
-    Blt: 'Blt' as const,
-    BltSquare: 'BltSquare' as const,
-    Bookmark: 'Bookmark' as const,
-    Bookmarked: 'Bookmarked' as const,
-    Borasdaily: 'Borasdaily' as const,
-    BorasdailySquare: 'BorasdailySquare' as const,
-    Bt: 'Bt' as const,
-    BTFotboll: 'BTFotboll' as const,
-    BTFotbollSquare: 'BTFotbollSquare' as const,
-    BtSquare: 'BtSquare' as const,
-    Calendar: 'Calendar' as const,
-    Camera: 'Camera' as const,
-    Celebration: 'Celebration' as const,
-    Chat: 'Chat' as const,
-    Checkmark: 'Checkmark' as const,
-    CheckmarkCircle: 'CheckmarkCircle' as const,
-    Church: 'Church' as const,
-    Cross: 'Cross' as const,
-    Edit: 'Edit' as const,
-    Enlarge: 'Enlarge' as const,
-    Error: 'Error' as const,
-    Eye: 'Eye' as const,
-    EyeStrikethrough: 'EyeStrikethrough' as const,
-    Facebook: 'Facebook' as const,
-    GooglePlay: 'GooglePlay' as const,
-    Hint: 'Hint' as const,
-    Images: 'Images' as const,
-    Info: 'Info' as const,
-    Invoice: 'Invoice' as const,
-    Instagram: 'Instagram' as const,
-    Klarna: 'Klarna' as const,
-    Kalmarposten: 'Kalmarposten' as const,
-    KalmarpostenSquare: 'KalmarpostenSquare' as const,
-    Klt: 'Klt' as const,
-    KltSquare: 'KltSquare' as const,
-    Key: 'Key' as const,
-    Kristianstadsbladet: 'Kristianstadsbladet' as const,
-    KristianstadsbladetSquare: 'KristianstadsbladetSquare' as const,
-    Languages: 'Languages' as const,
-    Link: 'Link' as const,
-    Linkedin: 'Linkedin' as const,
-    Loading: 'Loading' as const,
-    Location: 'Location' as const,
-    Mail: 'Mail' as const,
-    MailBox: 'MailBox' as const,
-    Mastercard: 'Mastercard' as const,
-    Menu: 'Menu' as const,
-    Meraalvesta: 'Meraalvesta' as const,
-    MeraalvestaSquare: 'MeraalvestaSquare' as const,
-    Meraljungby: 'Meraljungby' as const,
-    MeraljungbySquare: 'MeraljungbySquare' as const,
-    Meranaringsliv: 'Meranaringsliv' as const,
-    MeranaringslivSquare: 'MeranaringslivSquare' as const,
-    Meraosterlen: 'Meraosterlen' as const,
-    MeraosterlenSquare: 'MeraosterlenSquare' as const,
-    MinBoll: 'MinBoll' as const,
-    MinBollSquare: 'MinBollSquare' as const,
-    MinHockey: 'MinHockey' as const,
-    MinHockeySquare: 'MinHockeySquare' as const,
-    MosaikKristianstadsbladet: 'MosaikKristianstadsbladet' as const,
-    MosaikKristianstadsbladetSquare: 'MosaikKristianstadsbladetSquare' as const,
-    MosaikVXONews: 'MosaikVXONews' as const,
-    MosaikVXONewsSquare: 'MosaikVXONewsSquare' as const,
-    NewWindow: 'NewWindow' as const,
-    NoCircleUser: 'NoCircleUser' as const,
-    NoPaper: 'NoPaper' as const,
-    Nsk: 'Nsk' as const,
-    NskSquare: 'NskSquare' as const,
-    Olandsbladet: 'Olandsbladet' as const,
-    OlandsbladetSquare: 'OlandsbladetSquare' as const,
-    Ostralenmagasinet: 'Ostralenmagasinet' as const,
-    OstralenmagasinetSquare: 'OstralenmagasinetSquare' as const,
-    Pause: 'Pause' as const,
-    Paysafecard: 'Paysafecard' as const,
-    Phone: 'Phone' as const,
-    Play: 'Play' as const,
-    Plus: 'Plus' as const,
-    Print: 'Print' as const,
-    Quote: 'Quote' as const,
-    RSS: 'RSS' as const,
-    Search: 'Search' as const,
-    Settings: 'Settings' as const,
-    Share: 'Share' as const,
-    Shrink: 'Shrink' as const,
-    SmartPhone: 'SmartPhone' as const,
-    Smalandsposten: 'Smalandsposten' as const,
-    SmalandspostenSquare: 'SmalandspostenSquare' as const,
-    Spinner: 'Spinner' as const,
-    Success: 'Success' as const,
-    Swish: 'Swish' as const,
-    Sydostran: 'Sydostran' as const,
-    SydostranSquare: 'SydostranSquare' as const,
-    TrashCan: 'TrashCan' as const,
-    Trelleborgsallehanda: 'Trelleborgsallehanda' as const,
-    TrelleborgsallehandaSquare: 'TrelleborgsallehandaSquare' as const,
-    Twitter: 'Twitter' as const,
-    User: 'User' as const,
-    UT: 'UT' as const,
-    UTSquare: 'UTSquare' as const,
-    Visa: 'Visa' as const,
-    VaxjobladetKronobergaren: 'VaxjobladetKronobergaren' as const,
-    VaxjobladetKronobergarenSquare: 'VaxjobladetKronobergarenSquare' as const,
-    VXOWeek: 'VXOWeek' as const,
-    VXOWeekSquare: 'VXOWeekSquare' as const,
-    Warning: 'Warning' as const,
-    Ystadsallehanda: 'Ystadsallehanda' as const,
-    YstadsallehandaSquare: 'YstadsallehandaSquare' as const,
-    HejKristianstad: 'HejKristianstad' as const,
-    Clock: 'Clock' as const
-}
+import IconNames from './iconNames'
+
+export const Icons = IconNames
 
 export type IconsType = typeof Icons
 export type IconType = IconsType[keyof IconsType]
@@ -146,22 +25,23 @@ export const IconSizes = {
 export type IconSizesType = typeof IconSizes
 export type IconSizeType = IconSizesType[keyof IconSizesType]
 
-export type IconProps = {
+export const IconVariants = {
+    Mini: 'mini' as const,
+    Outline: 'outline' as const,
+    Solid: 'solid' as const
+}
+
+export type SVGIconComponent = ComponentType<ComponentProps<'svg'>>
+export type IconVariantsType = typeof IconVariants
+export type IconVariantType = IconVariantsType[keyof IconVariantsType]
+
+export type IconProps = Omit<ComponentProps<'svg'>, 'onClick'> & {
     icon: IconType,
+    variant?: IconVariantType,
+    spin?: boolean,
     size?: IconSizeType,
-    width?: number,
-    height?: number,
-    color?: string,
-    style?: CSSProperties,
-    iconStyle?: CSSProperties,
-    className?: string,
-    onClick?: MouseEventHandler<HTMLSpanElement>,
-    ariaLabel?: string
+    onClick?: MouseEventHandler<HTMLElement>
 }
 
 export type IconRef = HTMLSpanElement
 export type IconComponent = ForwardRefExoticComponent<IconProps & RefAttributes<IconRef>>
-
-export type SVGIconComponent = ComponentType<Partial<IconProps> & {
-    fill?: string
-}>

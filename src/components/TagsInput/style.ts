@@ -17,7 +17,7 @@ const ElementsWrapper = styled.div`
 
 const SearchIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.Search
+        icon: Icons.MagnifyingGlass
     }
 })`
     ${props => getComponentTheme('TagsInput', 'style.searchIcon', props)};
@@ -25,7 +25,7 @@ const SearchIcon = styled(Icon).attrs(() => {
 
 const ArrowIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.ArrowDown
+        icon: Icons.ChevronDown
     }
 })`
     ${props => getComponentTheme('TagsInput', 'style.arrowIcon', props)};

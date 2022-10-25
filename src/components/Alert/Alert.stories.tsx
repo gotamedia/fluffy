@@ -36,7 +36,7 @@ const Template: Story<Types.AlertProps & {
 export const BasicStory = Template.bind({})
 
 BasicStory.args = {
-    icon: Icons.Info,
+    icon: Icons.InformationCircle,
     variant: AlertVariants.Success,
     headline: 'Ta del av våra användarvillkor',
     text: (

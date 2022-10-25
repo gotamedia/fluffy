@@ -27,7 +27,7 @@ import { Icon, Icons } from '@gotamedia/fluffy'
 
 const MyComponent = () => (
     <div>
-        <Icon icon={Icons.Info}/>
+        <Icon icon={Icons.RocketLaunch}/>
     </div>
 )
 ```

@@ -10,7 +10,7 @@ import scrollIntoView from 'scroll-into-view-if-needed'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import {
     ListItemSizes,
@@ -155,4 +155,4 @@ export const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
 
 ListItem.displayName = 'ListItem'
 
-export default withThemeProps(ListItem) as Types.ListItemComponent
+export default WithThemeProps(ListItem) as Types.ListItemComponent

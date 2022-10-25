@@ -33,7 +33,7 @@ const DropdownTheme: DropdownThemeType = {
     },
     props: {
         icon: ({ $componentState }) => {
-            return $componentState?.isOpen ? Icons.ArrowUp : Icons.ArrowDown
+            return $componentState?.isOpen ? Icons.ChevronUp : Icons.ChevronDown
         }
     }
 }

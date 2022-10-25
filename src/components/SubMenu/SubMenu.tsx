@@ -11,7 +11,7 @@ import { v4 as createUniqueId } from 'uuid'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import useLazyRef from '@hooks/useLazyRef'
 import useMenu from '@components/Menu/hooks/useMenu'
@@ -197,4 +197,4 @@ export const SubMenu: Types.SubMenuComponent = forwardRef((props, ref) => {
 
 SubMenu.displayName = 'SubMenu'
 
-export default withThemeProps(SubMenu) as Types.SubMenuComponent
+export default WithThemeProps(SubMenu) as Types.SubMenuComponent

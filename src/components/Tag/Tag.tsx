@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -65,4 +65,4 @@ export const Tag: Types.TagComponent = forwardRef((props, ref) => {
 
 Tag.displayName = 'Tag'
 
-export default withThemeProps(Tag) as Types.TagComponent
+export default WithThemeProps(Tag) as Types.TagComponent

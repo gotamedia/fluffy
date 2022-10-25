@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -37,4 +37,4 @@ export const Pill: Types.PillComponent = forwardRef((props, ref) => {
 
 Pill.displayName = 'Pill'
 
-export default withThemeProps(Pill) as Types.PillComponent
+export default WithThemeProps(Pill) as Types.PillComponent

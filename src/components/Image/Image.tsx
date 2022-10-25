@@ -6,7 +6,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import LazyImage from './components/LazyImage'
 
@@ -78,4 +78,4 @@ export const Image: Types.ImageComponent = forwardRef((props, ref) => {
 
 Image.displayName = 'Image'
 
-export default withThemeProps(Image) as Types.ImageComponent
+export default WithThemeProps(Image) as Types.ImageComponent

@@ -311,7 +311,10 @@ const AccountCreationTemplate: Story<Types.Form> = (props) => {
                                 disabled={formState.submitStatus === "progress"}
                             >
                                 {formState.submitStatus === "progress" && (
-                                    <Icon icon={Icons.Spinner} />
+                                    <Icon
+                                        spin
+                                        icon={Icons.ArrowPath}
+                                    />
                                 )}
                                 {"Försök igen"}
                             </Button>

@@ -20,7 +20,7 @@ const Input = styled(InputComponent)`
 
 const ClearIcon = styled(Icon).attrs(() => {
     return {
-        icon: Icons.Cross,
+        icon: Icons.XMark,
         size: IconSizes.Tiny
     }
 })`

@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import usePagination from './hooks/usePagination'
 
@@ -90,4 +90,4 @@ export const Pagination: Types.PaginationComponent = forwardRef((props, ref) => 
 
 Pagination.displayName = 'Pagination'
 
-export default withThemeProps(Pagination) as Types.PaginationComponent
+export default WithThemeProps(Pagination) as Types.PaginationComponent

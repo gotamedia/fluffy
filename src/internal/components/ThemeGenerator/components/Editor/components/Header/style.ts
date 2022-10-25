@@ -37,7 +37,7 @@ const IconsGroup = styled(ButtonGroup).attrs(() => {
 
 const SettingsIconButton = styled(IconButton).attrs(() => {
     return {
-        icon: Icons.Settings,
+        icon: Icons.Cog,
         shape: IconButtonShapes.Circle
     }
 })`
@@ -46,7 +46,7 @@ const SettingsIconButton = styled(IconButton).attrs(() => {
 
 const SaveIconButton = styled(IconButton).attrs(() => {
     return {
-        icon: Icons.Bookmarked,
+        icon: Icons.CloudArrowDown,
         shape: IconButtonShapes.Circle
     }
 })`
@@ -55,7 +55,7 @@ const SaveIconButton = styled(IconButton).attrs(() => {
 
 const CreateIconButton = styled(IconButton).attrs(() => {
     return {
-        icon: Icons.Plus,
+        icon: Icons.DocumentPlus,
         shape: IconButtonShapes.Circle
     }
 })`

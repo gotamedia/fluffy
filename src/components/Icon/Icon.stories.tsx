@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 import Icon, {
     Icons,
-    IconSizes
+    IconSizes,
+    IconVariants
 } from './'
 import { Icon as Component } from './Icon'
 
@@ -20,7 +21,7 @@ BasicStory.storyName = 'Basic'
 
 Basic.args = {
     size: Types.IconSizes.Huge,
-    icon: Types.Icons.Barometern
+    icon: Types.Icons.RocketLaunch
 }
 
 const Wrapper = styled.div`
@@ -59,7 +60,7 @@ const AllIcons: Story<Types.IconProps> = () => {
                 Object.values(Icons).map((name, idx) => {
                     return (
                         <IconWrapper key={`${name}-${idx}`}>
-                            <Icon icon={name} />
+                            <Icon icon={name}/>
 
                             <IconName>
                                 {name}
@@ -85,7 +86,8 @@ export default {
     component: Component,
     argTypes: {},
     args: {
-        icon: Icons.Bank,
+        icon: Icons.RocketLaunch,
+        variant: IconVariants.Outline,
         size: IconSizes.Normal
     }
 } as Meta<Types.IconComponent>

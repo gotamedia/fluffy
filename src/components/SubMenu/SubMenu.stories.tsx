@@ -29,7 +29,7 @@ const Basic: Story<Types.SubMenuProps> = (props) => {
         <div>
             <IconButton
                 ref={setAnchorRef}
-                icon={Icons.Menu}
+                icon={Icons.Bars3}
                 shape={IconButtonShapes.Circle}
                 size={IconButtonSizes.Small}
                 onClick={toggleShowMenu}

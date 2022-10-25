@@ -66,9 +66,9 @@ const PaginationTheme: PaginationThemeType = {
         iconButton: {
             icon: ({ $componentState }) => (
                 $componentState?.iconType === PaginationElementTypes.PreviousPageButton ? (
-                    Icons.ArrowLeft
+                    Icons.ChevronLeft
                 ) : (
-                    Icons.ArrowRight
+                    Icons.ChevronRight
                 )
             ),
             shape: IconButtonShapes.Circle

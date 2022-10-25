@@ -7,7 +7,7 @@ import { InputGroup as Component } from './InputGroup'
 import Input from '../Input'
 import IconButton from '../IconButton'
 import Button from '../Button'
-import Icon, { Icons } from '../Icon'
+import Icon, { Icons, IconVariants } from '../Icon'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -54,7 +54,10 @@ const WithIcon: Story<Types.InputGroupProps & { value: string }> = (props) => {
     return (
         <Wrapper>
             <InputGroup {...props}>
-                <Icon icon={Icons.Bank} />
+                <Icon
+                    icon={Icons.FaceSmile}
+                    variant={IconVariants.Outline}
+                />
 
                 <Input
                     value={inputValue}
@@ -70,7 +73,10 @@ const WithIcon: Story<Types.InputGroupProps & { value: string }> = (props) => {
                     placeholder={'Type something cool!'}
                 />
 
-                <Icon icon={Icons.Edit} />
+                <Icon
+                    icon={Icons.Funnel}
+                    variant={IconVariants.Outline}
+                />
             </InputGroup>
         </Wrapper>
     )
@@ -86,7 +92,7 @@ const WithIconButton: Story<Types.InputGroupProps & { value: string }> = (props)
     return (
         <Wrapper>
             <InputGroup {...props}>
-                <IconButton icon={Icons.TrashCan} />
+                <IconButton icon={Icons.Trash} />
 
                 <Input
                     value={inputValue}
@@ -102,7 +108,7 @@ const WithIconButton: Story<Types.InputGroupProps & { value: string }> = (props)
                     placeholder={'Type something cool!'}
                 />
 
-                <IconButton icon={Icons.Search} />
+                <IconButton icon={Icons.MagnifyingGlass} />
             </InputGroup>
         </Wrapper>
     )

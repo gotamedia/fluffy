@@ -36,7 +36,10 @@ const CancelButton: Types.ButtonComponent = forwardRef((props, ref) => {
             {...props}
         >
             {isCanceling && (
-                <Icon icon={Icons.Spinner} />
+                <Icon
+                    spin
+                    icon={Icons.ArrowPath}
+                />
             )}
             {getButtonLabel("cancel")}
         </Button>

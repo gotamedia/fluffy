@@ -1,4 +1,3 @@
-
 import { render } from '@testing-library/react'
 
 import WithThemeProvider from '../../internal/hocs/WithThemeProvider'
@@ -9,7 +8,7 @@ describe('<Icon />', () => {
     it('should not crash', () => {
         render(
             WithThemeProvider(
-                <Icon icon={Icons.Info}/>
+                <Icon icon={Icons.InformationCircle}/>
             )
         )
     })

@@ -21,9 +21,8 @@ const UploadInput = styled.input`
 `
 
 const UploadIcon = styled(Icon).attrs(() => {
-    // TODO: Update icon once we have "Upload" icon in place
     return {
-        icon: Icons.Link
+        icon: Icons.CloudArrowUp
     }
 })`
     ${props => getComponentTheme('UploadButton', 'style.icon', props)};

@@ -15,7 +15,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
@@ -190,4 +190,4 @@ export const Sheet: Types.SheetComponent = forwardRef((props, ref) => {
 
 Sheet.displayName = 'Sheet'
 
-export default withThemeProps(Sheet) as Types.SheetComponent
+export default WithThemeProps(Sheet) as Types.SheetComponent

@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -62,4 +62,4 @@ export const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
 
 Textarea.displayName = 'Textarea'
 
-export default withThemeProps(Textarea) as Types.TextareaComponent
+export default WithThemeProps(Textarea) as Types.TextareaComponent

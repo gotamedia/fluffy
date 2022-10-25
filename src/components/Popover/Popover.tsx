@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import withThemeProps from '@internal/hocs/withThemeProps'
+import WithThemeProps from '@internal/hocs/WithThemeProps'
 
 import Portal from '@components/Portal'
 
@@ -61,4 +61,4 @@ export const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
 
 Popover.displayName = 'Popover'
 
-export default withThemeProps(Popover) as Types.PopoverComponent
+export default WithThemeProps(Popover) as Types.PopoverComponent
