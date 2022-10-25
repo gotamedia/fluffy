@@ -1,6 +1,6 @@
 import environment from '@utils/environment'
 
-const TAG_ID = 'fluffy-video-youtube-iframe-api-id'
+const TAG_ID = 'fluffy-video-youtube-iframe-api'
 const TAG_SRC = 'https://www.youtube.com/iframe_api'
 
 let API_READY_RESOLVER = () => {}
@@ -56,8 +56,12 @@ const getVideoId = (url: string) => {
     return url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)?.[2]
 }
 
-const getVideoSrc = (id: string) => {
-    return `https://www.youtube.com/embed/${id}?&enablejsapi=1&controls=0`
+const getVideoSrc = (id?: string) => {
+    if (id) {
+        return `https://www.youtube.com/embed/${id}?&enablejsapi=1`
+    } else {
+        return null
+    }
 }
 
 const Youtube = {

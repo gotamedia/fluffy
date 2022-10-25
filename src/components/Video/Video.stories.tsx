@@ -1,16 +1,16 @@
 import React from 'react'
 
 import Video from './'
+import { Video as Component } from './Video'
 
-// import type * as Types from './types'
+import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
 
-const Basic: Story = (props) => {
+const Basic: Story<Types.VideoProps> = (props) => {
     return (
-        <>
-            <Video {...props} />
-            <Video {...props} />
-        </>
+        <Video {...props}>
+            <Video.Providers.YouTube />
+        </Video>
     )
 }
 
@@ -23,9 +23,9 @@ export {
 
 export default {
     title: 'Developments/Components/Video',
-    component: Video,
+    component: Component,
     argTypes: {},
     args: {
-        src: 'https://www.youtube.com/watch?v=D1ktPIVbVgA'
+        src: 'https://www.youtube.com/watch?v=Zu0Te0mYWWw'
     }
 } as Meta<typeof Video>
