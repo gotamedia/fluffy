@@ -46,7 +46,7 @@ const SettingsIconButton = styled(IconButton).attrs(() => {
 
 const SaveIconButton = styled(IconButton).attrs(() => {
     return {
-        icon: Icons.CloudArrowDown,
+        icon: Icons.ArrowDownTray,
         shape: IconButtonShapes.Circle
     }
 })`
