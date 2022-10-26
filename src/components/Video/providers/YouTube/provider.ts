@@ -28,17 +28,12 @@ const onYouTubeAPIReady = () => {
     })
 }
 
-const initiate = (config = {}) => {
+const initiate = () => {
     if (environment.isClient) {
         const youTubeApiScriptTag = document.getElementById(TAG_ID)
 
         if (!youTubeApiScriptTag) {
             const tag = document.createElement('script')
-
-            Object.entries(config).forEach(([key, value]) => {
-                //@ts-ignore
-                tag[key] = value
-            })
             
             tag.id = TAG_ID
             tag.src = TAG_SRC
@@ -51,9 +46,11 @@ const initiate = (config = {}) => {
     }
 }
 
-const getVideoId = (url: string) => {
-    // eslint-disable-next-line no-useless-escape
-    return url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)?.[2]
+const getVideoId = (url?: string) => {
+    if (url) {
+        // eslint-disable-next-line no-useless-escape
+        return url.match(/^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/)?.[2]
+    }
 }
 
 const getVideoSrc = (id?: string) => {

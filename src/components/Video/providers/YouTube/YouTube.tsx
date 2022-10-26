@@ -9,7 +9,7 @@ import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import useVideo from '../../hooks/useVideo/useVideo'
 
-import YoutubeProvider from './provider'
+import Provider from './provider'
 
 import * as Types from './types'
 
@@ -27,7 +27,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
     const [player, setPlayer] = useState<YT.Player | null>(null)
     const [iframeRef, setIframeRef] = useState<HTMLIFrameElement | null>(null)
     const [isReady, setIsReady] = useState(false)
-    const [videoId, setVideoId] = useState(() => YoutubeProvider.getVideoId(src))
+    const [videoId, setVideoId] = useState(() => Provider.getVideoId(src))
 
     useImperativeHandle(ref, () => {
         return {
@@ -41,8 +41,8 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
         let _player = null as YT.Player | null
 
         const createPlayer = async () => {
-            YoutubeProvider.initiate()
-            await YoutubeProvider.onReady()
+            Provider.initiate()
+            await Provider.onReady()
 
             _player = new window.YT.Player(`youtube-player-id__${id}`, {
                 events: {
@@ -66,24 +66,24 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
     }, [id, onEvent])
 
     useEffect(() => {
-        if (isReady && typeof onReady === 'function') {
+        if (isReady) {
             onReady()
         }
     }, [isReady, onReady])
 
     useEffect(() => {
-        setVideoId(YoutubeProvider.getVideoId(src))
+        setVideoId(Provider.getVideoId(src))
     }, [src])
 
-    const videoSrc = YoutubeProvider.getVideoSrc(videoId)
+    const videoSrc = Provider.getVideoSrc(videoId)
 
     return (
         videoSrc ? (
             <iframe
                 id={`fluffy-youtube-player-${id}`}
                 title={`YouTube video player`}
-                width={width || '720'}
-                height={height || '405'}
+                width={width}
+                height={height}
                 allowFullScreen={true}
                 frameBorder={'0'}
                 {...props}

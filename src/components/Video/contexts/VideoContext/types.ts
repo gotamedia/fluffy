@@ -1,8 +1,9 @@
 export type VideoContext = {
     id: string | number,
-    src: string,
     onReady: () => void,
     onEvent: (event: any) => void,
+    src?: string,
+    config?: Record<string, any>,
     width?: number | string,
     height?: number | string
 }

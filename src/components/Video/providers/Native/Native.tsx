@@ -35,8 +35,8 @@ const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
             <video
                 controls
                 id={`fluffy-native-player-${id}`}
-                width={width || '720'}
-                height={height || '405'}
+                width={width}
+                height={height}
                 {...filteredProps}
                 onCanPlay={handleOnCanPlay}
                 ref={ref}

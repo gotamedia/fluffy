@@ -13,8 +13,9 @@ export const Video: Types.VideoComponent = (props) => {
     const {
         id = createUUID(),
         src,
-        width,
-        height,
+        width = 720,
+        height = 405,
+        config = {},
         onReady,
         onEvent,
         children
@@ -38,6 +39,7 @@ export const Video: Types.VideoComponent = (props) => {
             src: src,
             width: width,
             height: height,
+            config: config,
             onReady: handleOnReady,
             onEvent: handleOnEvent
         }
@@ -46,6 +48,7 @@ export const Video: Types.VideoComponent = (props) => {
         src,
         width,
         height,
+        config,
         handleOnReady,
         handleOnEvent
     ])

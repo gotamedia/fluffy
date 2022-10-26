@@ -30,10 +30,39 @@ const YouTube: Story<Types.VideoProps> = (props) => {
 
 const YouTubeStory = YouTube.bind({})
 YouTubeStory.storyName = 'YouTube'
+YouTubeStory.args = {
+    src: 'https://www.youtube.com/watch?v=Zu0Te0mYWWw'
+}
+
+const ShowHeros: Story<Types.VideoProps> = (props) => {
+    return (
+        <Video {...props}>
+            <Video.Providers.ShowHeros />
+        </Video>
+    )
+}
+
+const ShowHerosStory = ShowHeros.bind({})
+ShowHerosStory.storyName = 'ShowHeros'
+ShowHerosStory.args = {
+    src: '1666787097287062',
+    config: {
+        data: {
+            player: 'up',
+            mute: true,
+            autoplay: true,
+            time: 0,
+            addons: '000',
+            'zone_id': 2662,
+            'part_id': 287062
+        }
+    }
+}
 
 export {
     BasicStory,
-    YouTubeStory
+    YouTubeStory,
+    ShowHerosStory
 }
 
 export default {
