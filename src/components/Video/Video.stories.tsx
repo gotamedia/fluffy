@@ -66,7 +66,7 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/Video',
+    title: 'Components/Video',
     component: Component,
     argTypes: {},
     args: {
