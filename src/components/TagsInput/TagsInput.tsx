@@ -9,7 +9,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import Tag, { TagSizes } from '../Tag'
 import ListItem, { ListItemTypes } from '../ListItem'
@@ -389,4 +389,4 @@ export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
 
 TagsInput.displayName = 'TagsInput'
 
-export default WithThemeProps(TagsInput) as Types.TagsInputComponent
+export default withThemeProps(TagsInput) as Types.TagsInputComponent

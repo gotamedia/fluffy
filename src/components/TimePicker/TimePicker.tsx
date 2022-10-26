@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import TimePickerInput from './components/TimePickerInput'
 
@@ -57,4 +57,4 @@ export const TimePicker: Types.TimePickerComponent = forwardRef((props, ref) => 
 
 TimePicker.displayName = 'TimePicker'
 
-export default WithThemeProps(TimePicker) as Types.TimePickerComponent
+export default withThemeProps(TimePicker) as Types.TimePickerComponent

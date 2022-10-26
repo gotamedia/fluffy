@@ -6,7 +6,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import { IconVariants } from './types'
 
@@ -92,4 +92,4 @@ export const Icon: Types.IconComponent = forwardRef((props, ref) => {
 })
 
 //@ts-ignore
-export default WithThemeProps(Icon) as Types.IconComponent
+export default withThemeProps(Icon) as Types.IconComponent

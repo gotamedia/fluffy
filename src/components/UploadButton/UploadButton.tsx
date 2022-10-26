@@ -6,7 +6,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -91,4 +91,4 @@ export const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref)
 
 UploadButton.displayName = 'UploadButton'
 
-export default WithThemeProps(UploadButton) as Types.UploadButtonComponent
+export default withThemeProps(UploadButton) as Types.UploadButtonComponent

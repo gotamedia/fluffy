@@ -11,7 +11,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -315,4 +315,4 @@ export const List: Types.ListComponent = forwardRef((props, ref) => {
 
 List.displayName = 'List'
 
-export default WithThemeProps(List) as Types.ListComponent
+export default withThemeProps(List) as Types.ListComponent

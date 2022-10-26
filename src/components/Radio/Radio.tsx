@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -67,4 +67,4 @@ export const Radio: Types.RadioComponent = forwardRef((props, ref) => {
 
 Radio.displayName = 'Radio'
 
-export default WithThemeProps(Radio) as Types.RadioComponent
+export default withThemeProps(Radio) as Types.RadioComponent

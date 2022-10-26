@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -62,4 +62,4 @@ export const Input: Types.InputComponent = forwardRef((props, ref) => {
 
 Input.displayName = 'Input'
 
-export default WithThemeProps(Input) as Types.InputComponent
+export default withThemeProps(Input) as Types.InputComponent

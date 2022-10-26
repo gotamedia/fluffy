@@ -1,1 +1,1 @@
-export { default } from './WithThemeProps'
+export { default } from './withThemeProps'

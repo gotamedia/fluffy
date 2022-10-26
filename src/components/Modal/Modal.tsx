@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import Portal from '../Portal'
 
@@ -73,4 +73,4 @@ export const Modal: Types.ModalComponent = forwardRef((props, ref) => {
 
 Modal.displayName = 'Modal'
 
-export default WithThemeProps(Modal) as Types.ModalComponent
+export default withThemeProps(Modal) as Types.ModalComponent

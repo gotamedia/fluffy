@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -67,4 +67,4 @@ export const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
 
 Checkbox.displayName = 'Checkbox'
 
-export default WithThemeProps(Checkbox) as Types.CheckboxComponent
+export default withThemeProps(Checkbox) as Types.CheckboxComponent

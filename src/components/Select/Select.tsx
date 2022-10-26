@@ -11,7 +11,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
@@ -248,4 +248,4 @@ export const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
 Select.displayName = 'Select'
 
-export default WithThemeProps(Select) as Types.SelectComponent
+export default withThemeProps(Select) as Types.SelectComponent

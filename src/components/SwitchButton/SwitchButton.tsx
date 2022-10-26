@@ -5,7 +5,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -67,4 +67,4 @@ export const SwitchButton: Types.SwitchButtonComponent = forwardRef((props, ref)
 
 SwitchButton.displayName = 'SwitchButton'
 
-export default WithThemeProps(SwitchButton) as Types.SwitchButtonComponent
+export default withThemeProps(SwitchButton) as Types.SwitchButtonComponent

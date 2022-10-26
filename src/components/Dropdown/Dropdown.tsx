@@ -9,7 +9,7 @@ import {
 
 import classNames from '@utils/classNames'
 
-import WithThemeProps from '@internal/hocs/WithThemeProps'
+import withThemeProps from '@internal/hocs/withThemeProps'
 
 import * as Styled from './style'
 import * as Types from './types'
@@ -158,4 +158,4 @@ export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
 
 Dropdown.displayName = 'Dropdown'
 
-export default WithThemeProps(Dropdown) as Types.DropdownComponent
+export default withThemeProps(Dropdown) as Types.DropdownComponent
