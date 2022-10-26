@@ -40,7 +40,7 @@ const initiateBySrc = (src: string, config?: Record<string, any>) => {
                 async
                 defer
                 ${scriptAttributes}
-                src='http://delivery.youplay.se/load.js?id=${src}'
+                src='https://delivery.youplay.se/load.js?id=${src}'
                 data-config='${scriptDataConfig || '{}'}'
             />
         `
