@@ -1,16 +1,15 @@
 import type {
-    RefObject,
     ForwardRefExoticComponent,
     RefAttributes,
     IframeHTMLAttributes
 } from 'react'
 
-export type YouTubeProps = IframeHTMLAttributes<HTMLIFrameElement>
+export type YouTubeProviderProps = IframeHTMLAttributes<HTMLIFrameElement>
 
-export type YouTubeRef = {
+export type YouTubeProviderRef = {
     // eslint-disable-next-line no-undef
     player: YT.Player | null,
-    _domRef: RefObject<HTMLIFrameElement>
+    _domRef: HTMLIFrameElement | null
 }
 
-export type YouTubeProvider = ForwardRefExoticComponent<YouTubeProps & RefAttributes<YouTubeRef>>
+export type YouTubeProvider = ForwardRefExoticComponent<YouTubeProviderProps & RefAttributes<YouTubeProviderRef>>

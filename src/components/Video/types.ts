@@ -1,3 +1,4 @@
+import NativeProvider from './providers/Native'
 import YoutubeProvider from './providers/YouTube'
 
 import type {
@@ -19,6 +20,7 @@ export type VideoComponent = FC<VideoProps>
 
 export type VideoComponentType = VideoComponent & {
     Providers: {
+        Native: typeof NativeProvider,
         YouTube: typeof YoutubeProvider
     }
 }

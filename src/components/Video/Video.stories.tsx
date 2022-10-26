@@ -9,16 +9,31 @@ import type { Story, Meta } from '@storybook/react'
 const Basic: Story<Types.VideoProps> = (props) => {
     return (
         <Video {...props}>
-            <Video.Providers.YouTube />
+            <Video.Providers.Native />
         </Video>
     )
 }
 
 const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
+BasicStory.args = {
+    src: 'https://gotamedia-fluffy-dev-statics.s3.eu-north-1.amazonaws.com/fluffy.mov'
+}
+
+const YouTube: Story<Types.VideoProps> = (props) => {
+    return (
+        <Video {...props}>
+            <Video.Providers.YouTube />
+        </Video>
+    )
+}
+
+const YouTubeStory = YouTube.bind({})
+YouTubeStory.storyName = 'YouTube'
 
 export {
-    BasicStory
+    BasicStory,
+    YouTubeStory
 }
 
 export default {

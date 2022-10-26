@@ -1,6 +1,5 @@
 import {
     forwardRef,
-    useRef,
     useImperativeHandle,
     useState,
     useEffect,
@@ -15,8 +14,6 @@ import YoutubeProvider from './provider'
 import * as Types from './types'
 
 const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
-    const iframeRef = useRef<HTMLIFrameElement>(null)
-
     const {
         id,
         src,
@@ -28,6 +25,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
 
     // eslint-disable-next-line no-undef
     const [player, setPlayer] = useState<YT.Player | null>(null)
+    const [iframeRef, setIframeRef] = useState<HTMLIFrameElement | null>(null)
     const [isReady, setIsReady] = useState(false)
     const [videoId, setVideoId] = useState(() => YoutubeProvider.getVideoId(src))
 
@@ -36,7 +34,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
             player: player,
             _domRef: iframeRef
         }
-    }, [player])
+    }, [player, iframeRef])
 
     useIsomorphicLayoutEffect(() => {
         // eslint-disable-next-line no-undef
@@ -90,7 +88,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
                 frameBorder={'0'}
                 {...props}
                 src={videoSrc}
-                ref={iframeRef}
+                ref={setIframeRef}
             />
         ) : (
             null
