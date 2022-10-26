@@ -5,7 +5,6 @@
         "strict": true,
         "skipLibCheck": true,
         "jsx": "react-jsx",
-        "resolveJsonModule": true,
         "module": "esnext",
         "outDir": "dist",
         "declarationDir": "dist",
@@ -30,7 +29,8 @@
         "types": [
             "node",
             "cypress",
-            "cypress-real-events"
+            "cypress-real-events",
+            "youtube"
         ],
         "plugins": [
             {
