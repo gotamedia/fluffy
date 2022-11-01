@@ -20,13 +20,14 @@ useMeasure is a helper hook that tracks dimensions of an HTML element using the 
 import { useMeasure } from '@gotamedia/fluffy'
 \nconst Component = () => {
     const [element, setElementRef] = useState()
-    \nconst elementRect = useMeasure(element)
+    \nconst { rect, revalidate } = useMeasure(element)
     \nreturn (
         <div>
+            <button onClick={revalidate}>{'revalidate'}</button>\n
             <div ref={setElementRef}>
                 {...}
             </div>\n
-            {JSON.stringify(elementRect)}
+            {JSON.stringify(rect)}
         </div>
     )
 }

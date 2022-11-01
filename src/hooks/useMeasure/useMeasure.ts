@@ -57,7 +57,16 @@ const useMeasure: Types.UseMeasure = (target) => {
         }
     }, [target, handleOnResize])
 
-    return rect
+    const handleRevalidate = useCallback(() => {
+        if (target) {
+            setRect(() => target.getBoundingClientRect())
+        }
+    }, [target])
+
+    return {
+        rect: rect,
+        revalidate: handleRevalidate
+    }
 }
 
 export default useMeasure
