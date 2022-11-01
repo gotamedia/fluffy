@@ -7,7 +7,7 @@ import {
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
-import useVideo from '../../hooks/useVideo/useVideo'
+import useVideo from '../../hooks/useVideo'
 
 import Provider from './provider'
 

@@ -3,7 +3,7 @@ import {
     useCallback
 } from 'react'
 
-import useVideo from '../../hooks/useVideo/useVideo'
+import useVideo from '../../hooks/useVideo'
 
 import * as Types from './types'
 import type { ReactEventHandler } from 'react'
