@@ -60,4 +60,6 @@ export const Video: Types.VideoComponent = (props) => {
     )
 }
 
+Video.displayName = 'Video'
+
 export default Video
