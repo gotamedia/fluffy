@@ -10,6 +10,7 @@ export type SliderContext = {
     variant: SliderVariantType,
     wrapperRef: HTMLDivElement | null,
     wrapperRect: UseMeasureRect,
+    slidesLength: number,
     onChange: (index: number) => void,
     setSlidesLength: (length: number) => void,
     getSlideByIndex: (index: number) => number,

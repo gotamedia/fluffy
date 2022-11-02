@@ -1,6 +1,7 @@
 import SlidesComponent from './components/Slides'
 import NavigatorComponent from './components/Navigator'
 import FullscreenComponent from './components/Fullscreen'
+import SlidesCountComponent from './components/SlidesCount'
 
 import type {
     ReactNode,
@@ -48,5 +49,6 @@ export type SliderComponent = ForwardRefExoticComponent<SliderProps & RefAttribu
 export type SliderComponentType = SliderComponent & {
     Slides: typeof SlidesComponent,
     Navigator: typeof NavigatorComponent,
-    Fullscreen: typeof FullscreenComponent
+    Fullscreen: typeof FullscreenComponent,
+    SlidesCount: typeof SlidesCountComponent
 }
