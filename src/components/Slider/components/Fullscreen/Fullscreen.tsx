@@ -7,7 +7,7 @@ import useSlider from '../../hooks/useSlider'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Fullscreen: Types.FullscreenComponent = () => {
+const Fullscreen: Types.FullscreenComponent = ({ className }) => {
     const {
         variant,
         wrapperRef,
@@ -37,6 +37,7 @@ const Fullscreen: Types.FullscreenComponent = () => {
 
     return (
         <Styled.FullscreenIcon
+            className={className}
             variant={variant}
             $isFullscreen={isFullscreen}
             onClick={handleToggleFullscreen}

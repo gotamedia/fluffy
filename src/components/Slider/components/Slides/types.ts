@@ -5,8 +5,9 @@ import type {
 } from 'react'
 
 export type SlidesProps = {
+    className?: string,
+    slideProps?: HTMLAttributes<HTMLDivElement>,
     children: ReactNode,
-    slideProps?: HTMLAttributes<HTMLDivElement>
 }
 
 export type SlidesComponent = FC<SlidesProps>

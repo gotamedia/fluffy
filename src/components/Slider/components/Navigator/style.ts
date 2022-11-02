@@ -10,6 +10,10 @@ import { SliderDirections } from '../../types'
 
 import type { SliderDirectionType } from '../../types'
 
+const Wrapper = styled.div`
+    
+`
+
 const LeftArrow = styled(IconButton).attrs(({ $direction }: any ) => {
     return {
         icon: $direction === SliderDirections.Horizontal ? (
@@ -69,6 +73,7 @@ const RightArrow = styled(IconButton).attrs(({ $direction }: any ) => {
 `
 
 export {
+    Wrapper,
     LeftArrow,
     RightArrow
 }

@@ -3,7 +3,7 @@ import useSlider from '../../hooks/useSlider'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Navigator: Types.NavigatorComponent = () => {
+const Navigator: Types.NavigatorComponent = ({ className }) => {
     const {
         variant,
         direction,
@@ -12,7 +12,7 @@ const Navigator: Types.NavigatorComponent = () => {
     } = useSlider()
 
     return (
-        <>
+        <Styled.Wrapper className={className}>
             <Styled.LeftArrow
                 variant={variant}
                 $direction={direction}
@@ -24,7 +24,7 @@ const Navigator: Types.NavigatorComponent = () => {
                 $direction={direction}
                 onClick={onNext}
             />
-        </>
+        </Styled.Wrapper>
     )
 }
 

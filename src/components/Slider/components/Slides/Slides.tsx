@@ -22,6 +22,7 @@ const VirtualizeSwipeableViews = virtualize(SwipeableViews)
 const Slides: Types.SlidesComponent = (props) => {
     const {
         children,
+        className,
         slideProps
     } = props
     
@@ -69,6 +70,7 @@ const Slides: Types.SlidesComponent = (props) => {
 
     return (
         <VirtualizeSwipeableViews
+            className={className}
             ref={setSliderInstance}
             resistance
             enableMouseEvents
