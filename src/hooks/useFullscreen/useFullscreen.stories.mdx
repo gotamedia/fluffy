@@ -1,0 +1,29 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useTheme'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useTheme is a hook that returns the current theme value from the ThemeProvider
+
+## Usage
+<Source
+    language={'tsx'}
+    code={`
+import { useTheme } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const currentTheme = useTheme()\n
+    return (
+        <div>
+            {'Current brand color is: '}{currentTheme.colors.brand} // '#005CA9'
+        </div>
+    )
+}
+`}
+/>
