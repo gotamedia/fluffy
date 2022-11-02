@@ -1,7 +1,7 @@
 import { Source, Meta } from '@storybook/addon-docs'
 
 <Meta
-    title={'Hooks/useTheme'}
+    title={'Hooks/useFullscreen'}
     parameters={{
         options: {
             showToolbar: false
@@ -16,12 +16,15 @@ useTheme is a hook that returns the current theme value from the ThemeProvider
 <Source
     language={'tsx'}
     code={`
-import { useTheme } from '@gotamedia/fluffy'
+import { useFullscreen } from '@gotamedia/fluffy'
 \nconst Component = () => {
-    const currentTheme = useTheme()\n
+    const [element, setElement] = useState(null)\n
+    const { close, open, isFullscreen } = useFullscreen(element)\n
     return (
-        <div>
-            {'Current brand color is: '}{currentTheme.colors.brand} // '#005CA9'
+        <div ref={setElement}>
+            <p>{'Is fullscreen: '} {String(isFullscreen)}</p>
+            <button onClick={open}>{'open fullscreen'}</button>
+            <button onClick={close}>{'close fullscreen'}</button>
         </div>
     )
 }
