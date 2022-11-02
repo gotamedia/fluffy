@@ -1,4 +1,5 @@
 import {
+    useRef,
     useState,
     useCallback,
     useEffect
@@ -10,6 +11,10 @@ import usePreviousPersistent from '@hooks/usePreviousPersistent'
 import Fullscreen from '@utils/Fullscreen'
 
 const useFullscreen = (element: HTMLElement | null) => {
+    const prevRect = useRef({
+        width: '',
+        height: ''
+    })
     const fullscreen = useLazyRef<Fullscreen>(() => new Fullscreen())
 
     const [isFullscreen, setIsFullscreen] = useState(false)
@@ -18,27 +23,52 @@ const useFullscreen = (element: HTMLElement | null) => {
 
     const open = useCallback(() => {
         if (element) {
-            fullscreen.current?.open(element)
+            if (fullscreen.current?.isSupported()) {
+                fullscreen.current?.open(element)
+            } else {
+                prevRect.current = {
+                    width: element.style.width,
+                    height: element.style.height
+                }
+
+                element.style.position = 'fixed'
+                element.style.inset = '0'
+                element.style.width = '100%'
+                element.style.height = '100%'
+            }
+
             setIsFullscreen(true)
         }
     }, [fullscreen, element])
 
     const close = useCallback(() => {
-        fullscreen.current?.close()
+        if (fullscreen.current?.isSupported()) {
+            fullscreen.current?.close()
+        } else {
+            if (element) {
+                element.style.position = 'relative'
+                element.style.inset = 'unset'
+                element.style.width = prevRect?.current.width || 'unset'
+                element.style.height = prevRect?.current.height || 'unset'
+            }
+        }
+
         setIsFullscreen(false)
-    }, [fullscreen])
+    }, [fullscreen, element])
 
     useEffect(() => {
+        const fullscreenInstance = fullscreen.current
+
         const onFullscreenChange = () => {
             if (!fullscreen.current?.isFullscreen()) {
                 close()
             }
         }
 
-        window.addEventListener('fullscreenchange', onFullscreenChange)
+        fullscreenInstance?.addListener(onFullscreenChange)
 
         return () => {
-            window.removeEventListener('fullscreenchange', onFullscreenChange)
+            fullscreenInstance?.removeListener(onFullscreenChange)
         }
     }, [
         close,
@@ -52,7 +82,7 @@ const useFullscreen = (element: HTMLElement | null) => {
         open,
         close,
         isFullscreen: isFullscreen,
-        isEnabled: fullscreen.current?.enabled()
+        isSupported: fullscreen.current?.isSupported()
     }
 }
 

@@ -19,7 +19,7 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
         close,
         isFullscreen
     } = useFullscreen(wrapperRef)
-
+    
     const handleToggleFullscreen = useCallback(() => {
         revalidateWrapperRect()
 
