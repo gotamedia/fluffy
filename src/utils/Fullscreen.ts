@@ -42,7 +42,6 @@ const METHODS = {
         'msFullscreenElement'
     ],
     SUPPORTED: [
-        'fullscreenEnabled',
         'webkitFullscreenEnabled',
         'webkitCancelFullScreen',
         'mozFullScreenEnabled',

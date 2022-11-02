@@ -8,7 +8,7 @@ export type SliderContext = {
     index: number,
     direction: SliderDirectionType,
     variant: SliderVariantType,
-    wrapperRef: HTMLDivElement | null,
+    wrapperElement: HTMLDivElement | null,
     wrapperRect: UseMeasureRect,
     slidesLength: number,
     onChange: (index: number) => void,

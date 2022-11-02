@@ -41,7 +41,7 @@ export type SliderRef = {
     goNext: () => void,
     goBack: () => void,
     revalidateWrapperRect: () => void,
-    _domRef: HTMLDivElement | null
+    _domElement: HTMLDivElement | null
 }
 
 export type SliderComponent = ForwardRefExoticComponent<SliderProps & RefAttributes<SliderRef>>

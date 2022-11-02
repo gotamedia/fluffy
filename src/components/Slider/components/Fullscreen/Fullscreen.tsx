@@ -10,7 +10,7 @@ import type * as Types from './types'
 const Fullscreen: Types.FullscreenComponent = ({ className }) => {
     const {
         variant,
-        wrapperRef,
+        wrapperElement,
         revalidateWrapperRect
     } = useSlider()
 
@@ -18,7 +18,7 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
         open,
         close,
         isFullscreen
-    } = useFullscreen(wrapperRef)
+    } = useFullscreen(wrapperElement)
     
     const handleToggleFullscreen = useCallback(() => {
         revalidateWrapperRect()
@@ -36,12 +36,14 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
     ])
 
     return (
-        <Styled.FullscreenIcon
-            className={className}
-            variant={variant}
-            $isFullscreen={isFullscreen}
-            onClick={handleToggleFullscreen}
-        />
+        <>
+            <Styled.FullscreenIcon
+                className={className}
+                variant={variant}
+                $isFullscreen={isFullscreen}
+                onClick={handleToggleFullscreen}
+            />
+        </>
     )
 }
 

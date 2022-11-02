@@ -35,14 +35,14 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
 
     const indexMultiplierRef = useRef(0)
 
-    const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
+    const [wrapperElement, setWrapperElement] = useState<HTMLDivElement | null>(null)
     const [slidesLength, setSlidesLength] = useState(0)
     const [sliderInstance, setSliderInstance] = useState<any>(null)
 
     const {
         rect: wrapperRect,
         revalidate: revalidateWrapperRect
-    } = useMeasure(wrapperRef)
+    } = useMeasure(wrapperElement)
 
     const getSlidesSet = useCallback(() => {
         const slidesSet = [...new Array(slidesLength)].map((_, idx) => {
@@ -135,13 +135,13 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
             goNext: handleOnNextSlide,
             goBack: handleOnPreviousSlide,
             revalidateWrapperRect: revalidateWrapperRect,
-            _domRef: wrapperRef
+            _domElement: wrapperElement
         }
     }, [
         handleOnNextSlide,
         handleOnPreviousSlide,
         revalidateWrapperRect,
-        wrapperRef
+        wrapperElement
     ])
 
     const context = useMemo(() => {
@@ -149,7 +149,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
             index: index,
             variant: variant,
             direction: direction,
-            wrapperRef: wrapperRef,
+            wrapperElement: wrapperElement,
             wrapperRect: wrapperRect,
             slidesLength: slidesLength,
             revalidateWrapperRect: revalidateWrapperRect,
@@ -164,7 +164,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         index,
         variant,
         direction,
-        wrapperRef,
+        wrapperElement,
         wrapperRect,
         slidesLength,
         revalidateWrapperRect,
@@ -181,7 +181,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
                 {...filteredProps}
                 onKeyDown={handleOnKeyDown}
                 tabIndex={0}
-                ref={setWrapperRef}
+                ref={setWrapperElement}
             >
                 {children}
             </Styled.Wrapper>
