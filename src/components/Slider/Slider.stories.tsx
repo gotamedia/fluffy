@@ -85,7 +85,7 @@ const WithNavigator: Story<Types.SliderProps> = (props) => {
 const WithNavigatorStory = WithNavigator.bind({})
 WithNavigatorStory.storyName = 'With Navigator'
 
-const WithFullScreen: Story<Types.SliderProps> = (props) => {
+const WithFullscreen: Story<Types.SliderProps> = (props) => {
     const [index, setIndex] = useState(0)
 
     return (
@@ -111,14 +111,14 @@ const WithFullScreen: Story<Types.SliderProps> = (props) => {
                     }
                 </Slider.Slides>
 
-                <Slider.FullScreen />
+                <Slider.Fullscreen />
             </Slider>
         </div>
     )
 }
 
-const WithFullScreenStory = WithFullScreen.bind({})
-WithFullScreenStory.storyName = 'With FullScreen'
+const WithFullscreenStory = WithFullscreen.bind({})
+WithFullscreenStory.storyName = 'With Fullscreen'
 
 const Full: Story<Types.SliderProps> = (props) => {
     const [index, setIndex] = useState(0)
@@ -147,7 +147,7 @@ const Full: Story<Types.SliderProps> = (props) => {
                 </Slider.Slides>
 
                 <Slider.Navigator />
-                <Slider.FullScreen />
+                <Slider.Fullscreen />
             </Slider>
         </div>
     )
@@ -159,7 +159,7 @@ FullStory.storyName = 'Full'
 export {
     BasicStory,
     WithNavigatorStory,
-    WithFullScreenStory,
+    WithFullscreenStory,
     FullStory
 }
 
