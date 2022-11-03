@@ -28,6 +28,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         onNext,
         onPrevious,
         onKeyDown,
+        onFullscreenChange,
         direction = SliderDirections.Horizontal,
         variant = SliderVariants.Primary,
         ...filteredProps
@@ -158,7 +159,8 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
             setSlidesLength: setSlidesLength,
             getSlideByIndex: getSlideByIndex,
             onNext: handleOnNextSlide,
-            onPrevious: handleOnPreviousSlide
+            onPrevious: handleOnPreviousSlide,
+            onFullscreenChange: onFullscreenChange
         }
     }, [
         index,
@@ -172,7 +174,8 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         handleSetSliderInstance,
         getSlideByIndex,
         handleOnNextSlide,
-        handleOnPreviousSlide
+        handleOnPreviousSlide,
+        onFullscreenChange
     ])
 
     return (

@@ -1,14 +1,14 @@
-import SlidesComponent from './components/Slides'
-import NavigatorComponent from './components/Navigator'
-import FullscreenComponent from './components/Fullscreen'
-import SlidesCountComponent from './components/SlidesCount'
-
 import type {
     ReactNode,
     ForwardRefExoticComponent,
     RefAttributes,
     HTMLAttributes
 } from 'react'
+
+import type { SlidesComponent } from './components/Slides/types'
+import type { NavigatorComponent } from './components/Navigator/types'
+import type { FullscreenComponent } from './components/Fullscreen/types'
+import type { SlidesCountComponent } from './components/SlidesCount/types'
 
 export const SliderVariants = {
     Primary: 'primary' as const,
@@ -34,7 +34,8 @@ export interface SliderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCha
     onNext?: () => void,
     onPrevious?: () => void,
     direction?: SliderDirectionType,
-    variant?: SliderVariantType
+    variant?: SliderVariantType,
+    onFullscreenChange?: (isFullscreen: boolean) => void
 }
 
 export type SliderRef = {
@@ -46,9 +47,11 @@ export type SliderRef = {
 
 export type SliderComponent = ForwardRefExoticComponent<SliderProps & RefAttributes<SliderRef>>
 
-export type SliderComponentType = SliderComponent & {
-    Slides: typeof SlidesComponent,
-    Navigator: typeof NavigatorComponent,
-    Fullscreen: typeof FullscreenComponent,
-    SlidesCount: typeof SlidesCountComponent
+export type SliderSupComponents = {
+    Slides: SlidesComponent,
+    Navigator: NavigatorComponent,
+    Fullscreen: FullscreenComponent,
+    SlidesCount: SlidesCountComponent
 }
+
+export type SliderComponentType = SliderComponent & SliderSupComponents

@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 
 import useFullscreen from '@hooks/useFullscreen'
 
@@ -11,7 +11,8 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
     const {
         variant,
         wrapperElement,
-        revalidateWrapperRect
+        revalidateWrapperRect,
+        onFullscreenChange
     } = useSlider()
 
     const {
@@ -19,6 +20,12 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
         close,
         isFullscreen
     } = useFullscreen(wrapperElement)
+
+    useEffect(() => {
+        if (typeof onFullscreenChange === 'function') {
+            onFullscreenChange(isFullscreen)
+        }
+    }, [isFullscreen, onFullscreenChange])
     
     const handleToggleFullscreen = useCallback(() => {
         revalidateWrapperRect()

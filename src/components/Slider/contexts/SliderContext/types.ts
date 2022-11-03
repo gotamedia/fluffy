@@ -17,5 +17,6 @@ export type SliderContext = {
     onNext: () => void,
     onPrevious: () => void,
     setSliderInstance: (instance: any) => void,
-    revalidateWrapperRect: () => void
+    revalidateWrapperRect: () => void,
+    onFullscreenChange?: (isFullScreen: boolean) => void
 }
