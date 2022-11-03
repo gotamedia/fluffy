@@ -212,4 +212,7 @@ export { default as Video } from '@components/Video'
 export * from '@components/Slider'
 export { default as Slider } from '@components/Slider'
 
+export * from '@components/ImageGallery'
+export { default as ImageGallery } from '@components/ImageGallery'
+
 // <==== Components
