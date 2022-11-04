@@ -4,7 +4,8 @@ import useAnimation from "@hooks/useAnimation"
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 
 import * as Styled from "./style"
-import * as Types from "./types"
+import type * as Types from "./types"
+import useMeasure from "@root/hooks/useMeasure"
 
 const Collapsible: Types.CollapsibleComponent = forwardRef(({
     open,
@@ -16,21 +17,25 @@ const Collapsible: Types.CollapsibleComponent = forwardRef(({
     const wrapperRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
+    const { height: observeElementHeight } = useMeasure(contentRef.current)
+    const trackFromHeight = useRef(0)
+
     useIsomorphicLayoutEffect(() => {
+        const wrapperElement = wrapperRef.current
         const isOpenValid = typeof open === "boolean"
         const openOnMount = isOpenValid && open && initialValue.current
         const shouldRunAnimation = openOnMount || (isOpenValid && initialValue.current === null)
-        if (wrapperRef.current && contentRef.current && shouldRunAnimation) {
-            const contentHeight = contentRef.current.getBoundingClientRect().height
-            const element = wrapperRef.current
-            const to = open ? contentHeight : 0
-            const from = open ? 0 : contentHeight
-            heightTransition({ element, to, from })
+
+        if (wrapperElement && observeElementHeight && shouldRunAnimation) {
+            const from = open ? trackFromHeight.current : observeElementHeight
+            const to = open ? observeElementHeight : 0
+            trackFromHeight.current = to
+            heightTransition({ element: wrapperElement, from, to })
         }
         if (initialValue.current !== null) {
             initialValue.current = null
         }
-    }, [heightTransition, open])
+    }, [heightTransition, open, observeElementHeight])
 
     return (
         <Styled.Container ref={ref} {...rest}>
