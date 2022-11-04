@@ -23,17 +23,19 @@ const PreviewItem: Types.PreviewItemComponent = (props) => {
         if (active && itemRef.current) {
             scrollIntoView(itemRef.current, {
                 behavior: (instructions) => {
-                    const [{ el, left }] = instructions
+                    const [item] = instructions
 
-                    let newLeft = left
-
-                    if (el.scrollLeft > left) {
-                        newLeft = left - 10
-                    } else {
-                        newLeft = left + 10
+                    if (item && item.el) {   
+                        let newLeft = item.left
+    
+                        if (item.el.scrollLeft > item.left) {
+                            newLeft = item.left - 10
+                        } else {
+                            newLeft = item.left + 10
+                        }
+    
+                        item.el.scrollLeft = newLeft
                     }
-
-                    el.scrollLeft = newLeft
                 }
             })
         }

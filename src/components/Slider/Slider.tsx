@@ -4,8 +4,11 @@ import {
     useState,
     useCallback,
     useMemo,
-    useImperativeHandle
+    useImperativeHandle,
+    useEffect
 } from 'react'
+
+import * as ReversePortals from 'react-reverse-portal'
 
 import useMeasure from '@hooks/useMeasure'
 
@@ -19,6 +22,7 @@ import {
 import * as Styled from './style'
 import type * as Types from './types'
 import type { KeyboardEventHandler } from 'react'
+import Portal from '../Portal'
 
 export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
     const {
@@ -31,19 +35,34 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         onFullscreenChange,
         direction = SliderDirections.Horizontal,
         variant = SliderVariants.Primary,
+        fullscreenClassName,
         ...filteredProps
     } = props
+
+    const portalNode = useMemo(() => ReversePortals.createHtmlPortalNode({
+        attributes: {
+            class: `fluffy-slider-portal-node`
+        }
+    }), [])
 
     const indexMultiplierRef = useRef(0)
 
     const [wrapperElement, setWrapperElement] = useState<HTMLDivElement | null>(null)
     const [slidesLength, setSlidesLength] = useState(0)
     const [sliderInstance, setSliderInstance] = useState<any>(null)
+    const [isFullscreen, setIsFullscreen] = useState(false)
+    const [isFullscreenSupported, setIsFullscreenSupported] = useState(false)
 
     const {
         rect: wrapperRect,
         revalidate: revalidateWrapperRect
     } = useMeasure(wrapperElement)
+
+    useEffect(() => {
+        if (typeof onFullscreenChange === 'function') {
+            onFullscreenChange(isFullscreen)
+        }
+    }, [onFullscreenChange, isFullscreen])
 
     const getSlidesSet = useCallback(() => {
         const slidesSet = [...new Array(slidesLength)].map((_, idx) => {
@@ -160,7 +179,8 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
             getSlideByIndex: getSlideByIndex,
             onNext: handleOnNextSlide,
             onPrevious: handleOnPreviousSlide,
-            onFullscreenChange: onFullscreenChange
+            setIsFullscreen: setIsFullscreen,
+            setIsFullscreenSupported: setIsFullscreenSupported
         }
     }, [
         index,
@@ -175,19 +195,35 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         getSlideByIndex,
         handleOnNextSlide,
         handleOnPreviousSlide,
-        onFullscreenChange
+        setIsFullscreen,
+        setIsFullscreenSupported
     ])
 
     return (
         <SliderContext.Provider value={context}>
-            <Styled.Wrapper
-                {...filteredProps}
-                onKeyDown={handleOnKeyDown}
-                tabIndex={0}
-                ref={setWrapperElement}
-            >
-                {children}
-            </Styled.Wrapper>
+            <ReversePortals.InPortal node={portalNode}>
+                <Styled.Wrapper
+                    {...filteredProps}
+                    onKeyDown={handleOnKeyDown}
+                    tabIndex={0}
+                    ref={setWrapperElement}
+                >
+                    {children}
+                </Styled.Wrapper>
+            </ReversePortals.InPortal>
+
+            {
+                isFullscreen && !isFullscreenSupported ? (
+                    <Portal>
+                        <Styled.FullscreenWrapper className={fullscreenClassName}>
+                            <ReversePortals.OutPortal node={portalNode} />
+                        </Styled.FullscreenWrapper>
+                    </Portal>
+                ) : (
+                    <ReversePortals.OutPortal node={portalNode} />
+                )
+            }
+
         </SliderContext.Provider>
     )
 })

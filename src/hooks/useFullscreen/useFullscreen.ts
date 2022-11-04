@@ -1,5 +1,4 @@
 import {
-    useRef,
     useState,
     useCallback,
     useEffect
@@ -11,10 +10,6 @@ import usePreviousPersistent from '@hooks/usePreviousPersistent'
 import Fullscreen from '@utils/Fullscreen'
 
 const useFullscreen = (element: HTMLElement | null) => {
-    const prevRect = useRef({
-        width: '',
-        height: ''
-    })
     const fullscreen = useLazyRef<Fullscreen>(() => new Fullscreen())
 
     const [isFullscreen, setIsFullscreen] = useState(false)
@@ -25,16 +20,6 @@ const useFullscreen = (element: HTMLElement | null) => {
         if (element) {
             if (fullscreen.current?.isSupported()) {
                 fullscreen.current?.open(element)
-            } else {
-                prevRect.current = {
-                    width: element.style.width,
-                    height: element.style.height
-                }
-
-                element.style.position = 'fixed'
-                element.style.inset = '0'
-                element.style.width = '100%'
-                element.style.height = '100%'
             }
 
             setIsFullscreen(true)
@@ -44,17 +29,10 @@ const useFullscreen = (element: HTMLElement | null) => {
     const close = useCallback(() => {
         if (fullscreen.current?.isSupported()) {
             fullscreen.current?.close()
-        } else {
-            if (element) {
-                element.style.position = 'relative'
-                element.style.inset = 'unset'
-                element.style.width = prevRect?.current.width || 'unset'
-                element.style.height = prevRect?.current.height || 'unset'
-            }
         }
-
+        
         setIsFullscreen(false)
-    }, [fullscreen, element])
+    }, [fullscreen])
 
     useEffect(() => {
         const fullscreenInstance = fullscreen.current
@@ -82,7 +60,7 @@ const useFullscreen = (element: HTMLElement | null) => {
         open,
         close,
         isFullscreen: isFullscreen,
-        isSupported: fullscreen.current?.isSupported()
+        isSupported: fullscreen.current?.isSupported() || false
     }
 }
 

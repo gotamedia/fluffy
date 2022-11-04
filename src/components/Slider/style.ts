@@ -6,6 +6,20 @@ const Wrapper = styled.div`
     outline: none;
 `
 
+const FullscreenWrapper = styled.div`
+    position: fixed;
+    inset: 0;
+    display: flex;
+    background-color: black;
+
+    ${Wrapper} {
+        margin: auto;
+        width: 100% !important;
+        height: 100% !important;
+    }
+`
+
 export {
-    Wrapper
+    Wrapper,
+    FullscreenWrapper
 }

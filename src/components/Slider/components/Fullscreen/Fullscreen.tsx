@@ -12,20 +12,24 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
         variant,
         wrapperElement,
         revalidateWrapperRect,
-        onFullscreenChange
+        setIsFullscreen,
+        setIsFullscreenSupported
     } = useSlider()
 
     const {
         open,
         close,
-        isFullscreen
+        isFullscreen,
+        isSupported
     } = useFullscreen(wrapperElement)
 
     useEffect(() => {
-        if (typeof onFullscreenChange === 'function') {
-            onFullscreenChange(isFullscreen)
-        }
-    }, [isFullscreen, onFullscreenChange])
+        setIsFullscreen(isFullscreen)
+    }, [setIsFullscreen, isFullscreen])
+
+    useEffect(() => {
+        setIsFullscreenSupported(isSupported)
+    }, [setIsFullscreenSupported, isSupported])
     
     const handleToggleFullscreen = useCallback(() => {
         revalidateWrapperRect()

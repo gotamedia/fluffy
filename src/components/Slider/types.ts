@@ -35,6 +35,7 @@ export interface SliderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCha
     onPrevious?: () => void,
     direction?: SliderDirectionType,
     variant?: SliderVariantType,
+    fullscreenClassName?: string,
     onFullscreenChange?: (isFullscreen: boolean) => void
 }
 
