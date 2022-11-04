@@ -22,9 +22,19 @@ const PreviewItem: Types.PreviewItemComponent = (props) => {
     useEffect(() => {
         if (active && itemRef.current) {
             scrollIntoView(itemRef.current, {
-                scrollMode: 'always',
-                behavior: 'smooth',
-                inline: 'center'
+                behavior: (instructions) => {
+                    const [{ el, left }] = instructions
+
+                    let newLeft = left
+
+                    if (el.scrollLeft > left) {
+                        newLeft = left - 10
+                    } else {
+                        newLeft = left + 10
+                    }
+
+                    el.scrollLeft = newLeft
+                }
             })
         }
     }, [active])
