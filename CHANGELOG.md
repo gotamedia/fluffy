@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.32.1..v0.32.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* Updated Select icon ([6666c4b](http://bitbucket.org/gotamedia/fluffy/commits/6666c4b62ba2517d2d2f84d7bfeb646c92a9fde0))
+
 ## [0.32.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.32.0..v0.31.0) (2022-10-26)
 
 
