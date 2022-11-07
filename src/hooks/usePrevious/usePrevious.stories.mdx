@@ -1,0 +1,31 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/usePrevious'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+usePrevious is a helper hook that mimic Class componentDidUpdate life cycles
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import usePrevious from '@gotamedia/fluffy/usePrevious'\n
+const Component = () => {
+    const[value, setValue] = useState(false)\n
+    const previousValue = usePrevious(value)\n
+    return (
+        <div>
+            {...}
+        </div>
+    )
+}
+`}
+/>
