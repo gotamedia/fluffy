@@ -17,6 +17,7 @@ import * as HintStory from '@components/Hint/Hint.stories'
 import * as IconStory from '@components/Icon/Icon.stories'
 import * as IconButtonStory from '@components/IconButton/IconButton.stories'
 import * as ImageStory from '@components/Image/Image.stories'
+import * as ImageGalleryStory from '@components/ImageGallery/ImageGallery.stories'
 import * as InputStory from '@components/Input/Input.stories'
 import * as InputGroupStory from '@components/InputGroup/InputGroup.stories'
 import * as LazyLoadStory from '@components/LazyLoad/LazyLoad.stories'
@@ -36,6 +37,7 @@ import * as RadioStory from '@components/Radio/Radio.stories'
 import * as SelectStory from '@components/Select/Select.stories'
 import * as SheetStory from '@components/Sheet/Sheet.stories'
 // import * as SkeletonStory from '@components/Skeleton/Skeleton.stories'
+import * as SliderStory from '@components/Slider/Slider.stories'
 import * as SubMenuStory from '@components/SubMenu/SubMenu.stories'
 import * as SwitchButtonStory from '@components/SwitchButton/SwitchButton.stories'
 // import * as TableStory from '@components/Table/Table.stories'
@@ -44,6 +46,7 @@ import * as TagsInputStory from '@components/TagsInput/TagsInput.stories'
 import * as TextareaStory from '@components/Textarea/Textarea.stories'
 import * as TimePickerStory from '@components/TimePicker/TimePicker.stories'
 import * as UploadButtonStory from '@components/UploadButton/UploadButton.stories'
+import * as VideoStory from '@components/Video/Video.stories'
 
 const componentsStructure = [
     {
@@ -147,6 +150,12 @@ const componentsStructure = [
         label: 'Image',
         props: ImageStory.default.args || ImageStory.BasicStory.args || {},
         component: ImageStory.BasicStory
+    },
+    {
+        id: 'ImageGallery',
+        label: 'ImageGallery',
+        props: ImageGalleryStory.default.args || ImageGalleryStory.BasicStory.args || {},
+        component: ImageGalleryStory.BasicStory
     },
     {
         id: 'Input',
@@ -263,6 +272,12 @@ const componentsStructure = [
     //     component: SkeletonStory.BasicStory
     // },
     {
+        id: 'Slider',
+        label: 'Slider',
+        props: SliderStory.default.args || SliderStory.BasicStory.args || {},
+        component: SliderStory.BasicStory
+    },
+    {
         id: 'SubMenu',
         label: 'SubMenu',
         props: SubMenuStory.default.args || SubMenuStory.BasicStory.args || {},
@@ -310,6 +325,12 @@ const componentsStructure = [
         props: UploadButtonStory.default.args || UploadButtonStory.BasicStory.args || {},
         component: UploadButtonStory.BasicStory
     },
+    {
+        id: 'Video',
+        label: 'Video',
+        props: VideoStory.default.args || VideoStory.BasicStory.args || {},
+        component: VideoStory.BasicStory
+    }
 ]
 
 export default componentsStructure
