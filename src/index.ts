@@ -6,6 +6,8 @@ export * as ReactIntersectionObserver from 'react-intersection-observer'
 
 export { default as ScrollIntoViewIfNeeded } from 'scroll-into-view-if-needed'
 
+export * as ReversePortals from 'react-reverse-portal'
+
 export * as uuid from 'uuid'
 
 export * as Popmotion from 'popmotion'
@@ -74,6 +76,15 @@ export { default as useMeasure } from '@hooks/useMeasure'
 
 export * from '@hooks/useDataFetch'
 export { default as useDataFetch } from '@hooks/useDataFetch'
+
+export * from '@hooks/usePrevious'
+export { default as usePrevious } from '@hooks/usePrevious'
+
+export * from '@hooks/usePreviousPersistent'
+export { default as usePreviousPersistent } from '@hooks/usePreviousPersistent'
+
+export * from '@hooks/useFullscreen'
+export { default as useFullscreen } from '@hooks/useFullscreen'
 
 // <==== Hooks
 
@@ -196,5 +207,14 @@ export { default as Tag } from '@components/Tag'
 
 export * from '@components/TagsInput'
 export { default as TagsInput } from '@components/TagsInput'
+
+export * from '@components/Video'
+export { default as Video } from '@components/Video'
+
+export * from '@components/Slider'
+export { default as Slider } from '@components/Slider'
+
+export * from '@components/ImageGallery'
+export { default as ImageGallery } from '@components/ImageGallery'
 
 // <==== Components
