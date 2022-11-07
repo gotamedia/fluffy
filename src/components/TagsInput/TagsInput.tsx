@@ -21,7 +21,8 @@ import type * as Types from './types'
 import type { ListRef } from '../List'
 import type {
     MouseEventHandler,
-    KeyboardEventHandler
+    KeyboardEventHandler,
+    ChangeEvent
 } from 'react'
 
 export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
@@ -163,7 +164,7 @@ export const TagsInput: Types.TagsInputComponent = forwardRef((props, ref) => {
                     pipeKeyDownToList(event)
                 } else {
                     setInputValue('')
-                    handleCreateNewTag(event.target.value)
+                    handleCreateNewTag((event as unknown as ChangeEvent<HTMLInputElement>).target.value)
                 }
 
                 break

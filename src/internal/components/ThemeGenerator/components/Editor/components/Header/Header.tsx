@@ -12,7 +12,7 @@ import IconButton, { IconButtonShapes, IconButtonVariants } from '@components/Ic
 
 import * as Styled from './style'
 import type {
-    KeyboardEventHandler,
+    ChangeEventHandler,
     Dispatch,
     SetStateAction
 } from 'react'
@@ -49,7 +49,7 @@ const Header = (props: EditorHeaderProps) => {
 
     const [showSettingsMenu, setShowSettingsMenu] = useState(false)
 
-    const handleOnThemeNameChange: KeyboardEventHandler<HTMLInputElement> = useCallback(event => {
+    const handleOnThemeNameChange: ChangeEventHandler<HTMLInputElement> = useCallback(event => {
         const value = event.target.value
 
         setActiveTheme(current => {

@@ -12,6 +12,7 @@
         "sourceMap": false,
         "target": "es5",
         "moduleResolution": "node",
+        "resolveJsonModule": true,
         "allowSyntheticDefaultImports": true,
         "forceConsistentCasingInFileNames": true,
         "lib": [
