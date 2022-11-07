@@ -17,8 +17,10 @@ const Collapsible: Types.CollapsibleComponent = forwardRef(({
     const wrapperRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
-    const { height: observeElementHeight } = useMeasure(contentRef.current)
+    const { rect: observeElementRect } = useMeasure(contentRef.current)
     const trackFromHeight = useRef(0)
+
+    const observeElementHeight = observeElementRect.height
 
     useIsomorphicLayoutEffect(() => {
         const wrapperElement = wrapperRef.current
