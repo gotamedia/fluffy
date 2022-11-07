@@ -6,6 +6,8 @@ export * as ReactIntersectionObserver from 'react-intersection-observer'
 
 export { default as ScrollIntoViewIfNeeded } from 'scroll-into-view-if-needed'
 
+export * as ReversePortals from 'react-reverse-portal'
+
 export * as uuid from 'uuid'
 
 export * as Popmotion from 'popmotion'
