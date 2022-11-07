@@ -1,0 +1,32 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useFullscreen'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useTheme is a hook that returns the current theme value from the ThemeProvider
+
+## Usage
+<Source
+    language={'tsx'}
+    code={`
+import { useFullscreen } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    const [element, setElement] = useState(null)\n
+    const { close, open, isFullscreen } = useFullscreen(element)\n
+    return (
+        <div ref={setElement}>
+            <p>{'Is fullscreen: '} {String(isFullscreen)}</p>
+            <button onClick={open}>{'open fullscreen'}</button>
+            <button onClick={close}>{'close fullscreen'}</button>
+        </div>
+    )
+}
+`}
+/>

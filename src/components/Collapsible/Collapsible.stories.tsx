@@ -14,11 +14,16 @@ const Basic: Story<Types.CollapsibleProps> = () => {
         setIsOpen(!isOpen)
     }, [isOpen])
 
+    const imagestyles = {
+        width: "100%",
+        height: "100%"
+    }
+
     return (
         <div>
             <Button onClick={onClickHandler}>{"Collapsible"}</Button>
             <Collapsible open={isOpen}>
-                <Image src={"https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg"} />
+                <Image style={imagestyles} src={"https://universaldork.files.wordpress.com/2011/11/wengweng_1.jpg"} />
             </Collapsible>
         </div>
     )

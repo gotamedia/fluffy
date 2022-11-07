@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.32.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.32.1..v0.32.0) (2022-10-31)
+
+
+### Bug Fixes
+
+* Updated Select icon ([6666c4b](http://bitbucket.org/gotamedia/fluffy/commits/6666c4b62ba2517d2d2f84d7bfeb646c92a9fde0))
+
+## [0.32.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.32.0..v0.31.0) (2022-10-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added ShowHeros video player provider
+* Added Native video player provider
+* Added basic Video player with YouTube provider
+* Replaced old icons with new ones from Heroicons
+
+### Features
+
+* Added basic Video player with YouTube provider ([7af7120](http://bitbucket.org/gotamedia/fluffy/commits/7af7120a5fa7affb3c2f65a1d3e62c6d4b3e6970))
+* Added Native video player provider ([d011bab](http://bitbucket.org/gotamedia/fluffy/commits/d011babd7e0f235e342b84fd1b5f6e998c9e606d))
+* Added ShowHeros video player provider ([aed0b5d](http://bitbucket.org/gotamedia/fluffy/commits/aed0b5d8d039ef5a4245a4d91bb45e45e4ea6651))
+* Replaced old icons with new ones from Heroicons ([843f1f5](http://bitbucket.org/gotamedia/fluffy/commits/843f1f5d8d742f24a2e8894cab5c49d11164299b))
+
+
+### Bug Fixes
+
+* Added stroke/strokeWidth to Icon story ([77c9a88](http://bitbucket.org/gotamedia/fluffy/commits/77c9a882e1343149742e86a30d4eed0a0d1adaae))
+* Load ShowHeros player with https instead of http ([48f593e](http://bitbucket.org/gotamedia/fluffy/commits/48f593e61778e703ead1cc4b37dff9615a38558c))
+* Updated YouTube Video provider to override props and expose ref ([78a3a34](http://bitbucket.org/gotamedia/fluffy/commits/78a3a34d76767c3d66866890793777ebf87cd31b))
+
 ## [0.31.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.31.0..v0.30.1) (2022-10-06)
 
 

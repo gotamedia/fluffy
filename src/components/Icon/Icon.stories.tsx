@@ -19,11 +19,6 @@ const Basic: Story<Types.IconProps> = (props) => {
 const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 
-Basic.args = {
-    size: Types.IconSizes.Huge,
-    icon: Types.Icons.RocketLaunch
-}
-
 const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -86,6 +81,8 @@ export default {
     component: Component,
     argTypes: {},
     args: {
+        stroke: undefined,
+        strokeWidth: undefined,
         icon: Icons.RocketLaunch,
         variant: IconVariants.Outline,
         size: IconSizes.Normal

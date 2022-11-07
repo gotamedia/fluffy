@@ -74,7 +74,7 @@ const Basic: Story<Types.ButtonGroupProps & {
                     {text}
                 </Button>
 
-                <IconButton icon={Icons.ArrowDown} />
+                <IconButton icon={Icons.ChevronDown} />
             </ButtonGroup>
         </Wrapper>
     )
