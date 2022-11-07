@@ -1,0 +1,31 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/usePreviousPersistent'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+usePreviousPersistent is a helper hook that mimic Class componentDidUpdate life cycles AND keep the previous value reserved
+
+## Usage
+
+<Source
+    language={'tsx'}
+    code={`
+import usePreviousPersistent from '@gotamedia/fluffy/usePreviousPersistent'\n
+const Component = () => {
+    const[value, setValue] = useState(false)\n
+    const previousValue = usePreviousPersistent(value)\n
+    return (
+        <div>
+            {...}
+        </div>
+    )
+}
+`}
+/>
