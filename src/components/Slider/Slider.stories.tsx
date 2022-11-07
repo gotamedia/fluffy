@@ -201,7 +201,7 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/Slider',
+    title: 'Components/Slider',
     component: Component,
     argTypes: {},
     args: {}

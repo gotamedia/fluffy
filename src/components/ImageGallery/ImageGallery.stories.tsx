@@ -74,7 +74,7 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/ImageGallery',
+    title: 'Components/ImageGallery',
     component: Component,
     argTypes: {},
     args: {}
