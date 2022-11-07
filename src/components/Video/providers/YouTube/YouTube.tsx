@@ -13,7 +13,8 @@ import useVideo from '../../hooks/useVideo'
 
 import Provider from './provider'
 
-import * as Types from './types'
+import * as Styled from './style'
+import type * as Types from './types'
 
 const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
     const {
@@ -86,7 +87,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
 
     return (
         videoSrc ? (
-            <iframe
+            <Styled.Iframe
                 id={`fluffy-youtube-player-${id}`}
                 title={`YouTube video player`}
                 width={width}

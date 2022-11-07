@@ -13,7 +13,8 @@ import useVideo from '../../hooks/useVideo'
 
 import Provider from './provider'
 
-import * as Types from './types'
+import * as Styled from './style'
+import type * as Types from './types'
 
 const ShowHerosProvider: Types.ShowHerosProvider = forwardRef((props, ref) => {
     const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
@@ -86,7 +87,7 @@ const ShowHerosProvider: Types.ShowHerosProvider = forwardRef((props, ref) => {
     }
 
     return (
-        <div
+        <Styled.Wrapper
             style={style}
             {...props}
             className={wrapperClassName}

@@ -35,6 +35,7 @@ import type { TagThemeType } from '@components/Tag/theme'
 import type { TagsInputThemeType } from '@components/TagsInput/theme'
 import type { TimePickerThemeType } from '@components/TimePicker/theme'
 import type { ContainerThemeType } from '@components/Container/theme'
+import type { VideoThemeType } from '@components/Video/theme'
 import type { SliderThemeType } from '@components/Slider/theme'
 import type { ImageGalleryThemeType } from '@components/ImageGallery/theme'
 
@@ -174,6 +175,7 @@ export interface FluffyTheme {
         TagsInput: TagsInputThemeType,
         TimePicker: TimePickerThemeType,
         Container: ContainerThemeType,
+        Video: VideoThemeType,
         Slider: SliderThemeType,
         ImageGallery: ImageGalleryThemeType
     }

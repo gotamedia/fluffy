@@ -7,7 +7,8 @@ import classNames from '@utils/classNames'
 
 import useVideo from '../../hooks/useVideo'
 
-import * as Types from './types'
+import * as Styled from './style'
+import type * as Types from './types'
 import type { ReactEventHandler } from 'react'
 
 const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
@@ -40,7 +41,7 @@ const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
 
     return (
         src ? (
-            <video
+            <Styled.Video
                 controls
                 id={`fluffy-native-player-${id}`}
                 width={width}
@@ -51,7 +52,7 @@ const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
                 ref={ref}
             >
                 <source src={src}/>
-            </video>
+            </Styled.Video>
         ) : (
             null
         )
