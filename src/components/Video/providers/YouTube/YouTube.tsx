@@ -5,6 +5,8 @@ import {
     useEffect,
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import useVideo from '../../hooks/useVideo'
@@ -77,6 +79,11 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
 
     const videoSrc = Provider.getVideoSrc(videoId)
 
+    const iframeClassName = classNames({
+        'fluffy-video-youtube': true,
+        [props.className || '']: true
+    })
+
     return (
         videoSrc ? (
             <iframe
@@ -87,6 +94,7 @@ const YouTubeProvider: Types.YouTubeProvider = forwardRef((props, ref) => {
                 allowFullScreen={true}
                 frameBorder={'0'}
                 {...props}
+                className={iframeClassName}
                 src={videoSrc}
                 ref={setIframeRef}
             />

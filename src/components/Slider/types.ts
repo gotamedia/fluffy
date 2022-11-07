@@ -6,7 +6,7 @@ import type {
 } from 'react'
 
 import type { SlidesComponent } from './components/Slides/types'
-import type { NavigatorComponent } from './components/Navigator/types'
+import type { NavigationComponent } from './components/Navigation/types'
 import type { FullscreenComponent } from './components/Fullscreen/types'
 import type { SlidesCountComponent } from './components/SlidesCount/types'
 
@@ -50,7 +50,7 @@ export type SliderComponent = ForwardRefExoticComponent<SliderProps & RefAttribu
 
 export type SliderSupComponents = {
     Slides: SlidesComponent,
-    Navigator: NavigatorComponent,
+    Navigation: NavigationComponent,
     Fullscreen: FullscreenComponent,
     SlidesCount: SlidesCountComponent
 }

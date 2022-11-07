@@ -3,6 +3,8 @@ import {
     useCallback
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useVideo from '../../hooks/useVideo'
 
 import * as Types from './types'
@@ -11,6 +13,7 @@ import type { ReactEventHandler } from 'react'
 const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
     const {
         onCanPlay,
+        className,
         ...filteredProps
     } = props
 
@@ -30,6 +33,11 @@ const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
         }
     }, [onReady, onCanPlay])
 
+    const videoClassName = classNames({
+        'fluffy-video-native': true,
+        [className || '']: true
+    })
+
     return (
         src ? (
             <video
@@ -37,6 +45,7 @@ const NativeProvider: Types.NativeProvider = forwardRef((props, ref) => {
                 id={`fluffy-native-player-${id}`}
                 width={width}
                 height={height}
+                className={videoClassName}
                 {...filteredProps}
                 onCanPlay={handleOnCanPlay}
                 ref={ref}

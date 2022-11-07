@@ -1,22 +1,13 @@
 import styled from 'styled-components'
 
+import getComponentTheme from '@internal/utils/getComponentTheme'
+
 const Wrapper = styled.div`
-    display: flex;
-    position: relative;
-    outline: none;
+    ${props => getComponentTheme('Slider', 'style.root', props)};
 `
 
 const FullscreenWrapper = styled.div`
-    position: fixed;
-    inset: 0;
-    display: flex;
-    background-color: black;
-
-    ${Wrapper} {
-        margin: auto;
-        width: 100% !important;
-        height: 100% !important;
-    }
+    ${props => getComponentTheme('Slider', 'style.fullscreenWrapper', props)};
 `
 
 export {

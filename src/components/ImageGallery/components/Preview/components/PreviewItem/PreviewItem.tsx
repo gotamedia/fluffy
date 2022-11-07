@@ -45,11 +45,16 @@ const PreviewItem: Types.PreviewItemComponent = (props) => {
         onChange(index)
     }, [onChange, index])
 
+    const componentState = {
+        active: active
+    }
+
     return (
         <Styled.Wrapper
             ref={itemRef}
             onClick={handleOnClick}
-            $active={active}
+            $componentState={componentState}
+            className={'fluffy-image-gallery-preview-item'}
         >
             {children}
         </Styled.Wrapper>

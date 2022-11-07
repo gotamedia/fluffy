@@ -5,6 +5,8 @@ import {
     useEffect
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import useVideo from '../../hooks/useVideo'
@@ -73,6 +75,11 @@ const ShowHerosProvider: Types.ShowHerosProvider = forwardRef((props, ref) => {
         }
     }, [config?.eventId, onEvent])
 
+    const wrapperClassName = classNames({
+        'fluffy-video-showheros': true,
+        [props.className || '']: true
+    })
+
     const style = {
         width: width,
         height: height
@@ -82,6 +89,7 @@ const ShowHerosProvider: Types.ShowHerosProvider = forwardRef((props, ref) => {
         <div
             style={style}
             {...props}
+            className={wrapperClassName}
             ref={setWrapperRef}
         />
     )

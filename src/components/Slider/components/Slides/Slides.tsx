@@ -8,6 +8,8 @@ import SwipeableViews from 'react-swipeable-views'
 import { virtualize } from 'react-swipeable-views-utils'
 import { mod } from 'react-swipeable-views-core'
 
+import classNames from '@utils/classNames'
+
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import useSlider from '../../hooks/useSlider'
@@ -68,9 +70,14 @@ const Slides: Types.SlidesComponent = (props) => {
         )
     }
 
+    const wrapperClassName = classNames({
+        'fluffy-slider-slides': true,
+        [className || '']: true
+    })
+
     return (
         <VirtualizeSwipeableViews
-            className={className}
+            className={wrapperClassName}
             ref={setSliderInstance}
             resistance
             enableMouseEvents

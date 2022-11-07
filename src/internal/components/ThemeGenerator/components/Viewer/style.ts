@@ -7,7 +7,7 @@ import ListItem, {
 } from '@components/ListItem'
 
 const Wrapper = styled.div`
-    width: 70%;
+    width: 50%;
     display: flex;
 `
 

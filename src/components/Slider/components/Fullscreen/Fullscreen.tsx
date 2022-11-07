@@ -1,4 +1,9 @@
-import { useCallback, useEffect } from 'react'
+import {
+    useCallback,
+    useEffect
+} from 'react'
+
+import classNames from '@utils/classNames'
 
 import useFullscreen from '@hooks/useFullscreen'
 
@@ -45,13 +50,22 @@ const Fullscreen: Types.FullscreenComponent = ({ className }) => {
         open,
         revalidateWrapperRect
     ])
+    
+    const wrapperClassName = classNames({
+        'fluffy-slider-fullscreen': true,
+        [className || '']: true
+    })
+
+    const componentState = {
+        isFullscreen: isFullscreen
+    }
 
     return (
         <>
             <Styled.FullscreenIcon
-                className={className}
+                className={wrapperClassName}
                 variant={variant}
-                $isFullscreen={isFullscreen}
+                $componentState={componentState}
                 onClick={handleToggleFullscreen}
             />
         </>

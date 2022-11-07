@@ -10,14 +10,13 @@ import {
 
 import * as ReversePortals from 'react-reverse-portal'
 
+import classNames from '@utils/classNames'
+
+import withThemeProps from '@internal/hocs/withThemeProps'
+
 import useMeasure from '@hooks/useMeasure'
 
 import { SliderContext } from './contexts/SliderContext'
-
-import {
-    SliderDirections,
-    SliderVariants
-} from './types'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -33,9 +32,10 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         onPrevious,
         onKeyDown,
         onFullscreenChange,
-        direction = SliderDirections.Horizontal,
-        variant = SliderVariants.Primary,
+        direction,
+        variant,
         fullscreenClassName,
+        className,
         ...filteredProps
     } = props
 
@@ -199,11 +199,17 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         setIsFullscreenSupported
     ])
 
+    const wrapperClassName = classNames({
+        'fluffy-slider': true,
+        [className || '']: true
+    })
+
     return (
         <SliderContext.Provider value={context}>
             <ReversePortals.InPortal node={portalNode}>
                 <Styled.Wrapper
                     {...filteredProps}
+                    className={wrapperClassName}
                     onKeyDown={handleOnKeyDown}
                     tabIndex={0}
                     ref={setWrapperElement}
@@ -230,4 +236,4 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
 
 Slider.displayName = 'Slider'
 
-export default Slider
+export default withThemeProps(Slider) as Types.SliderComponent

@@ -30,6 +30,8 @@ import TagTheme from '@components/Tag/theme'
 import TagsInputTheme from '@components/TagsInput/theme'
 import TimePickerTheme from '@components/TimePicker/theme'
 import ContainerTheme from '@components/Container/theme'
+import SliderTheme from '@components/Slider/theme'
+import ImageGalleryTheme from '@components/ImageGallery/theme'
 
 import type { FluffyTheme } from './types'
 
@@ -170,7 +172,9 @@ let theme: FluffyTheme = {
         Tag: TagTheme,
         TagsInput: TagsInputTheme,
         TimePicker: TimePickerTheme,
-        Container: ContainerTheme
+        Container: ContainerTheme,
+        Slider: SliderTheme,
+        ImageGallery: ImageGalleryTheme
     }
 }
 

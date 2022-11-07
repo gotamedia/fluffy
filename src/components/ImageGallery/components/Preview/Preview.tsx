@@ -4,6 +4,8 @@ import {
     Children
 } from 'react'
 
+import classNames from '@utils/classNames'
+
 import useSlider from '@components/Slider/hooks/useSlider'
 
 import PreviewItem from './components/PreviewItem'
@@ -32,12 +34,21 @@ const Preview: Types.PreviewComponent = (props) => {
         }
     }, [])
 
+    const wrapperClassName = classNames({
+        'fluffy-image-gallery-preview': true,
+        [className || '']: true
+    })
+
+    const componentState = {
+        width: wrapperRect.width ? `${wrapperRect.width - 200}px` : '100%'
+    }
+
     return (
         <Styled.Wrapper
-            className={className}
+            className={wrapperClassName}
             ref={wrapperRef}
             onWheel={handleOnScroll}
-            $width={wrapperRect.width ? `${wrapperRect.width - 200}px` : '100%'}
+            $componentState={componentState}
         >
             {
                 Children.map(children, (child, idx) => {

@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
+import getComponentTheme from '@internal/utils/getComponentTheme'
+
 const SlideWrapper = styled.div`
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    display: flex;
+    ${props => getComponentTheme('Slider', 'style.slides', props)};
 `
 
 export {

@@ -1,18 +1,9 @@
 import styled from 'styled-components'
 
-const Wrapper = styled.div<{ $width: string }>`
-    position: absolute;
-    display: flex;
-    background: rgba(85, 86, 90, 0.5);
-    overflow: auto;
-    padding: 4px 15px;
-    flex-direction: row;
-    left: 50%;
-    bottom: 15px;
-    transform: translateX(-50%);
-    max-height: 75px;
-    min-height: 75px;
-    max-width: ${({ $width }) => $width};
+import getComponentTheme from '@internal/utils/getComponentTheme'
+
+const Wrapper = styled.div<{ $componentState: any }>`
+    ${props => getComponentTheme('ImageGallery', 'style.preview', props)};
 `
 
 export {

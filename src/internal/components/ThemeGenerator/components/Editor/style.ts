@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import MonacoEditorComponent from '@monaco-editor/react'
 
 const Wrapper = styled.div`
-    width: 30%;
+    width: 50%;
     margin-left: 2px;
     border-left: 2px solid #1e1e1e;
 `

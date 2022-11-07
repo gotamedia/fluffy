@@ -35,6 +35,8 @@ import type { TagThemeType } from '@components/Tag/theme'
 import type { TagsInputThemeType } from '@components/TagsInput/theme'
 import type { TimePickerThemeType } from '@components/TimePicker/theme'
 import type { ContainerThemeType } from '@components/Container/theme'
+import type { SliderThemeType } from '@components/Slider/theme'
+import type { ImageGalleryThemeType } from '@components/ImageGallery/theme'
 
 export type HelperStyleCSSFunction = FlattenInterpolation<ThemeProps<DefaultTheme>>
 export type HelperStyleCSSObject = CSSObject
@@ -171,6 +173,8 @@ export interface FluffyTheme {
         Tag: TagThemeType,
         TagsInput: TagsInputThemeType,
         TimePicker: TimePickerThemeType,
-        Container: ContainerThemeType
+        Container: ContainerThemeType,
+        Slider: SliderThemeType,
+        ImageGallery: ImageGalleryThemeType
     }
 }
