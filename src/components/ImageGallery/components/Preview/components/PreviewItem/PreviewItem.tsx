@@ -14,7 +14,7 @@ const PreviewItem: Types.PreviewItemComponent = (props) => {
         index,
         active,
         children,
-        onChange
+        goToIndex
     } = props
 
     const itemRef = useRef<HTMLDivElement>(null)
@@ -42,8 +42,8 @@ const PreviewItem: Types.PreviewItemComponent = (props) => {
     }, [active])
 
     const handleOnClick = useCallback(() => {
-        onChange(index)
-    }, [onChange, index])
+        goToIndex(index)
+    }, [goToIndex, index])
 
     return (
         <Styled.Wrapper

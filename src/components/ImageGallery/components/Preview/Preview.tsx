@@ -22,7 +22,7 @@ const Preview: Types.PreviewComponent = (props) => {
 
     const {
         index,
-        onChange,
+        goToIndex,
         wrapperRect
     } = useSlider()
 
@@ -46,7 +46,7 @@ const Preview: Types.PreviewComponent = (props) => {
                             key={idx}
                             index={idx}
                             active={index === idx}
-                            onChange={onChange}
+                            goToIndex={goToIndex}
                         >
                             {child}
                         </PreviewItem>
