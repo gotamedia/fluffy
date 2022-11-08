@@ -11,9 +11,9 @@ import { PaginationElementTypes } from '../../types'
 const NavigationButton = styled(IconButton).attrs(({ $type }: { $type: PaginationElementTypes }) => {
     return {
         icon: $type === PaginationElementTypes.PreviousPageButton ? (
-            Icons.ArrowLeft
+            Icons.ChevronLeft
         ) : (
-            Icons.ArrowRight
+            Icons.ChevronRight
         ),
         shape: IconButtonShapes.Circle
     }
