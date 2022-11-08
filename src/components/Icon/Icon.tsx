@@ -1,8 +1,11 @@
 import {
-    useState,
-    useEffect,
-    forwardRef
+    forwardRef,
+    useMemo
 } from 'react'
+
+import * as MiniIcons from '@heroicons/react/20/solid'
+import * as OutlineIcons from '@heroicons/react/24/outline'
+import * as SolidIcons from '@heroicons/react/24/solid'
 
 import classNames from '@utils/classNames'
 
@@ -15,25 +18,29 @@ import type * as Types from './types'
 import type { ForwardedRef } from 'react'
 
 const getIcon = (icon: Types.IconType, variant: Types.IconVariantType) => {
-    let path = ''
+    let iconComponent = null
 
     switch (variant) {
         case IconVariants.Mini:
-            path = `20/solid`
+            //@ts-ignore
+            iconComponent = MiniIcons[`${icon}Icon`]
             break
         case IconVariants.Outline:
-            path = `24/outline`
+            //@ts-ignore
+            iconComponent = OutlineIcons[`${icon}Icon`]
             break
         case IconVariants.Solid:
-            path = `24/solid`
+            //@ts-ignore
+            iconComponent = SolidIcons[`${icon}Icon`]
             break
         default:
             console.warn(`Invalid icon variant, couldn't find the requested icon: ${icon} with variant: ${variant}, defaulting to "solid"`)
-            path = `24/solid`
+            //@ts-ignore
+            iconComponent = SolidIcons[`${icon}Icon`]
             break
     }
 
-    return require(`@heroicons/react/${path}/${icon}Icon`)
+    return iconComponent
 }
 
 //@ts-ignore
@@ -49,21 +56,12 @@ export const Icon: Types.IconComponent = forwardRef((props, ref) => {
         ...filteredProps
     } = props
 
-    const [Component, setComponent] = useState<Types.SVGIconComponent | null>(null)
-
-    useEffect(() => {
-        if (icon) {
-            try {
-                const component = getIcon(icon, variant) as Types.SVGIconComponent
-                setComponent(() => component as Types.SVGIconComponent)
-            } catch (error) {
-                console.warn('Icon not found, could not find icon with icon:', icon)
-            }
-        }
+    const IconComponent = useMemo(() => {
+        return getIcon(icon, variant) as Types.SVGIconComponent
     }, [icon, variant])
 
-    const content = Component ? (
-        <Component {...filteredProps} />
+    const content = IconComponent ? (
+        <IconComponent {...filteredProps} />
     ) : (
         null
     )
