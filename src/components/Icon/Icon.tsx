@@ -1,7 +1,8 @@
-import {
-    useState,
-    useEffect
-} from 'react'
+import { useMemo } from 'react'
+
+import * as MiniIcons from '@heroicons/react/20/solid'
+import * as OutlineIcons from '@heroicons/react/24/outline'
+import * as SolidIcons from '@heroicons/react/24/solid'
 
 import { IconVariants } from './types'
 
@@ -10,25 +11,29 @@ import type * as Types from './types'
 import type { FC } from 'react'
 
 const getIcon = (icon: Types.IconType, variant: Types.IconVariantType) => {
-    let path = ''
+    let iconComponent = null
 
     switch (variant) {
         case IconVariants.Mini:
-            path = `20/solid`
+            //@ts-ignore
+            iconComponent = MiniIcons[`${icon}Icon`]
             break
         case IconVariants.Outline:
-            path = `24/outline`
+            //@ts-ignore
+            iconComponent = OutlineIcons[`${icon}Icon`]
             break
         case IconVariants.Solid:
-            path = `24/solid`
+            //@ts-ignore
+            iconComponent = SolidIcons[`${icon}Icon`]
             break
         default:
             console.warn(`Invalid icon variant, couldn't find the requested icon: ${icon} with variant: ${variant}, defaulting to "solid"`)
-            path = `24/solid`
+            //@ts-ignore
+            iconComponent = SolidIcons[`${icon}Icon`]
             break
     }
 
-    return require(`@heroicons/react/${path}/${icon}Icon`)
+    return iconComponent
 }
 
 const Icon: FC<Types.IconProps> = (props) => {
@@ -39,24 +44,16 @@ const Icon: FC<Types.IconProps> = (props) => {
         size,
         className,
         style,
+        onClick,
         ...filteredProps
     } = props
 
-    const [Component, setComponent] = useState<Types.IconComponent | null>(null)
-
-    useEffect(() => {
-        if (icon) {
-            try {
-                const component = getIcon(icon, variant) as Types.IconComponent
-                setComponent(() => component as Types.IconComponent)
-            } catch (error) {
-                console.warn('Icon not found, could not find icon with icon:', icon)
-            }
-        }
+    const IconComponent = useMemo(() => {
+        return getIcon(icon, variant)
     }, [icon, variant])
 
-    const content = Component ? (
-        <Component {...filteredProps} />
+    const content = IconComponent ? (
+        <IconComponent {...filteredProps} />
     ) : (
         null
     )
@@ -66,6 +63,7 @@ const Icon: FC<Types.IconProps> = (props) => {
             style={style}
             $size={size}
             $spin={spin}
+            onClick={onClick}
             className={`fluffy-icon ${className ? className : ''}`}
         >
             {content}
