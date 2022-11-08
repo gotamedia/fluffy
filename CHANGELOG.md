@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.1..v0.33.0) (2022-11-08)
+
+
+### Bug Fixes
+
+* Activating image slide from ImageGallery preview ([a5f1f17](http://bitbucket.org/gotamedia/fluffy/commits/a5f1f17402db742f357b4fe123d9de4928b35364))
+
 ## [0.33.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.0..v0.32.1) (2022-11-08)
 
 
