@@ -58,7 +58,7 @@ const Basic: Story<Types.ImageGalleryProps> = (props) => {
                     {slides}
                 </ImageGallery.Preview>
 
-                <ImageGallery.Navigator />
+                <ImageGallery.Navigation />
                 <ImageGallery.Fullscreen />
                 <ImageGallery.SlidesCount />
             </ImageGallery>

@@ -50,7 +50,7 @@ const Basic: Story<Types.SliderProps> = (props) => {
 const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 
-const WithNavigator: Story<Types.SliderProps> = (props) => {
+const WithNavigation: Story<Types.SliderProps> = (props) => {
     const [index, setIndex] = useState(0)
 
     return (
@@ -76,14 +76,14 @@ const WithNavigator: Story<Types.SliderProps> = (props) => {
                     }
                 </Slider.Slides>
 
-                <Slider.Navigator />
+                <Slider.Navigation />
             </Slider>
         </div>
     )
 }
 
-const WithNavigatorStory = WithNavigator.bind({})
-WithNavigatorStory.storyName = 'With Navigator'
+const WithNavigationStory = WithNavigation.bind({})
+WithNavigationStory.storyName = 'With Navigation'
 
 const WithFullscreen: Story<Types.SliderProps> = (props) => {
     const [index, setIndex] = useState(0)
@@ -182,7 +182,7 @@ const Full: Story<Types.SliderProps> = (props) => {
                 </Slider.Slides>
 
                 <Slider.SlidesCount />
-                <Slider.Navigator />
+                <Slider.Navigation />
                 <Slider.Fullscreen />
             </Slider>
         </div>
@@ -194,7 +194,7 @@ FullStory.storyName = 'Full'
 
 export {
     BasicStory,
-    WithNavigatorStory,
+    WithNavigationStory,
     WithFullscreenStory,
     WithSlidesCountStory,
     FullStory

@@ -3,7 +3,7 @@ import useSlider from '../../hooks/useSlider'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const Navigator: Types.NavigatorComponent = ({ className }) => {
+const Navigation: Types.NavigationComponent = ({ className }) => {
     const {
         variant,
         direction,
@@ -28,4 +28,4 @@ const Navigator: Types.NavigatorComponent = ({ className }) => {
     )
 }
 
-export default Navigator
+export default Navigation

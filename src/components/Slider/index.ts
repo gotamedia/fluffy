@@ -1,7 +1,7 @@
 import BaseComponent from './Slider'
 
 import SlidesComponent from './components/Slides'
-import NavigatorComponent from './components/Navigator'
+import NavigationComponent from './components/Navigation'
 import FullscreenComponent from './components/Fullscreen'
 import SlidesCountComponent from './components/SlidesCount'
 
@@ -12,12 +12,12 @@ export * from './types'
 const Slider = BaseComponent as SliderComponentType
 
 Slider.Slides = SlidesComponent
-Slider.Navigator = NavigatorComponent
+Slider.Navigation = NavigationComponent
 Slider.Fullscreen = FullscreenComponent
 Slider.SlidesCount = SlidesCountComponent
 
 Slider.Slides.displayName = 'Slider.Slides'
-Slider.Navigator.displayName = 'Slider.Navigator'
+Slider.Navigation.displayName = 'Slider.Navigation'
 Slider.Fullscreen.displayName = 'Slider.Fullscreen'
 Slider.SlidesCount.displayName = 'Slider.SlidesCount'
 

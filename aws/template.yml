@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 
-Description: Fluffy UI static website stack - S3 / Route53 / CloudFront / CloudFormation
+Description: Fluffy UI static website stack - S3 / CloudFront
 
 Parameters:
   DomainName:
