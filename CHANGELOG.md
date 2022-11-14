@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.1..v0.33.0) (2022-11-08)
+
+
+### Bug Fixes
+
+* Activating image slide from ImageGallery preview ([a5f1f17](http://bitbucket.org/gotamedia/fluffy/commits/a5f1f17402db742f357b4fe123d9de4928b35364))
+
+## [0.33.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.0..v0.32.1) (2022-11-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added "react-revers-portal" to main export and packages
+* Added ImageGallery component
+* Added SlidesCount component to Slider
+* Added useFullscreen hook
+* Added usePreviousPersistent hook
+* Added Fullscreen util
+* Added basic Slider component
+* Added revalidate method to useMeasure hook and updated the hook return structure
+
+### Features
+
+* Added "react-revers-portal" to main export and packages ([ef96ce0](http://bitbucket.org/gotamedia/fluffy/commits/ef96ce0850bc355d94b20a166bfa56d7c5043c12))
+* Added basic Slider component ([521462a](http://bitbucket.org/gotamedia/fluffy/commits/521462a5d603111bb9c50fe4ce28114703700388))
+* Added Fullscreen util ([fe5b324](http://bitbucket.org/gotamedia/fluffy/commits/fe5b324c776521c889df90f0e2a636a34ee7c2a1))
+* Added ImageGallery component ([b444410](http://bitbucket.org/gotamedia/fluffy/commits/b444410190a0c24fea893cdee8fae664f4956c4f))
+* Added revalidate method to useMeasure hook and updated the hook return structure ([c9c6c1b](http://bitbucket.org/gotamedia/fluffy/commits/c9c6c1b00f21d3607a2c85828a258af02b766b9d))
+* Added SlidesCount component to Slider ([b25e7d7](http://bitbucket.org/gotamedia/fluffy/commits/b25e7d78ecab640f09762f1d65a7126f8ae4158f))
+* Added useFullscreen hook ([5bed78b](http://bitbucket.org/gotamedia/fluffy/commits/5bed78be045791fed3bce481b3b209e3a48ff631))
+* Added usePreviousPersistent hook ([fdfe5b5](http://bitbucket.org/gotamedia/fluffy/commits/fdfe5b5b1a3da49636831b6417b2f028ac5bb58c))
+
+
+### Bug Fixes
+
+* Pagination arrow icons ([5c641a3](http://bitbucket.org/gotamedia/fluffy/commits/5c641a35129389589545d2bb58b1a2f21d288c5d))
+* Rendering/Importing icons for Icon component ([148cd10](http://bitbucket.org/gotamedia/fluffy/commits/148cd101ba65156cd0c0f8c93dd224b136c2ca5d))
+
 ### [0.32.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.32.1..v0.32.0) (2022-10-31)
 
 

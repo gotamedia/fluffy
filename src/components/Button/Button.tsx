@@ -46,7 +46,6 @@ export const Button: Types.ButtonComponent = forwardRef((props, ref) => {
     
                         const childProps = {
                             size: size,
-                            variant: variant,
                             ...childElement.props
                         } as Types.ButtonProps
 

@@ -110,25 +110,27 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         }
     }, [getIndexBySlide, getMultiplayer, onChange])
 
-    const handleOnNextSlide = useCallback(() => {
+    const goToIndex = useCallback((newIndex: number) => {
         if (sliderInstance) {
-            sliderInstance?.handleChangeIndex(index + 1, index)
-
-            if (typeof onNext === 'function') {
-                onNext()
-            }
+            sliderInstance?.handleChangeIndex(newIndex, index)
         }
-    }, [index, onNext, sliderInstance])
+    }, [index, sliderInstance])
+
+    const handleOnNextSlide = useCallback(() => {
+        goToIndex(index + 1)
+
+        if (typeof onNext === 'function') {
+            onNext()
+        }
+    }, [goToIndex, index, onNext])
 
     const handleOnPreviousSlide = useCallback(() => {
-        if (sliderInstance) {
-            sliderInstance?.handleChangeIndex(index - 1, index)
+        goToIndex(index - 1)
 
-            if (typeof onPrevious === 'function') {
-                onPrevious()
-            }
+        if (typeof onPrevious === 'function') {
+            onPrevious()
         }
-    }, [index, onPrevious, sliderInstance])
+    }, [goToIndex, index, onPrevious])
 
     const handleOnKeyDown: KeyboardEventHandler<HTMLDivElement> = useCallback((event) => {
         if (typeof onKeyDown === 'function') {
@@ -179,6 +181,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
             getSlideByIndex: getSlideByIndex,
             onNext: handleOnNextSlide,
             onPrevious: handleOnPreviousSlide,
+            goToIndex: goToIndex,
             setIsFullscreen: setIsFullscreen,
             setIsFullscreenSupported: setIsFullscreenSupported
         }
@@ -195,6 +198,7 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         getSlideByIndex,
         handleOnNextSlide,
         handleOnPreviousSlide,
+        goToIndex,
         setIsFullscreen,
         setIsFullscreenSupported
     ])

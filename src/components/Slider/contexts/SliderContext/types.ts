@@ -16,6 +16,7 @@ export type SliderContext = {
     getSlideByIndex: (index: number) => number,
     onNext: () => void,
     onPrevious: () => void,
+    goToIndex: (index: number) => void,
     setSliderInstance: (instance: any) => void,
     revalidateWrapperRect: () => void,
     setIsFullscreen: (status: boolean) => void,

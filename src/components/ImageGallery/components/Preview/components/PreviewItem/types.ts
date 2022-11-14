@@ -7,7 +7,7 @@ export type PreviewItemProps = {
     index: number,
     active: boolean,
     children: ReactNode,
-    onChange: (index: number) => void
+    goToIndex: (index: number) => void
 }
 
 export type PreviewItemComponent = FC<PreviewItemProps>

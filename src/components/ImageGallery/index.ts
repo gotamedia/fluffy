@@ -1,9 +1,9 @@
 import BaseComponent from './ImageGallery'
 
-import SlidesComponent from '@components/Slider/components/Slides/Slides'
-import NavigationComponent from '@components/Slider/components/Navigation/Navigation'
-import FullscreenComponent from '@components/Slider/components/Fullscreen/Fullscreen'
-import SlidesCountComponent from '@components/Slider/components/SlidesCount/SlidesCount'
+import SlidesComponent from '@components/Slider/components/Slides'
+import NavigationComponent from '@components/Slider/components/Navigation'
+import FullscreenComponent from '@components/Slider/components/Fullscreen'
+import SlidesCountComponent from '@components/Slider/components/SlidesCount'
 
 import PreviewComponent from './components/Preview'
 
