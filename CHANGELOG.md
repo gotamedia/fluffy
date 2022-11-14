@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.33.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.2..v0.33.1) (2022-11-14)
+
+
+### Bug Fixes
+
+* Preventing passing down Button's variant to it's children ([764fd55](http://bitbucket.org/gotamedia/fluffy/commits/764fd550a18018f317b743950ccb5dfaaec58a5d))
+* Renamed Slider/ImageGallery sub component from "Navigator" to "Navigation" ([040a2a5](http://bitbucket.org/gotamedia/fluffy/commits/040a2a509947d45cb0d4e3ff9babb7d352410bfe))
+
 ### [0.33.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.1..v0.33.0) (2022-11-08)
 
 
