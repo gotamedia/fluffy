@@ -1,6 +1,6 @@
 import { BulletsProps } from "@components/Slider/components/Bullets/types"
 import type { StyledInterpolationFunction } from "@root/types/interpolationFunction"
-import { StyledPrefixThemeProps } from "@root/types/prefix"
+import type { StyledPrefixThemeProps } from "@root/types/prefix"
 import type { ForwardRefExoticComponent, RefAttributes } from "react"
 
 interface BulletProps extends BulletsProps {
