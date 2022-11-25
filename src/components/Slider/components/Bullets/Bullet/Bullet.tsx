@@ -11,11 +11,13 @@ const Bullet: Types.BulletComponent = forwardRef(({
     size,
     ...rest
 }, ref) => {
-    const { index, goToIndex, direction } = useSlider()
+    const { index, goToIndex } = useSlider()
 
     const onClickHandler = useCallback<MouseEventHandler<HTMLButtonElement>>(() => {
-        goToIndex(bulletIndex)
-    }, [bulletIndex, goToIndex])
+        if (clickable) {
+            goToIndex(bulletIndex)
+        }
+    }, [bulletIndex, clickable, goToIndex])
 
     return (
         <Styled.Bullet
