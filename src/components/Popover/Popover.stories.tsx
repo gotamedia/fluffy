@@ -16,7 +16,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
     const [showPopover, setShowPopover] = useState(false)
 
     return (
-        <div>
+        <div style={{ height: "150vh", minWidth: "150vw" }}>
             <Button
                 ref={setButtonRef}
                 onClick={() => setShowPopover(current => !current)}
@@ -28,6 +28,7 @@ const Template: Story<Types.PopoverProps> = (props) => {
                 {...props}
                 show={showPopover}
                 onClickOutside={() => setShowPopover(false)}
+                onScrollPosition={() => setShowPopover(false)}
                 anchor={buttonRef}
             >
                 <div style={{

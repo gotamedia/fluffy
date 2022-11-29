@@ -1,4 +1,4 @@
-import {
+import type {
     ForwardRefExoticComponent,
     HTMLAttributes,
     ReactNode,
@@ -14,17 +14,25 @@ export const PopoverVariants = {
     Dim: 'dim' as const
 }
 
-export type PopoverVariantsType = typeof PopoverVariants
-export type PopoverVariantType = PopoverVariantsType[keyof PopoverVariantsType]
+type PopoverVariantsType = typeof PopoverVariants
+type PopoverVariantType = PopoverVariantsType[keyof PopoverVariantsType]
 
 
-export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
+interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     show: boolean,
     overlayProps?: OverlayProps,
     onClickOutside?: MouseEventHandler<HTMLDivElement>
+    onScrollPosition?: (params?: { scrollX: number, scrollY: number }) => void
 }
 
-export type PopoverRef = HTMLDivElement
+type PopoverRef = HTMLDivElement
 
-export type PopoverComponent = ForwardRefExoticComponent<PopoverProps & AnchorProps & RefAttributes<PopoverRef>>
+type PopoverComponent = ForwardRefExoticComponent<PopoverProps & AnchorProps & RefAttributes<PopoverRef>>
+
+export type {
+    PopoverVariantsType,
+    PopoverVariantType,
+    PopoverRef,
+    PopoverComponent
+}
