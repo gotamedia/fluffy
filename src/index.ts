@@ -47,17 +47,26 @@ export { default as useDeepCompareEffect } from '@hooks/useDeepCompareEffect'
 export * from '@hooks/useDeepCompareMemoize'
 export { default as useDeepCompareMemoize } from '@hooks/useDeepCompareMemoize'
 
+export * from '@hooks/useEventListener'
+export { default as useEventListener } from '@hooks/useEventListener'
+
 export * from '@hooks/useLazyRef'
 export { default as useLazyRef } from '@hooks/useLazyRef'
 
 export * from '@hooks/useLifeCycle'
 export { default as useLifeCycle } from '@hooks/useLifeCycle'
 
+export * from '@hooks/useOutsideClick'
+export { default as useOutsideClick } from '@hooks/useOutsideClick'
+
 export * from '@hooks/useTheme'
 export { default as useTheme } from '@hooks/useTheme'
 
 export * from '@hooks/useScroll'
 export { default as useScroll } from '@hooks/useScroll'
+
+export * from '@hooks/useScrollPosition'
+export { default as useScrollPosition } from '@hooks/useScrollPosition'
 
 export * from '@hooks/useMounted'
 export { default as useMounted } from '@hooks/useMounted'
