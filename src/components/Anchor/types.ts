@@ -1,10 +1,14 @@
-import {
+import type {
     ForwardRefExoticComponent,
     HTMLAttributes,
     RefAttributes
 } from 'react'
 
-export interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
+import type { StyledPrefixThemeProps } from "@root/types/prefix"
+import type { StyledInterpolationFunction } from "@root/types/interpolationFunction"
+import type { AnchorRect } from '@hooks/useAnchor/types'
+
+interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     anchor?: HTMLElement | null,
     padding?: number,
     offset?: {
@@ -14,8 +18,25 @@ export interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     forceDirection?: boolean,
     withFocusTrap?: boolean,
     preventScrollOutside?: boolean
+    withPointer?: boolean
+    pointerColor?: string
 }
 
-export type AnchorRef = HTMLDivElement
+type AnchorStyledProps = StyledPrefixThemeProps<Pick<AnchorRect, "pointer">> & {
+    $pointerColor?: string
+    $pointerWidth: number
+    $pointerHeight: number
+}
 
-export type AnchorComponent = ForwardRefExoticComponent<AnchorProps & RefAttributes<AnchorRef>>
+type AnchorStyleFn = StyledInterpolationFunction<AnchorStyledProps>
+
+type AnchorRef = HTMLDivElement
+type AnchorComponent = ForwardRefExoticComponent<AnchorProps & RefAttributes<AnchorRef>>
+
+export type {
+    AnchorRef,
+    AnchorProps,
+    AnchorComponent,
+    AnchorStyledProps,
+    AnchorStyleFn
+}

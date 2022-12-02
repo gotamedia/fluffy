@@ -7,9 +7,8 @@ import {
 
 import useAnchor from '@hooks/useAnchor'
 
-import FocusTrap from '@components/FocusTrap'
-
 import * as Types from './types'
+import * as Styles from './styles'
 
 const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const {
@@ -20,6 +19,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         style,
         forceDirection,
         withFocusTrap,
+        withPointer,
+        pointerColor,
         preventScrollOutside = true,
         ...DOMProps
     } = props
@@ -27,6 +28,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
 
     useImperativeHandle(ref, () => contentElement as HTMLDivElement, [contentElement])
+
 
     useEffect(() => {
         if (preventScrollOutside) {
@@ -38,34 +40,39 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         }
     }, [preventScrollOutside])
 
-    const anchorRect = useAnchor({
+    const { pointer, ...anchorRect } = useAnchor({
         anchor: anchor,
         anchored: contentElement,
         padding: padding,
         offset: offset,
-        forceDirection: forceDirection
+        forceDirection: forceDirection,
+        withPointer
     })
-    
-    const Content = withFocusTrap ? FocusTrap : 'div'
 
-    return (
-        <Content
-            ref={setContentElement}
-            {...DOMProps}
-            style={{
-                ...anchorRect,
-                zIndex: 1000,
-                width: anchorRect.width || undefined,
-                outline: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'fixed',
-                ...style
-            }}
-        >
-            {children}
-        </Content>
-    )
+    const styles = {
+        ...anchorRect,
+        width: anchorRect.width || undefined,
+        ...style
+    }
+
+    const styledProps = {
+        $pointer: pointer,
+        $pointerWidth: 20,
+        $pointerHeight: 10,
+        $pointerColor:  pointerColor || "white"
+    }
+
+    return withFocusTrap
+        ? (
+            <Styles.AnchorWithFocusTrap ref={setContentElement} {...DOMProps} style={styles} {...styledProps}>
+                {children}
+            </Styles.AnchorWithFocusTrap>
+        )
+        : (
+            <Styles.Anchor ref={setContentElement} {...DOMProps} style={styles}  {...styledProps}>
+                {children}
+            </Styles.Anchor>
+        )
 })
 
 Anchor.displayName = 'Anchor'
