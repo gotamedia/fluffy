@@ -7,7 +7,6 @@ import type {
 } from 'react'
 
 import type { AnchorProps } from '../Anchor/types'
-import type { OverlayProps } from '../Overlay/types'
 
 export const PopoverVariants = {
     Normal: 'normal' as const,
@@ -23,7 +22,6 @@ interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     show: boolean,
     withPointer?: boolean,
     onClickOutside?: MouseEventHandler<HTMLDivElement>
-    onScrollPosition?: (params?: { scrollX: number, scrollY: number }) => void
 }
 
 type PopoverRef = HTMLDivElement
@@ -34,5 +32,6 @@ export type {
     PopoverVariantsType,
     PopoverVariantType,
     PopoverRef,
+    PopoverProps,
     PopoverComponent
 }
