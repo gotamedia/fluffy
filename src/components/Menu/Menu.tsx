@@ -24,7 +24,6 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         show,
         anchor,
         shouldFocusOnClose = true,
-        overlayProps,
         onClickOutside,
         listProps,
         ...filterdProps
@@ -71,10 +70,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
             onClickOutside(event)
         }
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-    }, [onClickOutside, overlayProps])
+    }, [onClickOutside])
 
     const handleAddActiveSubMenu = useCallback((id: string) => {
         setActiveSubMenus(current => [
@@ -109,7 +105,6 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
                 {...filterdProps}
                 show={show}
                 anchor={anchor}
-                overlayProps={overlayProps}
                 onClickOutside={handleOnClickOutside}
             >
                 <Styled.Container>
