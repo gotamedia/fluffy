@@ -21,7 +21,7 @@ type PopoverVariantType = PopoverVariantsType[keyof PopoverVariantsType]
 interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     show: boolean,
-    overlayProps?: OverlayProps,
+    withPointer?: boolean,
     onClickOutside?: MouseEventHandler<HTMLDivElement>
     onScrollPosition?: (params?: { scrollX: number, scrollY: number }) => void
 }
