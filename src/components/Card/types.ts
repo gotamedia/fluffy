@@ -1,9 +1,8 @@
 import CardImage from './components/CardImage'
 import CardBody from './components/CardBody'
-import CardTitle from './components/CardTitle'
+import CardSubHeadline from './components/CardSubHeadline'
 import CardHeadline from './components/CardHeadline'
 import CardParagraph from './components/CardParagraph'
-import CardIconsWrapper from './components/CardIconsWrapper'
 
 import type {
     FC,
@@ -30,11 +29,7 @@ export type CardSizeType = CardSizesType[keyof CardSizesType]
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
-    size?: CardSizeType,
-    variant?: CardVariantType,
-    loading?: boolean,
-    vertical?: boolean,
-    compact?: boolean
+    loading?: boolean
 }
 
 export type CardComponent = FC<CardProps>
@@ -42,8 +37,7 @@ export type CardComponent = FC<CardProps>
 export type CardComponentType = CardComponent & {
     Image: typeof CardImage,
     Body: typeof CardBody,
-    Title: typeof CardTitle,
+    SubHeadline: typeof CardSubHeadline,
     Headline: typeof CardHeadline,
-    Paragraph: typeof CardParagraph,
-    IconsWrapper: typeof CardIconsWrapper
+    Paragraph: typeof CardParagraph
 }

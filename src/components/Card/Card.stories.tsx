@@ -1,18 +1,59 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Card from '.'
-import Icon, { Icons } from '../Icon'
+
+import Dates from '../../utils/date'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
+
+const Content = styled.div`
+    display: flex;
+`
+
+const TextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 15px;
+`
+
+const ImageWrapper = styled.div`
+    display: flex;
+    margin: 0 0 auto auto;
+`
 
 const Basic: Story<Types.CardProps> = (props) => {
     return (
         <Card {...props}>
             <Card.Body>
-                <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
-                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
+                <Card.SubHeadline>
+                    {`Published ${Dates.format(new Date(), 'dd/MM/yyyy')}`}
+                </Card.SubHeadline>
+
+                <Card.Headline>
+                    {`Such a fluffy headline`}
+                </Card.Headline>
+
+                <Content>
+                    <TextWrapper>
+                        <Card.Paragraph>
+                            {'This is a description first row This is a description first row This is a description first row This is a description first row This is a description first row'}
+                        </Card.Paragraph>
+
+                        <Card.Paragraph>
+                            {'second row'}
+                        </Card.Paragraph>
+                    </TextWrapper>
+
+                    <ImageWrapper>
+                        <Card.Image
+                            alt={'fluffy-image'}
+                            src={'https://media0.giphy.com/media/DTLzZIeBh33S8/giphy.gif'}
+                        />
+                    </ImageWrapper>
+                </Content>
             </Card.Body>
         </Card>
     )
@@ -21,93 +62,15 @@ const Basic: Story<Types.CardProps> = (props) => {
 const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 
-const WithIcons: Story<Types.CardProps> = (props) => {
-    return (
-        <Card {...props}>
-            <Card.Body>
-                <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
-                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
-
-                <Card.IconsWrapper>
-                    <Icon icon={Icons.CommandLine} />
-                    <Icon icon={Icons.FingerPrint} />
-                    <Icon icon={Icons.Gif} />
-                    <Icon icon={Icons.QrCode} />
-                    <Icon icon={Icons.RocketLaunch} />
-                </Card.IconsWrapper>
-            </Card.Body>
-        </Card>
-    )
-}
-
-const WithIconsStory = WithIcons.bind({})
-WithIconsStory.storyName = 'With icons'
-
-const WithImage: Story<Types.CardProps> = (props) => {
-    return (
-        <Card {...props}>
-            <Card.Image
-                alt={'fluffy-image'}
-                src={'https://media0.giphy.com/media/DTLzZIeBh33S8/giphy.gif'}
-            />
-
-            <Card.Body>
-                <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
-                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
-            </Card.Body>
-        </Card>
-    )
-}
-
-const WithImageStory = WithImage.bind({})
-WithImageStory.storyName = 'With image'
-
-const Full: Story<Types.CardProps> = (props) => {
-    return (
-        <Card {...props}>
-            <Card.Image
-                alt={'fluffy-image'}
-                src={'https://media0.giphy.com/media/DTLzZIeBh33S8/giphy.gif'}
-            />
-            
-            <Card.Body>
-                <Card.Title text={'Such a fluffy title!'}/>
-                <Card.Headline text={'Such a fluffy headline, Such a fluffy headline!'}/>
-                <Card.Paragraph text={'Such a fluffy headline, Such a fluffy headline!\nSuch a fluffy headline!\nSuch a fluffy headline, Such a fluffy headline, Such a fluffy headline!'}/>
-
-                <Card.IconsWrapper>
-                    <Icon icon={Icons.CommandLine} />
-                    <Icon icon={Icons.FingerPrint} />
-                    <Icon icon={Icons.Gif} />
-                    <Icon icon={Icons.QrCode} />
-                    <Icon icon={Icons.RocketLaunch} />
-                </Card.IconsWrapper>
-            </Card.Body>
-        </Card>
-    )
-}
-
-const FullStory = Full.bind({})
-FullStory.storyName = 'Full'
-
 export {
-    BasicStory,
-    WithIconsStory,
-    WithImageStory,
-    FullStory
+    BasicStory
 }
 
 export default {
-    title: 'Developments/Components/Card',
+    title: 'Components/Card',
     component: Card,
     argTypes: {},
     args: {
-        size: 'normal',
-        variant: 'light',
-        loading: false,
-        vertical: false,
-        compact: false
+        loading: false
     }
 } as Meta<typeof Card>

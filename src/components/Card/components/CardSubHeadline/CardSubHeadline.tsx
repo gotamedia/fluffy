@@ -4,30 +4,30 @@ import Skeleton from '@components/Skeleton'
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { SkeletonVariantType } from '@components/Skeleton/types'
 
-const CardTitle: Types.CardTitleComponent = (props) => {
+const CardSubHeadline: Types.CardSubHeadlineComponent = (props) => {
     const {
-        text,
+        children,
         ...DOMProps
     } = props
 
     const {
-        loading,
-        variant
+        loading
     } = useCard()
 
     return (
-        <Styled.Title {...DOMProps}>
+        <Styled.SubHeadline {...DOMProps}>
             {
                 loading ? (
-                    <Skeleton variant={variant as SkeletonVariantType}/>
+                    <Skeleton
+                        rowHeight={13}
+                    />
                 ) : (
-                    text
+                    children
                 )
             }
-        </Styled.Title>
+        </Styled.SubHeadline>
     )
 }
 
-export default CardTitle
+export default CardSubHeadline

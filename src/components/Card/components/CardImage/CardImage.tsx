@@ -4,37 +4,21 @@ import Skeleton from '@components/Skeleton'
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { SkeletonVariantType } from '@components/Skeleton/types'
 
 const CardImage: Types.CardImageComponent = (props) => {
-    const {
-        style,
-        className,
-        ...DOMProps
-    } = props
-
-    const {
-        loading,
-        variant,
-        vertical,
-        compact
-    } = useCard()
+    const { loading } = useCard()
 
     return (
-        <Styled.Wrapper
-            style={style}
-            className={className}
-            $vertical={vertical}
-            $compact={compact}
-        >
-            {
-                loading ? (
-                    <Skeleton variant={variant as SkeletonVariantType}/>
-                ) : (
-                    <Styled.Image {...DOMProps}/>
-                )
-            }
-        </Styled.Wrapper>
+        loading ? (
+            <Skeleton
+                style={{
+                    width: props.width || '154px',
+                    height: props.height || '77px'
+                }}
+            />
+        ) : (
+            <Styled.Image {...props}/>
+        )
     )
 }
 

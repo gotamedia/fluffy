@@ -29,7 +29,7 @@ const WithThumbnailLazyLoad: Story<Types.ImageProps> = (props) => {
                 {'Scroll to the bottom to see your image loads!'}
             </h1>
 
-            <div style={{margin: 'auto auto 0 0'}}>
+            <div style={{margin: 'auto auto 200px 0'}}>
                 <Image {...props} />
             </div>
         </div>
@@ -55,7 +55,7 @@ const WithPlaceholderLazyLoad: Story<Types.ImageProps> = (props) => {
                 {'Scroll to the bottom to see your image loads!'}
             </h1>
 
-            <div style={{margin: 'auto auto 0 0'}}>
+            <div style={{margin: 'auto auto 200px 0'}}>
                 <Image {...props} />
             </div>
         </div>

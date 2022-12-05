@@ -1,8 +1,10 @@
-import type { FC, ReactNode } from 'react'
+import type {
+    FC,
+    HTMLAttributes
+} from 'react'
 
-export interface CardBodyProps {
-    className?: string,
-    children?: ReactNode
+export interface CardBodyProps extends HTMLAttributes<HTMLParagraphElement> {
+
 }
 
 export type CardBodyComponent = FC<CardBodyProps>

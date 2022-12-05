@@ -1,14 +1,10 @@
-import {
-    forwardRef,
-    useState,
-    useEffect
-} from 'react'
+import { forwardRef } from 'react'
 
 import LazyImage from './components/LazyImage'
 
-import type * as Types from './types'
+import isNativeLazyLoadingSupported from '@utils/isNativeLazyLoadingSupported'
 
-let isNativeLazyLoadingSupported: boolean | undefined
+import type * as Types from './types'
 
 const Image: Types.ImageComponent = forwardRef((props, ref) => {
     const {
@@ -23,18 +19,9 @@ const Image: Types.ImageComponent = forwardRef((props, ref) => {
         ...filteredProps
     } = props
 
-    const [doesSupportNativeLoading, setDoesSupportNativeLoading] = useState(isNativeLazyLoadingSupported)
-    
-    useEffect(() => {
-        if (typeof isNativeLazyLoadingSupported === 'undefined') {
-            isNativeLazyLoadingSupported = 'loading' in HTMLImageElement.prototype
-            setDoesSupportNativeLoading(isNativeLazyLoadingSupported)
-        }
-    }, [])
-
     return (
         lazyLoading ? (
-            useNativeLazyLoading && doesSupportNativeLoading ? (
+            useNativeLazyLoading && isNativeLazyLoadingSupported ? (
                 <img
                     ref={ref}
                     {...filteredProps}
