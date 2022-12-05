@@ -9,6 +9,7 @@ import type { SlidesComponent } from './components/Slides/types'
 import type { NavigationComponent } from './components/Navigation/types'
 import type { FullscreenComponent } from './components/Fullscreen/types'
 import type { SlidesCountComponent } from './components/SlidesCount/types'
+import type { BulletsComponent } from './components/Bullets'
 
 export const SliderVariants = {
     Primary: 'primary' as const,
@@ -52,6 +53,7 @@ export type SliderSupComponents = {
     Slides: SlidesComponent,
     Navigation: NavigationComponent,
     Fullscreen: FullscreenComponent,
+    Bullets: BulletsComponent
     SlidesCount: SlidesCountComponent
 }
 
