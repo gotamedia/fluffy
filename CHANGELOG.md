@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.34.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.34.0..v0.33.2) (2022-12-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactored Card component
+
+### Features
+
+* Init useEventListener ([76d578f](http://bitbucket.org/gotamedia/fluffy/commits/76d578f2c5c6f4a54bbf106473f7c1951087502f))
+* Init useOutsideClick ([fd06ef7](http://bitbucket.org/gotamedia/fluffy/commits/fd06ef77726c9d8d3d00b2bd26d2c31471381c41))
+* Init useScrollPosition ([ec689dd](http://bitbucket.org/gotamedia/fluffy/commits/ec689dde7733dfde86cb7d604196183e03e98f48))
+* Refactored Card component ([1cccca8](http://bitbucket.org/gotamedia/fluffy/commits/1cccca84266ce3b34fe66a657785587de1762955))
+* Slider Bullet component ([cfa3fee](http://bitbucket.org/gotamedia/fluffy/commits/cfa3fee19174ca4f39f2cba67241d27ccf27a2ea))
+* Slider Bullets component ([ff8e1ce](http://bitbucket.org/gotamedia/fluffy/commits/ff8e1cef8682542a39f3a805cea328f66e78eea1))
+
 ### [0.33.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.2..v0.33.1) (2022-11-14)
 
 
