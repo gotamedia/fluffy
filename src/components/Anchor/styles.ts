@@ -6,9 +6,9 @@ import * as Types from "./types"
 
 const pointerBottomStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor,
-    $pointerWidth,
-    $pointerHeight,
+    $pointerColor = "white",
+    $pointerWidth = 20,
+    $pointerHeight = 10,
     ...rest
 }) => $pointer.canExtendBottom && css`
     margin-top: ${$pointerHeight}px;
@@ -24,9 +24,9 @@ const pointerBottomStyleFn: Types.AnchorStyleFn = ({
 
 const pointerTopStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor,
-    $pointerWidth,
-    $pointerHeight,
+    $pointerColor = "white",
+    $pointerWidth = 20,
+    $pointerHeight = 10,
     ...rest
 }) => $pointer.canExtendTop && css`
     margin-bottom: ${$pointerHeight}px;
@@ -42,9 +42,7 @@ const pointerTopStyleFn: Types.AnchorStyleFn = ({
 
 const pointerStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor = "black",
-    $pointerWidth = 20,
-    $pointerHeight = 10,
+    $pointerColor = "white",
     theme,
     ...rest
 }) => [
@@ -67,7 +65,6 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
             content: "";
             border-color: transparent;
             border-style: solid;
-            border-width: 0 ${$pointerWidth * 0.5}px ${$pointerHeight}px;
         }
 `
 

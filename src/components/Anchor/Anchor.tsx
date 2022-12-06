@@ -8,7 +8,7 @@ import {
 import useAnchor from '@hooks/useAnchor'
 
 import * as Types from './types'
-import * as Styles from './styles'
+import * as Styled from './styles'
 
 const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const {
@@ -55,24 +55,19 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         ...style
     }
 
-    const styledProps = {
-        $pointer: pointer,
-        $pointerWidth: 20,
-        $pointerHeight: 10,
-        $pointerColor:  pointerColor || "white"
-    }
+    const Tag = withFocusTrap ? Styled.AnchorWithFocusTrap : Styled.Anchor
 
-    return withFocusTrap
-        ? (
-            <Styles.AnchorWithFocusTrap ref={setContentElement} {...DOMProps} style={styles} {...styledProps}>
-                {children}
-            </Styles.AnchorWithFocusTrap>
-        )
-        : (
-            <Styles.Anchor ref={setContentElement} {...DOMProps} style={styles}  {...styledProps}>
-                {children}
-            </Styles.Anchor>
-        )
+    return (
+        <Tag
+            ref={setContentElement}
+            {...DOMProps}
+            style={styles}
+            $pointer={pointer}
+            $pointerColor={pointerColor}
+      >
+          {children}
+      </Tag>
+  )
 })
 
 Anchor.displayName = 'Anchor'
