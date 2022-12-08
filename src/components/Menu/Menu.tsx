@@ -10,7 +10,6 @@ import {
 import useMenu from './hooks/useMenu'
 import MenuContext from './contexts/MenuContext'
 
-import List from '../List'
 import Popover from '../Popover'
 
 import * as Styled from './style'
@@ -112,14 +111,12 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
                 overlayProps={overlayProps}
                 onClickOutside={handleOnClickOutside}
             >
-                <Styled.Container>
-                    <List
-                        ref={handleListRef}
-                        {...listProps}
-                    >
-                        {children}
-                    </List>
-                </Styled.Container>
+                <Styled.List
+                    ref={handleListRef}
+                    {...listProps}
+                >
+                    {children}
+                </Styled.List>
             </Popover>
         </MenuContext.Provider>
     )

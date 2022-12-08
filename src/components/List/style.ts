@@ -7,12 +7,10 @@ import Icon, { Icons, IconSizes } from '../Icon'
 const Wrapper = styled.div`
     outline: none;
     padding: 5px 0;
-    display: flex;
-    flex-direction: column;
 `
 
 const InputGroup = styled(InputGroupComponent)`
-    margin-bottom: 5px;
+    width: 100%;
 `
 
 const Input = styled(InputComponent)`

@@ -8,6 +8,8 @@ import {
 
 import scrollIntoView from 'scroll-into-view-if-needed'
 
+import useList from '../List/hooks/useList'
+
 import {
     ListItemSizes,
     ListItemTypes
@@ -36,6 +38,8 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
+    const { _domRef: listRef } = useList()
+
     const listItemRef = useRef<HTMLDivElement>(null)
 
     useImperativeHandle(ref, () => listItemRef.current as HTMLDivElement)
@@ -44,10 +48,11 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         if (scrollOnTargeted && targeted && listItemRef.current) {
             scrollIntoView(listItemRef.current, {
                 scrollMode: 'if-needed',
-                behavior: 'smooth'
+                behavior: 'smooth',
+                boundary: listRef?.current
             })
         }
-    }, [scrollOnTargeted, targeted])
+    }, [scrollOnTargeted, targeted, listRef])
 
     const handleOnSelect = useCallback(() => {
         if (typeof onSelect === 'function') {

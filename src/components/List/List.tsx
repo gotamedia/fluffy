@@ -9,6 +9,8 @@ import {
     cloneElement
 } from 'react'
 
+import ListContext from './contexts/ListContext'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type {
@@ -254,52 +256,60 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         }
     }, [onKeyDown, hadnleOnKeyDown])
 
+    const context = {
+        _domRef: wrapperRef
+    }
+
     return (
-        <Styled.Wrapper
-            ref={wrapperRef}
-            tabIndex={0}
-            onKeyDown={hadnleOnKeyDown}
-            onFocus={handleOnFocus}
-            onBlur={handleOnBlur}
-            {...DOMProps}
-        >
-            {
-                showFilter && (
-                    <Styled.InputGroup>
-                        <Styled.Input
-                            enterKeyHint={'enter'}
-                            ref={filterRef}
-                            value={filterValue}
-                            onValueChange={handleOnFilterValueChange}
-                            onKeyDown={hadnleOnInputKeyDown}
-                        />
+        <ListContext.Provider value={context}>
+            <>
+                {
+                    showFilter && (
+                        <Styled.InputGroup>
+                            <Styled.Input
+                                enterKeyHint={'enter'}
+                                ref={filterRef}
+                                value={filterValue}
+                                onValueChange={handleOnFilterValueChange}
+                                onKeyDown={hadnleOnInputKeyDown}
+                            />
 
-                        <Styled.ClearIcon onClick={handleOnFilterClear}/>
-                    </Styled.InputGroup>
-                )
-            }
+                            <Styled.ClearIcon onClick={handleOnFilterClear}/>
+                        </Styled.InputGroup>
+                    )
+                }
+                
+                <Styled.Wrapper
+                    ref={wrapperRef}
+                    tabIndex={0}
+                    onKeyDown={hadnleOnKeyDown}
+                    onFocus={handleOnFocus}
+                    onBlur={handleOnBlur}
+                    {...DOMProps}
+                >
+                    {
+                        Children.map(listChildren, (child, idx) => {
+                            if (child) {
+                                const childElement = child as ReactElement<ListItemProps>
+                
+                                const childProps = {
+                                    size: size,
+                                    border: border,
+                                    type: type,
+                                    targeted: isFocused && targetedIndex === idx,
+                                    onSelect: onSelect,
+                                    ...childElement.props
+                                }
 
-            {
-                Children.map(listChildren, (child, idx) => {
-                    if (child) {
-                        const childElement = child as ReactElement<ListItemProps>
-        
-                        const childProps = {
-                            size: size,
-                            border: border,
-                            type: type,
-                            targeted: isFocused && targetedIndex === idx,
-                            onSelect: onSelect,
-                            ...childElement.props
-                        }
-
-                        return cloneElement(childElement, childProps)
-                    } else {
-                        return null
+                                return cloneElement(childElement, childProps)
+                            } else {
+                                return null
+                            }
+                        })
                     }
-                })
-            }
-        </Styled.Wrapper>
+                </Styled.Wrapper>
+            </>
+        </ListContext.Provider>
     )
 })
 
