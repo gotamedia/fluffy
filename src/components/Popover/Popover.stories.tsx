@@ -14,7 +14,13 @@ import useDidValueChanged from '@hooks/useDidValueChanged'
 
 import * as Types from './types'
 
-const Template: Story<Types.PopoverProps> = (props) => {
+const Template: Story<Types.PopoverProps> = ({
+    show,
+    withPointer,
+    backgroundColor,
+    preventScrollOutside,
+    ...props
+}) => {
     const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null)
     const [showPopover, setShowPopover] = useState(false)
     const position = useScrollPosition()
@@ -35,25 +41,24 @@ const Template: Story<Types.PopoverProps> = (props) => {
                 <Button
                     ref={setButtonRef}
                     onClick={() => setShowPopover(current => !current)}
-                    >
+                >
                     {'Toggle popover'}
                 </Button>
 
                 <Popover
                     {...props}
-                    show={showPopover}
+                    show={typeof show === "boolean" ? show : showPopover}
                     onClickOutside={() => setShowPopover(false)}
                     anchor={buttonRef}
-                    preventScrollOutside={false}
-                    withPointer
-                    pointerColor='lightgreen'
+                    preventScrollOutside={preventScrollOutside}
+                    withPointer={withPointer}
+                    backgroundColor={backgroundColor}
                 >
                     <div style={{
                         width: 300,
-                        height: 150,
-                        backgroundColor: 'lightgreen'
+                        height: 150
                     }}>
-                        <p style={{ margin: 0 }}>
+                        <p style={{ color: "white", padding: "0px 15px" }}>
                             {'I am inside a popover'}
                         </p>
                     </div>
@@ -70,5 +75,8 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "tomato",
+        withPointer: true,
+        preventScrollOutside: false
     }
 } as Meta<Types.PopoverComponent>
