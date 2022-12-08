@@ -32,16 +32,14 @@ const useEventListener = <
     useEffect(() => {
         const targetElement = target ?? window
 
-        const listener = savedHandler.current as (event: Event) => void
-
         if (!targetElement?.addEventListener) return
 
-        targetElement.addEventListener(eventName, listener, options)
+        targetElement.addEventListener(eventName, handler as any, options)
 
         return () => {
-            targetElement.removeEventListener(eventName, listener, options)
+            targetElement.removeEventListener(eventName, handler as any, options)
         }
-    }, [eventName, target, options])
+    }, [handler, eventName, target, options])
 }
 
 export default useEventListener
