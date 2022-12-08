@@ -51,7 +51,6 @@
         "src/icons",
         "src/utils/tests",
         "node_modules",
-        "src/**/*.test.tsx",
-        "src/**/*.stories.tsx"
+        "src/**/*.test.tsx"
     ]
 }
