@@ -40,7 +40,8 @@ export interface SelectProps extends AnchorProps {
     variant?: SelectVariantType,
     size?: SelectSizeType,
     disabled?: boolean,
-    showFilter?: boolean
+    showFilter?: boolean,
+    closeOnScrollOutside?: boolean
 }
 
 export type SelectRef = {

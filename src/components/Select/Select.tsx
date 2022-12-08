@@ -29,6 +29,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         children,
         triggerProps,
         onClickOutside,
+        closeOnScrollOutside,
         placeholder,
         listProps,
         selected = [],
@@ -187,6 +188,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
                 listProps={{
                     ...listProps,
                     showFilter: showFilter,

@@ -19,9 +19,9 @@ interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     show?: boolean,
     withPointer?: boolean,
-    preventScrollOutside?: boolean,
     backgroundColor?: string,
-    onClickOutside?: (event: MouseEvent | TouchEvent) => void
+    onClickOutside?: (event: MouseEvent | TouchEvent) => void,
+    onScrollOutside?: () => void
 }
 
 type PopoverRef = HTMLDivElement

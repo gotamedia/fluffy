@@ -11,7 +11,8 @@ export interface MenuProps extends AnchorProps {
     anchor?: HTMLElement | null,
     onClickOutside?: (event: MouseEvent | TouchEvent) => void,
     listProps?: ListProps & RefAttributes<ListRef>,
-    shouldFocusOnClose?: boolean
+    shouldFocusOnClose?: boolean,
+    onScrollOutside?: () => void
 }
 
 export type MenuRef = HTMLDivElement

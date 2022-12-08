@@ -17,7 +17,6 @@ interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     },
     forceDirection?: boolean,
     withFocusTrap?: boolean,
-    preventScrollOutside?: boolean
     withPointer?: boolean
     backgroundColor?: string
 }

@@ -30,6 +30,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         variant,
         size,
         disabled,
+        closeOnScrollOutside,
         ...filterdProps
     } = props
 
@@ -102,6 +103,7 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
                 listProps={{
                     ...listProps,
                     onSelect: handleOnSelect,
