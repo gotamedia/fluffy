@@ -1,8 +1,6 @@
-import type { MouseEventHandler } from 'react'
-
 export type MenuContext = {
     activeSubMenuId: string,
-    onClickOutside: MouseEventHandler<HTMLDivElement>,
+    onClickOutside: (event: MouseEvent | TouchEvent) => void,
     addSubMenu: (id: string) => void,
     removeSubMenu: (id: string) => void
 

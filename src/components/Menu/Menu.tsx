@@ -16,7 +16,6 @@ import Popover from '../Popover'
 import * as Styled from './style'
 import * as Types from './types'
 import type { ListRef } from '../List'
-import type { MouseEventHandler } from 'react'
 
 const Menu: Types.MenuComponent = forwardRef((props, ref) => {
     const {
@@ -65,7 +64,7 @@ const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         }
     }, [listProps])
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function') {
             onClickOutside(event)
         }

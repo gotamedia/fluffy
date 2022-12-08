@@ -1,13 +1,6 @@
-import type { EventHandler, MouseEvent, TouchEvent } from 'react'
+import { RefObject } from 'react'
 
-type Handler = EventHandler<MouseEvent | TouchEvent>
-
-type UseOutsideClick<T extends HTMLElement = HTMLElement> = (
-    target: T | null | undefined,
-    handler: Handler
+export type UseOutsideClick = (
+    target: RefObject<HTMLElement>,
+    handler: (event: MouseEvent | TouchEvent) => void
 ) => void
-
-export type {
-    UseOutsideClick,
-    Handler
-}
