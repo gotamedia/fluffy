@@ -1,6 +1,6 @@
 import {
     forwardRef,
-    useState,
+    useRef,
     useImperativeHandle,
     useEffect
 } from 'react'
@@ -25,10 +25,9 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         ...DOMProps
     } = props
 
-    const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
+    const contentRef = useRef<HTMLDivElement | null>(null)
 
-    useImperativeHandle(ref, () => contentElement as HTMLDivElement, [contentElement])
-
+    useImperativeHandle(ref, () => contentRef.current as HTMLDivElement)
 
     useEffect(() => {
         if (preventScrollOutside) {
@@ -42,7 +41,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
 
     const { pointer, ...anchorRect } = useAnchor({
         anchor: anchor,
-        anchored: contentElement,
+        anchored: contentRef.current,
         padding: padding,
         offset: offset,
         forceDirection: forceDirection,
@@ -59,7 +58,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
 
     return (
         <Tag
-            ref={setContentElement}
+            ref={contentRef}
             {...DOMProps}
             style={styles}
             $pointer={pointer}

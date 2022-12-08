@@ -1,7 +1,7 @@
 import {
     forwardRef,
     useCallback,
-    useState,
+    useRef,
     useImperativeHandle
 } from 'react'
 
@@ -20,7 +20,10 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
         anchor,
         ...filterdProps
     } = props
-    const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
+    
+    const contentRef = useRef<HTMLDivElement | null>(null)
+    
+    useImperativeHandle(ref, () => contentRef.current as HTMLDivElement)
 
     const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function' && !anchor?.contains(event.target as Node)) {
@@ -28,14 +31,13 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
         }
     }, [anchor, onClickOutside])
 
-    useImperativeHandle(ref, () => contentElement as HTMLDivElement, [contentElement])
-    useOutsideClick(contentElement, handleOnClickOutside)
+    useOutsideClick(contentRef, handleOnClickOutside)
 
     return (
         show ? (
             <Portal>
                 <Anchor
-                    ref={setContentElement}
+                    ref={contentRef}
                     anchor={anchor}
                     {...filterdProps}
                     >

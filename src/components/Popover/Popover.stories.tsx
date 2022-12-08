@@ -1,5 +1,6 @@
 import React, {
     useEffect,
+    useRef,
     useState
 } from 'react'
 
@@ -23,41 +24,43 @@ const Template: Story<Types.PopoverProps> = (props) => {
         (prev: typeof position, curr?: typeof position) => [prev, curr].includes(undefined)
     )
 
+    const popoverRef = useRef<HTMLDivElement | null>(null)
+
     useEffect(() => {
         if (valueChanged) {
             setShowPopover(false)
         }
     }, [valueChanged])
 
-
     return (
         <div style={{ height: "150vh", minWidth: "150vw" }}>
-                <Button
-                    ref={setButtonRef}
-                    onClick={() => setShowPopover(current => !current)}
-                    >
-                    {'Toggle popover'}
-                </Button>
+            <Button
+                ref={setButtonRef}
+                onClick={() => setShowPopover(current => !current)}
+            >
+                {'Toggle popover'}
+            </Button>
 
-                <Popover
-                    {...props}
-                    show={showPopover}
-                    onClickOutside={() => setShowPopover(false)}
-                    anchor={buttonRef}
-                    preventScrollOutside={false}
-                    withPointer
-                    pointerColor='lightgreen'
-                >
-                    <div style={{
-                        width: 300,
-                        height: 150,
-                        backgroundColor: 'lightgreen'
-                    }}>
-                        <p style={{ margin: 0 }}>
-                            {'I am inside a popover'}
-                        </p>
-                    </div>
-                </Popover>
+            <Popover
+                ref={popoverRef}
+                {...props}
+                show={showPopover}
+                onClickOutside={() => setShowPopover(false)}
+                anchor={buttonRef}
+                preventScrollOutside={false}
+                withPointer
+                pointerColor='lightgreen'
+            >
+                <div style={{
+                    width: 300,
+                    height: 150,
+                    backgroundColor: 'lightgreen'
+                }}>
+                    <p style={{ margin: 0 }}>
+                        {'I am inside a popover'}
+                    </p>
+                </div>
+            </Popover>
         </div>
     )
 }
