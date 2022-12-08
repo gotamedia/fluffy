@@ -120,6 +120,7 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "#C6DEFF",
         padding: 0,
         offset: {
             x: 0,
