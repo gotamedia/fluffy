@@ -1,5 +1,4 @@
 import {
-    MouseEventHandler,
     forwardRef,
     useCallback,
     useState,
@@ -9,8 +8,9 @@ import {
 import Portal from '@components/Portal'
 import Anchor from '@components/Anchor'
 
-import * as Types from './types'
 import useOutsideClick from '@hooks/useOutsideClick'
+
+import * as Types from './types'
 
 const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     const {
@@ -22,7 +22,7 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     } = props
     const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>((event) => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function' && !anchor?.contains(event.target as Node)) {
             onClickOutside(event)
         }

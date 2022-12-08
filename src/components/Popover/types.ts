@@ -2,7 +2,6 @@ import type {
     ForwardRefExoticComponent,
     HTMLAttributes,
     ReactNode,
-    MouseEventHandler,
     RefAttributes
 } from 'react'
 
@@ -16,12 +15,11 @@ export const PopoverVariants = {
 type PopoverVariantsType = typeof PopoverVariants
 type PopoverVariantType = PopoverVariantsType[keyof PopoverVariantsType]
 
-
 interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     children?: ReactNode,
     show: boolean,
     withPointer?: boolean,
-    onClickOutside?: MouseEventHandler<HTMLDivElement>
+    onClickOutside?: (event: MouseEvent | TouchEvent) => void
 }
 
 type PopoverRef = HTMLDivElement

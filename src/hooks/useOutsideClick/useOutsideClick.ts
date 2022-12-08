@@ -7,12 +7,12 @@ const useOutsideClick: Types.UseOutsideClick = (
     handler
 ) => {
 
-    const onEvent = useCallback<Types.Handler>((event) => {
+    const onEvent = useCallback((event: Event) => {
         const targetElement = target
         const clickedElement = event?.target
 
         if (targetElement && targetElement !== clickedElement && !targetElement.contains(clickedElement as Node)) {
-            handler(event)
+            handler(event as MouseEvent)
         }
 
     }, [handler, target])

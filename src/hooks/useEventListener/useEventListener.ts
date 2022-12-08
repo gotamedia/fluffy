@@ -1,19 +1,27 @@
-/* eslint-disable no-undef */
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 import { useEffect, useRef } from 'react'
-import * as Types from './types'
 
-const useEventListener: Types.UseEventListenerProps<
-    keyof WindowEventMap,
-    keyof HTMLElementEventMap,
-    keyof MediaQueryListEventMap,
-    keyof DocumentEventMap,
-    HTMLElement | MediaQueryList | void
-> = (
-    eventName,
-    handler,
-    element,
-    options
+const useEventListener = <
+    KW extends keyof WindowEventMap,
+    KH extends keyof HTMLElementEventMap,
+    KM extends keyof MediaQueryListEventMap,
+    T extends HTMLElement | MediaQueryList | null
+>(
+    eventName: KW | KH | KM,
+    handler: (
+        event:
+            T extends HTMLElement ? (
+                HTMLElementEventMap[KH]
+            ) : (
+                T extends MediaQueryList ? (
+                    MediaQueryListEventMap[KM]
+                ) : (
+                    WindowEventMap[KW]
+                )
+            )
+    ) => void,
+    target?: T,
+    options?: boolean | AddEventListenerOptions
 ) => {
     const savedHandler = useRef(handler)
 
@@ -22,18 +30,18 @@ const useEventListener: Types.UseEventListenerProps<
     }, [handler])
 
     useEffect(() => {
-        const targetElement = element?.current ?? window
+        const targetElement = target ?? window
 
-        if (!(targetElement && targetElement.addEventListener)) return
+        const listener = savedHandler.current as (event: Event) => void
 
-        const listener: typeof handler = (event) => savedHandler.current(event)
+        if (!targetElement?.addEventListener) return
 
         targetElement.addEventListener(eventName, listener, options)
 
         return () => {
             targetElement.removeEventListener(eventName, listener, options)
         }
-    }, [eventName, element, options])
+    }, [eventName, target, options])
 }
 
 export default useEventListener

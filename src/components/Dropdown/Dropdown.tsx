@@ -13,7 +13,6 @@ import Menu from '../Menu'
 import * as Styled from './style'
 import * as Types from './types'
 import type {
-    MouseEventHandler,
     KeyboardEventHandler,
     ReactElement
 } from 'react'
@@ -24,7 +23,6 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         value,
         children,
         triggerProps,
-        overlayProps,
         onClickOutside,
         label,
         listProps,
@@ -46,17 +44,13 @@ const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         }
     }, [])
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function') {
             onClickOutside(event)
         }
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-
         setIsOpen(false)
-    }, [onClickOutside, overlayProps])
+    }, [onClickOutside])
 
     const toggleOpen = useCallback(() => {
         setIsOpen(current => !current)

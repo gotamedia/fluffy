@@ -1,7 +1,6 @@
 import {
     ForwardRefExoticComponent,
     HTMLAttributes,
-    MouseEventHandler,
     RefAttributes
 } from 'react'
 
@@ -11,7 +10,6 @@ import {
 } from '../Button'
 
 import type { ButtonProps } from '../Button'
-import type { OverlayProps } from '../Overlay/types'
 import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
 
@@ -33,8 +31,7 @@ export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
     label: string,
     value?: any,
     triggerProps?: ButtonProps,
-    overlayProps?: OverlayProps,
-    onClickOutside?: MouseEventHandler<HTMLDivElement>,
+    onClickOutside?: (event: MouseEvent | TouchEvent) => void,
     listProps?: ListProps,
     onChange?: ListItemProps['onSelect'],
     variant?: DropdownVariantType,

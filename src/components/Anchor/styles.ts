@@ -4,19 +4,19 @@ import FocusTrap from '@components/FocusTrap'
 
 import * as Types from "./types"
 
+const POINTER_WIDTH = 20
+const POINTER_HEIGHT = 10
+
 const pointerBottomStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor = "white",
-    $pointerWidth = 20,
-    $pointerHeight = 10,
-    ...rest
+    $pointerColor = "white"
 }) => $pointer.canExtendBottom && css`
-    margin-top: ${$pointerHeight}px;
+    margin-top: ${POINTER_HEIGHT}px;
 
     &::before {
         border-bottom-color: ${$pointerColor};
-        border-width: 0 ${$pointerWidth * 0.5}px ${$pointerHeight}px;
-        top: ${-1 * ($pointerWidth - $pointerHeight)}px;
+        border-width: 0 ${POINTER_WIDTH * 0.5}px ${POINTER_HEIGHT}px;
+        top: ${-1 * (POINTER_WIDTH - POINTER_HEIGHT)}px;
         right: ${$pointer.canExtendLeft && "10px"};
         left: ${$pointer.canExtendRight && "10px"};
     }
@@ -25,16 +25,13 @@ const pointerBottomStyleFn: Types.AnchorStyleFn = ({
 const pointerTopStyleFn: Types.AnchorStyleFn = ({
     $pointer,
     $pointerColor = "white",
-    $pointerWidth = 20,
-    $pointerHeight = 10,
-    ...rest
 }) => $pointer.canExtendTop && css`
-    margin-bottom: ${$pointerHeight}px;
+    margin-bottom: ${POINTER_HEIGHT}px;
 
     &::after {
-        border-width: ${$pointerHeight}px ${$pointerWidth * 0.5}px 0;
+        border-width: ${POINTER_HEIGHT}px ${POINTER_WIDTH * 0.5}px 0;
         border-top-color: ${$pointerColor};
-        bottom: ${-1 * ($pointerWidth - $pointerHeight)}px;
+        bottom: ${-1 * (POINTER_WIDTH - POINTER_HEIGHT)}px;
         right: ${$pointer.canExtendLeft && "10px"};
         left: ${$pointer.canExtendRight && "10px"};
     }
@@ -43,8 +40,7 @@ const pointerTopStyleFn: Types.AnchorStyleFn = ({
 const pointerStyleFn: Types.AnchorStyleFn = ({
     $pointer,
     $pointerColor = "white",
-    theme,
-    ...rest
+    theme
 }) => [
         $pointer.canExtendTop,
         $pointer.canExtendBottom,

@@ -24,8 +24,6 @@ interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
 
 type AnchorStyledProps = StyledPrefixThemeProps<Pick<AnchorRect, "pointer">> & {
     $pointerColor?: string
-    $pointerWidth: number
-    $pointerHeight: number
 }
 
 type AnchorStyleFn = StyledInterpolationFunction<AnchorStyledProps>
