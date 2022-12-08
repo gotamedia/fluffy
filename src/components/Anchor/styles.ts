@@ -6,15 +6,14 @@ import * as Types from "./types"
 
 const pointerBottomStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor = "white",
     $pointerWidth = 20,
     $pointerHeight = 10,
-    ...rest
+    $backgroundColor = "white",
 }) => $pointer.canExtendBottom && css`
     margin-top: ${$pointerHeight}px;
 
     &::before {
-        border-bottom-color: ${$pointerColor};
+        border-bottom-color: ${$backgroundColor};
         border-width: 0 ${$pointerWidth * 0.5}px ${$pointerHeight}px;
         top: ${-1 * ($pointerWidth - $pointerHeight)}px;
         right: ${$pointer.canExtendLeft && "10px"};
@@ -24,16 +23,15 @@ const pointerBottomStyleFn: Types.AnchorStyleFn = ({
 
 const pointerTopStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor = "white",
     $pointerWidth = 20,
     $pointerHeight = 10,
-    ...rest
+    $backgroundColor = "white"
 }) => $pointer.canExtendTop && css`
     margin-bottom: ${$pointerHeight}px;
 
     &::after {
         border-width: ${$pointerHeight}px ${$pointerWidth * 0.5}px 0;
-        border-top-color: ${$pointerColor};
+        border-top-color: ${$backgroundColor};
         bottom: ${-1 * ($pointerWidth - $pointerHeight)}px;
         right: ${$pointer.canExtendLeft && "10px"};
         left: ${$pointer.canExtendRight && "10px"};
@@ -42,9 +40,7 @@ const pointerTopStyleFn: Types.AnchorStyleFn = ({
 
 const pointerStyleFn: Types.AnchorStyleFn = ({
     $pointer,
-    $pointerColor = "white",
-    theme,
-    ...rest
+    $backgroundColor = "white"
 }) => [
         $pointer.canExtendTop,
         $pointer.canExtendBottom,
@@ -52,9 +48,7 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
         $pointer.canExtendRight
     ].includes(true) && css`
         display: block;
-        background-color: ${$pointerColor};
-        border-radius: ${theme.borders.radius[0]};
-        filter: drop-shadow(${theme.filterShadows[0]});
+        background-color: ${$backgroundColor};
 
         &::before,
         &::after {
@@ -68,23 +62,30 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
         }
 `
 
-const Anchor = styled.div`
-    z-index: 1000;
-    outline: none;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
+const anchorStyleFn: Types.AnchorStyleFn = ({
+    theme,
+    $backgroundColor = "white"
+}) => css`
+        z-index: 1000;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        border: 1px solid ${$backgroundColor};
+        background-color: ${$backgroundColor};
+        border-radius: ${theme.borders.radius[0]};
+        filter: drop-shadow(${theme.filterShadows[0]});
+`
+
+const Anchor = styled.div<Types.AnchorStyledProps>`
+    ${anchorStyleFn}
     ${pointerStyleFn}
     ${pointerTopStyleFn}
     ${pointerBottomStyleFn}
 `
 
-const AnchorWithFocusTrap = styled(FocusTrap)`
-    z-index: 1000;
-    outline: none;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
+const AnchorWithFocusTrap = styled(FocusTrap)<Types.AnchorStyledProps>`
+    ${anchorStyleFn}
     ${pointerStyleFn}
     ${pointerTopStyleFn}
     ${pointerBottomStyleFn}

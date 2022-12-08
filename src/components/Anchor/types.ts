@@ -19,13 +19,13 @@ interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     withFocusTrap?: boolean,
     preventScrollOutside?: boolean
     withPointer?: boolean
-    pointerColor?: string
+    backgroundColor?: string
 }
 
 type AnchorStyledProps = StyledPrefixThemeProps<Pick<AnchorRect, "pointer">> & {
-    $pointerColor?: string
-    $pointerWidth: number
-    $pointerHeight: number
+    $pointerWidth?: number
+    $pointerHeight?: number
+    $backgroundColor?: string
 }
 
 type AnchorStyleFn = StyledInterpolationFunction<AnchorStyledProps>

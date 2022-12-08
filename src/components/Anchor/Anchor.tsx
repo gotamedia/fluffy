@@ -20,7 +20,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         forceDirection,
         withFocusTrap,
         withPointer,
-        pointerColor,
+        backgroundColor,
         preventScrollOutside = true,
         ...DOMProps
     } = props
@@ -59,12 +59,12 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
 
     return (
         <Tag
-            ref={setContentElement}
+             ref={setContentElement}
             {...DOMProps}
             style={styles}
             $pointer={pointer}
-            $pointerColor={pointerColor}
-      >
+            $backgroundColor={backgroundColor}
+        >
           {children}
       </Tag>
   )
