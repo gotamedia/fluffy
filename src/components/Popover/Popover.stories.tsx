@@ -1,4 +1,6 @@
-import React, {
+import {
+    useEffect,
+    useRef,
     useState
 } from 'react'
 
@@ -8,15 +10,36 @@ import Button from '../Button'
 
 import Popover from './index'
 
+import useScrollPosition from '@hooks/useScrollPosition'
+import useDidValueChanged from '@hooks/useDidValueChanged'
+
 import * as Types from './types'
 
-const Template: Story<Types.PopoverProps> = (props) => {
+const Template: Story<Types.PopoverProps> = ({
+    show,
+    withPointer,
+    backgroundColor,
+    preventScrollOutside,
+    ...props
+}) => {
     const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null)
-
     const [showPopover, setShowPopover] = useState(false)
+    const position = useScrollPosition()
+    const valueChanged = useDidValueChanged(
+        showPopover ? position : undefined,
+        (prev: typeof position, curr?: typeof position) => [prev, curr].includes(undefined)
+    )
+
+    const popoverRef = useRef<HTMLDivElement | null>(null)
+
+    useEffect(() => {
+        if (valueChanged) {
+            setShowPopover(false)
+        }
+    }, [valueChanged])
 
     return (
-        <div>
+        <div style={{ height: "150vh", minWidth: "150vw" }}>
             <Button
                 ref={setButtonRef}
                 onClick={() => setShowPopover(current => !current)}
@@ -25,17 +48,20 @@ const Template: Story<Types.PopoverProps> = (props) => {
             </Button>
 
             <Popover
+                ref={popoverRef}
                 {...props}
-                show={showPopover}
+                show={typeof show === "boolean" ? show : showPopover}
                 onClickOutside={() => setShowPopover(false)}
                 anchor={buttonRef}
+                preventScrollOutside={preventScrollOutside}
+                withPointer={withPointer}
+                backgroundColor={backgroundColor}
             >
-                <div style={{
+            <div style={{
                     width: 300,
-                    height: 150,
-                    backgroundColor: 'lightgreen'
+                    height: 150
                 }}>
-                    <p style={{ margin: 0 }}>
+                    <p style={{ color: "white", padding: "0px 15px" }}>
                         {'I am inside a popover'}
                     </p>
                 </div>
@@ -52,5 +78,8 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "tomato",
+        withPointer: true,
+        preventScrollOutside: false
     }
 } as Meta<Types.PopoverComponent>

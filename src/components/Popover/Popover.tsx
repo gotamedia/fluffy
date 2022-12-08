@@ -1,46 +1,46 @@
 import {
     forwardRef,
-    useCallback
+    useCallback,
+    useRef,
+    useImperativeHandle
 } from 'react'
 
 import Portal from '@components/Portal'
 import Anchor from '@components/Anchor'
-import Overlay from '@components/Overlay'
+
+import useOutsideClick from '@hooks/useOutsideClick'
 
 import * as Types from './types'
-import type { MouseEventHandler } from 'react'
 
 const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     const {
         children,
         show,
-        overlayProps,
         onClickOutside,
+        anchor,
         ...filterdProps
     } = props
+    
+    const contentRef = useRef<HTMLDivElement | null>(null)
+    
+    useImperativeHandle(ref, () => contentRef.current as HTMLDivElement)
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
-        if (typeof onClickOutside === 'function') {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
+        if (typeof onClickOutside === 'function' && !anchor?.contains(event.target as Node)) {
             onClickOutside(event)
         }
+    }, [anchor, onClickOutside])
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-    }, [onClickOutside, overlayProps])
+    useOutsideClick(contentRef, handleOnClickOutside)
 
     return (
         show ? (
             <Portal>
-                <Overlay
-                    {...overlayProps}
-                    onClick={handleOnClickOutside}
-                />
-
                 <Anchor
-                    ref={ref}
+                    ref={contentRef}
+                    anchor={anchor}
                     {...filterdProps}
-                >
+                    >
                     {children}
                 </Anchor>
             </Portal>

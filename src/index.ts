@@ -47,6 +47,9 @@ export { default as useDeepCompareEffect } from '@hooks/useDeepCompareEffect'
 export * from '@hooks/useDeepCompareMemoize'
 export { default as useDeepCompareMemoize } from '@hooks/useDeepCompareMemoize'
 
+export * from '@hooks/useDidValueChanged'
+export { default as useDidValueChanged } from '@hooks/useDidValueChanged'
+
 export * from '@hooks/useEventListener'
 export { default as useEventListener } from '@hooks/useEventListener'
 

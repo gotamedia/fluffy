@@ -94,6 +94,7 @@ const theme: DefaultTheme = {
         ]
     },
     borders: {
+        radius: ["2px"],
         teaser: {
             package: {
                 default: { "border-left-width": "4px", "border-right-width": "4px" },
@@ -112,7 +113,8 @@ const theme: DefaultTheme = {
         "-2px 1px 2px rgba(0, 0, 0, 0.08)", // 2
         "0px 2px 15px rgba(0, 0, 0, 0.2)", // 3
         "0px 2px 4px rgba(0, 0, 0, 0.5)" // 4
-    ]
+    ],
+    filterShadows: ["0px 1px 6px rgba(0, 0, 0, 0.2)"]
 }
 
 const getTheme = (): DefaultTheme => theme

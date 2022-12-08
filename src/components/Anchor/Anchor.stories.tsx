@@ -13,7 +13,6 @@ const AnchoredItem = ({ name }) => {
                 width: 200,
                 height: 100,
                 padding: 10,
-                backgroundColor: 'lightcyan'
             }}
         >
             <p>
@@ -74,7 +73,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
             >
                 <AnchoredItem name={'Button 1'}/>
             </Anchor>
-            
+
             <Anchor
                 {...props}
                 style={{ position: 'absolute' }}
@@ -112,7 +111,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
 
 export const Basic = Template.bind({})
 Basic.args = {
-    
+
 }
 
 export default {
@@ -121,6 +120,7 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "#C6DEFF",
         padding: 0,
         offset: {
             x: 0,

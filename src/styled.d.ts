@@ -7,6 +7,7 @@ interface MediaQueries {
 }
 
 interface Borders {
+    radius: string[]
     teaser: Teaser
 }
 
@@ -95,6 +96,7 @@ declare module 'styled-components' {
         borders: Borders,
         breakpoints: string[],
         mediaQueries: MediaQueries,
-        boxShadows: string[]
+        boxShadows: string[],
+        filterShadows: string[]
     }
 }
