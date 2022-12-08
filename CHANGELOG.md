@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.35.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.0..v0.34.0) (2022-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added onScrollOutside/closeOnScrollOutside for Popover, Select, Menu and Dropdown
+
+### Features
+
+* Added onScrollOutside/closeOnScrollOutside for Popover, Select, Menu and Dropdown ([f54a57e](http://bitbucket.org/gotamedia/fluffy/commits/f54a57e2a8e67ea5102426fa97e74075823e1eb7))
+* Implemented useDidValueChanged hook ([16c3855](http://bitbucket.org/gotamedia/fluffy/commits/16c3855c819c8978179f6228758861269a399107))
+
+
+### Bug Fixes
+
+* Scroll on targeted items with keyboard for Select component ([22047f0](http://bitbucket.org/gotamedia/fluffy/commits/22047f06b6b150aaabdf823f730d1988320d2610))
+
 ## [0.34.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.34.0..v0.33.2) (2022-12-05)
 
 
