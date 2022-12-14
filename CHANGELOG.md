@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.1..v0.35.0) (2022-12-14)
+
+
+### Bug Fixes
+
+* Collapsible height transition, prevent animation during window resize and on mount ([af59d37](http://bitbucket.org/gotamedia/fluffy/commits/af59d37bf293a1d11a9dbe6671df24073b8debad))
+
 ## [0.35.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.0..v0.34.0) (2022-12-08)
 
 
