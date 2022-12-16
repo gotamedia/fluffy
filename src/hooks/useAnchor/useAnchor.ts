@@ -10,6 +10,7 @@ import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 import type * as Types from './types'
 
 const CALCULATION_PADDING = 20
+const POINTER_PADDING = 10
 
 const useAnchor: Types.UseAnchor = (props) => {
     const {
@@ -39,8 +40,8 @@ const useAnchor: Types.UseAnchor = (props) => {
         width: viewWidth,
         maxHeight: 10000,
         pointer: {
-            canExtendRight: false,
-            canExtendLeft: false,
+            left: undefined,
+            right: undefined,
             canExtendTop: false,
             canExtendBottom: false
         }
@@ -61,8 +62,8 @@ const useAnchor: Types.UseAnchor = (props) => {
                 width: (anchorRect.width < anchoredRect.width ? anchoredRect.width : anchorRect.width),
                 maxHeight: 10000,
                 pointer: {
-                    canExtendRight: false,
-                    canExtendLeft: false,
+                    left: undefined,
+                    right: undefined,
                     canExtendTop: false,
                     canExtendBottom: false
                 }
@@ -71,19 +72,19 @@ const useAnchor: Types.UseAnchor = (props) => {
             if (anchorRect.left + offsetValue.x + calculatedRect.width <= viewWidth) {
                 // Anchored can extend to the right
                 calculatedRect.left = anchorRect.left + offsetValue.x
-                calculatedRect.pointer.canExtendRight = withPointer && true
+                calculatedRect.pointer.left = 0 + POINTER_PADDING
             } else if (anchorRect.right - calculatedRect.width - offsetValue.x >= CALCULATION_PADDING) {
                 // Anchored can extend to the left
                 calculatedRect.left = anchorRect.right - calculatedRect.width + (-1 * offsetValue.x)
-                calculatedRect.pointer.canExtendLeft = withPointer && true
+                calculatedRect.pointer.right = 0 + POINTER_PADDING
             } else if (viewWidth - calculatedRect.width < 0) {
                 // Anchored is wider than the viewWidth
                 calculatedRect.left = 0
-                calculatedRect.pointer.canExtendLeft = withPointer && true
+                calculatedRect.pointer.left = anchorRect.x - calculatedRect.left
             } else {
                 // Anchored fits only within the viewWidth
                 calculatedRect.left = viewWidth - calculatedRect.width
-                calculatedRect.pointer.canExtendLeft = withPointer && true
+                calculatedRect.pointer.left = anchorRect.x - calculatedRect.left
             }
 
             const startBottom = anchorRect.bottom + offsetValue.y
