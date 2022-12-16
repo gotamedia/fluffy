@@ -6,6 +6,7 @@ import {
 
 import useWindowSize from '@hooks/useWindowSize'
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
+import useMeasure from '@hooks/useMeasure'
 
 import type * as Types from './types'
 
@@ -30,6 +31,7 @@ const useAnchor: Types.UseAnchor = (props) => {
     }
 
     const windowSize = useWindowSize()
+    const { rect: anchoredRect } = useMeasure(anchored)
 
     const viewWidth = windowSize.width - paddingValue
     const viewHeight = windowSize.height - paddingValue
@@ -52,9 +54,8 @@ const useAnchor: Types.UseAnchor = (props) => {
 
         const anchorElement = anchor || document.body
 
-        if (anchored && anchorElement) {
+        if (anchored && anchorElement && anchoredRect?.width) {
             const anchorRect = anchorElement.getBoundingClientRect()
-            const anchoredRect = anchored.getBoundingClientRect()
 
             const calculatedRect = {
                 top: anchorRect.bottom + offsetValue.y,
@@ -110,6 +111,7 @@ const useAnchor: Types.UseAnchor = (props) => {
         return rectData
     }, [
         anchor,
+        anchoredRect,
         anchored,
         forceDirection,
         offsetValue.x,
