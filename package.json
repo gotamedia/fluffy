@@ -1,7 +1,7 @@
 {
   "name": "@gotamedia/fluffy",
   "description": "Fluffy UI",
-  "version": "0.35.1",
+  "version": "0.35.2",
   "private": false,
   "main": "./index.js",
   "module": "./index.js",

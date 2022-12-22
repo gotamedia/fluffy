@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.35.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.2..v0.35.1) (2022-12-22)
+
+
+### Bug Fixes
+
+* Prevent a size increase of Anchor components during window resize ([4c384db](http://bitbucket.org/gotamedia/fluffy/commits/4c384db75ab27722188a67e7aedf5296ce6f599c))
+
 ### [0.35.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.1..v0.35.0) (2022-12-14)
 
 
