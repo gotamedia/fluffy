@@ -17,8 +17,8 @@ const pointerBottomStyleFn: Types.AnchorStyleFn = ({
         border-bottom-color: ${$backgroundColor};
         border-width: 0 ${POINTER_WIDTH * 0.5}px ${POINTER_HEIGHT}px;
         top: ${-1 * (POINTER_WIDTH - POINTER_HEIGHT)}px;
-        right: ${$pointer.canExtendLeft && "10px"};
-        left: ${$pointer.canExtendRight && "10px"};
+        right: ${$pointer.right && $pointer.right + "px"};
+        left: ${$pointer.left && $pointer.left + "px"};
     }
 `
 
@@ -32,8 +32,8 @@ const pointerTopStyleFn: Types.AnchorStyleFn = ({
         border-width: ${POINTER_HEIGHT}px ${POINTER_WIDTH * 0.5}px 0;
         border-top-color: ${$backgroundColor};
         bottom: ${-1 * (POINTER_WIDTH - POINTER_HEIGHT)}px;
-        right: ${$pointer.canExtendLeft && "10px"};
-        left: ${$pointer.canExtendRight && "10px"};
+        right: ${$pointer.right && $pointer.right + "px"};
+        left: ${$pointer.left && $pointer.left + "px"};
     }
 `
 
@@ -42,9 +42,7 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
     $backgroundColor = "white"
 }) => [
         $pointer.canExtendTop,
-        $pointer.canExtendBottom,
-        $pointer.canExtendLeft,
-        $pointer.canExtendRight
+        $pointer.canExtendBottom
     ].includes(true) && css`
         display: block;
         background-color: ${$backgroundColor};

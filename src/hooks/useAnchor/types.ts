@@ -11,8 +11,8 @@ type UseAnchorProps = {
 }
 
 type UseAnchorPointer = {
-    canExtendRight?: boolean,
-    canExtendLeft?: boolean,
+    left?: number,
+    right?: number,
     canExtendTop?: boolean,
     canExtendBottom?: boolean
 }
