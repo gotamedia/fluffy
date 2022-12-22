@@ -39,6 +39,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const styles = {
         ...anchorRect,
         width: anchorRect.width || undefined,
+        opacity: anchorRect.width ? 1 : 0,
         ...style
     }
 
