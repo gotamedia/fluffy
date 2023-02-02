@@ -20,7 +20,6 @@ import { ListItemTypes } from '../ListItem/types'
 import * as Styled from './style'
 import * as Types from './types'
 import type {
-    MouseEventHandler,
     KeyboardEventHandler,
     ReactElement
 } from 'react'
@@ -31,8 +30,8 @@ export const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const {
         children,
         triggerProps,
-        overlayProps,
         onClickOutside,
+        closeOnScrollOutside,
         placeholder,
         listProps,
         selected = [],
@@ -109,17 +108,13 @@ export const Select: Types.SelectComponent = forwardRef((props, ref) => {
         }
     }, [isOpen, listRef])
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function') {
             onClickOutside(event)
         }
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-
         setIsOpen(false)
-    }, [onClickOutside, overlayProps])
+    }, [onClickOutside])
 
     const toggleOpen = useCallback(() => {
         setIsOpen(current => !current)
@@ -210,6 +205,7 @@ export const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
                 listProps={{
                     ...listProps,
                     showFilter: showFilter,

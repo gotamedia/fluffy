@@ -65,6 +65,7 @@ interface MediaQueries {
 }
 
 interface Borders {
+    radius: string[],
     teaser: Teaser
 }
 
@@ -144,6 +145,7 @@ export interface FluffyTheme {
     breakpoints: string[],
     mediaQueries: MediaQueries,
     boxShadows: string[],
+    filterShadows: string[],
     components: {
         Button: ButtonThemeType,
         UploadButton: UploadButtonThemeType,

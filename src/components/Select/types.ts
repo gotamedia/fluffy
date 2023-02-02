@@ -1,6 +1,5 @@
 import {
     ForwardRefExoticComponent,
-    MouseEventHandler,
     RefAttributes
 } from 'react'
 
@@ -10,7 +9,6 @@ import {
 } from '../Button'
 
 import type { ButtonProps } from '../Button'
-import type { OverlayProps } from '../Overlay/types'
 import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
 import type { AnchorProps } from '../Anchor/types'
@@ -31,8 +29,7 @@ export type SelectSizeType = SelectSizesType[keyof SelectSizesType]
 
 export interface SelectProps extends AnchorProps {
     triggerProps?: ButtonProps,
-    overlayProps?: OverlayProps,
-    onClickOutside?: MouseEventHandler<HTMLDivElement>,
+    onClickOutside?: (event: MouseEvent | TouchEvent) => void,
     listProps?: ListProps,
     onSelect?: ListItemProps['onSelect'],
     closeOnSelect?: boolean,
@@ -43,7 +40,8 @@ export interface SelectProps extends AnchorProps {
     variant?: SelectVariantType,
     size?: SelectSizeType,
     disabled?: boolean,
-    showFilter?: boolean
+    showFilter?: boolean,
+    closeOnScrollOutside?: boolean
 }
 
 export type SelectRef = {

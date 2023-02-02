@@ -1,5 +1,3 @@
-import { useCard } from '@components/Card/contexts/CardContext'
-
 import * as Styled from './style'
 import type * as Types from './types'
 
@@ -9,17 +7,8 @@ const CardBody: Types.CardBodyComponent = (props) => {
         ...DOMProps
     } = props
 
-    const {
-        vertical,
-        compact
-    } = useCard()
-
     return (
-        <Styled.Wrapper
-            {...DOMProps}
-            $vertical={vertical}
-            $compact={compact}
-        >
+        <Styled.Wrapper {...DOMProps}>
             {children}
         </Styled.Wrapper>
     )

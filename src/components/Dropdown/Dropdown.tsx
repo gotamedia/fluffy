@@ -14,7 +14,6 @@ import withThemeProps from '@internal/hocs/withThemeProps'
 import * as Styled from './style'
 import * as Types from './types'
 import type {
-    MouseEventHandler,
     KeyboardEventHandler,
     ReactElement
 } from 'react'
@@ -25,7 +24,6 @@ export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         value,
         children,
         triggerProps,
-        overlayProps,
         onClickOutside,
         label,
         listProps,
@@ -33,6 +31,7 @@ export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         variant,
         size,
         disabled,
+        closeOnScrollOutside,
         ...filterdProps
     } = props
 
@@ -47,17 +46,13 @@ export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
         }
     }, [])
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function') {
             onClickOutside(event)
         }
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-
         setIsOpen(false)
-    }, [onClickOutside, overlayProps])
+    }, [onClickOutside])
 
     const toggleOpen = useCallback(() => {
         setIsOpen(current => !current)
@@ -125,6 +120,7 @@ export const Dropdown: Types.DropdownComponent = forwardRef((props, ref) => {
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
+                onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
                 listProps={{
                     ...listProps,
                     onSelect: handleOnSelect,

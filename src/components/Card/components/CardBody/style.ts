@@ -1,24 +1,16 @@
 import styled, { css } from 'styled-components'
 import themeHelpers from '@utils/theme/helpers'
 
-import type { CardProps } from '@components/Card/types'
-
-const verticalStyle = css`
-    padding: 0 10px;
-`
-
-const Wrapper = styled.div<{ $vertical: CardProps['vertical'], $compact: CardProps['compact'] }>`
+const Wrapper = styled.div`
     flex: 1;
     display: flex;
-    padding: 10px 0;
+    padding: 20px;
     flex-direction: column;
+    overflow: hidden;
 
-    ${themeHelpers.isSmallDevice(verticalStyle)};
-    ${({ $vertical }) => $vertical && verticalStyle};
-    
-    ${({ $compact }) => $compact && css`
-        padding: 0 5px;
-    `};
+    ${themeHelpers.isSmallDevice(css`
+        padding: 12px;
+    `)};
 `
 
 export {

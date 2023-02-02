@@ -1,8 +1,4 @@
-import {
-    forwardRef,
-    useState,
-    useEffect
-} from 'react'
+import { forwardRef } from 'react'
 
 import classNames from '@utils/classNames'
 
@@ -10,10 +6,10 @@ import withThemeProps from '@internal/hocs/withThemeProps'
 
 import LazyImage from './components/LazyImage'
 
+import isNativeLazyLoadingSupported from '@utils/isNativeLazyLoadingSupported'
+
 import * as Styled from './style'
 import type * as Types from './types'
-
-let isNativeLazyLoadingSupported: boolean | undefined
 
 export const Image: Types.ImageComponent = forwardRef((props, ref) => {
     const {
@@ -28,15 +24,6 @@ export const Image: Types.ImageComponent = forwardRef((props, ref) => {
         ...filteredProps
     } = props
 
-    const [doesSupportNativeLoading, setDoesSupportNativeLoading] = useState(isNativeLazyLoadingSupported)
-    
-    useEffect(() => {
-        if (typeof isNativeLazyLoadingSupported === 'undefined') {
-            isNativeLazyLoadingSupported = 'loading' in HTMLImageElement.prototype
-            setDoesSupportNativeLoading(isNativeLazyLoadingSupported)
-        }
-    }, [])
-
     const className = classNames({
         'fluffy-image': true,
         [filteredProps.className || '']: true
@@ -49,8 +36,8 @@ export const Image: Types.ImageComponent = forwardRef((props, ref) => {
 
     return (
         lazyLoading ? (
-            useNativeLazyLoading && doesSupportNativeLoading ? (
-                <Styled.Image
+            useNativeLazyLoading && isNativeLazyLoadingSupported ? (
+                <img
                     ref={ref}
                     {...imageProps}
                     loading={'lazy'}

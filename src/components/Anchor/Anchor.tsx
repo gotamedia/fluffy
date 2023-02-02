@@ -1,15 +1,13 @@
 import {
     forwardRef,
-    useState,
-    useImperativeHandle,
-    useEffect
+    useRef,
+    useImperativeHandle
 } from 'react'
 
 import useAnchor from '@hooks/useAnchor'
 
-import FocusTrap from '@components/FocusTrap'
-
 import * as Types from './types'
+import * as Styled from './styles'
 
 const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const {
@@ -20,52 +18,44 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         style,
         forceDirection,
         withFocusTrap,
-        preventScrollOutside = true,
+        withPointer,
+        backgroundColor,
         ...DOMProps
     } = props
 
-    const [contentElement, setContentElement] = useState<HTMLDivElement | null>(null)
+    const contentRef = useRef<HTMLDivElement | null>(null)
 
-    useImperativeHandle(ref, () => contentElement as HTMLDivElement, [contentElement])
+    useImperativeHandle(ref, () => contentRef.current as HTMLDivElement)
 
-    useEffect(() => {
-        if (preventScrollOutside) {
-            document.body.style.overflow = 'hidden'
-        }
-
-        return () => {
-            document.body.style.overflow = ''
-        }
-    }, [preventScrollOutside])
-
-    const anchorRect = useAnchor({
+    const { pointer, ...anchorRect } = useAnchor({
         anchor: anchor,
-        anchored: contentElement,
+        anchored: contentRef.current,
         padding: padding,
         offset: offset,
-        forceDirection: forceDirection
+        forceDirection: forceDirection,
+        withPointer
     })
-    
-    const Content = withFocusTrap ? FocusTrap : 'div'
+
+    const styles = {
+        ...anchorRect,
+        width: anchorRect.width || undefined,
+        opacity: anchorRect.width ? 1 : 0,
+        ...style
+    }
+
+    const Tag = withFocusTrap ? Styled.AnchorWithFocusTrap : Styled.Anchor
 
     return (
-        <Content
-            ref={setContentElement}
+        <Tag
+            ref={contentRef}
             {...DOMProps}
-            style={{
-                ...anchorRect,
-                zIndex: 1000,
-                width: anchorRect.width || undefined,
-                outline: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'fixed',
-                ...style
-            }}
+            style={styles}
+            $pointer={pointer}
+            $backgroundColor={backgroundColor}
         >
-            {children}
-        </Content>
-    )
+          {children}
+      </Tag>
+  )
 })
 
 Anchor.displayName = 'Anchor'

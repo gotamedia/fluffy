@@ -30,12 +30,10 @@ const ListTheme: ListThemeType = {
     style: {
         root: {
             outline: 'none',
-            padding: '5px 0',
-            display: 'flex',
-            flexDirection: 'column'
+            padding: '5px 0'
         },
         inputGroup: {
-            marginBottom: '5px',
+            width: "100%"
 
         },
         input: {

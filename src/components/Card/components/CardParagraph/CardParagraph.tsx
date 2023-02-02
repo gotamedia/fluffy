@@ -4,26 +4,26 @@ import Skeleton from '@components/Skeleton'
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { SkeletonVariantType } from '@components/Skeleton/types'
 
 const CardParagraph: Types.CardParagraphComponent = (props) => {
     const {
-        text,
+        children,
         ...DOMProps
     } = props
 
     const {
-        loading,
-        variant
+        loading
     } = useCard()
 
     return (
         <Styled.Paragraph {...DOMProps}>
             {
                 loading ? (
-                    <Skeleton variant={variant as SkeletonVariantType}/>
+                    <Skeleton
+                        rowHeight={14}
+                    />
                 ) : (
-                    text
+                    children
                 )
             }
         </Styled.Paragraph>

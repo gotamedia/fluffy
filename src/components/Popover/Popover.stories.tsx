@@ -1,4 +1,5 @@
 import {
+    useRef,
     useState
 } from 'react'
 
@@ -11,13 +12,19 @@ import { Popover as Component } from './Popover'
 
 import * as Types from './types'
 
-const Template: Story<Types.PopoverProps> = (props) => {
+const Template: Story<Types.PopoverProps> = ({
+    show,
+    withPointer,
+    backgroundColor,
+    ...props
+}) => {
     const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null)
-
     const [showPopover, setShowPopover] = useState(false)
 
+    const popoverRef = useRef<HTMLDivElement | null>(null)
+
     return (
-        <div>
+        <div style={{ height: "150vh", minWidth: "150vw" }}>
             <Button
                 ref={setButtonRef}
                 onClick={() => setShowPopover(current => !current)}
@@ -26,17 +33,22 @@ const Template: Story<Types.PopoverProps> = (props) => {
             </Button>
 
             <Popover
+                ref={popoverRef}
                 {...props}
-                show={showPopover}
+                show={typeof show === "boolean" ? show : showPopover}
                 onClickOutside={() => setShowPopover(false)}
                 anchor={buttonRef}
+                withPointer={withPointer}
+                backgroundColor={backgroundColor}
+                onScrollOutside={() => setShowPopover(false)}
             >
-                <div style={{
-                    width: 300,
-                    height: 150,
-                    backgroundColor: 'lightgreen'
-                }}>
-                    <p style={{ margin: 0 }}>
+                <div
+                    style={{
+                        width: 300,
+                        height: 150
+                    }}
+                >
+                    <p style={{ color: "white", padding: "0px 15px" }}>
                         {'I am inside a popover'}
                     </p>
                 </div>
@@ -53,5 +65,7 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "tomato",
+        withPointer: true
     }
 } as Meta<Types.PopoverComponent>

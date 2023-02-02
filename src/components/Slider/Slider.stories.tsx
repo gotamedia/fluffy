@@ -192,8 +192,39 @@ const Full: Story<Types.SliderProps> = (props) => {
 const FullStory = Full.bind({})
 FullStory.storyName = 'Full'
 
+
+const Bullets: Story<Types.SliderProps> = (props) => {
+    const [index, setIndex] = useState(0)
+
+    return (
+        <div>
+            <Slider
+                {...props}
+                style={{ width: 800, height: 500 }}
+                index={index}
+                onChange={(newIndex) => setIndex(newIndex)}
+            >
+                <Slider.Slides>
+                    {[...new Array(5)].map((i, idx) => {
+                        return (
+                            <div key={idx} style={style}>
+                                {`Slide ${idx + 1} - index: ${idx}`}
+                            </div>
+                        )
+                    })}
+                </Slider.Slides>
+                <Slider.Bullets />
+            </Slider>
+        </div>
+    )
+}
+
+const BulletsStory = Bullets.bind({})
+BulletsStory.storyName = "Bullets"
+
 export {
     BasicStory,
+    BulletsStory,
     WithNavigationStory,
     WithFullscreenStory,
     WithSlidesCountStory,

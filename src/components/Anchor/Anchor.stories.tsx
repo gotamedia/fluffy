@@ -6,14 +6,13 @@ import Anchor from './index'
 
 import * as Types from './types'
 
-const AnchoredItem = ({ name }) => {
+const AnchoredItem = ({ name }: { name: string }) => {
     return (
         <div
             style={{
                 width: 200,
                 height: 100,
                 padding: 10,
-                backgroundColor: 'lightcyan'
             }}
         >
             <p>
@@ -74,7 +73,7 @@ const Template: Story<Types.AnchorProps> = (props) => {
             >
                 <AnchoredItem name={'Button 1'}/>
             </Anchor>
-            
+
             <Anchor
                 {...props}
                 style={{ position: 'absolute' }}
@@ -121,6 +120,7 @@ export default {
     argTypes: {
     },
     args: {
+        backgroundColor : "#C6DEFF",
         padding: 0,
         offset: {
             x: 0,

@@ -7,7 +7,6 @@ import type { PopoverProps } from './types'
 export type PopoverThemeType = ComponentTheme<{
     defaultProps: Partial<PopoverProps>,
     style: {
-        overlay: ThemeStyleItem,
         root: ThemeStyleItem
     }
 }>
@@ -17,7 +16,6 @@ const PopoverTheme: PopoverThemeType = {
 
     },
     style: {
-        overlay: {},
         root: {}
     }
 }

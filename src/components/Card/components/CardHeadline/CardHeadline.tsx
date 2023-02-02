@@ -4,34 +4,22 @@ import Skeleton from '@components/Skeleton'
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { SkeletonVariantType } from '@components/Skeleton/types'
 
 const CardHeadline: Types.CardHeadlineComponent = (props) => {
     const {
-        text,
+        children,
         ...DOMProps
     } = props
 
-    const {
-        loading,
-        variant,
-        compact
-    } = useCard()
+    const { loading } = useCard()
 
     return (
-        <Styled.Headline
-            {...DOMProps}
-            $compact={compact}
-        >
+        <Styled.Headline {...DOMProps}>
             {
                 loading ? (
-                    <Skeleton
-                        variant={variant as SkeletonVariantType}
-                        rows={2}
-                        rowHeight={37}
-                    />
+                    <Skeleton rowHeight={18} />
                 ) : (
-                    text
+                    children
                 )
             }
         </Styled.Headline>

@@ -14,14 +14,18 @@ import classNames from '@utils/classNames'
 
 import withThemeProps from '@internal/hocs/withThemeProps'
 
+import Portal from '@components/Portal'
 import useMeasure from '@hooks/useMeasure'
 
 import { SliderContext } from './contexts/SliderContext'
 
 import * as Styled from './style'
+import {
+    SliderVariants,
+    SliderDirections
+} from './types'
 import type * as Types from './types'
 import type { KeyboardEventHandler } from 'react'
-import Portal from '../Portal'
 
 export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
     const {
@@ -32,8 +36,8 @@ export const Slider: Types.SliderComponent = forwardRef((props, ref) => {
         onPrevious,
         onKeyDown,
         onFullscreenChange,
-        direction,
-        variant,
+        direction = SliderDirections.Horizontal,
+        variant = SliderVariants.Primary,
         fullscreenClassName,
         className,
         ...filteredProps

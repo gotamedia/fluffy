@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useDidValueChanged'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+A react hook that returns a boolean if the parameter value has changed.  
+Under the hood, it utilizes the usePreviousPersistent hook to track the previous value.  
+Optionally, you can pass a second parameter, a callback function that accepts two parameter for the previous and current value.
+
+## Usage
+```tsx
+import useDidValueChanged from "@gotamedia/fluffy/useDidValueChanged"
+
+const Component = ({ value, conditions }) => {
+    const hasValueChange = useDidValueChanged(value)
+
+    const myComparisonFunc = (previous, current) => previous.includes(current[0])
+    const hasConditionsChange = useDidValueChanged(conditions, myComparisonFunc)
+}
+```

@@ -8,7 +8,6 @@ export type MenuThemeType = ComponentTheme<{
     defaultProps: Partial<MenuProps>
     style: {
         root: ThemeStyleItem,
-        container: ThemeStyleItem,
         list: ThemeStyleItem
     }
 }>
@@ -19,10 +18,12 @@ const MenuTheme: MenuThemeType = {
     },
     style: {
         root: {},
-        container: {
-            overflow: 'auto'
-        },
-        list: {}
+        list: ({ theme }) => ({
+            overflow: 'auto',
+            boxShadow: theme.boxShadows[3],
+            borderRadius: '5px',
+            backdropColor: 'white'
+        })
     }
 }
 

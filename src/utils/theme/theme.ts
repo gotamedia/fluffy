@@ -124,6 +124,7 @@ let theme: FluffyTheme = {
         ]
     },
     borders: {
+        radius: ["2px"],
         teaser: {
             package: {
                 default: { "border-left-width": "4px", "border-right-width": "4px" },
@@ -177,7 +178,8 @@ let theme: FluffyTheme = {
         Video: VideoTheme,
         Slider: SliderTheme,
         ImageGallery: ImageGalleryTheme
-    }
+    },
+    filterShadows: ["0px 1px 6px rgba(0, 0, 0, 0.2)"]
 }
 
 const createTheme = (themeObject: FluffyTheme): FluffyTheme => {

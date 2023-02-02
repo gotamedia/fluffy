@@ -17,15 +17,13 @@ import MenuContext from './contexts/MenuContext'
 import * as Styled from './style'
 import * as Types from './types'
 import type { ListRef } from '../List'
-import type { MouseEventHandler } from 'react'
 
 export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
     const {
         children,
         show,
         anchor,
-        shouldFocusOnClose,
-        overlayProps,
+        shouldFocusOnClose = true,
         onClickOutside,
         listProps,
         ...filterdProps
@@ -67,15 +65,12 @@ export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
         }
     }, [listProps])
 
-    const handleOnClickOutside = useCallback<MouseEventHandler<HTMLDivElement>>(event => {
+    const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
         if (typeof onClickOutside === 'function') {
             onClickOutside(event)
         }
 
-        if (typeof overlayProps?.onClick === 'function') {
-            overlayProps.onClick(event)
-        }
-    }, [onClickOutside, overlayProps])
+    }, [onClickOutside])
 
     const handleAddActiveSubMenu = useCallback((id: string) => {
         setActiveSubMenus(current => [
@@ -116,17 +111,14 @@ export const Menu: Types.MenuComponent = forwardRef((props, ref) => {
                 className={className}
                 show={show}
                 anchor={anchor}
-                overlayProps={overlayProps}
                 onClickOutside={handleOnClickOutside}
             >
-                <Styled.Container>
-                    <Styled.List
-                        ref={handleListRef}
-                        {...listProps}
-                    >
-                        {children}
-                    </Styled.List>
-                </Styled.Container>
+                <Styled.List
+                    ref={handleListRef}
+                    {...listProps}
+                >
+                    {children}
+                </Styled.List>
             </Styled.Popover>
         </MenuContext.Provider>
     )

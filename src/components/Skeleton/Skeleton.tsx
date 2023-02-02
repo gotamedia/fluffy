@@ -8,7 +8,8 @@ const Skeleton: Types.SkeletonComponent = (props) => {
         rows,
         variant = 'light',
         rowHeight = 22,
-        rtl = false
+        rtl = false,
+        ...filteredProps
     } = props
 
     const elementsRef = useLazyRef(() => {
@@ -22,6 +23,7 @@ const Skeleton: Types.SkeletonComponent = (props) => {
                         key={`skeleton-${i}`}
                         $rtl={rtl}
                         $minHeight={rowHeight}
+                        {...filteredProps}
                     />
                 )
             }
@@ -32,6 +34,7 @@ const Skeleton: Types.SkeletonComponent = (props) => {
                     key={'skeleton'}
                     $rtl={rtl}
                     $minHeight={rowHeight}
+                    {...filteredProps}
                 />
             )
         }

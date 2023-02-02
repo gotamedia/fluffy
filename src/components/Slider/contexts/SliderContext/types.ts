@@ -6,8 +6,8 @@ import type {
 
 export type SliderContext = {
     index: number,
-    direction?: SliderDirectionType,
-    variant?: SliderVariantType,
+    direction: SliderDirectionType,
+    variant: SliderVariantType,
     wrapperElement: HTMLDivElement | null,
     wrapperRect: UseMeasureRect,
     slidesLength: number,

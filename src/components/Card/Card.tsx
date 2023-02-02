@@ -5,32 +5,18 @@ import type * as Types from './types'
 
 const Card: Types.CardComponent = (props) => {
     const {
-        size = 'normal',
-        variant = 'light',
         loading = false,
-        vertical = false,
-        compact = false,
         children,
         ...DOMProps
     } = props
 
     const context = {
-        size: size,
-        variant: variant,
-        loading: loading,
-        vertical: vertical,
-        compact: compact
+        loading: loading
     }
 
     return (
         <CardContext.Provider value={context}>
-            <Styled.Wrapper
-                {...DOMProps}
-                $size={size}
-                $variant={variant}
-                $vertical={vertical}
-                $compact={compact}
-            >
+            <Styled.Wrapper {...DOMProps}>
                 {children}
             </Styled.Wrapper>
         </CardContext.Provider>

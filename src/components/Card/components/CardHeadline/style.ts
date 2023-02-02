@@ -1,16 +1,21 @@
 import styled, { css } from 'styled-components'
+import themeHelpers from '@utils/theme/helpers'
 
-import type { CardProps } from '@components/Card/types'
-
-const Headline = styled.p<{ $compact: CardProps['compact'] }>`
+const Headline = styled.p`
     font-weight: 700;
-    margin: 8px;
-    font-size: 30px;
-    white-space: pre-line;
+    font-size: 20px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 0 0 16px 0;
 
-    ${({ $compact }) => $compact && css`
-        margin: 5px 8px;
-    `};
+    ${themeHelpers.isSmallDevice(css`
+        display: -webkit-box !important;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+    `)};
 `
 
 export {

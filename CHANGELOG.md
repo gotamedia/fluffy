@@ -2,6 +2,47 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.35.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.0..v0.34.0) (2022-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Added onScrollOutside/closeOnScrollOutside for Popover, Select, Menu and Dropdown
+
+### Features
+
+* Added onScrollOutside/closeOnScrollOutside for Popover, Select, Menu and Dropdown ([f54a57e](http://bitbucket.org/gotamedia/fluffy/commits/f54a57e2a8e67ea5102426fa97e74075823e1eb7))
+* Implemented useDidValueChanged hook ([16c3855](http://bitbucket.org/gotamedia/fluffy/commits/16c3855c819c8978179f6228758861269a399107))
+
+
+### Bug Fixes
+
+* Scroll on targeted items with keyboard for Select component ([22047f0](http://bitbucket.org/gotamedia/fluffy/commits/22047f06b6b150aaabdf823f730d1988320d2610))
+
+## [0.34.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.34.0..v0.33.2) (2022-12-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactored Card component
+
+### Features
+
+* Init useEventListener ([76d578f](http://bitbucket.org/gotamedia/fluffy/commits/76d578f2c5c6f4a54bbf106473f7c1951087502f))
+* Init useOutsideClick ([fd06ef7](http://bitbucket.org/gotamedia/fluffy/commits/fd06ef77726c9d8d3d00b2bd26d2c31471381c41))
+* Init useScrollPosition ([ec689dd](http://bitbucket.org/gotamedia/fluffy/commits/ec689dde7733dfde86cb7d604196183e03e98f48))
+* Refactored Card component ([1cccca8](http://bitbucket.org/gotamedia/fluffy/commits/1cccca84266ce3b34fe66a657785587de1762955))
+* Slider Bullet component ([cfa3fee](http://bitbucket.org/gotamedia/fluffy/commits/cfa3fee19174ca4f39f2cba67241d27ccf27a2ea))
+* Slider Bullets component ([ff8e1ce](http://bitbucket.org/gotamedia/fluffy/commits/ff8e1cef8682542a39f3a805cea328f66e78eea1))
+
+### [0.33.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.2..v0.33.1) (2022-11-14)
+
+
+### Bug Fixes
+
+* Preventing passing down Button's variant to it's children ([764fd55](http://bitbucket.org/gotamedia/fluffy/commits/764fd550a18018f317b743950ccb5dfaaec58a5d))
+* Renamed Slider/ImageGallery sub component from "Navigator" to "Navigation" ([040a2a5](http://bitbucket.org/gotamedia/fluffy/commits/040a2a509947d45cb0d4e3ff9babb7d352410bfe))
+
 ### [0.33.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.33.1..v0.33.0) (2022-11-08)
 
 
