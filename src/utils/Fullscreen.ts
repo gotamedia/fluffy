@@ -99,14 +99,14 @@ class Fullscreen {
 
     isSupported(): boolean {
         let isSupported = false
-
+    
         const _doc = window.document as ExtendedDocument
 
         for (const callbackName of METHODS.SUPPORTED) {
             //@ts-ignore
             if (_doc[callbackName]) {
                 //@ts-ignore
-                 isSupported = _doc[callbackName]
+                 isSupported = typeof _doc[callbackName] === 'boolean' ? _doc[callbackName] : _doc[callbackName]?.()
                  break
             }
         }
