@@ -75,6 +75,34 @@ const outline = css`
     }
 `
 
+const outlineTransparent = css`
+    color: ${({ theme }) => theme.colors.grey[0]};
+    background-color: transparent;
+    border-radius: 2px;
+    &:hover {
+        &:not(:disabled) {
+            background-color: ${({ theme }) => tint(0.82, theme.colors.grey[0])};
+        }
+    }
+
+    &:active {
+        &:not(:disabled) {
+            background-color: ${({ theme }) => tint(0.87, theme.colors.grey[0])};
+        }
+    }
+
+    ${sharedStyle.focus};
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.colors.grey[0]};
+
+    ${sharedStyle.disabled};
+
+    &:disabled {
+        background-color: transparent;
+        border-color: #8A8A8D;
+    }
+`
+
 const text = css`
     padding: 0;
     color: ${({ theme }) => theme.colors.brand};
@@ -98,6 +126,7 @@ const variants = {
     primary,
     secondary,
     outline,
+    outlineTransparent,
     text
 }
 

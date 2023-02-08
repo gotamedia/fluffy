@@ -1,3 +1,4 @@
+import { SliderSizeType } from './../../types';
 import type { UseMeasureRect } from '@hooks/useMeasure/types'
 import type {
     SliderDirectionType,
@@ -8,6 +9,11 @@ export type SliderContext = {
     index: number,
     direction: SliderDirectionType,
     variant: SliderVariantType,
+    size: SliderSizeType,
+    loop?: boolean,
+    shouldAutoPlay?: boolean,
+    dynamicBullets?: boolean,
+    autoWidth?: boolean,
     wrapperElement: HTMLDivElement | null,
     wrapperRect: UseMeasureRect,
     slidesLength: number,

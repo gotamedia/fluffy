@@ -205,7 +205,7 @@ const Bullets: Story<Types.SliderProps> = (props) => {
                 onChange={(newIndex) => setIndex(newIndex)}
             >
                 <Slider.Slides>
-                    {[...new Array(5)].map((i, idx) => {
+                    {[...new Array(10)].map((i, idx) => {
                         return (
                             <div key={idx} style={style}>
                                 {`Slide ${idx + 1} - index: ${idx}`}
@@ -213,7 +213,7 @@ const Bullets: Story<Types.SliderProps> = (props) => {
                         )
                     })}
                 </Slider.Slides>
-                <Slider.Bullets />
+                <Slider.SliderBullets />
             </Slider>
         </div>
     )

@@ -10,6 +10,22 @@ const secondary = css`
     ${buttonVariants.secondary};
 `
 
+const secondaryDark = css`
+    ${buttonVariants.secondary};
+    color: ${({ theme }) => theme.colors.grey[0]};
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.colors.grey[0]};
+`
+
+const contrast = css`
+    ${secondaryDark};
+    background-color: #fff;
+    &:focus {
+        box-shadow: none;
+    }
+
+`
+
 const outline = css`
    ${buttonVariants.outline};
 `
@@ -17,7 +33,9 @@ const outline = css`
 const variants = {
     primary,
     secondary,
-    outline
+    secondaryDark,
+    outline,
+    contrast
 }
 
 export default variants

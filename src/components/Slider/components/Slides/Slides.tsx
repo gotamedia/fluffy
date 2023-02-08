@@ -5,7 +5,7 @@ import {
 } from 'react'
 
 import SwipeableViews from 'react-swipeable-views'
-import { virtualize } from 'react-swipeable-views-utils'
+import { autoPlay, virtualize } from 'react-swipeable-views-utils'
 import { mod } from 'react-swipeable-views-core'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
@@ -17,19 +17,24 @@ import { SliderDirections } from '../../types'
 import * as Styled from './style'
 import type * as Types from './types'
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews)
+const VirtualizeSwipeableViews = autoPlay(virtualize(SwipeableViews))
 
 const Slides: Types.SlidesComponent = (props) => {
     const {
         children,
         className,
-        slideProps
+        slideProps,
+        duration = 2000
     } = props
     
     const {
         index,
         direction,
+        shouldAutoPlay,
+        autoWidth,
+        slidesLength,
         wrapperRect,
+        loop,
         onChange,
         setSlidesLength,
         getSlideByIndex,
@@ -51,13 +56,18 @@ const Slides: Types.SlidesComponent = (props) => {
 
         return (
             <Styled.SlideWrapper
+                autoWidth={autoWidth}
                 key={key}
                 {...slideProps}
             >
                 {slides[slideIndex]}
             </Styled.SlideWrapper>
         )
-    }, [slides, slideProps])
+    }, [
+        slides,
+        autoWidth,
+        slideProps
+    ])
 
     const containerStyle = {
         width: '100%',
@@ -69,24 +79,29 @@ const Slides: Types.SlidesComponent = (props) => {
     }
 
     return (
-        <VirtualizeSwipeableViews
-            className={className}
-            ref={setSliderInstance}
-            resistance
-            enableMouseEvents
-            index={getSlideByIndex(index)}
-            onChangeIndex={onChange}
-            slideRenderer={slideRenderer}
-            slideStyle={{
-                display: 'flex',
-                height: wrapperRect.height || '100%'
-            }}
-            containerStyle={containerStyle}
-            style={{ width: '100%' }}
-            axis={direction === SliderDirections.Vertical ? 'y' : 'x'}
-            overscanSlideAfter={5}
-            overscanSlideBefore={5}
-        />
+        slidesLength > 0 ? (
+            <VirtualizeSwipeableViews
+                className={className}
+                ref={setSliderInstance}
+                resistance
+                slideCount={!loop ? slidesLength : undefined}
+                interval={duration}
+                autoplay={shouldAutoPlay}
+                enableMouseEvents
+                index={getSlideByIndex(index)}
+                onChangeIndex={onChange}
+                slideRenderer={slideRenderer}
+                slideStyle={{
+                    display: 'flex',
+                    height: wrapperRect.height || '100%'
+                }}
+                containerStyle={containerStyle}
+                style={{ width: '100%' }}
+                axis={direction === SliderDirections.Vertical ? 'y' : 'x'}
+                overscanSlideAfter={5}
+                overscanSlideBefore={5}
+            />
+        ) : null
     )
 }
 

@@ -19,13 +19,23 @@ const verticalDirection: Types.BulletsStyleFn = ({ $direction }) =>
         transform: translateY(-50%);
     `
 
+const dynamic: Types.BulletsStyleFn = ({$dynamicBullets}) => 
+    $dynamicBullets === true && 
+    css`
+        position:absolute;
+        max-width: 80px;
+        overflow: hidden;
+    `
+
 const Wrapper = styled.div`
     display: flex;
-    grid-gap: 4px;
+    /* grid-gap: 4px; */
     position: absolute;
     z-index: 10;
+    text-align: center;
     ${horizontalDirection}
     ${verticalDirection}
+    ${dynamic}
 `
 
 export { Wrapper }
