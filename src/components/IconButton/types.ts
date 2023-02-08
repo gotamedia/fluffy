@@ -9,7 +9,8 @@ import { IconType } from '../Icon/types'
 export const IconButtonVariants = {
     Primary: 'primary' as const,
     Secondary: 'secondary' as const,
-    Outline: 'outline' as const
+    Outline: 'outline' as const,
+    Contrast: 'contrast' as const
 }
 
 

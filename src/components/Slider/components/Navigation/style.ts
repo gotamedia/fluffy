@@ -6,7 +6,8 @@ import IconButton, {
 
 import { Icons } from '@components/Icon'
 
-import { SliderDirections } from '../../types'
+import { SliderDirections, SliderProps } from '../../types'
+import sizes from './sizes'
 
 import type { SliderDirectionType } from '../../types'
 
@@ -23,8 +24,9 @@ const LeftArrow = styled(IconButton).attrs(({ $direction }: any ) => {
         ),
         shape: IconButtonShapes.Circle
     }
-})<{ $direction: SliderDirectionType }>`
+})<{ $direction: SliderDirectionType, $size?:  SliderProps["size"]}>`
     position: absolute;
+    ${({ $size }) => $size ? sizes[$size] : "normal"};
 
     ${({ $direction }) => {
         if ($direction === SliderDirections.Horizontal) {
@@ -52,8 +54,9 @@ const RightArrow = styled(IconButton).attrs(({ $direction }: any ) => {
         ),
         shape: IconButtonShapes.Circle
     }
-})<{ $direction: SliderDirectionType }>`
+})<{ $direction: SliderDirectionType, $size?:  SliderProps["size"] }>`
     position: absolute;
+    ${({ $size }) => $size ? sizes[$size] : "normal"};
     
     ${({ $direction }) => {
         if ($direction === SliderDirections.Horizontal) {

@@ -1,19 +1,12 @@
-import { SliderDirectionType } from "@root/components/Slider/types"
-import type { StyledInterpolationFunction } from "@root/types/interpolationFunction"
-import type { ForwardRefExoticComponent, RefAttributes } from "react"
-import { BulletSizes } from "./constants"
+import type { ForwardRefExoticComponent, RefAttributes } from "react";
 
-type BulletsProps = {
+type SliderBulletsProps = {
     className?: string
-    clickable?: boolean
-    size?: BulletSizes
 }
 
-type BulletsComponent = ForwardRefExoticComponent<BulletsProps & RefAttributes<HTMLDivElement>>
-type BulletsStyleFn = StyledInterpolationFunction<{ $direction: SliderDirectionType }>
+type SliderBulletsComponent = ForwardRefExoticComponent<SliderBulletsProps & RefAttributes<HTMLDivElement>>
 
 export type {
-    BulletsProps,
-    BulletsComponent,
-    BulletsStyleFn
-}
+    SliderBulletsComponent
+};
+

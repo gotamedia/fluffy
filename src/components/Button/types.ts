@@ -9,6 +9,7 @@ export const ButtonVariants = {
     Primary: 'primary' as const,
     Secondary: 'secondary' as const,
     Outline: 'outline' as const,
+    OutlineTransparent: 'outlineTransparent' as const,
     Text: 'text' as const
 }
 
