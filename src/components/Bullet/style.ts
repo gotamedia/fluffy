@@ -24,11 +24,11 @@ const active: Types.BulletStyleFn = ({ active, theme }) =>
 
 
 
-const disabled: Types.BulletStyleFn = ({ disabled, theme }) =>
+const disabled: Types.BulletStyleFn = ({ disabled, active, theme }) =>
     css`
-        cursor: auto;
-        opacity: ${disabled ? 1 : "0.2"};
-        background: ${disabled ? theme.colors.grey[4] : "#000"};
+        cursor: ${disabled ? "auto" : "pointer"};
+        opacity: ${disabled || active ? 1 : "0.2"};
+        background: ${disabled ? theme.colors.grey[4] : active ? theme.colors.brand : "#000"};
     `
 
 const dynamic: Types.BulletStyleFn = ({left, top, isDynamic, active, prevBullet, nextBullet}) => 
