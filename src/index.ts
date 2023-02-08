@@ -109,6 +109,9 @@ export { default as Alert } from '@components/Alert'
 export * from '@components/Button'
 export { default as Button } from '@components/Button'
 
+export * from '@components/Bullets'
+export { default as Bullets } from '@components/Bullets'
+
 export * from '@components/IconButton'
 export { default as IconButton } from '@components/IconButton'
 
