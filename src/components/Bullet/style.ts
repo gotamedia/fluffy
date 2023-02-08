@@ -1,3 +1,4 @@
+import { SliderDirectionType } from './../Slider/types';
 import { SliderDirections } from "@root/components/Slider/types"
 import styled, { css } from "styled-components"
 
@@ -14,8 +15,6 @@ const rawButton = css`
 `
 
 
-
-
 const active: Types.BulletStyleFn = ({ active, theme }) =>
     css`
         cursor: pointer;
@@ -23,13 +22,21 @@ const active: Types.BulletStyleFn = ({ active, theme }) =>
         background: ${active ? theme.colors.brand : "#000"};
     `
 
-const dynamic: Types.BulletStyleFn = ({left, top, isDynamic,  active, prevBullet, nextBullet}) => 
+
+
+const disabled: Types.BulletStyleFn = ({ disabled, theme }) =>
+    css`
+        cursor: auto;
+        opacity: ${disabled ? 1 : "0.2"};
+        background: ${disabled ? theme.colors.grey[4] : "#000"};
+    `
+
+const dynamic: Types.BulletStyleFn = ({left, top, isDynamic, active, prevBullet, nextBullet}) => 
     isDynamic === true && 
     css`
         position: relative;
         left: ${left}px;
         top: ${top}px;
-        transition: .2s transform,.2s left;
         transform: ${active ? "scale(1)" : prevBullet || nextBullet ? "scale(.85)" : "scale(.60)"};
     `
 
@@ -41,9 +48,12 @@ const Bullet = styled.button<Types.BulletStyledProps>`
     border-radius: 50%;
     min-width: 8px;
     min-height: 8px;
+    transition: ${({ direction }) => direction === SliderDirections.Horizontal ? ".2s transform,.2s left" : ".2s transform,.2s top"};
     margin: ${({ direction }) => direction === SliderDirections.Horizontal ? "0 4px" : "4px 0"};
     ${active}
     ${dynamic}
+    ${disabled}
+
 `
 
 const BulletContainer = styled.div`

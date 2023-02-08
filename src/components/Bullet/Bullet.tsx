@@ -11,6 +11,7 @@ const Bullet: Types.BulletComponent = ({
     onBulletClick, 
     index,
     dynamicBullets,
+    disabled,
     direction = SliderDirections.Horizontal,
     ...rest
 }) => {
@@ -23,6 +24,7 @@ const Bullet: Types.BulletComponent = ({
 
     return (
         <Styled.Bullet
+            disabled={disabled}
             direction={direction}
             prevBullet={index === activeIndex-1}
             nextBullet={index === activeIndex+1}

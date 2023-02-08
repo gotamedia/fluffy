@@ -26,7 +26,6 @@ const LeftArrow = styled(IconButton).attrs(({ $direction }: any ) => {
     }
 })<{ $direction: SliderDirectionType, $size?:  SliderProps["size"]}>`
     position: absolute;
-    background-color: #fff;
     ${({ $size }) => $size ? sizes[$size] : "normal"};
 
     ${({ $direction }) => {
@@ -57,7 +56,6 @@ const RightArrow = styled(IconButton).attrs(({ $direction }: any ) => {
     }
 })<{ $direction: SliderDirectionType, $size?:  SliderProps["size"] }>`
     position: absolute;
-    background-color: #fff;
     ${({ $size }) => $size ? sizes[$size] : "normal"};
     
     ${({ $direction }) => {

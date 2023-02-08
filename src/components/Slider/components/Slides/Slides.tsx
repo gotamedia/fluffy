@@ -24,13 +24,13 @@ const Slides: Types.SlidesComponent = (props) => {
         children,
         className,
         slideProps,
-        duration = 2000
     } = props
     
     const {
         index,
         direction,
         shouldAutoPlay,
+        duration,
         autoWidth,
         slidesLength,
         wrapperRect,

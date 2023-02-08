@@ -9,14 +9,12 @@ import type { SlidesComponent } from './components/Slides/types'
 import type { NavigationComponent } from './components/Navigation/types'
 import type { FullscreenComponent } from './components/Fullscreen/types'
 import type { SlidesCountComponent } from './components/SlidesCount/types'
-import type { BulletsComponent } from './components/Bullets'
 import { SliderBulletsComponent } from './components/Bullets/types'
 
 export const SliderVariants = {
     Primary: 'primary' as const,
     Secondary: 'secondary' as const,
     Outline: 'outline' as const,
-    SecondaryDark: 'secondaryDark' as const,
     Contrast: 'contrast' as const,
 }
 
@@ -55,6 +53,7 @@ export interface SliderProps extends Omit<HTMLAttributes<HTMLDivElement>, 'onCha
     size?: SliderSizeType,
     loop?: boolean,
     shouldAutoPlay?: boolean,
+    duration?: number,
     dynamicBullets?: boolean,
     fullscreenClassName?: string,
     onFullscreenChange?: (isFullscreen: boolean) => void

@@ -12,6 +12,7 @@ const Bullets: Types.BulletsComponent = forwardRef((props, ref) => {
         dynamicBullets = false,
         activeIndex = 0,
         onBulletClick,
+        disabled = false,
         ...filteredProps
     } = props
 
@@ -40,6 +41,7 @@ const Bullets: Types.BulletsComponent = forwardRef((props, ref) => {
                             active={activeIndex === index}
                             direction={direction}
                             activeIndex={activeIndex}
+                            disabled={disabled}
                             onBulletClick={() => activeIndex !== index && onBulletClick ? onBulletClick(index) : null}
                         />
                     )

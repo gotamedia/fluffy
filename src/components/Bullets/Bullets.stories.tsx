@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import Bullets from './index'
 
-import type * as Types from './types'
-import type { Story, Meta } from '@storybook/react'
-import type { ChangeEventHandler } from 'react'
+import type { Meta, Story } from '@storybook/react'
 import { SliderDirections } from '../Slider/types'
+import type * as Types from './types'
 
 const Basic: Story<Types.BulletsProps> = (props) => {
 
@@ -15,7 +14,7 @@ const Basic: Story<Types.BulletsProps> = (props) => {
         className = "",
         direction = SliderDirections.Horizontal,
         dynamicBullets = false,
-        disabled = false,
+        disabled,
     } = props
 
     const [actve, setActive] = useState(0)
@@ -29,6 +28,7 @@ const Basic: Story<Types.BulletsProps> = (props) => {
                 count={count}
                 dynamicBullets={dynamicBullets}
                 activeIndex={actve}
+                disabled={disabled}
                 onBulletClick={!disabled ? setActive : undefined}
             />
         </div>

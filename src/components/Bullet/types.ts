@@ -5,6 +5,7 @@ import type { FC } from 'react';
 interface BulletProps {
     ariaLabel: string
     active: boolean
+    disabled: boolean
     index: number
     dynamicBullets?: boolean
     direction?: SliderDirectionType
@@ -19,6 +20,7 @@ export type BulletStyledProps = {
     isDynamic?: boolean,
     left?: number,
     top?: number,
+    disabled?: boolean,
     direction: SliderDirectionType
 }
 

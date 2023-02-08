@@ -12,6 +12,7 @@ export type SliderContext = {
     size: SliderSizeType,
     loop?: boolean,
     shouldAutoPlay?: boolean,
+    duration?: number,
     dynamicBullets?: boolean,
     autoWidth?: boolean,
     wrapperElement: HTMLDivElement | null,
