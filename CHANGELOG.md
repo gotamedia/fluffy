@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.36.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.0..v0.35.3) (2023-02-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* introduced bullet component, added functionality to swipers such as duration, autoplay, dynamic bullets
+
+### Features
+
+* introduced bullet component, added functionality to swipers such as duration, autoplay, dynamic bullets ([8f1c5e9](http://bitbucket.org/gotamedia/fluffy/commits/8f1c5e930420d1d25c094cf6e067502686899c5c))
+
+
+### Bug Fixes
+
+* Fullscreen API inside Iframe ([b98af7b](http://bitbucket.org/gotamedia/fluffy/commits/b98af7b91e14c705ed77188c4706020a5a8dc8c3))
+
 ### [0.35.3](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.3..v0.35.2) (2022-12-27)
 
 ### [0.35.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.35.2..v0.35.1) (2022-12-22)
