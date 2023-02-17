@@ -13,7 +13,6 @@ const secondary = css`
 const contrast = css`
     ${buttonVariants.outlineTransparent};
     background-color: #fff;
-    border-radius: 50%;
     &:focus {
         box-shadow: none;
     }
