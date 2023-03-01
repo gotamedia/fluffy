@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.36.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.1..v0.36.0) (2023-03-01)
+
+
+### Bug Fixes
+
+* fixing disabled state for button variant contrast ([9beb4af](http://bitbucket.org/gotamedia/fluffy/commits/9beb4af463a547edc940fcfc24be4c76845ed4de))
+* making more bullets visible from start ([aecc4bf](http://bitbucket.org/gotamedia/fluffy/commits/aecc4bfd1c9fea212f99891be7bd7408a408ba90))
+
 ## [0.36.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.0..v0.35.3) (2023-02-08)
 
 
