@@ -78,7 +78,6 @@ const outline = css`
 const outlineTransparent = css`
     color: ${({ theme }) => theme.colors.grey[0]};
     background-color: transparent;
-    border-radius: 2px;
     &:hover {
         &:not(:disabled) {
             background-color: ${({ theme }) => tint(0.82, theme.colors.grey[0])};
