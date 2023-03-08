@@ -18,7 +18,8 @@ const contrast = css`
     }
 
     &:disabled {
-        background-color: #fff;
+        background-color: ${({ theme }) => theme.colors.grey[4]};
+        border-color: ${({ theme }) => theme.colors.grey[4]};
     }
 
 `
