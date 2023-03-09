@@ -20,7 +20,7 @@ const Bullet: Types.BulletComponent = ({
         onBulletClick(activeIndex)
     }, [activeIndex, onBulletClick])
 
-    const initnumber = 16;
+    const initnumber = 48;
 
     return (
         <Styled.Bullet
