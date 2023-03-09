@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.36.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.2..v0.36.1) (2023-03-09)
+
+
+### Bug Fixes
+
+* changeing border color on normal state as well ([1d28b24](http://bitbucket.org/gotamedia/fluffy/commits/1d28b24dfd2a4511c768a3bac03d337421f67b13))
+* fixing disabled state colors on contrast ([e91b0a5](http://bitbucket.org/gotamedia/fluffy/commits/e91b0a514e20b7d32b0ec7295364d7c2be0a45a6))
+* fixing dynamix bullets ([160c6c0](http://bitbucket.org/gotamedia/fluffy/commits/160c6c079d40be2715ab6922071163b21feddb8d))
+
 ### [0.36.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.1..v0.36.0) (2023-03-01)
 
 
