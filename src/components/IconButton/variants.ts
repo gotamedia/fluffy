@@ -13,12 +13,14 @@ const secondary = css`
 const contrast = css`
     ${buttonVariants.outlineTransparent};
     background-color: #fff;
+    border-color: ${({ theme }) => theme.colors.grey[4]};
     &:focus {
         box-shadow: none;
     }
 
     &:disabled {
-        background-color: #fff;
+        background-color: ${({ theme }) => theme.colors.grey[4]};
+        border-color: ${({ theme }) => theme.colors.grey[4]};
     }
 
 `
