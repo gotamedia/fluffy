@@ -10,10 +10,13 @@ import type { ChangeEventHandler } from 'react'
 const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
         size = 'normal',
+        variant = 'primary',
+        variantType = 'default',
         label,
         onChange,
         onValueChange,
         disabled,
+        indeterminate = false,
         ...DOMProps
     } = props
 
@@ -30,11 +33,14 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     return (
         <Styled.Wrapper>
             <Styled.Checkbox
+                {...DOMProps}
                 ref={ref}
                 $size={size}
+                $variant={variant}
+                $variantType={variantType}
                 disabled={disabled}
                 onChange={handleOnChange}
-                {...DOMProps}
+                data-indeterminate={indeterminate}
                 type={'checkbox'}
             />
 
