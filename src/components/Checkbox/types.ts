@@ -37,12 +37,12 @@ export const CheckboxSizes = {
     Huge: 'huge' as const
 }
 
-export type CheckboxSizeType = typeof CheckboxSizes[keyof typeof CheckboxSizes]
+export type CheckboxSize = typeof CheckboxSizes[keyof typeof CheckboxSizes]
 
 type NativeCheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
 
 export interface CheckboxProps extends NativeCheckboxProps {
-    size?: CheckboxSizeType,
+    size?: CheckboxSize,
     variant?: CheckboxVariant,
     variantType?: CheckboxVariantType,
     state?: CheckboxState,

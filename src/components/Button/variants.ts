@@ -9,7 +9,7 @@ const sharedStyle = {
     disabled: css`
         &:disabled {
             color: #8A8A8D;
-            background-color: #DADAD8;
+            background-color: #B3B2B1;
         }
     `,
     focus: css`

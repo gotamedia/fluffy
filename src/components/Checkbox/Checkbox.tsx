@@ -3,16 +3,23 @@ import {
     useCallback
 } from 'react'
 
+import {
+    CheckboxSizes,
+    CheckboxStates,
+    CheckboxVariants,
+    CheckboxVariantTypes
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
 const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
-        variantType = 'default',
-        state = 'default',
+        size = CheckboxSizes.Normal,
+        variant = CheckboxVariants.Primary,
+        variantType = CheckboxVariantTypes.Default,
+        state = CheckboxStates.Default,
         label,
         onChange,
         onValueChange,

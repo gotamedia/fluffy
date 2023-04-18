@@ -3,17 +3,26 @@ import {
     useCallback
 } from 'react'
 
+import {
+    InputVariants,
+    InputVariantTypes,
+    InputSizes,
+    InputStates
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
 const Input: Types.InputComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size = InputSizes.Normal,
+        variant = InputVariants.Primary,
+        variantType = InputVariantTypes.Default,
+        state = InputStates.Default,
+        label,
         onChange,
         onValueChange,
-        label,
         ...DOMProps
     } = props
 
@@ -43,6 +52,8 @@ const Input: Types.InputComponent = forwardRef((props, ref) => {
                 ref={ref}
                 $size={size}
                 $variant={variant}
+                $variantType={variantType}
+                $state={state}
                 onChange={handleOnChange}
                 {...DOMProps}
             />

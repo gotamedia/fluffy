@@ -36,6 +36,10 @@ const baseCheckboxStyle = css`
         position: absolute;
         background-color: white;
     }
+`
+
+const Checkbox = styled.input<Types.StyledCheckboxProps>`
+    ${baseCheckboxStyle};
 
     &[data-indeterminate="false"] {
         &:before {
@@ -57,14 +61,6 @@ const baseCheckboxStyle = css`
         }
     }
 
-    &:focus {
-        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
-    }
-`
-
-const Checkbox = styled.input<Types.StyledCheckboxProps>`
-    ${baseCheckboxStyle};
-
     &:hover {
         background-color: #F5F5F5;
 
@@ -75,6 +71,10 @@ const Checkbox = styled.input<Types.StyledCheckboxProps>`
         &:after {
             background-color: #F5F5F5;
         }
+    }
+
+    &:focus {
+        box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
     }
 
     ${({ $size }) => sizes[$size || 'normal']};

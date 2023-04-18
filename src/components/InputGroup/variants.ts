@@ -1,33 +1,19 @@
 import { css } from 'styled-components'
 
-const primary = css`
+import { InputVariantTypes } from '../Input/types'
+import type { InputVariantType } from '../Input/types'
 
-`
-
-const secondary = css`
-    .input-group {
-        &__element {
-            &.input-group {
-                &--left {
-                    border-right: 1px solid currentColor;
-                }
-
-                &--right {
-                    border-left: 1px solid currentColor;
-                }
-            }
-        }
+const primary = ($variantType?: InputVariantType) => {
+    switch ($variantType) {
+        case InputVariantTypes.Default:
+            return css`
+                
+            `
     }
-`
-
-const outline = css`
-
-`
+}
 
 const variants = {
-    primary,
-    secondary,
-    outline
+    primary
 }
 
 export default variants
