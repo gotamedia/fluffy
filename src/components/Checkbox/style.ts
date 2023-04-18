@@ -2,11 +2,10 @@ import styled, { css } from 'styled-components'
 
 import sizes from './sizes'
 import variants from './variants'
-import variantTypes from './variantTypes'
+import states from './states'
 import checkedShapes from './checkedShapes'
 
-import type { CheckboxProps } from './types'
-import type { Prefix } from '@root/types/prefix'
+import type * as Types from './types'
 
 const Wrapper = styled.label`
     display: inline-flex;
@@ -21,6 +20,7 @@ const baseCheckboxStyle = css`
     border-radius: 4px;
     display: flex;
     position: relative;
+    outline: none;
     background-color: white;
 
     &:before {
@@ -62,33 +62,61 @@ const baseCheckboxStyle = css`
     }
 `
 
-const Checkbox = styled.input<Prefix<Pick<CheckboxProps, 'size' | 'variant' | 'variantType'>, '$'>>`
+const Checkbox = styled.input<Types.StyledCheckboxProps>`
     ${baseCheckboxStyle};
 
+    &:hover {
+        background-color: #F5F5F5;
+
+        &:before {
+            background-color: #F5F5F5;
+        }
+
+        &:after {
+            background-color: #F5F5F5;
+        }
+    }
+
     ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
-    ${({ $variantType }) => variantTypes[$variantType || 'default']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
+    ${({ $state }) => states[$state || 'default'].checkbox};
+
+    &:checked {
+        &:disabled {
+            border-color: #B3B2B1;
+            background-color: #DADAD8;
+            
+            &:before {
+                background-color: #B3B2B1;
+            }
+
+            &:after {
+                background-color: #B3B2B1;
+            }
+        }
+    }
 
     &:disabled {
-        color: #B3B2B1;
         border-color: #B3B2B1;
         background-color: #DADAD8;
         
         &:before {
-            background-color: #B3B2B1;
+            background-color: #DADAD8;
         }
 
         &:after {
-            background-color: #B3B2B1;
+            background-color: #DADAD8;
         }
     }
 `
 
-const Text = styled.span<{ $disabled?: boolean }>`
+const Text = styled.span<{ $disabled?: boolean, $state: Types.CheckboxState }>`
     padding-left: 8px;
     margin: auto 0;
 
-    ${({  $disabled }) =>  $disabled && css`
+    ${({ $state }) => states[$state || 'default'].label};
+
+    ${({ $disabled }) => $disabled && css`
         color: #B3B2B1;
     `}
 `

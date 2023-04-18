@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import Checkbox, {
     CheckboxSizes,
+    CheckboxStates,
     CheckboxVariants,
     CheckboxVariantTypes
 } from './index'
@@ -42,8 +43,9 @@ export default {
         checked: true,
         disabled: false,
         indeterminate: false,
-        size: CheckboxSizes.Normal,
         variant: CheckboxVariants.Primary,
-        variantType: CheckboxVariantTypes.Default
+        variantType: CheckboxVariantTypes.Default,
+        size: CheckboxSizes.Normal,
+        state: CheckboxStates.Default
     }
 } as Meta<typeof Checkbox>

@@ -12,6 +12,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         size = 'normal',
         variant = 'primary',
         variantType = 'default',
+        state = 'default',
         label,
         onChange,
         onValueChange,
@@ -38,6 +39,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
                 $size={size}
                 $variant={variant}
                 $variantType={variantType}
+                $state={state}
                 disabled={disabled}
                 onChange={handleOnChange}
                 data-indeterminate={indeterminate}
@@ -46,7 +48,10 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
 
             {
                 label ? (
-                    <Styled.Text $disabled={disabled}>
+                    <Styled.Text
+                        $state={state}
+                        $disabled={disabled}
+                    >
                         {label}
                     </Styled.Text>
                 ) : (
