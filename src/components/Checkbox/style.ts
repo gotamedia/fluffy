@@ -7,7 +7,7 @@ import checkedShapes from './checkedShapes'
 
 import type * as Types from './types'
 
-const Wrapper = styled.label`
+const Wrapper = styled.div`
     display: inline-flex;
 `
 

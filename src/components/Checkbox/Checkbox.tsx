@@ -18,6 +18,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         onValueChange,
         disabled,
         indeterminate = false,
+        className,
         ...DOMProps
     } = props
 
@@ -32,7 +33,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     }, [onChange, onValueChange])
 
     return (
-        <Styled.Wrapper>
+        <Styled.Wrapper className={className}>
             <Styled.Checkbox
                 {...DOMProps}
                 ref={ref}
