@@ -62,6 +62,6 @@ export type StyledCheckboxProps = Prefix<
     '$'
 >
 
-export type CheckboxRef = HTMLInputElement
+export type CheckboxRef = HTMLInputElement | null
 
 export type CheckboxComponent = ForwardRefExoticComponent<CheckboxProps & RefAttributes<CheckboxRef>>

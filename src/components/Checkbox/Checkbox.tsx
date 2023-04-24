@@ -1,5 +1,7 @@
 import {
+    useRef,
     forwardRef,
+    useImperativeHandle,
     useCallback
 } from 'react'
 
@@ -12,7 +14,10 @@ import {
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { ChangeEventHandler } from 'react'
+import type {
+    ChangeEventHandler,
+    MouseEventHandler
+} from 'react'
 
 const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
@@ -21,13 +26,20 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         variantType = CheckboxVariantTypes.Default,
         state = CheckboxStates.Default,
         label,
+        className,
+        disabled,
+        checked = false,
+        indeterminate = false,
         onChange,
         onValueChange,
-        disabled,
-        indeterminate = false,
-        className,
         ...DOMProps
     } = props
+
+    const checkboxRef = useRef<HTMLInputElement>(null)
+
+    useImperativeHandle(ref, () => {
+        return checkboxRef.current as HTMLInputElement
+    }, [])
 
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         if (typeof onChange === 'function') {
@@ -39,16 +51,23 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const handleOnLabelClick: MouseEventHandler<HTMLInputElement> = useCallback(() => {
+        if (!disabled && checkboxRef?.current) {
+            checkboxRef.current.click()
+        }
+    }, [disabled])
+
     return (
         <Styled.Wrapper className={className}>
             <Styled.Checkbox
                 {...DOMProps}
-                ref={ref}
+                ref={checkboxRef}
                 $size={size}
                 $variant={variant}
                 $variantType={variantType}
                 $state={state}
                 disabled={disabled}
+                checked={checked || indeterminate}
                 onChange={handleOnChange}
                 data-indeterminate={indeterminate}
                 type={'checkbox'}
@@ -59,6 +78,7 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
                     <Styled.Text
                         $state={state}
                         $disabled={disabled}
+                        onClick={handleOnLabelClick}
                     >
                         {label}
                     </Styled.Text>
