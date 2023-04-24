@@ -1,6 +1,7 @@
+import styled from "styled-components"
+
 import { StyledHintProps } from "@components/Hint/types"
 import * as Variants from "@components/Hint/variants"
-import styled from "styled-components"
 
 const Wrapper = styled.div<StyledHintProps>`
     font-size: 12px;

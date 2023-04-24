@@ -61,7 +61,7 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
 
 const anchorStyleFn: Types.AnchorStyleFn = ({
     theme,
-    $backgroundColor = "white"
+    $backgroundColor = "transparent"
 }) => css`
         z-index: 1000;
         outline: none;

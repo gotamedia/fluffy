@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Button from './'
-import Icon, { Icons, IconType } from '../Icon'
+import IcomComponent, { Icons, Icon } from '../Icon'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -32,18 +32,18 @@ const Wrapper = styled.div`
 
 const WithIcon: Story<Types.ButtonProps & {
     text: string,
-    icon: IconType,
+    icon: Icon,
 }> = ({text, icon, ...props}) => {
     return (
         <Wrapper>
             <Button {...props}>
-                <Icon icon={icon} />
+                <IcomComponent icon={icon} />
                 {text}
             </Button>
 
             <Button {...props}>
                 {text}
-                <Icon icon={icon} />
+                <IcomComponent icon={icon} />
             </Button>
         </Wrapper>
     )

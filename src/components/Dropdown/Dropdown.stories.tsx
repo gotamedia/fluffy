@@ -42,9 +42,7 @@ const Basic: Story<Types.DropdownProps> = (props) => {
 export const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 BasicStory.args = {
-    listProps: {
-        border: 'full'
-    }
+    
 }
 
 const Select: Story<Types.DropdownProps> = (props) => {
@@ -81,7 +79,6 @@ export const SelectStory = Select.bind({})
 SelectStory.storyName = 'Marked selected'
 SelectStory.args = {
     listProps: {
-        border: 'full',
         type: 'select'
     }
 }

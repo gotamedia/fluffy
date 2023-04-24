@@ -8,8 +8,7 @@ import IconNames from './iconNames'
 
 export const Icons = IconNames
 
-export type IconsType = typeof Icons
-export type IconType = IconsType[keyof IconsType]
+export type Icon = typeof Icons[keyof typeof Icons]
 
 export const IconSizes = {
     Micro: 'micro' as const,
@@ -33,7 +32,7 @@ export type IconVariantsType = typeof IconVariants
 export type IconVariantType = IconVariantsType[keyof IconVariantsType]
 
 export type IconProps = Omit<ComponentProps<'svg'>, 'onClick'> & {
-    icon: IconType,
+    icon: Icon,
     variant?: IconVariantType,
     spin?: boolean,
     size?: IconSizeType,

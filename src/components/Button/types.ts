@@ -5,6 +5,8 @@ import type {
     ReactNode
 } from 'react'
 
+import type { Prefix } from '@root/types/prefix'
+
 export const ButtonVariants = {
     Primary: 'primary' as const,
     Secondary: 'secondary' as const,
@@ -13,8 +15,17 @@ export const ButtonVariants = {
     Text: 'text' as const
 }
 
-export type ButtonVariantsType = typeof ButtonVariants
-export type ButtonVariantType = ButtonVariantsType[keyof ButtonVariantsType]
+export type ButtonVariant = typeof ButtonVariants[keyof typeof ButtonVariants]
+
+export const ButtonVariantTypes = {
+    Default: 'default' as const,
+    Contrast: 'contrast' as const,
+    HighContrast: 'high-contrast' as const,
+    Generic: 'generic' as const,
+    Link: 'link' as const
+}
+
+export type ButtonVariantType = typeof ButtonVariantTypes[keyof typeof ButtonVariantTypes]
 
 export const ButtonSizes = {
     Tiny: 'tiny' as const,
@@ -24,16 +35,26 @@ export const ButtonSizes = {
     Huge: 'huge' as const
 }
 
-export type ButtonSizesType = typeof ButtonSizes
-export type ButtonSizeType = ButtonSizesType[keyof ButtonSizesType]
+export type ButtonSize = typeof ButtonSizes[keyof typeof ButtonSizes]
 
 type NativeButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>
 
 export interface ButtonProps extends NativeButtonProps {
     children?: ReactNode,
-    size?: ButtonSizeType,
-    variant?: ButtonVariantType
+    size?: ButtonSize,
+    variant?: ButtonVariant
+    variantType?: ButtonVariantType
 }
+
+export type StyledCheckboxProps = Prefix<
+    Pick<
+    ButtonProps,
+        'size' |
+        'variant' |
+        'variantType'
+    >,
+    '$'
+>
 
 export type ButtonRef = HTMLButtonElement
 

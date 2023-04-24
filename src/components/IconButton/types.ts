@@ -4,7 +4,7 @@ import type {
     RefAttributes
 } from 'react'
 
-import { IconType } from '../Icon/types'
+import { Icon } from '../Icon/types'
 
 export const IconButtonVariants = {
     Primary: 'primary' as const,
@@ -39,7 +39,7 @@ export type IconButtonSizeType = IconButtonSizesType[keyof IconButtonSizesType]
 type NativeButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>
 
 export interface IconButtonProps extends NativeButtonProps {
-    icon: IconType,
+    icon: Icon,
     size?: IconButtonSizeType,
     variant?: IconButtonVariantType,
     shape?: IconButtonShapeType

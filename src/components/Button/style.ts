@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import sizes from './sizes'
 import variants from './variants'
 
-import type { ButtonProps } from './types'
+import type * as Types from './types'
 
 export const baseButtonStyle = css`
     display: inline-flex;
@@ -23,10 +23,10 @@ export const baseButtonStyle = css`
     box-sizing: border-box;
 `
 
-const Button = styled.button<{ $size?: ButtonProps['size'], $variant?: ButtonProps['variant'] }>`
+const Button = styled.button<Types.StyledCheckboxProps>`
     ${baseButtonStyle};
     ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
 
     .fluffy-icon {
         margin-top: auto;

@@ -10,7 +10,7 @@ import * as Styled from './style'
 import type * as Types from './types'
 import type { FC } from 'react'
 
-const getIcon = (icon: Types.IconType, variant: Types.IconVariantType) => {
+const getIcon = (icon: Types.Icon, variant: Types.IconVariantType) => {
     let iconComponent = null
 
     switch (variant) {

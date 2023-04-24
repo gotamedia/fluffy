@@ -4,7 +4,7 @@ import {
     RefAttributes
 } from 'react'
 
-import { IconType } from "@components/Icon"
+import { Icon } from "@components/Icon"
 
 import {
     Content,
@@ -28,7 +28,7 @@ export type AlertRef = {
 export type AlertProps = {
     className?: string,
     defaultDisplay?: boolean,
-    icon?: IconType,
+    icon?: Icon,
     cloasable?: boolean,
     onClose?: () => void,
     variant?: AlertVariantType,
