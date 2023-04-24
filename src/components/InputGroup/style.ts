@@ -28,7 +28,6 @@ const Wrapper = styled.div<StyledWrapperProps>`
 
     .input-group {
         &__icon {
-            pointer-events: none;
             z-index: 1;
             position: absolute;
             top: 50%;

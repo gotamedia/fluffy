@@ -15,14 +15,14 @@ const baseInputStyle = css`
     white-space: nowrap;
     outline: none;
     width: 100%;
-    line-height: 1.2;
-    font-weight: normal;
     padding: 11px 8px;
     box-sizing: border-box;
     border-radius: 2px;
     border-width: 1px;
     border-style: solid;
     border-color: #DADAD8;
+    font-weight: 400;
+    line-height: 18px;
 `
 
 const Input = styled.input<Types.StyledInputProps>`
@@ -33,6 +33,7 @@ const Input = styled.input<Types.StyledInputProps>`
     }
 
     &:focus {
+        background-color: #F5F5F5;
         box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
     }
 

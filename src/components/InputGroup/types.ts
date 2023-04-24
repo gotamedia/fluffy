@@ -14,7 +14,8 @@ type CustomInputProps = Pick<
     'variant' |
     'variantType' |
     'state' |
-    'disabled'
+    'disabled' |
+    'style'
 >
 
 export interface InputGroupProps extends CustomInputProps {
