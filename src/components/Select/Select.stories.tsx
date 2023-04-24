@@ -1,41 +1,60 @@
-import React, {
+import {
     useState,
     useCallback
 } from 'react'
 
 import { Story, Meta } from '@storybook/react'
 
-import Select from './index'
-import ListItem from '../ListItem'
+import Select, {
+    SelectTypes,
+    SelectStates
+} from './index'
+import ListItem from '@components/ListItem'
 
-import * as Types from './types'
+import type * as Types from './types'
+
+const BASIC_ITEMS = ['Rock', 'Paper', 'Scissor', 'Fluffy'].map(i => {
+    return {
+        id: i,
+        text: i,
+        label: i,
+        selected: false
+    }
+})
+
+const NESTED_ITEMS = [...new Array(5)].map((i, mainIndex) => {
+    return {
+        id: `main-item-${mainIndex + 1}`,
+        text: `Option / ${mainIndex + 1}`,
+        label: `Option / ${mainIndex + 1}`,
+        selected: false,
+        nested: [...new Array(5)]
+            .map((k, nestedIndex) => {
+                return {
+                    parentId: `main-item-${mainIndex + 1}`,
+                    id: `nested-item-${nestedIndex + 1}`,
+                    text: `Nested / ${mainIndex +1} - ${nestedIndex + 1}`,
+                    label: `Nested / ${mainIndex +1} - ${nestedIndex + 1}`,
+                    subText: `Nested / ${mainIndex +1} - ${nestedIndex + 1}`,
+                    selected: false
+                }
+            })
+    }
+})
 
 const Basic: Story<Types.SelectProps> = (props) => {
-    const [selectedValues, setSelectedValues] = useState<any[]>([])
+    const [items, setItmes] = useState(BASIC_ITEMS)
 
-    const handleOnSelect = useCallback((item: any) => {
-        setSelectedValues(current => {
-            if (current.map(i => i.id).includes(item.id)) {
-                return current.filter(i => i.id !== item.id)
-            } else {
-                if (props.isMultiSelect) {
-                    return [
-                        ...current,
-                        item
-                    ]
-                } else {
-                    return [item]
-                }
-            }
-        })
-    }, [props.isMultiSelect])
+    const handleOnSelect = useCallback((updatedItems: any) => {
+        setItmes(updatedItems)
+    }, [])
 
     return (
         <div>
             <Select
                 {...props}
-                selected={selectedValues}
-                onSelect={handleOnSelect}
+                items={items}
+                onChange={handleOnSelect}
             >
                 {
                     ['Rock', 'Paper', 'Scissor', 'Fluffy'].map((i, idx) => {
@@ -57,6 +76,24 @@ const Basic: Story<Types.SelectProps> = (props) => {
     )
 }
 
+const BasicNested: Story<Types.SelectProps> = (props) => {
+    const [items, setItmes] = useState([...NESTED_ITEMS])
+
+    const handleOnChange = useCallback((selectedItems: any[]) => {
+        setItmes(selectedItems)
+    }, [])
+
+    return (
+        <div>
+            <Select
+                {...props}
+                items={items}
+                onChange={handleOnChange}
+            />
+        </div>
+    )
+}
+
 export const BasicStory = Basic.bind({})
 BasicStory.storyName = 'Basic'
 BasicStory.args = {
@@ -66,24 +103,53 @@ BasicStory.args = {
 export const MultiSelectStory = Basic.bind({})
 MultiSelectStory.storyName = 'Multi select'
 MultiSelectStory.args = {
+    width: 200,
     isMultiSelect: true,
-    width: 250
+    type: SelectTypes.Select
 }
 
 export const FilterSelectStory = Basic.bind({})
 FilterSelectStory.storyName = 'With filter'
 FilterSelectStory.args = {
+    width: 200,
+    showFilter: true,
     isMultiSelect: true,
-    width: 250,
-    showFilter: true
+    type: SelectTypes.Select
+}
+
+export const FooterSelectStory = Basic.bind({})
+FooterSelectStory.storyName = 'With Footer'
+FooterSelectStory.args = {
+    width: 200,
+    isMultiSelect: true,
+    showResetButton: true,
+    showApplyButton: true,
+    type: SelectTypes.Select,
+    resetButtonLabel: 'Rensa filter',
+    applyButtonLabel: 'Applicera'
+}
+
+export const BasicNestedStory = BasicNested.bind({})
+BasicNestedStory.storyName = 'Nested items'
+BasicNestedStory.args = {
+    isMultiSelect: true,
+    showResetButton: true,
+    showApplyButton: true,
+    type: SelectTypes.Checkbox
 }
 
 export default {
-    title: 'Developments/Components/Select',
+    title: 'Components/Select',
     component: Select,
     argTypes: {
     },
     args: {
-        placeholder: 'Play'
+        placeholder: 'Play',
+        type: SelectTypes.Normal,
+        state: SelectStates.Default,
+        disabled: false,
+        showFilter: false,
+        showResetButton: false,
+        showApplyButton: false
     }
 } as Meta<Types.SelectComponent>

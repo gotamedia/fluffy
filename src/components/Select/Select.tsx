@@ -4,42 +4,46 @@ import {
     useState,
     useImperativeHandle,
     useEffect,
-    useCallback,
-    Children,
-    cloneElement
+    useCallback
 } from 'react'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
-import Menu from '../Menu'
+import {
+    ButtonSizes,
+    ButtonVariants,
+    ButtonVariantTypes
+} from '@components//Button'
 
-import { ListItemTypes } from '../ListItem/types'
+import SelectTrigger from './components/SelectTrigger'
+import { SelectTypes } from './types'
 
 import * as Styled from './style'
-import * as Types from './types'
-import type {
-    KeyboardEventHandler,
-    ReactElement
-} from 'react'
-import type { ListItemProps } from '../ListItem/types'
+import type * as Types from './types'
+import type { KeyboardEventHandler } from 'react'
 
-// TODO: Add "close/clear" buttons below the list?
+
 const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const {
-        children,
         triggerProps,
         onClickOutside,
         closeOnScrollOutside,
         placeholder,
         listProps,
-        selected = [],
-        onSelect,
+        items = [],
+        onChange,
+        onApply,
+        onReset,
         width,
         minWidth,
+        type = SelectTypes.Select,
         closeOnSelect = false,
         isMultiSelect = false,
-        variant,
-        size,
+        showResetButton = false,
+        showApplyButton = false,
+        resetButtonLabel = 'Reset',
+        applyButtonLabel = 'Apply',
+        state,
         disabled,
         showFilter,
         ...filterdProps
@@ -49,7 +53,8 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const shouldfocusTrigger = useRef(false)
     const initiatedRef = useRef(false)
 
-    const [triggerRef, setTriggerRef] = useState<HTMLButtonElement | null>(null)
+    const [label, setLabel] = useState(placeholder)
+    const [triggerRef, setTriggerRef] = useState<HTMLElement | null>(null)
     const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
     const [triggerWidth, setTriggerWidth] = useState<Types.SelectProps['width']>(width)
 
@@ -67,11 +72,11 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
             if (listRef && triggerWidth === undefined ) {
                 const listRect = listRef.getBoundingClientRect()
 
-                setTriggerWidth(listRect.width)
+                setTriggerWidth(listRect.width + 38)
                 setIsOpen(false)
 
-                shouldfocusTrigger.current = true
                 initiatedRef.current = true
+                shouldfocusTrigger.current = true
             }
         } else {
             initiatedRef.current = true
@@ -83,6 +88,28 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         listRef,
         triggerWidth
     ])
+
+    useEffect(() => {
+        const selectedLabels: string[] = []
+
+        items.forEach((i) => {
+            if (i.selected && !i.indeterminate && i.label) {
+                selectedLabels.push(i.label)
+            } else {
+                i?.nested?.forEach((k) => {
+                    if (k.selected && k.label) {
+                        selectedLabels.push(k.label)
+                    }
+                })
+            }
+        })
+
+        if (selectedLabels.length) {
+            setLabel(selectedLabels.join(', '))
+        } else {
+            setLabel(placeholder)
+        }
+    }, [items, placeholder])
 
     useEffect(() => {
         if (shouldfocusTrigger.current) {
@@ -135,92 +162,225 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         }
     }, [isOpen, listProps])
 
-    const handleOnSelect = useCallback((item: any) => {
-        if (typeof onSelect === 'function') {
-            onSelect(item)
+    const handleOnChange = useCallback((items: Types.SelectItem[]) => {
+        if (typeof onChange === 'function') {
+            onChange(items)
         }
 
         if (!isMultiSelect || closeOnSelect) {
             setIsOpen(false)
         }
-    }, [
-        onSelect,
-        isMultiSelect,
-        closeOnSelect
-    ])
+    }, [closeOnSelect, isMultiSelect, onChange])
 
-    const hasSelectedItems = selected.length > 0
+    const handleOnMainSelect = useCallback((selectedItem: Types.SelectItem) => {
+        const updatedItmes = items.map(i => {
+            if (i.id === selectedItem.id) {
+                const isNextSelected = Array.isArray(i.nested) && i.nested.length ? (
+                    i.nested.every((i) => i.selected) ? false : true
+                ) : (
+                    !i.selected
+                )
 
-    const label = hasSelectedItems ? (
-        selected
-            .map(i => i.label)
-            .filter(i => i)
-            .join(', ')
-    ) : (
-        placeholder
-    )
+                return {
+                    ...i,
+                    selected: isNextSelected,
+                    indeterminate: false,
+                    nested: i?.nested?.map((k) => {
+                        return {
+                            ...k,
+                            selected: isNextSelected
+                        }
+                    })
+                }
+            } else {
+                if (isMultiSelect) {
+                    return i
+                } else {
+                    return {
+                        ...i,
+                        selected: false
+                    }
+                }
+            }
+        })
+
+        handleOnChange(updatedItmes)
+    }, [handleOnChange, items, isMultiSelect])
+
+    const handleOnNestedSelect = useCallback((selectedItem: Types.BaseNestedSelectItem) => {
+        const updatedItems = items.map(i => {
+            if (i.id === selectedItem.parentId) {                    
+                const nextNested = i?.nested?.map((k) => {
+                    if (k.id === selectedItem.id) {
+                        return {
+                            ...k,
+                            selected: k.selected ? false : true
+                        }
+                    } else {
+                        return k
+                    }
+                }) || []
+
+                return {
+                    ...i,
+                    selected: nextNested.every((j) => j.selected),
+                    indeterminate: !nextNested.every((j) => j.selected) && nextNested.some((j) => j.selected),
+                    nested: nextNested
+                }
+            } else {
+                return i
+            }
+        })
+
+        handleOnChange(updatedItems)
+    }, [handleOnChange, items])
+
+    const handleOnApply = useCallback(() => {
+        if (typeof onApply === 'function') {
+            onApply()
+        }
+
+        setIsOpen(false)
+    }, [onApply])
+
+    const handleOnReset = useCallback(() => {
+        const updatedItmes = items.map(item => {
+            return {
+                ...item,
+                selected: false,
+                indeterminate: false,
+                nested: Array.isArray(item.nested) ? (
+                    item.nested.map((nestedItem) => {
+                        return {
+                            ...nestedItem,
+                            selected: false
+                        }
+                    })
+                ) : (
+                    item.nested
+                )
+            }
+        })
+
+        handleOnChange(updatedItmes)
+
+        if (typeof onReset === 'function') {
+            onReset()
+        }
+    }, [handleOnChange, items, onReset])
+
+    const withFooter = showResetButton || showApplyButton
 
     return (
         <>
-            <Styled.Button
-                type={"button"}
+            <SelectTrigger
                 ref={setTriggerRef}
-                disabled={disabled}
-                {...triggerProps}
-                variant={variant}
-                size={size}
-                onClick={toggleOpen}
+                state={state}
                 style={{
                     width: triggerWidth,
                     minWidth: minWidth,
                     ...triggerProps?.style
                 }}
-            >
-                {label}
+                label={label}
+                isOpen={isOpen}
+                disabled={disabled}
+                toggleOpen={toggleOpen}
+            />
 
-                <Styled.Icon $isOpen={isOpen} />
-            </Styled.Button>
-
-            <Menu
+            <Styled.Popover
                 {...filterdProps}
-                shouldFocusOnClose={false}
                 ref={undefined}
+                offset={{
+                    x: -1,
+                    y: -2
+                }}
                 show={isOpen}
                 anchor={triggerRef}
                 onClickOutside={handleOnClickOutside}
                 onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
-                listProps={{
-                    ...listProps,
-                    showFilter: showFilter,
-                    ref: setListRef,
-                    type: ListItemTypes.Select,
-                    onSelect: handleOnSelect,
-                    onKeyDown: handleOnKeyDown
-                }}
             >
-                {
-                    Children.map(children, (child) => {
-                        if (child) {
-                            const childElement = child as ReactElement<ListItemProps>
+                <Styled.List
+                    type={type}
+                    {...listProps}
+                    showFilter={showFilter}
+                    ref={setListRef}
+                    onSelect={handleOnMainSelect}
+                    onKeyDown={handleOnKeyDown}
+                    $withFooter={withFooter}
+                    style={{
+                        width: triggerWidth,
+                        minWidth: minWidth
+                    }}
+                >
+                    {
+                        items.map((item) => {                        
+                            return (
+                                <Styled.SelectListItem
+                                    key={item.id}
+                                    {...item}
+                                    value={item}
+                                    onSelect={handleOnMainSelect}
+                                >
+                                    {
+                                        Array.isArray(item.nested) && item.nested.length ? (
+                                            item.nested.map((nestedItem) => {
+                                                return (
+                                                    <Styled.SelectListItem
+                                                        key={nestedItem.id}
+                                                        {...nestedItem}
+                                                        targeted={false}
+                                                        $isNested={true}
+                                                        value={nestedItem}
+                                                        onSelect={handleOnNestedSelect}
+                                                    />
+                                                )
+                                            })
+                                        ) : (
+                                            undefined
+                                        )
+                                    }
+                                </Styled.SelectListItem>
+                            )
+                        })
+                    }
+                </Styled.List>
 
-                            const childProps = {
-                                ...childElement.props,
-                                selected: selected
-                                    .map(i => i.id)
-                                    .includes(childElement.props?.id)
+                {
+                    withFooter ? (
+                        <Styled.Footer>
+                            {
+                                showResetButton ? (
+                                    <Styled.ResetButton
+                                        onClick={handleOnReset}
+                                        size={ButtonSizes.Small}
+                                        variant={ButtonVariants.Text}
+                                        variantType={ButtonVariantTypes.Link}
+                                    >
+                                        {resetButtonLabel}
+                                    </Styled.ResetButton>
+                                ) : (
+                                    null
+                                )
                             }
 
-                            return (
-                                cloneElement(childElement, childProps)
-                            )
-                        } else {
-                            return (
-                                null
-                            )
-                        }
-                    })
+                            {
+                                showApplyButton ? (
+                                    <Styled.ApplyButton
+                                        onClick={handleOnApply}
+                                        size={ButtonSizes.Small}
+                                    >
+                                        {applyButtonLabel}
+                                    </Styled.ApplyButton>
+                                ) : (
+                                    null
+                                )
+                            }
+                        </Styled.Footer>
+                    ) : (
+                        null
+                    )
                 }
-            </Menu>
+            </Styled.Popover>
         </>
     )
 })
