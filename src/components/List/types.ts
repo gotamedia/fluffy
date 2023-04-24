@@ -7,8 +7,6 @@ import type {
 import type { ListItemProps } from '../ListItem'
 
 export interface ListProps extends HTMLAttributes<HTMLDivElement> {
-    size?: ListItemProps['size'],
-    border?: ListItemProps['border'],
     type?: ListItemProps['type'],
     onSelect?: ListItemProps['onSelect'],
     allowKeyboardNavigation?: boolean,

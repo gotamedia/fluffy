@@ -10,16 +10,17 @@ import {
 } from 'react'
 
 import ListContext from './contexts/ListContext'
+import { ListItemTypes } from '@components/ListItem/types'
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { ListItemProps } from '@components/ListItem/types'
 import type {
     FocusEvent,
     KeyboardEventHandler,
     ReactNode,
     ReactElement
 } from 'react'
-import type { ListItemProps } from '../ListItem/types'
 
 const getChildByIndex = (children: ReactNode, index: number) => {
     const items = Children.toArray(children)
@@ -51,9 +52,7 @@ const mapChildren = (children: ReactNode, filterValue?: string) => {
 
 const List: Types.ListComponent = forwardRef((props, ref) => {
     const {
-        type = 'normal',
-        size = 'normal',
-        border = 'normal',
+        type = ListItemTypes.Normal,
         allowKeyboardNavigation = true,
         children,
         onKeyDown,
@@ -115,41 +114,21 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         setIsFocused(false)
     }, [onBlur])
 
-    const getPreviousIndex = useCallback((index: number, currentIndex?: number): number => {
+    const getPreviousIndex = useCallback((index: number): number => {
         let nextIndex = index -1
 
         if (nextIndex < 0) {
             nextIndex = 0
         }
 
-        const targetedChild = getChildByIndex(listChildren, nextIndex)
-
-        if (targetedChild && targetedChild?.props.asTitle) {
-            if (nextIndex === 0) {
-                return currentIndex || index
-            } else {
-                return getPreviousIndex(nextIndex, currentIndex || index)
-            }
-        }
-
         return nextIndex
-    }, [listChildren])
+    }, [])
 
-    const getNextIndex = useCallback((index: number, currentIndex?: number): number => {
+    const getNextIndex = useCallback((index: number): number => {
         let nextIndex = index +1
 
         if (nextIndex > (Children.count(listChildren) -1)) {
             nextIndex = Children.count(listChildren) -1
-        }
-
-        const targetedChild = getChildByIndex(listChildren, nextIndex)
-
-        if (targetedChild && targetedChild?.props.asTitle) {
-            if (nextIndex === (Children.count(listChildren) -1)) {
-                return currentIndex || index
-            } else {
-                return getNextIndex(nextIndex, currentIndex || index)
-            }
         }
 
         return nextIndex
@@ -265,7 +244,12 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
             <>
                 {
                     showFilter && (
-                        <Styled.InputGroup>
+                        <Styled.InputGroup
+                            style={{
+                                width: DOMProps?.style?.width,
+                                minWidth: DOMProps?.style?.minWidth
+                            }}
+                        >
                             <Styled.Input
                                 enterKeyHint={'enter'}
                                 ref={filterRef}
@@ -285,6 +269,7 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
                     onKeyDown={hadnleOnKeyDown}
                     onFocus={handleOnFocus}
                     onBlur={handleOnBlur}
+                    $withFilter={showFilter}
                     {...DOMProps}
                 >
                     {
@@ -293,8 +278,6 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
                                 const childElement = child as ReactElement<ListItemProps>
                 
                                 const childProps = {
-                                    size: size,
-                                    border: border,
                                     type: type,
                                     targeted: isFocused && targetedIndex === idx,
                                     onSelect: onSelect,

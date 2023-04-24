@@ -8,12 +8,14 @@ import {
 
 import scrollIntoView from 'scroll-into-view-if-needed'
 
-import useList from '../List/hooks/useList'
-
+import useList from '@components/List/hooks/useList'
 import {
-    ListItemSizes,
-    ListItemTypes
-} from './types'
+    Icons,
+    IconSizes
+} from '@components/Icon'
+import { CheckboxVariants } from '@components/Checkbox'
+
+import { ListItemTypes } from './types'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -21,17 +23,17 @@ import type { MouseEventHandler } from 'react'
 
 const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
     const {
-        type = 'normal',
-        size = 'normal',
-        asTitle = false,
+        type = ListItemTypes.Normal,
         scrollOnTargeted = true,
+        indeterminate,
         text,
         subText,
         icon,
-        border,
         targeted,
         selected,
         value,
+        actionIcon,
+        onActionClick,
         onSelect,
         onClick,
         children,
@@ -42,17 +44,23 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
 
     const listItemRef = useRef<HTMLDivElement>(null)
 
+    const isTypeNormal = type === ListItemTypes.Normal
+    const isTypeSelect = type === ListItemTypes.Select
+    const isTypeCheckbox = type === ListItemTypes.Checkbox
+
+    const isTargeted = !isTypeNormal && targeted
+
     useImperativeHandle(ref, () => listItemRef.current as HTMLDivElement)
 
     useEffect(() => {
-        if (scrollOnTargeted && targeted && listItemRef.current) {
+        if (scrollOnTargeted && isTargeted && listItemRef.current) {
             scrollIntoView(listItemRef.current, {
                 scrollMode: 'if-needed',
                 behavior: 'smooth',
                 boundary: listRef?.current
             })
         }
-    }, [scrollOnTargeted, targeted, listRef])
+    }, [scrollOnTargeted, isTargeted, listRef])
 
     const handleOnSelect = useCallback(() => {
         if (typeof onSelect === 'function') {
@@ -68,7 +76,15 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
         handleOnSelect()
     }, [onClick, handleOnSelect])
 
-    const isTypeSelect = type === ListItemTypes.Select
+    const handleOnActionClick = useCallback<MouseEventHandler<HTMLElement>>((event) => {
+        event.stopPropagation()
+        
+        if (typeof onActionClick === 'function') {
+            onActionClick(event)
+        }
+    }, [onActionClick])
+
+    const checkmarkIcon = !actionIcon && isTypeSelect && selected ? true : false
 
     return (
         <Styled.Wrapper
@@ -76,28 +92,27 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
             tabIndex={-1}
             onClick={handleOnClick}
             {...DOMProps}
-            $size={size}
-            $targeted={targeted}
-            $asTitle={asTitle}
+            $targeted={isTargeted}
         >
-            <Styled.InnerWrapper
-                $type={type}
-                $hasIcon={!!icon}
-                $asTitle={asTitle}
-            >
+            <Styled.InnerWrapper>
                 {
-                    !asTitle && isTypeSelect && selected ? (
-                        <Styled.CheckIcon />
+                    isTypeCheckbox ? (
+                        <Styled.Checkbox
+                            tabIndex={-1}
+                            checked={selected}
+                            indeterminate={indeterminate}
+                            variant={isTargeted ? CheckboxVariants.Secondary : CheckboxVariants.Primary}
+                        />
                     ) : (
                         null
                     )
                 }
 
                 {
-                    !asTitle && icon ? (
+                    icon ? (
                         <Styled.Icon
                             icon={icon}
-                            $isTypeSelect={isTypeSelect}
+                            size={IconSizes.Tiny}
                         />
                     ) : (
                         null
@@ -116,7 +131,7 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                     }
 
                     {
-                        !asTitle && subText && size === ListItemSizes.TwoRow ? (
+                        subText ? (
                             <Styled.SubText>
                                 {subText}
                             </Styled.SubText>
@@ -126,21 +141,31 @@ const ListItem: Types.ListItemComponent = forwardRef((props, ref) => {
                     }
                 </Styled.TextWrapper>
 
-                {children}
+                {
+                    checkmarkIcon ? (
+                        <Styled.Icon
+                            icon={Icons.Check}
+                            size={IconSizes.Tiny}
+                        />
+                    ) : (
+                        null
+                    )
+                }
+
+                {
+                    actionIcon ? (
+                        <Styled.ActionIcon
+                            icon={actionIcon}
+                            size={IconSizes.Tiny}
+                            onClick={handleOnActionClick}
+                        />
+                    ) : (
+                        null
+                    )
+                }
             </Styled.InnerWrapper>
 
-            {
-                border ? (
-                    <Styled.Border
-                        //@ts-ignore
-                        $border={asTitle ? 'full' : border}
-                        $hasIcon={!!icon}
-                        $type={type}
-                    />
-                ) : (
-                    null
-                )
-            }
+            {children}
         </Styled.Wrapper>
     )
 })

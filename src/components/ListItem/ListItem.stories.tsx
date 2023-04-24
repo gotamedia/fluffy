@@ -1,16 +1,16 @@
-import React, {
+import {
     useState,
     useCallback
 } from 'react'
 
 import ListItem from './'
-import { ListItemSizes } from './types'
+import { ListItemTypes } from './types'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
 
 const Basic: Story<Types.ListItemProps> = (props) => {
-    const [selected, setSelected] = useState(false)
+    const [selected, setSelected] = useState(props.selected)
 
     const toggleSelect = useCallback(() => {
         setSelected(current => !current)
@@ -19,6 +19,7 @@ const Basic: Story<Types.ListItemProps> = (props) => {
     return (
         <ListItem
             {...props}
+            style={{ width: 250 }}
             selected={selected}
             onSelect={toggleSelect}
         />
@@ -33,12 +34,18 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/ListItem',
+    title: 'Components/ListItem',
     component: ListItem,
     argTypes: {},
     args: {
-        size: ListItemSizes.Normal,
         text: 'List item text',
-        subText: 'List item sub-text'
+        subText: '',
+        type: ListItemTypes.Normal,
+        targeted: false,
+        selected: false,
+        value: {},
+        scrollOnTargeted: true,
+        icon: undefined,
+        actionIcon: undefined
     }
 } as Meta<Types.ListItemComponent>
