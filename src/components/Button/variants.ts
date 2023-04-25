@@ -22,6 +22,9 @@ const sharedStyle = {
     `
 }
 
+
+// TODO: Update all variants with variantType.
+
 const primary = ($variantType?: ButtonVariantType) => {
     switch ($variantType) {
         case ButtonVariantTypes.Default:

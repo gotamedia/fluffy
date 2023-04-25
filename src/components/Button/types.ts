@@ -46,7 +46,7 @@ export interface ButtonProps extends NativeButtonProps {
     variantType?: ButtonVariantType
 }
 
-export type StyledCheckboxProps = Prefix<
+export type StyledButtonProps = Prefix<
     Pick<
     ButtonProps,
         'size' |

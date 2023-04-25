@@ -23,7 +23,7 @@ export const baseButtonStyle = css`
     box-sizing: border-box;
 `
 
-const Button = styled.button<Types.StyledCheckboxProps>`
+const Button = styled.button<Types.StyledButtonProps>`
     ${baseButtonStyle};
     ${({ $size }) => sizes[$size || 'normal']};
     ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
