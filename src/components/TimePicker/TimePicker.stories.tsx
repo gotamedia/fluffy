@@ -64,8 +64,6 @@ export default {
         isClearable: false,
         timeIntervals: 15,
         placeholderText: 'Time',
-        inputProps: {
-            variant: 'outline'
-        }
+        inputProps: {}
     }
 } as Meta<typeof TimePicker>

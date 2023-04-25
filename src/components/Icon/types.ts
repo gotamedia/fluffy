@@ -1,7 +1,8 @@
 import type {
     ComponentProps,
-    ComponentType,
-    MouseEventHandler
+    MouseEventHandler,
+    ForwardRefExoticComponent,
+    RefAttributes
 } from 'react'
 
 import IconNames from './iconNames'
@@ -31,7 +32,7 @@ export const IconVariants = {
 export type IconVariantsType = typeof IconVariants
 export type IconVariantType = IconVariantsType[keyof IconVariantsType]
 
-export type IconProps = Omit<ComponentProps<'svg'>, 'onClick'> & {
+export type IconProps = Omit<ComponentProps<'svg'>, 'onClick' | 'ref'> & {
     icon: Icon,
     variant?: IconVariantType,
     spin?: boolean,
@@ -39,4 +40,6 @@ export type IconProps = Omit<ComponentProps<'svg'>, 'onClick'> & {
     onClick?: MouseEventHandler<HTMLElement>
 }
 
-export type IconComponent = ComponentType<Partial<IconProps>>
+export type IconRef = HTMLSpanElement
+
+export type IconComponent = ForwardRefExoticComponent<IconProps & RefAttributes<IconRef>>

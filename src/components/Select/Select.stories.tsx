@@ -9,7 +9,6 @@ import Select, {
     SelectTypes,
     SelectStates
 } from './index'
-import ListItem from '@components/ListItem'
 
 import type * as Types from './types'
 
@@ -50,29 +49,11 @@ const Basic: Story<Types.SelectProps> = (props) => {
     }, [])
 
     return (
-        <div>
-            <Select
-                {...props}
-                items={items}
-                onChange={handleOnSelect}
-            >
-                {
-                    ['Rock', 'Paper', 'Scissor', 'Fluffy'].map((i, idx) => {
-                        return (
-                            <ListItem
-                                key={idx}
-                                value={{
-                                    id: i,
-                                    label: i
-                                }}
-                                text={i}
-                                id={`${i}`}
-                            />
-                        )
-                    })
-                }
-            </Select>
-        </div>
+        <Select
+            {...props}
+            items={items}
+            onChange={handleOnSelect}
+        />
     )
 }
 
@@ -133,6 +114,16 @@ export const BasicNestedStory = BasicNested.bind({})
 BasicNestedStory.storyName = 'Nested items'
 BasicNestedStory.args = {
     isMultiSelect: true,
+    showResetButton: true,
+    showApplyButton: true,
+    type: SelectTypes.Checkbox
+}
+
+export const FullStory = BasicNested.bind({})
+FullStory.storyName = 'Full'
+FullStory.args = {
+    isMultiSelect: true,
+    showFilter: true,
     showResetButton: true,
     showApplyButton: true,
     type: SelectTypes.Checkbox

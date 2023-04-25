@@ -1,4 +1,7 @@
-import { useMemo } from 'react'
+import {
+    forwardRef,
+    useMemo
+} from 'react'
 
 import * as MiniIcons from '@heroicons/react/20/solid'
 import * as OutlineIcons from '@heroicons/react/24/outline'
@@ -8,7 +11,6 @@ import { IconVariants } from './types'
 
 import * as Styled from './style'
 import type * as Types from './types'
-import type { FC } from 'react'
 
 const getIcon = (icon: Types.Icon, variant: Types.IconVariantType) => {
     let iconComponent = null
@@ -36,7 +38,7 @@ const getIcon = (icon: Types.Icon, variant: Types.IconVariantType) => {
     return iconComponent
 }
 
-const Icon: FC<Types.IconProps> = (props) => {
+const Icon: Types.IconComponent = forwardRef((props, ref) => {
     const {
         icon,
         variant = 'outline',
@@ -45,6 +47,8 @@ const Icon: FC<Types.IconProps> = (props) => {
         className,
         style,
         onClick,
+        // @ts-ignore, quick ugly fix to remove unused props and prevent the prop from being passed to the icon component.
+        variantType,
         ...filteredProps
     } = props
 
@@ -53,13 +57,17 @@ const Icon: FC<Types.IconProps> = (props) => {
     }, [icon, variant])
 
     const content = IconComponent ? (
-        <IconComponent {...filteredProps} />
+        <IconComponent
+            {...filteredProps}
+            ref={undefined}
+        />
     ) : (
         null
     )
 
     return (
         <Styled.Span
+            ref={ref}
             style={style}
             $size={size}
             $spin={spin}
@@ -69,6 +77,8 @@ const Icon: FC<Types.IconProps> = (props) => {
             {content}
         </Styled.Span>
     )
-}
+})
+
+Icon.displayName = 'Icon'
 
 export default Icon
