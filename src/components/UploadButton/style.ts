@@ -1,22 +1,22 @@
 import styled from 'styled-components'
 
-import Icon, { Icons } from '../Icon'
+import Icon, { Icons } from '@components/Icon'
 
-import sizes from '../Button/sizes'
-import variants from '../Button/variants'
-import { baseButtonStyle } from '../Button/style'
+import sizes from '@components/Button/sizes'
+import variants from '@components/Button/variants'
+import { baseButtonStyle } from '@components/Button/style'
 
-import type { UploadButtonProps } from './types'
+import type * as Types from './types'
 
 const Wrapper = styled.div`
     display: flex;
     position: relative;
 `
 
-const InnerWrapper = styled.label<{ $size?: UploadButtonProps['size'], $variant?: UploadButtonProps['variant'] }>`
+const InnerWrapper = styled.label<Types.StyledUploadButtonProps>`
     ${baseButtonStyle};
     ${({ $size }) => sizes[$size || 'normal']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
 `
 
 const UploadInput = styled.input`
