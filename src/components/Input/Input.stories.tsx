@@ -39,13 +39,13 @@ export default {
     component: Input,
     argTypes: {},
     args: {
-        label: '',
-        value: '',
-        placeholder: 'Placeholder',
-        disabled: false,
         variant: InputVariants.Primary,
         variantType: InputVariantTypes.Default,
         size: InputSizes.Normal,
-        state: InputStates.Default
+        state: InputStates.Default,
+        label: '',
+        value: '',
+        placeholder: 'Placeholder',
+        disabled: false
     }
 } as Meta<typeof Input>
