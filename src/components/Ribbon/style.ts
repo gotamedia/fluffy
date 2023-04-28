@@ -17,8 +17,9 @@ const Ribbon = styled.div<Pick<Types.RibbonProps, "background" | "color" | "fold
     color: ${({ color }) => color};
     padding: ${({ theme }) => `${theme.space[4]}px ${theme.space[8]}px`};
     font-size: ${({ theme }) => `${theme.fontSizes[2]}px`};
-    line-height: ${({ theme }) => `${theme.lineHeights[2]}px`};
-    font-family: ${({ theme }) => theme.fonts.generic[2]};
+    line-height: ${({ theme }) => `${theme.lineHeights[2]}`};
+    font-family: ${({ theme }) => theme.fonts.generic[1]};
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     border-radius: ${({ side, theme }) => (side === "left"
         ? `0 ${theme.space[1]}px ${theme.space[1]}px 0`
         : `${theme.space[1]}px 0 0 ${theme.space[1]}px`
