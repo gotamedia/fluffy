@@ -232,4 +232,7 @@ export { default as Slider } from '@components/Slider'
 export * from '@components/ImageGallery'
 export { default as ImageGallery } from '@components/ImageGallery'
 
+export * from '@components/Ribbon'
+export { default as Ribbon } from '@components/Ribbon'
+
 // <==== Components
