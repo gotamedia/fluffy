@@ -1,12 +1,12 @@
 import {
     ForwardRefExoticComponent,
-    HTMLAttributes,
     RefAttributes
 } from 'react'
 
 import type { ListProps } from '../List/types'
 import type { ListItemProps } from '../ListItem/types'
 import type { AnchorProps } from '../Anchor/types'
+import type { SelectTriggerProps } from './components/SelectTrigger/types'
 
 export const SelectTypes = {
     Normal: 'normal' as const,
@@ -38,26 +38,29 @@ export type SelectItem = BaseSelectItem & {
 } 
 
 export interface SelectProps extends Omit<AnchorProps, 'onReset' | 'onChange' |'onSelect'> {
+    items: SelectItem[],
+    portalWhenMounted?: boolean,
     showResetButton?: boolean;
     showApplyButton?: boolean;
-    triggerProps?: HTMLAttributes<HTMLDivElement>,
-    onClickOutside?: (event: MouseEvent | TouchEvent) => void,
+    triggerProps?: Omit<SelectTriggerProps, 'label' | 'isOpen' | 'disabled' | 'state' | 'toggleOpen'>,
     listProps?: ListProps,
-    onChange?: (items: any[]) => void,
-    onReset?: () => void,
-    onApply?: () => void,
     closeOnSelect?: boolean,
     isMultiSelect?: boolean,
     width?: number | string,
     minWidth?: number | string,
     type?: SelectTypeType,
     state?: SelectState,
-    items: SelectItem[],
     disabled?: boolean,
     showFilter?: boolean,
     closeOnScrollOutside?: boolean,
-    resetButtonLabel?: string,
-    applyButtonLabel?: string
+    i18n?: {
+        reset?: string,
+        apply?: string
+    },
+    onReset?: () => void,
+    onApply?: () => void,
+    onChange?: (items: any[]) => void,
+    onClickOutside?: (event: MouseEvent | TouchEvent) => void,
 }
 
 export type SelectRef = {

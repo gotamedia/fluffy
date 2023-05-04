@@ -2,10 +2,12 @@ import {
     forwardRef,
     useRef,
     useState,
+    useMemo,
     useImperativeHandle,
     useEffect,
     useCallback
 } from 'react'
+import merge from 'lodash/merge'
 
 import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
@@ -16,12 +18,38 @@ import {
 } from '@components//Button'
 
 import SelectTrigger from './components/SelectTrigger'
+import SelectFilter from './components/SelectFilter'
+
 import { SelectTypes } from './types'
+
+import selectI18n from './i18n.json'
 
 import * as Styled from './style'
 import type * as Types from './types'
+import type { ListRef } from '@components/List/types'
 import type { KeyboardEventHandler } from 'react'
 
+const getLabel = (items: Types.SelectItem[], placeholder?: string) => {
+    const selectedLabels: string[] = []
+
+    items.forEach((i) => {
+        if (i.selected && !i.indeterminate && i.label) {
+            selectedLabels.push(i.label)
+        } else {
+            i?.nested?.forEach((k) => {
+                if (k.selected && k.label) {
+                    selectedLabels.push(k.label)
+                }
+            })
+        }
+    })
+
+    if (selectedLabels.length) {
+        return selectedLabels.join(', ')
+    } else {
+        return placeholder
+    }
+}
 
 const Select: Types.SelectComponent = forwardRef((props, ref) => {
     const {
@@ -41,24 +69,30 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         isMultiSelect = false,
         showResetButton = false,
         showApplyButton = false,
-        resetButtonLabel = 'Reset',
-        applyButtonLabel = 'Apply',
         state,
         disabled,
         showFilter,
+        i18n,
         ...filterdProps
     } = props
 
     const previousIsOpenState = useRef(false)
     const shouldfocusTrigger = useRef(false)
     const initiatedRef = useRef(false)
+    const filterRef = useRef<HTMLInputElement>(null)
 
-    const [label, setLabel] = useState(placeholder)
+    const [label, setLabel] = useState(getLabel(items, placeholder))
+    const [filterValue, setFilterValue] = useState('')
+    const [slectItems, setSelectItems] = useState(items)
     const [triggerRef, setTriggerRef] = useState<HTMLElement | null>(null)
-    const [listRef, setListRef] = useState<HTMLDivElement | null>(null)
+    const [listRef, setListRef] = useState<ListRef>()
     const [triggerWidth, setTriggerWidth] = useState<Types.SelectProps['width']>(width)
 
     const [isOpen, setIsOpen] = useState(!width && !minWidth ? true : false)
+
+    const _i18n = useMemo(() => {
+        return merge(selectI18n, i18n)
+    }, [i18n])
 
     useImperativeHandle(ref, () => {
         return {
@@ -69,7 +103,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
     useIsomorphicLayoutEffect(() => {
         if (!width && !minWidth) {
-            if (listRef && triggerWidth === undefined ) {
+            if (listRef && triggerWidth === undefined) {
                 const listRect = listRef.getBoundingClientRect()
 
                 setTriggerWidth(listRect.width + 38)
@@ -90,26 +124,43 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
     ])
 
     useEffect(() => {
-        const selectedLabels: string[] = []
-
-        items.forEach((i) => {
-            if (i.selected && !i.indeterminate && i.label) {
-                selectedLabels.push(i.label)
-            } else {
-                i?.nested?.forEach((k) => {
-                    if (k.selected && k.label) {
-                        selectedLabels.push(k.label)
-                    }
-                })
-            }
-        })
-
-        if (selectedLabels.length) {
-            setLabel(selectedLabels.join(', '))
-        } else {
-            setLabel(placeholder)
-        }
+        setLabel(getLabel(items, placeholder))
     }, [items, placeholder])
+
+    useEffect(() => {
+        if (showFilter && filterValue.length) {
+            const updatedItems = items.map(item => {
+                let shouldIncludeHit = false
+
+                const updatedItem = { ...item }
+
+                if (updatedItem.text?.toLowerCase().includes(filterValue.toLowerCase())) {
+                    shouldIncludeHit = true
+                }
+
+                if (updatedItem.nested?.length) {
+                    updatedItem.nested = updatedItem.nested.filter(nestedItem => {
+                        if (nestedItem.text?.toLowerCase().includes(filterValue.toLowerCase())) {
+                            shouldIncludeHit = true
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                }
+
+                if (shouldIncludeHit) {
+                    return updatedItem
+                } else {
+                    return null
+                }
+            }).filter(i => i)
+
+            setSelectItems(updatedItems as Types.SelectItem[])
+        } else {
+            setSelectItems(items)
+        }
+    }, [showFilter, filterValue, items])
 
     useEffect(() => {
         if (shouldfocusTrigger.current) {
@@ -131,6 +182,10 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 listRef.focus()
             }
         }
+
+        if (!isOpen) {
+            setFilterValue('')
+        }
     }, [isOpen, listRef])
 
     const handleOnClickOutside = useCallback((event: MouseEvent | TouchEvent) => {
@@ -145,13 +200,52 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         setIsOpen(current => !current)
     }, [])
 
+    const handleOnFilterChange = useCallback((value: string) => {
+        setFilterValue(value)
+    }, [])
+
+    const handleOnfilterKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
+        event.stopPropagation()
+
+        switch (event.code) {
+            case 'ArrowUp': {
+                listRef?.handleOnKeyDown?.(event)
+
+                break
+            }
+
+            case 'ArrowDown': {
+                listRef?.handleOnKeyDown?.(event)
+
+                break
+            }
+
+            case 'Enter': {
+                listRef?.handleOnKeyDown?.(event)
+
+                break
+            }
+
+            default:
+                listRef?.setFocus?.(false)
+        }
+    }, [listRef])
+
+    const handleOnListFocus = useCallback(() => {
+        if (filterRef.current) {
+            filterRef.current.focus({
+                preventScroll: true
+            })
+        }
+    }, [])
+
     const handleOnKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>((event) => {
         if (typeof listProps?.onKeyDown === 'function') {
             listProps.onKeyDown(event)
         }
 
         if (isOpen) {
-            switch(event.code) {
+            switch (event.code) {
                 case 'Escape': {
                     event.preventDefault()
                     event.stopPropagation()
@@ -209,7 +303,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
     const handleOnNestedSelect = useCallback((selectedItem: Types.BaseNestedSelectItem) => {
         const updatedItems = items.map(i => {
-            if (i.id === selectedItem.parentId) {                    
+            if (i.id === selectedItem.parentId) {
                 const nextNested = i?.nested?.map((k) => {
                     if (k.id === selectedItem.id) {
                         return {
@@ -275,13 +369,14 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
         <>
             <SelectTrigger
                 ref={setTriggerRef}
-                state={state}
+                {...triggerProps}
                 style={{
                     width: triggerWidth,
                     minWidth: minWidth,
                     ...triggerProps?.style
                 }}
                 label={label}
+                state={state}
                 isOpen={isOpen}
                 disabled={disabled}
                 toggleOpen={toggleOpen}
@@ -299,21 +394,38 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                 onClickOutside={handleOnClickOutside}
                 onScrollOutside={closeOnScrollOutside ? toggleOpen : undefined}
             >
+                {
+                    showFilter && (
+                        <SelectFilter
+                            ref={filterRef}
+                            style={{
+                                width: triggerWidth,
+                                minWidth: minWidth
+                            }}
+                            value={filterValue}
+                            onChange={handleOnFilterChange}
+                            onKeyDown={handleOnfilterKeyDown}
+                        />
+                    )
+                }
+
                 <Styled.List
                     type={type}
                     {...listProps}
-                    showFilter={showFilter}
+                    // @ts-ignore
                     ref={setListRef}
                     onSelect={handleOnMainSelect}
                     onKeyDown={handleOnKeyDown}
+                    onFocus={handleOnListFocus}
                     $withFooter={withFooter}
                     style={{
                         width: triggerWidth,
-                        minWidth: minWidth
+                        minWidth: minWidth,
+                        marginTop: showFilter ? -1 : undefined
                     }}
                 >
                     {
-                        items.map((item) => {                        
+                        slectItems.map((item) => {
                             return (
                                 <Styled.SelectListItem
                                     key={item.id}
@@ -347,7 +459,12 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
 
                 {
                     withFooter ? (
-                        <Styled.Footer>
+                        <Styled.Footer
+                            style={{
+                                width: triggerWidth,
+                                minWidth: minWidth
+                            }}
+                        >
                             {
                                 showResetButton ? (
                                     <Styled.ResetButton
@@ -356,7 +473,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                                         variant={ButtonVariants.Text}
                                         variantType={ButtonVariantTypes.Link}
                                     >
-                                        {resetButtonLabel}
+                                        {_i18n.reset}
                                     </Styled.ResetButton>
                                 ) : (
                                     null
@@ -369,7 +486,7 @@ const Select: Types.SelectComponent = forwardRef((props, ref) => {
                                         onClick={handleOnApply}
                                         size={ButtonSizes.Small}
                                     >
-                                        {applyButtonLabel}
+                                        {_i18n.apply}
                                     </Styled.ApplyButton>
                                 ) : (
                                     null

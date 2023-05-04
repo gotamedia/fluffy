@@ -34,6 +34,7 @@ const SelectListItem = styled(FluffySelectListItem)<{ $isNested?: boolean }>`
 `
 
 const Footer = styled.div`
+    box-sizing: border-box;
     min-height: 56px;
     max-height: 56px;
     display: flex;

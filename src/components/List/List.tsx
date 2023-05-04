@@ -30,26 +30,6 @@ const getChildByIndex = (children: ReactNode, index: number) => {
     }
 }
 
-const mapChildren = (children: ReactNode, filterValue?: string) => {
-    return Children.map(children, (child) => {
-        if (child) {
-            const childElement = child as ReactElement<ListItemProps>
-
-            if (filterValue && filterValue.length) {
-                if (childElement.props?.text?.toLowerCase().includes(filterValue.toLowerCase())) {
-                    return cloneElement(childElement, childElement.props)
-                } else {
-                    return null
-                }
-            }
-
-            return cloneElement(childElement, childElement.props)
-        } else {
-            return null
-        }
-    })
-}
-
 const List: Types.ListComponent = forwardRef((props, ref) => {
     const {
         type = ListItemTypes.Normal,
@@ -59,60 +39,14 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         onFocus,
         onBlur,
         onSelect,
-        showFilter,
         ...DOMProps
     } = props
 
     const wrapperRef = useRef<HTMLDivElement>(null)
     const targetedIndexRef = useRef<number>(-1)
-    const filterRef = useRef<HTMLInputElement>(null)
 
     const [isFocused, setIsFocused] = useState(false)
-    const [filterValue, setFilterValue] = useState('')
     const [targetedIndex, setTargetedIndex] = useState(-1)
-
-    const [filteredChildren, setFilteredChildren] = useState<ReactNode>()
-
-    const listChildren = filteredChildren || children
-
-    useImperativeHandle(ref, () => {
-        const listRef = wrapperRef.current! as Types.ListRef
-
-        listRef.isFocused = isFocused
-        listRef.setFocus = (focused) => setIsFocused(focused)
-
-        return listRef
-    }, [isFocused])
-
-    useEffect(() => {
-        targetedIndexRef.current = targetedIndex
-    }, [targetedIndex])
-
-    useEffect(() => {
-        setFilteredChildren(mapChildren(children, filterValue))
-    }, [children, filterValue])
-
-    const handleOnFocus = useCallback((event: FocusEvent<HTMLDivElement>) => {
-        if (typeof onFocus === 'function') {
-            onFocus(event)
-        }
-
-        if (filterRef.current) {
-            filterRef.current.focus({
-                preventScroll: true
-            })
-        }
-
-        setIsFocused(true)
-    }, [onFocus])
-
-    const handleOnBlur = useCallback((event: FocusEvent<HTMLDivElement>) => {
-        if (typeof onBlur === 'function') {
-            onBlur(event)
-        }
-
-        setIsFocused(false)
-    }, [onBlur])
 
     const getPreviousIndex = useCallback((index: number): number => {
         let nextIndex = index -1
@@ -124,27 +58,9 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         return nextIndex
     }, [])
 
-    const getNextIndex = useCallback((index: number): number => {
-        let nextIndex = index +1
-
-        if (nextIndex > (Children.count(listChildren) -1)) {
-            nextIndex = Children.count(listChildren) -1
-        }
-
-        return nextIndex
-    }, [listChildren])
-
-    const handleOnArrowUp = useCallback(() => {
-        setTargetedIndex(current => getPreviousIndex(current))
-    }, [getPreviousIndex])
-
-    const handleOnArrowDown = useCallback(() => {
-        setTargetedIndex(current => getNextIndex(current))
-    }, [getNextIndex])
-
     const handleOnSelect = useCallback(() => {
         if (isFocused && typeof onSelect === 'function') {
-            const targetedChild = getChildByIndex(listChildren, targetedIndexRef.current)
+            const targetedChild = getChildByIndex(children, targetedIndexRef.current)
 
             if (targetedChild && targetedChild?.props.value) {
                 onSelect(targetedChild.props.value)
@@ -153,8 +69,26 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
     }, [
         isFocused,
         onSelect,
-        listChildren
+        children
     ])
+
+    const getNextIndex = useCallback((index: number): number => {
+        let nextIndex = index +1
+
+        if (nextIndex > (Children.count(children) -1)) {
+            nextIndex = Children.count(children) -1
+        }
+
+        return nextIndex
+    }, [children])
+
+    const handleOnArrowUp = useCallback(() => {
+        setTargetedIndex(current => getPreviousIndex(current))
+    }, [getPreviousIndex])
+
+    const handleOnArrowDown = useCallback(() => {
+        setTargetedIndex(current => getNextIndex(current))
+    }, [getNextIndex])
 
     const hadnleOnKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>((event) => {
         if (typeof onKeyDown === 'function') {
@@ -195,45 +129,36 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
         handleOnArrowDown,
         handleOnSelect
     ])
+    
+    useImperativeHandle(ref, () => {
+        const listRef = wrapperRef.current! as Types.ListRef
 
-    const handleOnFilterValueChange = useCallback((value: string) => {
-        setFilterValue(value)
-    }, [])
+        listRef.isFocused = isFocused
+        listRef.setFocus = (focused) => setIsFocused(focused)
+        listRef.handleOnKeyDown = hadnleOnKeyDown
 
-    const handleOnFilterClear = useCallback(() => {
-        setFilterValue('')
-    }, [])
+        return listRef
+    }, [isFocused, hadnleOnKeyDown])
 
-    const hadnleOnInputKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>((event) => {
-        if (typeof onKeyDown === 'function') {
-            onKeyDown(event)
+    useEffect(() => {
+        targetedIndexRef.current = targetedIndex
+    }, [targetedIndex])
+
+    const handleOnFocus = useCallback((event: FocusEvent<HTMLDivElement>) => {
+        if (typeof onFocus === 'function') {
+            onFocus(event)
         }
 
-        event.stopPropagation()
+        setIsFocused(true)
+    }, [onFocus])
 
-        switch (event.code) {
-            case 'ArrowUp': {
-                hadnleOnKeyDown(event)
-
-                break
-            }
-
-            case 'ArrowDown': {
-                hadnleOnKeyDown(event)
-                
-                break
-            }
-
-            case 'Enter': {
-                hadnleOnKeyDown(event)
-
-                break
-            }
-
-            default:
-                setIsFocused(false)
+    const handleOnBlur = useCallback((event: FocusEvent<HTMLDivElement>) => {
+        if (typeof onBlur === 'function') {
+            onBlur(event)
         }
-    }, [onKeyDown, hadnleOnKeyDown])
+
+        setIsFocused(false)
+    }, [onBlur])
 
     const context = {
         _domRef: wrapperRef
@@ -241,57 +166,33 @@ const List: Types.ListComponent = forwardRef((props, ref) => {
 
     return (
         <ListContext.Provider value={context}>
-            <>
+            <Styled.Wrapper
+                ref={wrapperRef}
+                tabIndex={0}
+                onKeyDown={hadnleOnKeyDown}
+                onFocus={handleOnFocus}
+                onBlur={handleOnBlur}
+                {...DOMProps}
+            >
                 {
-                    showFilter && (
-                        <Styled.InputGroup
-                            style={{
-                                width: DOMProps?.style?.width,
-                                minWidth: DOMProps?.style?.minWidth
-                            }}
-                        >
-                            <Styled.Input
-                                enterKeyHint={'enter'}
-                                ref={filterRef}
-                                value={filterValue}
-                                onValueChange={handleOnFilterValueChange}
-                                onKeyDown={hadnleOnInputKeyDown}
-                            />
-
-                            <Styled.ClearIcon onClick={handleOnFilterClear}/>
-                        </Styled.InputGroup>
-                    )
-                }
-                
-                <Styled.Wrapper
-                    ref={wrapperRef}
-                    tabIndex={0}
-                    onKeyDown={hadnleOnKeyDown}
-                    onFocus={handleOnFocus}
-                    onBlur={handleOnBlur}
-                    $withFilter={showFilter}
-                    {...DOMProps}
-                >
-                    {
-                        Children.map(listChildren, (child, idx) => {
-                            if (child) {
-                                const childElement = child as ReactElement<ListItemProps>
-                
-                                const childProps = {
-                                    type: type,
-                                    targeted: isFocused && targetedIndex === idx,
-                                    onSelect: onSelect,
-                                    ...childElement.props
-                                }
-
-                                return cloneElement(childElement, childProps)
-                            } else {
-                                return null
+                    Children.map(children, (child, idx) => {
+                        if (child) {
+                            const childElement = child as ReactElement<ListItemProps>
+            
+                            const childProps = {
+                                type: type,
+                                targeted: isFocused && targetedIndex === idx,
+                                onSelect: onSelect,
+                                ...childElement.props
                             }
-                        })
-                    }
-                </Styled.Wrapper>
-            </>
+
+                            return cloneElement(childElement, childProps)
+                        } else {
+                            return null
+                        }
+                    })
+                }
+            </Styled.Wrapper>
         </ListContext.Provider>
     )
 })

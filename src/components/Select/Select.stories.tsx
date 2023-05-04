@@ -60,8 +60,8 @@ const Basic: Story<Types.SelectProps> = (props) => {
 const BasicNested: Story<Types.SelectProps> = (props) => {
     const [items, setItmes] = useState([...NESTED_ITEMS])
 
-    const handleOnChange = useCallback((selectedItems: any[]) => {
-        setItmes(selectedItems)
+    const handleOnChange = useCallback((updatedItems: any[]) => {
+        setItmes(updatedItems)
     }, [])
 
     return (
@@ -105,17 +105,13 @@ FooterSelectStory.args = {
     isMultiSelect: true,
     showResetButton: true,
     showApplyButton: true,
-    type: SelectTypes.Select,
-    resetButtonLabel: 'Rensa filter',
-    applyButtonLabel: 'Applicera'
+    type: SelectTypes.Select
 }
 
 export const BasicNestedStory = BasicNested.bind({})
 BasicNestedStory.storyName = 'Nested items'
 BasicNestedStory.args = {
     isMultiSelect: true,
-    showResetButton: true,
-    showApplyButton: true,
     type: SelectTypes.Checkbox
 }
 

@@ -16,7 +16,8 @@ const SelectTrigger: Types.SelectTriggerComponent = forwardRef((props, ref) => {
         label,
         state,
         disabled,
-        toggleOpen
+        toggleOpen,
+        ...filteredProps
     } = props
 
     const handleOnClick = useCallback(() => {
@@ -28,7 +29,6 @@ const SelectTrigger: Types.SelectTriggerComponent = forwardRef((props, ref) => {
     const handleOnKeyDown = useCallback<KeyboardEventHandler<HTMLDivElement>>((event) => {
         if (!disabled) {
             switch (event.code) {
-                case 'Enter':
                 case 'Space': {
                     if (!isOpen) {
                         event.stopPropagation()
@@ -54,6 +54,7 @@ const SelectTrigger: Types.SelectTriggerComponent = forwardRef((props, ref) => {
     return (
         <Styled.Wrapper
             ref={ref}
+            {...filteredProps}
             style={style}
             tabIndex={0}
             $state={state}
