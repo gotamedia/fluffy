@@ -6,7 +6,8 @@ import {
     cloneElement
 } from 'react'
 
-import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
+import useServerEffect from '@hooks/useServerEffect'
+import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import Button from '../Button'
 import IconButton from '../IconButton'
@@ -71,7 +72,7 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         right: ''
     })
 
-    useIsomorphicLayoutEffect(() => {
+    const elementsEffect = useCallback(() => {
         const elements = {
             left: '',
             right: ''
@@ -94,6 +95,14 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
             })
         })
     }, [children])
+
+    useServerEffect(() => {
+        elementsEffect()
+    }, [])
+
+    useIsomorphicLayoutEffect(() => {
+        elementsEffect()
+    }, [elementsEffect])
 
     const getChildPosition = useCallback((index: number) => {
         let position = ''

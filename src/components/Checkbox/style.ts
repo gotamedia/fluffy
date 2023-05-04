@@ -8,7 +8,7 @@ import checkedShapes from './checkedShapes'
 import type * as Types from './types'
 
 const Wrapper = styled.div`
-    display: inline-flex;
+    display: flex;
 `
 
 const baseCheckboxStyle = css`
@@ -113,6 +113,7 @@ const Checkbox = styled.input<Types.StyledCheckboxProps>`
 const Text = styled.span<{ $disabled?: boolean, $state: Types.CheckboxState }>`
     padding-left: 8px;
     margin: auto 0;
+    cursor: pointer;
 
     ${({ $state }) => states[$state || 'default'].label};
 
