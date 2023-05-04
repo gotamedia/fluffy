@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.1..v0.37.0) (2023-05-04)
+
+
+### Bug Fixes
+
+* **style:** Removed Select's drop-shadow filter from the Anchor. ([857fb62](http://bitbucket.org/gotamedia/fluffy/commits/857fb6234057486696b6c2499b4f8de6a434a3c4))
+
 ## [0.37.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.0..v0.36.2) (2023-05-04)
 
 
