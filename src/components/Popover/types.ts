@@ -20,6 +20,7 @@ interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     show?: boolean,
     withPointer?: boolean,
     backgroundColor?: string,
+    portalWhenMounted?: boolean,
     onClickOutside?: (event: MouseEvent | TouchEvent) => void,
     onScrollOutside?: () => void
 }
