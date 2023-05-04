@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.37.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.0..v0.36.2) (2023-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* Removed filter functionality from List and implemented filtering in Select instead.
+* Introduced `variantType` to UploadButton.
+* Introduced `variantType, state` to Textarea.
+* Introduced `variantType` to IconButton.
+* Introduced `variantType` to Button.
+* Updated Select and changed how it handle it's items and added SelectListItem component.
+* Updated List/ListItem to support Checkbox.
+
+### Features
+
+* Introduced `useServerEffect` hook. ([f8ded9d](http://bitbucket.org/gotamedia/fluffy/commits/f8ded9def5cc72801b3851490d3e0b18bfd131d0))
+* Introduced `variantType, state` to Textarea. ([a267193](http://bitbucket.org/gotamedia/fluffy/commits/a267193c25dcf8cba4527c1f6f89365e2ee92f61))
+* Introduced `variantType` to Button. ([b3bb2a6](http://bitbucket.org/gotamedia/fluffy/commits/b3bb2a618fe2512870d890c00580916378aaea1a))
+* Introduced `variantType` to IconButton. ([4509e5d](http://bitbucket.org/gotamedia/fluffy/commits/4509e5d8dc82e59f38fafc35dddf47eca07df6a0))
+* Introduced `variantType` to UploadButton. ([f0e2af7](http://bitbucket.org/gotamedia/fluffy/commits/f0e2af7cd2455b42a1bfe8d5969fbd2502a01d78))
+* Removed filter functionality from List and implemented filtering in Select instead. ([78a801a](http://bitbucket.org/gotamedia/fluffy/commits/78a801a42fae8f2bdf4f4d69a58fc20452ac42ce))
+* Updated Checkbox component to follow UX rules. ([5f56dfa](http://bitbucket.org/gotamedia/fluffy/commits/5f56dfa3c136635a833117826526c4ed3080356b))
+* Updated Input/InputGroup components to follow UX rules. ([8855e32](http://bitbucket.org/gotamedia/fluffy/commits/8855e3267a514741a3aa46a797d12b72f089c008))
+* Updated List/ListItem to support Checkbox. ([ff78270](http://bitbucket.org/gotamedia/fluffy/commits/ff78270951a078295d7a5517548a06a3928ac3df))
+* Updated Pagination component to follow UX rules. ([b4dcd0b](http://bitbucket.org/gotamedia/fluffy/commits/b4dcd0b4db11953afdc6e349bad56f739383bcfa))
+* Updated Select and changed how it handle it's items and added SelectListItem component. ([dace96c](http://bitbucket.org/gotamedia/fluffy/commits/dace96ca6012dd3c1cde096300a3b08b4efc314f))
+
+
+### Bug Fixes
+
+* Allow to pass `portalWhenMounted` to Popover. ([8dcbf38](http://bitbucket.org/gotamedia/fluffy/commits/8dcbf380d0885eeee005c4b897d1ff9937db6615))
+
 ### [0.36.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.36.2..v0.36.1) (2023-03-09)
 
 
