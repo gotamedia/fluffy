@@ -7,9 +7,11 @@ import FluffyButton from '@components/Button'
 import FluffySelectListItem from './components/SelectListItem'
 
 const Popover = styled(FluffyPopover)`
-    filter: unset;
-    -webkit-filter: unset;
-    background-color: white;
+    && {
+        filter: unset;
+        -webkit-filter: unset;
+        background-color: white;
+    }
 `
 
 const List = styled(FluffyList)<{ $withFooter?: boolean }>`
