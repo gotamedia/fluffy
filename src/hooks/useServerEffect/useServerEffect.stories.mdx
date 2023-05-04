@@ -1,0 +1,25 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useServerEffect'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useServerEffect is a custom useEffect hook that ONLY runs on server during SSR phase
+
+## Usage
+<Source
+    language={'tsx'}
+    code={`
+import { useServerEffect } from '@gotamedia/fluffy'
+\nconst Component = () => {
+    useServerEffect(() => {
+        // Do stuff...
+    }, [])
+`}
+/>
