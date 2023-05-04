@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-import Input from './index'
+import Input, {
+    InputVariants,
+    InputVariantTypes,
+    InputSizes,
+    InputStates
+} from './index'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -30,14 +35,17 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/Input',
+    title: 'Components/Input',
     component: Input,
     argTypes: {},
     args: {
-        variant: 'primary',
+        variant: InputVariants.Primary,
+        variantType: InputVariantTypes.Default,
+        size: InputSizes.Normal,
+        state: InputStates.Default,
+        label: '',
         value: '',
-        size: 'normal',
-        disabled: false,
-        placeholder: 'Type something cool!'
+        placeholder: 'Placeholder',
+        disabled: false
     }
 } as Meta<typeof Input>

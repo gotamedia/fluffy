@@ -1,11 +1,10 @@
 import styled from 'styled-components'
 
-import FluffyList from '../List'
+import FluffyList from '@components/List'
 
 const List = styled(FluffyList)`
     overflow: auto;
-    box-shadow: ${({ theme }) => theme.boxShadows[3]};
-    border-radius: 5px;
+    border-radius: 2px;
     background-color: white;
 `
 

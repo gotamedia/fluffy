@@ -3,14 +3,23 @@ import {
     useCallback
 } from 'react'
 
+import {
+    TextareaVariants,
+    TextareaVariantTypes,
+    TextareaSizes,
+    TextareaStates
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
 const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size = TextareaSizes.Normal,
+        variant = TextareaVariants.Primary,
+        variantType = TextareaVariantTypes.Default,
+        state = TextareaStates.Default,
         onChange,
         onValueChange,
         label,
@@ -43,6 +52,8 @@ const Textarea: Types.TextareaComponent = forwardRef((props, ref) => {
                 ref={ref}
                 $size={size}
                 $variant={variant}
+                $variantType={variantType}
+                $state={state}
                 onChange={handleOnChange}
                 {...DOMProps}
             />

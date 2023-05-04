@@ -1,6 +1,8 @@
-import React from 'react'
-
-import UploadButton from './index'
+import UploadButton, {
+    UploadButtonSizes,
+    UploadButtonVariants,
+    UploadButtonVariantTypes
+} from './'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -29,8 +31,9 @@ export default {
     component: UploadButton,
     argTypes: {},
     args: {
-        variant: 'primary',
-        size: 'normal',
+        size: UploadButtonSizes.Normal,
+        variant: UploadButtonVariants.Primary,
+        variantType: UploadButtonVariantTypes.Default,
         label: 'Upload'
     }
 } as Meta<typeof UploadButton>

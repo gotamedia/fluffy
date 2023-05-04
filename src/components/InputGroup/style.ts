@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components'
 
-import variants from './variants'
 import sizes from './sizes'
-import type { InputGroupProps } from './types'
+import variants from './variants'
+import states from './states'
+import type * as Types from './types'
 
 const foucsStyle = css`
     &:focus {
@@ -10,20 +11,20 @@ const foucsStyle = css`
     }
 `
 
-type WrapperProps = {
-    $size?: InputGroupProps['size'],
-    $variant?: InputGroupProps['variant'],
+type StyledWrapperProps = Types.StyledInputGroupProps & {
     $elements: {
         left: string,
         right: string
     }
 }
 
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div<StyledWrapperProps>`
     display: inline-flex;
     position: relative;
 
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${({ $size }) => sizes[$size || 'normal']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
+    ${({ $state }) => states[$state || 'default'].wrapper};
 
     .input-group {
         &__icon {
@@ -45,6 +46,8 @@ const Wrapper = styled.div<WrapperProps>`
 
         &__element {
             &.input-group {
+                ${({ $state }) => states[$state || 'default'].element};
+
                 &--left {
                     border-top-right-radius: 0;
                     border-bottom-right-radius: 0;
@@ -62,10 +65,9 @@ const Wrapper = styled.div<WrapperProps>`
         }
     }
 
-    ${({ $size }) => sizes[$size || 'normal']};
-
     input {
         ${({ $elements }) => $elements.left === 'element' && css`
+            border-left: 0;
             border-top-left-radius: 0;
             border-bottom-left-radius: 0;
 
@@ -73,12 +75,35 @@ const Wrapper = styled.div<WrapperProps>`
         `}
 
         ${({ $elements }) => $elements.right === 'element' && css`
+            border-right: 0;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
             ${foucsStyle};
         `}
+
+        ${({ $state }) => states[$state || 'default'].input};
     }
+
+    ${({ $disabled }) => $disabled && css`
+        && {
+            color: #8A8A8D;
+        }
+
+        .input-group {
+            &__element {
+                &.input-group {
+                    &--left {
+                        border-color: #B3B2B1;
+                    }
+    
+                    &--right {
+                        border-color: #B3B2B1;
+                    }
+                }
+            }
+        }
+    `};
 `
 
 export {

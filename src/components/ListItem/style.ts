@@ -2,124 +2,98 @@ import styled, { css } from 'styled-components'
 
 import { tint } from 'polished'
 
-import IconComponent, {
-    Icons,
-    IconSizes
-} from '../Icon'
-
-import types from './typeVariants'
-import sizes from './sizes'
-import borders from './borders'
+import CheckboxComponent from '@components/Checkbox'
+import IconComponent from '@components/Icon'
 
 import type * as Types from './types'
 
-type InnerWrapperProps = {
-    $type?: Types.ListItemProps['type'],
-    $hasIcon: boolean,
-    $asTitle?: Types.ListItemProps['asTitle']
-}
-
-const InnerWrapper = styled.div<InnerWrapperProps>`
+const InnerWrapper = styled.div`
+    flex: 1;
     display: flex;
-    margin: 0 0 10px 0px;
-    padding-right: 30px;
     position: relative;
-
-    ${({ $asTitle }) => $asTitle && css`
-        margin: 0 0 8px 0px;
-    `};
-
-    ${({ $type }) => types[$type || 'normal']};
 `
 
-const Icon = styled(IconComponent).attrs(() => {
-    return {
-        size: IconSizes.Small
-    }
-})<{ $isTypeSelect: boolean }>`
-    position: absolute;
-    left: 10px;
-
-    ${({ $isTypeSelect }) => $isTypeSelect && css`
-        left: 40px;
-    `}
+const Checkbox = styled(CheckboxComponent)`
+    margin: 8px 0 auto 8px;
 `
 
-const CheckIcon = styled(IconComponent).attrs(() => {
-    return {
-        icon: Icons.Check,
-        size: IconSizes.Small
+const Icon = styled(IconComponent)`
+    padding: 12px 0 8px 8px;
+
+    &:last-child {
+        padding: 12px 8px 8px 0px;
     }
-})`
-    position: absolute;
-    left: 10px;
+`
+
+const ActionIcon = styled(IconComponent)`
+    display: flex;
+    padding: 12px;
+
+    svg {
+        margin: auto;
+    }
+    
+    &:hover {
+        background-color: #E9E9E8;
+    }
 `
 
 const TextWrapper = styled.div`
     width: 100%;
     display: flex;
     margin: 0;
+    padding: 8px;
     flex-direction: column;
 `
 
 const Text = styled.p`
     margin: 0;
+    font-size: 14px;
+    line-height: 18px;
+    padding-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 `
 
 const SubText = styled.p`
     margin: 0;
-    font-size: 14px;
+    color: #8A8A8D;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 `
 
-const Border = styled.div<{ $border?: Types.ListItemProps['border'], $type?: Types.ListItemProps['type'] }>`
-    height: 1px;
-    background-color: lightgray;
-    
-    ${
-        //@ts-ignore
-        ({ $border }) => {
-            if ($border) {
-                return borders[$border]
-            }
-        }
-    };
-`
-
-type WrapperProps = {
-    $size?: Types.ListItemProps['size'],
-    $targeted?: Types.ListItemProps['targeted'],
-    $asTitle?: Types.ListItemProps['asTitle']
-}
-
-const Wrapper = styled.div<WrapperProps>`
+const Wrapper = styled.div<{ $targeted?: Types.ListItemProps['targeted'] }>`
     width: 100%;
-    padding: 10px 0 0 0;
+    min-height: 40px;
+    padding: 0;
     display: flex;
     flex-direction: column;
     outline: none;
 
-    ${({ $size }) => sizes[$size || 'normal']};
-
     &:hover {
-        ${({ $targeted, $asTitle }) => !$asTitle && !$targeted && css`
+        ${({ $targeted }) => !$targeted && css`
             cursor: pointer;
-            background-color: ${({ theme }) => tint(0.88, theme.colors.brand)};
+            background-color: #F5F5F5;
         `}
-    }
-
-    &:last-of-type {
-        ${Border} {
-            display: none;
-        }
     }
 
     ${({ $targeted }) => $targeted && css`
         cursor: default;
         background-color: ${({ theme }) => tint(0.1, theme.colors.brand)};
 
-        ${CheckIcon} {
-            color: white;
-            fill: white;
+        ${ActionIcon} {
+            &:not(:hover) {
+                color: white;
+                fill: white;
+            }
         }
 
         ${Icon} {
@@ -135,23 +109,15 @@ const Wrapper = styled.div<WrapperProps>`
             color: white;
         }
     `};
-
-    ${({ $asTitle }) => $asTitle && css`
-        padding: 8px 0 0 0;
-
-        ${Text} {
-            color: gray;
-        }
-    `}
 `
 
 export {
     Wrapper,
     InnerWrapper,
-    CheckIcon,
+    Checkbox,
     Icon,
+    ActionIcon,
     TextWrapper,
     Text,
-    SubText,
-    Border
+    SubText
 }

@@ -2,13 +2,13 @@ import type { FC } from 'react'
 
 import type {
     PaginationElement,
-    PaginationSizeType,
-    PaginationVariantType
-} from '../../types'
+    PaginationSize,
+    PaginationVariant
+} from '@components/Pagination/types'
 
 export type PaginationItemProps = PaginationElement & {
-    size: PaginationSizeType,
-    variant: PaginationVariantType,
+    size: PaginationSize,
+    variant: PaginationVariant,
     onClick: (type: PaginationElement['type'], page: PaginationElement['page']) => void
 }
 

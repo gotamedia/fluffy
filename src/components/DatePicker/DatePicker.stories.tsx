@@ -149,8 +149,6 @@ export default {
         disabled: false,
         isClearable: false,
         placeholderText: 'Select your date',
-        inputProps: {
-            variant: 'outline'
-        }
+        inputProps: {}
     }
 } as Meta<typeof DatePicker>

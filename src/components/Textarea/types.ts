@@ -4,14 +4,27 @@ import type {
     RefAttributes
 } from 'react'
 
+import type { Prefix } from '@root/types/prefix'
+
 export const TextareaVariants = {
-    Primary: 'primary' as const,
-    Secondary: 'secondary' as const,
-    Outline: 'outline' as const
+    Primary: 'primary' as const
 }
 
-export type TextareaVariantsType = typeof TextareaVariants
-export type TextareaVariantType = TextareaVariantsType[keyof TextareaVariantsType]
+export type TextareaVariant = typeof TextareaVariants[keyof typeof TextareaVariants]
+
+export const TextareaVariantTypes = {
+    Default: 'default' as const,
+    Generic: 'generic' as const
+}
+
+export type TextareaVariantType = typeof TextareaVariantTypes[keyof typeof TextareaVariantTypes]
+
+export const TextareaStates = {
+    Default: 'default' as const,
+    Error: 'error' as const
+}
+
+export type TextareaState = typeof TextareaStates[keyof typeof TextareaStates]
 
 export const TextareaSizes = {
     Tiny: 'tiny' as const,
@@ -21,17 +34,30 @@ export const TextareaSizes = {
     Huge: 'huge' as const
 }
 
-export type TextareaSizesType = typeof TextareaSizes
-export type TextareaSizeType = TextareaSizesType[keyof TextareaSizesType]
+export type TextareaSize = typeof TextareaSizes[keyof typeof TextareaSizes]
 
 type NativeTextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'size'>
 
 export interface TextareaProps extends NativeTextareaProps {
-    size?: TextareaSizeType,
-    variant?: TextareaVariantType,
+    size?: TextareaSize,
+    variant?: TextareaVariant,
+    variantType?: TextareaVariantType,
+    state?: TextareaState,
     onValueChange?: (value: string) => void,
     label?: string
 }
+
+export type StyledTextareaProps = Prefix<
+    Pick<
+        TextareaProps,
+        'size' |
+        'variant' |
+        'variantType' |
+        'state'
+    >,
+    '$'
+>
+
 
 export type TextareaRef = HTMLTextAreaElement
 

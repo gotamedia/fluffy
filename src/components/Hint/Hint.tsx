@@ -1,11 +1,16 @@
-import Icon, { Icons, IconSizes, IconType } from "@components/Icon"
-import useTheme from "@hooks/useTheme"
-import React, { forwardRef } from "react"
-import { HintTypes } from "./types"
-import * as Types from "./types"
-import * as Style from "./style"
+import { forwardRef } from 'react'
 
-const iconMap = new Map<Types.HintTypes, IconType>([
+import IconComponent, {
+    Icons,
+    IconSizes,
+    Icon
+} from '@components/Icon'
+
+import { HintTypes } from './types'
+import * as Style from './style'
+import * as Types from './types'
+
+const iconMap = new Map<Types.HintTypes, Icon>([
     [Types.HintTypes.Error, Icons.XCircle],
     [Types.HintTypes.Info, Icons.InformationCircle],
     [Types.HintTypes.Loading, Icons.ArrowPath],
@@ -20,22 +25,28 @@ const Hint: Types.HintComponent = forwardRef((props, ref) => {
         type = HintTypes.Error
     } = props
 
-    const theme = useTheme()
     const icon = iconMap.get(type) || Icons.InformationCircle
 
     return (
-        <Style.Wrapper ref={ref} $type={type} $theme={theme}>
-            <Icon
+        <Style.Wrapper
+            ref={ref}
+            $type={type}
+        >
+            <IconComponent
                 icon={icon}
                 spin={icon === Icons.ArrowPath}
                 size={IconSizes.Tiny}
             />
+
             {text && (
                 <span>{text}</span>
             )}
+
             {children}
         </Style.Wrapper>
     )
 })
+
+Hint.displayName = 'Hint'
 
 export default Hint

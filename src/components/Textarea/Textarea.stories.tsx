@@ -1,6 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-import Textarea from './index'
+import Textarea, {
+    TextareaVariants,
+    TextareaVariantTypes,
+    TextareaSizes,
+    TextareaStates
+} from './index'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -30,14 +35,17 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/Textarea',
+    title: 'Components/Textarea',
     component: Textarea,
     argTypes: {},
     args: {
-        variant: 'primary',
+        variant: TextareaVariants.Primary,
+        variantType: TextareaVariantTypes.Default,
+        size: TextareaSizes.Normal,
+        state: TextareaStates.Default,
+        label: '',
         value: '',
-        size: 'normal',
-        disabled: false,
-        placeholder: 'Type something cool!'
+        placeholder: 'Placeholder',
+        disabled: false
     }
 } as Meta<typeof Textarea>

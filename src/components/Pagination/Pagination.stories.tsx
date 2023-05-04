@@ -1,9 +1,14 @@
-import React, {
+import {
     useState,
     useCallback
 } from 'react'
 
 import Pagination from './index'
+
+import {
+    PaginationVariants,
+    PaginationSizes
+} from './types'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
@@ -36,14 +41,20 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/Pagination',
+    title: 'Components/Pagination',
     component: Pagination,
     argTypes: {},
     args: {
-        size: 'normal',
+        size: PaginationSizes.Normal,
+        variant: PaginationVariants.Primary,
         disabled: false,
         activePage: 1,
         totalPages: 100,
-        visiblePages: 10
+        visiblePages: 10,
+        showPreviousPageButton: true,
+        showFirstPageButton: true,
+        showSeparationIndicator: true,
+        showLastPageButton: true,
+        showNextPageButton: true
     }
 } as Meta<typeof Pagination>

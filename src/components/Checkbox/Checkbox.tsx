@@ -1,21 +1,45 @@
 import {
+    useRef,
     forwardRef,
+    useImperativeHandle,
     useCallback
 } from 'react'
 
+import {
+    CheckboxSizes,
+    CheckboxStates,
+    CheckboxVariants,
+    CheckboxVariantTypes
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
-import type { ChangeEventHandler } from 'react'
+import type {
+    ChangeEventHandler,
+    MouseEventHandler
+} from 'react'
 
 const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
+        size = CheckboxSizes.Normal,
+        variant = CheckboxVariants.Primary,
+        variantType = CheckboxVariantTypes.Default,
+        state = CheckboxStates.Default,
         label,
+        className,
+        disabled,
+        checked = false,
+        indeterminate = false,
         onChange,
         onValueChange,
-        disabled,
         ...DOMProps
     } = props
+
+    const checkboxRef = useRef<HTMLInputElement>(null)
+
+    useImperativeHandle(ref, () => {
+        return checkboxRef.current as HTMLInputElement
+    }, [])
 
     const handleOnChange: ChangeEventHandler<HTMLInputElement> = useCallback((event) => {
         if (typeof onChange === 'function') {
@@ -27,20 +51,35 @@ const Checkbox: Types.CheckboxComponent = forwardRef((props, ref) => {
         }
     }, [onChange, onValueChange])
 
+    const handleOnLabelClick: MouseEventHandler<HTMLInputElement> = useCallback(() => {
+        if (!disabled && checkboxRef?.current) {
+            checkboxRef.current.click()
+        }
+    }, [disabled])
+
     return (
-        <Styled.Wrapper>
+        <Styled.Wrapper className={className}>
             <Styled.Checkbox
-                ref={ref}
-                $size={size}
-                disabled={disabled}
-                onChange={handleOnChange}
                 {...DOMProps}
+                ref={checkboxRef}
+                $size={size}
+                $variant={variant}
+                $variantType={variantType}
+                $state={state}
+                disabled={disabled}
+                checked={checked || indeterminate}
+                onChange={handleOnChange}
+                data-indeterminate={indeterminate}
                 type={'checkbox'}
             />
 
             {
                 label ? (
-                    <Styled.Text $disabled={disabled}>
+                    <Styled.Text
+                        $state={state}
+                        $disabled={disabled}
+                        onClick={handleOnLabelClick}
+                    >
                         {label}
                     </Styled.Text>
                 ) : (

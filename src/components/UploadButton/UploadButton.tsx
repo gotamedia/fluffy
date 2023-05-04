@@ -4,14 +4,21 @@ import {
     useCallback
 } from 'react'
 
+import {
+    UploadButtonSizes,
+    UploadButtonVariants,
+    UploadButtonVariantTypes
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ChangeEventHandler } from 'react'
 
 const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size = UploadButtonSizes.Normal,
+        variant = UploadButtonVariants.Primary,
+        variantType = UploadButtonVariantTypes.Default,
         children = 'Upload',
         withIcon = true,
         withFileName = true,
@@ -44,6 +51,7 @@ const UploadButton: Types.UploadButtonComponent = forwardRef((props, ref) => {
             <Styled.InnerWrapper
                 $size={size}
                 $variant={variant}
+                $variantType={variantType}
                 tabIndex={0}
             >
                 {

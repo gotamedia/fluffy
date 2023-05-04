@@ -1,33 +1,39 @@
 import { css } from 'styled-components'
 
-import buttonVariants from '../Button/variants'
+import buttonVariants from '@components/Button/variants'
 
-const primary = css`
-    ${buttonVariants.primary};
-`
+import { IconButtonVariantTypes } from './types'
+import type { IconButtonVariantType } from './types'
 
-const secondary = css`
-    ${buttonVariants.secondary};
-`
+const primary = buttonVariants.primary
 
-const contrast = css`
-    ${buttonVariants.outlineTransparent};
-    background-color: #fff;
-    border-color: ${({ theme }) => theme.colors.grey[4]};
-    &:focus {
-        box-shadow: none;
+const secondary = buttonVariants.secondary
+
+// TODO: Remove contrast variant and replace with: variantType.
+const contrast = ($variantType?: IconButtonVariantType) => {
+    const buttonStyle = buttonVariants.outlineTransparent($variantType)
+
+    switch ($variantType) {
+        case IconButtonVariantTypes.Default:
+            return css`
+                ${buttonStyle};
+
+                background-color: #fff;
+                border-color: ${({ theme }) => theme.colors.grey[4]};
+                &:focus {
+                    box-shadow: none;
+                }
+            
+                &:disabled {
+                    background-color: ${({ theme }) => theme.colors.grey[4]};
+                    border-color: ${({ theme }) => theme.colors.grey[4]};
+                }
+            
+            `
     }
+}
 
-    &:disabled {
-        background-color: ${({ theme }) => theme.colors.grey[4]};
-        border-color: ${({ theme }) => theme.colors.grey[4]};
-    }
-
-`
-
-const outline = css`
-   ${buttonVariants.outline};
-`
+const outline = buttonVariants.outline
 
 const variants = {
     primary,

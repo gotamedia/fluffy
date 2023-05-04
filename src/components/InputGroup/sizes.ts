@@ -46,11 +46,11 @@ const normal = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 46px;
+            padding-left: 42px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 46px;
+            padding-right: 42px;
         `}
     }
 `
@@ -62,11 +62,11 @@ const big = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 58px;
+            padding-left: 52px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 58px;
+            padding-right: 52px;
         `}
     }
 `
@@ -78,11 +78,11 @@ const huge = css<StyledSizeProps>`
 
     input {
         ${({ $elements }) => $elements.left === 'icon' && css`
-            padding-left: 62px;
+            padding-left: 58px;
         `}
 
         ${({ $elements }) => $elements.right === 'icon' && css`
-            padding-right: 62px;
+            padding-right: 58px;
         `}
     }
 `

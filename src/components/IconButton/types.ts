@@ -4,7 +4,9 @@ import type {
     RefAttributes
 } from 'react'
 
-import { IconType } from '../Icon/types'
+import type { Prefix } from '@root/types/prefix'
+
+import { Icon } from '../Icon/types'
 
 export const IconButtonVariants = {
     Primary: 'primary' as const,
@@ -14,16 +16,24 @@ export const IconButtonVariants = {
 }
 
 
-export type IconButtonVariantsType = typeof IconButtonVariants
-export type IconButtonVariantType = IconButtonVariantsType[keyof IconButtonVariantsType]
+export type IconButtonVariant = typeof IconButtonVariants[keyof typeof IconButtonVariants]
+
+export const IconButtonVariantTypes = {
+    Default: 'default' as const,
+    Contrast: 'contrast' as const,
+    HighContrast: 'high-contrast' as const,
+    Generic: 'generic' as const,
+    Link: 'link' as const
+}
+
+export type IconButtonVariantType = typeof IconButtonVariantTypes[keyof typeof IconButtonVariantTypes]
 
 export const IconButtonShapes = {
     Square: 'square' as const,
     Circle: 'circle' as const
 }
 
-export type IconButtonShapesType = typeof IconButtonShapes
-export type IconButtonShapeType = IconButtonShapesType[keyof IconButtonShapesType]
+export type IconButtonShape = typeof IconButtonShapes[keyof typeof IconButtonShapes]
 
 export const IconButtonSizes = {
     Tiny: 'tiny' as const,
@@ -33,17 +43,28 @@ export const IconButtonSizes = {
     Huge: 'huge' as const
 }
 
-export type IconButtonSizesType = typeof IconButtonSizes
-export type IconButtonSizeType = IconButtonSizesType[keyof IconButtonSizesType]
+export type IconButtonSize = typeof IconButtonSizes[keyof typeof IconButtonSizes]
 
 type NativeButtonProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'size'>
 
 export interface IconButtonProps extends NativeButtonProps {
-    icon: IconType,
-    size?: IconButtonSizeType,
-    variant?: IconButtonVariantType,
-    shape?: IconButtonShapeType
+    icon: Icon,
+    size?: IconButtonSize,
+    variant?: IconButtonVariant,
+    variantType?: IconButtonVariantType,
+    shape?: IconButtonShape
 }
+
+export type StyledIconButtonProps = Prefix<
+    Pick<
+    IconButtonProps,
+        'size' |
+        'variant' |
+        'variantType' |
+        'shape'
+    >,
+    '$'
+>
 
 export type IconButtonRef = HTMLButtonElement
 
