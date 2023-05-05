@@ -1,7 +1,7 @@
-import * as Types from "./types"
+import { Polished } from "@root/index"
 
 import styled, { css } from "styled-components"
-import { Polished } from "@root/index"
+import * as Types from "./types"
 
 const Wrapper = styled.div<Pick<Types.RibbonProps, "side" | "top">>`
     position: absolute;
@@ -19,7 +19,7 @@ const Ribbon = styled.div<Pick<Types.RibbonProps, "background" | "color" | "fold
     font-size: ${({ theme }) => `${theme.fontSizes[2]}px`};
     line-height: ${({ theme }) => `${theme.lineHeights[2]}`};
     font-family: ${({ theme }) => theme.fonts.generic[1]};
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
     border-radius: ${({ side, theme }) => (side === "left"
         ? `0 ${theme.space[1]}px ${theme.space[1]}px 0`
         : `${theme.space[1]}px 0 0 ${theme.space[1]}px`

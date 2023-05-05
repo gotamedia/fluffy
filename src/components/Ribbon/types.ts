@@ -7,7 +7,7 @@ interface RibbonProps extends PropsWithChildren<{
     fold?: Lowercase<keyof typeof RibbonFolds>
     foldColor?: string
     side?: Lowercase<keyof typeof RibbonSides>
-    top?: number | string
+    top?: number | string | number[] | string[]
 }> {}
 
 type RibbonRef = HTMLDivElement

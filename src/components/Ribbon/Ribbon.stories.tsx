@@ -46,6 +46,6 @@ export default {
         foldColor: '#D4C60A',
         side: 'right',
         text: 'Ribbon',
-        top: 50
+        top: [20, 40, 60]
     }
 } as Meta<typeof Ribbon>
