@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
-import Input from '../Input'
+import Input, {
+    InputVariants,
+    InputVariantTypes,
+    InputSizes,
+    InputStates
+} from '../Input'
 import IconButton from '../IconButton'
 import Button from '../Button'
-import Icon, { Icons, IconVariants } from '../Icon'
+import Icon, {
+    Icons,
+    IconVariants
+} from '../Icon'
 import InputGroup from './'
 
 import type * as Types from './types'
@@ -23,7 +31,7 @@ const Basic: Story<Types.InputGroupProps & { value: string }> = (props) => {
             <Input
                 value={inputValue}
                 onChange={handlOnChange}
-                placeholder={'Type something cool!'}
+                placeholder={'Placeholder'}
             />
         </InputGroup>
     )
@@ -53,14 +61,14 @@ const WithIcon: Story<Types.InputGroupProps & { value: string }> = (props) => {
         <Wrapper>
             <InputGroup {...props}>
                 <Icon
-                    icon={Icons.FaceSmile}
-                    variant={IconVariants.Outline}
+                    icon={Icons.Photo}
+                    variant={IconVariants.Solid}
                 />
 
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
             </InputGroup>
 
@@ -68,12 +76,12 @@ const WithIcon: Story<Types.InputGroupProps & { value: string }> = (props) => {
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
 
                 <Icon
-                    icon={Icons.Funnel}
-                    variant={IconVariants.Outline}
+                    icon={Icons.Trash}
+                    variant={IconVariants.Solid}
                 />
             </InputGroup>
         </Wrapper>
@@ -95,7 +103,7 @@ const WithIconButton: Story<Types.InputGroupProps & { value: string }> = (props)
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
             </InputGroup>
 
@@ -103,7 +111,7 @@ const WithIconButton: Story<Types.InputGroupProps & { value: string }> = (props)
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
 
                 <IconButton icon={Icons.MagnifyingGlass} />
@@ -131,7 +139,7 @@ const WithButton: Story<Types.InputGroupProps & { value: string }> = (props) => 
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
             </InputGroup>
 
@@ -139,7 +147,7 @@ const WithButton: Story<Types.InputGroupProps & { value: string }> = (props) => 
                 <Input
                     value={inputValue}
                     onChange={handlOnChange}
-                    placeholder={'Type something cool!'}
+                    placeholder={'Placeholder'}
                 />
 
                 <Button>
@@ -158,11 +166,14 @@ export {
 }
 
 export default {
-    title: 'Developments/Components/InputGroup',
+    title: 'Components/InputGroup',
     component: InputGroup,
     argTypes: {},
     args: {
-        size: 'normal',
-        variant: 'primary'
+        disabled: false,
+        variant: InputVariants.Primary,
+        variantType: InputVariantTypes.Default,
+        size: InputSizes.Normal,
+        state: InputStates.Default
     }
 } as Meta<typeof InputGroup>

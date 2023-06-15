@@ -4,7 +4,7 @@ import sizes from './sizes'
 import variants from './variants'
 import shapes from './shapes'
 
-import type { IconButtonProps } from './types'
+import type * as Types from './types'
 
 // TODO: Fix colors / theme
 const baseIconButtonStyle = css`
@@ -22,17 +22,11 @@ const baseIconButtonStyle = css`
     box-sizing: border-box;
 `
 
-type StyledIconButtonProps = {
-    $size?: IconButtonProps['size'],
-    $variant?: IconButtonProps['variant'],
-    $shape?: IconButtonProps['shape']
-}
-
-const IconButton = styled.button<StyledIconButtonProps>`
+const IconButton = styled.button<Types.StyledIconButtonProps>`
     ${baseIconButtonStyle};
     ${({ $size }) => sizes[$size || 'normal']};
     ${({ $shape }) => shapes[$shape || 'square']};
-    ${({ $variant }) => variants[$variant || 'primary']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
 
     .fluffy-icon {
         margin-top: auto;

@@ -61,17 +61,17 @@ const pointerStyleFn: Types.AnchorStyleFn = ({
 
 const anchorStyleFn: Types.AnchorStyleFn = ({
     theme,
-    $backgroundColor = "white"
+    $backgroundColor = "transparent"
 }) => css`
-        z-index: 1000;
-        outline: none;
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        border: 1px solid ${$backgroundColor};
-        background-color: ${$backgroundColor};
-        border-radius: ${theme.borders.radius[0]};
-        filter: drop-shadow(${theme.filterShadows[0]});
+    z-index: 1000;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    border: 1px solid ${$backgroundColor};
+    background-color: ${$backgroundColor};
+    border-radius: ${theme.borders.radius[0]};
+    filter: drop-shadow(${theme.filterShadows[0]});
 `
 
 const Anchor = styled.div<Types.AnchorStyledProps>`

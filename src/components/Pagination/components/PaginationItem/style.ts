@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import IconButton, {
     IconButtonShapes
@@ -26,7 +26,9 @@ const PageButton = styled(Button).attrs<{ $active?: boolean }>(({ $active, varia
         variant: $active ? variant : ButtonVariants.Text
     }
 })<{ $active?: boolean }>`
-
+    ${({ $active }) => !$active && css`
+        color: #2E2A25
+    `}
 `
 
 const Separation = styled.p`

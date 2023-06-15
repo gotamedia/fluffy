@@ -1,46 +1,75 @@
 import styled, { css } from 'styled-components'
 
-import { tint } from 'polished'
-
 import sizes from './sizes'
+import variants from './variants'
+import states from './states'
+import checkedShapes from './checkedShapes'
 
-import type { CheckboxProps } from './types'
+import type * as Types from './types'
 
-const Wrapper = styled.label`
-    display: inline-flex;
+const Wrapper = styled.div`
+    display: flex;
 `
 
 const baseCheckboxStyle = css`
     appearance: none;
     margin: 0;
     font: inherit;
-    border: 2px solid ${({ theme }) => theme.colors.brand};
+    border: 2px solid;
+    border-color: #DADAD8;
     border-radius: 4px;
     display: flex;
+    position: relative;
+    outline: none;
+    background-color: white;
 
     &:before {
         content: "";
-        margin: auto;
-        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-        transform: scale(0);
-        transform-origin: bottom left;
-        transition: 120ms transform ease-in-out;
-        box-shadow: inset 1em 1em ${({ theme }) => theme.colors.brand};
+        border-radius: 1px;
+        position: absolute;
+        background-color: white;
     }
 
-    &:checked::before {
-        transform: scale(1);
+    &:after {
+        content: "";
+        border-radius: 1px;
+        position: absolute;
+        background-color: white;
     }
+`
 
-    &:hover {
-        &:not(:disabled) {
-            background-color: ${({ theme }) => tint(0.90, theme.colors.brand)};
+const Checkbox = styled.input<Types.StyledCheckboxProps>`
+    ${baseCheckboxStyle};
+
+    &[data-indeterminate="false"] {
+        &:before {
+            ${checkedShapes.checkmark.before};
+        }
+
+        &:after {
+            ${checkedShapes.checkmark.after};
         }
     }
 
-    &:active {
-        &:not(:disabled) {
-            background-color: ${({ theme }) => tint(0.82, theme.colors.brand)};
+    &[data-indeterminate="true"] {
+        &:before {
+            ${checkedShapes.indeterminate.before};
+        }
+
+        &:after {
+            ${checkedShapes.indeterminate.after};
+        }
+    }
+
+    &:hover {
+        background-color: #F5F5F5;
+
+        &:before {
+            background-color: #F5F5F5;
+        }
+
+        &:after {
+            background-color: #F5F5F5;
         }
     }
 
@@ -48,27 +77,48 @@ const baseCheckboxStyle = css`
         box-shadow: white 0px 0px 0px 2px, #2E2A25 0px 0px 0px 4px;
     }
 
+    ${({ $size }) => sizes[$size || 'normal']};
+    ${({ $variant, $variantType }) => variants[$variant || 'primary']($variantType)};
+    ${({ $state }) => states[$state || 'default'].checkbox};
+
+    &:checked {
+        &:disabled {
+            border-color: #B3B2B1;
+            background-color: #DADAD8;
+            
+            &:before {
+                background-color: #B3B2B1;
+            }
+
+            &:after {
+                background-color: #B3B2B1;
+            }
+        }
+    }
+
     &:disabled {
-        color: #959495;
-        border-color: #959495;
+        border-color: #B3B2B1;
+        background-color: #DADAD8;
         
         &:before {
-            box-shadow: inset 1em 1em #959495;
+            background-color: #DADAD8;
+        }
+
+        &:after {
+            background-color: #DADAD8;
         }
     }
 `
 
-const Checkbox = styled.input<{ $size?: CheckboxProps['size'] }>`
-    ${baseCheckboxStyle};
-    ${({ $size }) => sizes[$size || 'normal']};
-`
-
-const Text = styled.span<{ $disabled?: boolean }>`
-    padding-left: 10px;
+const Text = styled.span<{ $disabled?: boolean, $state: Types.CheckboxState }>`
+    padding-left: 8px;
     margin: auto 0;
+    cursor: pointer;
 
-    ${({  $disabled }) =>  $disabled && css`
-        color: #959495;
+    ${({ $state }) => states[$state || 'default'].label};
+
+    ${({ $disabled }) => $disabled && css`
+        color: #B3B2B1;
     `}
 `
 

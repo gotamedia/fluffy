@@ -32,14 +32,14 @@ export const parameters = {
         default: 'light',
         values: [
             {
-                name: 'dark',
-                value: '#2e2e2e',
-            },
-            {
                 name: 'light',
                 value: '#ffffff',
             },
-        ],
+            {
+                name: 'dark',
+                value: '#2e2e2e',
+            }
+        ]
     },
     darkMode: {
         dark: {
@@ -60,15 +60,6 @@ export const parameters = {
 }
 
 const theme = getTheme()
-
-export const decorators = [
-    (Story) => (
-        <div>
-            <GlobalStyle />
-            <Story />
-        </div>
-    )
-]
 
 const fluffyThemes = [
     {
@@ -101,4 +92,12 @@ const fluffyThemes = [
     }
 ]
 
-addDecorator(withThemes(ThemeProvider, fluffyThemes))
+export const decorators = [
+    (Story) => (
+        <div>
+            <GlobalStyle />
+            <Story />
+        </div>
+    ),
+    withThemes(ThemeProvider, fluffyThemes)
+]

@@ -19,8 +19,9 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
     const {
         children,
         show,
-        onClickOutside,
         anchor,
+        portalWhenMounted,
+        onClickOutside,
         onScrollOutside,
         ...filterdProps
     } = props
@@ -61,12 +62,12 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
 
     return (
         show ? (
-            <Portal>
+            <Portal portalWhenMounted={portalWhenMounted}>
                 <Anchor
                     ref={contentRef}
                     anchor={anchor}
                     {...filterdProps}
-                    >
+                >
                     {children}
                 </Anchor>
             </Portal>

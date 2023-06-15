@@ -6,12 +6,18 @@ import {
     cloneElement
 } from 'react'
 
-import useIsomorphicLayoutEffect from '@root/hooks/useIsomorphicLayoutEffect'
+import useServerEffect from '@hooks/useServerEffect'
+import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 
 import Button from '../Button'
 import IconButton from '../IconButton'
 import Icon from '../Icon'
-import Input from '../Input'
+import Input, {
+    InputVariants,
+    InputVariantTypes,
+    InputSizes,
+    InputStates
+} from '../Input'
 
 import * as Styled from './style'
 import type * as Types from './types'
@@ -52,9 +58,12 @@ const _getChildType = (child: ReactElement) => {
 //TODO: Support text elements to be rendered inside input like the icons
 const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size = InputSizes.Normal,
+        variant = InputVariants.Primary,
+        variantType = InputVariantTypes.Default,
+        state = InputStates.Default,
         children,
+        disabled,
         ...filteredProps
     } = props
 
@@ -63,7 +72,7 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
         right: ''
     })
 
-    useIsomorphicLayoutEffect(() => {
+    const elementsEffect = useCallback(() => {
         const elements = {
             left: '',
             right: ''
@@ -86,6 +95,14 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
             })
         })
     }, [children])
+
+    useServerEffect(() => {
+        elementsEffect()
+    }, [])
+
+    useIsomorphicLayoutEffect(() => {
+        elementsEffect()
+    }, [elementsEffect])
 
     const getChildPosition = useCallback((index: number) => {
         let position = ''
@@ -113,7 +130,10 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
             ref={ref}
             $size={size}
             $variant={variant}
+            $variantType={variantType}
+            $state={state}
             $elements={elements}
+            $disabled={disabled}
             {...filteredProps}
         >
             {
@@ -129,6 +149,9 @@ const InputGroup: Types.InputGroupComponent = forwardRef((props, ref) => {
                         const childProps = {
                             size: size,
                             variant: variant,
+                            variantType: variantType,
+                            state: state,
+                            disabled: disabled,
                             ...childElement.props,
                             className: childClassName
                         }

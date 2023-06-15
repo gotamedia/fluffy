@@ -4,14 +4,21 @@ import {
     cloneElement
 } from 'react'
 
+import {
+    ButtonSizes,
+    ButtonVariants,
+    ButtonVariantTypes
+} from './types'
+
 import * as Styled from './style'
 import type * as Types from './types'
 import type { ReactElement } from 'react'
 
 const Button: Types.ButtonComponent = forwardRef((props, ref) => {
     const {
-        size = 'normal',
-        variant = 'primary',
+        size = ButtonSizes.Normal,
+        variant = ButtonVariants.Primary,
+        variantType = ButtonVariantTypes.Default,
         children,
         ...DOMProps
     } = props
@@ -21,6 +28,7 @@ const Button: Types.ButtonComponent = forwardRef((props, ref) => {
             ref={ref}
             $size={size}
             $variant={variant}
+            $variantType={variantType}
             {...DOMProps}
         >
             {Children.map(children, (child) => {

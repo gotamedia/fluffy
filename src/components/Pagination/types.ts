@@ -11,8 +11,7 @@ export const PaginationVariants = {
     Outline: 'outline' as const
 }
 
-export type PaginationVariantsType = typeof PaginationVariants
-export type PaginationVariantType = PaginationVariantsType[keyof PaginationVariantsType]
+export type PaginationVariant = typeof PaginationVariants[keyof typeof PaginationVariants]
 
 export const PaginationSizes = {
     Tiny: 'tiny' as const,
@@ -22,12 +21,11 @@ export const PaginationSizes = {
     Huge: 'huge' as const
 }
 
-export type PaginationSizesType = typeof PaginationSizes
-export type PaginationSizeType = PaginationSizesType[keyof PaginationSizesType]
+export type PaginationSize = typeof PaginationSizes[keyof typeof PaginationSizes]
 
 export type PaginationProps = usePaginationProps & {
-    size?: PaginationSizeType,
-    variant?: PaginationVariantType,
+    size?: PaginationSize,
+    variant?: PaginationVariant,
     disabled?: boolean,
     onChange: (page: number) => void
 }

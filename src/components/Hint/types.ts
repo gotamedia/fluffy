@@ -1,5 +1,4 @@
 import { ForwardRefExoticComponent, PropsWithChildren, RefAttributes } from "react"
-import { DefaultTheme } from "styled-components"
 
 export enum HintTypes {
     Error = "error",
@@ -10,7 +9,6 @@ export enum HintTypes {
 }
 
 export interface StyledHintProps {
-    $theme: DefaultTheme
     $type: HintTypes
 }
 

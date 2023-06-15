@@ -1,48 +1,33 @@
 import type {
     HTMLAttributes,
     ForwardRefExoticComponent,
-    RefAttributes
+    RefAttributes,
+    MouseEventHandler
 } from 'react'
 
-import { IconType } from '../Icon'
+import { Icon } from '@components/Icon'
 
 export const ListItemTypes = {
     Normal: 'normal' as const,
-    Select: 'select' as const
+    Select: 'select' as const,
+    Checkbox: 'checkbox' as const
 }
 
-export type ListItemTypesType = typeof ListItemTypes
-export type ListItemTypeType = ListItemTypesType[keyof ListItemTypesType]
-
-export const ListItemSizes = {
-    Normal: 'normal' as const,
-    TwoRow: 'twoRow' as const
-}
-
-export type ListItemSizesType = typeof ListItemSizes
-export type ListItemSizeType = ListItemSizesType[keyof ListItemSizesType]
-
-export const ListItemBorders = {
-    Normal: 'normal' as const,
-    Full: 'full' as const
-}
-
-export type ListItemBordersType = typeof ListItemBorders
-export type ListItemBorderType = ListItemBordersType[keyof ListItemBordersType]
+export type ListItemType = typeof ListItemTypes[keyof typeof ListItemTypes]
 
 export interface ListItemProps extends HTMLAttributes<HTMLDivElement> {
     text: string,
     subText?: string,
-    size?: ListItemSizeType,
-    icon?: IconType,
-    border?: ListItemBorderType,
-    type?: ListItemTypeType,
+    icon?: Icon,
+    actionIcon?: Icon,
+    type?: ListItemType,
     targeted?: boolean,
     selected?: boolean,
     value?: any,
     onSelect?: (value: any) => void,
+    onActionClick?: MouseEventHandler<HTMLElement>,
     scrollOnTargeted?: boolean,
-    asTitle?: boolean
+    indeterminate?: boolean
 }
 
 export type ListItemRef = HTMLDivElement

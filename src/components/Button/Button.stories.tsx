@@ -1,11 +1,16 @@
-import React from 'react'
 import styled from 'styled-components'
 
-import Button from './'
-import Icon, { Icons, IconType } from '../Icon'
+import Button, {
+    ButtonSizes,
+    ButtonVariants,
+    ButtonVariantTypes
+} from './'
+
+import IcomComponent, { Icons } from '../Icon'
 
 import type * as Types from './types'
 import type { Story, Meta } from '@storybook/react'
+import type { Icon } from '../Icon'
 
 const Basic: Story<Types.ButtonProps & {
     text: string
@@ -32,18 +37,18 @@ const Wrapper = styled.div`
 
 const WithIcon: Story<Types.ButtonProps & {
     text: string,
-    icon: IconType,
+    icon: Icon,
 }> = ({text, icon, ...props}) => {
     return (
         <Wrapper>
             <Button {...props}>
-                <Icon icon={icon} />
+                <IcomComponent icon={icon} />
                 {text}
             </Button>
 
             <Button {...props}>
                 {text}
-                <Icon icon={icon} />
+                <IcomComponent icon={icon} />
             </Button>
         </Wrapper>
     )
@@ -62,9 +67,10 @@ export default {
     component: Button,
     argTypes: {},
     args: {
-        variant: 'primary',
+        size: ButtonSizes.Normal,
+        variant: ButtonVariants.Primary,
+        variantType: ButtonVariantTypes.Default,
         text: 'Click me!',
-        size: 'normal',
         icon: Icons.Eye,
         disabled: false
     }

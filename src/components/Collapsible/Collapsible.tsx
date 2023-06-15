@@ -1,25 +1,33 @@
-import { forwardRef, useRef } from "react"
+import {
+    forwardRef,
+    useRef,
+    useEffect
+} from "react"
 
+import useMeasure from "@hooks/useMeasure"
+import useDidValueChanged from '@hooks/useDidValueChanged'
 import useAnimation from "@hooks/useAnimation"
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
 
 import * as Styled from "./style"
 import * as Types from "./types"
-import useMeasure from "@hooks/useMeasure"
-import useDidValueChanged from '@hooks/useDidValueChanged'
 
-const Collapsible: Types.CollapsibleComponent = forwardRef(({
-    open = false,
-    children,
-    ...rest
-}, ref) => {
-    const { heightTransition } = useAnimation()
+const Collapsible: Types.CollapsibleComponent = forwardRef((props, ref) => {
+    const {
+        open = false,
+        children,
+        ...rest
+    } = props
+
+    const trackFromHeight = useRef(0)
+    const transitioning = useRef(false)
     const initialValue = useRef<boolean>(open)
     const wrapperRef = useRef<HTMLDivElement>(null)
     const contentRef = useRef<HTMLDivElement>(null)
 
+    const { heightTransition } = useAnimation()
+
     const { rect: observeElementRect } = useMeasure(contentRef.current)
-    const trackFromHeight = useRef(0)
 
     const observeElementHeight = observeElementRect.height
 
@@ -29,23 +37,62 @@ const Collapsible: Types.CollapsibleComponent = forwardRef(({
             initialValue.current = false
             return false
         }
+
         return prev.open === curr.open
     })
 
     useIsomorphicLayoutEffect(() => {
-        if (toggle) {
-            const wrapperElement = wrapperRef.current
+        if (toggle && wrapperRef.current) {
+            transitioning.current = true
+            
             const from = open ? trackFromHeight.current : observeElementHeight
             const to = open ? observeElementHeight : 0
+            
             trackFromHeight.current = to
+            
+            heightTransition({
+                element: wrapperRef.current,
+                from,
+                to,
+                onComplete: () => {
+                    transitioning.current = false
+                }
+            })
+        }
+    }, [
+        toggle,
+        heightTransition,
+        observeElementHeight,
+        open
+    ])
+
+    useEffect(() => {
+        if (open && !transitioning.current) {
+            const wrapperElement = wrapperRef.current
+            
+            const from = trackFromHeight.current
+            const to = observeElementHeight
+            
+            trackFromHeight.current = to
+
             heightTransition({ element: wrapperElement as HTMLDivElement, from, to })
         }
-    }, [toggle, heightTransition, observeElementHeight, open])
+    }, [
+        heightTransition,
+        observeElementHeight,
+        open,
+        children
+    ])
 
     return (
-        <Styled.Container ref={ref} {...rest}>
+        <Styled.Container
+            ref={ref}
+            {...rest}
+        >
             <Styled.Wrapper ref={wrapperRef}>
-                <Styled.ContentWrapper ref={contentRef}>{children}</Styled.ContentWrapper>
+                <Styled.ContentWrapper ref={contentRef}>
+                    {children}
+                </Styled.ContentWrapper>
             </Styled.Wrapper>
         </Styled.Container>
     )
