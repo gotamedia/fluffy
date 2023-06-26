@@ -1,6 +1,18 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [0.38.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.38.0..v0.37.2) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* Fixed CHANGELOG to properly bump correct version due to last changes.
+
+### Features
+
+* Fixed CHANGELOG to properly bump correct version due to last changes. ([3391e10](http://bitbucket.org/gotamedia/fluffy/commits/3391e104e81a83f367eeace6410ee25ef8ead34e))
+* Replaced "standard-version" with "commit-and-tag-version" ([1dd22f6](http://bitbucket.org/gotamedia/fluffy/commits/1dd22f60e31f3c20e149ae0e5146a107b72c174d))
 
 ### [0.37.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.1..v0.37.0) (2023-05-04)
 
