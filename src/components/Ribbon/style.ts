@@ -1,7 +1,7 @@
-import { Polished } from "@root/index"
-
 import styled, { css } from "styled-components"
-import * as Types from "./types"
+import { darken } from "polished"
+
+import type * as Types from "./types"
 
 const Wrapper = styled.div<Pick<Types.RibbonProps, "side" | "top">>`
     position: absolute;
@@ -47,7 +47,7 @@ const Fold = styled.div<Pick<Types.RibbonProps, "background" | "fold" | "foldCol
         fold === "up" ? `${theme.space[4]}px` : "0"
     ].join(" ")};
     border-color: ${({ background, fold, foldColor, side }) => {
-        const combinedFoldColor = foldColor || Polished.darken(0.2, background)
+        const combinedFoldColor = foldColor || darken(0.2, background)
         return [
             fold === "down" && side === "right" ? combinedFoldColor : "transparent",
             fold === "down" && side === "left" ? combinedFoldColor : "transparent",

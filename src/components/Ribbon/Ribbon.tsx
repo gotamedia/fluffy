@@ -1,5 +1,7 @@
-import useTheme from "@hooks/useTheme"
 import { forwardRef } from "react"
+
+import useTheme from "@hooks/useTheme"
+
 import type * as Types from "./types"
 import * as Styled from "./style"
 
