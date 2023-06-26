@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.37.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.2..v0.37.1) (2023-06-26)
+
+
+### Features
+
+* Introduced Ribbon component. ([04ee6b3](http://bitbucket.org/gotamedia/fluffy/commits/04ee6b32ee588360bfbe2e98bb975b7192b6bfa5))
+
 ### [0.37.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.1..v0.37.0) (2023-05-04)
 
 
