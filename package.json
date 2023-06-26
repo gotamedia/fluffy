@@ -14,7 +14,7 @@
     "build-storybook": "./scripts/storybook.sh && build-storybook",
     "babel": "babel temp_dist --source-root temp_dist --out-dir dist --extensions .js --copy-files --quiet",
     "types": "ttsc --project ./temp_root/tsconfig.json",
-    "release": "standard-version && npm run finalize-package",
+    "release": "commit-and-tag-version && npm run finalize-package",
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",

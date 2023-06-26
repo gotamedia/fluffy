@@ -17,7 +17,7 @@ pipelines:
           name: Publish
           deployment: production
           script:
-            - npm i -g standard-version
+            - npm i -g commit-and-tag-version
             - npm run release
             - git push --follow-tags origin trunk
             - pipe: atlassian/npm-publish:0.3.2
