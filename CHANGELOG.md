@@ -1,11 +1,19 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [0.38.0](https://bitbucket.org/gotamedia/fluffy/compare/v0.38.0..v0.37.1) (2023-06-26)
 
 
-### Bug Fixes
+### ⚠ BREAKING CHANGES
 
-* **style:** Removed Select's drop-shadow filter from the Anchor. ([857fb62](http://bitbucket.org/gotamedia/fluffy/commits/857fb6234057486696b6c2499b4f8de6a434a3c4))
+* Fixed CHANGELOG to properly bump correct version due to last changes.
+
+### Features
+
+* Fixed CHANGELOG to properly bump correct version due to last changes. ([3391e10](https://bitbucket.org/gotamedia/fluffy/commits/3391e104e81a83f367eeace6410ee25ef8ead34e))
+* Introduced Ribbon component. ([04ee6b3](https://bitbucket.org/gotamedia/fluffy/commits/04ee6b32ee588360bfbe2e98bb975b7192b6bfa5))
+* Replaced "standard-version" with "commit-and-tag-version" ([1dd22f6](https://bitbucket.org/gotamedia/fluffy/commits/1dd22f60e31f3c20e149ae0e5146a107b72c174d))
 
 ## [0.37.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.37.0..v0.36.2) (2023-05-04)
 
