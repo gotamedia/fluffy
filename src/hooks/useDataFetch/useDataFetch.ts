@@ -1,11 +1,9 @@
-import {
-    useEffect,
-    useContext
-} from 'react'
+import { useContext } from 'react'
 
 import { v4 as createId } from 'uuid'
 
 import useLazyRef from '@hooks/useLazyRef'
+import useAsyncEffect from '@hooks/useAsyncEffect'
 
 import { DataFetchContext } from './contexts/DataFetch'
 
@@ -50,8 +48,7 @@ const useDataFetch: Types.UseDataFetch = (effect, dependencies, id) => {
     }
 
     // Client-Side fetching
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(effect as unknown as () => () => void, dependencies)
+    useAsyncEffect(effect, dependencies)
 }
 
 export default useDataFetch
