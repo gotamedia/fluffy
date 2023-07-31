@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.39.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.2..v0.39.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* **doc:** Updated useDataFetch doc. ([fd86ced](http://bitbucket.org/gotamedia/fluffy/commits/fd86ced35566fb4a18e9ceb6c5197ea7a3f0095f))
+* Updated "eslint-config" ([cd138e0](http://bitbucket.org/gotamedia/fluffy/commits/cd138e017b5c2c00fa9def16e0e348040d40ba24))
+
 ## [0.39.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.1..v0.39.0) (2023-07-31)
 
 
