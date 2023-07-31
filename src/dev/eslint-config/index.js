@@ -17,7 +17,7 @@ const config = {
     rules: {
         'react-hooks/rules-of-hooks': 'error',
         'react-hooks/exhaustive-deps': ['warn', {
-            'additionalHooks': '(useDeepCompareEffect|useDeepCompareCallback|useIsomorphicLayoutEffect|useDataFetch)'
+            'additionalHooks': '(useDeepCompareEffect|useDeepCompareCallback|useIsomorphicLayoutEffect|useDataFetch|useServerEffect|useAsyncEffect)'
         }]
     }
 }
