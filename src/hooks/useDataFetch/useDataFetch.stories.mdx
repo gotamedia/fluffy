@@ -1,0 +1,142 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useDataFetch'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useDataFetch is a custom useEffect hook that allow running hooks on server to fetch data.
+Combined with `DataFetch` context, your components can fetch data while rendering on server-side
+
+***
+**NOTE:** useDataFetch() will run in both Client and Server, where in Client it will behave as a normal useEffect()
+***
+
+## Usage
+<Source
+    language={'tsx'}
+    code={`
+// App.tsx --->
+import { useState } from 'react'
+import {
+    useSelector,
+    useDispatch
+} from 'react-redux'
+import useDataFetch from '@gotamedia/fluffy/useDataFetch'
+\nconst App = () => {
+    const items = useSelector(state => state.items)\n
+    const dispatch = useDispatch()\n
+    useDataFetch(async () => {
+        const response = await fetch("...")
+        const data = await resposne.json()\n
+        dispatch({
+            type: 'SET_ITEMS',
+            payload: data
+        })
+    }, [])\n
+    return (
+        <div>
+            {
+                items.map((item) => {
+                    return (
+                        <p>
+                            {item.name}
+                        </p>
+                    )
+                })
+            }
+        </div>
+    )
+}
+// <---
+\n// Server --->
+import { renderToString } from 'react-dom/server'
+import { createServerContext } from '@gotamedia/fluffy/useDataFetch'
+\nimport App from '@components/App'
+\nconst handler = async (request, response) => {
+    const DataFetch = createServerContext()\n
+    const Component = (
+        <DataFetch.Provider>
+            <App />
+        </DataFetch.Provider>
+    )\n
+    // First render so DataFetch will collect all the effect callbacks
+    let markup = renderToString(Component)\n
+    // Resolve all the callbacks and fetch
+    await DataFetch.resolveData()\n
+    // Second render so App will get the data resolved and selected from the state and render the items
+    markup = renderToString(Component)\n
+    response.send(markup)
+}
+// <---
+\n// Client --->
+import { hydrateRoot } from 'react-dom/client'
+\nimport App from '@components/App'
+\nconst Root = document.getElementById("root")
+\nhydrateRoot(Root, App)
+// <---
+`}
+/>
+
+## Options
+### DataFetch.resolveData(timeout, additionalParams)
+<Source
+    language={'ts'}
+    code={`(
+    timeout: number,
+    additionalParams: any
+)`}
+/>
+
+You can pass `timeout` as the first argument to `DataFetch.resolveData()` so DataFetch will cancel the effect if it took longer that the specified time in milliseconds.
+Default to `1500`
+<Source
+    language={'ts'}
+    code={`
+const handler = async (request, response) => {
+    ...
+    await DataFetch.resolveData(2000)
+    ...
+}
+`}
+/>
+
+You can pass `additionalParams` as the second argument to `DataFetch.resolveData()` so all useDataFetch effect callbacks will get it as a param.
+<Source
+    language={'ts'}
+    code={`
+// Server --->
+const handler = async (request, response) => {
+    ...
+    await DataFetch.resolveData(2000, { path: request.path })
+    ...
+}
+// <---\n
+// App.tsx --->
+const App = () => {
+    ...
+    useDataFetch(async (params) => {
+        const response = await fetch("...")
+        const data = await resposne.json()\n
+        dispatch({
+            type: 'SET_ITEMS',
+            payload: {
+                items: items,
+                path: params.path
+            }
+        })
+    }, [])\n
+    ...
+}
+// <---
+`}
+/>
+
+***
+**NOTE:** If you pass additionalParams to DataFetch.resolveData(), it will only be available during server-side rendering and it wont be available during client-side rendering
+***

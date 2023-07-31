@@ -1,0 +1,26 @@
+import { Source, Meta } from '@storybook/addon-docs'
+
+<Meta
+    title={'Hooks/useAsyncEffect'}
+    parameters={{
+        options: {
+            showToolbar: false
+        }
+    }}
+/>
+
+## About
+useAsyncEffect is a custom useEffect hook that allow effect callbacks to be an async effect
+
+## Usage
+<Source
+    language={'tsx'}
+    code={`
+import useAsyncEffect from '@gotamedia/fluffy/useAsyncEffect'
+\nconst Component = () => {
+    useAsyncEffect(async () => {
+        const respomse = await fetch("...")
+    }, [])
+}
+`}
+/>
