@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.39.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.1..v0.39.0) (2023-07-31)
+
+
+### Bug Fixes
+
+* **doc:** Added useAsyncEffect documentation. ([b7be80f](http://bitbucket.org/gotamedia/fluffy/commits/b7be80fd6a86950cc7efbe3aacba913bcd62d74d))
+* **doc:** Added useDataFetch documentation. ([625c901](http://bitbucket.org/gotamedia/fluffy/commits/625c901e385603b2fd3b13103fb9813f37690f38))
+
 ## [0.39.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.0..v0.37.2) (2023-07-27)
 
 
