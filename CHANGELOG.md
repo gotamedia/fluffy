@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.39.3](https://github.com/gotamedia/fluffy/compare/v0.39.2...v0.39.3) (2023-08-01)
+
+
+### Bug Fixes
+
+* merge issue ([3964ae9](https://github.com/gotamedia/fluffy/commit/3964ae96df2d67d15b792a9e2aceda9f018f02f5))
+
 ## [0.39.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.2..v0.39.1) (2023-07-31)
 
 
