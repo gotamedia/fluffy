@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: cypress/browsers:node16.14.2-slim-chrome103-ff102
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: Run Tests
+      run: |
+        npm i
+        npm run cy:run
