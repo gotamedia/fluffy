@@ -31,7 +31,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
-    container: gotamedia/aws-cli:github
     steps:
     - name: checkout
       uses: actions/checkout@v3
