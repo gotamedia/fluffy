@@ -1,0 +1,85 @@
+name: Storybook - Build & Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      ENVIRONMENT:
+        description: 'Which environment storybook needs to be deployed'
+        default: 'dev'
+        required: true
+        type: choice
+        options:
+        - dev
+        - prod
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: code checkout
+      uses: actions/checkout@v3
+    - name: build and test
+      run: |
+        npm i
+        npm run build-storybook
+    - name: upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: storybook-static
+        path: storybook-static/**
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    container: gotamedia/aws-cli:github
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+    - name: download build artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: storybook-static
+        path: storybook-static/
+    - name: config
+      run: git config --global --add safe.directory ${GITHUB_WORKSPACE}
+    - name: Set env
+      run: echo "REPO_SLUG=${GITHUB_REPOSITORY:10}" >> $GITHUB_ENV
+    - name: run test script
+      run: |
+        if [ "${{inputs.ENVIRONMENT}}" == "prod" ]
+        then
+          echo "AWS_ACCESS_KEY_ID=${prod_AWS_ACCESS_KEY_ID}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${prod_AWS_SECRET_ACCESS_KEY}" >> $GITHUB_ENV
+          echo "CERTIFICATE_ARN=${prod_CERTIFICATE_ARN}" >> $GITHUB_ENV
+          echo "DOMAIN_NAME=${prod_DOMAIN_NAME}" >> $GITHUB_ENV
+        else
+          echo "AWS_ACCESS_KEY_ID=${dev_AWS_ACCESS_KEY_ID}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${dev_AWS_SECRET_ACCESS_KEY}" >> $GITHUB_ENV
+          echo "CERTIFICATE_ARN=${dev_CERTIFICATE_ARN}" >> $GITHUB_ENV
+          echo "DOMAIN_NAME=${dev_DOMAIN_NAME}" >> $GITHUB_ENV
+        fi
+    - name: deployment
+      run: |
+        aws cloudformation deploy --template-file "aws/template.yml" --stack-name "${REPO_SLUG,,}" --capabilities CAPABILITY_IAM --no-fail-on-empty-changeset --parameter-overrides CertificateARN="${CERTIFICATE_ARN}" DomainName="${DOMAIN_NAME}" --tags AppId=${APP_ID} AppName=${REPO_SLUG} CostBearer=${COST_BEARER} CostCenter=${COST_CENTER} Environment=${{inputs.ENVIRONMENT}} Owner=${OWNER} Role=${ROLE} SLA=${SLA}
+        S3_BUCKET=$(aws cloudformation describe-stacks --stack-name "${REPO_SLUG,,}" --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" --output text)
+        aws s3 sync ./storybook-static s3://${S3_BUCKET} --delete --no-progress
+        DISTRIBUTION_ID=$(aws cloudformation describe-stacks --stack-name "${REPO_SLUG,,}" --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" --output text)
+        aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/*"
+
+env:
+  dev_AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
+  dev_AWS_SECRET_ACCESS_KEY: ${{ secrets.DEV_AWS_SECRET_ACCESS_KEY }}
+  prod_AWS_ACCESS_KEY_ID: ${{ secrets.PROD_AWS_ACCESS_KEY_ID }}
+  prod_AWS_SECRET_ACCESS_KEY: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  prod_CERTIFICATE_ARN: ${{ vars.PROD_CERTIFICATE_ARN }}
+  prod_DOMAIN_NAME: ${{ vars.PROD_DOMAIN_NAME }}
+  APP_ID: ${{ vars.APP_ID }}
+  COST_BEARER: ${{ vars.COST_BEARER }}
+  COST_CENTER: ${{ vars.COST_CENTER }}
+  OWNER: ${{ vars.OWNER }}
+  ROLE: ${{ vars.ROLE }}
+  SLA: ${{ vars.SLA }}
+  dev_DOMAIN_NAME: ${{ vars.DEV_DOMAIN_NAME }}
+  dev_CERTIFICATE_ARN: ${{ vars.DEV_CERTIFICATE_ARN }}

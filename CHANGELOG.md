@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.39.3](https://github.com/gotamedia/fluffy/compare/v0.39.2...v0.39.3) (2023-08-01)
+
+
+### Bug Fixes
+
+* merge issue ([3964ae9](https://github.com/gotamedia/fluffy/commit/3964ae96df2d67d15b792a9e2aceda9f018f02f5))
+
+## [0.39.2](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.2..v0.39.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* **doc:** Updated useDataFetch doc. ([fd86ced](http://bitbucket.org/gotamedia/fluffy/commits/fd86ced35566fb4a18e9ceb6c5197ea7a3f0095f))
+* Updated "eslint-config" ([cd138e0](http://bitbucket.org/gotamedia/fluffy/commits/cd138e017b5c2c00fa9def16e0e348040d40ba24))
+
+## [0.39.1](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.1..v0.39.0) (2023-07-31)
+
+
+### Bug Fixes
+
+* **doc:** Added useAsyncEffect documentation. ([b7be80f](http://bitbucket.org/gotamedia/fluffy/commits/b7be80fd6a86950cc7efbe3aacba913bcd62d74d))
+* **doc:** Added useDataFetch documentation. ([625c901](http://bitbucket.org/gotamedia/fluffy/commits/625c901e385603b2fd3b13103fb9813f37690f38))
+
+## [0.39.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.39.0..v0.37.2) (2023-07-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* Introduced useAsyncEffect hook.
+* Fixed CHANGELOG to properly bump correct version due to last changes.
+
+### Features
+
+* Fixed CHANGELOG to properly bump correct version due to last changes. ([3391e10](http://bitbucket.org/gotamedia/fluffy/commits/3391e104e81a83f367eeace6410ee25ef8ead34e))
+* Introduced useAsyncEffect hook. ([6794b51](http://bitbucket.org/gotamedia/fluffy/commits/6794b5188592c5b38400978c4b9c14d04b340ae0))
+* Replaced "standard-version" with "commit-and-tag-version" ([1dd22f6](http://bitbucket.org/gotamedia/fluffy/commits/1dd22f60e31f3c20e149ae0e5146a107b72c174d))
+
+
+### Bug Fixes
+
+* Used useAsyncEffect in useDataFetch to satisfy React 18 warnings. ([2157611](http://bitbucket.org/gotamedia/fluffy/commits/2157611b33c1977c743a67dc356a64de8e4fc083))
+
 ## [0.38.0](http://bitbucket.org/gotamedia/fluffy/compare/v0.38.0..v0.37.2) (2023-06-26)
 
 
