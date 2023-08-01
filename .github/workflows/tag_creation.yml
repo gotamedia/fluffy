@@ -17,7 +17,7 @@ jobs:
         release-type: node
         package-name: fluffy
 
-    - name: automerge
+    - name: automerge PR
       uses: gopac25/automerge@master
       with:
         github_token: ${{ secrets.MANUAL_WORKFLOW_TOKEN }}
