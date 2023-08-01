@@ -57,6 +57,7 @@ jobs:
           echo "CERTIFICATE_ARN=${dev_CERTIFICATE_ARN}" >> $GITHUB_ENV
           echo "DOMAIN_NAME=${dev_DOMAIN_NAME}" >> $GITHUB_ENV
         fi
+        echo "ENVIRONMENT=${{inputs.ENVIRONMENT}}" >> $GITHUB_ENV
     - name: deployment
       run: ./scripts/deploy
 
