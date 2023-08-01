@@ -24,7 +24,7 @@ aws cloudformation deploy \
                   AppName=${REPO_SLUG} \
                   CostBearer=${COST_BEARER} \
                   CostCenter=${COST_CENTER} \
-                  Environment=${{inputs.ENVIRONMENT}} \
+                  Environment=${ENVIRONMENT} \
                   Owner=${OWNER} \
                   Role=${ROLE} \
                   SLA=${SLA}
