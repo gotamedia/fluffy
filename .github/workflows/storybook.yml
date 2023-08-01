@@ -59,12 +59,7 @@ jobs:
           echo "DOMAIN_NAME=${dev_DOMAIN_NAME}" >> $GITHUB_ENV
         fi
     - name: deployment
-      run: |
-        aws cloudformation deploy --template-file "aws/template.yml" --stack-name "${REPO_SLUG,,}" --capabilities CAPABILITY_IAM --no-fail-on-empty-changeset --parameter-overrides CertificateARN="${CERTIFICATE_ARN}" DomainName="${DOMAIN_NAME}" --tags AppId=${APP_ID} AppName=${REPO_SLUG} CostBearer=${COST_BEARER} CostCenter=${COST_CENTER} Environment=${{inputs.ENVIRONMENT}} Owner=${OWNER} Role=${ROLE} SLA=${SLA}
-        S3_BUCKET=$(aws cloudformation describe-stacks --stack-name "${REPO_SLUG,,}" --query "Stacks[0].Outputs[?OutputKey=='S3BucketName'].OutputValue" --output text)
-        aws s3 sync ./storybook-static s3://${S3_BUCKET} --delete --no-progress
-        DISTRIBUTION_ID=$(aws cloudformation describe-stacks --stack-name "${REPO_SLUG,,}" --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" --output text)
-        aws cloudfront create-invalidation --distribution-id ${DISTRIBUTION_ID} --paths "/*"
+      run: ./scripts/deploy
 
 env:
   dev_AWS_ACCESS_KEY_ID: ${{ secrets.DEV_AWS_ACCESS_KEY_ID }}
