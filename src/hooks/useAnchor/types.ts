@@ -1,3 +1,5 @@
+import { Align } from "@root/components/Anchor/types"
+
 type UseAnchorProps = {
     anchor?: HTMLElement | null,
     anchored: HTMLElement | null,
@@ -8,6 +10,7 @@ type UseAnchorProps = {
     },
     forceDirection?: boolean
     withPointer?: boolean
+    alignment?: Align
 }
 
 type UseAnchorPointer = {

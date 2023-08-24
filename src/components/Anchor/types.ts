@@ -19,6 +19,12 @@ interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     withFocusTrap?: boolean,
     withPointer?: boolean
     backgroundColor?: string
+    alignment?: Align
+}
+
+export enum Align {
+    Top = "Top",
+    Bottom = "Bottom"
 }
 
 type AnchorStyledProps = StyledPrefixThemeProps<Pick<AnchorRect, "pointer">> & {

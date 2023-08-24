@@ -1,17 +1,17 @@
 import {
     forwardRef,
     useCallback,
-    useRef,
+    useEffect,
     useImperativeHandle,
-    useEffect
+    useRef
 } from 'react'
 
-import Portal from '@components/Portal'
 import Anchor from '@components/Anchor'
+import Portal from '@components/Portal'
 
-import useScrollPosition from '@hooks/useScrollPosition'
 import useDidValueChanged from '@hooks/useDidValueChanged'
 import useOutsideClick from '@hooks/useOutsideClick'
+import useScrollPosition from '@hooks/useScrollPosition'
 
 import * as Types from './types'
 
@@ -80,3 +80,5 @@ const Popover: Types.PopoverComponent = forwardRef((props, ref) => {
 Popover.displayName = 'Popover'
 
 export default Popover
+
+
