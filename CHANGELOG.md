@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.4](https://github.com/gotamedia/fluffy/compare/v0.39.3...v0.39.4) (2023-08-24)
+
+
+### Bug Fixes
+
+* extending anchor / popover with alignment ([3f6ae39](https://github.com/gotamedia/fluffy/commit/3f6ae3941755676fe8ec8769738d1087a4024b75))
+
 ## [0.39.3](https://github.com/gotamedia/fluffy/compare/v0.39.2...v0.39.3) (2023-08-01)
 
 
