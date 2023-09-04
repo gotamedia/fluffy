@@ -21,6 +21,7 @@ interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
     withPointer?: boolean,
     backgroundColor?: string,
     portalWhenMounted?: boolean,
+    fixedHeight?: number,
     onClickOutside?: (event: MouseEvent | TouchEvent) => void,
     onScrollOutside?: () => void
 }
@@ -30,9 +31,6 @@ type PopoverRef = HTMLDivElement
 type PopoverComponent = ForwardRefExoticComponent<PopoverProps & AnchorProps & RefAttributes<PopoverRef>>
 
 export type {
-    PopoverVariantsType,
-    PopoverVariantType,
-    PopoverRef,
-    PopoverProps,
-    PopoverComponent
+    PopoverComponent, PopoverProps, PopoverRef, PopoverVariantType, PopoverVariantsType
 }
+

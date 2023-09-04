@@ -21,6 +21,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         withPointer,
         backgroundColor,
         alignment,
+        fixedHeight,
         ...DOMProps
     } = props
 
@@ -42,6 +43,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         ...anchorRect,
         width: anchorRect.width || undefined,
         opacity: anchorRect.width ? 1 : 0,
+        height: fixedHeight ? `${fixedHeight}px` : null,
+        maxHeight: fixedHeight ? `${fixedHeight}px` : null,
         ...style
     }
 

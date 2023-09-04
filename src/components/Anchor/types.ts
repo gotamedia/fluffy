@@ -4,9 +4,9 @@ import type {
     RefAttributes
 } from 'react'
 
-import type { StyledPrefixThemeProps } from "@root/types/prefix"
-import type { StyledInterpolationFunction } from "@root/types/interpolationFunction"
 import type { AnchorRect } from '@hooks/useAnchor/types'
+import type { StyledInterpolationFunction } from "@root/types/interpolationFunction"
+import type { StyledPrefixThemeProps } from "@root/types/prefix"
 
 interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     anchor?: HTMLElement | null,
@@ -20,6 +20,7 @@ interface AnchorProps extends HTMLAttributes<HTMLDivElement> {
     withPointer?: boolean
     backgroundColor?: string
     alignment?: Align
+    fixedHeight?: number
 }
 
 export enum Align {
@@ -37,9 +38,6 @@ type AnchorRef = HTMLDivElement
 type AnchorComponent = ForwardRefExoticComponent<AnchorProps & RefAttributes<AnchorRef>>
 
 export type {
-    AnchorRef,
-    AnchorProps,
-    AnchorComponent,
-    AnchorStyledProps,
-    AnchorStyleFn
+    AnchorComponent, AnchorProps, AnchorRef, AnchorStyleFn, AnchorStyledProps
 }
+
