@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.5](https://github.com/gotamedia/fluffy/compare/v0.39.4...v0.39.5) (2023-09-04)
+
+
+### Bug Fixes
+
+* fixing broken fixed height when forced direction ([4cf3e7c](https://github.com/gotamedia/fluffy/commit/4cf3e7cdc784379ca159b72aedcf762f5eee2ec1))
+
 ## [0.39.4](https://github.com/gotamedia/fluffy/compare/v0.39.3...v0.39.4) (2023-08-24)
 
 
