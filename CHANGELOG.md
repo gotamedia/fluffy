@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.6](https://github.com/gotamedia/fluffy/compare/v0.39.5...v0.39.6) (2023-10-10)
+
+
+### Bug Fixes
+
+* exporting types from anchor component ([3dd0a58](https://github.com/gotamedia/fluffy/commit/3dd0a5860e353eac3ea8c6874301a1e4b19fa52e))
+
 ## [0.39.5](https://github.com/gotamedia/fluffy/compare/v0.39.4...v0.39.5) (2023-09-04)
 
 
