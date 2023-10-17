@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.7](https://github.com/gotamedia/fluffy/compare/v0.39.6...v0.39.7) (2023-10-17)
+
+
+### Bug Fixes
+
+* update twitter logos color ([f9f1ffd](https://github.com/gotamedia/fluffy/commit/f9f1ffd6875ff31e0b4b7d769b1803cfb178ed0f))
+
 ## [0.39.6](https://github.com/gotamedia/fluffy/compare/v0.39.5...v0.39.6) (2023-10-10)
 
 
