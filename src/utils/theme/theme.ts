@@ -33,7 +33,7 @@ const theme: DefaultTheme = {
         payment: "#2BAB68",
         socialMedia: {
             facebook: "#4267B2",
-            twitter: "#1da1f2",
+            twitter: "#14171A",
             linkedIn: "#0072B1"
         },
         error: "#db0000",
