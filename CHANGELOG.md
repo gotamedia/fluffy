@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.8](https://github.com/gotamedia/fluffy/compare/v0.39.7...v0.39.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* trigger re-render of Collapsible ([53e29fc](https://github.com/gotamedia/fluffy/commit/53e29fc90747afb06eae5627f055a23a80e9434e))
+
 ## [0.39.7](https://github.com/gotamedia/fluffy/compare/v0.39.6...v0.39.7) (2023-10-17)
 
 
