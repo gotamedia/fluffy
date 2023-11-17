@@ -1,13 +1,14 @@
 import {
     forwardRef,
+    useEffect,
     useRef,
-    useEffect
+    useState
 } from "react"
 
-import useMeasure from "@hooks/useMeasure"
-import useDidValueChanged from '@hooks/useDidValueChanged'
 import useAnimation from "@hooks/useAnimation"
+import useDidValueChanged from '@hooks/useDidValueChanged'
 import useIsomorphicLayoutEffect from "@hooks/useIsomorphicLayoutEffect"
+import useMeasure from "@hooks/useMeasure"
 
 import * as Styled from "./style"
 import * as Types from "./types"
@@ -23,11 +24,12 @@ const Collapsible: Types.CollapsibleComponent = forwardRef((props, ref) => {
     const transitioning = useRef(false)
     const initialValue = useRef<boolean>(open)
     const wrapperRef = useRef<HTMLDivElement>(null)
-    const contentRef = useRef<HTMLDivElement>(null)
+
+    const [contentRef, setContentRef] = useState<HTMLDivElement | null>(null)
 
     const { heightTransition } = useAnimation()
 
-    const { rect: observeElementRect } = useMeasure(contentRef.current)
+    const { rect: observeElementRect } = useMeasure(contentRef)
 
     const observeElementHeight = observeElementRect.height
 
@@ -90,7 +92,7 @@ const Collapsible: Types.CollapsibleComponent = forwardRef((props, ref) => {
             {...rest}
         >
             <Styled.Wrapper ref={wrapperRef}>
-                <Styled.ContentWrapper ref={contentRef}>
+                <Styled.ContentWrapper ref={setContentRef}>
                     {children}
                 </Styled.ContentWrapper>
             </Styled.Wrapper>
