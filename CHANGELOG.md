@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.39.8](https://github.com/gotamedia/fluffy/compare/v0.39.7...v0.39.8) (2023-11-17)
+
+
+### Bug Fixes
+
+* trigger re-render of Collapsible ([53e29fc](https://github.com/gotamedia/fluffy/commit/53e29fc90747afb06eae5627f055a23a80e9434e))
+
+## [0.39.7](https://github.com/gotamedia/fluffy/compare/v0.39.6...v0.39.7) (2023-10-17)
+
+
+### Bug Fixes
+
+* update twitter logos color ([f9f1ffd](https://github.com/gotamedia/fluffy/commit/f9f1ffd6875ff31e0b4b7d769b1803cfb178ed0f))
+
+## [0.39.6](https://github.com/gotamedia/fluffy/compare/v0.39.5...v0.39.6) (2023-10-10)
+
+
+### Bug Fixes
+
+* exporting types from anchor component ([3dd0a58](https://github.com/gotamedia/fluffy/commit/3dd0a5860e353eac3ea8c6874301a1e4b19fa52e))
+
+## [0.39.5](https://github.com/gotamedia/fluffy/compare/v0.39.4...v0.39.5) (2023-09-04)
+
+
+### Bug Fixes
+
+* fixing broken fixed height when forced direction ([4cf3e7c](https://github.com/gotamedia/fluffy/commit/4cf3e7cdc784379ca159b72aedcf762f5eee2ec1))
+
+## [0.39.4](https://github.com/gotamedia/fluffy/compare/v0.39.3...v0.39.4) (2023-08-24)
+
+
+### Bug Fixes
+
+* extending anchor / popover with alignment ([3f6ae39](https://github.com/gotamedia/fluffy/commit/3f6ae3941755676fe8ec8769738d1087a4024b75))
+
 ## [0.39.3](https://github.com/gotamedia/fluffy/compare/v0.39.2...v0.39.3) (2023-08-01)
 
 

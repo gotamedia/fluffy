@@ -9,6 +9,7 @@ import useIsomorphicLayoutEffect from '@hooks/useIsomorphicLayoutEffect'
 import useMeasure from '@hooks/useMeasure'
 
 import type * as Types from './types'
+import { Align } from '@root/components/Anchor/types'
 
 const CALCULATION_PADDING = 20
 const POINTER_PADDING = 10
@@ -20,7 +21,8 @@ const useAnchor: Types.UseAnchor = (props) => {
         padding,
         offset,
         withPointer,
-        forceDirection
+        forceDirection, 
+        alignment
     } = props
 
     const paddingValue = typeof padding === 'number' ? padding : 0
@@ -99,7 +101,13 @@ const useAnchor: Types.UseAnchor = (props) => {
                 calculatedRect.bottom = (windowSize.height - anchorRect.top) + offsetValue.y
                 calculatedRect.maxHeight = availableTopSpace
                 calculatedRect.pointer.canExtendTop = withPointer && true
-            } else {
+            } else if (forceDirection && alignment === Align.Top) {
+                calculatedRect.top = undefined
+                calculatedRect.bottom = (windowSize.height - anchorRect.top) + offsetValue.y
+                calculatedRect.maxHeight = availableTopSpace
+                calculatedRect.pointer.canExtendTop = withPointer && true
+            }
+            else {
                 calculatedRect.top = anchorRect.bottom + offsetValue.y
                 calculatedRect.maxHeight = availableBottomSpace
                 calculatedRect.pointer.canExtendBottom = withPointer && true
@@ -118,6 +126,7 @@ const useAnchor: Types.UseAnchor = (props) => {
         offsetValue.y,
         windowSize.height,
         viewHeight,
+        alignment,
         viewWidth,
         withPointer
     ])

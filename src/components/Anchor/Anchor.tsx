@@ -1,13 +1,13 @@
 import {
     forwardRef,
-    useRef,
-    useImperativeHandle
+    useImperativeHandle,
+    useRef
 } from 'react'
 
 import useAnchor from '@hooks/useAnchor'
 
-import * as Types from './types'
 import * as Styled from './styles'
+import * as Types from './types'
 
 const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
     const {
@@ -20,6 +20,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         withFocusTrap,
         withPointer,
         backgroundColor,
+        alignment,
+        fixedHeight,
         ...DOMProps
     } = props
 
@@ -33,6 +35,7 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         padding: padding,
         offset: offset,
         forceDirection: forceDirection,
+        alignment:  alignment,
         withPointer
     })
 
@@ -40,6 +43,8 @@ const Anchor: Types.AnchorComponent = forwardRef((props, ref) => {
         ...anchorRect,
         width: anchorRect.width || undefined,
         opacity: anchorRect.width ? 1 : 0,
+        height: fixedHeight ? `${fixedHeight}px` : null,
+        maxHeight: fixedHeight ? `${fixedHeight}px` : null,
         ...style
     }
 
