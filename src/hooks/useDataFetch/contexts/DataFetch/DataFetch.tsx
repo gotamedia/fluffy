@@ -4,12 +4,7 @@ import wait, { WaitTypes } from '@utils/wait'
 
 import type * as Types from './types'
 
-const defaultContextValue: Types.DataFetchContextType = {
-    requests: [],
-    allResolved: false
-}
-
-const DataFetchContext = createContext<Types.DataFetchContextType>(defaultContextValue)
+const DataFetchContext = createContext<Types.DataFetchContextType>(null)
 
 const createServerContext = () => {
     const dataFetchContext: Types.DataFetchContextType = {

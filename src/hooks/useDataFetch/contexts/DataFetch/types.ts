@@ -10,6 +10,6 @@ export type DataFetchRequest = {
 export type DataFetchContextType = {
     requests: DataFetchRequest[],
     allResolved: boolean
-}
+} | null
 
 export type DataFetchContextProvider = FC<{ children: ReactNode }>
