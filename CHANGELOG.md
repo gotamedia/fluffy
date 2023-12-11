@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.39.9](https://github.com/gotamedia/fluffy/compare/v0.39.8...v0.39.9) (2023-12-11)
+
+
+### Bug Fixes
+
+* Removed default DataFetch's context value to prevent Client-Side render from utilising/pushing callbacks to the context. ([09aee70](https://github.com/gotamedia/fluffy/commit/09aee70553ffcb208ed2c1fb933d95352f6b4b86))
+
 ## [0.39.8](https://github.com/gotamedia/fluffy/compare/v0.39.7...v0.39.8) (2023-11-17)
 
 
